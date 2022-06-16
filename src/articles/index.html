@@ -13,27 +13,112 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/mobile-style.css">
     <link rel="stylesheet" href="../../assets/css/swiper.css">
+    <style>
+        .mobile_header{
+            display: none;
+            padding: 18px 14px;
+            background-color: var(--whiteColor);
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 999;
+            left: 0px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="bg_color">
         <header>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-6">
+            <div class="desktop_header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>
+                                    <img src="../../assets/img/mobile_search.png" alt="" class="img-fluid">
+                                </li>
+                                <li>
+                                    <img src="../../assets/img/tag_icon.png" alt="" class="img-fluid">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6 text-right">
+                            <a class="logo">
+                                <img src="../../assets/img/mobileLogo.png" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile_header box_shahdow">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="share_button" data-toggle="modal" data-target="#exampleModal">
+                                <img src="../../assets/img/mobile_component/shareBtn.png" alt="" class="img-fluid">
+                                <span class="font-size-14">שתפו</span>
+                            </button>
+                        </div>
+                        <div class="col-6 text-right" style="display: flex; justify-content: flex-end; align-items: center;">
+                            <div class="heart_tag_message_list">
+                                <ul>
+                                    <li>
+                                        <span>33</span>
+                                        <img src="../../assets/img/mobile_component/notificationIcon.png" alt="" class="img-fluid">
+                                    </li>
+                                    <li>
+                                        <span>11</span>
+                                        <img src="../../assets/img/mobile_component/fillHeart.png" alt="" class="img-fluid">
+                                    </li>
+                                    <li>
+                                        <span></span>
+                                        <img src="../../assets/img/mobile_component/fillTag.png" alt="" class="img-fluid">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile_menu">
+                <div class="mobile_body">
+                    <div class="mobile_list">
+                        <h4>איזור אישי</h4>
                         <ul>
                             <li>
-                                <img src="../../assets/img/mobile_search.png" alt="" class="img-fluid">
+                                <a href="">כתבות צרכנות</a>
                             </li>
                             <li>
-                                <img src="../../assets/img/tag_icon.png" alt="" class="img-fluid">
+                                <a href="">כתבות צרכנות</a>
+                            </li>
+                            <li>
+                                <a href="">הודעות</a>
+                            </li>
+                            <li>
+                                <a href="">הגדרות </a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="col-6 text-right">
-                        <a href="">
-                            <img src="../../assets/img/mobileLogo.png" alt="" class="img-fluid">
-                        </a>
+                        <ul>
+                            <li>
+                                <a href="">המוצרים שאהבתי</a>
+                            </li>
+                            <li>
+                                <a href="">כתבות שמורות</a>
+                            </li>
+                            <li>
+                                <a href="">הודעות</a>
+                            </li>
+                            <li>
+                                <a href="">הגדרות משתמש</a>
+                            </li>
+                            <li>
+                                <a href="">נוטיפיקציות</a>
+                            </li>
+                            <li>
+                                <a href="">התנתקות</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -258,5 +343,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="../../assets/js/swiper.min.js"></script>
 <script src="../../assets/js/script.js"></script>
-
+<script>
+    $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();    
+        if (scroll >= 10) {
+            $("header .desktop_header").css("display","none");
+            $("header .mobile_header").css("display","block");
+        } else{
+            $("header .desktop_header").css("display","block");
+            $("header .mobile_header").css("display","none");
+        }
+    });
+</script>
 </html>

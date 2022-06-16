@@ -44,6 +44,7 @@ $(".logo").click(function(){
 })
 $(".enrollemnt_button").click(function(){
   $(".main_page").removeClass("changed_position");
+  $("footer").css("z-index","0")
 })
 $(".password_div i").click(function(){
   if($(".password_div input").attr("type")=="password"){
