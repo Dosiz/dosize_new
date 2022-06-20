@@ -1,6 +1,7 @@
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     slidesPerView: "auto",
+    
   });
   const swiper_article = new Swiper('.swiper_article', {
     direction: 'horizontal',
@@ -9,6 +10,29 @@ const swiper = new Swiper('.swiper', {
       el: ".swiper-pagination",
       clickable: true,
     },
+  });
+  const swiper_category = new Swiper('.myCategorySlider', {
+    direction: 'horizontal',
+    slidesPerView: 5,
+    slidesPerView: "auto",
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    
+    breakpoints: {
+      // when window width is >= 320px
+      320: {
+        slidesPerView: 5,
+        spaceBetween: 20
+      },
+      // when window width is >= 640px
+      640: {
+        slidesPerView: 10,
+        spaceBetween: 40
+      }
+    }
   });
   $("header.inbox_header .drop_down_icon").click(function(){
     $(this).addClass("active")
