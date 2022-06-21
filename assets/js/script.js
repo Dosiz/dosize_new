@@ -1,6 +1,30 @@
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     slidesPerView: "auto",
+    breakpoints: {
+      // when window width is >= 320px
+      1500: {
+        slidesPerView: 5,
+        spaceBetween: 20
+      },
+      // when window width is >= 640px
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20
+      },
+      768:{
+        slidesPerView: 3,
+        spaceBetween: 10
+      },
+      500:{
+        slidesPerView: 2,
+        spaceBetween: 10
+      },
+      300:{
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+    }
     
   });
   const swiper_article = new Swiper('.swiper_article', {
@@ -25,12 +49,16 @@ const swiper = new Swiper('.swiper', {
       // when window width is >= 320px
       320: {
         slidesPerView: 5,
-        spaceBetween: 20
+        spaceBetween: 0
       },
       // when window width is >= 640px
-      640: {
-        slidesPerView: 10,
+      1024: {
+        slidesPerView: 8,
         spaceBetween: 40
+      },
+      768: {
+        slidesPerView: 6,
+        spaceBetween: 20
       }
     }
   });

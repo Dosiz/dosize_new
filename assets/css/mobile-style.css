@@ -6,6 +6,7 @@
     --lightPurple: #E5E2E8;
     --saleColor: #F5A41A;
     --categoryTextColor: #DB1580;
+    --blackColor: #000;
 }
 @font-face {
     font-family: ploniRegular;
@@ -168,9 +169,9 @@ main{
     overflow: hidden;
     border-radius: 20px;
 }
-main .main-wrapper{
-    margin-right: 230px;
-    margin-left: 80px;
+main .main-wrapper .spacing{
+    padding-right: 230px;
+    padding-left: 80px;
 }
 /************* Header - CSS *************/
 .header_active{
@@ -287,10 +288,12 @@ header .desktop_menu .desktop_menu_body .desktop_menu_list li a img,
     width: 17px;
     height: 17px;
 }
-header .desktop_menu .desktop_menu_body .desktop_menu_list ul{
+header .desktop_menu .desktop_menu_body .desktop_menu_list ul,
+header .desktop_menu .dektop_mobile_menu_body ul{
     display: block;
 }
-header .desktop_menu .desktop_menu_body .desktop_menu_list li{
+header .desktop_menu .desktop_menu_body .desktop_menu_list li,
+header .desktop_menu .dektop_mobile_menu_body ul li{
     margin: 0px 0px 25px;
 }
 header .desktop_menu .desktop_menu_body .line{
@@ -316,7 +319,8 @@ header .share_button{
     font-family: ploniRegular;
     color: #353039;
 }
-header .heart_tag_message_list ul li{
+header .heart_tag_message_list ul li,
+header .desktop_menu .dektop_mobile_menu_body ul li{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -338,14 +342,34 @@ header .desktop_menu{
     background: #fff;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgb(80 62 157 / 8%);
-    border-radius: 20px 20px 0px 0px;
-    width: 210px;
-    padding: 33px 23px;
+    border-radius: 20px 0px 0px 20px;
     height: 800px;
-    overflow: scroll;
+    z-index: 999;
 }
 header .desktop_menu .desktop_menu_body{
     text-align: right;
+    width: 210px;
+    padding: 33px 23px;
+}
+header .desktop_menu .dektop_mobile_menu_body{
+    text-align: center;
+    width: 80px;
+    padding: 25px;
+    display: none;
+}
+header .desktop_menu .dektop_mobile_menu_body ul{
+    margin-top: 45px;
+}
+header .desktop_menu .dektop_mobile_menu_body ul li{
+    margin: auto;
+    margin-top: 40px;
+}
+header .desktop_menu .dektop_mobile_menu_body ul li img{
+    width: 22px;
+    height: 22px;
+}
+header .dektop_mobile_menu_body .desktop_menu_list .line{
+    margin: 40px 0px;
 }
 /************* Enrollemnt - Modal - Css ************/
 #enrollmentModal{
@@ -713,7 +737,11 @@ header .desktop_menu .desktop_menu_body{
     align-items: center;
     border-top: 1px solid rgba(80, 62, 157, 0.1);
     border-bottom: 1px solid rgba(80, 62, 157, 0.1);
-    padding: 5px 0px;
+    position: relative;
+}
+.affordable_consumption .header_cloth img{
+    width: 60px;
+    height: 50px;
 }
 .affordable_consumption .header_cloth .common_title{
     margin-right: 12px;
@@ -731,6 +759,203 @@ header .desktop_menu .desktop_menu_body{
 }
 .affordable_consumption .slider_div img{
     width: 100%;
+}
+/************ Product - Div - CSS ******************/
+.products_div{
+    background-color: var(--whiteColor);
+}
+.products_div .affordable_consumption{
+    position: relative;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+    display: block;
+    max-width: 32%;
+    padding: 9px;
+    position: relative;
+}
+.products_div .affordable_consumption .affordable_consumption_list{
+    display: flex;
+    justify-content: space-between;
+}
+.products_div .affordable_consumption .affordable_consumption_list .learn_more{
+    display: none;
+}
+.products_div .affordable_consumption .read_more a,
+.gifts_event_div .affordable_consumption .header_cloth .read_more a{
+    color: #2B004F;
+    position: absolute;
+    left: 0px;
+    top: 23px;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+    border-radius: 11.0862px 11.0862px 0px 0px;
+    width: 100%;
+    height: 120px;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div{
+    padding: 10px 0px;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .category{
+    position: absolute;
+    top: 15px;
+    right: 9px;
+    border-radius: 16.6294px 0px 0px 16.6294px;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .like_span,
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .like_span{
+    display: none;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div,
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p,
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p{
+    font-family: ploniMedium;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text,
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text{
+    font-size: 12px;
+    font-family: ploniRegular;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text i,
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text i,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div .rating_text i{
+    color: var(--saleColor);
+}
+/************ Article - CSS *******************/
+.article_div{
+    margin: 20px 0px;
+}
+.article_div .main_article .article_box{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.article_div .main_article .article_box .article_content{
+    text-align: right;
+    margin-right: 8px;
+}
+.article_div .main_article .article_box img{
+    border-radius: 0px 10px 10px 0px;
+}
+.article_div .main_article .article_box .article_content h4,
+.article_div .article_list ul li h4{
+    font-family: ploniBold;
+}
+.article_div .article_list ul li{
+    margin-bottom: 15px;
+}
+.article_div .article_list ul li a{
+    color: var(--blackColor);
+}
+.article_div .article_list ul li p{
+    font-family: ploniRegular;
+}
+.article_content_main{
+    width: 100%;
+    max-width: 70%;
+    margin: auto;
+    margin-left: 200px;
+    margin-top: 70px;
+}
+.article_content_main .article_detail{
+    background-color: transparent;
+}
+/************** Home - Medical - Item - CSS **********/
+.home_medical_items .affordable_consumption .header_cloth{
+    background-color: #353039;
+}
+.home_medical_items .affordable_consumption .header_cloth .common_title{
+    color: var(--whiteColor);
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .learn_more{
+    color: var(--whiteColor);
+    left: 30px;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list{
+    display: flex;
+    justify-content: space-between;
+    direction: rtl;
+    margin: 40px 0px 0px;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1){
+    width: 45%;
+    display: flex;
+    padding: 0px;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) .like_span{
+    display: block;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) img{
+    border-radius: 0px 12px 12px 0px;
+    width: auto;
+    height: auto;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+    width: 25%;
+    flex-direction: row;
+    display: block; 
+    padding: 9px;
+    position: relative;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div{
+    padding: 10px 5px;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p{
+    display: block;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div p:nth-child(1){
+    order: 1;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+    width: 100%;
+    height: 100px;
+    border-radius: 10px 10px 0px 0px;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div p{
+    display: none;
+}
+.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) .content_div p{
+    display: block;
+}
+/************** Gift - Event - CSS ****************/
+.gifts_event_div .affordable_consumption{
+    margin: 20px 0px 0px;
+}
+.gifts_event_div .affordable_consumption_list{
+    display: flex;
+    justify-content: space-between;
+}
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+    display: block;
+    width: 32%;
+    padding: 9px;
+    position: relative;
+}
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+    border-radius: 11.0862px 11.0862px 0px 0px;
+    height: 118px;
+    width: 100%;
+}
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div p,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .like_span,
+.gifts_event_div .affordable_consumption .affordable_consumption_list .learn_more{
+    display: none;
+}
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .category{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border-radius: 16.6294px 0px 0px 16.6294px;
+}
+.gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div{
+    padding: 10px 5px;
 }
 /************** Order - Div - CSS *****************/
 .order_div{
@@ -902,6 +1127,51 @@ footer ul li.active:before {
     top: -6px;
 }
 /************* Article - CSS ********************/
+.article_banner{
+    display: flex;
+    background-color: #fff;
+}
+.article_banner .article_slider,
+.article_banner .aricle_detail{
+    width: 50%;
+}
+.article_banner .aricle_detail{
+    padding: 70px 280px 70px 70px;
+}
+.article_banner .aricle_detail .article_category {
+    font-family: ploniBold;
+    color: var(--categoryTextColor);
+    margin-bottom: 20px;
+}
+.article_banner .aricle_detail .article_title{
+    font-family: ploniBold;
+    font-size: 40px;
+}
+.article_banner .city_shoe{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1.62832px solid rgba(80, 62, 157, 0.1);
+    border-bottom: 1.62832px solid rgba(80, 62, 157, 0.1);
+    padding: 10px 0px;
+}
+.article_banner .city_shoe .category{
+    padding: 5px 7px;
+    background: #F9E7F1;
+    border-radius: 16.6294px;
+    color: var(--categoryTextColor);
+}
+.article_banner .city_shoe span{
+    margin: 0px 5px;
+}
+.article_banner .aricle_detail .article_description{
+    display: none;
+}
+.article_slider .slider_div .multiple_articles img{
+    width: 100%;
+    height: 438px;
+}
 .slider_div{
     overflow: hidden;
 }
@@ -1399,6 +1669,187 @@ footer .inbox_footer .message_form .input_div_button button{
     border: none;
 }
 /************* Media - Query - CSS ***************/
+@media screen and (min-width: 1600px) {
+    .d-none,
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none,
+    .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none{
+        display: block !important;
+    }
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none{
+        display: flex !important;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none{
+        display: block !important;
+    }
+}
+@media screen and (max-width: 1600px) {
+        .multiple_afforable_consumption .affordable_consumption_box{
+            width: 32%;
+        }
+}
+@media screen and (max-width: 1440px) {
+    .d-none{
+        display: none;
+    }
+    .promotion .multiple_promotion .promotion_box{
+        max-width: 20%;
+    }
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 32%;
+    }
+    .deal_two .multiple_deals .deals_box,
+    .deal_one .multiple_deals .deals_box {
+        max-width: 23.4% !important;
+    }
+    .article_div .col-lg-6{
+        width: 100%;
+        max-width: 100%;
+        flex: 100%;
+        margin-left: 25%;
+    }
+    .gifts_event_div .article_div .col-lg-6{
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-left: auto;
+    }
+    .gifts_event_div .column_width_change{
+        flex: 0 0 30%;
+    }
+    .gifts_event_div .column_flex_width_change{
+        flex: 0 0 70%;
+        max-width: 70%;
+    }
+    .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        width: 90%;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        max-width: 48%;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1){
+        width: 60%;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        width: 36%;
+    }
+    header .desktop_menu .desktop_menu_body .desktop_menu_list li a, header .desktop_menu .logout_user a{
+        font-size: 14px;
+    }
+    header .desktop_menu .desktop_menu_body img{
+        width: 80px;
+    }
+    .mobile_side_menu .auth_button a, header .desktop_menu .desktop_menu_body .auth_button a{
+        font-size: 12px;
+    }
+    header .desktop_menu .logout_user img{
+        width: auto;
+    }
+    main .main-wrapper .spacing{
+        padding-left: 50px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1){
+        width: 100%;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        display: none;
+    }
+    .article_div .col-lg-6{
+        margin-left: 0px;
+    }
+    .promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more a{
+        font-size: 10px;
+        border-radius: 5px
+    }
+    .promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more p,
+    .promotion .multiple_promotion .promotion_box .promotion_content .promotion_title{
+        font-size: 12px;
+    }
+    .hot_flashes_div ul li a{
+        font-size: 8px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    header .desktop_menu .dektop_mobile_menu_body{
+        display: block;
+    }
+    
+    main .main-wrapper .spacing{
+        padding-right: 100px;
+    }
+    .desktop_menu_body{
+        display: none;
+    }
+    .promotion .multiple_promotion .promotion_box {
+        max-width: 28%;
+    }
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(3){
+        display: none;
+    }
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 49%;
+    }
+    main .main-wrapper .spacing {
+        padding-left: 20px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .article_div .col-lg-6:nth-child(1){
+        display: none;
+    }
+    .gifts_event_div .column_flex_width_change .article_div .col-lg-6:nth-child(2){
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .gifts_event_div .column_flex_width_change {
+        flex: 0 0 70%;
+        max-width: 60%;
+    }
+    .gifts_event_div .column_width_change {
+        flex: 0 0 40%;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        display: block !important;
+        max-width: 32%;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1){
+        width: 60%;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        display: block;
+    }
+}
+@media screen and (max-width: 680px) {
+    .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        width: 100%;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none{
+        display: none !important;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
+        max-width: 49%;
+    }
+    .deal_two .multiple_deals .deals_box, .deal_one .multiple_deals .deals_box {
+        max-width: 35% !important;
+    }
+    .promotion .multiple_promotion .promotion_box {
+        max-width: 40%;
+    }
+    .hot_flashes_div {
+        display: none;
+    }
+    .affordable_consumption .affordable_consumption_list.d-flex{
+        display: block !important;
+    }
+    .multiple_afforable_consumption .affordable_consumption_box{
+        width: 100%;
+    }
+    .promotion + .line{
+        display: none;
+    }
+}
 @media screen and (min-width: 580px) {
     header .top_header,
     footer{
@@ -1406,6 +1857,44 @@ footer .inbox_footer .message_form .input_div_button button{
     }
 }
 @media screen and (max-width: 580px) {
+    .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+        height: auto !important;
+    }
+    header{
+        padding-bottom: 15px;
+    }
+    main{
+        position: relative;
+        top: -1px;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .learn_more {
+        color: #2B004F;
+        left: 0px;
+    }    
+    footer{
+        position: sticky;
+    }
+    .affordable_consumption .header_cloth .read_more{
+        display: none;
+    }
+    .affordable_consumption .header_cloth{
+        flex-direction: inherit;
+        justify-content: space-between;
+        border: none;
+    }
+    
+    .affordable_consumption .affordable_consumption_list .learn_more{
+        display: block;
+        position: relative;
+        top: initial;
+    }
+    .top_header{
+        padding: 10px;
+        
+    }
+    main .main-wrapper .spacing{
+        padding: 0px !important;
+    }
     .multiple_afforable_consumption .affordable_consumption_box{
         width: 100%;
     }
@@ -1415,10 +1904,93 @@ footer .inbox_footer .message_form .input_div_button button{
     main .main-wrapper{
         margin: 0px;
     }
-    .hot_flashes_div{
+    .hot_flashes_div,
+    header .desktop_menu,
+    .affordable_consumption + .line,
+    .article_div,
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div, .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div, .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div .rating_price_div{
         display: none;
+    }
+    .affordable_consumption {
+        margin: 0px;
+    }
+    .products_div,
+    .home_medical_items .affordable_consumption .header_cloth{
+        background-color: transparent;
+    }
+    .home_medical_items .affordable_consumption .header_cloth .common_title{
+        color: var(--title);
+    }
+    .deal_two .deals_box .content_div .rating_price_div p span, .deal_one .deals_box .content_div .rating_price_div p span{
+        display: initial;
+    }
+    .affordable_consumption .header_cloth .common_title img{
+        display: initial;
+        width: auto;
+        height: auto;
+    }
+    .order_div,
+    .order_div .hot_flashes,
+    .products_div .affordable_consumption .affordable_consumption_list,
+    .like_span,
+    .affordable_consumption .slider_div,
+    .learn_more,
+    .home_medical_items .affordable_consumption .affordable_consumption_list,
+    .content_div p,
+    .gifts_event_div .affordable_consumption_list{
+        display: block !important;
+    }
+    .order_div .hot_flashes .img_box img{
+        width: auto !important;
+    }
+    .affordable_consumption_box .content_div .category,.content_div .deal_category{
+        position: initial !important;
+    }
+    .affordable_consumption_box .content_div .category{
+        border-radius: 15px !important;
+    }
+    .gifts_event_div .column_width_change{
+        flex: 0 0 100%;
     }
     body{
         width: 100%;
+    }
+    .home_medical_items .affordable_consumption .col-lg-12,
+    .gifts_event_div .column_width_change .affordable_consumption .col-lg-12{
+        padding: 0px;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+        height: auto !important;
+    }
+    .products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        max-width: 100%;
+        display: flex !important;
+    }
+    .affordable_consumption_list .affordable_consumption_box{
+        padding: 0px !important;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+        width: auto !important;
+        height: auto !important;
+    }
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+        width: auto !important;
+        border-radius: 0px 12px 12px 0px !important;
+        margin-left: 15px;
+    }
+    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        width: 100% !important;
+        display: flex;
+    }
+    .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
+        display: flex !important;
+    }
+}
+@media screen and (max-width: 500px) {
+    .deal_two .multiple_deals .deals_box, .deal_one .multiple_deals .deals_box {
+        max-width: 40% !important;
+    }
+    .promotion .multiple_promotion .promotion_box {
+        max-width: 60%;
     }
 }
