@@ -40,10 +40,6 @@ const swiper = new Swiper('.swiper', {
     slidesPerView: 5,
     slidesPerView: "auto",
     loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
     
     breakpoints: {
       // when window width is >= 320px
@@ -59,19 +55,23 @@ const swiper = new Swiper('.swiper', {
       768: {
         slidesPerView: 6,
         spaceBetween: 20
+      },
+      1600: {
+        slidesPerView: 10,
+        spaceBetween: 20
       }
     }
   });
-  $("header.inbox_header .drop_down_icon").click(function(){
+  $(".inbox_header .drop_down_icon").click(function(){
     $(this).addClass("active")
-    $("header .drop_down_menu").addClass("show")
+    $(".inbox_header .drop_down_menu").addClass("show")
   })
   $(document).click(function(e) {
     e.stopPropagation();
-    if (!$(event.target).closest('.drop_down_icon ').length && !$(event.target).closest('header .drop_down_menu').length) {
+    if (!$(event.target).closest('.drop_down_icon ').length && !$(event.target).closest('.inbox_header .drop_down_menu').length) {
         console.log("hello")
-        $("header .drop_down_menu").removeClass("show")
-        $("header.inbox_header .drop_down_icon").removeClass("active")
+        $(".inbox_header .drop_down_menu").removeClass("show")
+        $(".inbox_header .drop_down_icon").removeClass("active")
     }
 });
 $(window).scroll(function() {    

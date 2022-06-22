@@ -144,8 +144,8 @@ body{
     height: 100%;
 }
 main{
-    padding-bottom: 30px;
     background: #F6F6F6;
+    height: 100%;
 }
 .modal{
     top: initial;
@@ -169,16 +169,27 @@ main{
     overflow: hidden;
     border-radius: 20px;
 }
-main .main-wrapper .spacing{
-    padding-right: 230px;
-    padding-left: 80px;
+main .main-wrapper{
+    width: 86%;
+    height: 100%;
+}
+.article_main_wrapper,
+.message_main_wrapper{
+    width: 89% !important;
+}
+.spacing{
+    padding-left: 20px;
 }
 /************* Header - CSS *************/
 .header_active{
     position: sticky;
     background-color: #fff;
     top: 0px;
-    z-index: 99999;
+    z-index: 9;
+}
+header .article_header .mobile_header{
+    background-color: #353039;
+    width: 89%;
 }
 header{
     position: relative;
@@ -329,6 +340,10 @@ header .desktop_menu .dektop_mobile_menu_body ul li{
 }
 header .heart_tag_message_list ul li img{
     margin-left: 5px;
+    height: 15px;
+}
+header .article_header .mobile_header .share_button img{
+    width: 17px;
 }
 header .heart_tag_message_list ul li span{
     font-size: 10px;
@@ -337,7 +352,7 @@ header .heart_tag_message_list ul{
     justify-content: flex-end;
 }
 header .desktop_menu{
-    position: absolute;
+    position: fixed;
     right: 0px;
     background: #fff;
     background: #FFFFFF;
@@ -345,16 +360,15 @@ header .desktop_menu{
     border-radius: 20px 0px 0px 20px;
     height: 800px;
     z-index: 999;
+    width: 11%;
 }
 header .desktop_menu .desktop_menu_body{
     text-align: right;
-    width: 210px;
-    padding: 33px 23px;
+    padding: 33px 20px;
 }
 header .desktop_menu .dektop_mobile_menu_body{
     text-align: center;
-    width: 80px;
-    padding: 25px;
+    padding: 25px 0px;
     display: none;
 }
 header .desktop_menu .dektop_mobile_menu_body ul{
@@ -370,6 +384,10 @@ header .desktop_menu .dektop_mobile_menu_body ul li img{
 }
 header .dektop_mobile_menu_body .desktop_menu_list .line{
     margin: 40px 0px;
+}
+header .article_header .mobile_header .share_button,
+header .article_header .heart_tag_message_list ul li span{
+    color: var(--whiteColor);
 }
 /************* Enrollemnt - Modal - Css ************/
 #enrollmentModal{
@@ -522,8 +540,7 @@ header .dektop_mobile_menu_body .desktop_menu_list .line{
  }
 /************* Multiple - Category - CSS ***********/
 .categories{
-    margin: 0px 0px 15px;
-    padding-top: 40px;
+    padding: 30px 0px;
 }
 .categories .category_box{
     text-align: center;
@@ -858,13 +875,76 @@ header .dektop_mobile_menu_body .desktop_menu_list .line{
 }
 .article_content_main{
     width: 100%;
-    max-width: 70%;
+    max-width: 60%;
     margin: auto;
-    margin-left: 200px;
     margin-top: 70px;
 }
 .article_content_main .article_detail{
     background-color: transparent;
+}
+.article_content_main .article_title{
+    text-align: right;
+    font-family: ploniMedium !important;
+}
+.article_content_main .line{
+    margin: 20px 0px;
+}
+.article_content_main .article_main_img_detail,
+.article_content_main .article_main_img_detail img{
+    width: 100%;
+}
+.article_slider .slider_div .swiper-wrapper{
+    height:  100% !important;
+}
+
+.article_content_main .article_main_img_detail .article_main_img_description p{
+    text-align: right;
+    font-family: ploniReuglar;
+    margin-top: 25px;
+}
+.article_content_main .multiple_shoe{
+    margin: 30px 0px;
+}
+.article_content_main .deals{
+    width: 100%;
+}
+.article_content_main .stand_brand_sign_up_div{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border-top: 1.62832px solid rgba(80, 62, 157, 0.1);
+    border-bottom: 1.62832px solid rgba(80, 62, 157, 0.1);
+    padding: 20px 0px;
+}
+.article_content_main .stand_brand_sign_up_div .sign_up_div{
+    width: 50%;
+}
+.article_content_main .stand_brand_sign_up_div .sign_up_div p{
+    width: 100%;
+}
+.article_content_main .stand_brand_sign_up_div .sign_up_div p br{
+    display: none;
+}
+.article_content_main .post_comment{
+    width: 100%;
+    max-width: 70%;
+    margin: 18px 0px 18px auto !important;
+}
+.article_content_main .formDiv form{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+.article_content_main .formDiv form input{
+    width: 65%;
+}
+.article_content_main .formDiv .comment_hearder .anonymous_text{
+    margin-left: 10px;
+}
+.article_content_main .post_comment .total_comment{
+    display: block;
 }
 /************** Home - Medical - Item - CSS **********/
 .home_medical_items .affordable_consumption .header_cloth{
@@ -925,6 +1005,9 @@ header .dektop_mobile_menu_body .desktop_menu_list .line{
     display: block;
 }
 /************** Gift - Event - CSS ****************/
+.gifts_event_div{
+    padding-bottom: 30px;
+}
 .gifts_event_div .affordable_consumption{
     margin: 20px 0px 0px;
 }
@@ -1136,16 +1219,17 @@ footer ul li.active:before {
     width: 50%;
 }
 .article_banner .aricle_detail{
-    padding: 70px 280px 70px 70px;
+    padding: 70px 70px;
 }
 .article_banner .aricle_detail .article_category {
     font-family: ploniBold;
     color: var(--categoryTextColor);
     margin-bottom: 20px;
+    font-size: 22px;
 }
 .article_banner .aricle_detail .article_title{
     font-family: ploniBold;
-    font-size: 40px;
+    font-size: 60px;
 }
 .article_banner .city_shoe{
     display: flex;
@@ -1170,7 +1254,7 @@ footer ul li.active:before {
 }
 .article_slider .slider_div .multiple_articles img{
     width: 100%;
-    height: 438px;
+    height: 100%;
 }
 .slider_div{
     overflow: hidden;
@@ -1484,6 +1568,40 @@ main .main-wrapper .wallet_promotion .price_learn_more a{
     font-family: ploniBold;
 }
 /************* Message - CSS *********************/
+.messenger_announcment_main{
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+.messenger_announcment_main .announcment_main{
+    width: 40%;
+    background-color: var(--whiteColor);
+    padding: 80px;
+}
+.messenger_announcment_main .messenger_main{
+    width: 60%;
+    position: relative;
+}
+.messenger_announcment_main .messenger_main .message_list{
+    margin-top: 50px;
+    height: 100%;
+    position: relative;
+}
+.messenger_announcment_main .messenger_main .message_list .sending_message{
+    width: 100%;
+    max-width: 50%;
+    margin: auto 0px 15px auto;
+}
+.messenger_announcment_main .messenger_main .message_list .reciving_message{
+    width: 100%;
+    max-width: 50%;
+    margin: auto auto 15px 0px;
+}
+.messenger_announcment_main .messenger_main .inbox_footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
 .announcement_list{
     margin: 25px 0px;
 }
@@ -1537,7 +1655,7 @@ main .main-wrapper .wallet_promotion .price_learn_more a{
     margin-bottom: 8px;
 }
 .announcement_list ul li .announcement_detail .annoucment_content h5 i,
-header.inbox_header .inbox_header_content p i{
+.inbox_header .inbox_header_content p i{
     color: #56BFCF;
     margin-right: 8px;
 }
@@ -1556,35 +1674,35 @@ header.inbox_header .inbox_header_content p i{
     margin-top: 7px;
 }
 /************* Message - Inbox - CSS *************/
-header.inbox_header{
+.inbox_header{
     background-color: var(--whiteColor);
     padding: 10px 14px;
     position: relative;
 }
-header.inbox_header .inbox_header_content{
+.inbox_header .inbox_header_content{
     display: flex;
     align-items: center;
     direction: rtl;
 }
-header.inbox_header .inbox_header_content img{
+.inbox_header .inbox_header_content img{
     margin: 0px 13px;
 }
-header.inbox_header .inbox_header_content p{
+.inbox_header .inbox_header_content p{
     font-family: ploniBold;
 }
-header.inbox_header .inbox_header_content a {
+.inbox_header .inbox_header_content a {
     color: #000;
 }
-header.inbox_header  .drop_down_icon{
+.inbox_header  .drop_down_icon{
     padding: 8px 18px;
     position: relative;
     right: 15px;
 }
-header.inbox_header  .drop_down_icon.active{
+.inbox_header  .drop_down_icon.active{
     background-color: #F6F6F6;
     border-radius: 100%;
 }
-header .drop_down_menu{
+.inbox_header .drop_down_menu{
     width: 230px;
     position: absolute;
     top: 31px;
@@ -1595,25 +1713,25 @@ header .drop_down_menu{
     z-index: -1;
     transition: all .5s linear;
 }
-header .drop_down_menu.show{
+.inbox_header .drop_down_menu.show{
     opacity: 1;
     z-index: 999;
 }
-header .drop_down_menu ul{
+.inbox_header .drop_down_menu ul{
     display: block;
 }
-header .drop_down_menu ul li{
+.inbox_header .drop_down_menu ul li{
     direction: rtl;
     text-align: right;
     margin: 0px;
 }
-header .drop_down_menu ul li a{
+.inbox_header .drop_down_menu ul li a{
     font-family: ploniRegular;
     color: #353039;
     display: block;
     padding: 10px 20px;
 }
-header .drop_down_menu ul li a:hover{
+.inbox_header .drop_down_menu ul li a:hover{
     background: #F6F6F6;
 }
 .message_list{
@@ -1641,19 +1759,23 @@ header .drop_down_menu ul li a:hover{
     border-radius: 0px 15px 15px 15px !important;
     margin-right: 50px;
 }
-footer .inbox_footer{
+footer .inbox_footer,
+.inbox_footer{
     background-color: var(--whiteColor);
     padding: 17px 0px;
 }
-footer .inbox_footer .message_form form{
+footer .inbox_footer .message_form form,
+.inbox_footer .message_form form{
     margin: 0px;
 }
-footer .inbox_footer .message_form .input_div_button{
+footer .inbox_footer .message_form .input_div_button,
+.inbox_footer .message_form .input_div_button{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-footer .inbox_footer .message_form .input_div_button input{
+footer .inbox_footer .message_form .input_div_button input,
+.inbox_footer .message_form .input_div_button input{
     direction: rtl;
     background: #F6F6F6;
     border-radius: 50px;
@@ -1662,7 +1784,8 @@ footer .inbox_footer .message_form .input_div_button input{
     width: 80%;
     font-family: ploniRegular;
 }
-footer .inbox_footer .message_form .input_div_button button{
+footer .inbox_footer .message_form .input_div_button button,
+.inbox_footer .message_form .input_div_button button{
     background-color: var(--categoryTextColor);
     padding: 16px 14px;
     border-radius: 100%;
@@ -1683,11 +1806,55 @@ footer .inbox_footer .message_form .input_div_button button{
     }
 }
 @media screen and (max-width: 1600px) {
+    .article_main_wrapper,
+    .message_main_wrapper {
+        width: 86% !important;
+    }
+    
+    main .main-wrapper {
+        width: 84%;
+    }
+    header .desktop_menu{
+        width: 14%;
+    }
+    header .article_header .mobile_header {
+        width: 86%;
+    }
+    .article_banner .aricle_detail .article_category{
+        font-size: 16px;
+    }
+    .article_banner .city_shoe p{
+        font-size: 14px;
+    }
         .multiple_afforable_consumption .affordable_consumption_box{
             width: 32%;
         }
 }
 @media screen and (max-width: 1440px) {
+    .messenger_announcment_main .announcment_main{
+        padding: 80px 20px;
+    }
+    .spacing {
+        padding-left: 20px;
+    }
+    main .main-wrapper{
+        width: 85%;
+    }
+    header .desktop_menu{
+        width: 15%;
+    }
+    header .article_header .mobile_header{
+        width: 85%;
+    }
+    .article_content_main .formDiv form input {
+        width: 54%;
+    }
+    .article_content_main .post_comment{
+        max-width: 80%;
+    }
+    .article_banner .aricle_detail .article_title{
+        font-size: 40px;
+    }
     .d-none{
         display: none;
     }
@@ -1745,11 +1912,37 @@ footer .inbox_footer .message_form .input_div_button button{
     header .desktop_menu .logout_user img{
         width: auto;
     }
-    main .main-wrapper .spacing{
-        padding-left: 50px;
-    }
 }
 @media screen and (max-width: 1200px) {
+    .messenger_announcment_main .messenger_main .message_list .sending_message,
+    .messenger_announcment_main .messenger_main .message_list .reciving_message{
+        max-width: 70%;
+    }
+    .article_main_wrapper,
+    .message_main_wrapper {
+        width: 84% !important;
+    }
+    main .main-wrapper{
+        width: 82%;
+    }
+    header .article_header .mobile_header {
+        width: 84%;
+    }
+    header .desktop_menu {
+        width: 16%;
+    }
+    .article_content_main{
+        max-width: 70%;
+    }
+    .article_banner .aricle_detail .article_title {
+        font-size: 30px;
+    }
+    .article_banner .article_slider{
+        width: 45%;
+    }
+    .article_banner .aricle_detail{
+        width: 55%;
+    }
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1){
         width: 100%;
     }
@@ -1772,12 +1965,24 @@ footer .inbox_footer .message_form .input_div_button button{
     }
 }
 @media screen and (max-width: 1024px) {
+    .article_main_wrapper,
+    .message_main_wrapper {
+        width: 92% !important;
+    }
+    main .main-wrapper{
+        width: 91%;
+    }
+    header .desktop_menu{
+        width: 8%;
+    }
+    header .article_header .mobile_header{
+        width: 92%;
+    }
+    .article_content_main{
+        max-width: 70%;
+    }
     header .desktop_menu .dektop_mobile_menu_body{
         display: block;
-    }
-    
-    main .main-wrapper .spacing{
-        padding-right: 100px;
     }
     .desktop_menu_body{
         display: none;
@@ -1791,11 +1996,17 @@ footer .inbox_footer .message_form .input_div_button button{
     .multiple_afforable_consumption .affordable_consumption_box {
         width: 49%;
     }
-    main .main-wrapper .spacing {
-        padding-left: 20px;
-    }
 }
 @media screen and (max-width: 992px) {
+    .article_content_main .post_comment {
+        max-width: 85%;
+    }
+    .article_content_main .stand_brand_sign_up_div{
+        display: block;
+    }
+    .article_content_main {
+        max-width: 75%;
+    }
     .article_div .col-lg-6:nth-child(1){
         display: none;
     }
@@ -1820,8 +2031,40 @@ footer .inbox_footer .message_form .input_div_button button{
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
         display: block;
     }
+    .article_banner{
+        display: block;
+        width: 100%;
+    }
+    .article_slider .slider_div .swiper-wrapper{
+        height: auto !important;
+    }
+    .article_banner .aricle_detail {
+        padding: 70px 40px;
+    }
+    .article_banner .article_slider,
+    .article_banner .aricle_detail{
+        width: 100%;
+    }
+    .article_banner .aricle_detail .article_title{
+        font-size: 50px;
+    }
+    .article_content_main .stand_brand_sign_up_div .sign_up_div{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 680px) {
+    .article_content_main {
+        max-width: 85%;
+    }
+    .article_content_main .post_comment{
+        max-width: 100%;
+    }
+    .article_banner .aricle_detail {
+        padding: 20px 10px;
+    }
+    .article_banner .aricle_detail .article_title {
+        font-size: 40px;
+    }
     .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{
         width: 100%;
     }
@@ -1851,18 +2094,76 @@ footer .inbox_footer .message_form .input_div_button button{
     }
 }
 @media screen and (min-width: 580px) {
+    
+    .modal{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .modal .modal-content{
+        border-radius: 15px;
+    }
     header .top_header,
-    footer{
+    footer,
+    header .article_header .desktop_article_header{
         display: none;
+    }
+    header .article_header{
+        display: block;
     }
 }
 @media screen and (max-width: 580px) {
+    .spacing{
+        padding-left: 0px;
+    }
+    main .main-wrapper,
+    .article_main_wrapper,
+    .message_main_wrapper{
+        width: 100% !important;
+    }
+    .hot_flashes .hot_flashes_list ul li .img_box img{
+        height: auto;
+    }
+    header .article_header .mobile_header{
+        background-color: var(--whiteColor);
+        width: 100%;
+    }
+    header .article_header .mobile_header .share_button, header .article_header .heart_tag_message_list ul li span{
+        color: #353039;
+    }
+    header .article_header .mobile_header .share_button{
+        display: flex;
+        align-items: center;
+    }
+    header .article_header .mobile_header .share_button span{
+        margin-left: 10px;
+    }
+    .desktop_hide{
+        display: block;
+    }
+    .mobile_hide{
+        display: none;
+    }
+    .article_content_main .formDiv form{
+        display: block;
+    }
+    .article_content_main .formDiv form input{
+        width: 100%;
+    }
+    .article_content_main{
+        max-width: 100%;
+        margin: 0px;
+    }
+    .article_banner .aricle_detail .article_title {
+        font-size: 30px;
+    }
+    .article_banner{
+        max-width: 100%;
+    }
     .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
         height: auto !important;
     }
-    header{
-        padding-bottom: 15px;
-    }
+    
     main{
         position: relative;
         top: -1px;
@@ -1874,8 +2175,30 @@ footer .inbox_footer .message_form .input_div_button button{
     footer{
         position: sticky;
     }
-    .affordable_consumption .header_cloth .read_more{
+    .article_mobile_bg_color{
+        background-color: var(--whiteColor);
+    }
+    .modal.show .modal-dialog{
+        max-width: 100%;
+    }
+    .affordable_consumption .header_cloth .read_more,
+    .article_detail .article_title,
+    .article_detail .article_title + .line,
+    .article_category_slider,
+    .article_content_main .deals,
+    .article_affordable_consumption,
+    .article_content_main .article_main_img_detail{
         display: none;
+    }
+    .article_content_main .stand_brand_sign_up_div{
+        border: none;
+        padding: 0px;
+    }
+    .article_detail .article_detail_para p{
+        font-size: 16px;
+    }
+    .article_banner .aricle_detail{
+        padding-bottom: 0px;
     }
     .affordable_consumption .header_cloth{
         flex-direction: inherit;
@@ -1891,9 +2214,6 @@ footer .inbox_footer .message_form .input_div_button button{
     .top_header{
         padding: 10px;
         
-    }
-    main .main-wrapper .spacing{
-        padding: 0px !important;
     }
     .multiple_afforable_consumption .affordable_consumption_box{
         width: 100%;
@@ -1939,6 +2259,12 @@ footer .inbox_footer .message_form .input_div_button button{
     .content_div p,
     .gifts_event_div .affordable_consumption_list{
         display: block !important;
+    }
+    .article_banner .aricle_detail .article_description{
+        display: block;
+        font-size: 20px;
+        font-family: ploniMedium;
+        margin: 15px 0px;
     }
     .order_div .hot_flashes .img_box img{
         width: auto !important;
@@ -1992,5 +2318,8 @@ footer .inbox_footer .message_form .input_div_button button{
     }
     .promotion .multiple_promotion .promotion_box {
         max-width: 60%;
+    }
+    main .main-wrapper .categories{
+        padding-bottom: 20px !important;
     }
 }
