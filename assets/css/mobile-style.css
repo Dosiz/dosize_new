@@ -1998,6 +1998,13 @@ footer .inbox_footer .message_form .input_div_button button,
     }
 }
 @media screen and (max-width: 992px) {
+    .messenger_announcment_main .messenger_main .message_list .sending_message, .messenger_announcment_main .messenger_main .message_list .reciving_message{
+        max-width: 90%;
+    }
+    .messenger_announcment_main .messenger_main,
+    .messenger_announcment_main .announcment_main{
+        width: 50%;
+    }
     .article_content_main .post_comment {
         max-width: 85%;
     }
@@ -2053,6 +2060,12 @@ footer .inbox_footer .message_form .input_div_button button,
     }
 }
 @media screen and (max-width: 680px) {
+    .messenger_announcment_main .messenger_main{
+       display: none;
+    }
+    .messenger_announcment_main .announcment_main{
+        width: 100%;
+    }
     .article_content_main {
         max-width: 85%;
     }
@@ -2113,6 +2126,13 @@ footer .inbox_footer .message_form .input_div_button button,
     }
 }
 @media screen and (max-width: 580px) {
+    .messenger_announcment_main .messenger_main .message_list{
+        margin: 0px;
+        height: auto;
+    }
+    .message_main_wrapper .inbox_header{
+        display: none;
+    }
     .spacing{
         padding-left: 0px;
     }
