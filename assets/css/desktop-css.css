@@ -106,6 +106,29 @@
     .desktop_menu .desktop_menu_body .enrollemnt_button {
         margin-right: -3px;
     }
+
+    .search_clothFoot {
+        background-color: transparent;
+    }
+
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 24%;
+    }
+
+    .affordable_consumption .affordable_consumption_list.d-flex {
+        flex-wrap: wrap;
+    }
+
+    .affordable_consumption {
+        background-color: #F6F6F6;
+        margin-bottom: 0;
+    }
+
+    .archive .deal_category {
+        position: absolute;
+        right: 5px;
+        top: 20px;
+    }
 }
 
 @media (min-width: 1500px) {
@@ -115,6 +138,14 @@
 
     .sliderDivDes {
         padding: 20px 80px 80px;
+    }
+
+    main .main-wrapper {
+        width: 84%;
+    }
+
+    .archive .sliderDivDes {
+        padding: 20px 16px 80px;
     }
 
 }
