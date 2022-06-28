@@ -1,0 +1,120 @@
+@media (min-width: 1024px) {
+    .product_div {
+        display: flex;
+    }
+
+    .d-xl-flex {
+        display: flex !important;
+    }
+
+    .swiper-backface-hidden .swiper-slide {
+        max-height: 544px;
+    }
+
+    .font-size-14 {
+        font-size: 16px;
+    }
+
+    .deals .multiple_deals .deals_box {
+        max-width: none;
+    }
+
+    .sliderDivDes {
+        padding: 20px 40px 80px;
+        background-color: #F6F6F6;
+        margin-bottom: 0;
+    }
+
+    .btn-swiper::after,
+    .btn-swiper::before {
+        display: none;
+    }
+
+    .btn-swiper i {
+        font-size: 50px;
+        color: #DB1580;
+    }
+
+    .btn-swiper.swiper-button-disabled {
+        opacity: 1 !important;
+    }
+
+    .btn-swiper.swiper-button-disabled i {
+        color: #C4C4C4;
+    }
+
+    .sign_up_div {
+        direction: ltr;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .sign_up_div p {
+        width: 100%;
+        text-align: left;
+    }
+
+    .sign_up_div p br {
+        display: none;
+    }
+
+    .container_desk {
+        padding: 12px 40px;
+        background-color: #F6F6F6;
+    }
+
+    .bg_color {
+        background-color: #F6F6F6;
+    }
+
+    body {
+        background: transparent;
+    }
+
+    .deals .slider_div {
+        padding: 0 20px;
+    }
+
+    main .main-wrapper {
+        width: 89%;
+    }
+
+    .font-size-12 {
+        font-size: 16px;
+    }
+
+    .common_title {
+        font-size: 28px;
+    }
+
+    .content_div .font-size-10 {
+        font-size: 14px;
+    }
+
+    .total_comment .font-size-16 {
+        font-size: 22px;
+    }
+
+    .post_comment .comment_list ul li {
+        padding: 25px 0px;
+    }
+
+    header .desktop_menu .desktop_menu_body {
+        padding: 33px 11px;
+    }
+
+    .desktop_menu .desktop_menu_body .enrollemnt_button {
+        margin-right: -3px;
+    }
+}
+
+@media (min-width: 1500px) {
+    .container_desk {
+        padding: 0 80px;
+    }
+
+    .sliderDivDes {
+        padding: 20px 80px 80px;
+    }
+
+}

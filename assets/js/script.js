@@ -1,10 +1,10 @@
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
-    slidesPerView: "auto",
+    // slidesPerView: "auto",
     breakpoints: {
       // when window width is >= 320px
       1500: {
-        slidesPerView: 5,
+        slidesPerView: 4,
         spaceBetween: 20
       },
       // when window width is >= 640px
@@ -24,7 +24,11 @@ const swiper = new Swiper('.swiper', {
         slidesPerView: 1,
         spaceBetween: 10
       },
-    }
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
     
   });
   const swiper_article = new Swiper('.swiper_article', {
