@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @include('layout.partials.head')
+  </head>
+
+<body>
+    <div class="bg_color">
+      @include('layout.partials.mobile_side_menu')
+        <div class="main_page">
+          @include('layout.partials.header')
+            <main>
+                <div class="main-wrapper">
+                    <div class="categories spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="swiper myCategorySlider">
+                                        <div class="swiper-wrapper">
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_5.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_1.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_10.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">מזון</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_9.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">פיננסים</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_8.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_1.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_2.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">בריאות</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_3.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_4.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">חינוך</p>
+                                            </div>
+                                            <div class="category_box swiper-slide">
+                                                <div class="img_box box_shahdow">
+                                                    <img src="../assets/img/mobile_component/category_5.png" alt=""
+                                                        class="img-fluid">
+                                                </div>
+                                                <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line spacing"></div>
+                    <div class="hot_flashes_div spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <ul>
+                                        <li class="active">
+                                            <a class="font-size-12" href="">מבזקים חמים <img
+                                                    src="../assets/img/mobile_component/anaoucment.png" alt=""
+                                                    class="img-fluid"></a>
+                                        </li>
+                                        <li>
+                                            <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
+                                                ש”ח <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                                    class="img-fluid"></a>
+                                        </li>
+                                        <li>
+                                            <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
+                                                ש”ח <img src="../assets/img/mobile_component/flashes_1.png" alt=""
+                                                    class="img-fluid"></a>
+                                        </li>
+                                        <li>
+                                            <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
+                                                ש”ח <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                                    class="img-fluid"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line spacing"></div>
+                    <div class="promotion spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <h3 class="common_title">המבצעים שלא תרצו לפספס <img
+                                            src="../assets/img/mobile_component/percentage_icon.png" alt=""
+                                            class="img-fluid">
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider_div">
+                            <div class="multiple_promotion swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="promotion_box box_shahdow swiper-slide">
+                                        <div class="promotion_img_box">
+                                            <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                                class="img-fluid">
+                                            <span class="font-size-14 font-weight-700">30%</span>
+                                        </div>
+                                        <div class="promotion_content">
+                                            <div class="time_category_text">
+                                                <div class="time_div">
+                                                    <p>
+                                                        <span class="font-size-12 font-weight-600">02</span> : <span
+                                                            class="font-size-12 font-weight-600">35</span> : <span
+                                                            class="font-size-12 font-weight-600">22</span>
+                                                    </p>
+                                                </div>
+                                                <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                            </div>
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right">רהיטי בלה
+                                                בלה
+                                                ספה 3 מושבים במצבעדחלישד עביע
+                                            </p>
+                                            <div class="price_learn_more">
+                                                <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                                <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line spacing"></div>
+                    <div class="affordable_consumption spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <h3 class="common_title">צרכנות משתלמת <img
+                                            src="../assets/img/mobile_component/beg.png" alt="" class="img-fluid"></h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                                        <div class="affordable_consumption_box box_shahdow">
+                                            <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                                <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                    אחרי
+                                                    הצהריים
+                                                </h4>
+                                                <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                    של
+                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                </p>
+                                                <span class="font-size-12">4 <i class="fa fa-heart"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="affordable_consumption_box box_shahdow">
+                                            <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                                <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                    אחרי
+                                                    הצהריים
+                                                </h4>
+                                                <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                    של
+                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                </p>
+                                                <span class="font-size-12">4 <i class="fa fa-heart"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="affordable_consumption_box box_shahdow">
+                                            <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                                <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                    אחרי
+                                                    הצהריים
+                                                </h4>
+                                                <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                    של
+                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                </p>
+                                                <span class="font-size-12">4 <i class="fa fa-heart"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                            <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                                <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                    אחרי
+                                                    הצהריים
+                                                </h4>
+                                                <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                    של
+                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                </p>
+                                                <span class="font-size-12">4 <i class="fa fa-heart"
+                                                        aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                        <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                                            הכתבות ></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line spacing"></div>
+                    <div class="order_div spacing">
+                        <div class="deals deal_one">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 text-right">
+                                        <h3 class="common_title">דילים חמים מהתנור <img
+                                                src="../assets/img/mobile_component/deals.png" alt="" class="img-fluid">
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider_div">
+                                <div class="multiple_deals swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hot_flashes">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <span class="annoucment_text font-size-16 font-weight-600">מבזקים חמים <img
+                                                src="../assets/img/mobile_component/anaoucment.png" alt=""
+                                                class="img-fluid"></span>
+                                        <div class="hot_flashes_list">
+                                            <ul>
+                                                <li>
+                                                    <div class="img_box">
+                                                        <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
+                                                        חינם בקנייה
+                                                        מעל
+                                                        300 ש”ח
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div class="img_box">
+                                                        <img src="../assets/img/mobile_component/flashes_1.png" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
+                                                        חינם בקנייה
+                                                        מעל
+                                                        300 ש”ח
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <div class="img_box">
+                                                        <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                                            class="img-fluid">
+                                                    </div>
+                                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
+                                                        חינם בקנייה
+                                                        מעל
+                                                        300 ש”ח
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                            <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="deals deal_two">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 text-right">
+                                        <h3 class="common_title">הכי מומלצים <img
+                                                src="../assets/img/mobile_component/star.png" alt="" class="img-fluid">
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider_div">
+                                <div class="multiple_deals swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="deals_box box_shahdow swiper-slide">
+                                            <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                                class="img-fluid">
+                                            <div class="content_div">
+                                                <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                    העיר</span>
+                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור אמיתי
+                                                    דגם AKOL
+                                                </h4>
+                                                <div class="rating_price_div">
+                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="products_div spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6 no_padding">
+                                    <div class="affordable_consumption">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-right">
+                                                    <div class="header_cloth">
+                                                        <img src="../assets/img/mobile_component/fashion_groming.png"
+                                                            alt="" class="img-fluid">
+                                                        <h3 class="common_title">אופנה וטיפוח <img
+                                                                src="../assets/img/mobile_component/Line.png" alt=""
+                                                                class="img-fluid">
+                                                        </h3>
+                                                        <span class="read_more">
+                                                            <a href="" class="font-size-12 font-weight-400">
+                                                                כתבות ביגוד והנעלה</a> </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="article_div">
+                                                <div class="row">
+                                                    <div class="col-lg-6 d-none">
+                                                        <div class="article_list">
+                                                            <ul>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ הושקה בלידר
+                                                                            אתמול אחרי הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">צפו
+                                                                            בגלריית התמונות של
+                                                                            הקולקצייה המדהימה הזאת
+                                                                            כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ הושקה בלידר
+                                                                            אתמול אחרי הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">צפו
+                                                                            בגלריית התמונות של
+                                                                            הקולקצייה המדהימה הזאת
+                                                                            כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ הושקה בלידר
+                                                                            אתמול אחרי הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">צפו
+                                                                            בגלריית התמונות של
+                                                                            הקולקצייה המדהימה הזאת
+                                                                            כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="main_article">
+                                                            <div class="article_box">
+                                                                <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                                    alt="" class="img-fluid">
+                                                                <div class="article_content">
+                                                                    <h4 class="font-size-18"
+                                                                        style="margin-bottom: 20px;">
+                                                                        קולקציית קיץ הושקה בלידר
+                                                                        אתמול אחרי הצהריים
+                                                                    </h4>
+                                                                    <p class="font-size-12">צפו
+                                                                        בגלריית התמונות של הקולקצייה
+                                                                        המדהימה הזאת כאן בכתבה
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4 <i
+                                                                        class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4 <i
+                                                                        class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4 <i
+                                                                        class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slider_div">
+                                                            <img src="../assets/img/mobile_component/slider_img.png"
+                                                                alt="" class="img-fluid">
+                                                        </div>
+                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
+                                                            כתבות ביגוד
+                                                            והנעלה
+                                                            ></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 no_padding">
+                                    <div class="affordable_consumption">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-right">
+                                                    <div class="header_cloth">
+                                                        <img src="../assets/img/mobile_component/shoe_cloth.png" alt=""
+                                                            class="img-fluid">
+                                                        <h3 class="common_title">ביגוד והנעלה <img
+                                                                src="../assets/img/mobile_component/Line.png" alt=""
+                                                                class="img-fluid">
+                                                        </h3>
+                                                        <span class="read_more">
+                                                            <a href="" class="font-size-12 font-weight-400">
+                                                                < כתבות ביגוד והנעלה</a> </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="article_div">
+                                                <div class="row">
+                                                    <div class="col-lg-6 d-none">
+                                                        <div class="article_list">
+                                                            <ul>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ
+                                                                            הושקה בלידר
+                                                                            אתמול אחרי
+                                                                            הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">
+                                                                            צפו בגלריית
+                                                                            התמונות של
+                                                                            הקולקצייה
+                                                                            המדהימה הזאת כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ
+                                                                            הושקה בלידר
+                                                                            אתמול אחרי
+                                                                            הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">
+                                                                            צפו בגלריית
+                                                                            התמונות של
+                                                                            הקולקצייה
+                                                                            המדהימה הזאת כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="text-right">
+                                                                    <a href="">
+                                                                        <h4 class="font-size-14">
+                                                                            קולקציית קיץ
+                                                                            הושקה בלידר
+                                                                            אתמול אחרי
+                                                                            הצהריים
+                                                                        </h4>
+                                                                        <p class="font-size-12">
+                                                                            צפו בגלריית
+                                                                            התמונות של
+                                                                            הקולקצייה
+                                                                            המדהימה הזאת כאן
+                                                                        </p>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="main_article">
+                                                            <div class="article_box">
+                                                                <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                                    alt="" class="img-fluid">
+                                                                <div class="article_content">
+                                                                    <h4 class="font-size-18"
+                                                                        style="margin-bottom: 20px;">
+                                                                        קולקציית קיץ הושקה
+                                                                        בלידר אתמול אחרי
+                                                                        הצהריים
+                                                                    </h4>
+                                                                    <p class="font-size-12">
+                                                                        צפו בגלריית התמונות
+                                                                        של הקולקצייה המדהימה
+                                                                        הזאת כאן בכתבה
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה
+                                                                    בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slider_div">
+                                                            <img src="../assets/img/mobile_component/slider_img.png"
+                                                                alt="" class="img-fluid">
+                                                        </div>
+                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
+                                                            כתבות ביגוד
+                                                            והנעלה
+                                                            ></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="home_medical_items spacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="affordable_consumption">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-right">
+                                                    <div class="header_cloth">
+                                                        <img src="../assets/img/mobile_component/fashion_groming.png"
+                                                            alt="" class="img-fluid">
+                                                        <h3 class="common_title">אופנה וטיפוח <img
+                                                                src="../assets/img/mobile_component/Line.png" alt=""
+                                                                class="img-fluid">
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ הושקה בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    ספה 3 מושבים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        ₪ 2,100
+                                                                    </p>
+                                                                    <p class="rating_text"><i class="fa fa-star"></i>
+                                                                        4.8
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    ספה 3 מושבים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        ₪ 2,100
+                                                                    </p>
+                                                                    <p class="rating_text"><i class="fa fa-star"></i>
+                                                                        4.8
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slider_div">
+                                                            <img src="../assets/img/mobile_component/slider_img.png"
+                                                                alt="" class="img-fluid">
+                                                        </div>
+                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
+                                                            כתבות ביגוד
+                                                            והנעלה
+                                                            ></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="affordable_consumption">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12 text-right">
+                                                    <div class="header_cloth">
+                                                        <img src="../assets/img/mobile_component/fashion_groming.png"
+                                                            alt="" class="img-fluid">
+                                                        <h3 class="common_title">אופנה וטיפוח <img
+                                                                src="../assets/img/mobile_component/Line.png" alt=""
+                                                                class="img-fluid">
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ הושקה בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    ספה 3 מושבים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        ₪ 2,100
+                                                                    </p>
+                                                                    <p class="rating_text"><i class="fa fa-star"></i>
+                                                                        4.8
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    ספה 3 מושבים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        ₪ 2,100
+                                                                    </p>
+                                                                    <p class="rating_text"><i class="fa fa-star"></i>
+                                                                        4.8
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slider_div">
+                                                            <img src="../assets/img/mobile_component/slider_img.png"
+                                                                alt="" class="img-fluid">
+                                                        </div>
+                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
+                                                            כתבות ביגוד
+                                                            והנעלה
+                                                            ></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gifts_event_div spacing">
+                        <div class="affordable_consumption">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 text-right">
+                                        <div class="header_cloth">
+                                            <img src="../assets/img/mobile_component/health_medicine.png" alt=""
+                                                class="img-fluid">
+                                            <h3 class="common_title">בריאות ורפואה <img
+                                                    src="../assets/img/mobile_component/Line.png" alt=""
+                                                    class="img-fluid">
+                                            </h3>
+                                            <span class="read_more">
+                                                <a href="" class="font-size-12 font-weight-400">לעוד
+                                                    כתבות ביגוד
+                                                    והנעלה
+                                                    ></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-6 column_width_change">
+                                    <div class="affordable_consumption">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="affordable_consumption_box box_shahdow d-none">
+                                                            <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                                alt="" class="img-fluid">
+                                                            <div class="content_div">
+                                                                <span class="category font-size-12 font-weight-400">נעלי
+                                                                    העיר</span>
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    קולקציית קיץ
+                                                                    הושקה בלידר אתמול
+                                                                    אחרי
+                                                                    הצהריים
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    צפו
+                                                                    בגלריית התמונות
+                                                                    של
+                                                                    הקולקצייה המדהימה הזאת כאן בכתבה
+                                                                </p>
+                                                                <span class="font-size-12 like_span">4
+                                                                    <i class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        2,100 ₪
+                                                                    </p>
+                                                                    <p class="rating_text">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slider_div">
+                                                            <img src="../assets/img/mobile_component/slider_img.png"
+                                                                alt="" class="img-fluid">
+                                                        </div>
+                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
+                                                            כתבות ביגוד
+                                                            והנעלה
+                                                            ></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 column_flex_width_change">
+                                    <div class="article_div">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="article_list">
+                                                    <ul>
+                                                        <li class="text-right">
+                                                            <a href="">
+                                                                <h4 class="font-size-14">
+                                                                    קולקציית קיץ הושקה בלידר
+                                                                    אתמול אחרי הצהריים
+                                                                </h4>
+                                                                <p class="font-size-12">צפו
+                                                                    בגלריית התמונות של
+                                                                    הקולקצייה המדהימה הזאת
+                                                                    כאן
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="text-right">
+                                                            <a href="">
+                                                                <h4 class="font-size-14">
+                                                                    קולקציית קיץ הושקה בלידר
+                                                                    אתמול אחרי הצהריים
+                                                                </h4>
+                                                                <p class="font-size-12">צפו
+                                                                    בגלריית התמונות של
+                                                                    הקולקצייה המדהימה הזאת
+                                                                    כאן
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                        <li class="text-right">
+                                                            <a href="">
+                                                                <h4 class="font-size-14">
+                                                                    קולקציית קיץ הושקה בלידר
+                                                                    אתמול אחרי הצהריים
+                                                                </h4>
+                                                                <p class="font-size-12">צפו
+                                                                    בגלריית התמונות של
+                                                                    הקולקצייה המדהימה הזאת
+                                                                    כאן
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="main_article">
+                                                    <div class="article_box">
+                                                        <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                            alt="" class="img-fluid">
+                                                        <div class="article_content">
+                                                            <h4 class="font-size-18" style="margin-bottom: 20px;">
+                                                                קולקציית קיץ הושקה בלידר
+                                                                אתמול אחרי הצהריים
+                                                            </h4>
+                                                            <p class="font-size-12">צפו
+                                                                בגלריית התמונות של הקולקצייה
+                                                                המדהימה הזאת כאן בכתבה
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <!-- main footer start from here -->
+                    <div class="main_footer mt-5 d-none d-xl-block">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <div class="box text-right px-3">
+                                        <p class="txt">בואו לעקוב אחרנו :)</p>
+                                        <div class="socials_icons mt-4">
+                                            <a href="#" class="social_link mx-2">
+                                                <img src="../assets/img/fb.png" alt="fb">
+                                            </a>
+                                            <a href="#" class="social_link mx-2">
+                                                <img src="../assets/img/inst.png" alt="">
+                                            </a>
+                                            <a href="#" class="social_link mx-2">
+                                                <img src="../assets/img/twitter.png" alt="">
+                                            </a>
+                                            <a href="#" class="social_link mx-2">
+                                                <img src="../assets/img/whatsapp.png" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="box px-3 border_Side">
+                                        <div class="statments_links d-flex flex-column align-items-end">
+                                            <p class="txt">
+                                                דוסיז משפט הנעה על דוסיז >>
+                                            </p>
+                                            <div class="btns d-flex mt-4">
+                                                <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>
+                                                <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="box px-3 d-flex align-items-center justify-content-center">
+                                        <img src="../assets/img/footer_img.png" class="footer_Img" alt="footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- main footer start end here -->
+                    <!--  -->
+                </div>
+            </main>
+            <footer>
+                <div class="footer_list box_shahdow">
+                    <ul>
+                        <li>
+                            <a class="open_mobile_menu">
+                                <div class="footer_item">
+                                    <img src="../assets/img/mobile_component/menu.png" alt="" class="img-fluid">
+                                    <p class="font-size-12 font-weight-400">תפריט</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./articles/index.html">
+                                <div class="footer_item">
+                                    <img src="../assets/img/mobile_component/consumption.png" alt="" class="img-fluid">
+                                    <p class="font-size-12 font-weight-400">תפריט</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./wallet/index.html">
+                                <div class="footer_item">
+                                    <img src="../assets/img/mobile_component/wallet.png" alt="" class="img-fluid">
+                                    <p class="font-size-12 font-weight-400">תפריט</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <div class="footer_item">
+                                    <img src="../assets/img/mobile_component/home.png" alt="" class="img-fluid">
+                                    <p class="font-size-12 font-weight-400">תפריט</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            <div class="modal fade" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="formDiv">
+                                <form action="">
+                                    <div class="inputDiv">
+                                        <label for="" class="font-size-16">שם</label>
+                                        <input type="text" name="there" id="there">
+                                    </div>
+                                    <div class="inputDiv">
+                                        <label for="" class="font-size-16">עיר</label>
+                                        <select name="" id="">
+                                            <option value="בחר מתוך הרשימה">בחר מתוך הרשימה</option>
+                                            <option value="ירושלים">ירושלים</option>
+                                            <option value="ביתר">ביתר</option>
+                                            <option value="בני ברק">בני ברק</option>
+                                            <option value="אלעד">אלעד</option>
+                                            <option value="בית שמש">בית שמש</option>
+                                        </select>
+                                    </div>
+                                    <div class="inputDiv">
+                                        <label for="" class="font-size-16">דוא”ל</label>
+                                        <input type="text" name="email" id="email">
+                                    </div>
+                                    <div class="inputDiv">
+                                        <label for="" class="font-size-16">סיסמה</label>
+                                        <div class="password_div">
+                                            <input type="password" name="password" id="password">
+                                            <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="checkBox_div">
+                                        <input type="checkbox" name="" id="" checked>
+                                        <label for="" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
+                                    </div>
+                                    <div class="checkBox_div">
+                                        <input type="checkbox" name="" id="" checked>
+                                        <label for="" class="font-size-16">אני מסכים <a href="">למדיניות</a>
+                                            המערכת...</label>
+                                    </div>
+                                    <button class="font-size-16">הרשמה</button>
+                                    <div class="sign_up_with">
+                                        <h6 class="text-center">או הרשם עם</h6>
+                                        <div class="signup_btn">
+                                            <a href="">
+                                                <img src="../assets/img/mobile_component/facebookIcon.png" alt=""
+                                                    class="img-fluid">
+                                            </a>
+                                            <a href="">
+                                                <img src="../assets/img/mobile_component/googleIcon.png" alt=""
+                                                    class="img-fluid">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+<script src="../assets/js/swiper.min.js"></script>
+<script src="../assets/js/script.js"></script>
+
+</html>
