@@ -199,6 +199,15 @@
     .search_clothFoot .input_search input {
         height: 43px;
     }
+
+    .arch_product p {
+        font-size: 22px;
+    }
+
+    .main_footer .btn {
+        width: 150px;
+    }
+
 }
 
 @media (min-width: 1500px) {
@@ -245,6 +254,10 @@
 
     .search_clothFoot .input_search input {
         height: 60px;
+    }
+
+    .main_footer .btn {
+        width: 170px;
     }
 
 }

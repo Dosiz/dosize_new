@@ -2989,4 +2989,48 @@ footer .inbox_footer .message_form .input_div_button button,
     color: #353039;
 }
 
+.main_footer {
+    background-color: #353039;
+    color: #fff;
+    padding-block: 100px;
+}
+
+.main_footer .btn {
+    width: 130px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_footer .btn_grey_out {
+    background: #353039;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.main_footer .btn_orange {
+    background: #DB1580;
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+}
+
+.main_footer .social_link img {
+    width: 32px;
+}
+
+.footer_Img {
+    max-width: 120px;
+}
+
+.main_footer .border_Side {
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+    border-right: 1px solid rgba(255, 255, 255, 0.22);
+}
+
 /* css for branc page start end here */
