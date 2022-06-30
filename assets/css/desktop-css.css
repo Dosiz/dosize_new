@@ -75,9 +75,9 @@
         padding: 0 20px;
     }
 
-    main .main-wrapper {
+    /* main .main-wrapper {
         width: 89%;
-    }
+    } */
 
     .font-size-12 {
         font-size: 16px;
@@ -112,7 +112,7 @@
     }
 
     .multiple_afforable_consumption .affordable_consumption_box {
-        width: 24%;
+        width: 33%;
     }
 
     .affordable_consumption .affordable_consumption_list.d-flex {
@@ -128,6 +128,76 @@
         position: absolute;
         right: 5px;
         top: 20px;
+    }
+
+    .bazaar_cards h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .btn.signForClub {
+        font-size: 16px;
+        outline: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .btn.signForClub {
+        background-color: transparent;
+        outline: none;
+    }
+
+    .bazaar_cards .titleImg {
+        width: 100px;
+    }
+
+    .noteBox {
+        padding: 14px;
+        background-color: #ffff;
+        border-radius: 10px;
+    }
+
+    .noteBox p {
+        font-size: 11px;
+    }
+
+    .noteBox img {
+        width: 30px;
+    }
+
+    .noteBox .hotFlashes,
+    .noteBox .hotFlashes:focus {
+        background: linear-gradient(270deg, #DB1580 6.7%, #F5A41A 93.3%);
+        border-radius: 30px 0px 0px 30px;
+        color: #fff;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        font-size: 18px;
+        font-weight: 700;
+        box-shadow: none !important;
+    }
+
+    .noteBox .hotFlashes img {
+        width: 15px;
+    }
+
+    .article_slider .slider_div .multiple_articles img {
+        height: auto;
+    }
+
+    .search_clothFoot .input_search {
+        width: 200%;
+    }
+
+    .search_clothFoot .input_search input {
+        height: 43px;
     }
 }
 
@@ -146,6 +216,35 @@
 
     .archive .sliderDivDes {
         padding: 20px 16px 80px;
+    }
+
+    .bazaar_cards h3 {
+        font-size: 30px;
+    }
+
+    .btn.signForClub {
+        font-size: 18px;
+    }
+
+
+    .noteBox p {
+        font-size: 11px;
+    }
+
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 24%;
+    }
+
+    .slider_div {
+        background-color: #F6F6F6;
+    }
+
+    .search_clothFoot .input_search {
+        width: 240%;
+    }
+
+    .search_clothFoot .input_search input {
+        height: 60px;
     }
 
 }

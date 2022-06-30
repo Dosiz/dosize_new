@@ -2877,15 +2877,15 @@ footer .inbox_footer .message_form .input_div_button button,
     border-radius: 30px;
     outline: none;
     height: 60px;
-    width: 240%;
     padding-left: 120px;
+    width: 100%;
 }
 
 .search_clothFoot .input_search span {
     position: absolute;
     top: 0;
     left: 0;
-    width: 27%;
+    width: 12%;
     background-color: #DB1580;
     height: 100%;
     display: flex;
@@ -2922,3 +2922,71 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 /* css for archive catagory page end */
+
+/* css for branc page start from here */
+.consumption_block {
+    background-color: #E5E5E5;
+}
+
+/* .consumption_block img {
+    width: 120px;
+} */
+
+.bazaar_cards h3 {
+    font-size: 13px;
+}
+
+.bazaar_cards .txt {
+    border-right: 1px solid #503E9D33;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: right;
+}
+
+.bazaar_cards .card {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.btn.signForClub {
+    padding: 6px 10px 6px 10px;
+    font-size: 10px;
+    background: rgba(33, 24, 24, 0.08);
+    border-radius: 15px;
+    color: #353039;
+}
+
+.btn.signForClub img {
+    width: 15px;
+}
+
+.brand_main {
+    height: auto;
+}
+
+.hot_flashes.brand_chat {
+    margin-top: 0;
+    background-color: #f6f6f6;
+}
+
+.arch_product {
+    padding: 20px 10px 18px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.arch_product img {
+    max-width: 75px;
+}
+
+.arch_product p {
+    font-weight: 700;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 14px;
+    text-align: center;
+    color: #353039;
+}
+
+/* css for branc page start end here */

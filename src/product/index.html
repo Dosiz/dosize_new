@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../assets/css/mobile-style.css">
     <link rel="stylesheet" href="../../assets/css/desktop-css.css">
     <link rel="stylesheet" href="../../assets/css/swiper.css">
+    <link rel="stylesheet" href="../../assets/css/thumb-slider.css">
     <style>
         .mobile_header {
             display: none;
@@ -316,27 +317,49 @@
                 <div class="product_div">
                     <div class="article_slider">
                         <div class="slider_div">
-                            <div class="multiple_articles swiper_article">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png" alt=""
-                                            class="img-fluid">
-                                    </div>
+                            <div class="multiple_articles swiper_article thumb_swiper">
+                                <div class="swiper-container-wrapper">
+                                    <!-- Slider main container -->
+                                    <div class="swiper-container gallery-top">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
 
+                                        </div>
+
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                    <!-- Slider thumbnail container -->
+                                    <div class="swiper-container gallery-thumbs d-none d-xl-block">
+                                        <!-- Additional required wrapper -->
+                                        <div class="swiper-wrapper">
+                                            <!-- Slides -->
+                                            <div class="swiper-slide swiperThumbImg">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                            <div class="swiper-slide swiperThumbImg">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                            <div class="swiper-slide swiperThumbImg">
+                                                <img src="../../assets/img/mobile_component/product_main_image.png"
+                                                    alt="" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- container end -->
                                 </div>
-                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
                     </div>
@@ -519,10 +542,10 @@
                             </div>
                             <!-- pagination -->
                             <div class="swiper-button-next btn-swiper">
-                                <i class="fa fa-caret-left" aria-hidden="true"></i>
+                                <i class="fa fa-caret-right" aria-hidden="true"></i>
                             </div>
                             <div class="swiper-button-prev btn-swiper">
-                                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                <i class="fa fa-caret-left" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -796,7 +819,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
     </script>
-<script src="../../assets/js/swiper.min.js"></script>
+<!-- <script src="../../assets/js/swiper.min.js"></script> -->
+<!-- swiper slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../../assets/js/script.js"></script>
 <script>
     $(window).scroll(function () {
@@ -807,6 +833,49 @@
         } else {
             $("header .desktop_header").css("display", "block");
             $("header .mobile_header").css("display", "none");
+        }
+    });
+
+    // for swiper
+    $(function () {
+        console.log($(window).width())
+        if ($(window).width() > 440) {
+            var galleryThumbs = new Swiper(".gallery-thumbs", {
+                centeredSlides: true,
+                centeredSlidesBounds: true,
+                direction: "horizontal",
+                spaceBetween: 10,
+                slidesPerView: 3,
+                freeMode: false,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                watchOverflow: true,
+                breakpoints: {
+                    480: {
+                        direction: "vertical",
+                        slidesPerView: 3
+                    }
+                }
+            });
+            var galleryTop = new Swiper(".gallery-top", {
+                autoHeight: true,
+                direction: "horizontal",
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev"
+                },
+                thumbs: {
+                    swiper: galleryThumbs
+                }
+            });
+            galleryTop.on("slideChangeTransitionStart", function () {
+                galleryThumbs.slideTo(galleryTop.activeIndex);
+            });
+            galleryThumbs.on("transitionStart", function () {
+                galleryTop.slideTo(galleryThumbs.activeIndex);
+            });
+
         }
     });
 </script>
