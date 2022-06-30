@@ -13,206 +13,865 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/mobile-style.css">
     <link rel="stylesheet" href="../../assets/css/swiper.css">
+    <style>
+        .mobile_header {
+            display: none;
+            padding: 18px 14px;
+            background-color: var(--whiteColor);
+            position: fixed;
+            top: 0px;
+            width: 100%;
+            z-index: 999;
+            left: 0px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="bg_color">
         <header>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-6">
+            <div class="top_header article_header">
+                <div class="desktop_article_header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li>
+                                        <img src="../../asets/img/mobile_search.png" alt="" class="img-fluid">
+                                    </li>
+                                    <li>
+                                        <img src="../../asets/img/tag_icon.png" alt="" class="img-fluid">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a class="logo">
+                                    <img src="../../asets/img/mobileLogo.png" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile_header box_shahdow">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="share_button" data-toggle="modal" data-target="#exampleModal">
+                                    <img src="../../asets/img/mobile_component/shareBtn.png" alt=""
+                                        class="img-fluid desktop_hide">
+                                    <img src="../../asets/img/mobile_component/white_share_btn.png" alt=""
+                                        class="img-fluid mobile_hide">
+                                    <span class="font-size-14">שתפו</span>
+                                </button>
+                            </div>
+                            <div class="col-6 text-right"
+                                style="display: flex; justify-content: flex-end; align-items: center;">
+                                <div class="heart_tag_message_list">
+                                    <ul>
+                                        <li>
+                                            <span>33</span>
+                                            <img src="../../asets/img/mobile_component/notificationIcon.png" alt=""
+                                                class="img-fluid desktop_hide">
+                                            <img src="../../asets/img/mobile_component/white_notification.png" alt=""
+                                                class="img-fluid mobile_hide">
+                                        </li>
+                                        <li>
+                                            <span>11</span>
+                                            <img src="../../asets/img/mobile_component/fillHeart.png" alt=""
+                                                class="img-fluid">
+                                        </li>
+                                        <li>
+                                            <span></span>
+                                            <img src="../../asets/img/mobile_component/fillTag.png" alt=""
+                                                class="img-fluid">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile_menu">
+                <div class="mobile_body">
+                    <div class="mobile_list">
+                        <h4>איזור אישי</h4>
                         <ul>
                             <li>
-                                <img src="../../assets/img/mobile_search.png" alt="" class="img-fluid">
+                                <a href="">כתבות צרכנות</a>
                             </li>
                             <li>
-                                <img src="../../assets/img/tag_icon.png" alt="" class="img-fluid">
+                                <a href="">כתבות צרכנות</a>
+                            </li>
+                            <li>
+                                <a href="">הודעות</a>
+                            </li>
+                            <li>
+                                <a href="">הגדרות </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <a href="">המוצרים שאהבתי</a>
+                            </li>
+                            <li>
+                                <a href="">כתבות שמורות</a>
+                            </li>
+                            <li>
+                                <a href="">הודעות</a>
+                            </li>
+                            <li>
+                                <a href="">הגדרות משתמש</a>
+                            </li>
+                            <li>
+                                <a href="">נוטיפיקציות</a>
+                            </li>
+                            <li>
+                                <a href="">התנתקות</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-6 text-right">
-                        <a href="">
-                            <img src="../../assets/img/mobileLogo.png" alt="" class="img-fluid">
-                        </a>
+                </div>
+            </div>
+            <div class="desktop_menu">
+                <div class="desktop_menu_body">
+                    <img src="../../asets/img/dektopLogo.png" alt="" class="img-fluid">
+                    <div class="auth_button">
+                        <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
+                        <a href="">התחברות</a>
+                    </div>
+                    <div class="desktop_menu_list">
+                        <ul>
+                            <li>
+                                <a href="">איזור אישי <img src="../../asets/img/mobile_component/home.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">כתבות צרכנות <img src="../../asets/img/mobile_component/wallet.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">הודעות <img src="../../asets/img/mobile_component/consumption.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">התראות <img src="../../asets/img/mobile_component/shopping_icon.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                        </ul>
+                        <div class="line"></div>
+                        <ul>
+                            <li>
+                                <a href="">איזור אישי <img src="../../asets/img/mobile_component/user_icon.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">שמורים <img src="../../asets/img/tag_icon.png" alt="" class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">הודעות <img src="../../asets/img/message_icon.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href="">חיפוש <img src="../../asets/img/mobile_search.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                        </ul>
+                        <div class="logout_user">
+                            <a href="">התנתקות <img src="../../asets/img/mobile_component/logout_icon.png" alt=""
+                                    class="img-fluid"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dektop_mobile_menu_body">
+                    <img src="../../asets/img/mobile_component/tablet_logo.png" alt="" class="img-fluid">
+                    <div class="desktop_menu_list">
+                        <ul>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_component/home.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_component/wallet.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_component/consumption.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_component/shopping_icon.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                        </ul>
+                        <div class="line"></div>
+                        <ul>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_component/user_icon.png" alt=""
+                                        class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/tag_icon.png" alt="" class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/message_icon.png" alt="" class="img-fluid"></a>
+                            </li>
+                            <li>
+                                <a href=""><img src="../../asets/img/mobile_search.png" alt="" class="img-fluid"></a>
+                            </li>
+                        </ul>
+                        <div class="logout_user">
+                            <a href=""><img src="../../asets/img/mobile_component/logout_icon.png" alt=""
+                                    class="img-fluid"></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
         <main>
-            <div class="main-wrapper">
-                <div class="article_slider">
-                    <div class="slider_div">
-                        <div class="multiple_articles swiper_article">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="../../assets/img/mobile_component/article_slider_main.png" alt="" class="img-fluid">
+            <div class="main-wrapper article_main_wrapper">
+                <div class="article_category_slider categories spacing">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="swiper myCategorySlider">
+                                    <div class="swiper-wrapper">
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_5.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_1.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_10.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">מזון</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_9.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">פיננסים</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_8.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_1.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">לבית ולגינה</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_2.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">בריאות</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_3.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_4.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">חינוך</p>
+                                        </div>
+                                        <div class="category_box swiper-slide">
+                                            <div class="img_box box_shahdow">
+                                                <img src="../../asets/img/mobile_component/category_5.png" alt=""
+                                                    class="img-fluid">
+                                            </div>
+                                            <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <img src="../../assets/img/mobile_component/article_slider_main.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="../../assets/img/mobile_component/article_slider_main.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="../../assets/img/mobile_component/article_slider_main.png" alt="" class="img-fluid">
-                                </div>
-                                
                             </div>
-                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>
-                <div class="article_detail">
+                <div class="article_banner">
+                    <div class="article_slider">
+                        <div class="slider_div">
+                            <div class="multiple_articles swiper_article">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="../../asets/img/mobile_component/article_slider_main.png" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="../../asets/img/mobile_component/article_slider_main.png" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="../../asets/img/mobile_component/article_slider_main.png" alt=""
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="../../asets/img/mobile_component/article_slider_main.png" alt=""
+                                            class="img-fluid">
+                                    </div>
+
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aricle_detail">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12 text-right">
+                                    <h5 class="article_category font-size-14">ביגוד והנעלה</h5>
+                                    <h2 class="article_title">הולך מעולה: מבצע חם בנעלי העיר על 2 זוגות סנדלים</h2>
+                                    <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות
+                                        סנדלים לכל המשפחה ולצאת בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159
+                                        ₪ בלבד • אל תחמיצו את ההזדמנות</p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="city_shoe">
+                                        <img src="../../asets/img/mobile_component/flashes_2.png" alt=""
+                                            class="img-fluid">
+                                        <p class="font-size-18"><span class="category">נעלי העיר</span>
+                                            <span>24.05.22</span> <span>| כ”ג אייר פ”ב</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="article_content_main">
+                    <div class="article_detail">
+                        <div class="container-fluid article_mobile_bg_color">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="article_title">הילד שלכם רוצה סנדלים? רוצים לקנות סנדלים לכל המשפחה ולצאת
+                                        בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159 ₪ בלבד • אל תחמיצו את
+                                        ההזדמנות</h4>
+                                    <div class="line"></div>
+                                    <div class="article_detail_para">
+                                        <p class="font-size-18">לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר'
+                                            במבצע שטרם נראה בעיר: זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות
+                                            ב-159 שקל בלבד. מבצע כאסח לוהט במיוחד לימי הקיץ החמים.</p>
+                                        <p class="font-size-18"> מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא לחנות
+                                            'נעלי העיר' הוותיקה והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל אחד מהם
+                                            את הסנדל שהוא אוהב לקיץ או לילד אחד שני זוגות שונים - ולצאת מורווחים
+                                            מהקנייה.</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="article_like">
+                                        <h4 class="font-size-18 font-weight-600">אהבתם את הכתבה? רוצים לא לפספס את
+                                            התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותתי של דוסיז >>>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="article_detail_para">
+                                        <p class="font-size-18">כאשר שירות אמין, מקצועי ויעיל - פלוס מחיר מוזל ומשתלם
+                                            פוגש אותנו הלקוחות, אין פלא שתושבי העיר בוחרים פעם אחרי פעם לקנות נעליים
+                                            וסנדלים בנעלי העיר. יש כאן את כל מה שאנחנו צריכים לילדינו.
+                                            נעלי העיר – נעליים לכל המשפחה, ועכשיו גם במבצע!</p>
+                                        <p class="font-size-18">לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר'
+                                            במבצע שטרם נראה בעיר:
+                                            זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות ב-159 שקל בלבד. מבצע כאסח
+                                            לוהט במיוחד לימי הקיץ החמים.</p>
+                                        <p class="font-size-18">מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא לחנות
+                                            'נעלי העיר' הוותיקה
+                                            והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל אחד מהם את הסנדל שהוא אוהב
+                                            לקיץ או לילד אחד שני זוגות שונים - ולצאת מורווחים מהקנייה.
+                                            לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר' במבצע שטרם נראה בעיר:
+                                            זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות ב-159 שקל בלבד. מבצע כאסח
+                                            לוהט במיוחד לימי הקיץ החמים.</p>
+                                        <p class="font-size-18">מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא לחנות
+                                            'נעלי העיר' הוותיקה
+                                            והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל אחד מהם את הסנדל שהוא אוהב
+                                            לקיץ או לילד אחד שני זוגות שונים - ולצאת מורווחים מהקנייה.
+                                            לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר' במבצע שטרם נראה בעיר:
+                                            זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות ב-159 שקל בלבד. מבצע כאסח
+                                            לוהט במיוחד לימי הקיץ החמים.</p>
+                                        <p class="font-size-18">מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא לחנות
+                                            'נעלי העיר' הוותיקה
+                                            והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל אחד מהם את הסנדל שהוא אוהב
+                                            לקיץ או לילד אחד שני זוגות שונים - ולצאת מורווחים מהקנייה.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="article_main_img_detail">
+                                    <div class="col-lg-12">
+                                        <img src="../../asets/img/mobile_component/article_main.png" alt=""
+                                            class="img-fluid">
+                                        <div class="article_main_img_description">
+                                            <p class="font-size-18">לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר'
+                                                במבצע שטרם נראה בעיר: זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות
+                                                ב-159 שקל בלבד. מבצע כאסח לוהט במיוחד לימי הקיץ החמים. </p>
+                                            <p class="font-size-18">מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא
+                                                לחנות 'נעלי העיר' הוותיקה והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל
+                                                אחד מהם את הסנדל שהוא אוהב לקיץ או לילד אחד שני זוגות שונים - ולצאת
+                                                מורווחים מהקנייה.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="deals deal_two">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-12 text-right">
+                                                <h3 class="common_title">הכי מומלצים <img
+                                                        src="../../asets/img/mobile_component/star.png" alt=""
+                                                        class="img-fluid">
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slider_div">
+                                        <div class="multiple_deals swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="deals_box box_shahdow swiper-slide">
+                                                    <img src="../../asets/img/mobile_component/recommendedItem.png"
+                                                        alt="" class="img-fluid">
+                                                    <div class="content_div">
+                                                        <span class="deal_category font-size-12 font-weight-400">נעלי
+                                                            העיר</span>
+                                                        <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
+                                                            אמיתי
+                                                            דגם AKOL
+                                                        </h4>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="multiple_shoe">
+                                        <ul>
+                                            <li class="font-size-12">מבצע</li>
+                                            <li class="font-size-12">סנדלים</li>
+                                            <li class="font-size-12">נעלי ילדים</li>
+                                            <li class="font-size-12">נעלי העיר</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="stand_brand_sign_up_div">
+                                    <div class="stand_brand_message">
+                                        <img src="../../asets/img/mobile_component/flashes_2.png" alt=""
+                                            class="img-fluid">
+                                        <a class="font-size-16" href="">לעמוד המותג</a>
+                                        <a class="font-size-16" href="">שליחת הודעה</a>
+                                    </div>
+                                    <div class="sign_up_div">
+                                        <img src="../../asets/img/mobile_component/sign_up_icon.png" alt=""
+                                            class="img-fluid">
+                                        <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br><a href="">{שם
+                                                המותג}</a> ולא תפספסו שום דיל!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="post_comment">
+                                    <div class="total_comment">
+                                        <p class="font-size-16">תגובות <span>(33)</span> <img
+                                                src="../../asets/img/mobile_component/comment.png" alt=""
+                                                class="img-fluid"></p>
+                                    </div>
+                                    <div class="formDiv">
+                                        <form action="">
+                                            <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                                class="text-right font-size-16">
+                                            <div class="comment_hearder">
+                                                <a href="" class="font-size-16">פירסום תגובה</a>
+                                                <div class="anonymous_text font-size-16">אנונימי <span
+                                                        class="checkBox"><i class="fa fa-check"
+                                                            aria-hidden="true"></i></span></div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="comment_list">
+                                        <ul>
+                                            <li>
+                                                <p class="add_comment font-size-12">הוספת תגובה</p>
+                                                <div class="user_detail">
+                                                    <h4 class="font-size-14">אנונימי</h4>
+                                                    <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p class="add_comment font-size-12">הוספת תגובה</p>
+                                                <div class="user_detail">
+                                                    <h4 class="font-size-14">אנונימי</h4>
+                                                    <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p class="add_comment font-size-12">הוספת תגובה</p>
+                                                <div class="user_detail">
+                                                    <h4 class="font-size-14">אנונימי</h4>
+                                                    <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p class="add_comment font-size-12">הוספת תגובה</p>
+                                                <div class="user_detail">
+                                                    <h4 class="font-size-14">אנונימי</h4>
+                                                    <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="affordable_consumption spacing article_affordable_consumption">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <h5 class="article_category font-size-14">ביגוד והנעלה</h5>
-                                <h2 class="article_title">הולך מעולה: מבצע חם בנעלי העיר על 2 זוגות סנדלים</h2>
-                                <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות סנדלים לכל המשפחה ולצאת בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159 ₪ בלבד • אל תחמיצו את ההזדמנות</p>
+                                <h3 class="common_title">צרכנות משתלמת <img
+                                        src="../../asets/img/mobile_component/beg.png" alt="" class="img-fluid"></h3>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-12">
-                                <div class="city_shoe">
-                                    <img src="../../assets/img/mobile_component/flashes_2.png" alt="" class="img-fluid">
-                                    <p class="font-size-12">נעלי העיר |24.05.22 | כ”ג אייר פ”ב</p>
+                                <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                                    <div class="affordable_consumption_box box_shahdow">
+                                        <img src="../../asets/img/mobile_component/affordable_iten.png" alt=""
+                                            class="img-fluid">
+                                        <div class="content_div">
+                                            <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                            <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                אחרי
+                                                הצהריים
+                                            </h4>
+                                            <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                של
+                                                הקולקצייה המדהימה הזאת כאן בכתבה
+                                            </p>
+                                            <span class="font-size-12">4 <i class="fa fa-heart"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="affordable_consumption_box box_shahdow">
+                                        <img src="../../asets/img/mobile_component/affordable_iten.png" alt=""
+                                            class="img-fluid">
+                                        <div class="content_div">
+                                            <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                            <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                אחרי
+                                                הצהריים
+                                            </h4>
+                                            <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                של
+                                                הקולקצייה המדהימה הזאת כאן בכתבה
+                                            </p>
+                                            <span class="font-size-12">4 <i class="fa fa-heart"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="affordable_consumption_box box_shahdow">
+                                        <img src="../../asets/img/mobile_component/affordable_iten.png" alt=""
+                                            class="img-fluid">
+                                        <div class="content_div">
+                                            <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                            <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                אחרי
+                                                הצהריים
+                                            </h4>
+                                            <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                של
+                                                הקולקצייה המדהימה הזאת כאן בכתבה
+                                            </p>
+                                            <span class="font-size-12">4 <i class="fa fa-heart"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="affordable_consumption_box box_shahdow d-none">
+                                        <img src="../../asets/img/mobile_component/affordable_iten.png" alt=""
+                                            class="img-fluid">
+                                        <div class="content_div">
+                                            <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                            <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                                אחרי
+                                                הצהריים
+                                            </h4>
+                                            <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                                של
+                                                הקולקצייה המדהימה הזאת כאן בכתבה
+                                            </p>
+                                            <span class="font-size-12">4 <i class="fa fa-heart"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                                        הכתבות ></a>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="article_detail_para">
-                                    <p class="font-size-16">לא צריך ללכת רחוק כדי למצוא איכותי וזול: 'נעלי העיר' במבצע שטרם נראה בעיר: זוג סנדלים ב-99 שקל בלבד והבשורה האמתית: שתי זוגות ב-159 שקל בלבד. מבצע כאסח לוהט במיוחד לימי הקיץ החמים.</p>
-                                    <p class="font-size-16"> מדובר במבצע שכובש את השוק, כאשר הורים יכולים לבוא לחנות 'נעלי העיר' הוותיקה והמקצועית ביותר בעיר, עם שני ילדיהם ולקנות לכל אחד מהם את הסנדל שהוא אוהב לקיץ או לילד אחד שני זוגות שונים - ולצאת מורווחים מהקנייה.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="article_like">
-                                    <h4 class="font-size-18 font-weight-600">אהבתם את הכתבה? רוצים לא לפספס את התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותתי של דוסיז >>></h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="article_detail_para">
-                                    <p class="font-size-16">כאשר שירות אמין, מקצועי ויעיל - פלוס מחיר מוזל ומשתלם פוגש אותנו הלקוחות, אין פלא שתושבי העיר בוחרים פעם אחרי פעם לקנות נעליים וסנדלים בנעלי העיר. יש כאן את כל מה שאנחנו צריכים לילדינו.
-                                        נעלי העיר – נעליים לכל המשפחה, ועכשיו גם במבצע!</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="multiple_shoe">
-                                    <ul>
-                                        <li class="font-size-12">מבצע</li>
-                                        <li class="font-size-12">סנדלים</li>
-                                        <li class="font-size-12">נעלי ילדים</li>
-                                        <li class="font-size-12">נעלי העיר</li>
-                                    </ul>
-                                </div>
-                            </div>
-                          
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="stand_brand_message">
-                                <img src="../../assets/img/mobile_component/flashes_2.png" alt="" class="img-fluid">
-                                <a class="font-size-16" href="">לעמוד המותג</a>
-                                <a class="font-size-16" href="">שליחת הודעה</a>
+                <!-- main footer -->
+                <!-- main footer start from here -->
+                <div class="main_footer mt-5 d-none d-xl-block">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <div class="box text-right px-3">
+                                    <p class="txt">בואו לעקוב אחרנו :)</p>
+                                    <div class="socials_icons mt-4">
+                                        <a href="#" class="social_link mx-2">
+                                            <img src="../../assets/img/fb.png" alt="fb">
+                                        </a>
+                                        <a href="#" class="social_link mx-2">
+                                            <img src="../../assets/img/inst.png" alt="">
+                                        </a>
+                                        <a href="#" class="social_link mx-2">
+                                            <img src="../../assets/img/twitter.png" alt="">
+                                        </a>
+                                        <a href="#" class="social_link mx-2">
+                                            <img src="../../assets/img/whatsapp.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="box px-3 border_Side">
+                                    <div class="statments_links d-flex flex-column align-items-end">
+                                        <p class="txt">
+                                            דוסיז משפט הנעה על דוסיז >>
+                                        </p>
+                                        <div class="btns d-flex mt-4">
+                                            <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>
+                                            <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="box px-3 d-flex align-items-center justify-content-center">
+                                    <img src="../../assets/img/footer_img.png" class="footer_Img" alt="footer">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="sign_up_div">
-                                <img src="../../assets/img/mobile_component/sign_up_icon.png" alt="" class="img-fluid">
-                                <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br><a href="">{שם המותג}</a> ולא תפספסו שום דיל!</p>
-                            </div>
+                    </div>
+                </div>
+                <!-- main footer start end here -->
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="post_comment">
-                                <div class="total_comment">
-                                    <p class="font-size-16">תגובות <span>(33)</span> <img src="../../assets/img/mobile_component/comment.png" alt="" class="img-fluid"></p>
-                                </div>
-                                <form action="">
-                                    <input type="text" name="comment" id="comment" placeholder="התגובה שלך" class="text-right font-size-16">
-                                </form>
-                                <div class="comment_hearder">
-                                    <a href="" class="font-size-16">פירסום תגובה</a>
-                                    <div class="anonymous_text font-size-16">אנונימי <span class="checkBox"><i class="fa fa-check" aria-hidden="true"></i></span></div>
-                                </div>
-                                <div class="comment_list">
-                                    <ul>
-                                        <li>
-                                            <p class="add_comment font-size-12">הוספת תגובה</p>
-                                            <div class="user_detail">
-                                                <h4 class="font-size-14">אנונימי</h4>
-                                                <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p class="add_comment font-size-12">הוספת תגובה</p>
-                                            <div class="user_detail">
-                                                <h4 class="font-size-14">אנונימי</h4>
-                                                <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p class="add_comment font-size-12">הוספת תגובה</p>
-                                            <div class="user_detail">
-                                                <h4 class="font-size-14">אנונימי</h4>
-                                                <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p class="add_comment font-size-12">הוספת תגובה</p>
-                                            <div class="user_detail">
-                                                <h4 class="font-size-14">אנונימי</h4>
-                                                <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <img src="../../asets/img/mobile_component/email_icon.png" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="../../asets/img/mobile_component/whtsapp_icon.png" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="../../asets/img/mobile_component/twitter_icon.png" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="../../asets/img/mobile_component/facebook_icon.png" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="copy_input">
+                                <i class="fa fa-clone" aria-hidden="true"></i>
+                                <input type="text" name="copy_text" id="copy_text"
+                                    value="https://dossiz-vmnlvb/dfv.co.il" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch demo modal
-              </button> -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <ul>
-                          <li>
-                              <a href="">
-                                  <img src="../../assets/img/mobile_component/email_icon.png" alt="" class="img-fluid">
-                              </a>
-                          </li>
-                          <li>
-                            <a href="">
-                                <img src="../../assets/img/mobile_component/whtsapp_icon.png" alt="" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="../../assets/img/mobile_component/twitter_icon.png" alt="" class="img-fluid">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="../../assets/img/mobile_component/facebook_icon.png" alt="" class="img-fluid">
-                            </a>
-                        </li>
-                      </ul>
-                      <div class="copy_input">
-                        <i class="fa fa-clone" aria-hidden="true"></i>
-                        <input type="text" name="copy_text" id="copy_text" value="https://dossiz-vmnlvb/dfv.co.il" readonly>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
         </main>
         <footer>
             <div class="footer_list box_shahdow">
@@ -220,15 +879,15 @@
                     <li>
                         <a href="">
                             <div class="footer_item">
-                                <img src="../../assets/img/mobile_component/menu.png" alt="" class="img-fluid">
+                                <img src="../../asets/img/mobile_component/menu.png" alt="" class="img-fluid">
                                 <p class="font-size-12 font-weight-400">תפריט</p>
                             </div>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../articles/index.html">
+                        <a href="../../articles/index.html">
                             <div class="footer_item">
-                                <img src="../../assets/img/mobile_component/consumption.png" alt="" class="img-fluid">
+                                <img src="../../asets/img/mobile_component/consumption.png" alt="" class="img-fluid">
                                 <p class="font-size-12 font-weight-400">תפריט</p>
                             </div>
                         </a>
@@ -236,7 +895,7 @@
                     <li>
                         <a href="../wallet/index.html">
                             <div class="footer_item">
-                                <img src="../../assets/img/mobile_component/wallet.png" alt="" class="img-fluid">
+                                <img src="../../asets/img/mobile_component/wallet.png" alt="" class="img-fluid">
                                 <p class="font-size-12 font-weight-400">תפריט</p>
                             </div>
                         </a>
@@ -244,7 +903,7 @@
                     <li>
                         <a href="../mobile-view.html">
                             <div class="footer_item">
-                                <img src="../../assets/img/mobile_component/home.png" alt="" class="img-fluid">
+                                <img src="../../asets/img/mobile_component/home.png" alt="" class="img-fluid">
                                 <p class="font-size-12 font-weight-400">תפריט</p>
                             </div>
                         </a>
@@ -254,9 +913,24 @@
         </footer>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="../../assets/js/swiper.min.js"></script>
-<script src="../../assets/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+<script src="../../asets/js/swiper.min.js"></script>
+<script src="../../asets/js/script.js"></script>
+<script>
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 10) {
+            $("header .desktop_header").css("display", "none");
+            $("header .mobile_header").css("display", "block");
+        } else {
+            $("header .desktop_header").css("display", "block");
+            $("header .mobile_header").css("display", "none");
+        }
+    });
+</script>
 
 </html>
