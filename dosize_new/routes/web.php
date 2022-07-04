@@ -24,3 +24,31 @@ Route::get('product', function () {
 Route::get('brand', function () {
     return view('frontend.brand');
 });
+
+Route::get('article', function () {
+    return view('frontend.article');
+});
+
+Route::get('messages', function () {
+    return view('frontend.messages');
+});
+
+Route::get('inbox-message', function () {
+    return view('frontend.inbox_message');
+});
+
+Route::get('archive-message', function () {
+    return view('frontend.archive_message');
+});
+
+Route::get('archive-category', function () {
+    return view('frontend.archive.category');
+});
+
+Route::get('archive_category', function () {
+    return view('frontend.archive.archive_category');
+});
+
+Route::get('wallet', function () {
+    return view('frontend.wallet');
+});

@@ -33,70 +33,70 @@ Course - Details
                             <div class="swiper-wrapper">
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_5.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_1.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_10.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_10.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">מזון</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_9.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_9.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">פיננסים</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_8.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_8.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_1.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_2.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_2.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">בריאות</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_3.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_3.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_4.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_4.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">חינוך</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../../assets/img/mobile_component/category_5.png" alt=""
+                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
@@ -116,15 +116,15 @@ Course - Details
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
                                             alt="" class="img-fluid">
                                     </div>
 
@@ -138,15 +138,15 @@ Course - Details
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="../../assets/img/mobile_component/product_main_image.png"
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
                                             alt="" class="img-fluid">
                                     </div>
                                 </div>
@@ -170,11 +170,11 @@ Course - Details
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
-                            <img src="../../assets/img/star.png" alt="star">
-                            <img src="../../assets/img/star.png" alt="star">
-                            <img src="../../assets/img/star.png" alt="star">
-                            <img src="../../assets/img/star.png" alt="star">
-                            <img src="../../assets/img/star.png" alt="star">
+                            <img src="{{asset('assets/img/star.png') }}" alt="star">
+                            <img src="{{asset('assets/img/star.png') }}" alt="star">
+                            <img src="{{asset('assets/img/star.png') }}" alt="star">
+                            <img src="{{asset('assets/img/star.png') }}" alt="star">
+                            <img src="{{asset('assets/img/star.png') }}" alt="star">
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
@@ -217,7 +217,7 @@ Course - Details
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title px-xl-2">מוצרים שאולי יעניינו אתכם גם <img
-                                src="../../assets/img/mobile_component/deals.png" alt="" class="img-fluid"></h3>
+                                src="{{asset('assets/img/mobile_component/deals.png') }}" alt="" class="img-fluid"></h3>
                     </div>
                 </div>
             </div>
@@ -225,7 +225,7 @@ Course - Details
                 <div class="multiple_deals swiper">
                     <div class="swiper-wrapper">
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -237,7 +237,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -249,7 +249,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -261,7 +261,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -273,7 +273,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -285,7 +285,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -297,7 +297,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -309,7 +309,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -321,7 +321,7 @@ Course - Details
                             </div>
                         </div>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="../../assets/img/mobile_component/deal_item.png" alt="" class="img-fluid">
+                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
                                 <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
@@ -349,14 +349,14 @@ Course - Details
 
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
-                        <img src="../../assets/img/mobile_component/flashes_2.png" alt="" class="img-fluid">
+                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt="" class="img-fluid">
                         <a class="font-size-16" href="">לעמוד המותג</a>
                         <a class="font-size-16" href="">שליחת הודעה</a>
                     </div>
                 </div>
                 <div class="col-lg-12 col-xl-6">
                     <div class="sign_up_div">
-                        <img src="../../assets/img/mobile_component/sign_up_icon.png" alt="" class="img-fluid">
+                        <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid">
                         <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br><a href="">{שם המותג}</a>
                             ולא תפספסו שום דיל!</p>
                     </div>
@@ -374,7 +374,7 @@ Course - Details
                                 <i class="fa fa-star"></i>
                             </p>
                             <p class="font-size-16">תגובות <span>(33)</span> <img
-                                    src="../../assets/img/mobile_component/comment.png" alt=""
+                                    src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
                             </p>
                         </div>
@@ -431,7 +431,7 @@ Course - Details
                             <div
                                 class="col-lg-12 d-flex flex-xl-row-reverse justify-content-between align-items-center text-right">
                                 <h3 class="common_title">צרכנות משתלמת <img
-                                        src="../../assets/img/mobile_component/beg.png" alt=""
+                                        src="{{asset('assets/img/mobile_component/beg.png') }}" alt=""
                                         class="img-fluid"></h3>
                                 <p class="d-none d-xl-block"><a href="#" class="text-dark">לכל הכתבות ></a></p>
                             </div>
@@ -441,7 +441,7 @@ Course - Details
                         <div class="col-lg-12">
                             <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
+                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                         class="img-fluid">
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -458,7 +458,7 @@ Course - Details
                                     </div>
                                 </div>
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
+                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                         class="img-fluid">
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -475,7 +475,7 @@ Course - Details
                                     </div>
                                 </div>
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
+                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                         class="img-fluid">
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -492,7 +492,7 @@ Course - Details
                                     </div>
                                 </div>
                                 <div class="affordable_consumption_box box_shahdow d-none">
-                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
+                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                         class="img-fluid">
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -527,16 +527,16 @@ Course - Details
                             <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../../assets/img/fb.png" alt="fb">
+                                    <img src="{{asset('assets/img/fb.png') }}" alt="fb">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../../assets/img/inst.png" alt="">
+                                    <img src="{{asset('assets/img/inst.png') }}" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../../assets/img/twitter.png" alt="">
+                                    <img src="{{asset('assets/img/twitter.png') }}" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../../assets/img/whatsapp.png" alt="">
+                                    <img src="{{asset('assets/img/whatsapp.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -556,7 +556,7 @@ Course - Details
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="../../assets/img/footer_img.png" class="footer_Img" alt="footer">
+                            <img src="{{asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -579,25 +579,25 @@ Course - Details
                     <ul>
                         <li>
                             <a href="">
-                                <img src="../../assets/img/mobile_component/email_icon.png" alt=""
+                                <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="../../assets/img/mobile_component/whtsapp_icon.png" alt=""
+                                <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="../../assets/img/mobile_component/twitter_icon.png" alt=""
+                                <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="../../assets/img/mobile_component/facebook_icon.png" alt=""
+                                <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>

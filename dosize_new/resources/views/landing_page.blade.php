@@ -18,70 +18,70 @@ Dosize
                             <div class="swiper-wrapper">
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_5.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_1.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_10.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_10.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">מזון</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_9.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_9.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">פיננסים</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_8.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_8.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_1.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">לבית ולגינה</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_2.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_2.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">בריאות</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_3.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_3.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_4.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_4.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">חינוך</p>
                                 </div>
                                 <div class="category_box swiper-slide">
                                     <div class="img_box box_shahdow">
-                                        <img src="../assets/img/mobile_component/category_5.png" alt=""
+                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
@@ -100,22 +100,22 @@ Dosize
                         <ul>
                             <li class="active">
                                 <a class="font-size-12" href="">מבזקים חמים <img
-                                        src="../assets/img/mobile_component/anaoucment.png" alt=""
+                                        src="{{ asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
                                         class="img-fluid"></a>
                             </li>
                             <li>
                                 <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                         class="img-fluid"></a>
                             </li>
                             <li>
                                 <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="../assets/img/mobile_component/flashes_1.png" alt=""
+                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
                                         class="img-fluid"></a>
                             </li>
                             <li>
                                 <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                         class="img-fluid"></a>
                             </li>
                         </ul>
@@ -129,7 +129,7 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">המבצעים שלא תרצו לפספס <img
-                                src="../assets/img/mobile_component/percentage_icon.png" alt=""
+                                src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
                                 class="img-fluid">
                         </h3>
                     </div>
@@ -140,7 +140,7 @@ Dosize
                     <div class="swiper-wrapper">
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -168,7 +168,7 @@ Dosize
                         </div>
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -196,7 +196,7 @@ Dosize
                         </div>
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -224,7 +224,7 @@ Dosize
                         </div>
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -252,7 +252,7 @@ Dosize
                         </div>
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -280,7 +280,7 @@ Dosize
                         </div>
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../assets/img/mobile_component/promotionImg.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/promotionImg.png') }}" alt=""
                                     class="img-fluid">
                                 <span class="font-size-14 font-weight-700">30%</span>
                             </div>
@@ -316,14 +316,14 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">צרכנות משתלמת <img
-                                src="../assets/img/mobile_component/beg.png" alt="" class="img-fluid"></h3>
+                                src="{{ asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -340,7 +340,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -357,7 +357,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -374,7 +374,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="affordable_consumption_box box_shahdow d-none">
-                                <img src="../assets/img/mobile_component/affordable_iten.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">נעלי העיר</span>
@@ -404,7 +404,7 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">דילים חמים מהתנור <img
-                                    src="../assets/img/mobile_component/deals.png" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/deals.png') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
@@ -413,7 +413,7 @@ Dosize
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -429,7 +429,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -445,7 +445,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -461,7 +461,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -477,7 +477,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -493,7 +493,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -509,7 +509,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -525,7 +525,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -541,7 +541,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/deal_item.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/deal_item.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -565,13 +565,13 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12">
                             <span class="annoucment_text font-size-16 font-weight-600">מבזקים חמים <img
-                                    src="../assets/img/mobile_component/anaoucment.png" alt=""
+                                    src="{{ asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
                                     class="img-fluid"></span>
                             <div class="hot_flashes_list">
                                 <ul>
                                     <li>
                                         <div class="img_box">
-                                            <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                                 class="img-fluid">
                                         </div>
                                         <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -582,7 +582,7 @@ Dosize
                                     </li>
                                     <li>
                                         <div class="img_box">
-                                            <img src="../assets/img/mobile_component/flashes_1.png" alt=""
+                                            <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
                                                 class="img-fluid">
                                         </div>
                                         <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -593,7 +593,7 @@ Dosize
                                     </li>
                                     <li>
                                         <div class="img_box">
-                                            <img src="../assets/img/mobile_component/flashes_2.png" alt=""
+                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                                 class="img-fluid">
                                         </div>
                                         <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -614,7 +614,7 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">הכי מומלצים <img
-                                    src="../assets/img/mobile_component/star.png" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/star.png') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
@@ -623,7 +623,7 @@ Dosize
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -639,7 +639,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -655,7 +655,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -671,7 +671,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -687,7 +687,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -703,7 +703,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -719,7 +719,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -735,7 +735,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -751,7 +751,7 @@ Dosize
                                 </div>
                             </div>
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="../assets/img/mobile_component/recommendedItem.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400">נעלי
@@ -780,10 +780,10 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="../assets/img/mobile_component/fashion_groming.png"
+                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
                                                 alt="" class="img-fluid">
                                             <h3 class="common_title">אופנה וטיפוח <img
-                                                    src="../assets/img/mobile_component/Line.png" alt=""
+                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
                                             <span class="read_more">
@@ -842,7 +842,7 @@ Dosize
                                         <div class="col-lg-6">
                                             <div class="main_article">
                                                 <div class="article_box">
-                                                    <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                    <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}"
                                                         alt="" class="img-fluid">
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
@@ -864,7 +864,7 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -895,7 +895,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -926,7 +926,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -957,7 +957,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="slider_div">
-                                                <img src="../assets/img/mobile_component/slider_img.png"
+                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
                                             </div>
                                             <a href="" class="learn_more font-size-12 font-weight-400">לעוד
@@ -976,10 +976,10 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="../assets/img/mobile_component/shoe_cloth.png" alt=""
+                                            <img src="{{ asset('assets/img/mobile_component/shoe_cloth.png') }}" alt=""
                                                 class="img-fluid">
                                             <h3 class="common_title">ביגוד והנעלה <img
-                                                    src="../assets/img/mobile_component/Line.png" alt=""
+                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
                                             <span class="read_more">
@@ -1047,7 +1047,7 @@ Dosize
                                         <div class="col-lg-6">
                                             <div class="main_article">
                                                 <div class="article_box">
-                                                    <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                    <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}"
                                                         alt="" class="img-fluid">
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
@@ -1071,7 +1071,7 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1102,7 +1102,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1133,7 +1133,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1164,7 +1164,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="slider_div">
-                                                <img src="../assets/img/mobile_component/slider_img.png"
+                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
                                             </div>
                                             <a href="" class="learn_more font-size-12 font-weight-400">לעוד
@@ -1189,10 +1189,10 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="../assets/img/mobile_component/fashion_groming.png"
+                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
                                                 alt="" class="img-fluid">
                                             <h3 class="common_title">אופנה וטיפוח <img
-                                                    src="../assets/img/mobile_component/Line.png" alt=""
+                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
                                         </div>
@@ -1202,7 +1202,7 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1223,7 +1223,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1250,7 +1250,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1277,7 +1277,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="slider_div">
-                                                <img src="../assets/img/mobile_component/slider_img.png"
+                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
                                             </div>
                                             <a href="" class="learn_more font-size-12 font-weight-400">לעוד
@@ -1296,10 +1296,10 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="../assets/img/mobile_component/fashion_groming.png"
+                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
                                                 alt="" class="img-fluid">
                                             <h3 class="common_title">אופנה וטיפוח <img
-                                                    src="../assets/img/mobile_component/Line.png" alt=""
+                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
                                         </div>
@@ -1309,7 +1309,7 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1330,7 +1330,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1357,7 +1357,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1384,7 +1384,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="slider_div">
-                                                <img src="../assets/img/mobile_component/slider_img.png"
+                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
                                             </div>
                                             <a href="" class="learn_more font-size-12 font-weight-400">לעוד
@@ -1406,10 +1406,10 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="header_cloth">
-                                <img src="../assets/img/mobile_component/health_medicine.png" alt=""
+                                <img src="{{ asset('assets/img/mobile_component/health_medicine.png') }}" alt=""
                                     class="img-fluid">
                                 <h3 class="common_title">בריאות ורפואה <img
-                                        src="../assets/img/mobile_component/Line.png" alt=""
+                                        src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                         class="img-fluid">
                                 </h3>
                                 <span class="read_more">
@@ -1433,7 +1433,7 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1463,7 +1463,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1493,7 +1493,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="../assets/img/mobile_component/affordable_iten.png"
+                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">נעלי
@@ -1523,7 +1523,7 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="slider_div">
-                                                <img src="../assets/img/mobile_component/slider_img.png"
+                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
                                             </div>
                                             <a href="" class="learn_more font-size-12 font-weight-400">לעוד
@@ -1587,7 +1587,7 @@ Dosize
                                 <div class="col-lg-6">
                                     <div class="main_article">
                                         <div class="article_box">
-                                            <img src="../assets/img/mobile_component/recommendedItem.png"
+                                            <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}"
                                                 alt="" class="img-fluid">
                                             <div class="article_content">
                                                 <h4 class="font-size-18" style="margin-bottom: 20px;">
@@ -1618,16 +1618,16 @@ Dosize
                             <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../assets/img/fb.png" alt="fb">
+                                    <img src="{{ asset('assets/img/fb.png') }}" alt="fb">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../assets/img/inst.png" alt="">
+                                    <img src="{{ asset('assets/img/inst.png') }}" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../assets/img/twitter.png" alt="">
+                                    <img src="{{ asset('assets/img/twitter.png') }}" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="../assets/img/whatsapp.png" alt="">
+                                    <img src="{{ asset('assets/img/whatsapp.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -1647,7 +1647,7 @@ Dosize
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="../assets/img/footer_img.png" class="footer_Img" alt="footer">
+                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -1710,11 +1710,11 @@ Dosize
                             <h6 class="text-center">או הרשם עם</h6>
                             <div class="signup_btn">
                                 <a href="">
-                                    <img src="../assets/img/mobile_component/facebookIcon.png" alt=""
+                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
                                 <a href="">
-                                    <img src="../assets/img/mobile_component/googleIcon.png" alt=""
+                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
                             </div>
