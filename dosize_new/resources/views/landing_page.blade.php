@@ -4,6 +4,7 @@ Dosize
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
+<link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 @endpush
 @section('content')
@@ -373,7 +374,7 @@ Dosize
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                            <div class="affordable_consumption_box box_shahdow d-none">
+                            <div class="affordable_consumption_box box_shahdow">
                                 <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
                                     class="img-fluid">
                                 <div class="content_div">
@@ -1660,7 +1661,7 @@ Dosize
 
 <div class="modal fade" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content " id="sign_up_modal">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1719,6 +1720,55 @@ Dosize
                                 </a>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="#" id="signup_btn" class="text-dark">
+                                <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content" id="login-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">התחברות</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="formDiv">
+                    <form action="">
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">דוא”ל</label>
+                            <input type="text" name="email" id="email">
+                        </div>
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">סיסמה</label>
+                            <div class="password_div">
+                                <input type="password" name="password" id="password">
+                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <button class="font-size-16"> הרשמה </button>
+                        <div class="sign_up_with">
+                            <h6 class="text-center">התחברו עם </h6>
+                            <div class="signup_btn">
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="#" id="login_btn" class="text-dark">
+                            </b> אין לכם חשבון? לחצו כאן להרשמה > </b>
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1730,4 +1780,18 @@ Dosize
 
 <script src="{{ asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#login-modal').fadeOut()
+        $("#signup_btn").click(function() {
+            $('#sign_up_modal').fadeOut()
+            $('#login-modal').fadeIn()
+        });
+        $("#login_btn").click(function() {
+            $('#sign_up_modal').fadeIn()
+            $('#login-modal').fadeOut()
+        });
+    });
+</script>
 @endsection

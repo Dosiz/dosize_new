@@ -469,13 +469,13 @@ header .article_header .heart_tag_message_list ul li span {
     width: 100%;
     max-width: 90%;
     height: 80%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #enrollmentModal .modal-content {
     border-radius: 20px;
     height: 100%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #enrollmentModal .modal-title {

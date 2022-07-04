@@ -207,6 +207,9 @@
     .main_footer .btn {
         width: 150px;
     }
+    #enrollmentModal .modal-dialog{
+        height: 95%;
+    }
 
 }
 
