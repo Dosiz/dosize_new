@@ -23,8 +23,12 @@
                         class="img-fluid"></a>
             </li>
             <li>
-                <a href="">התנתקות <img src="{{asset('assets/img/mobile_component/logoutIcon.png') }}" alt=""
-                        class="img-fluid"></a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><img src="{{asset('assets/img/mobile_component/logout_icon.png') }}" alt=""
+                    class="img-fluid"></a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
             </li>
         </ul>
     </div>

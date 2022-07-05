@@ -1670,31 +1670,34 @@ Dosize
             </div>
             <div class="modal-body">
                 <div class="formDiv">
-                    <form action="">
+                    <form id="sign_up_form">
+                        @csrf
                         <div class="inputDiv">
                             <label for="" class="font-size-16">שם</label>
-                            <input type="text" name="there" id="there">
+                            <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <span class="text-danger name_valid"></span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">עיר</label>
-                            <select name="" id="">
-                                <option value="בחר מתוך הרשימה">בחר מתוך הרשימה</option>
-                                <option value="ירושלים">ירושלים</option>
-                                <option value="ביתר">ביתר</option>
-                                <option value="בני ברק">בני ברק</option>
-                                <option value="אלעד">אלעד</option>
-                                <option value="בית שמש">בית שמש</option>
+                            <select name="city_id" id="city_id">
+                                <option selected disabled value="">בחר מתוך הרשימה</option>
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}"> {{$city->name}} </option>
+                                @endforeach
                             </select>
+                            <span class="text-danger city_valid"></span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">דוא”ל</label>
-                            <input type="text" name="email" id="email">
+                            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <span class="text-danger email_valid"></span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">סיסמה</label>
                             <div class="password_div">
-                                <input type="password" name="password" id="password">
+                                <input id="password" type="password" name="password" required autocomplete="new-password">
                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                <span class="text-danger password_valid"></span>
                             </div>
                         </div>
                         <div class="checkBox_div">
@@ -1706,7 +1709,7 @@ Dosize
                             <label for="" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                 המערכת...</label>
                         </div>
-                        <button class="font-size-16">הרשמה</button>
+                        <button type="submit" class="font-size-16">הרשמה</button>
                         <div class="sign_up_with">
                             <h6 class="text-center">או הרשם עם</h6>
                             <div class="signup_btn">
@@ -1738,19 +1741,22 @@ Dosize
             </div>
             <div class="modal-body">
                 <div class="formDiv">
-                    <form action="">
+                    <form id="login_form">
+                        @csrf
                         <div class="inputDiv">
                             <label for="" class="font-size-16">דוא”ל</label>
-                            <input type="text" name="email" id="email">
+                            <input id="email" type="email" name="email" required value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <span class="text-danger email_valid"></span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">סיסמה</label>
                             <div class="password_div">
-                                <input type="password" name="password" id="password">
+                                <input id="password" type="password" name="password" required autocomplete="current-password">
                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                <span class="text-danger password_valid"></span>
                             </div>
                         </div>
-                        <button class="font-size-16"> הרשמה </button>
+                        <button type="submit" class="font-size-16"> הרשמה </button>
                         <div class="sign_up_with">
                             <h6 class="text-center">התחברו עם </h6>
                             <div class="signup_btn">
@@ -1793,5 +1799,69 @@ Dosize
             $('#login-modal').fadeOut()
         });
     });
+
+    $('#sign_up_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('register') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("Success");
+                $('.close').click();
+                window.location.href="/product";
+                 
+            },
+            error: function (data) {
+                    $('.name_valid').text(data?.responseJSON?.errors?.name);
+                    $('.email_valid').text(data?.responseJSON?.errors?.email);
+                    $('.city_valid').text(data?.responseJSON?.errors?.city_id);
+                    $('.password_valid').text(data?.responseJSON?.errors?.password);
+            }
+        });
+    });
+
+    $('#login_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('login') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("Success");
+                $('.close').click();
+                window.location.href="/product";
+                 
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                if($('#email').val() == ''){
+                    $('.email_valid').text(data.responseJSON.errors.email[0]);
+                }
+                else{
+                    $('.email_valid').text('');
+                }
+                if($('#password').val() == ''){
+                    $('.password_valid').text(data.responseJSON.errors.password);
+                }
+                else{
+                    $('.password_valid').text('');
+                }
+                
+                
+            }
+        });
+    });
+
 </script>
 @endsection

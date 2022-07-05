@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
             ]);
 
             $manager = User::create([
-                'name' => 'Brand Name',
-                'email' => 'lawyer@gmail.com',
+                'name' => 'Manager Name',
+                'email' => 'manager@gmail.com',
                 'status' => '0',
                 'city_id' => '1',
                 'password' => Hash::make('password1')

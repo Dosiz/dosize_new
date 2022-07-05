@@ -13,10 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
     return view('landing_page');
 });
 
+Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+
+/*****************ADMIN ROUTES*******************/
+Route::prefix('admin')->middleware(['auth'])->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
+});
+/********************ADMIN ROUTES END******************************/
 Route::get('product', function () {
     return view('frontend.product');
 });
@@ -52,7 +63,3 @@ Route::get('archive_category', function () {
 Route::get('wallet', function () {
     return view('frontend.wallet');
 });
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

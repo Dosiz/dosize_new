@@ -116,15 +116,15 @@ Course - Details
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
                                             alt="" class="img-fluid">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}
+                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
                                             alt="" class="img-fluid">
                                     </div>
 
