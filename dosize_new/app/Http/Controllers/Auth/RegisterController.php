@@ -30,7 +30,6 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -73,8 +72,45 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $user->assignRole('Brand'); 
-
+        $user->assignRole('User'); 
         return $user;
+    }
+
+    public function redirectTo()
+    {
+        if(Auth::user()->hasRole('Brand'))
+        {
+            $this->redirectTo = route('dashboard');
+
+            return $this->redirectTo;
+        }
+
+        elseif(Auth::user()->hasRole('Manager'))
+        {
+            $this->redirectTo = route('dashboard');
+
+            return $this->redirectTo;
+        }
+
+        elseif(Auth::user()->hasRole('Admin'))
+        {
+            $this->redirectTo = route('dashboard');
+
+            return $this->redirectTo;
+        }
+        elseif(Auth::user()->hasRole('User'))
+        {
+            $user = User::where('id',Auth::id())->first();
+            $this->redirectTo = route('landing-page');
+
+            return $this->redirectTo;
+        }
+
+        else
+        {
+            $this->redirectTo = route('dashboard');
+
+            return $this->redirectTo;
+        }
     }
 }

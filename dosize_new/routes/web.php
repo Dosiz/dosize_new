@@ -23,11 +23,38 @@ Route::get('/', function () {
 
 Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 
+/*****************DASHBOARD ROUTES*******************/
+Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
+    Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+});
+/********************DASHBOARD ROUTES END******************************/
+
 /*****************ADMIN ROUTES*******************/
-Route::prefix('admin')->middleware(['auth'])->group(function(){
-    Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('admin.dashboard');
+Route::prefix('admin')->middleware('can:admin')->group(function(){
+    //city
+    Route::resource('city', App\Http\Controllers\admin\CityController::class);
+
+    //brands
+    Route::get('/brands',[App\Http\Controllers\admin\DashboardController::class, 'brands'])->name('admin.brands');
+    Route::post('/update_brand_status/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_status'])->name('update-brand-status');
+
+    //users
+    Route::get('/users',[App\Http\Controllers\admin\DashboardController::class, 'users'])->name('admin.users');
+    Route::post('/update_user_status/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_user_status'])->name('update-user-status');
+
 });
 /********************ADMIN ROUTES END******************************/
+
+/*****************Brand ROUTES*******************/
+Route::prefix('brand')->middleware('can:brand')->group(function(){
+});
+/********************Brand ROUTES END******************************/
+
+/*****************MANAGER ROUTES*******************/
+Route::prefix('manager')->middleware('can:manager')->group(function(){
+});
+/********************MANAGER ROUTES END******************************/
+
 Route::get('product', function () {
     return view('frontend.product');
 });

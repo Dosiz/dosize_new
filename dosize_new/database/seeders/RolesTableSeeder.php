@@ -20,5 +20,6 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->insert(['name' => 'Admin','guard_name' => 'web']);
         DB::table('roles')->insert(['name' => 'Manager','guard_name' => 'web']);
         DB::table('roles')->insert(['name' => 'Brand','guard_name' => 'web']);
+        DB::table('roles')->insert(['name' => 'User','guard_name' => 'web']);
     }
 }

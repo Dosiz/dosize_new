@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
 
             $managerRole = DB::table('roles')->where('name','Manager')->first();
             $brandRole = DB::table('roles')->where('name','Brand')->first();
+            $userRole = DB::table('roles')->where('name','User')->first();
 
             $admin = User::create([
                 'name' => 'Admin Name',
@@ -45,6 +46,14 @@ class UserSeeder extends Seeder
 
             $brand = User::create([
                 'name' => 'Brand Name',
+                'email' => 'brand@gmail.com',
+                'status' => '1',
+                'city_id' => '2',
+                'password' => Hash::make('password1')
+            ]);
+
+            $user = User::create([
+                'name' => 'User Name',
                 'email' => 'user@gmail.com',
                 'status' => '1',
                 'city_id' => '2',
@@ -55,6 +64,7 @@ class UserSeeder extends Seeder
             $admin->assignRole($adminRole->name);
             $manager->assignRole($managerRole->name);
             $brand->assignRole($brandRole->name);
+            $user->assignRole($userRole->name);
         }
     }
 }

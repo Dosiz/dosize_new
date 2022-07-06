@@ -1724,7 +1724,7 @@ Dosize
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-4">
-                            <a href="#" id="signup_btn" class="text-dark">
+                            <a href="" id="signup_btn" class="text-dark">
                                 <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
                             </a>
                         </div>
@@ -1771,7 +1771,7 @@ Dosize
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-4">
-                            <a href="#" id="login_btn" class="text-dark">
+                            <a href="" id="login_btn" class="text-dark">
                             </b> אין לכם חשבון? לחצו כאן להרשמה > </b>
                             </a>
                         </div>
@@ -1790,15 +1790,19 @@ Dosize
 <script>
     $(document).ready(function() {
         $('#login-modal').fadeOut()
-        $("#signup_btn").click(function() {
+        $("#signup_btn").click(function(e) {
+            e.preventDefault();
             $('#sign_up_modal').fadeOut()
             $('#login-modal').fadeIn()
         });
-        $("#login_btn").click(function() {
+        $("#login_btn").click(function(e) {
+            e.preventDefault();
             $('#sign_up_modal').fadeIn()
             $('#login-modal').fadeOut()
         });
     });
+
+    
 
     $('#sign_up_form').submit(function(e){
         e.preventDefault();
@@ -1814,7 +1818,7 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/product";
+                window.location.href="/dashboard/dashboard";
                  
             },
             error: function (data) {
@@ -1840,13 +1844,13 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/product";
+                window.location.href="/dashboard/dashboard";
                  
             },
             error: function (data) {
-                console.log('Error:', data);
+                console.log('Error:', data.responseJSON);
                 if($('#email').val() == ''){
-                    $('.email_valid').text(data.responseJSON.errors.email[0]);
+                    $('.email_valid').text(data.responseJSON.errors.email);
                 }
                 else{
                     $('.email_valid').text('');
