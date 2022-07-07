@@ -38,6 +38,8 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
     Route::get('/brands',[App\Http\Controllers\admin\DashboardController::class, 'brands'])->name('admin.brands');
     Route::post('/update_brand_status/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_status'])->name('update-brand-status');
 
+    Route::post('/update_brand/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand'])->name('update-brand');
+
     //users
     Route::get('/users',[App\Http\Controllers\admin\DashboardController::class, 'users'])->name('admin.users');
     Route::post('/update_user_status/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_user_status'])->name('update-user-status');
@@ -47,6 +49,8 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 
 /*****************Brand ROUTES*******************/
 Route::prefix('brand')->middleware('can:brand')->group(function(){
+    //brands
+    Route::post('/brand_register',[App\Http\Controllers\brand\BrandController::class, 'brand_register'])->name('brand-register');
 });
 /********************Brand ROUTES END******************************/
 

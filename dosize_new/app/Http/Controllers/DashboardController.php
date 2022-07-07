@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\City;
+use App\Models\Category;
+use App\Models\BrandProfile;
 use Illuminate\Support\Facades\Redirect;
 
 class DashboardController extends Controller
@@ -19,7 +22,15 @@ class DashboardController extends Controller
         }
         elseif(Auth::user()->hasRole('Brand'))
         {
-            return view('brand.dashboard.index',compact('user'));
+            $brand_profile = BrandProfile::where('user_id',$user->id)->first();
+            if($brand_profile ==null || $brand_profile->status == '0')
+            {
+                $categories = Category::get();
+                return view('brand.brand_profile',compact('categories','brand_profile'));
+            }
+            else{
+                return view('brand.dashboard.index',compact('user'));
+            }
         }
         elseif(Auth::user()->hasRole('Manager'))
         {

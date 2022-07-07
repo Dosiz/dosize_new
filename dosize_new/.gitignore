@@ -3,6 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/brand_image 
+/public/brand_logo 
+/public/city
 .env
 .env.backup
 .phpunit.result.cache

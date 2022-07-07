@@ -34,6 +34,7 @@ Brands
 													<th>Email</th>
 													<th>Cities</th>
 													<th>Address</th>
+													<th>Status</th>
 													<th>Action</th>
 												</tr>
 											</thead>
@@ -53,8 +54,26 @@ Brands
 													<td> 
 														Address
 													</td>
+													<td>
+														@php
+														  $brand_profile = App\Models\BrandProfile::where('user_id', $brand->id)->first();
+														@endphp
+														@if($brand_profile->status == 1) 
+														<form action="{{ route('update-brand', $brand_profile->id) }}" method="POST">
+															@csrf()                         
+															<button type="submit" class="btn btn-success" name="status" value="0">Active</button>
+														</form>                    
+														@else
+															<form action="{{ route('update-brand', $brand_profile->id) }}" method="POST">
+																@csrf()                             
+																<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
+															</form>
+														@endif
+					
+					
+													</td>
 													<td>  
-														<form action="{{ route('update-brand-status', $brand->id) }}" method="POST">
+														<form action="{{ route('update-user-status', $brand->id) }}" method="POST">
 															@csrf()                         
 															<button type="submit" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm" name="status" value="0">Down To User</button>
 														</form> 

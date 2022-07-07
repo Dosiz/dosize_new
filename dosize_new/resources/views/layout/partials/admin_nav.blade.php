@@ -37,11 +37,7 @@
 								</li>
 								@endif
 
-							@if(Auth::user()->hasRole('User'))
-							<li class="{{ Request::is('user/profile') ? 'active' : '' }}">
-								<a href="{{ url('user/profile') }}"><span> הגדרות הפרופיל </span></a>
-							</li>
-							@endif
+							
 						</ul>
 					</div>
                 </div>

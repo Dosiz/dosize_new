@@ -1842,7 +1842,7 @@ Dosize
             contentType: false,
             cache: false,
             success: function (data) {
-                console.log("Success");
+                // console.log(data);
                 $('.close').click();
                 window.location.href="/dashboard/dashboard";
                  

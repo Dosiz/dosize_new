@@ -16,8 +16,6 @@ class CreateBrandProfilesTable extends Migration
         Schema::create('brand_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('brand_name');
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities'); 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->longText('brand_logo');
@@ -29,6 +27,7 @@ class CreateBrandProfilesTable extends Migration
             $table->integer('whatsapp_no')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
+            $table->tinyInteger('city_status')->default('0');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
