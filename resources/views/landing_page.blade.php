@@ -1818,7 +1818,7 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/";
+                window.location.href="/dosiz/public";
                  
             },
             error: function (data) {
