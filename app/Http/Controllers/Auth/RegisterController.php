@@ -108,7 +108,7 @@ class RegisterController extends Controller
 
         else
         {
-            $this->redirectTo = route('dashboard');
+            $this->redirectTo = route('landing-page');
 
             return $this->redirectTo;
         }

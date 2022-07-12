@@ -56,8 +56,9 @@ Brands
 													</td>
 													<td>
 														@php
-														  $brand_profile = App\Models\BrandProfile::where('user_id', $brand->id)->first();
+														  $brand_profile = App\Models\BrandProfile::where('user_id', $brand->id)->first();	
 														@endphp
+														@if($brand_profile)
 														@if($brand_profile->status == 1) 
 														<form action="{{ route('update-brand', $brand_profile->id) }}" method="POST">
 															@csrf()                         
@@ -68,6 +69,9 @@ Brands
 																@csrf()                             
 																<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
 															</form>
+														@endif
+														@else
+														<p> Brand Created yet </p>
 														@endif
 					
 					

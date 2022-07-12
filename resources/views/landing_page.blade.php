@@ -1818,7 +1818,7 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/dashboard/dashboard";
+                window.location.href="/";
                  
             },
             error: function (data) {
