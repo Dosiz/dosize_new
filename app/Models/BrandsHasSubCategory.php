@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class BrandsHasSubCategory extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class,'sub_category_id','id');
+    }
 }

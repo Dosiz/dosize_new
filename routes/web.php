@@ -22,10 +22,12 @@ Route::get('/', function () {
 });
 
 Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-
+Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::class, 'fetch_subcategory'])->name('fetch-subcategory');
 /*****************DASHBOARD ROUTES*******************/
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    
+    
 });
 /********************DASHBOARD ROUTES END******************************/
 
@@ -33,6 +35,10 @@ Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
+    //cateogry
+    Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
+    //city
+    Route::resource('sub-category', App\Http\Controllers\admin\SubCategoryController::class);
 
     //brands
     Route::get('/brands',[App\Http\Controllers\admin\DashboardController::class, 'brands'])->name('admin.brands');

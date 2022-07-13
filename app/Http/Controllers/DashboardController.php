@@ -8,6 +8,8 @@ use Auth;
 use App\Models\User;
 use App\Models\City;
 use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\BrandsHasSubCategory;
 use App\Models\BrandProfile;
 use Illuminate\Support\Facades\Redirect;
 
@@ -26,7 +28,9 @@ class DashboardController extends Controller
             if($brand_profile ==null || $brand_profile->status == '0')
             {
                 $categories = Category::get();
-                return view('brand.brand_profile',compact('categories','brand_profile'));
+                $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
+                // dd($sub_categories);
+                return view('brand.brand_profile',compact('categories','brand_profile','sub_categories'));
             }
             else{
                 return view('brand.dashboard.index',compact('user'));
@@ -40,5 +44,12 @@ class DashboardController extends Controller
         {
             return view('landing_page');
         }
+    }
+
+    public function fetch_subcategory(Request $request)
+    {
+        $data['sub_categories'] = SubCategory::where("category_id", $request->category_id)->get(["name", "id"]);
+  
+        return response()->json($data);
     }
 }

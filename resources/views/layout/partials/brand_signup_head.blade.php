@@ -35,6 +35,8 @@
 		<link rel="stylesheet" href="{{asset('assets_admin/css/slick.css')}}">
 
         <link rel="stylesheet" href="{{asset('assets_admin/css/slick-theme.css')}}">
+		@stack('styles')
+
         <style type="text/css">
         	@if(isset($brand_profile))
         	
@@ -89,4 +91,3 @@
 	    	}
         	
         </style>
-  

@@ -15,6 +15,12 @@
 								<li class="{{ Request::is('admin/city') ? 'active' : '' }}"> 
 									<a href="{{url('admin/city')}}"><span> ערים </span></a>
 								</li>
+								<li class="{{ Request::is('admin/category') ? 'active' : '' }}"> 
+									<a href="{{url('admin/category')}}"><span> קטגוריה </span></a>
+								</li>
+								<li class="{{ Request::is('admin/sub-category') ? 'active' : '' }}"> 
+									<a href="{{url('admin/sub-category')}}"><span> קטגוריית משנה </span></a>
+								</li>
 							<li class="menu-title"> 
 								<span><i class="fe fe-user"></i> מִשׁתַמֵשׁ </span>
 							</li>

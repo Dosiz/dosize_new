@@ -48,7 +48,7 @@ Users
 													<td> 
 														<form action="{{ route('update-user-status', $user->id) }}" method="POST">
 															@csrf()                         
-															<button type="submit" class="confirm btn btn-sm bg-success-light btn-active-color-primary btn-sm" name="status" value="0">Update to Brand</button>
+															<button type="submit" class="confirm btn btn-sm bg-success-light btn-active-color-primary btn-sm" name="status" value="1">Update to Brand</button>
 														</form> 
 													</td>
 												</tr>

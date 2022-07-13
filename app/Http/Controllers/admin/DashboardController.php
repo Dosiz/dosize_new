@@ -45,6 +45,7 @@ class DashboardController extends Controller
 
     public function update_user_status(Request $request,$id)
     {
+        // dd($request->all());
         $user = User::where('id',$id)->first();
         \DB::table('model_has_roles')->where('model_id', $id)->update( ['role_id' => '3']); 
 

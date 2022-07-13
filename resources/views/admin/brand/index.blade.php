@@ -77,7 +77,7 @@ Brands
 					
 													</td>
 													<td>  
-														<form action="{{ route('update-user-status', $brand->id) }}" method="POST">
+														<form action="{{ route('update-brand-status', $brand->id) }}" method="POST">
 															@csrf()                         
 															<button type="submit" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm" name="status" value="0">Down To User</button>
 														</form> 

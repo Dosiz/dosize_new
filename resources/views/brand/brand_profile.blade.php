@@ -2,6 +2,9 @@
 @section('title')
 פרופיל המותג
 @endsection
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
 @section('content')
     <!-- Main Wrapper -->
     <div class="main-wrapper login-body register">
@@ -51,10 +54,22 @@
                                 <div class="form-group"> 
                                     <label for=""> קטגוריה <span>* </span></label>
                                     <div class="inputIcon">
-                                        <select required class="select" name="category_id">
+                                        <select required class="select" name="category_id" id="category-dropdown">
                                             <option selected disabled>Select Category</option>
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{$category->id}}" {{ $brand_profile->category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
+                                    </div>
+                                </div>
+
+                                <div class="form-group"> 
+                                    <label for=""> קטגוריה <span>* </span></label>
+                                    <div class="inputIcon">
+                                        <select name="sub_category_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
+                                            @foreach($sub_categories as $sub_category)
+                                                <option value="{{$sub_category->id}}" selected>{{$sub_category->subcategory->name}}</option>
                                             @endforeach
                                         </select>
                                         <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
@@ -88,4 +103,41 @@
         </div>
     </div>
     <!-- /Main Wrapper -->
+@endsection
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Select2 Multiple
+            $('#select2MultipleE').select2({
+                placeholder: "בחר תת-קטגוריה",
+                allowClear: true
+            });
+
+            //change category adn show sub-category
+
+            $('#category-dropdown').on('change', function () {
+                var idCategory = this.value;
+                // alert(idCategory);
+                $("#select2MultipleE").html('');
+                $.ajax({
+                    url: "{{url('/fetch-subcategory')}}",
+                    type: "POST",
+                    data: {
+                        category_id: idCategory,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#select2MultipleE').html('<option value="">-- בחר תת-קטגוריה --</option>');
+                        $.each(result.sub_categories, function (key, value) {
+                            $("#select2MultipleE").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection
