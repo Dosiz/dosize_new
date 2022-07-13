@@ -119,6 +119,9 @@ h1, h2, h3, h4, h5, h6 {
 	color: #26292c;
 	font-weight: 500;
 }
+.add_remove{
+    border-radius: 0px !important;
+}
 .h1, h1 {
     font-size: 2.25rem;
 }

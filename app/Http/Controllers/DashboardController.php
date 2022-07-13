@@ -28,8 +28,14 @@ class DashboardController extends Controller
             if($brand_profile ==null || $brand_profile->status == '0')
             {
                 $categories = Category::get();
-                $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
+                if($brand_profile)
+                {
+                    $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
                 // dd($sub_categories);
+                }
+                else{
+                    $sub_categories = null;
+                }
                 return view('brand.brand_profile',compact('categories','brand_profile','sub_categories'));
             }
             else{

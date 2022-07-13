@@ -12,17 +12,20 @@ class BrandController extends Controller
 {
     public function brand_register(Request $request)
     {
+        // dd($request->all());
         $user_id = Auth::id();
         $this->validate($request,[ 
             'brand_name'=>'required', 
             'category_id'=>'required', 
             'address'=>'required', 
+            'addmore.*.address' => 'required',
             'description'=>'required', 
             'brand_image'=>'required', 
             'brand_logo'=>'required', 
             'sub_category_id'=>'required', 
 
         ]);
+        // dd($request->all());
         // try {
         $brand = BrandProfile::where('user_id', '=', $user_id)->first();
         if($brand != null){
