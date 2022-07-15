@@ -47,7 +47,7 @@ class BlogController extends Controller
     {
         try {
             $blog = Blog::where('id',$id)->first();
-            return view('blog.show_blog', compact('blog'));
+            return view('brand.blog.show', compact('blog'));
         } catch (\Exception $exception) {
             toastError('Something went wrong, try again!');
             return Redirect::back();
@@ -101,18 +101,18 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        try {
+        // try {
             $blog = Blog::where('id',$id)->first();
-            $user_id = $blog->user_id;
-            $brand_profile = BrandProfile::where('user_id',$user_id)->first();
-            $categories = Category::get();
-            $product_categories = ProductCategory::where('brand_profile_id',$brand_profile->id)->get();
-            $category = Category::where('id',$brand_profile->category_id)->first();
-            return view('blog.edit_blog', compact('blog','categories','product_categories','category'));
-        } catch (\Exception $exception) {
-            toastError($exception->getMessage());
-            return Redirect::back();
-        }
+            $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
+            $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
+            $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+
+            return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities'));
+        // } catch (\Exception $exception) {
+        //     toastError($exception->getMessage());
+        //     return Redirect::back();
+        // }
     }
 
     public function update(Request $request,$blog)

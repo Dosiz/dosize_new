@@ -75,7 +75,7 @@ Blogs
 										
 										<td class="d-flex">  
 											
-											<a href="{{route('blog.show',$blog->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
+											<a href="{{route('blog.edit',$blog->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
 											
 										</td>
 									</tr>
