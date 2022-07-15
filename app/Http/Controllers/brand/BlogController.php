@@ -22,7 +22,8 @@ class BlogController extends Controller
     {
         $user_id = Auth::id();
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
-        $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get();
+        $blogs = Blog::with('category')->with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
+        // dd($blogs);
         return view('brand.blog.index', compact('blogs','brand_profile'));
         
     }      

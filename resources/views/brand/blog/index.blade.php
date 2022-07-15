@@ -54,19 +54,23 @@ Blogs
 											{{ $blog->sub_title}}
 										</td>
 										<td>
-											{{ $blog->image}}
+											<img src="{{asset('blog/'.$blog->image)}}" width="100px" height="100px">
 										</td>
 										<td>
 											{{ $blog->description}}
 										</td>
 										<td>
-											{{ $blog->category_id}}
+											{{ $blog->category->name}}
 										</td>
 										<td>
-											{{ $blog->sub_category_id}}
+											{{ $blog->subcategory->name}}
 										</td>
 										<td>
-											{{ $blog->status}}
+											@if($blog->status == 1)
+												active
+											@else
+												InActive
+											@endif
 										</td>
 										
 										<td class="d-flex">  
