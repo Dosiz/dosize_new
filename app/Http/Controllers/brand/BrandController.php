@@ -5,7 +5,9 @@ namespace App\Http\Controllers\brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BrandProfile; 
-use App\Models\BrandsHasSubCategory; 
+use App\Models\BrandsHasSubCategory;   
+use App\Models\BrandsHasAddress;   
+use App\Models\User;   
 use Auth;
 
 class BrandController extends Controller
@@ -14,16 +16,25 @@ class BrandController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
+        $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
             'brand_name'=>'required', 
             'category_id'=>'required', 
-            'address'=>'required', 
-            'addmore.*.address' => 'required',
+            'addmore.*' => 'required',
             'description'=>'required', 
             'brand_image'=>'required', 
             'brand_logo'=>'required', 
             'sub_category_id'=>'required', 
 
+        ],
+        [
+            'addmore.0.required' => 'Enter first Address',
+            'addmore.1.required' => 'Enter second address',
+            'addmore.2.required' => 'Enter third address',
+            'addmore.3.required' => 'Enter forth address',
+            'addmore.4.required' => 'Enter fifth address',
+            'addmore.5.required' => 'Enter sixth address',
+            'addmore.6.required' => 'Enter seventh address',
         ]);
         // dd($request->all());
         // try {
@@ -37,7 +48,8 @@ class BrandController extends Controller
         }
         $brand_profile->brand_name = $request->brand_name;
         $brand_profile->category_id = $request->category_id;
-        $brand_profile->address = $request->address;
+        // $collection->implode('name', ', ');
+        // $brand_profile->address = $request->address;
         $brand_profile->description = $request->description;
         $brand_profile->user_id = $user_id;
         if($request->hasfile('brand_image'))
@@ -59,11 +71,23 @@ class BrandController extends Controller
             $brand_profile->brand_logo=$image_name;
         }
         $brand_profile->save();
+        // dd($brand_profile);
+        BrandsHasAddress::where('brand_profile_id',$brand_profile->id)->delete();
+        
+        foreach($request->addmore as $address)
+        {
+            $brand_address= new BrandsHasAddress;
+            $brand_address->brand_profile_id=$brand_profile->id;
+            $brand_address->address = $address;
+            $brand_address->city_id = $user->city_id;
+            $brand_address->save();
+        }
 
-        BrandsHasSubCategory::where('brand_profile_id',$user_id)->delete();
+        BrandsHasSubCategory::where('brand_profile_id',$brand_profile->id)->delete();
         
         foreach($request->sub_category_id as $sub_category)
         {
+            // dd($brand_profile->id,"working");
             $brand_subcategory= new BrandsHasSubCategory;
             $brand_subcategory->sub_category_id=$sub_category;
             $brand_subcategory->brand_profile_id = $brand_profile->id;
@@ -74,4 +98,5 @@ class BrandController extends Controller
         //     return Redirect::back();
         // }
     }
+
 }

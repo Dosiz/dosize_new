@@ -23,12 +23,12 @@ class CreateBrandProfilesTable extends Migration
             $table->longText('color')->nullable();
             $table->longText('font')->nullable();
             $table->longText('description');
-            $table->longText('address');
             $table->integer('whatsapp_no')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->tinyInteger('city_status')->default('0');
             $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('allow_city')->default('0');
             $table->timestamps();
         });
     }

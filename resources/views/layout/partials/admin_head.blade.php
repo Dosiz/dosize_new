@@ -10,11 +10,7 @@
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        @if(!Route::is(['mentor','mentee','booking-list','categories','transactions-list','settings','invoice-report','profile','blog','blog-details','add-blog','edit-blog','login','register','forgot-password',
-        'lock-screen','error-404','error-500','blank-page','components','form-basic-inputs','form-input-groups','form-horizontal','form-vertical','form-mask','form-validation','tables-basic','data-tables']))
-        @endif
         
-
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets_admin/img/favicon.png')}}">
 		

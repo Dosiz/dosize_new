@@ -18,6 +18,15 @@
                             <h1>הרשמה</h1>
                             <form method="POST" action="{{ route('brand-register') }}" enctype="multipart/form-data">
                                 @csrf
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label for=""> שם מותג <span>*</span></label>
                                     <div class="inputIcon">
@@ -56,9 +65,15 @@
                                     <div class="inputIcon">
                                         <select required class="select" name="category_id" id="category-dropdown">
                                             <option selected disabled>Select Category</option>
+                                            @if($brand_profile)
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}" {{ $brand_profile->category_id ?? '' == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                                <option value="{{$category->id}}" {{ $brand_profile->category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                                             @endforeach
+                                            @else
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                            @endif
                                         </select>
                                         <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
                                     </div>
@@ -77,26 +92,45 @@
                                         <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="">כתובת</label>
-                                    <div class="inputIcon">
-                                        <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="address" rows="4" cols="50" >{{$brand_profile->address ?? ''}}</textarea>
-                                        <div style="color:red;">{{$errors->first('address')}}</div> <br>
-                                    </div>
-                                </div>
                                 <table class="table table-bordered" id="dynamicTable">  
                                     <tr>
                                         <th>כתובת</th>
                                     </tr>
-                                    <tr>  
+                                    @if($addresses)
+                                    @foreach($addresses as $address)  
+                                    <tr>
+                                        
                                         <td>
                                             <div class="inputIcon">
-                                                <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="address" rows="4" cols="50" >{{$brand_profile->address ?? ''}}</textarea>
-                                                <div style="color:red;">{{$errors->first('address')}}</div> <br>
+                                                
+                                                <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" >{{$address->address ?? ''}} </textarea>
+                                                
+                                                <div style="color:red;">{{$errors->first('addmore[0][address]')}}</div> <br>
                                             </div>
-                                        </td>  
-                                        <td><button type="button" name="add" id="add" class="btn btn-success add_remove">Add More</button></td>  
-                                    </tr>  
+                                        </td> 
+                                        @if(($loop->first))
+                                        <td><button type="button" name="add" id="add" class="btn btn-success add_remove">Add More</button></td> 
+                                        @else
+                                        <td>
+                                            <button type="button" class="btn btn-danger remove-tr add_remove">Remove</button>
+                                        </td>
+                                        @endif 
+                                    </tr>
+                                    @endforeach
+                                    @else
+                                    <tr>
+                                        
+                                        <td>
+                                            <div class="inputIcon">
+                                                
+                                                <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" >{{$address->address ?? ''}} </textarea>
+                                                
+                                                <div style="color:red;">{{$errors->first('addmore[0][address]')}}</div> <br>
+                                            </div>
+                                        </td> 
+                                        <td><button type="button" name="add" id="add" class="btn btn-success add_remove">Add More</button></td> 
+                                    </tr>
+                                    @endif   
                                 </table> 
 
                                 <div class="form-group">
@@ -129,7 +163,7 @@
        
            ++i;
        
-           $("#dynamicTable").append('<tr><td><textarea type="text" name="addmore['+i+'][address]" placeholder="הכנס כתובת" rows="4" cols="50" class="form-control" ></textarea></td><td><button type="button" class="btn btn-danger remove-tr add_remove">Remove</button></td></tr>');
+           $("#dynamicTable").append('<tr><td><textarea type="text" name="addmore['+i+']" placeholder="הכנס כתובת" rows="4" cols="50" class="form-control" ></textarea></td><td><button type="button" class="btn btn-danger remove-tr add_remove">Remove</button></td></tr>');
        });
        
        $(document).on('click', '.remove-tr', function(){  

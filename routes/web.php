@@ -26,6 +26,10 @@ Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::clas
 /*****************DASHBOARD ROUTES*******************/
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+
+    //brand-profile
+    Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
+    Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
     
     
 });
@@ -45,6 +49,12 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
     Route::post('/update_brand_status/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_status'])->name('update-brand-status');
 
     Route::post('/update_brand/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand'])->name('update-brand');
+    // view profile
+    Route::get('/view-brand/{id}',[App\Http\Controllers\admin\DashboardController::class, 'view_brand'])->name('admin.view-brand');
+    // allow multiple city
+    Route::post('/update_brand_city/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_city'])->name('update-brand-city');  
+
+    Route::post('/add-city-brand/{brand_profile_id}', [App\Http\Controllers\admin\DashboardController::class,'add_city_brand'])->name('add-city-brand');  
 
     //users
     Route::get('/users',[App\Http\Controllers\admin\DashboardController::class, 'users'])->name('admin.users');
@@ -57,6 +67,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 Route::prefix('brand')->middleware('can:brand')->group(function(){
     //brands
     Route::post('/brand_register',[App\Http\Controllers\brand\BrandController::class, 'brand_register'])->name('brand-register');
+    
 });
 /********************Brand ROUTES END******************************/
 

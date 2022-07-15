@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class BrandProfile extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    
+    public function brandaddresses()
+    {
+        return $this->hasMany(BrandsHasAddress::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
 }

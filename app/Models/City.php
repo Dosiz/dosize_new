@@ -13,6 +13,16 @@ class City extends Model
     
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function brandcities()
+    {
+        return $this->hasMany(BrandsHasCity::class);
+    }
+
+    public function brandaddresses()
+    {
+        return $this->hasMany(BrandsHasAddress::class);
     }
 }

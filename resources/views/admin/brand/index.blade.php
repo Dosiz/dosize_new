@@ -32,8 +32,8 @@ Brands
 												<tr>
 													<th>Name</th>
 													<th>Email</th>
-													<th>Cities</th>
-													<th>Address</th>
+													<th>Description</th>
+													<th>Category</th>
 													<th>Status</th>
 													<th>Action</th>
 												</tr>
@@ -49,10 +49,21 @@ Brands
 														{{ $brand->email}}
 													</td>
 													<td> 
-														Islamabad
+														@php
+														  $brand_profile = App\Models\BrandProfile::with('category')->where('user_id', $brand->id)->first();	
+														@endphp
+														@if($brand_profile)
+														{{ $brand_profile->description}}
+														@else
+														<p> Brand Not Created yet </p>
+														@endif
 													</td>
 													<td> 
-														Address
+														@if($brand_profile)
+															{{ $brand_profile->category->name}}
+														@else
+														<p> Brand Not Created yet </p>
+														@endif
 													</td>
 													<td>
 														@php
@@ -71,16 +82,24 @@ Brands
 															</form>
 														@endif
 														@else
-														<p> Brand Created yet </p>
+														<p> Brand Not Created yet </p>
 														@endif
 					
 					
 													</td>
-													<td>  
-														<form action="{{ route('update-brand-status', $brand->id) }}" method="POST">
+													<td class="d-flex">  
+														<form class="ml-1" action="{{ route('update-brand-status', $brand->id) }}" method="POST">
 															@csrf()                         
 															<button type="submit" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm" name="status" value="0">Down To User</button>
 														</form> 
+														@php
+														  $brand_profile = App\Models\BrandProfile::where('user_id', $brand->id)->first();	
+														@endphp
+														@if($brand_profile)
+														<a href="{{route('admin.view-brand',$brand_profile->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
+														@else
+														<p> Brand Created yet </p>
+														@endif
 													</td>
 												</tr>
 												 @endforeach
