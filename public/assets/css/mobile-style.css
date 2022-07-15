@@ -203,6 +203,16 @@ main .main-wrapper {
     padding-left: 20px;
 }
 
+
+/* #sign_up_modal {
+    pointer-events: none !important;
+} */
+
+#enrollmentModal .modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+
 /************* Header - CSS *************/
 .header_active {
     position: sticky;

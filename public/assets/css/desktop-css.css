@@ -207,8 +207,30 @@
     .main_footer .btn {
         width: 150px;
     }
-    #enrollmentModal .modal-dialog{
+
+    #enrollmentModal .modal-dialog {
         height: 95%;
+    }
+
+    header .desktop_menu .desktop_menu_body .desktop_menu_list li,
+    header .desktop_menu .dektop_mobile_menu_body ul li {
+        margin: 0px 0px 12px;
+    }
+
+    header .desktop_menu .desktop_menu_body .line {
+        margin: 16px 0px;
+    }
+
+    header .desktop_menu .logout_user {
+        margin-top: 45px;
+    }
+
+    #enrollmentModal .formDiv button {
+        padding: 9px 0px;
+    }
+
+    #enrollmentModal .formDiv .checkBox_div {
+        margin-bottom: 0;
     }
 
 }
