@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(BrandProfile::class);
     }
+
+    public function blog()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

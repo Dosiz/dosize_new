@@ -67,6 +67,9 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 Route::prefix('brand')->middleware('can:brand')->group(function(){
     //brands
     Route::post('/brand_register',[App\Http\Controllers\brand\BrandController::class, 'brand_register'])->name('brand-register');
+
+    //blog
+    Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
     
 });
 /********************Brand ROUTES END******************************/

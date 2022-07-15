@@ -41,6 +41,10 @@
 								<li class="{{ Request::is('dashboard/dashboard') ? 'active' : '' }}"> 
 								<a href="{{route('dashboard')}}"><span>דף ניהול</span></a>
 								</li>
+
+								<li class="{{ Request::is('brand/blog') ? 'active' : '' }}"> 
+								<a href="{{route('blog.index')}}"><span> בלוגים </span></a>
+								</li>
 								@endif
 
 							
