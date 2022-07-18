@@ -17,9 +17,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('landing_page');
-});
 
 Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::class, 'fetch_subcategory'])->name('fetch-subcategory');

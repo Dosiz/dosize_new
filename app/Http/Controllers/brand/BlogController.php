@@ -151,7 +151,7 @@ class BlogController extends Controller
         }
         $blog->save();
 
-        BlogsHasCity::where('blog_id',$blog)->delete();
+        BlogsHasCity::where('blog_id',$blog->id)->delete();
         
         foreach($request->city_id as $city_id)
         {
@@ -174,7 +174,7 @@ class BlogController extends Controller
                 
                 @unlink(public_path()."/blog/".$filePath->image );
                
-                return Redirect::back();
+                return Redirect::back();        
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }

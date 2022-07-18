@@ -7,6 +7,7 @@
 /public/brand_logo 
 /public/city
 /public/blog
+/public/product
 .env
 .env.backup
 .phpunit.result.cache
