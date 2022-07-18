@@ -33,7 +33,7 @@ Add Product
 						<!-- Add details -->
 						<div class="row">
 							<div class="col-12 blog-details">
-								<form action="{{ route('product.store') }}" enctype="multipart/form-data" method="post">
+								<form id="product_form" action="{{ route('product.store') }}" enctype="multipart/form-data" method="post">
 									@csrf
 									<input type="hidden" name="category_id" value="{{ $brand_profile->category_id }}" />
 									<input type="hidden" name="profile_id" value="{{ $brand_profile->id }}" />
@@ -64,7 +64,10 @@ Add Product
 										<label>(אופציונלי) מחיר מבצע</label>
 										<div>
 											<input class="form-control" type="number" name="discount_price" id="discount_price" value="{{old('discount_price')}}" placeholder="הכנס מחיר מבצע">
-											<div style="color:red;">{{$errors->first('discount_price')}}</div> <br>
+											<div style="color:red;">{{$errors->first('discount_price')}}</div> 
+											<span class="text-danger discount_price_valid"></span><br>
+											
+											
 											
 										</div>
 									</div>
@@ -100,7 +103,7 @@ Add Product
 										<div style="color:red;">{{$errors->first('description')}}</div> <br>
 									</div>
 									<div class="m-t-20 text-center">
-										<button class="btn btn-primary btn-lg">פרסם מוצר באתר</button>
+										<button class="btn btn-primary btn-lg check_price" type="button">פרסם מוצר באתר</button>
 									</div>
 								</form>
 							</div>
@@ -121,6 +124,17 @@ Add Product
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
+
+	$('.check_price').click(function() {
+		if($('#price').val() < $('#discount_price').val()){
+			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
+			return false;
+		}
+		else{
+			$('#product_form').submit();
+			
+		}
+	});
 
     $('.summernote').summernote({
      });

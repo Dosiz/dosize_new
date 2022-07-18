@@ -19,9 +19,10 @@ class FrontEndController extends Controller
     public function landing_page()
     {
         $cities = City::get();
-        $products = Product::with('brandprofile')->where('status', '1')->get();
+        $products = Product::with('brandprofile')->where('status', '1')->whereNull('discount_price')->get();
+        $discount_products = Product::with('brandprofile')->where('discount_price', '!=' , 'null')->get();
         $blogs = Blog::with('brandprofile')->where('status', '1')->get();
         // dd($products);
-        return view('landing_page' , compact('cities','products','blogs'));
+        return view('landing_page' , compact('cities','products','blogs','discount_products'));
     }
 }

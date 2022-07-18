@@ -139,13 +139,13 @@ Dosize
             <div class="slider_div">
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">
-                        @if(count($products) > 0)
-                            @foreach($products as $product)
+                        @if(count($discount_products) > 0)
+                            @foreach($discount_products as $product)
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
                                             class="img-fluid" style="width: 209px; height:105px;">
-                                        <span class="font-size-14 font-weight-700">30%</span>
+                                        <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
                                     </div>
                                     <div class="promotion_content">
                                         <div class="time_category_text">
