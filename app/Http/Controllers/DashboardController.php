@@ -75,7 +75,8 @@ class DashboardController extends Controller
         if(count($brand_cities) == 0)
         {
             $brand_cities = User::with('city')->where('id',Auth::id())->get();
-        }        
+        }    
+        // dd($brand_profile->allow_city);    
         return view('backend.profile', compact('brand_profile','sub_categories','addresses','user','cities','brand_cities'));
     }
 
