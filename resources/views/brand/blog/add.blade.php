@@ -76,6 +76,7 @@ Add Blog
 														@endforeach
 														@endif
 													</select>
+													<input type="checkbox" class="multi_city_checkbox"> Select All
 													<div style="color:red;">{{$errors->first('city_id')}}</div> <br>
 												</div>
 
@@ -111,6 +112,19 @@ $(document).ready(function() {
 
     $('.summernote').summernote({
      });
+
+	$(".multi_city_checkbox").click(function(){
+		if($(".multi_city_checkbox").is(':checked') ){
+			$(this).parent().find('option').prop("selected","selected");
+			$(this).parent().find('option').trigger("change");
+			$(this).parent().find('option').click();
+			
+		}else{
+			$(this).parent().find('option').removeAttr("selected","selected");
+			$(this).parent().find('option').trigger("change");
+		}
+		
+	});
 
 	$('#select2MultipleE').select2({
 		placeholder: "בחר תת-קטגוריה",

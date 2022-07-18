@@ -72,7 +72,10 @@ class DashboardController extends Controller
         $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
         $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
         $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
-        // dd($brand_cities);        
+        if(count($brand_cities) == 0)
+        {
+            $brand_cities = User::with('city')->where('id',Auth::id())->get();
+        }        
         return view('backend.profile', compact('brand_profile','sub_categories','addresses','user','cities','brand_cities'));
     }
 
