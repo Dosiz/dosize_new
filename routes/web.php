@@ -70,6 +70,8 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 
     //blog
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
+    //product
+    Route::resource('product', App\Http\Controllers\brand\ProductController::class);
     
 });
 /********************Brand ROUTES END******************************/

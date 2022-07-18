@@ -55,29 +55,29 @@ Add Blog
 					                                    
 					                                </div>
 					                            </div>
-					                                    <div class="form-group">
-					                                        <label>Select Sub-Category</label>
-					                                        <select name="sub_category_id" class="form-control" >
-																@if(count($sub_categories) > 0)
-																@foreach($sub_categories as $sub_category)
-																	<option value="{{$sub_category->sub_category_id}}" >{{$sub_category->subcategory->name}}</option>
-																@endforeach
-																@endif
-															</select>
-					                                        <div style="color:red;">{{$errors->first('sub_category_id')}}</div> <br>
-					                                    </div>
+												<div class="form-group">
+													<label>Select Sub-Category</label>
+													<select name="sub_category_id" class="form-control" >
+														@if(count($sub_categories) > 0)
+														@foreach($sub_categories as $sub_category)
+															<option value="{{$sub_category->sub_category_id}}" >{{$sub_category->subcategory->name}}</option>
+														@endforeach
+														@endif
+													</select>
+													<div style="color:red;">{{$errors->first('sub_category_id')}}</div> <br>
+												</div>
 
-					                                    <div class="form-group">
-											                <label for="product_category">Select Multiple Cities</label>
-											                <select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
-																@if(count($brand_cities) > 0)
-																@foreach($brand_cities as $city)
-																	<option value="{{$city->id}}" >{{$city->city->name}}</option>
-																@endforeach
-																@endif
-															</select>
-															<div style="color:red;">{{$errors->first('city_id')}}</div> <br>
-											            </div>
+												<div class="form-group">
+													<label for="product_category">Select Multiple Cities</label>
+													<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
+														@if(count($brand_cities) > 0)
+														@foreach($brand_cities as $city)
+															<option value="{{$city->id}}" >{{$city->city->name}}</option>
+														@endforeach
+														@endif
+													</select>
+													<div style="color:red;">{{$errors->first('city_id')}}</div> <br>
+												</div>
 
 					                            <div class="form-group">
 					                                <label>תוכן הכתבה</label>

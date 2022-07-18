@@ -39,12 +39,17 @@
 								@endif
 								@if(Auth::user()->hasRole('Brand'))
 								<li class="{{ Request::is('dashboard/dashboard') ? 'active' : '' }}"> 
-								<a href="{{route('dashboard')}}"><span>דף ניהול</span></a>
+									<a href="{{route('dashboard')}}"><span>דף ניהול</span></a>
 								</li>
 
 								<li class="{{ Request::is('brand/blog') ? 'active' : '' }}"> 
-								<a href="{{route('blog.index')}}"><span> בלוגים </span></a>
+									<a href="{{route('blog.index')}}"><span> בלוגים </span></a>
 								</li>
+
+								<li class="{{ Request::is('brand/product') ? 'active' : '' }}"> 
+									<a href="{{route('product.index')}}"><span> מוצר </span></a>
+								</li>
+
 								@endif
 
 							

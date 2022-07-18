@@ -36,6 +36,8 @@ Edit Blog
 											<form action="{{ route('blog.update',$blog->id) }}" enctype="multipart/form-data" method="post">
 												@method('PUT')
                 								@csrf
+												<input type="hidden" name="category_id" value="{{ $blog->category_id }}" >
+												<input type="hidden" name="profile_id" value="{{ $blog->brand_profile_id }}">
 					                            <div class="form-group">
 					                                <label>Blog Title</label>
 					                                <input class="form-control" type="text" name="title" id="title" value="{{ $blog->title }}" placeholder="Enter Title">
@@ -49,9 +51,9 @@ Edit Blog
 					                            <div class="form-group">
 					                                <label>Blog Image</label>
 					                                <div>
-					                                    <input class="form-control" type="file" name="image" id="image">
-					                                    <div style="color:red;">{{$errors->first('image')}}</div> <br>
-					                                    
+					                                    <input class="form-control" type="file" name="image" id="image" value="{{ $blog->image }}"><br>
+					                                    <img src="{{asset('blog/'.$blog->image)}}" width="100px" height="100px">
+														<div style="color:red;">{{$errors->first('image')}}</div> <br>
 					                                </div>
 					                            </div>
 
@@ -76,7 +78,7 @@ Edit Blog
 													<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
 														@if(count($brand_cities) > 0)
 														@foreach($brand_cities as $city)
-															<option value="{{$city->id}}" >{{$city->city->name}}</option>
+															<option value="{{$city->id}}" @foreach($blog_cities as $b_city) {{ $b_city->city_id == $city->id ? 'selected' : '' }} @endforeach>{{$city->city->name}}</option>
 														@endforeach
 														@endif
 													</select>

@@ -47,9 +47,11 @@ class BlogController extends Controller
     {
         try {
             $blog = Blog::where('id',$id)->first();
-            return view('brand.blog.show', compact('blog'));
+            $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
+            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+
+            return view('brand.blog.show', compact('blog','brand_profile','blog_cities'));
         } catch (\Exception $exception) {
-            toastError('Something went wrong, try again!');
             return Redirect::back();
         }
     }
@@ -65,6 +67,7 @@ class BlogController extends Controller
             'description'=>'required', 
             'profile_id'=>'required', 
             'sub_category_id'=>'required', 
+            'city_id'=>'required', 
 
         ]);
         $blog= new Blog;
@@ -107,10 +110,10 @@ class BlogController extends Controller
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
-
-            return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities'));
+            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            // dd($blog_cities);
+            return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities','blog_cities'));
         // } catch (\Exception $exception) {
-        //     toastError($exception->getMessage());
         //     return Redirect::back();
         // }
     }
@@ -121,76 +124,60 @@ class BlogController extends Controller
         $user_id = Auth::id();
         $brand_profile = BrandProfile::where('user_id',$user_id)->first();
         $this->validate($request,[ 
-            'name'=>'required',
             'title'=>'required', 
             'sub_title'=>'required', 
             'category_id'=>'required', 
             'description'=>'required', 
-            //'short_description'=>'required', 
+            'profile_id'=>'required', 
+            'sub_category_id'=>'required', 
+            'city_id'=>'required', 
 
         ]);
-        try {
-            $blog= Blog::find($blog);
-            $images=$blog->images;
-            // dd($request->all());
-            $new_array = array();
-            if(isset($request->preloaded)){
-                foreach($request->preloaded as $img)
-                {
-                     $new_array[]= $img;
-                }
-            }
-            $blog->name = $request->name;
-            $blog->title = $request->title;
-            $blog->sub_title = $request->sub_title;
-            $blog->user_id = $user_id;
-            $blog->product_category_id = $request->product_category_id;
-            $blog->category_id = $brand_profile->category_id;
-            $blog->description = $request->description;
-            //$blog->short_description = $request->short_description;
-            if ($request->file('image')) {
-                $filePath = HelperFunctions::blogImagePath();
-                $image = HelperFunctions::saveFile(null, $request->file('image'), $filePath);
-                $blog->image = $image;
-            }
-            if ($request->file('images')) {
-                $filePath = HelperFunctions::blogImagePath();
-                $files = $request->file('images');
-                foreach ($files  as $key => $file) {
-                    $imagename = HelperFunctions::saveFile(null, $file, $filePath);
-                    
-                    $new_array[] =  $imagename ;
-                }
-            }
-           
-            
-            $blog->images =  $new_array;
-            $blog->save();
-            toastSuccess('Successfully Updated');
-            return redirect('dashboard/blog');
-        } catch (\Exception $exception) {
-            toastError($exception->getMessage());
-            return Redirect::back();
+        $blog= Blog::find($blog);
+        $blog->title = $request->title;
+        $blog->sub_title = $request->sub_title;
+        $blog->brand_profile_id = $request->profile_id;
+        $blog->sub_category_id = $request->sub_category_id;
+        $blog->category_id = $request->category_id;
+        $blog->description = $request->description;
+        if($request->hasfile('image'))
+        {
+            $image = $request->file('image');
+            $extensions =$image->extension();
+
+            $image_name =time().'.'. $extensions;
+            $image->move('blog/',$image_name);
+            $blog->image=$image_name;
         }
+        $blog->save();
+
+        BlogsHasCity::where('blog_id',$blog)->delete();
+        
+        foreach($request->city_id as $city_id)
+        {
+            // dd($address);
+            $blog_city= new BlogsHasCity;
+            $blog_city->brand_profile_id=$request->profile_id;
+            $blog_city->blog_id = $blog->id;
+            $blog_city->city_id = $city_id;
+            $blog_city->save();
+        }
+        return redirect('brand/blog');
     }
 
     public function destroy(Request $request , $id)
     {
-        try {
+        // try {
                 $filePath = Blog::FindorFail($id);
+                BlogsHasCity::where('blog_id',$id)->delete();
                 Blog::FindorFail($id)->delete();
-                foreach($filePath->images as $image)
-                {
-                    @unlink($image);
-                }
-                @unlink($filePath->image);
+                
+                @unlink(public_path()."/blog/".$filePath->image );
                
-            toastr()->success('Successfully Deleted');
-            return back();
-        } catch (\Exception $exception) {
-            toastError($exception->getMessage());
-            return Redirect::back();
-        }
+                Redirect::back();
+        // } catch (\Exception $exception) {
+        //     return Redirect::back();
+        // }
         
     }
 }

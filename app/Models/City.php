@@ -25,4 +25,9 @@ class City extends Model
     {
         return $this->hasMany(BrandsHasAddress::class);
     }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-Blogs
+Products
 @endsection
 @push('styles')
 
@@ -14,10 +14,10 @@ Blogs
 		<div class="page-header">
 			<div class="row">
 				<div class="col-sm-12">
-					<h3 class="page-title">Blogs</h3>
+					<h3 class="page-title">Products</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="index">Dashboard</a></li>
-						<li class="breadcrumb-item active">Blogs</li>
+						<li class="breadcrumb-item active">Products</li>
 					</ul>
 				</div>
 			</div>
@@ -28,41 +28,41 @@ Blogs
 			<div class="col-sm-12">
 				<div class="card">
 					<div class="card-body">
-						<a href="{{route('blog.create')}}" class="btn btn-primary">Add New <i class="fa fa-plus"></i></a><br><br>
+						<a href="{{route('product.create')}}" class="btn btn-primary">Add New <i class="fa fa-plus"></i></a><br><br>
 						<div class="table-responsive">
 							<table class="datatable table table-hover table-center mb-0">
 								<thead>
 									<tr>
-										<th>Title</th>
-										<th>Sub Title</th>
+										<th>Product Name</th>
+										<th>Price</th>
+										<th>Discount Price</th>
 										<th>Image</th>
 										<th>Category</th>
-										<th>Sub-Category</th>
 										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									@if(count($blogs) > 0)
+									@if(count($products) > 0)
 									<tr>
-										@foreach($blogs as $blog)
+										@foreach($products as $product)
 										<td>
-											{{ $blog->title}}
+											{{ $product->name}}
 										</td>
 										<td>
-											{{ $blog->sub_title}}
+											{{ $product->price}}
 										</td>
 										<td>
-											<img src="{{asset('blog/'.$blog->image)}}" width="100px" height="100px">
+											{{ $product->discount_price ?? ''}}
 										</td>
 										<td>
-											{{ $blog->category->name}}
+											<img src="{{asset('product/'.$product->image)}}" width="100px" height="100px">
 										</td>
 										<td>
-											{{ $blog->subcategory->name}}
+											{{ $product->category->name}}
 										</td>
 										<td>
-											@if($blog->status == 1)
+											@if($product->status == 1)
 												active
 											@else
 												InActive
@@ -70,13 +70,13 @@ Blogs
 										</td>
 										
 										<td class="d-flex">  
-											<a href="{{route('blog.show',$blog->id)}}" target="_blank" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-primary-light edit-blog"><i class="fe fe-eye"></i> צפייה בפרטי המוצר </a>
-											<a href="{{route('blog.edit',$blog->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
-											<form method="POST" action="{{ route('blog.destroy', $blog->id) }}"  id="form_{{$blog->id}}" >
+											<a href="{{route('product.show',$product->id)}}" target="_blank" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-primary-light edit-product"><i class="fe fe-eye"></i> צפייה בפרטי המוצר</a>
+											<a href="{{route('product.edit',$product->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
+											<form method="POST" action="{{ route('product.destroy', $product->id) }}"  id="form_{{$product->id}}" >
 												@method('Delete')
 												@csrf()
 
-												<button type="submit" id="{{$blog->id}}" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm">
+												<button type="submit" id="{{$product->id}}" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm">
 													<!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
 												 <i class="fe fe-trash"></i> Delete
 													<!--end::Svg Icon-->
@@ -87,7 +87,7 @@ Blogs
 									 @endforeach
 									@else
 									<tr>
-									<td colspan="3" style="text-align: center;"><strong> No Blog Added Yet </strong></td>
+									<td colspan="3" style="text-align: center;"><strong> No Product Added Yet </strong></td>
 								  </tr>
 								  @endif
 								<tbody>

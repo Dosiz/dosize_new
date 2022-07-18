@@ -1818,7 +1818,7 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/dosiz/public";
+                window.location.href="/";
                  
             },
             error: function (data) {
@@ -1844,7 +1844,7 @@ Dosize
             success: function (data) {
                 // console.log(data);
                 $('.close').click();
-                window.location.href="/dosiz/public/dashboard/dashboard";
+                window.location.href="/dashboard/dashboard";
                  
             },
             error: function (data) {

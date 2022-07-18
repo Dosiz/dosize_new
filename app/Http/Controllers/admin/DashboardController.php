@@ -99,7 +99,7 @@ class DashboardController extends Controller
         $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
         $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
         $cities = City::get();
-        // dd($brand_cities);
+        // dd($addresses);
         return view('admin.brand.view_brand', compact('brand_profile','sub_categories','addresses','brand_cities','cities'));
     }
 
