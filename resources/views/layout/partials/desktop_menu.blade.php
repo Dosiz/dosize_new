@@ -5,7 +5,7 @@
             @if(! isset(Auth::user()->name))
             <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
             @else
-            <a class="enrollemnt_button" href="{{url('/dosiz/public/dashboard/dashboard')}}"> לוּחַ מַחווָנִים </a>
+            <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
             @endif
             <a href="">התחברות</a>
             
