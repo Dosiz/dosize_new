@@ -174,7 +174,7 @@ class BlogController extends Controller
                 
                 @unlink(public_path()."/blog/".$filePath->image );
                
-                Redirect::back();
+                return Redirect::back();
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }
