@@ -89,7 +89,7 @@ Brand Profile
 										</div>
 										@endforeach
 										
-										<div class="col-md-8 text-center">
+										{{-- <div class="col-md-8 text-center">
 											<strong>Allow Multiple City</strong>
 											@if($brand_profile->allow_city == 1) 
 											<form action="{{ route('update-brand-city', $brand_profile->id) }}" method="POST">
@@ -102,7 +102,7 @@ Brand Profile
 													<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
 												</form>
 											@endif
-										</div>
+										</div> --}}
 										<div class="col-md-12">
 											<strong>Add Cities</strong>
 											<form action="{{ route('add-city-brand', $brand_profile->id) }}" method="POST">

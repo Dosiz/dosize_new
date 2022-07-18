@@ -26,9 +26,9 @@ class CreateBrandProfilesTable extends Migration
             $table->integer('whatsapp_no')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
-            $table->tinyInteger('city_status')->default('0');
+            $table->tinyInteger('city_status')->default('1');
             $table->tinyInteger('status')->default('0');
-            $table->tinyInteger('allow_city')->default('0');
+            $table->tinyInteger('allow_city')->default('1');
             $table->timestamps();
         });
     }
