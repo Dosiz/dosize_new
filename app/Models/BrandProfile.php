@@ -30,5 +30,15 @@ class BrandProfile extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function product_city()
+    {
+        return $this->hasMany(ProductsHasCity::class);
+    }
+
+    public function recommended_product()
+    {
+        return $this->hasMany(Product::class)->limit(2);
+    }
     
 }

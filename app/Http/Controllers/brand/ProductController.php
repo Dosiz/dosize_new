@@ -73,6 +73,7 @@ class ProductController extends Controller
         if($request->discount_price)
         {
             $product->discount_price = $request->discount_price; 
+            $product->sale_time = $request->sale_time; 
         }
         $product->brand_profile_id = $request->profile_id;
         $product->sub_category_id = $request->sub_category_id;
@@ -89,7 +90,7 @@ class ProductController extends Controller
         }
         $product->save();
 
-        ProductsHasCity::where('brand_profile_id',$request->profile_id)->delete();
+        ProductsHasCity::where('product_id',$product->id)->delete();
         
         foreach($request->city_id as $city_id)
         {
@@ -111,7 +112,7 @@ class ProductController extends Controller
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
-            $product_cities = ProductsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            $product_cities = ProductsHasCity::with('city')->where('product_id',$id)->get();
             // dd($product_cities);
             return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities'));
         // } catch (\Exception $exception) {
@@ -140,6 +141,7 @@ class ProductController extends Controller
         if($request->discount_price)
         {
             $product->discount_price = $request->discount_price; 
+            $product->sale_time = $request->sale_time;
         }
         $product->brand_profile_id = $request->profile_id;
         $product->sub_category_id = $request->sub_category_id;

@@ -19,6 +19,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
+
 Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::class, 'fetch_subcategory'])->name('fetch-subcategory');
 /*****************DASHBOARD ROUTES*******************/
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
@@ -78,16 +80,13 @@ Route::prefix('manager')->middleware('can:manager')->group(function(){
 });
 /********************MANAGER ROUTES END******************************/
 
-Route::get('product', function () {
+Route::get('products', function () {
+    // dd("sdds");
     return view('frontend.product');
 });
 
 Route::get('brand', function () {
     return view('frontend.brand');
-});
-
-Route::get('article', function () {
-    return view('frontend.article');
 });
 
 Route::get('messages', function () {

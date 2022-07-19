@@ -33,7 +33,7 @@ Edit Product
 						<!-- Add details -->
 						<div class="row">
 							<div class="col-12 blog-details">
-								<form action="{{ route('product.update',$product->id) }}" enctype="multipart/form-data" method="post">
+								<form id="product_form" action="{{ route('product.update',$product->id) }}" enctype="multipart/form-data" method="post">
 									@method('PUT')
     								@csrf
 									<input type="hidden" name="category_id" value="{{ $product->category_id }}" >
@@ -67,9 +67,18 @@ Edit Product
 		                                <div>
 		                                    <input class="form-control" type="number" name="discount_price" value="{{$product->discount_price ?? ''}}" id="discount_price" placeholder="Enter Discount Price">
 		                                    <div style="color:red;">{{$errors->first('discount_price')}}</div> <br>
-		                                    
+		                                    <span class="text-danger discount_price_valid"></span><br>
 		                                </div>
 		                            </div>
+
+									<div class="form-group">
+										<label> הזן זמן מכירה (אופציונלי) </label>
+										<div>
+											<input class="form-control" type="datetime-local" name="sale_time" id="sale_time" value="{{$product->sale_time ?? ''}}" placeholder="הכנס מחיר מבצע">
+											<div style="color:red;">{{$errors->first('sale_time')}}</div> 
+											<span class="text-danger sale_time_valid"></span><br>
+										</div>
+									</div>
 
                                     <div class="form-group">
 										<label>Product Category</label>
@@ -92,7 +101,7 @@ Edit Product
 										<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
 											@if(count($brand_cities) > 0)
 											@foreach($brand_cities as $city)
-												<option value="{{$city->id}}" @foreach($product_cities as $b_city) {{ $b_city->city_id == $city->id ? 'selected' : '' }} @endforeach>{{$city->city->name}}</option>
+												<option value="{{$city->city_id}}" @foreach($product_cities as $b_city) {{ $b_city->city_id == $city->city_id ? 'selected' : '' }} @endforeach>{{$city->city->name}}</option>
 											@endforeach
 											@endif
 										</select>
@@ -120,7 +129,7 @@ Edit Product
 										</div>
 		                            </div> -->
 		                            <div class="m-t-20 text-center">
-		                                <button class="btn btn-primary btn-lg">עדכן מוצר</button>
+		                                <button class="btn btn-primary btn-lg check_price" type="button">עדכן מוצר</button>
 		                            </div>
 		                        </form>
 							</div>
@@ -141,6 +150,27 @@ Edit Product
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 $(document).ready(function() {
+
+	$('.check_price').click(function() {
+		if($('#price').val() < $('#discount_price').val()){
+			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
+			return false;
+		}
+		else if($('#discount_price').val()){
+			if(!($('#sale_time').val())){
+				$('.sale_time_valid').text('Sale Time is manadetory When discount price entered');
+				return false;
+			}
+			else{
+				$('#product_form').submit();
+				
+			}
+		}
+		else{
+			$('#product_form').submit();
+			
+		}
+	});
 
     $('.summernote').summernote({
      });

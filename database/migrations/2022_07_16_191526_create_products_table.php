@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('discount_price')->nullable();
             $table->longText('description');
+            $table->dateTime('sale_time')->nullable();
             
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');

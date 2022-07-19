@@ -66,9 +66,15 @@ Add Product
 											<input class="form-control" type="number" name="discount_price" id="discount_price" value="{{old('discount_price')}}" placeholder="הכנס מחיר מבצע">
 											<div style="color:red;">{{$errors->first('discount_price')}}</div> 
 											<span class="text-danger discount_price_valid"></span><br>
-											
-											
-											
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label> הזן זמן מכירה (אופציונלי) </label>
+										<div>
+											<input class="form-control" type="datetime-local" name="sale_time" id="sale_time" value="{{old('sale_time')}}" placeholder="הכנס מחיר מבצע">
+											<div style="color:red;">{{$errors->first('sale_time')}}</div> 
+											<span class="text-danger sale_time_valid"></span><br>
 										</div>
 									</div>
 
@@ -89,7 +95,7 @@ Add Product
 										<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
 											@if(count($brand_cities) > 0)
 											@foreach($brand_cities as $city)
-												<option value="{{$city->id}}" >{{$city->city->name}}</option>
+												<option value="{{$city->city_id}}" >{{$city->city->name}}</option>
 											@endforeach
 											@endif
 										</select>
@@ -130,6 +136,16 @@ $(document).ready(function() {
 			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
 			return false;
 		}
+		else if($('#discount_price').val()){
+			if(!($('#sale_time').val())){
+				$('.sale_time_valid').text('Sale Time is manadetory When discount price entered');
+				return false;
+			}
+			else{
+				$('#product_form').submit();
+				
+			}
+		}
 		else{
 			$('#product_form').submit();
 			
@@ -150,7 +166,7 @@ $(document).ready(function() {
 		$(this).parent().find('option').trigger("change");
 		}
 		
-	});
+	}); 
 
 
 	$('#select2MultipleE').select2({
