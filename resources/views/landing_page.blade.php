@@ -150,8 +150,8 @@ Dosize
                                     <div class="promotion_content">
                                         <div class="time_category_text">
                                             <div class="time_div">
-                                                <p>
-
+                                                <p class="example" discount-time="{{ \Carbon\Carbon::parse($product->sale_time)->format('m/d/Y H:i:s')}}">
+                                                    <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
                                             <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
@@ -161,7 +161,7 @@ Dosize
                                         </p>
                                         <div class="price_learn_more">
                                             <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
-                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
+                                            <p class="font-size-14 font-weight-600">{{($product->price - $product->discount_price)}} ₪ <span
                                                     class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
                                     </div>
@@ -899,7 +899,7 @@ Dosize
 
 <script src="{{ asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
-
+<script src="{{ asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('#login-modal').fadeOut()
@@ -979,6 +979,20 @@ Dosize
             }
         });
     });
+
+    // console.log($('.example'))
+    [...document.querySelectorAll('.example')].forEach(elem => {
+        console.log($(this))
+        $(elem).countdown({
+        // date: '07/21/2022 23:59:59'
+        // date: $(this).attr('discount-time')
+        date: elem.getAttribute('discount-time')
+        }, function () {
+            elem.classlist.add('d-none')
+            console.log('One of your City Product Discount Ended')
+        // alert('End Discount!');
+    });
+    })
 
 </script>
 @endsection
