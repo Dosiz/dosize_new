@@ -40,9 +40,22 @@ Edit Category
 			                                        <div style="color:red;">{{$errors->first('name')}}</div> <br>
 					                            </div>
 					                            <div class="form-group">
-					                                <label>Category Slug</label>
-					                                <input class="form-control" id="category_slug" name="category_slug" value="{{$category->category_slug}}" placeholder="Enter Category Slug" type="text">
-			                                        <div style="color:red;">{{$errors->first('category_slug')}}</div> <br>
+					                                <label>Category Order</label>
+													<input name="old_order_id" value="{{$category->category_order_id}}" type="hidden">
+													<select class="form-control" name="category_order_id" id="category_order_id">
+														@foreach($categories as $cat)
+														<option value="{{$cat->category_order_id}}" {{ $category->category_order_id == $cat->category_order_id ? 'selected' : '' }}> {{$cat->category_order_id}}</option>
+														@endforeach
+													</select>
+			                                        <div style="color:red;">{{$errors->first('category_order_id')}}</div> <br>
+					                            </div>
+												<div class="form-group">
+					                                <label>Category Image</label>
+					                                <div>
+					                                    <input class="form-control" type="file" name="image" id="image">
+					                                    <div style="color:red;">{{$errors->first('image')}}</div> <br>
+					                                    
+					                                </div>
 					                            </div>
 					                            <div class="m-t-20 text-center">
 					                                <button class="btn btn-primary btn-lg">ערוך קטגוריה</button>

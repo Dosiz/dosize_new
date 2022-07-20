@@ -17,17 +17,20 @@ class CategoriesTableSeeder extends Seeder
     {
         Category::create([
             'name' => 'Mobile',
-            'category_slug' => 'mobile',
+            'image' => '54636732.png',
+            'category_order_id' => '1',
         ]);
 
         Category::create([
             'name' => 'Clothes',
-            'category_slug' => 'clothes',
+            'image' => '46483927.png',
+            'category_order_id' => '2',
         ]);
 
         Category::create([
             'name' => 'Electronics',
-            'category_slug' => 'electronics',
+            'image' => '35465764.png',
+            'category_order_id' => '3',
         ]);
     }
 }

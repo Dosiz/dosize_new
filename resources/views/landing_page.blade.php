@@ -161,8 +161,8 @@ Dosize
                                         </p>
                                         <div class="price_learn_more">
                                             <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
-                                            <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                    class="font-size-12 font-weight-400">{{$product->discount_price ?? '00'}} ₪</span></p>
+                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
+                                                    class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -339,18 +339,22 @@ Dosize
                 </div>
             </div>
         </div>
+        <?php $i = 1; ?>
+        @if (count($products_by_categories) > 0 )
+        @foreach ($products_by_categories as $product_category)
+        @if( count($product_category->product) > 0)
         <div class="products_div spacing">
             <div class="container-fluid">
                 <div class="row">
+                    @if($i == 1 || $i == 2)
                     <div class="col-lg-6 no_padding">
                         <div class="affordable_consumption">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
-                                                alt="" class="img-fluid">
-                                            <h3 class="common_title">אופנה וטיפוח <img
+                                            <img src="{{asset('category/'.$product_category->image)}}" width="60px" height="50px">
+                                            <h3 class="common_title"> {{ $product_category->name}}<img
                                                     src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
@@ -410,17 +414,14 @@ Dosize
                                         <div class="col-lg-6">
                                             <div class="main_article">
                                                 <div class="article_box">
-                                                    <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                        alt="" class="img-fluid">
+                                                    <img src="{{asset('product/'.$product_category->product['0']->image)}}" width="120px" height="111px">
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
                                                             style="margin-bottom: 20px;">
-                                                            קולקציית קיץ הושקה בלידר
-                                                            אתמול אחרי הצהריים
+                                                            {{$product_category->product['0']->name}}
                                                         </h4>
                                                         <p class="font-size-12">צפו
-                                                            בגלריית התמונות של הקולקצייה
-                                                            המדהימה הזאת כאן בכתבה
+                                                            {!! \Illuminate\Support\Str::limit($product_category->product['0']->description,60,'...') !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -432,30 +433,21 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
+                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
                                                 <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
+                                                    <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ
-                                                        הושקה
-                                                        בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
+                                                        {{$product_category->product['1']->name }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        צפו
-                                                        בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['1']->description,60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            2,100 ₪
+                                                            {{$product_category->product['1']->price }} ₪
                                                         </p>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
@@ -463,30 +455,21 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
+                                                <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
                                                 <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
+                                                    <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ
-                                                        הושקה
-                                                        בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
+                                                        {{$product_category->product['2']->name }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        צפו
-                                                        בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['2']->description,60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            2,100 ₪
+                                                            {{$product_category->product['2']->price }} ₪
                                                         </p>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
@@ -538,228 +521,22 @@ Dosize
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 no_padding">
-                        <div class="affordable_consumption">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12 text-right">
-                                        <div class="header_cloth">
-                                            <img src="{{ asset('assets/img/mobile_component/shoe_cloth.png') }}" alt=""
-                                                class="img-fluid">
-                                            <h3 class="common_title">ביגוד והנעלה <img
-                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
-                                                    class="img-fluid">
-                                            </h3>
-                                            <span class="read_more">
-                                                <a href="" class="font-size-12 font-weight-400">
-                                                    < כתבות ביגוד והנעלה</a> </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="article_div">
-                                    <div class="row">
-                                        <div class="col-lg-6 d-none">
-                                            <div class="article_list">
-                                                <ul>
-                                                    <li class="text-right">
-                                                        <a href="">
-                                                            <h4 class="font-size-14">
-                                                                קולקציית קיץ
-                                                                הושקה בלידר
-                                                                אתמול אחרי
-                                                                הצהריים
-                                                            </h4>
-                                                            <p class="font-size-12">
-                                                                צפו בגלריית
-                                                                התמונות של
-                                                                הקולקצייה
-                                                                המדהימה הזאת כאן
-                                                            </p>
-                                                        </a>
-                                                    </li>
-                                                    <li class="text-right">
-                                                        <a href="">
-                                                            <h4 class="font-size-14">
-                                                                קולקציית קיץ
-                                                                הושקה בלידר
-                                                                אתמול אחרי
-                                                                הצהריים
-                                                            </h4>
-                                                            <p class="font-size-12">
-                                                                צפו בגלריית
-                                                                התמונות של
-                                                                הקולקצייה
-                                                                המדהימה הזאת כאן
-                                                            </p>
-                                                        </a>
-                                                    </li>
-                                                    <li class="text-right">
-                                                        <a href="">
-                                                            <h4 class="font-size-14">
-                                                                קולקציית קיץ
-                                                                הושקה בלידר
-                                                                אתמול אחרי
-                                                                הצהריים
-                                                            </h4>
-                                                            <p class="font-size-12">
-                                                                צפו בגלריית
-                                                                התמונות של
-                                                                הקולקצייה
-                                                                המדהימה הזאת כאן
-                                                            </p>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="main_article">
-                                                <div class="article_box">
-                                                    <img src="{{ asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                        alt="" class="img-fluid">
-                                                    <div class="article_content">
-                                                        <h4 class="font-size-18"
-                                                            style="margin-bottom: 20px;">
-                                                            קולקציית קיץ הושקה
-                                                            בלידר אתמול אחרי
-                                                            הצהריים
-                                                        </h4>
-                                                        <p class="font-size-12">
-                                                            צפו בגלריית התמונות
-                                                            של הקולקצייה המדהימה
-                                                            הזאת כאן בכתבה
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="affordable_consumption_list">
-                                            <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ
-                                                        הושקה
-                                                        בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו
-                                                        בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            2,100 ₪
-                                                        </p>
-                                                        <p class="rating_text">4.8 <i
-                                                                class="fa fa-star"></i></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ
-                                                        הושקה
-                                                        בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו
-                                                        בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            2,100 ₪
-                                                        </p>
-                                                        <p class="rating_text">4.8 <i
-                                                                class="fa fa-star"></i></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ
-                                                        הושקה
-                                                        בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו
-                                                        בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            2,100 ₪
-                                                        </p>
-                                                        <p class="rating_text">4.8 <i
-                                                                class="fa fa-star"></i></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="slider_div">
-                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
-                                                    alt="" class="img-fluid">
-                                            </div>
-                                            <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                כתבות ביגוד
-                                                והנעלה
-                                                ></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="home_medical_items spacing">
             <div class="container-fluid">
                 <div class="row">
+                    @if($i == 3 || $i == 4)
                     <div class="col-lg-6">
                         <div class="affordable_consumption">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
-                                                alt="" class="img-fluid">
-                                            <h3 class="common_title">אופנה וטיפוח <img
+                                            <img src="{{asset('category/'.$product_category->image)}}" width="60px" height="50px">
+                                            <h3 class="common_title">  {{ $product_category->name}} <img
                                                     src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
@@ -770,20 +547,14 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
+                                                <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
                                                 <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
+                                                    <span class="category font-size-12 font-weight-400"> {{$product_category->product['0']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ הושקה בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
+                                                        {{$product_category->product['0']->name ?? ''}}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4
                                                         <i class="fa fa-heart"
@@ -791,25 +562,23 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
+                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="131px" height="137px">
                                                 <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
+                                                    <span class="category font-size-12 font-weight-400">
+                                                        {{$product_category->product['1']->brandprofile->brand_name ?? ''}}
+                                                    </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        ספה 3 מושבים
+                                                        {{$product_category->product['1']->name ?? ''}}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4
                                                         <i class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            ₪ 2,100
+                                                            ₪ {{$product_category->product['1']->price ?? ''}}
                                                         </p>
                                                         <p class="rating_text"><i class="fa fa-star"></i>
                                                             4.8
@@ -818,25 +587,23 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
+                                                <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="131px" height="137px">
                                                 <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
+                                                    <span class="category font-size-12 font-weight-400">
+                                                        {{$product_category->product['1']->brandprofile->brand_name ?? ''}}
+                                                    </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        ספה 3 מושבים
+                                                        {{$product_category->product['2']->name ?? ''}}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4
                                                         <i class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            ₪ 2,100
+                                                            ₪ {{$product_category->product['2']->price ?? ''}}
                                                         </p>
                                                         <p class="rating_text"><i class="fa fa-star"></i>
                                                             4.8
@@ -858,117 +625,17 @@ Dosize
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="affordable_consumption">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12 text-right">
-                                        <div class="header_cloth">
-                                            <img src="{{ asset('assets/img/mobile_component/fashion_groming.png') }}"
-                                                alt="" class="img-fluid">
-                                            <h3 class="common_title">אופנה וטיפוח <img
-                                                    src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
-                                                    class="img-fluid">
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="affordable_consumption_list">
-                                            <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        קולקציית קיץ הושקה בלידר אתמול
-                                                        אחרי
-                                                        הצהריים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        ספה 3 מושבים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            ₪ 2,100
-                                                        </p>
-                                                        <p class="rating_text"><i class="fa fa-star"></i>
-                                                            4.8
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                    alt="" class="img-fluid">
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">נעלי
-                                                        העיר</span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        ספה 3 מושבים
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        צפו בגלריית התמונות
-                                                        של
-                                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            ₪ 2,100
-                                                        </p>
-                                                        <p class="rating_text"><i class="fa fa-star"></i>
-                                                            4.8
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="slider_div">
-                                                <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
-                                                    alt="" class="img-fluid">
-                                            </div>
-                                            <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                כתבות ביגוד
-                                                והנעלה
-                                                ></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+                    @if($i == 4)
+                     @php $i = 1; @endphp
+                    @endif
                 </div>
             </div>
         </div>
-        <div class="gifts_event_div spacing">
+        @endif
+        @endforeach
+        @endif
+        {{-- <div class="gifts_event_div spacing">
             <div class="affordable_consumption">
                 <div class="container-fluid">
                     <div class="row">
@@ -1175,7 +842,7 @@ Dosize
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--  -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">

@@ -38,7 +38,8 @@ Categories
 											<thead>
 												<tr>
 													<th>Name</th>
-													<th>Category Slug</th>
+													<th>Category Order</th>
+													<th>Category Image</th>
 													<th class="text-right">Action</th>
 												</tr>
 											</thead>
@@ -50,7 +51,11 @@ Categories
 														{{ $category->name}}
 													</td>
 													<td>
-														{{ $category->category_slug}}
+														{{ $category->category_order_id}}
+													</td>
+
+													<td>
+														<img src="{{asset('category/'.$category->image)}}" width="100px" height="100px">
 													</td>
 
 													<td class="text-right">

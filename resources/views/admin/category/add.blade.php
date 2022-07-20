@@ -37,10 +37,13 @@ Add Category
 					                                <input class="form-control" id="name" name="name" placeholder="Enter City Name" value="{{old('name')}}" type="text">
 			                                        <div style="color:red;">{{$errors->first('name')}}</div> <br>
 					                            </div>
-					                            <div class="form-group">
-					                                <label> Category Slug</label>
-					                                <input class="form-control" id="category_slug" name="category_slug" placeholder="Enter Category Slug" value="{{old('category_slug')}}" type="text">
-			                                        <div style="color:red;">{{$errors->first('category_slug')}}</div> <br>
+												<div class="form-group">
+					                                <label>City Image</label>
+					                                <div>
+					                                    <input class="form-control" type="file" name="image" id="image">
+					                                    <div style="color:red;">{{$errors->first('image')}}</div> <br>
+					                                    
+					                                </div>
 					                            </div>
 					                            <div class="m-t-20 text-center">
 					                                <button class="btn btn-primary btn-lg"> הוסף קטגוריה  </button>

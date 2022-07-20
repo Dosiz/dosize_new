@@ -38,7 +38,7 @@ class BrandProfile extends Model
 
     public function recommended_product()
     {
-        return $this->hasMany(Product::class)->limit(2);
+        return $this->hasMany(Product::class)->where('discount_price',null)->limit(2);
     }
     
 }
