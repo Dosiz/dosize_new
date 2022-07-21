@@ -57,7 +57,7 @@ class FrontEndController extends Controller
         $products_by_categories = Category::with('product','brandprofile')
                     ->orderBy('category_order_id', 'ASC')
                     ->get();
-        // dd($products_by_categories);
+        dd($products_by_categories);
         return view('landing_page' , compact('cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 

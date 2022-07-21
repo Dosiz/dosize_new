@@ -449,6 +449,7 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
+                                            @if( count($product_category->product) > 1)
                                             <div class="affordable_consumption_box box_shahdow">
                                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
                                                     <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
@@ -473,6 +474,8 @@ Dosize
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
+                                            @if( count($product_category->product) > 2)
                                             <div class="affordable_consumption_box box_shahdow">
                                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}">
                                                     <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
@@ -497,6 +500,7 @@ Dosize
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             <div class="affordable_consumption_box box_shahdow d-none">
                                                 <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
                                                     alt="" class="img-fluid">
@@ -567,8 +571,9 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
+                                            @if( count($product_category->product) > 3)
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['3']->id ?? '')}}">
                                                     <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
                                                 </a>
                                                 <div class="content_div">
@@ -584,6 +589,8 @@ Dosize
                                                             aria-hidden="true"></i></span>
                                                 </div>
                                             </div>
+                                            @endif
+                                            @if( count($product_category->product) > 1)
                                             <div class="affordable_consumption_box box_shahdow">
                                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
                                                     <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="131px" height="137px">
@@ -611,34 +618,10 @@ Dosize
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="affordable_consumption_box box_shahdow d-none">
-                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}">
-                                                    <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="131px" height="137px">
-                                                </a>
-
-                                                <div class="content_div">
-                                                    <span class="category font-size-12 font-weight-400">
-                                                        {{$product_category->product['1']->brandprofile->brand_name ?? ''}}
-                                                    </span>
-                                                    <h4 class="font-size-14 font-weight-700">
-                                                        {{$product_category->product['2']->name ?? ''}}
-                                                    </h4>
-                                                    <p class="discription font-size-12 font-weight-400">
-                                                        {!! \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...') !!}
-                                                    </p>
-                                                    <span class="font-size-12 like_span">4
-                                                        <i class="fa fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                    <div class="rating_price_div">
-                                                        <p class="font-size-14 font-weight-600">
-                                                            ₪ {{$product_category->product['2']->price ?? ''}}
-                                                        </p>
-                                                        <p class="rating_text"><i class="fa fa-star"></i>
-                                                            4.8
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endif
+                                            @if( count($product_category->product) > 2)
+                                            <div clas
+                                            @endif
                                             <div class="slider_div">
                                                 <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                     alt="" class="img-fluid">
