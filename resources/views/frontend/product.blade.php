@@ -116,16 +116,13 @@ Course - Details
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}""
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
                                     </div>
 
                                 </div>
@@ -138,16 +135,13 @@ Course - Details
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('assets/img/mobile_component/product_main_image.png') }}"
-                                            alt="" class="img-fluid">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +160,7 @@ Course - Details
                         </div>
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
-                                <span>נעלי העיר</span>
+                                <span> {{$product->brandprofile->brand_name }}</span>
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
@@ -178,16 +172,21 @@ Course - Details
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
-                                <p>50 ₪ <span class=" font-size-14">80 ₪</span></p>
+                                <p><b>{{$product->name}}</b></p>
                             </div>
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
+                            <div class="product_price d-flex justify-content-end">
+                                <p>{{$product->discount_price ?? $product->price}} ₪ <span class=" font-size-14">@if($product->discount_price){{$product->price}} ₪ @endif</span></p>
+                            </div>
+                        </div>
+                        {{-- <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <hr>
                             <div class="product_price d-flex justify-content-end py-4">
                                 <p><b>מידות</b>: 4, 6, 8, 10, 12</p>
                             </div>
                             <hr>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="product_category_div d-xl-flex justify-content-end">
@@ -203,8 +202,7 @@ Course - Details
                         <div class="col-12">
                             <div class="product_description">
                                 <p class="font-size-16"><b>פרטים:</b></p>
-                                <p class="font-size-16">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית גולר
-                                    מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק</p>
+                                <p class="font-size-16"> {!! $product->description !!} </p>
                             </div>
                         </div>
                     </div>
@@ -224,114 +222,22 @@ Course - Details
             <div class="slider_div">
                 <div class="multiple_deals swiper">
                     <div class="swiper-wrapper">
+                        @if(count($products)>0)
+                        @foreach($products as $product_value)
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
+                            <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="max-width:121px; height:95px;">
                             <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
+                                <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->name}} </span>
+                                <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
                                 <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                    <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
+                                            class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
                                     <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('assets/img/mobile_component/deal_item.png') }}" alt="" class="img-fluid">
-                            <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
-                                <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">50 ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                        @endif
                     </div>
                     <!-- pagination -->
                     <div class="swiper-button-next btn-swiper">
@@ -440,74 +346,24 @@ Course - Details
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                                @if(count($blogs) > 0)
+                                @foreach($blogs as $blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                        class="img-fluid">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="max-width:131px; height:181px;">
                                     <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                            אחרי
-                                            הצהריים
+                                        <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                        <h4 class="font-size-12 font-weight-700">
+                                            {{$blog->title}}
                                         </h4>
-                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                            של
-                                            הקולקצייה המדהימה הזאת כאן בכתבה
+                                        <p class="discription font-size-10 font-weight-400">
+                                            {!! $blog->discription !!}
                                         </p>
                                         <span class="font-size-12">4 <i class="fa fa-heart"
                                                 aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                <div class="affordable_consumption_box box_shahdow">
-                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                        class="img-fluid">
-                                    <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                            אחרי
-                                            הצהריים
-                                        </h4>
-                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                            של
-                                            הקולקצייה המדהימה הזאת כאן בכתבה
-                                        </p>
-                                        <span class="font-size-12">4 <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <div class="affordable_consumption_box box_shahdow">
-                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                        class="img-fluid">
-                                    <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                            אחרי
-                                            הצהריים
-                                        </h4>
-                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                            של
-                                            הקולקצייה המדהימה הזאת כאן בכתבה
-                                        </p>
-                                        <span class="font-size-12">4 <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <div class="affordable_consumption_box box_shahdow d-none">
-                                    <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                        class="img-fluid">
-                                    <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                            אחרי
-                                            הצהריים
-                                        </h4>
-                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                            של
-                                            הקולקצייה המדהימה הזאת כאן בכתבה
-                                        </p>
-                                        <span class="font-size-12">4 <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
+                                @endforeach
+                                @endif
                                 <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                     הכתבות ></a>
                             </div>

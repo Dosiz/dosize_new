@@ -118,7 +118,7 @@ class BlogController extends Controller
             $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
             if(count($brand_cities) <= 0)
             {
-                $brand_cities = User::where('id',$user_id)->get();
+                $brand_cities = User::where('id',Auth::id())->get();
             }
             // dd($blog_cities);
             return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities','blog_cities'));

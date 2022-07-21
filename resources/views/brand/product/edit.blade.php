@@ -111,7 +111,7 @@ Edit Product
                                     
 		                            <div class="form-group">
 		                                <label>תיאור המוצר</label>
-		                                <textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" >{!! $product->description !!}</textarea>
+		                                <textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" >{{ $product->description }}</textarea>
 		                                <div style="color:red;">{{$errors->first('description')}}</div> <br>
 		                            </div>
 		                            <!-- <div class="form-group">

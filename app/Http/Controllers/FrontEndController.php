@@ -64,7 +64,18 @@ class FrontEndController extends Controller
     public function article_detail($blog_id)
     {
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
-        // dd($blog->category->name);
-        return view('frontend.article',compact('blog'));
-    }
+        $products = Product::with('brandprofile')->where('sub_category_id',$blog->sub_category_id)->get();
+         // dd($blog->category->name);
+        return view('frontend.article',compact('blog','products'));
+    }  
+
+    public function product_detail($product_id)
+    {
+        $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
+        $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
+
+        $blogs = Blog::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
+        // dd($products);
+        return view('frontend.product',compact('product','products','blogs'));
+    }  
 }

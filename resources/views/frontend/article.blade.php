@@ -111,20 +111,20 @@ Articles
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="{{asset('assets/img/mobile_component/article_slider_main.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid"style="max-width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{asset('assets/img/mobile_component/article_slider_main.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid"style="max-width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{asset('assets/img/mobile_component/article_slider_main.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid"style="max-width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{asset('assets/img/mobile_component/article_slider_main.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid"style="max-width:580px; height:298px;">
                             </div>
 
                         </div>
@@ -187,159 +187,25 @@ Articles
                             <div class="slider_div">
                                 <div class="multiple_deals swiper">
                                     <div class="swiper-wrapper">
+                                        @if(count($products) > 0)
+                                        @foreach($products as $product)
                                         <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
+                                            <img src="{{asset('product/'.$product->image)}}" alt=""
+                                    class="img-fluid"style="max-width:135px; height:107px;">
                                             <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
+                                                <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
+                                                <h4 class="title font-size-14 font-weight-700">
+                                                    {{$product->name}}
                                                 </h4>
                                                 <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
+                                                    <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                             class="font-size-12 font-weight-400">80 ₪</span></p>
                                                     <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('assets/img/mobile_component/recommendedItem.png') }}"
-                                                alt="" class="img-fluid">
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400">נעלי
-                                                    העיר</span>
-                                                <h4 class="title font-size-14 font-weight-700">ספה 3 מושבים מעור
-                                                    אמיתי
-                                                    דגם AKOL
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">2,100 ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -88,7 +88,7 @@ Edit Blog
 									            
 												<div class="form-group">
 													<label>Blog Description</label>
-													<textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" >{!! $blog->description !!}</textarea>
+													<textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" >{{ $blog->description }}</textarea>
 													<div style="color:red;">{{$errors->first('description')}}</div> <br>
 												</div>
 					                            
