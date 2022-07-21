@@ -173,7 +173,7 @@ Dosize
                                             {{$product->name}}
                                         </p>
                                         <div class="price_learn_more">
-                                            <a class="font-size-14 font-weight-700" href="">למידע נוסף ></a>
+                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">למידע נוסף ></a>
                                             <p class="font-size-14 font-weight-600">{{($product->price - $product->discount_price)}} ₪ <span
                                                     class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
@@ -244,8 +244,9 @@ Dosize
                             @if(count($products) > 0)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt=""
-                                            class="img-fluid" style="width: 208px; height:163px">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
+                                        </a>
                                         <div class="content_div">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span> </span>
                                             <h4 class="title font-size-14 font-weight-700">  
@@ -330,8 +331,9 @@ Dosize
                             @foreach($brands_recomanded_products as $recomanded_products)
                             @foreach($recomanded_products->recommended_product as $product)
                             <div class="deals_box box_shahdow swiper-slide">
-                                <img src="{{asset('product/'.$product->image)}}" alt=""
-                                    class="img-fluid" style="width: 208px; height: 165px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
+                                </a>
                                 <div class="content_div">
                                     <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
                                     <h4 class="title font-size-14 font-weight-700">
@@ -427,7 +429,9 @@ Dosize
                                         <div class="col-lg-6">
                                             <div class="main_article">
                                                 <div class="article_box">
-                                                    <img src="{{asset('product/'.$product_category->product['0']->image ?? '' )}}" width="120px" height="111px">
+                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
+                                                        <img src="{{asset('product/'.$product_category->product['0']->image ?? '' )}}" width="120px" height="111px">
+                                                    </a>
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
                                                             style="margin-bottom: 20px;">
@@ -446,7 +450,9 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
+                                                    <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
+                                                </a>
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
@@ -468,7 +474,9 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}">
+                                                    <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
+                                                </a>
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
@@ -560,7 +568,9 @@ Dosize
                                     <div class="col-lg-12">
                                         <div class="affordable_consumption_list">
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
+                                                    <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
+                                                </a>
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['0']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
@@ -575,7 +585,9 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="131px" height="137px">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
+                                                    <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="131px" height="137px">
+                                                </a>
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">
                                                         {{$product_category->product['1']->brandprofile->brand_name ?? ''}}
@@ -600,7 +612,10 @@ Dosize
                                                 </div>
                                             </div>
                                             <div class="affordable_consumption_box box_shahdow d-none">
-                                                <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="131px" height="137px">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}">
+                                                    <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="131px" height="137px">
+                                                </a>
+
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400">
                                                         {{$product_category->product['1']->brandprofile->brand_name ?? ''}}

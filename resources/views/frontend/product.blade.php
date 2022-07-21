@@ -225,9 +225,11 @@ Course - Details
                         @if(count($products)>0)
                         @foreach($products as $product_value)
                         <div class="deals_box box_shahdow swiper-slide">
-                            <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="max-width:121px; height:95px;">
+                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_value->id ?? '')}}">
+                                <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="max-width:121px; height:95px;">
+                            </a>
                             <div class="content_div">
-                                <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->name}} </span>
+                                <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
                                 <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
                                 <div class="rating_price_div">
                                     <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
@@ -349,7 +351,9 @@ Course - Details
                                 @if(count($blogs) > 0)
                                 @foreach($blogs as $blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="max-width:131px; height:181px;">
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
+                                        <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="max-width:131px; height:181px;">
+                                    </a>
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
                                         <h4 class="font-size-12 font-weight-700">

@@ -73,7 +73,7 @@ class FrontEndController extends Controller
     {
         $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
-
+        
         $blogs = Blog::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
         // dd($products);
         return view('frontend.product',compact('product','products','blogs'));

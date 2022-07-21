@@ -190,8 +190,10 @@ Articles
                                         @if(count($products) > 0)
                                         @foreach($products as $product)
                                         <div class="deals_box box_shahdow swiper-slide">
-                                            <img src="{{asset('product/'.$product->image)}}" alt=""
-                                    class="img-fluid"style="max-width:135px; height:107px;">
+                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                                <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:135px; height:107px;">
+                                            </a>
+
                                             <div class="content_div">
                                                 <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
                                                 <h4 class="title font-size-14 font-weight-700">
@@ -299,7 +301,7 @@ Articles
                 </div>
             </div>
         </div>
-        <div class="affordable_consumption spacing article_affordable_consumption">
+        {{-- <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
@@ -384,7 +386,7 @@ Articles
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- main footer -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">
