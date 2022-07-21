@@ -16,6 +16,8 @@ use App\Models\BrandsHasAddress;
 use App\Models\BrandsHasCity;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use App\Models\BrandMessage;
+use App\Models\BrandsMessageHasCity;
 
 class FrontEndController extends Controller
 {
@@ -38,6 +40,13 @@ class FrontEndController extends Controller
         ->where('products_has_cities.city_id','5')
         ->get();
 
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id','5')
+        ->get();
+        // dd($brand_messages);
         $brands_recomanded_products = BrandProfile::with('recommended_product','product_city')->whereHas('product_city', function ($q) {
             $q->where('city_id', '5');
         })
@@ -49,7 +58,7 @@ class FrontEndController extends Controller
                     ->orderBy('category_order_id', 'ASC')
                     ->get();
         // dd($products_by_categories);
-        return view('landing_page' , compact('cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories'));
+        return view('landing_page' , compact('cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 
     public function article_detail($blog_id)

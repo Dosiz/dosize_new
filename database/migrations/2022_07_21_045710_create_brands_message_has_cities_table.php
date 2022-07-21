@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandMessagesTable extends Migration
+class CreateBrandsMessageHasCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateBrandMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('brand_messages', function (Blueprint $table) {
+        Schema::create('brands_message_has_cities', function (Blueprint $table) {
             $table->id();
-            $table->longText('message');
+
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
 
             $table->unsignedBigInteger('brand_profile_id')->nullable();
             $table->foreign('brand_profile_id')->references('id')->on('brand_profiles');
             
-            $table->date('end_date');
+            $table->unsignedBigInteger('brand_message_id')->nullable();
+            $table->foreign('brand_message_id')->references('id')->on('brand_messages');
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ class CreateBrandMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brand_messages');
+        Schema::dropIfExists('brands_message_has_cities');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use Auth;
 use DB;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\BlogsHasCity;
@@ -35,6 +36,10 @@ class BlogController extends Controller
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            if(count($brand_cities) <= 0)
+            {
+                $brand_cities = User::where('id',$user_id)->get();
+            }
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
             return view('brand.blog.add', compact('brand_profile','sub_categories','addresses','brand_cities'));
         
@@ -111,6 +116,10 @@ class BlogController extends Controller
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            if(count($brand_cities) <= 0)
+            {
+                $brand_cities = User::where('id',$user_id)->get();
+            }
             // dd($blog_cities);
             return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities','blog_cities'));
         // } catch (\Exception $exception) {

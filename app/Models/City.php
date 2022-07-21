@@ -30,4 +30,9 @@ class City extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function brand_message_city()
+    {
+        return $this->hasMany(BrandsMessageHasCity::class);
+    }
 }

@@ -71,6 +71,9 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
+
+    //product
+    Route::resource('brand-message', App\Http\Controllers\brand\BrandMessageController::class);
     
 });
 /********************Brand ROUTES END******************************/

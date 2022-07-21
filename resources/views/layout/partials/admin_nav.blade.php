@@ -50,6 +50,10 @@
 									<a href="{{route('product.index')}}"><span> מוצר </span></a>
 								</li>
 
+								<li class="{{ Request::is('brand/brand-message') ? 'active' : '' }}"> 
+									<a href="{{route('brand-message.index')}}"><span> הודעה למנוי	</span></a>
+								</li>
+
 								@endif
 
 							

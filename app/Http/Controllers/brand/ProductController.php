@@ -8,6 +8,7 @@ use App\Models\Product;
 use Auth;
 use DB;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\SubCategory;
 use App\Models\ProductsHasCity;
 use App\Models\BrandProfile;
@@ -35,6 +36,10 @@ class ProductController extends Controller
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            if(count($brand_cities) <= 0)
+            {
+                $brand_cities = User::where('id',$user_id)->get();
+            }
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
             return view('brand.product.add', compact('brand_profile','sub_categories','addresses','brand_cities'));
         
@@ -113,6 +118,10 @@ class ProductController extends Controller
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $product_cities = ProductsHasCity::with('city')->where('product_id',$id)->get();
+            if(count($brand_cities) <= 0)
+            {
+                $brand_cities = User::where('id',Auth::id())->get();
+            }
             // dd($product_cities);
             return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities'));
         // } catch (\Exception $exception) {

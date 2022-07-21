@@ -99,26 +99,29 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12">
                         <ul>
+                            @if($brand_messages)
+                            @foreach($brand_messages as $brand_message)
+                            @php  
+                                $current_date = \Carbon\Carbon::now();
+                                $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                                $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+                            @endphp
+                            @if($diff_in_days >= 0)
+                            @if($loop->first)
                             <li class="active">
-                                <a class="font-size-12" href="">מבזקים חמים <img
-                                        src="{{ asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
-                                        class="img-fluid"></a>
+                                <a class="font-size-12" href=""> {!! $brand_message->message !!} <img
+                                        src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
+                                        class="img-fluid" style="width: 20px; height: 20px;"></a>
                             </li>
+                            @else
                             <li>
-                                <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                        class="img-fluid"></a>
+                                <a class="font-size-12" href="">{{$brand_message->message}}<img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
+                                        class="img-fluid" style="width: 20px; height: 20px;"></a>
                             </li>
-                            <li>
-                                <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
-                                        class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <a class="font-size-12" href="">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300
-                                    ש”ח <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                        class="img-fluid"></a>
-                            </li>
+                            @endif
+                            @endif
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -141,6 +144,15 @@ Dosize
                     <div class="swiper-wrapper">    
                         @if(count($discount_products) > 0)
                             @foreach($discount_products as $product)
+                            {{-- @php  
+                                $current_date = \Carbon\Carbon::now();
+                                echo $current_date;echo"<br>";
+                                $sale_time = \Carbon\Carbon::parse($product->sale_time);
+                                echo $sale_time;echo"<br>";
+                                $diff_in_days = $current_date->diffInDays( $sale_time,false) + 0;
+                                echo $diff_in_days;
+                            @endphp --}}
+                            
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
@@ -150,6 +162,7 @@ Dosize
                                     <div class="promotion_content">
                                         <div class="time_category_text">
                                             <div class="time_div">
+                                                
                                                 <p class="example" discount-time="{{ \Carbon\Carbon::parse($product->sale_time)->format('m/d/Y H:i:s')}}">
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
@@ -353,8 +366,8 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
-                                            <img src="{{asset('category/'.$product_category->image)}}" width="60px" height="50px">
-                                            <h3 class="common_title"> {{ $product_category->name}}<img
+                                            <img src="{{asset('category/'.$product_category->image ?? '')}}" width="60px" height="50px">
+                                            <h3 class="common_title"> {{ $product_category->name ?? ''}}<img
                                                     src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
@@ -414,14 +427,14 @@ Dosize
                                         <div class="col-lg-6">
                                             <div class="main_article">
                                                 <div class="article_box">
-                                                    <img src="{{asset('product/'.$product_category->product['0']->image)}}" width="120px" height="111px">
+                                                    <img src="{{asset('product/'.$product_category->product['0']->image ?? '' )}}" width="120px" height="111px">
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
                                                             style="margin-bottom: 20px;">
-                                                            {{$product_category->product['0']->name}}
+                                                            {{$product_category->product['0']->name ?? ''}}
                                                         </h4>
                                                         <p class="font-size-12">צפו
-                                                            {!! \Illuminate\Support\Str::limit($product_category->product['0']->description,60,'...') !!}
+                                                            {!! \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...') !!}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -437,17 +450,17 @@ Dosize
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        {{$product_category->product['1']->name }}
+                                                        {{$product_category->product['1']->name ?? '' }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        {!! \Illuminate\Support\Str::limit($product_category->product['1']->description,60,'...') !!}
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            {{$product_category->product['1']->price }} ₪
+                                                            {{$product_category->product['1']->price ?? ''}} ₪
                                                         </p>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
@@ -459,17 +472,17 @@ Dosize
                                                 <div class="content_div">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
-                                                        {{$product_category->product['2']->name }}
+                                                        {{$product_category->product['2']->name ?? '' }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
-                                                        {!! \Illuminate\Support\Str::limit($product_category->product['2']->description,60,'...') !!}
+                                                        {!! \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...') !!}
                                                     </p>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
                                                         <p class="font-size-14 font-weight-600">
-                                                            {{$product_category->product['2']->price }} ₪
+                                                            {{$product_category->product['2']->price ?? '' }} ₪
                                                         </p>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
@@ -982,15 +995,10 @@ Dosize
 
     // console.log($('.example'))
     [...document.querySelectorAll('.example')].forEach(elem => {
-        console.log($(this))
         $(elem).countdown({
-        // date: '07/21/2022 23:59:59'
-        // date: $(this).attr('discount-time')
         date: elem.getAttribute('discount-time')
         }, function () {
-            elem.classlist.add('d-none')
-            console.log('One of your City Product Discount Ended')
-        // alert('End Discount!');
+            $(elem).parent().parent().parent().parent().addClass('d-none');
     });
     })
 

@@ -40,5 +40,15 @@ class BrandProfile extends Model
     {
         return $this->hasMany(Product::class)->where('discount_price',null)->limit(2);
     }
+
+    public function brand_message()
+    {
+        return $this->hasMany(BrandMessage::class);
+    }
+
+    public function brand_message_city()
+    {
+        return $this->hasMany(BrandsMessageHasCity::class);
+    }
     
 }
