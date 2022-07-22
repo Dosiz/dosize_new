@@ -29,76 +29,19 @@ Articles
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
+                                @if(count($categories) > 0)
+                                
+                                @foreach($categories as $key=>$category)
+                              
                                 <div class="category_box swiper-slide">
+                       
                                     <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
+                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                     </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
                                 </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_10.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">מזון</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_9.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">פיננסים</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_8.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">בריאות</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_3.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_4.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">חינוך</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -112,19 +55,19 @@ Articles
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="max-width:580px; height:298px;">
+                                    class="img-fluid"style="width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="max-width:580px; height:298px;">
+                                    class="img-fluid"style="width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="max-width:580px; height:298px;">
+                                    class="img-fluid"style="width:580px; height:298px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="max-width:580px; height:298px;">
+                                    class="img-fluid"style="width:580px; height:298px;">
                             </div>
 
                         </div>
@@ -191,7 +134,7 @@ Articles
                                         @foreach($products as $product)
                                         <div class="deals_box box_shahdow swiper-slide">
                                             <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:135px; height:107px;">
+                                                <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                             </a>
 
                                             <div class="content_div">

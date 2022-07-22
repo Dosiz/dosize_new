@@ -17,76 +17,23 @@ Dosize
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
+                                
+                                @if(count($categories) > 0)
+                                
+                                @foreach($categories as $key=>$category)
+                              
                                 <div class="category_box swiper-slide">
+                       
                                     <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
+                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                     </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
                                 </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_10.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">מזון</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_9.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">פיננסים</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_8.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">בריאות</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_3.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_4.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">חינוך</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
-                                </div>
+                                @endforeach
+                                @endif
+
+
+                             
                             </div>
                         </div>
                     </div>
@@ -155,8 +102,10 @@ Dosize
                             
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
                                             class="img-fluid" style="width: 209px; height:105px;">
+                                        </a>
                                         <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
                                     </div>
                                     <div class="promotion_content">
@@ -167,13 +116,18 @@ Dosize
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
+                                            <a class="font-size-14 font-weight-700" href="" >
+                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
+                                            </a>
                                         </div>
-                                        <p class="promotion_title font-size-14 font-weight-700 text-right">
-                                            {{$product->name}}
-                                        </p>
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                            <p class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
+                                                {{$product->name}}
+                                            </p>
+                                        </a>
                                         <div class="price_learn_more">
                                             <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">למידע נוסף ></a>
+                                            
                                             <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
                                                     class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
@@ -206,13 +160,17 @@ Dosize
                                     class="img-fluid" style="width: 131px; height: 160px">
                                 </a>
                                 <div class="content_div">
+                                    <a href="">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                    </a>
+                                    <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
                                         {{$blog->title}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
                                         {!! substr($blog->description, 0,  30) !!}  
                                     </p>
+                                    </a>
                                     <span class="font-size-12">4 <i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
                                 </div>
@@ -248,7 +206,10 @@ Dosize
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span> </span>
+                                            <a href="">
+                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
+                                            </a>
+                                            <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
                                                 {{$product->name}}
                                             </h4>
@@ -257,6 +218,7 @@ Dosize
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
                                             </div>
+                                            </a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -335,7 +297,10 @@ Dosize
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
                                 </a>
                                 <div class="content_div">
+                                    <a class="font-size-14 font-weight-700" href="">
                                     <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
+                                    </a>
+                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
                                     <h4 class="title font-size-14 font-weight-700">
                                         {{$product->name}}
                                     </h4>
@@ -344,6 +309,7 @@ Dosize
                                                 class="font-size-12 font-weight-400">80 ₪</span></p>
                                         <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
                                     </div>
+                                    </a>
                                 </div>
                             </div>
                             @endforeach
@@ -432,6 +398,7 @@ Dosize
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
                                                         <img src="{{asset('product/'.$product_category->product['0']->image ?? '' )}}" width="120px" height="111px">
                                                     </a>
+                                                    <a style="color: #212529 !important" href="{{route('product',$product_category->product['0']->id ?? '')}}">
                                                     <div class="article_content">
                                                         <h4 class="font-size-18"
                                                             style="margin-bottom: 20px;">
@@ -441,6 +408,7 @@ Dosize
                                                             {!! \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...') !!}
                                                         </p>
                                                     </div>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -455,20 +423,26 @@ Dosize
                                                     <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
                                                 </a>
                                                 <div class="content_div">
+                                                    <a class="font-size-14 font-weight-700" href="">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
+                                                    </a>
+                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}" style="color: #212529 !important;">
                                                     <h4 class="font-size-14 font-weight-700">
                                                         {{$product_category->product['1']->name ?? '' }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
                                                         {!! \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...') !!}
                                                     </p>
+                                                    </a>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
+                                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}" style="color: #212529 !important">
                                                         <p class="font-size-14 font-weight-600">
                                                             {{$product_category->product['1']->price ?? ''}} ₪
                                                         </p>
+                                                        </a>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
                                                     </div>
@@ -481,20 +455,26 @@ Dosize
                                                     <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
                                                 </a>
                                                 <div class="content_div">
+                                                    <a class="font-size-14 font-weight-700" href="">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
+                                                    </a>
+                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}" style="color: #212529 !important;">
                                                     <h4 class="font-size-14 font-weight-700">
                                                         {{$product_category->product['2']->name ?? '' }}
                                                     </h4>
                                                     <p class="discription font-size-12 font-weight-400">
                                                         {!! \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...') !!}
                                                     </p>
+                                                    </a>
                                                     <span class="font-size-12 like_span">4 <i
                                                             class="fa fa-heart"
                                                             aria-hidden="true"></i></span>
                                                     <div class="rating_price_div">
+                                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}" style="color: #212529 !important;">
                                                         <p class="font-size-14 font-weight-600">
                                                             {{$product_category->product['2']->price ?? '' }} ₪
                                                         </p>
+                                                        </a>
                                                         <p class="rating_text">4.8 <i
                                                                 class="fa fa-star"></i></p>
                                                     </div>
@@ -573,10 +553,11 @@ Dosize
                                         <div class="affordable_consumption_list">
                                             @if( count($product_category->product) > 3)
                                             <div class="affordable_consumption_box box_shahdow">
-                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['3']->id ?? '')}}">
+                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
                                                     <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
                                                 </a>
                                                 <div class="content_div">
+                                                    
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['0']->brandprofile->brand_name ?? ''}} </span>
                                                     <h4 class="font-size-14 font-weight-700">
                                                         {{$product_category->product['0']->name ?? ''}}

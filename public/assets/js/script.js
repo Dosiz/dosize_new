@@ -42,7 +42,7 @@ const swiper = new Swiper('.swiper', {
   const swiper_category = new Swiper('.myCategorySlider', {
     direction: 'horizontal',
     slidesPerView: 5,
-    slidesPerView: "auto",
+    // slidesPerView: "auto",
     loop: true,
     
     breakpoints: {

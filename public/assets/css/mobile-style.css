@@ -340,6 +340,11 @@ header .desktop_menu .desktop_menu_body .auth_button .enrollemnt_button {
     color: var(--whiteColor) !important;
 }
 
+.enrollemnt_button 
+{
+    cursor: pointer;
+}
+
 .mobile_side_menu .mobile_menu_list li {
     margin-top: 50px;
 }

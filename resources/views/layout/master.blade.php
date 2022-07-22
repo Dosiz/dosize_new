@@ -57,12 +57,12 @@
                             </div>
                         </div>
                         <div class="checkBox_div">
-                            <input type="checkbox" name="" id="" checked>
-                            <label for="" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
+                            <input type="checkbox" name="" id="approve" checked>
+                            <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
                         </div>
                         <div class="checkBox_div">
-                            <input type="checkbox" name="" id="" checked>
-                            <label for="" class="font-size-16">אני מסכים <a href="">למדיניות</a>
+                            <input type="checkbox" name="" id="policy" checked>
+                            <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                 המערכת...</label>
                         </div>
                         <button type="submit" class="font-size-16">הרשמה</button>

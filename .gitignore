@@ -6,6 +6,7 @@
 /public/brand_image 
 /public/brand_logo 
 /public/city
+/public/category
 /public/blog
 /public/product
 .env

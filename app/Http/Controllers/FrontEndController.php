@@ -57,25 +57,29 @@ class FrontEndController extends Controller
         $products_by_categories = Category::with('product','brandprofile')
                     ->orderBy('category_order_id', 'ASC')
                     ->get();
-        // dd($products_by_categories);
-        return view('landing_page' , compact('cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
+
+        $categories = Category::get();
+        
+        // dd($categories);
+        return view('landing_page' , compact('categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 
     public function article_detail($blog_id)
     {
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$blog->sub_category_id)->get();
-         // dd($blog->category->name);
-        return view('frontend.article',compact('blog','products'));
+        $categories = Category::get();
+        // dd($blog->category->name);
+        return view('frontend.article',compact('blog','products','categories'));
     }  
 
     public function product_detail($product_id)
     {
         $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
-        
+        $categories = Category::get();
         $blogs = Blog::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
         // dd($products);
-        return view('frontend.product',compact('product','products','blogs'));
+        return view('frontend.product',compact('product','products','blogs','categories'));
     }  
 }

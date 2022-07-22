@@ -54,6 +54,10 @@ class CategoryController extends Controller
             $category->image=$image_name;
         } 
         $category->save();
+
+        $category= Category::find($category->id);
+        $category->category_order_id = $category->id;
+        $category->save();
             return redirect('admin/category');
         } catch (\Exception $exception) {
             // dd($exception->getMessage());

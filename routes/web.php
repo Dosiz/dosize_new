@@ -22,6 +22,9 @@ Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landin
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
 
+//blog and product comment 
+Route::post('/blog_comment', [App\Http\Controllers\FrontEndController::class, 'blog_comment'])->name('blog-comment');
+
 Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::class, 'fetch_subcategory'])->name('fetch-subcategory');
 /*****************DASHBOARD ROUTES*******************/
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
@@ -67,14 +70,16 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 Route::prefix('brand')->middleware('can:brand')->group(function(){
     //brands
     Route::post('/brand_register',[App\Http\Controllers\brand\BrandController::class, 'brand_register'])->name('brand-register');
+    //brand-messag
+    Route::resource('brand-message', App\Http\Controllers\brand\BrandMessageController::class);
 
     //blog
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
+    //blog-comment
+    Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
-
-    //product
-    Route::resource('brand-message', App\Http\Controllers\brand\BrandMessageController::class);
+    
     
 });
 /********************Brand ROUTES END******************************/

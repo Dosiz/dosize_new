@@ -31,76 +31,19 @@ Course - Details
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
+                                @if(count($categories) > 0)
+                                
+                                @foreach($categories as $key=>$category)
+                              
                                 <div class="category_box swiper-slide">
+                       
                                     <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
+                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                     </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
                                 </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_10.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">מזון</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_9.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">פיננסים</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_8.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">בריאות</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_3.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_4.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">חינוך</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -116,13 +59,13 @@ Course - Details
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:360px; height:353px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
 
                                 </div>
@@ -135,13 +78,13 @@ Course - Details
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="max-width:131px; height:129px;">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +169,7 @@ Course - Details
                         @foreach($products as $product_value)
                         <div class="deals_box box_shahdow swiper-slide">
                             <a class="font-size-14 font-weight-700" href="{{route('product',$product_value->id ?? '')}}">
-                                <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="max-width:121px; height:95px;">
+                                <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="width:100%;">
                             </a>
                             <div class="content_div">
                                 <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
@@ -352,7 +295,7 @@ Course - Details
                                 @foreach($blogs as $blog)
                                 <div class="affordable_consumption_box box_shahdow">
                                     <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
-                                        <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="max-width:131px; height:181px;">
+                                        <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
