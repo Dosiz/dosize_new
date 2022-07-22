@@ -174,7 +174,7 @@ Dosize
                                         </p>
                                         <div class="price_learn_more">
                                             <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">למידע נוסף ></a>
-                                            <p class="font-size-14 font-weight-600">{{($product->price - $product->discount_price)}} ₪ <span
+                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
                                                     class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
                                     </div>
