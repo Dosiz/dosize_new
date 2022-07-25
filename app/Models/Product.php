@@ -36,4 +36,9 @@ class Product extends Model
         return $this->hasMany(ProductsCommentHasReply::class);
     }
 
+    public function recomended_product()
+    {
+        return $this->hasMany(RecomendedProduct::class);
+    }
+
 }

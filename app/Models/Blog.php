@@ -35,4 +35,9 @@ class Blog extends Model
     {
         return $this->hasMany(BlogsCommentHasReply::class);
     }
+
+    public function recomended_product()
+    {
+        return $this->hasMany(RecomendedProduct::class);
+    }
 }

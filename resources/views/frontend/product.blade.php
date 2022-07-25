@@ -279,20 +279,22 @@ Course - Details
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                                @if(count($blogs) > 0)
-                                @foreach($blogs as $blog)
+                                @if(count($recomanded_products) > 0)
+                                @foreach($recomanded_products as $recomanded_product)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
-                                        <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}">
+                                        <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                        <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
-                                            {{$blog->title}}
+                                            {{$recomanded_product->recomended_product->name}}
                                         </h4>
                                         <p class="discription font-size-10 font-weight-400">
-                                            {!! $blog->discription !!}
+                                            {!! $recomanded_product->recomended_product->description ?? '' !!}
                                         </p>
+                                        </a>
                                         <span class="font-size-12">4 <i class="fa fa-heart"
                                                 aria-hidden="true"></i></span>
                                     </div>

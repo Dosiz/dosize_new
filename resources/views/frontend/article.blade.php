@@ -232,92 +232,51 @@ Articles
                 </div>
             </div>
         </div>
-        {{-- <div class="affordable_consumption spacing article_affordable_consumption">
+        <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        <h3 class="common_title">צרכנות משתלמת <img
-                                src="{{asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
+                        <div
+                            class="col-lg-12 d-flex flex-xl-row-reverse justify-content-between align-items-center text-right">
+                            <h3 class="common_title">צרכנות משתלמת <img
+                                    src="{{asset('assets/img/mobile_component/beg.png') }}" alt=""
+                                    class="img-fluid"></h3>
+                            <p class="d-none d-xl-block"><a href="#" class="text-dark">לכל הכתבות ></a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                            @if(count($recomanded_blogs) > 0)
+                            @foreach($recomanded_blogs as $recomended_blog)
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                    class="img-fluid">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}">
+                                    <img src="{{asset('blog/'.$recomended_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                </a>
                                 <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                    <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                        אחרי
-                                        הצהריים
+                                    <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                    <h4 class="font-size-12 font-weight-700">
+                                        {{$recomended_blog->recomended_blog->title}}
                                     </h4>
-                                    <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                        של
-                                        הקולקצייה המדהימה הזאת כאן בכתבה
+                                    <p class="discription font-size-10 font-weight-400">
+                                        {!! $recomended_blog->recomended_blog->description ?? '' !!}
                                     </p>
+                                    </a>
                                     <span class="font-size-12">4 <i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                            <div class="affordable_consumption_box box_shahdow">
-                                <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                    class="img-fluid">
-                                <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                    <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                        אחרי
-                                        הצהריים
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                        של
-                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                    </p>
-                                    <span class="font-size-12">4 <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                            <div class="affordable_consumption_box box_shahdow">
-                                <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                    class="img-fluid">
-                                <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                    <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                        אחרי
-                                        הצהריים
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                        של
-                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                    </p>
-                                    <span class="font-size-12">4 <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-                            <div class="affordable_consumption_box box_shahdow d-none">
-                                <img src="{{asset('assets/img/mobile_component/affordable_iten.png') }}" alt=""
-                                    class="img-fluid">
-                                <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400">נעלי העיר</span>
-                                    <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                        אחרי
-                                        הצהריים
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                        של
-                                        הקולקצייה המדהימה הזאת כאן בכתבה
-                                    </p>
-                                    <span class="font-size-12">4 <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                             <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                 הכתבות ></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <!-- main footer -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">

@@ -15,6 +15,7 @@ use App\Models\BrandProfile;
 use App\Models\BrandsHasSubCategory;
 use App\Models\BrandsHasAddress;
 use App\Models\BrandsHasCity;
+use App\Models\RecomendedProduct;
 use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
@@ -33,6 +34,7 @@ class ProductController extends Controller
     {
             $user_id = Auth::id();
             $brand_profile = BrandProfile::with('category')->where('user_id',$user_id)->first();
+            $products = Product::where('brand_profile_id',$brand_profile->id)->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
@@ -41,7 +43,7 @@ class ProductController extends Controller
                 $brand_cities = User::where('id',$user_id)->get();
             }
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
-            return view('brand.product.add', compact('brand_profile','sub_categories','addresses','brand_cities'));
+            return view('brand.product.add', compact('brand_profile','sub_categories','addresses','brand_cities','products'));
         
     }
 
@@ -95,6 +97,19 @@ class ProductController extends Controller
         }
         $product->save();
 
+        if($request->product_id)
+        {
+
+            foreach($request->product_id as $product_id)
+            {
+                $recomended_products = new RecomendedProduct;
+                $recomended_products->product_id = $product->id;
+                $recomended_products->recomended_product_id = $product_id;
+                $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->save();
+            }
+        }
+
         ProductsHasCity::where('product_id',$product->id)->delete();
         
         foreach($request->city_id as $city_id)
@@ -114,6 +129,8 @@ class ProductController extends Controller
         // try {
             $product = Product::where('id',$id)->first();
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
+            $products = Product::where('brand_profile_id',$brand_profile->id)->get();
+            $recomended_products = RecomendedProduct::where('brand_profile_id',$brand_profile->id)->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
@@ -123,7 +140,7 @@ class ProductController extends Controller
                 $brand_cities = User::where('id',Auth::id())->get();
             }
             // dd($product_cities);
-            return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities'));
+            return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities','recomended_products','products'));
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }
@@ -166,6 +183,19 @@ class ProductController extends Controller
             $product->image=$image_name;
         }
         $product->save();
+        // dd($product->id);
+        RecomendedProduct::where('product_id',$product->id)->delete();
+        if($request->product_id)
+        {
+            foreach($request->product_id as $product_id)
+            {
+                $recomended_products = new RecomendedProduct;
+                $recomended_products->product_id = $product->id;
+                $recomended_products->recomended_product_id = $product_id;
+                $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->save();
+            }
+        }
 
         ProductsHasCity::where('product_id',$id)->delete();
         
@@ -186,6 +216,7 @@ class ProductController extends Controller
         // try {
                 $filePath = Product::FindorFail($id);
                 ProductsHasCity::where('product_id',$id)->delete();
+                RecomendedProduct::where('product_id',$id)->delete();
                 Product::FindorFail($id)->delete();
                 
                 @unlink(public_path()."/product/".$filePath->image );

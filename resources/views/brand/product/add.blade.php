@@ -79,6 +79,17 @@ Add Product
 									</div>
 
 									<div class="form-group">
+										<label>Select Recomended Product</label>
+										<select name="product_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleEe">
+											@if(count($products) > 0)
+											@foreach($products as $recomended_product)
+												<option value="{{$recomended_product->id}}" >{{$recomended_product->name}}</option>
+											@endforeach
+											@endif
+										</select>
+									</div>
+
+									<div class="form-group">
 										<label>Select Sub-Category</label>
 										<select name="sub_category_id" class="form-control" >
 											@if(count($sub_categories) > 0)
@@ -170,6 +181,11 @@ $(document).ready(function() {
 
 
 	$('#select2MultipleE').select2({
+		placeholder: "בחר תת-קטגוריה",
+		allowClear: true
+	});
+
+	$('#select2MultipleEe').select2({
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
 	});

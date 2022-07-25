@@ -61,6 +61,19 @@ Edit Blog
 			                                        <label>Blog Category</label>
 			                                        <input type="text" class="form-control" readonly value="{{$brand_profile->category->name}}">
 			                                    </div>
+												
+												<div class="form-group">
+													<label>Select Recomended Blog</label>
+													<select name="blog_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleEe">
+														@if(count($blogs) > 0)
+														@foreach($blogs as $recomended_blog)
+															<option value="{{$recomended_blog->id}}" @if(count($recomended_blogs) > 0 ) @foreach($recomended_blogs as $r_blog) {{ $r_blog->recomended_blog_id == $recomended_blog->id ? 'selected' : '' }} @endforeach @endif>{{$recomended_blog->title}}</option>
+														@endforeach
+														@endif
+													</select>
+													<div style="color:red;">{{$errors->first('sub_category_id')}}</div> <br>
+												</div>
+
 			                                    <div class="form-group">
 									                <label>Select Sub-Category</label>
 													<select name="sub_category_id" class="form-control" >
@@ -136,6 +149,12 @@ $(document).ready(function() {
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
 	});
+
+	$('#select2MultipleEe').select2({
+		placeholder: "בחר תת-קטגוריה",
+		allowClear: true
+	});
+
   });
 </script>
 @endsection

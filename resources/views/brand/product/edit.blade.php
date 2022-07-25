@@ -84,6 +84,19 @@ Edit Product
 										<label>Product Category</label>
 										<input type="text" class="form-control" readonly value="{{$brand_profile->category->name}}">
 									</div>
+
+									<div class="form-group">
+										<label>Select Recomended Product</label>
+										<select name="product_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleEe">
+											@if(count($products) > 0)
+											@foreach($products as $recomended_product)
+												<option value="{{$recomended_product->id}}" @if(count($recomended_products) > 0 ) @foreach($recomended_products as $r_product) {{ $r_product->recomended_product_id == $recomended_product->id ? 'selected' : '' }} @endforeach @endif>{{$recomended_product->name}}</option>
+											@endforeach
+											@endif
+										</select>
+									</div>
+
+
 									<div class="form-group">
 										<label>Select Sub-Category</label>
 										<select name="sub_category_id" class="form-control" >
@@ -191,6 +204,12 @@ $(document).ready(function() {
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
 	});
+
+	$('#select2MultipleEe').select2({
+		placeholder: "בחר תת-קטגוריה",
+		allowClear: true
+	});
+
   });
 </script>
 @endsection

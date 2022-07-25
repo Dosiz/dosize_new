@@ -20,7 +20,9 @@ use Auth;
 use App\Models\BrandMessage;  
 use App\Models\BlogComment;  
 use App\Models\ProductComment;  
-use App\Models\BrandsMessageHasCity;
+use App\Models\BrandsMessageHasCity; 
+use App\Models\RecomendedProduct;  
+use App\Models\RecomendedBlog;  
 
 class FrontEndController extends Controller
 {
@@ -73,8 +75,9 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
-        // dd($blog_comments);
-        return view('frontend.article',compact('blog','products','categories','blog_comments'));
+        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
+        // dd($recomanded_blogs);
+        return view('frontend.article',compact('blog','products','categories','blog_comments','recomanded_blogs'));
     }  
 
     public function product_detail($product_id)
@@ -82,10 +85,10 @@ class FrontEndController extends Controller
         $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
-        $blogs = Blog::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
+        $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
         $product_comments = ProductComment::where('product_id',$product_id)->orderBy('id','DESC')->get();
-        // dd($products);
-        return view('frontend.product',compact('product','products','blogs','categories','product_comments'));
+        // dd($recomanded_products);    
+        return view('frontend.product',compact('product','products','recomanded_products','categories','product_comments'));
     }  
 
     public function store_blog_comment(Request $request)    
