@@ -25,4 +25,14 @@ class Blog extends Model
     {
         return $this->belongsTo(SubCategory::class,'sub_category_id','id');
     }
+
+    public function blog_comment()
+    {
+        return $this->hasMany(BlogComment::class);
+    }
+
+    public function blogs_comment_reply()
+    {
+        return $this->hasMany(BlogsCommentHasReply::class);
+    }
 }

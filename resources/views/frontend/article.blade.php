@@ -195,48 +195,36 @@ Articles
                                         class="img-fluid"></p>
                             </div>
                             <div class="formDiv">
-                                <form action="">
+                                <form id="blog_comment">
+                                    @csrf
+                                    <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16">
+                                    
                                     <div class="comment_hearder">
-                                        <a href="" class="font-size-16">פירסום תגובה</a>
+                                        <button type="submit" class="font-size-16">פירסום תגובה</button>
                                         <div class="anonymous_text font-size-16">אנונימי <span
-                                                class="checkBox"><i class="fa fa-check"
-                                                    aria-hidden="true"></i></span></div>
+                                                class="checkBox">
+                                                <input type="checkbox" name="name" id="approve">
+                                                </span></div>
                                     </div>
+                                    <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
                             </div>
 
                             <div class="comment_list">
                                 <ul>
+                                    @if(count($blog_comments) > 0)
+                                    @foreach($blog_comments as $comment)
                                     <li>
                                         <p class="add_comment font-size-12">הוספת תגובה</p>
                                         <div class="user_detail">
-                                            <h4 class="font-size-14">אנונימי</h4>
-                                            <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
+                                            <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
+                                            <p class="font-size-14">{{$comment->comment}}</p>
                                         </div>
                                     </li>
-                                    <li>
-                                        <p class="add_comment font-size-12">הוספת תגובה</p>
-                                        <div class="user_detail">
-                                            <h4 class="font-size-14">אנונימי</h4>
-                                            <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p class="add_comment font-size-12">הוספת תגובה</p>
-                                        <div class="user_detail">
-                                            <h4 class="font-size-14">אנונימי</h4>
-                                            <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <p class="add_comment font-size-12">הוספת תגובה</p>
-                                        <div class="user_detail">
-                                            <h4 class="font-size-14">אנונימי</h4>
-                                            <p class="font-size-14">ואוו תודה רבה זה נראה מושלם!!!</p>
-                                        </div>
-                                    </li>
+                                    @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -437,6 +425,33 @@ Articles
             $("header .desktop_header").css("display", "block");
             $("header .mobile_header").css("display", "none");
         }
+    });
+
+    $('#blog_comment').submit(function(e){
+        e.preventDefault();
+        
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-blog-comment') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("Success");
+                $('.close').click();
+                 
+            },
+            error: function (data) {
+                if($('#comment').val() == ''){
+                    $('.comment_valid').text(data.responseJSON.errors.comment);
+                }
+                else{
+                    $('.comment_valid').text('');
+                }
+            }
+        });
     });
 </script>
 @endsection

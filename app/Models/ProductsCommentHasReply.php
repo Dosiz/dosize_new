@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogComment extends Model
+class ProductsCommentHasReply extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function blog()
+    public function product()
     {
-        return $this->belongsTo(Blog::class,'blog_id','id');
+        return $this->belongsTo(Product::class,'product_id','id');
     }
 
     public function user()
@@ -21,8 +21,8 @@ class BlogComment extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function b_comment_reply()
+    public function p_comment()
     {
-        return $this->hasMany(BlogsCommentHasReply::class);
+        return $this->belongsTo(ProductComment::class,'product_comment_id','id');
     }
 }

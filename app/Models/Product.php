@@ -26,4 +26,14 @@ class Product extends Model
         return $this->belongsTo(SubCategory::class,'sub_category_id','id');
     }
 
+    public function product_comment()
+    {
+        return $this->hasMany(ProductComment::class);
+    }
+
+    public function products_comment_reply()
+    {
+        return $this->hasMany(ProductsCommentHasReply::class);
+    }
+
 }

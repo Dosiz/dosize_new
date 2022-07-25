@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogComment extends Model
+class BlogsCommentHasReply extends Model
 {
     use HasFactory;
 
@@ -21,8 +21,8 @@ class BlogComment extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function b_comment_reply()
+    public function b_comment()
     {
-        return $this->hasMany(BlogsCommentHasReply::class);
+        return $this->belongsTo(BlogComment::class,'blog_comment_id','id');
     }
 }

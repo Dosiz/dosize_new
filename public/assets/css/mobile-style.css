@@ -1116,6 +1116,7 @@ header .article_header .heart_tag_message_list ul li span {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .article_content_main .formDiv form input {
@@ -1679,6 +1680,15 @@ footer ul li.active:before {
     color: var(--whiteColor);
     padding: 15px;
     border-radius: 10px;
+}
+
+.post_comment .comment_hearder button {
+    font-family: ploniBold;
+    background-color: var(--categoryTextColor);
+    color: var(--whiteColor);
+    padding: 15px;
+    border-radius: 10px;
+    border: 0;
 }
 
 .post_comment .comment_hearder .anonymous_text {

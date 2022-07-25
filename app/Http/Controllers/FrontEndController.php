@@ -16,7 +16,10 @@ use App\Models\BrandsHasAddress;
 use App\Models\BrandsHasCity;
 use Illuminate\Support\Facades\Redirect;
 use DB;
-use App\Models\BrandMessage;
+use Auth;
+use App\Models\BrandMessage;  
+use App\Models\BlogComment;  
+use App\Models\ProductComment;  
 use App\Models\BrandsMessageHasCity;
 
 class FrontEndController extends Controller
@@ -69,8 +72,9 @@ class FrontEndController extends Controller
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
-        // dd($blog->category->name);
-        return view('frontend.article',compact('blog','products','categories'));
+        $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
+        // dd($blog_comments);
+        return view('frontend.article',compact('blog','products','categories','blog_comments'));
     }  
 
     public function product_detail($product_id)
@@ -79,7 +83,66 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
         $blogs = Blog::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
+        $product_comments = ProductComment::where('product_id',$product_id)->orderBy('id','DESC')->get();
         // dd($products);
-        return view('frontend.product',compact('product','products','blogs','categories'));
+        return view('frontend.product',compact('product','products','blogs','categories','product_comments'));
     }  
+
+    public function store_blog_comment(Request $request)    
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $this->validate($request,[ 
+            'comment'=>'required', 
+
+        ]);
+        $blog_comment = new BlogComment;
+        
+        if($request->name == 'on')
+        {
+            $blog_comment->name = 'anonymous';
+        }
+        elseif($user_id)
+        {
+            $blog_comment->user_id = $user_id;
+        }
+        else
+        {
+            $blog_comment->name = 'anonymous';
+        }
+        $blog_comment->comment = $request->comment;
+        $blog_comment->blog_id  = $request->blog_id;
+        $blog_comment->save();
+       
+        return response()->json(['success'=>'Blog Comment saved successfully']);
+    }
+
+    public function store_product_comment(Request $request)    
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $this->validate($request,[ 
+            'comment'=>'required', 
+
+        ]);
+        $product_comment = new ProductComment;
+        
+        if($request->name == 'on')
+        {
+            $product_comment->name = 'anonymous';
+        }
+        elseif($user_id)
+        {
+            $product_comment->user_id = $user_id;
+        }
+        else
+        {
+            $product_comment->name = 'anonymous';
+        }
+        $product_comment->comment = $request->comment;
+        $product_comment->product_id  = $request->product_id;
+        $product_comment->save();
+       
+        return response()->json(['success'=>'Product Comment saved successfully']);
+    }
 }

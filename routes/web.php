@@ -22,6 +22,12 @@ Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landin
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
 
+// blog comment
+Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment');
+
+// product comment
+Route::post('/store_product_comment',[App\Http\Controllers\FrontEndController::class, 'store_product_comment'])->name('store-product-comment');
+
 //blog and product comment 
 Route::post('/blog_comment', [App\Http\Controllers\FrontEndController::class, 'blog_comment'])->name('blog-comment');
 
