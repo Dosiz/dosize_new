@@ -45,14 +45,16 @@
                                         class="img-fluid mobile_hide">
                                 </li>
                                 <li>
-                                    <span>11</span>
-                                    <img src="{{ asset('assets/img/mobile_component/fillHeart.png') }}" alt=""
-                                        class="img-fluid">
+                                    <span>11 </span>
+                                    <!-- <img src="{{ asset('assets/img/mobile_component/fillHeart.png') }}" alt=""
+                                        class="img-fluid"> -->
+                                    <span id="heart" class="nav_ftn_icon"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                 </li>
                                 <li>
                                     <span></span>
-                                    <img src="{{ asset('assets/img/mobile_component/fillTag.png') }}" alt=""
-                                        class="img-fluid">
+                                    <!-- <img src="{{ asset('assets/img/mobile_component/fillTag.png') }}" alt=""
+                                        class="img-fluid"> -->
+                                    <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
                                 </li>
                             </ul>
                         </div>

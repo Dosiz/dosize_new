@@ -19,6 +19,10 @@
         max-width: none;
     }
 
+    .deals .multiple_deals .deals_box img {
+        height: 140px;
+    }
+
     .sliderDivDes {
         padding: 20px 40px 80px;
         background-color: #F6F6F6;

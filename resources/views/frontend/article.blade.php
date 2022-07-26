@@ -190,7 +190,7 @@ Articles
                     <div class="col-lg-12">
                         <div class="post_comment">
                             <div class="total_comment">
-                                <p class="font-size-16">תגובות <span>(33)</span> <img
+                                <p class="font-size-16">תגובות<span>(33)</span> <img
                                         src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                         class="img-fluid"></p>
                             </div>
@@ -216,13 +216,33 @@ Articles
                                 <ul>
                                     @if(count($blog_comments) > 0)
                                     @foreach($blog_comments as $comment)
+                                    <div>
                                     <li>
-                                        <p class="add_comment font-size-12">הוספת תגובה</p>
+                                        <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
                                         <div class="user_detail">
                                             <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                             <p class="font-size-14">{{$comment->comment}}</p>
                                         </div>
                                     </li>
+                                    <div class="formDiv replyForm">
+                                        <form id="blog_comment">
+                                            @csrf
+                                            <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                            <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                                class="text-right font-size-16">
+                                            
+                                            <div class="comment_hearder">
+                                                <button type="submit" class="font-size-16">פירסום תגובה</button>
+                                                <div class="anonymous_text font-size-16">אנונימי <span
+                                                        class="checkBox">
+                                                        <input type="checkbox" name="name" id="approve">
+                                                        </span></div>
+                                            </div>
+                                            <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
+                                         </form>
+                                        </div>
+                                             
+                                    </div>
                                     @endforeach
                                     @endif
                                 </ul>
@@ -375,6 +395,14 @@ Articles
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
 <script>
+
+    // reply functionality
+    $('.replyForm').fadeOut();
+    $('.add_comment').click(function(e){
+        e.preventDefault();
+        $(this).parent().parent().children('.replyForm').fadeToggle();
+    })
+
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll >= 10) {
