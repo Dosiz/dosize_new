@@ -148,4 +148,52 @@ class FrontEndController extends Controller
        
         return response()->json(['success'=>'Product Comment saved successfully']);
     }
+
+    public function brand_profile($brand_id)
+    {
+        $cities = City::get();
+        $brand_profile = BrandProfile::with('category','user')->where('id',$brand_id)->first();
+        $brand_products = Product::where('brand_profile_id',$brand_id)->get();
+        $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
+        $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
+        $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
+
+        // dd($blog_1,$blog_2,$blog_3);
+        return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request,[ 
+            'f_name'=>'required', 
+            'l_name'=>'required', 
+            'email'=>'required', 
+            'phone'=>'required',  
+            'subject'=>'required',  
+        ]);
+        try {
+        $contact_us= new ContactUs;
+        $contact_us->f_name = $request->f_name;
+        $contact_us->l_name = $request->l_name;
+        $contact_us->email = $request->email;
+        $contact_us->phone = $request->phone;
+        $contact_us->subject = $request->subject;
+        $contact_us->brand_profile_id = $request->id;
+        $contact_us->save();
+            return Redirect::back();
+        } catch (\Exception $exception) {
+            // dd($exception->getMessage());
+            return Redirect::back();
+        }
+    }
+
+    public function articles($brand_id)
+    {
+        $cities = City::get();
+        $categories = Category::get();
+        $brand_profile = BrandProfile::where('id',$brand_id)->first();
+        $blogs = Blog::where('brand_profile_id',$brand_id)->where('status',1)->get();
+        return view('frontend.articles',compact('blogs','brand_profile','cities','categories'));
+    }
+
 }
