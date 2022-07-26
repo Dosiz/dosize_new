@@ -157,9 +157,10 @@ class FrontEndController extends Controller
         $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
         $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
         $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
+        $categories = Category::get();
 
         // dd($blog_1,$blog_2,$blog_3);
-        return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities'));
+        return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
     }
 
     public function store(Request $request)
@@ -193,7 +194,16 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $brand_profile = BrandProfile::where('id',$brand_id)->first();
         $blogs = Blog::where('brand_profile_id',$brand_id)->where('status',1)->get();
-        return view('frontend.articles',compact('blogs','brand_profile','cities','categories'));
+        return view('frontend.brand_articles',compact('blogs','brand_profile','cities','categories'));
+    }
+
+    public function products($brand_id)
+    {
+        $cities = City::get();
+        $categories = Category::get();
+        $brand_profile = BrandProfile::where('id',$brand_id)->first();
+        $products = Product::where('brand_profile_id',$brand_id)->where('status',1)->get();
+        return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
     }
 
 }
