@@ -189,6 +189,21 @@ main {
     border-radius: 20px;
 }
 
+.nav_ftn_icon i {
+    font-size: 16px;
+    margin-left: 4px;
+    transition: .2;
+    cursor: pointer;
+}
+
+.nav_ftn_icon#heart.active i {
+    color: #DB1580;
+}
+
+.nav_ftn_icon#save.active i {
+    color: #f4ae00;
+}
+
 main .main-wrapper {
     width: 86%;
     height: 100%;
@@ -340,8 +355,7 @@ header .desktop_menu .desktop_menu_body .auth_button .enrollemnt_button {
     color: var(--whiteColor) !important;
 }
 
-.enrollemnt_button 
-{
+.enrollemnt_button {
     cursor: pointer;
 }
 
