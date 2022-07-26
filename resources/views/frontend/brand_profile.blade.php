@@ -6,7 +6,6 @@ Dosize
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/impact/style.css') }}">
 @endpush
 @section('content')
 

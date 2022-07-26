@@ -14,6 +14,7 @@ use App\Models\BrandProfile;
 use App\Models\BrandsHasSubCategory;
 use App\Models\BrandsHasAddress;
 use App\Models\BrandsHasCity;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Auth;
@@ -76,8 +77,9 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
+        $cities = City::get();
         // dd($recomanded_blogs);
-        return view('frontend.article',compact('blog','products','categories','blog_comments','recomanded_blogs'));
+        return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs'));
     }  
 
     public function product_detail($product_id)
@@ -87,14 +89,16 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
         $product_comments = ProductComment::where('product_id',$product_id)->orderBy('id','DESC')->get();
-        // dd($recomanded_products);    
-        return view('frontend.product',compact('product','products','recomanded_products','categories','product_comments'));
+        $cities = City::get();
+        // dd($recomanded_products);   
+        return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments'));
     }  
 
     public function store_blog_comment(Request $request)    
     {
         // dd($request->all());
         $user_id = Auth::id();
+        $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
             'comment'=>'required', 
 
@@ -104,26 +108,27 @@ class FrontEndController extends Controller
         if($request->name == 'on')
         {
             $blog_comment->name = 'anonymous';
-        }
-        elseif($user_id)
-        {
-            $blog_comment->user_id = $user_id;
+            $blog_user_name = 'anonymous';
         }
         else
         {
-            $blog_comment->name = 'anonymous';
+            $blog_comment->user_id = $user_id;
+            $blog_user_name = $user->name;
         }
         $blog_comment->comment = $request->comment;
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
+
+
        
-        return response()->json(['success'=>'Blog Comment saved successfully']);
+        return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
     }
 
     public function store_product_comment(Request $request)    
     {
         // dd($request->all());
         $user_id = Auth::id();
+        $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
             'comment'=>'required', 
 
@@ -133,20 +138,18 @@ class FrontEndController extends Controller
         if($request->name == 'on')
         {
             $product_comment->name = 'anonymous';
-        }
-        elseif($user_id)
-        {
-            $product_comment->user_id = $user_id;
+            $product_user_name = 'anonymous';
         }
         else
         {
-            $product_comment->name = 'anonymous';
+            $product_comment->user_id = $user_id;
+            $product_user_name = $user->name;
         }
         $product_comment->comment = $request->comment;
         $product_comment->product_id  = $request->product_id;
         $product_comment->save();
        
-        return response()->json(['success'=>'Product Comment saved successfully']);
+        return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
     }
 
     public function brand_profile($brand_id)
