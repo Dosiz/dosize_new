@@ -15,6 +15,32 @@
         </div>
     </div>
 
+<!-- Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+    </div> -->
+    <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="search" class="sr-only">Password</label>
+                        <input type="Search" class="form-control" id="search" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Search</button>
+                </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
     <div class="modal fade" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content " id="sign_up_modal">
