@@ -44,7 +44,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">חיפוש <img src="{{asset('assets/img/mobile_search.png') }}" alt=""
+                    <a href=""  data-toggle="modal" data-target="#searchModal">חיפוש<img src="{{asset('assets/img/mobile_search.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
             </ul>
@@ -106,3 +106,9 @@
         </div>
     </div>
 </div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchModal">
+  Launch demo modal
+</button> -->
+

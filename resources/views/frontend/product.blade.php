@@ -7,6 +7,7 @@ Course - Details
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
+<!-- <link rel="stylesheet" href="{{asset('assets/star-rating-svg-master/thumb-slider.css') }}"> -->
 <style>
     .mobile_header {
         display: none;
@@ -217,31 +218,44 @@ Course - Details
                 <div class="col-xl-8">
                     <div class="post_comment">
                         <div class="total_comment">
-                            <p>
+                            <!-- <p>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                            </p>
+                            </p> -->
+                            <ul>
+                            <li>
+                                    <span>
+                                        <div class="rating">
+                                            <input type="radio" id="field1_star5" name="bedside_manner_rating" value="5" /><label class = "full" for="field1_star5"></label>
+                                                <input type="radio" id="field1_star4" name="bedside_manner_rating" value="4" /><label class = "full" for="field1_star4"></label>
+                                                <input type="radio" id="field1_star3" name="bedside_manner_rating" value="3" /><label class = "full" for="field1_star3"></label>
+                                                <input type="radio" id="field1_star2" name="bedside_manner_rating" value="2" /><label class = "full" for="field1_star2"></label>
+                                                <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
+                                            </div>
+                                        </span>
+                             </li>                        
+                        </ul>
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
                             </p>
                         </div>
-                        <form id="product_comment">
+                        <form id="product_comment" class="d-flex flex-row-reverse align-items-center">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}" />
                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
-                                class="text-right font-size-16 comment_input">
+                                class="text-right font-size-16 comment_input" style="width:">
                                 <span class="text-danger comment_valid" style=""></span>
-                            <div class="comment_hearder">
+                            <div class="comment_hearder mr-4">
                                 @guest
-                                <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
                                 @else
                                 <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
                                 @endguest
-                                <div class="anonymous_text font-size-16">אנונימי 
+                                <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
                                     <span class="checkBox">
                                         <input type="checkbox" name="name" id="approve">
                                     </span></div>
@@ -460,6 +474,17 @@ Course - Details
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
+<script type="text/javascript">
+  $("label").click(function(){
+  // $(this).parent().find("label").css({"background-color": "#D8D8D8"});
+  // $(this).css({"background-color": "#7ED321"});
+  // $(this).nextAll().css({"background-color": "#7ED321"});
+  $(this).prev().attr('checked','checked');
+  $(this).parent().find("label").css({"color": "#D8D8D8"});
+  $(this).css({"color": "#FEA73A"});
+  $(this).nextAll().css({"color": "#FEA73A"});
+});
+</script>
 <script>
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
