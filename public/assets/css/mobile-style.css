@@ -204,6 +204,59 @@ main {
     color: #f4ae00;
 }
 
+/* ==================rating plugin for star============== */
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating>input {
+    display: none;
+}
+
+.rating>label:before {
+    margin-top: 2px;
+    padding: 0px 5px 0px 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating>.half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating>label {
+    float: right;
+    /* /margin: 4px 1px 0px 0px;/ /background-color: #D8D8D8;/ */
+}
+
+/** CSS Magic to Highlight Stars on Hover **/
+
+.rating:not(:checked)>label:hover,
+/* hover current star */
+.rating:not(:checked)>label:hover~label {
+    /* background-color:#7ED321 !important;*/
+    cursor: pointer;
+    color: orange;
+}
+
+/* hover previous stars in list */
+
+.rating>input:checked+label:hover,
+/* hover current star when changing rating */
+.rating>label:hover~input:checked~label,
+/* lighten current selection */
+.rating>input:checked~label:hover~label {
+    /* background-color:#7ED321 !important;*/
+    cursor: pointer;
+    color: yellow;
+}
+
+/* ==================rating plugin end here ============ */
+
 main .main-wrapper {
     width: 86%;
     height: 100%;

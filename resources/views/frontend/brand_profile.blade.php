@@ -6,11 +6,25 @@ Dosize
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<link rel="stylesheet" href="{{asset('assets/css/impact/style.css') }}">
+<style>
+.contactFormDiv .inputdiv input, .contactFormDiv .inputdiv textarea {
+    width: 100%;
+    color: #7B7B7B;
+    background-color: #fff;
+    padding: 18px;
+    box-shadow: 0px 1px 10px rgb(0 0 0 / 10%);
+    border: none;
+    text-align: right;
+    font-size: 16px;
+    font-family: PloniRegular;
+}
+</style>
 @endpush
 @section('content')
 
 <main>
-    <div class="main-wrapper">
+    <div class="main-wrapper mr-auto">
         <div class="categories spacing">
             <div class="container-fluid">
                 <div class="row">
@@ -128,7 +142,7 @@ Dosize
         </div>
 
         <div class="line spacing" style="display: none;"></div>
-            <div class="container-fluid">
+            <div class="container-flui">
                 <!-- <div class="row">
                     <div class="col-12">
                         <h2>מחכים לשמוע ממך </h2>
@@ -136,9 +150,9 @@ Dosize
                 </div> -->
                 <div class="contactInfoDiv container">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="commonContactDiv">
-                                <div class="iconDiv">
+                        <div class="col-md-5 mb-3">
+                            <div class="commonContactDiv bg-white p-2 d-flex align-items-center text-right">
+                                <div class="iconDiv ml-2">
                                     <img src="{{asset('assets/img/user/map.svg')}}" alt="" class="img-fluid">
                                 </div>
                                 <div class="infoDiv">
@@ -148,9 +162,9 @@ Dosize
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="commonContactDiv">
-                                <div class="iconDiv">
+                        <div class="col-md-5 mb-3">
+                            <div class="commonContactDiv bg-white p-2 d-flex align-items-center text-right">
+                                <div class="iconDiv ml-2">
                                     <a href='tel:{{$brand_profile->phone}}'><img src="{{asset('assets/img/user/call.svg')}}" alt="" id="for_phone" class="img-fluid"></a>
                                 </div>
                                 <div class="infoDiv">
@@ -160,9 +174,9 @@ Dosize
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="commonContactDiv">
-                                <div class="iconDiv">
+                        <div class="col-md-5 mb-2">
+                            <div class="commonContactDiv p-2 bg-white d-flex align-items-center text-right">
+                                <div class="iconDiv ml-2">
                                     <a href='mailto:{{$brand_profile->business_email}}'><img src="{{asset('assets/img/user/message.svg')}}" alt="" id="for_email" class="img-fluid"></a>
                                 </div>
                                 <div class="infoDiv">
@@ -173,9 +187,9 @@ Dosize
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="commonContactDiv">
-                                <div class="iconDiv">
+                        <div class="col-md-5 mb-3">
+                            <div class="commonContactDiv bg-white p-2 d-flex align-items-center text-right">
+                                <div class="iconDiv ml-2">
                                     <img src="{{asset('assets/img/user/message.svg')}}" alt="" class="img-fluid">
                                 </div>
                                 <div class="infoDiv">
@@ -266,44 +280,48 @@ Dosize
                     </div>
                 </div>
                 @endif
-                <div class="contactFormDiv">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="formDiv">
-                                <h3>צור איתנו קשר </h3>
-                                <form action="{{ route('contact_us.store') }}" method="post" >
-                                    @csrf
-                                    <div class="d-flex">
-                                        <div class="inputdiv">
-                                            <input type="text" name="f_name" id="f_name" value="" placeholder="שם">
-                                            <input type="hidden" name="id" id="id" value="{{$brand_profile->id}}" placeholder="שם">
-                                            <div style="color:red;">{{$errors->first('f_name')}}</div> <br>
+                <div class="container-flui">
+                    <div class="contactFormDiv">
+                        <div class="row mx-0 align-items-center">
+                            <div class="col-md-7">
+                                <div class="formDiv">
+                                    <h3 class="text-right mb-2">צור איתנו קשר </h3>
+                                    <form action="{{ route('contact_us.store') }}" method="post" >
+                                        @csrf
+                                        <div class="d-flex">
+                                            <div class="inputdiv ml-3">
+                                                <input type="text" name="f_name" id="f_name" value="" placeholder="שם">
+                                                <input type="hidden" name="id" id="id" value="{{$brand_profile->id}}" placeholder="שם">
+                                                <div style="color:red;">{{$errors->first('f_name')}}</div> <br>
+                                            </div>
+                                            <div class="inputdiv ml-3">
+                                                <input type="text" name="l_name" id="l_name" value="" placeholder="נושא">
+                                                <div style="color:red;">{{$errors->first('l_name')}}</div> <br>
+                                            </div>
                                         </div>
-                                        <div class="inputdiv">
-                                            <input type="text" name="l_name" id="l_name" value="" placeholder="נושא">
-                                            <div style="color:red;">{{$errors->first('l_name')}}</div> <br>
+                                        <div class="d-flex">
+                                            <div class="inputdiv ml-3">
+                                                <input type="email" name="email" id="email" value="" placeholder="אימייל">
+                                                <div style="color:red;">{{$errors->first('email')}}</div> <br>
+                                            </div>
+                                            <div class="inputdiv ml-3">
+                                                <input type="number" name="phone" id="phone" value="" placeholder="מספר טלפון">
+                                                <div style="color:red;">{{$errors->first('phone')}}</div> <br>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <div class="inputdiv">
-                                            <input type="email" name="email" id="email" value="" placeholder="אימייל">
-                                            <div style="color:red;">{{$errors->first('email')}}</div> <br>
-                                        </div>
-                                        <div class="inputdiv">
-                                            <input type="number" name="phone" id="phone" value="" placeholder="מספר טלפון">
-                                            <div style="color:red;">{{$errors->first('phone')}}</div> <br>
-                                        </div>
-                                    </div>
-                                    <div class="inputdiv" style="width: 100%; margin: 18px 0px 0px;">
-                                            <textarea name="subject" id="subject" cols="30" rows="10" placeholder="תוכן ההודעה "></textarea>
-                                        </div>
-                                        <button style="submit" class="commonBtn" style="background-color:#30e84f !important;">שלח</button>
-                                </form>
+                                        <div class="inputdiv" style="width: 100%; margin: 18px 0px 0px;">
+                                                <textarea name="subject" id="subject" cols="30" rows="10" placeholder="תוכן ההודעה "></textarea>
+                                            </div>
+                                            <div class="d-flex jutify-content-end mt-2">
+                                                <button style="submit" class="commonBtn" style="background-color:#30e84f !important;">שלח</button>
+                                            </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="imgDiv">
-                                <img src="{{asset('assets/img/user/contactUs.svg')}}" alt="">
+                            <div class="col-md-5">
+                                <div class="imgDiv">
+                                    <img src="{{asset('assets/img/user/contactUs.svg')}}" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
