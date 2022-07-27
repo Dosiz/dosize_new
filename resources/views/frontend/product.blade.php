@@ -202,7 +202,7 @@ Course - Details
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
                         <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt="" class="img-fluid">
-                        <a class="font-size-16" href="">לעמוד המותג</a>
+                        <a class="font-size-16" href="{{route('brand-profile',$product->brand_profile_id)}}">לעמוד המותג</a>
                         <a class="font-size-16" href="">שליחת הודעה</a>
                     </div>
                 </div>

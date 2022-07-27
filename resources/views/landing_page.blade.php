@@ -335,13 +335,14 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
+                                            
                                             <img src="{{asset('category/'.$product_category->image ?? '')}}" width="60px" height="50px">
                                             <h3 class="common_title"> {{ $product_category->name ?? ''}}<img
                                                     src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                     class="img-fluid">
                                             </h3>
                                             <span class="read_more">
-                                                <a href="" class="font-size-12 font-weight-400">
+                                                <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" class="font-size-12 font-weight-400">
                                                     כתבות ביגוד והנעלה</a> </span>
                                         </div>
                                     </div>
@@ -541,6 +542,7 @@ Dosize
                                 <div class="row">
                                     <div class="col-lg-12 text-right">
                                         <div class="header_cloth">
+                                            
                                             <img src="{{asset('category/'.$product_category->image)}}" width="60px" height="50px">
                                             <h3 class="common_title">  {{ $product_category->name}} <img
                                                     src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""

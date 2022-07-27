@@ -362,8 +362,9 @@ class FrontEndController extends Controller
         ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(blog_likes.id) as totallikes'))
         ->where('blogs_has_cities.city_id',$city_id)
         ->where('categories.id',$category_id)
+        ->limit(6)
         ->get();
-
+        // dd($blogs);
 
         $brands_recomanded_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -378,6 +379,25 @@ class FrontEndController extends Controller
 
         // dd($products);
         return view('frontend.city_category',compact('cities','categories','discount_products','products','brands_recomanded_products','blogs'));
+    }
+
+    public function category_article_detail($category_id,$city_id = 2)
+    {
+        $categories = Category::get();
+        $cities = City::get();
+
+        $blogs = DB::table('blogs_has_cities')
+        ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        ->Join('categories', 'categories.id', '=', 'blogs.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
+        ->Join('blog_likes', 'blog_likes.blog_id', '=', 'blogs.id')
+        ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(blog_likes.id) as totallikes'))
+        ->where('blogs_has_cities.city_id',$city_id)
+        ->where('categories.id',$category_id)
+        ->get();
+
+        // dd($products);
+        return view('frontend.city_category_article_detail',compact('cities','categories','blogs'));
     }
 
 }

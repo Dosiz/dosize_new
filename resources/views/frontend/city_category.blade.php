@@ -108,7 +108,7 @@ Category By city
             </div>
         </div>
         @endif
-        @if(count($blogs) > 0)
+        @if(count($blogs) > 0 && $blogs['0']->id != null)
         <div class="affordable_consumption spacing">
             <div class="container-fluid">
                 <div class="row">
