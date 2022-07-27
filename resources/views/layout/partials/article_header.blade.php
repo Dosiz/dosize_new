@@ -38,7 +38,11 @@
                         <div class="heart_tag_message_list">
                             <ul>
                                 <li>
-                                    <span>33</span>
+                                    @if(count($blog_comments) > 0)
+                                    <span class="like_count"> {{count($blog_comments)}} </span>
+                                    @else
+                                    <span class="like_count"> 0 </span>
+                                    @endif
                                     <img src="{{ asset('assets/img/mobile_component/notificationIcon.png') }}" alt=""
                                         class="img-fluid desktop_hide">
                                     <img src="{{ asset('assets/img/mobile_component/white_notification.png') }}" alt=""
@@ -47,18 +51,36 @@
                                 <li>
                                     <form id="">
                                         @csrf
-                                        <span>11 </span>
+                                        @if(count($blog_likes) > 0)
+                                        <span class="like_count"> {{count($blog_likes)}} </span>
+                                        @else
+                                        <span class="like_count"> 0 </span>
+                                        @endif
                                         {{-- <img src="{{ asset('assets/img/mobile_component/fillHeart.png') }}" alt="" --}}
                                             {{-- class="img-fluid"> --}}
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                        @if($blog_like)
+                                        <span id="heart" class="nav_ftn_icon cursor-pointer blog_like active"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                        @else 
                                         <span id="heart" class="nav_ftn_icon cursor-pointer blog_like"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                        @endif
                                     </form>
                                 </li>
                                 <li>
-                                    <span></span>
-                                    <!-- <img src="{{ asset('assets/img/mobile_component/fillTag.png') }}" alt=""
-                                        class="img-fluid"> -->
-                                    <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                                    <form id="">
+                                        @csrf
+                                        @if(count($blog_bookmarks) > 0)
+                                        <span class="bookmark_count"> {{count($blog_bookmarks)}} </span>
+                                        @else
+                                        <span class="bookmark_count"> 0 </span>
+                                        @endif
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                        @if($blog_bookmark)
+                                        <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark blog_bookmark active" aria-hidden="true"></i></span>
+                                        @else
+                                        <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark blog_bookmark" aria-hidden="true"></i></span>
+                                        @endif
+                                    </form>
                                 </li>
                             </ul>
                         </div>

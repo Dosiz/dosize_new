@@ -1,4 +1,4 @@
-@extends('layout.product')
+@extends('layout.article')
 @section('title')
 Articles
 @endsection
@@ -197,7 +197,7 @@ Articles
                             <div class="formDiv">
                                 <form id="blog_comment">
                                     @csrf
-                                    <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                    <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
                                     
@@ -229,9 +229,10 @@ Articles
                                         </div>
                                     </li>
                                     <div class="formDiv replyForm">
-                                        <form id="blog_comment">
+                                        <form action="{{ route('store-blog-comment-reply') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                            <input type="hidden" name="blog_comment_id" value="{{$comment->id ?? ''}}" />
                                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                                 class="text-right font-size-16">
                                             
@@ -260,6 +261,7 @@ Articles
                 </div>
             </div>
         </div>
+        @if(count($recomanded_blogs) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
@@ -305,6 +307,7 @@ Articles
                 </div>
             </div>
         </div>
+        @endif
         <!-- main footer -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">
@@ -624,6 +627,68 @@ $(document).ready(function() {
             $("header .mobile_header").css("display", "none");
         }
     });
+
+    $('.blog_like').click(function(e){
+        e.preventDefault();
+        var blog_id = $('.blog_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-blog-comment-like') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                blog_id:blog_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Blog Like Removed')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum-=1)
+                }
+                else if(data.success == 'Blog Like successfully')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });   
+
+    $('.blog_bookmark').click(function(e){
+        e.preventDefault();
+        var blog_id = $('.blog_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-blog-bookmark') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                blog_id:blog_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Blog Bookmark Removed')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum-=1)
+                }
+                else if(data.success == 'Blog Bookmark Successfully')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }); 
 
     $('#blog_comment').submit(function(e){
         e.preventDefault();

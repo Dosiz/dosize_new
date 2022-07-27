@@ -23,7 +23,10 @@ use App\Models\BlogComment;
 use App\Models\ProductComment;  
 use App\Models\BrandsMessageHasCity; 
 use App\Models\RecomendedProduct;  
-use App\Models\RecomendedBlog;  
+use App\Models\RecomendedBlog;   
+use App\Models\BlogsCommentHasReply;    
+use App\Models\BlogLike;    
+use App\Models\BlogBookmark;    
 
 class FrontEndController extends Controller
 {
@@ -78,8 +81,21 @@ class FrontEndController extends Controller
         $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
         $cities = City::get();
+        $blog_likes =BlogLike::where('blog_id',$blog_id)->get();
+        $blog_bookmarks =BlogBookmark::where('blog_id',$blog_id)->get();
+        $user = User::where('id',Auth::id())->first();
+        if($user)
+        {
+            $blog_like =BlogLike::where('blog_id',$blog_id)->where('user_id',$user->id)->first();
+            $blog_bookmark =BlogBookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->first();
+            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+        }
+        else{
+            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes'));
+        }
+        
         // dd($recomanded_blogs);
-        return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs'));
+        
     }  
 
     public function product_detail($product_id)
@@ -123,6 +139,37 @@ class FrontEndController extends Controller
        
         return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
     }
+
+    public function store_blog_comment_reply(Request $request)    
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $user = User::where('id',Auth::id())->first();
+        $this->validate($request,[ 
+            'comment'=>'required', 
+
+        ]);
+        $blog_comment_reply = new BlogsCommentHasReply;
+        
+        if($request->name == 'on')
+        {
+            $blog_comment_reply->name = 'anonymous';
+        }
+        else
+        {
+            $blog_comment_reply->user_id = $user_id;
+        }
+        $blog_comment_reply->comment = $request->comment;
+        $blog_comment_reply->blog_comment_id = $request->blog_comment_id;
+        $blog_comment_reply->blog_id  = $request->blog_id;
+        $blog_comment_reply->save();
+
+
+       
+        return Redirect::back();
+    }
+
+    
 
     public function store_product_comment(Request $request)    
     {
@@ -207,6 +254,48 @@ class FrontEndController extends Controller
         $brand_profile = BrandProfile::where('id',$brand_id)->first();
         $products = Product::where('brand_profile_id',$brand_id)->where('status',1)->get();
         return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
+    }
+
+    public function store_blog_comment_like(Request $request)
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $blog = BlogLike::where('user_id',$user_id)->where('blog_id',$request->blog_id)->first();
+        // dd($blog);
+        if($blog)
+        {
+            BlogLike::where('id',$blog->id)->delete();
+            return response()->json(['success'=>'Blog Like Removed']);
+        }
+        else{
+            $blog_like= new BlogLike;
+            $blog_like->blog_id = $request->blog_id;
+            $blog_like->user_id = $user_id;
+            $blog_like->save();
+            return response()->json(['success'=>'Blog Like successfully']);
+        }
+        // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
+    }
+
+    public function store_blog_bookmark(Request $request)
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $blog = BlogBookmark::where('user_id',$user_id)->where('blog_id',$request->blog_id)->first();
+        // dd($blog);
+        if($blog)
+        {
+            BlogBookmark::where('id',$blog->id)->delete();
+            return response()->json(['success'=>'Blog Bookmark Removed']);
+        }
+        else{
+            $blog_bookmark= new BlogBookmark;
+            $blog_bookmark->blog_id = $request->blog_id;
+            $blog_bookmark->user_id = $user_id;
+            $blog_bookmark->save();
+            return response()->json(['success'=>'Blog Bookmark Successfully']);
+        }
+        // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
     }
 
 }
