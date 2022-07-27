@@ -39,9 +39,9 @@
                             <ul>
                                 <li>
                                     @if(count($blog_comments) > 0)
-                                    <span class="comment_count"> {{count($blog_comments)}} </span>
+                                    <span class="blog_comment_count"> {{count($blog_comments)}} </span>
                                     @else
-                                    <span class="comment_count"> 0 </span>
+                                    <span class="blog_comment_count"> 0 </span>
                                     @endif
                                     <img src="{{ asset('assets/img/mobile_component/notificationIcon.png') }}" alt=""
                                         class="img-fluid desktop_hide">
