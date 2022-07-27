@@ -91,7 +91,9 @@ class FrontEndController extends Controller
             return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes'));
+            $blog_bookmark = null;
+            $blog_like = null;
+            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
         }
         
         // dd($recomanded_blogs);
