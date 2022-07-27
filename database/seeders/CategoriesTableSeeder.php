@@ -32,5 +32,17 @@ class CategoriesTableSeeder extends Seeder
             'image' => '35465764.png',
             'category_order_id' => '3',
         ]);
+
+        Category::create([
+            'name' => 'Food',
+            'image' => '35465764.png',
+            'category_order_id' => '4',
+        ]);
+
+        Category::create([
+            'name' => 'Software',
+            'image' => '35465764.png',
+            'category_order_id' => '3',
+        ]);
     }
 }

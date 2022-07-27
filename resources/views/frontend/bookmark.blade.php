@@ -23,11 +23,12 @@ Dosize
                                 @foreach($categories as $key=>$category)
                               
                                 <div class="category_box swiper-slide">
-                       
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    <a href="{{route('category_by_city',$category->id)}}" style="color:#212529">
+                                        <div class="img_box box_shahdow">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                        </div>
+                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    </a>
                                 </div>
                                 @endforeach
                                 @endif

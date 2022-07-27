@@ -313,6 +313,46 @@ class FrontEndController extends Controller
         
         // dd($recomanded_blogs);
         
-    }  
+    } 
+    
+    public function category($category_id,$city_id = 5)
+    {
+        $categories = Category::get();
+        $cities = City::get();
+
+        $discount_products = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->Join('categories', 'categories.id', '=', 'products.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('products.*','brand_profiles.brand_name')
+        ->where('products_has_cities.city_id',$city_id)
+        ->where('categories.id',$category_id)
+        ->where('products.discount_price','!=', null)
+        ->get();
+
+        $products = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->Join('categories', 'categories.id', '=', 'products.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('products.*','brand_profiles.brand_name')
+        ->where('products_has_cities.city_id',$city_id)
+        ->where('categories.id',$category_id)
+        ->where('products.discount_price','==', null)
+        ->get();
+
+        $brands_recomanded_products = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->Join('categories', 'categories.id', '=', 'products.category_id')
+        ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('products.*','brand_profiles.brand_name')
+        ->where('products_has_cities.city_id',$city_id)
+        ->where('categories.id',$category_id)
+        ->where('products.discount_price','==', null)
+        ->get();
+
+        // dd($brands_recomanded_products);
+        return view('frontend.city_category',compact('cities','categories','discount_products','products','brands_recomanded_products'));
+    }
 
 }
