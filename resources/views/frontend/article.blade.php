@@ -715,6 +715,10 @@ $(document).ready(function() {
                 $('.comment_input').val('');
                 let commentNum = Number($('.blog_comment_count').text())
                 $('.blog_comment_count').text(commentNum+=1)
+
+                let commentsNum = Number($('.comment_count').text())
+                $('.comment_count').text(commentsNum+=1)
+
                 $('.close').click();
                  
             },
