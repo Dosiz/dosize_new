@@ -224,7 +224,7 @@ Course - Details
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </p>
-                            <p class="font-size-16">תגובות <span>(33)</span> <img
+                            <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
                             </p>
@@ -233,19 +233,24 @@ Course - Details
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}" />
                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
-                                class="text-right font-size-16">
+                                class="text-right font-size-16 comment_input">
+                                <span class="text-danger comment_valid" style=""></span>
                             <div class="comment_hearder">
-                                <button type="submit" class="font-size-16">פירסום תגובה</button>
+                                @guest
+                                <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                @else
+                                <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                @endguest
                                 <div class="anonymous_text font-size-16">אנונימי 
                                     <span class="checkBox">
                                         <input type="checkbox" name="name" id="approve">
                                     </span></div>
                             </div>
-                            <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
+                            
                         </form>
 
                         <div class="comment_list">
-                            <ul>
+                            <ul class="new_comment_list">
                                 @if(count($product_comments) > 0)
                                 @foreach($product_comments as $comment)
                                 <li>
@@ -404,7 +409,51 @@ Course - Details
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
+                                    class="img-fluid">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
+                                    class="img-fluid">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
+                                    class="img-fluid">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
+                                    class="img-fluid">
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="copy_input">
+                        <i class="fa fa-clone" aria-hidden="true"></i>
+                        <input type="text" name="copy_text" id="copy_text"
+                            value="https://dossiz-vmnlvb/dfv.co.il" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 @endsection
 @section('script')
@@ -435,6 +484,17 @@ Course - Details
             cache: false,
             success: function (data) {
                 console.log("Success");
+                $('.new_comment_list').prepend(`<li>
+                                        <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
+                                        <div class="user_detail">
+                                            <h4 class="font-size-14">${data.name} </h4>
+                                            <p class="font-size-14">${data.comment}</p>
+                                        </div>
+                                    </li>`);
+
+                $('.comment_input').val('');
+                let commentNum = Number($('.product_comment_count').text())
+                $('.product_comment_count').text(commentNum+=1)
                 $('.close').click();
                  
             },
@@ -445,6 +505,86 @@ Course - Details
                 else{
                     $('.comment_valid').text('');
                 }
+            }
+        });
+    });
+
+    
+$(document).ready(function() {
+        $('#login-modal').fadeOut()
+        $("#signup_btn").click(function(e) {
+            e.preventDefault();
+            $('#sign_up_modal').fadeOut()
+            $('#login-modal').fadeIn()
+        });
+        $("#login_btn").click(function(e) {
+            e.preventDefault();
+            $('#sign_up_modal').fadeIn()
+            $('#login-modal').fadeOut()
+        });
+    });
+
+    
+
+    $('#sign_up_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('register') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("Success");
+                $('.close').click();
+                window.location.href="/dosiz/public";
+                 
+            },
+            error: function (data) {
+                    $('.name_valid').text(data?.responseJSON?.errors?.name);
+                    $('.email_valid').text(data?.responseJSON?.errors?.email);
+                    $('.city_valid').text(data?.responseJSON?.errors?.city_id);
+                    $('.password_valid').text(data?.responseJSON?.errors?.password);
+            }
+        });
+    });
+
+    $('#login_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('login') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                // console.log(data);
+                $('.close').click();
+                window.location.href="/dosiz/public/dashboard/dashboard";
+                 
+            },
+            error: function (data) {
+                console.log('Error:', data.responseJSON);
+                if($('#email').val() == ''){
+                    $('.email_valid').text(data.responseJSON.errors.email);
+                }
+                else{
+                    $('.email_valid').text('');
+                }
+                if($('#password').val() == ''){
+                    $('.password_valid').text(data.responseJSON.errors.password);
+                }
+                else{
+                    $('.password_valid').text('');
+                }
+                
+                
             }
         });
     });

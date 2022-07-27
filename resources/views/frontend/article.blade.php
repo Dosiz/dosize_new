@@ -1,4 +1,4 @@
-@extends('layout.product')
+@extends('layout.article')
 @section('title')
 Articles
 @endsection
@@ -190,19 +190,23 @@ Articles
                     <div class="col-lg-12">
                         <div class="post_comment">
                             <div class="total_comment">
-                                <p class="font-size-16">תגובות<span>(33)</span> <img
+                                <p class="font-size-16">תגובות(<span class="blog_comment_count">{{count($blog_comments)}}</span> )<img
                                         src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                         class="img-fluid"></p>
                             </div>
                             <div class="formDiv">
                                 <form id="blog_comment">
                                     @csrf
-                                    <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                    <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
-                                        class="text-right font-size-16">
+                                        class="text-right font-size-16 comment_input">
                                     
                                     <div class="comment_hearder">
-                                        <button type="submit" class="font-size-16">פירסום תגובה</button>
+                                        @guest
+                                        <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                        @else
+                                        <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                        @endguest
                                         <div class="anonymous_text font-size-16">אנונימי <span
                                                 class="checkBox">
                                                 <input type="checkbox" name="name" id="approve">
@@ -213,7 +217,7 @@ Articles
                             </div>
 
                             <div class="comment_list">
-                                <ul>
+                                <ul class="new_comment_list">
                                     @if(count($blog_comments) > 0)
                                     @foreach($blog_comments as $comment)
                                     <div>
@@ -225,14 +229,19 @@ Articles
                                         </div>
                                     </li>
                                     <div class="formDiv replyForm">
-                                        <form id="blog_comment">
+                                        <form action="{{ route('store-blog-comment-reply') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                            <input type="hidden" name="blog_comment_id" value="{{$comment->id ?? ''}}" />
                                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                                 class="text-right font-size-16">
                                             
                                             <div class="comment_hearder">
-                                                <button type="submit" class="font-size-16">פירסום תגובה</button>
+                                                @guest
+                                                <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                                @else
+                                                <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                                @endguest
                                                 <div class="anonymous_text font-size-16">אנונימי <span
                                                         class="checkBox">
                                                         <input type="checkbox" name="name" id="approve">
@@ -252,6 +261,7 @@ Articles
                 </div>
             </div>
         </div>
+        @if(count($recomanded_blogs) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
@@ -297,6 +307,7 @@ Articles
                 </div>
             </div>
         </div>
+        @endif
         <!-- main footer -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">
@@ -390,11 +401,214 @@ Articles
         </div>
     </div>
 </main>
+
+<div class="modal fade" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content " id="sign_up_modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="formDiv">
+                    <form id="sign_up_form">
+                        @csrf
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">שם</label>
+                            <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <span class="text-danger name_valid"></span>
+                        </div>
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">עיר</label>
+                            <select name="city_id" id="city_id">
+                                <option selected disabled value="">בחר מתוך הרשימה</option>
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}"> {{$city->name}} </option>
+                                @endforeach
+                            </select>
+                            <span class="text-danger city_valid"></span>
+                        </div>
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">דוא”ל</label>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                            <span class="text-danger email_valid"></span>
+                        </div>
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">סיסמה</label>
+                            <div class="password_div">
+                                <input id="password" type="password" name="password" required autocomplete="new-password">
+                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                <span class="text-danger password_valid"></span>
+                            </div>
+                        </div>
+                        <div class="checkBox_div">
+                            <input type="checkbox" name="" id="approve" checked>
+                            <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
+                        </div>
+                        <div class="checkBox_div">
+                            <input type="checkbox" name="" id="policy" checked>
+                            <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
+                                המערכת...</label>
+                        </div>
+                        <button type="submit" class="font-size-16">הרשמה</button>
+                        <div class="sign_up_with">
+                            <h6 class="text-center">או הרשם עם</h6>
+                            <div class="signup_btn">
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="" id="signup_btn" class="text-dark">
+                                <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content" id="login-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">התחברות</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="formDiv">
+                    <form id="login_form">
+                        @csrf
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">דוא”ל</label>
+                            <input id="email" type="email" name="email" required value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <span class="text-danger email_valid"></span>
+                        </div>
+                        <div class="inputDiv">
+                            <label for="" class="font-size-16">סיסמה</label>
+                            <div class="password_div">
+                                <input id="password" type="password" name="password" required autocomplete="current-password">
+                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                <span class="text-danger password_valid"></span>
+                            </div>
+                        </div>
+                        <button type="submit" class="font-size-16"> הרשמה </button>
+                        <div class="sign_up_with">
+                            <h6 class="text-center">התחברו עם </h6>
+                            <div class="signup_btn">
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                                <a href="">
+                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
+                                        class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-4">
+                            <a href="" id="login_btn" class="text-dark">
+                            </b> אין לכם חשבון? לחצו כאן להרשמה > </b>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
 @endsection
 @section('script')
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
 <script>
+
+$(document).ready(function() {
+        $('#login-modal').fadeOut()
+        $("#signup_btn").click(function(e) {
+            e.preventDefault();
+            $('#sign_up_modal').fadeOut()
+            $('#login-modal').fadeIn()
+        });
+        $("#login_btn").click(function(e) {
+            e.preventDefault();
+            $('#sign_up_modal').fadeIn()
+            $('#login-modal').fadeOut()
+        });
+    });
+
+    
+
+    $('#sign_up_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('register') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("Success");
+                $('.close').click();
+                window.location.href="/dosiz/public";
+                 
+            },
+            error: function (data) {
+                    $('.name_valid').text(data?.responseJSON?.errors?.name);
+                    $('.email_valid').text(data?.responseJSON?.errors?.email);
+                    $('.city_valid').text(data?.responseJSON?.errors?.city_id);
+                    $('.password_valid').text(data?.responseJSON?.errors?.password);
+            }
+        });
+    });
+
+    $('#login_form').submit(function(e){
+        e.preventDefault();
+        $('.main-wrapper').addClass('active');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('login') }}",
+            data: new FormData(this),
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                // console.log(data);
+                $('.close').click();
+                window.location.href="/dosiz/public/dashboard/dashboard";
+                 
+            },
+            error: function (data) {
+                console.log('Error:', data.responseJSON);
+                if($('#email').val() == ''){
+                    $('.email_valid').text(data.responseJSON.errors.email);
+                }
+                else{
+                    $('.email_valid').text('');
+                }
+                if($('#password').val() == ''){
+                    $('.password_valid').text(data.responseJSON.errors.password);
+                }
+                else{
+                    $('.password_valid').text('');
+                }
+                
+                
+            }
+        });
+    });
 
     // reply functionality
     $('.replyForm').fadeOut();
@@ -414,6 +628,68 @@ Articles
         }
     });
 
+    $('.blog_like').click(function(e){
+        e.preventDefault();
+        var blog_id = $('.blog_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-blog-comment-like') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                blog_id:blog_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Blog Like Removed')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum-=1)
+                }
+                else if(data.success == 'Blog Like successfully')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });   
+
+    $('.blog_bookmark').click(function(e){
+        e.preventDefault();
+        var blog_id = $('.blog_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-blog-bookmark') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                blog_id:blog_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Blog Bookmark Removed')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum-=1)
+                }
+                else if(data.success == 'Blog Bookmark Successfully')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }); 
+
     $('#blog_comment').submit(function(e){
         e.preventDefault();
         
@@ -426,7 +702,19 @@ Articles
             contentType: false,
             cache: false,
             success: function (data) {
-                console.log("Success");
+                // console.table(data);
+                // console.table(data.comment);
+                $('.new_comment_list').prepend(`<li>
+                                        <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
+                                        <div class="user_detail">
+                                            <h4 class="font-size-14">${data.name} </h4>
+                                            <p class="font-size-14">${data.comment}</p>
+                                        </div>
+                                    </li>`);
+                
+                $('.comment_input').val('');
+                let commentNum = Number($('.blog_comment_count').text())
+                $('.blog_comment_count').text(commentNum+=1)
                 $('.close').click();
                  
             },
