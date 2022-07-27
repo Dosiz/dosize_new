@@ -1,0 +1,392 @@
+/* media queries for different screens */
+@media (min-width: 1600px) {
+
+    .team_table td,
+    .team_table td h6 {
+        font-size: 20px;
+    }
+
+    .team_table th {
+        font-size: 20px;
+    }
+
+    .big_leaque .secodary_logo {
+        font-size: 58px;
+    }
+
+    .secondary_nav .inner_content {
+        padding: 0 90px;
+    }
+
+    .form_drafPlayer input,
+    .form_drafPlayer input:focus {
+        width: 333px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .btn_grey {
+        padding: 5px 20px;
+        font-size: 20px;
+    }
+
+    .timer_clock {
+        font-size: 58px;
+    }
+
+    .set_timer_setting .link img {
+        height: 24px;
+    }
+
+    .specific_player .team_title {
+        font-size: 20px;
+    }
+
+    .specific_player .player_firstname {
+        font-size: 60px;
+        line-height: 50px;
+    }
+
+    .specific_player .player_secondname {
+        font-size: 20px;
+    }
+
+    .nav .logo {
+        font-size: 28px;
+        line-height: 30px;
+    }
+
+    .nav_dark .page_links .link {
+        font-size: 18px;
+    }
+
+    .nav_dark .right_links .btn {
+        width: 170px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .nav_dark .icon_link img {
+        width: 30px;
+    }
+
+    td span.first {
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .team_table td .head {
+        font-size: 21px;
+    }
+
+    .team_table th {
+        font-size: 22px;
+    }
+
+    .team_table .team_num {
+        font-size: 24px;
+    }
+
+    .timer_setting_model h2 {
+        font-size: 21px;
+    }
+
+    .timer_setting_model {
+        width: 261px;
+    }
+
+    .timer_setting_model p {
+        font-size: 17px;
+        line-height: 33px;
+    }
+
+    .timer_setting_model .time_label {
+        font-size: 17px;
+    }
+
+    .timer_setting_model .timer_input {
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .tgl-light+.tgl-btn {
+        width: 44px;
+        height: 18px;
+    }
+
+    .timer_setting_model .btn_green {
+        font-size: 18px;
+        padding: 4px;
+    }
+
+    .leaque_box_body .nav-tabs .nav-link {
+        font-size: 15px;
+        padding: 6px 10px;
+
+    }
+
+    .leaque_box_body td .ply_des {
+        font-size: 14px;
+    }
+
+    .leaque_box_body td .ply_name {
+        font-size: 18px;
+    }
+
+    .leaque_box_body td .btn {
+        width: 55px;
+        height: 23px;
+        font-size: 13px;
+    }
+
+    .leaque_box_body td .ply_img {
+        width: 34px;
+        height: 34px;
+        margin: 0 9px;
+    }
+
+    .leaque_box_body th,
+    .leaque_box_body td {
+        font-size: 16px;
+    }
+
+    .leaque_box_body .select_mem .title {
+        font-size: 25px;
+    }
+
+    .leaque_box_body .ply_des {
+        font-size: 16px;
+    }
+
+    .modal-body label {
+        font-size: 21px;
+    }
+
+    .input_grey,
+    .input_grey:focus {
+        font-size: 18px;
+        height: 50px;
+    }
+
+    td .teamNum {
+        font-size: 16px;
+    }
+
+    .clock_team .teamNote {
+        font-size: 20px;
+    }
+
+    .section_para.ex {
+        font-size: 20px;
+    }
+
+    .timer_clock {
+        font-size: 60px;
+    }
+
+    #leaqueBox.active {
+        height: 475px;
+    }
+
+    .leaque_box_body .table-responsive {
+        height: 368px;
+    }
+
+    .leaque_box_body .select_mem .player_position {
+        height: 342px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .inner_content {
+        padding: 0 24px;
+    }
+}
+
+@media (max-width: 991px) {
+    .leaque_box_body .box_sm {
+        width: 100%;
+    }
+
+    .leaque_box_body .box_lg {
+        width: 100%;
+    }
+
+    .leaque_box_body .chat_box {
+        margin-bottom: 20px;
+    }
+
+    .leaque_box_body .chat_box img {
+        width: 100%;
+    }
+
+    .big_leaque .secodary_logo {
+        position: relative;
+        top: 20px;
+    }
+
+    .push_top {
+        margin-top: 0;
+    }
+
+    .push_top_lg {
+        margin-top: 0;
+    }
+
+}
+
+@media (max-width: 720px) {
+
+    img {
+        max-width: 100%;
+    }
+
+    .inner_content {
+        padding: 0 20px;
+    }
+
+    .main .form form {
+        padding: 16px 7px;
+    }
+
+    .nav .logo {
+        font-size: 17px;
+        line-height: 19px;
+    }
+
+    .main .form form .form-control {
+        height: 48px;
+        padding: 10px 40px 10px 11px;
+    }
+
+    .main .group_input {
+        margin-bottom: 20px;
+    }
+
+    .main .form .btn.btn_outline {
+        font-size: 12px;
+        padding: 7px 16px;
+    }
+
+    .main form .login_btn {
+        margin-top: 22px;
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    .forgot_pas {
+        font-size: 14px;
+    }
+
+    .draf_room_box {
+        padding: 26px 25px;
+    }
+
+    .create_leaque_section input:not(input[type=radio], .qty) {
+        margin-left: 0 !important;
+        margin-top: 12px;
+    }
+
+    .create_leaque_section .input-field {
+        margin-left: 0 !important;
+        margin-top: 13px;
+    }
+
+    .create_leaque_section .input-group {
+        margin-bottom: 25px;
+    }
+
+    .roaster_setting .text_content {
+        flex-direction: column;
+    }
+
+    .draf_room_box .nav-tabs {
+        width: auto;
+        flex-wrap: nowrap !important;
+        overflow: auto;
+    }
+
+    .draf_room_content .section_para {
+        font-size: 16px;
+    }
+
+    .draf_room_box .nav-tabs .nav-link {
+        margin-bottom: 20px;
+    }
+
+    .draf_room_box .nav-tabs {
+        flex-direction: column;
+    }
+
+    .invisible {
+        display: none !important;
+    }
+
+    td,
+    th {
+        min-width: 100px;
+    }
+
+    .account_setting .league_setting .input,
+    .account_setting .url_input {
+        margin-left: 0 !important;
+    }
+
+    .setting_main form {
+        max-width: 96%;
+    }
+
+    .account_setting .url_input {
+        width: 100%;
+    }
+
+    .roaster_setting .simpleColorDisplay {
+        /* display: none; */
+        width: 20px !important;
+        height: 20px !important;
+        margin-left: 10px !important;
+    }
+
+    .form_drafPlayer form {
+        flex-direction: column;
+    }
+
+    .form_drafPlayer form .btn {
+        margin-top: 15px;
+    }
+
+    .leaque_box_body {
+        padding: 30px 0px;
+    }
+
+    .leaque_box_body .nav-tabs .nav-link {
+        font-size: 11px;
+        margin-right: 9px;
+        margin-bottom: 10px;
+    }
+
+    .leaque_box_body .first_elem {
+        min-width: 188px;
+    }
+
+    .readyTo_join_box .btn_outline {
+        padding: 15px 73px;
+    }
+
+    .footer_link {
+        margin: 0 9px !important;
+    }
+
+    .clock_team {
+        margin: 0;
+    }
+
+    #leaqueBox.active {
+        overflow: auto;
+        height: 50%;
+    }
+
+    #app-cover {
+        display: none;
+    }
+}

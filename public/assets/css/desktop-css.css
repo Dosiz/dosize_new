@@ -1,0 +1,303 @@
+@media (min-width: 1024px) {
+    .product_div {
+        display: flex;
+    }
+
+    .d-xl-flex {
+        display: flex !important;
+    }
+
+    .swiper-backface-hidden .swiper-slide {
+        max-height: 544px;
+    }
+
+    .font-size-14 {
+        font-size: 16px;
+    }
+
+    .deals .multiple_deals .deals_box {
+        max-width: none;
+    }
+
+    .deals .multiple_deals .deals_box img {
+        height: 140px;
+    }
+
+    .sliderDivDes {
+        padding: 20px 40px 80px;
+        background-color: #F6F6F6;
+        margin-bottom: 0;
+    }
+
+    .btn-swiper::after,
+    .btn-swiper::before {
+        display: none;
+    }
+
+    .btn-swiper i {
+        font-size: 50px;
+        color: #DB1580;
+    }
+
+    .btn-swiper.swiper-button-disabled {
+        opacity: 1 !important;
+    }
+
+    .btn-swiper.swiper-button-disabled i {
+        color: #C4C4C4;
+    }
+
+    .sign_up_div {
+        direction: ltr;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .sign_up_div p {
+        width: 100%;
+        text-align: left;
+    }
+
+    .sign_up_div p br {
+        display: none;
+    }
+
+    .container_desk {
+        padding: 12px 40px;
+        background-color: #F6F6F6;
+    }
+
+    .bg_color {
+        background-color: #F6F6F6;
+    }
+
+    body {
+        background: transparent;
+    }
+
+    .deals .slider_div {
+        padding: 0 20px;
+    }
+
+    /* main .main-wrapper {
+        width: 89%;
+    } */
+
+    .font-size-12 {
+        font-size: 16px;
+    }
+
+    .common_title {
+        font-size: 28px;
+    }
+
+    .content_div .font-size-10 {
+        font-size: 14px;
+    }
+
+    .total_comment .font-size-16 {
+        font-size: 22px;
+    }
+
+    .post_comment .comment_list ul li {
+        padding: 25px 0px;
+    }
+
+    header .desktop_menu .desktop_menu_body {
+        padding: 33px 11px;
+    }
+
+    .desktop_menu .desktop_menu_body .enrollemnt_button {
+        margin-right: -3px;
+    }
+
+    .search_clothFoot {
+        background-color: transparent;
+    }
+
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 33%;
+    }
+
+    .affordable_consumption .affordable_consumption_list.d-flex {
+        flex-wrap: wrap;
+    }
+
+    .affordable_consumption {
+        background-color: #F6F6F6;
+        margin-bottom: 0;
+    }
+
+    .archive .deal_category {
+        position: absolute;
+        right: 5px;
+        top: 20px;
+    }
+
+    .bazaar_cards h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .btn.signForClub {
+        font-size: 16px;
+        outline: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .btn.signForClub {
+        background-color: transparent;
+        outline: none;
+    }
+
+    .bazaar_cards .titleImg {
+        width: 100px;
+    }
+
+    .noteBox {
+        padding: 14px;
+        background-color: #ffff;
+        border-radius: 10px;
+    }
+
+    .noteBox p {
+        font-size: 11px;
+    }
+
+    .noteBox img {
+        width: 30px;
+    }
+
+    .noteBox .hotFlashes,
+    .noteBox .hotFlashes:focus {
+        background: linear-gradient(270deg, #DB1580 6.7%, #F5A41A 93.3%);
+        border-radius: 30px 0px 0px 30px;
+        color: #fff;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        font-size: 18px;
+        font-weight: 700;
+        box-shadow: none !important;
+    }
+
+    .noteBox .hotFlashes img {
+        width: 15px;
+    }
+
+    .article_slider .slider_div .multiple_articles img {
+        height: auto;
+    }
+
+    .search_clothFoot .input_search {
+        width: 200%;
+    }
+
+    .search_clothFoot .input_search input {
+        height: 43px;
+    }
+
+    .arch_product p {
+        font-size: 22px;
+    }
+
+    .main_footer .btn {
+        width: 150px;
+    }
+
+    #enrollmentModal .modal-dialog {
+        height: 95%;
+    }
+
+    header .desktop_menu .desktop_menu_body .desktop_menu_list li,
+    header .desktop_menu .dektop_mobile_menu_body ul li {
+        margin: 0px 0px 12px;
+    }
+
+    header .desktop_menu .desktop_menu_body .line {
+        margin: 16px 0px;
+    }
+
+    header .desktop_menu .logout_user {
+        margin-top: 45px;
+    }
+
+    #enrollmentModal .formDiv button {
+        padding: 9px 0px;
+    }
+
+    #enrollmentModal .formDiv .checkBox_div {
+        margin-bottom: 0;
+    }
+
+}
+
+@media (min-width: 1500px) {
+    .container_desk {
+        padding: 0 80px;
+    }
+
+    .sliderDivDes {
+        padding: 20px 80px 80px;
+    }
+
+    main .main-wrapper {
+        width: 84%;
+    }
+
+    .archive .sliderDivDes {
+        padding: 20px 16px 80px;
+    }
+
+    .bazaar_cards h3 {
+        font-size: 30px;
+    }
+
+    .btn.signForClub {
+        font-size: 18px;
+    }
+
+
+    .noteBox p {
+        font-size: 11px;
+    }
+
+    .multiple_afforable_consumption .affordable_consumption_box {
+        width: 24%;
+    }
+
+    .slider_div {
+        background-color: #F6F6F6;
+    }
+
+    .search_clothFoot .input_search {
+        width: 240%;
+    }
+
+    .search_clothFoot .input_search input {
+        height: 60px;
+    }
+
+    .main_footer .btn {
+        width: 170px;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .form-inline .form-control {
+        display: inline-block;
+        min-width: 300px;
+    }
+
+    .commentBTN {
+        width: 150px;
+    }
+}
