@@ -296,4 +296,8 @@
         display: inline-block;
         min-width: 300px;
     }
+
+    .commentBTN {
+        width: 150px;
+    }
 }
