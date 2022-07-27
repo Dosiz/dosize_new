@@ -162,7 +162,7 @@ Dosize
                                 </a>
                                 <div class="content_div">
                                     <a href="">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
@@ -172,7 +172,7 @@ Dosize
                                         {!! substr($blog->description, 0,  30) !!}  
                                     </p>
                                     </a>
-                                    <span class="font-size-12">4 <i class="fa fa-heart"
+                                    <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>

@@ -125,7 +125,7 @@ Route::get('archive-message', function () {
     return view('frontend.archive_message');
 });
 
-Route::get('archive-category', function () {
+Route::get('archive/category', function () {
     return view('frontend.archive.category');
 });
 

@@ -61,7 +61,17 @@ class FrontEndController extends Controller
         })
         ->get();
         
-        $blogs = Blog::with('brandprofile')->where('status', '1')->get();
+        $blogs = $blogs = DB::table('blogs_has_cities')
+        ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
+        ->Join('blog_likes', 'blog_likes.blog_id', '=', 'blogs.id')
+        ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(blog_likes.id) as totallikes'))
+        ->where('blogs_has_cities.city_id','2')
+        // ->where('categories.id',$category_id)
+        ->get();
+
+        // dd($blogs);
 
         $products_by_categories = Category::with('product','brandprofile')
                     ->orderBy('category_order_id', 'ASC')
@@ -315,7 +325,7 @@ class FrontEndController extends Controller
         
     } 
     
-    public function category($category_id,$city_id = 5)
+    public function category($category_id,$city_id = 2)
     {
         $categories = Category::get();
         $cities = City::get();
@@ -337,8 +347,19 @@ class FrontEndController extends Controller
         ->select('products.*','brand_profiles.brand_name')
         ->where('products_has_cities.city_id',$city_id)
         ->where('categories.id',$category_id)
-        ->where('products.discount_price','==', null)
+        ->where('products.discount_price','=', null)
         ->get();
+
+        $blogs = DB::table('blogs_has_cities')
+        ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        ->Join('categories', 'categories.id', '=', 'blogs.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
+        ->Join('blog_likes', 'blog_likes.blog_id', '=', 'blogs.id')
+        ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(blog_likes.id) as totallikes'))
+        ->where('blogs_has_cities.city_id',$city_id)
+        ->where('categories.id',$category_id)
+        ->get();
+
 
         $brands_recomanded_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -351,8 +372,8 @@ class FrontEndController extends Controller
         ->where('products.discount_price','==', null)
         ->get();
 
-        // dd($brands_recomanded_products);
-        return view('frontend.city_category',compact('cities','categories','discount_products','products','brands_recomanded_products'));
+        // dd($products);
+        return view('frontend.city_category',compact('cities','categories','discount_products','products','brands_recomanded_products','blogs'));
     }
 
 }

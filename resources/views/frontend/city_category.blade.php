@@ -41,7 +41,7 @@ Category By city
                 </div>
             </div>
         </div>
-
+        @if(count($discount_products) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
             <div class="container-fluid">
@@ -107,6 +107,48 @@ Category By city
                 </div>
             </div>
         </div>
+        @endif
+        @if(count($blogs) > 0)
+        <div class="affordable_consumption spacing">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <h3 class="common_title">צרכנות משתלמת <img
+                                src="{{asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                            @if(count($blogs) > 0)
+                            @foreach($blogs as $blog)
+                            <div class="affordable_consumption_box box_shahdow">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid">
+                                <div class="content_div">
+                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                    <h4 class="font-size-12 font-weight-700">
+                                        {{$blog->title}}
+                                    </h4>
+                                    <p class="discription font-size-10 font-weight-400">
+                                        {!! $blog->description !!}
+                                    </p>
+                                    <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                            <!-- <a href="" class="desktop_hide d-none learn_more font-size-12 font-weight-400">לכל
+                                הכתבות ></a> -->
+                        </div>
+                        <div class="more_btn mt-4 d-flex justify-content-center">
+                            <a href="#" class="btn btn_outline_grey">עוד כתבות</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
 
         <div class="line spacing"></div>
