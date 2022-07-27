@@ -19,6 +19,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+Route::get('/brand/messages',[App\Http\Controllers\FrontEndController::class, 'messages'])->name('messages');
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
 Route::get('/brand-profile/{brand_id}',[App\Http\Controllers\FrontEndController::class, 'brand_profile'])->name('brand-profile');

@@ -301,6 +301,10 @@ class FrontEndController extends Controller
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
     }
+    public function messages()
+    {
+        return view('brand.message.index');
+    }
 
     public function bookmarks()
     {
