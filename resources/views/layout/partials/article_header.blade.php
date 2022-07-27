@@ -76,7 +76,7 @@
                                         @endif
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                         @if($blog_bookmark)
-                                        <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark blog_bookmark active" aria-hidden="true"></i></span>
+                                        <span id="save" class="nav_ftn_icon active"><i class="fa fa-bookmark blog_bookmark " aria-hidden="true"></i></span>
                                         @else
                                         <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark blog_bookmark" aria-hidden="true"></i></span>
                                         @endif
@@ -163,7 +163,7 @@
                                 class="img-fluid"></a>
                     </li>
                     <li>
-                        <a href="">שמורים <img src="{{ asset('assets/img/tag_icon.png') }}" alt="" class="img-fluid"></a>
+                        <a href="{{route('bookmarks')}}">שמורים <img src="{{ asset('assets/img/tag_icon.png') }}" alt="" class="img-fluid"></a>
                     </li>
                     <li>
                         <a href="">הודעות <img src="{{ asset('assets/img/message_icon.png') }}" alt=""

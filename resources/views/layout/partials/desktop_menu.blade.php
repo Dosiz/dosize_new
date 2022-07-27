@@ -36,7 +36,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">שמורים <img src="{{asset('assets/img/tag_icon.png') }}" alt=""
+                    <a href="{{route('bookmarks')}}">שמורים <img src="{{asset('assets/img/tag_icon.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>

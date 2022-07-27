@@ -25,8 +25,8 @@ use App\Models\BrandsMessageHasCity;
 use App\Models\RecomendedProduct;  
 use App\Models\RecomendedBlog;   
 use App\Models\BlogsCommentHasReply;    
-use App\Models\BlogLike;    
-use App\Models\BlogBookmark;    
+use App\Models\Like;    
+use App\Models\Bookmark;    
 
 class FrontEndController extends Controller
 {
@@ -81,13 +81,13 @@ class FrontEndController extends Controller
         $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
         $cities = City::get();
-        $blog_likes =BlogLike::where('blog_id',$blog_id)->get();
-        $blog_bookmarks =BlogBookmark::where('blog_id',$blog_id)->get();
+        $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
+        $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
         $user = User::where('id',Auth::id())->first();
         if($user)
         {
-            $blog_like =BlogLike::where('blog_id',$blog_id)->where('user_id',$user->id)->first();
-            $blog_bookmark =BlogBookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->first();
+            $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
+            $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
@@ -262,15 +262,16 @@ class FrontEndController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
-        $blog = BlogLike::where('user_id',$user_id)->where('blog_id',$request->blog_id)->first();
+        $blog = Like::where('user_id',$user_id)->where('blog_id',$request->blog_id)->where('name','Article')->first();
         // dd($blog);
         if($blog)
         {
-            BlogLike::where('id',$blog->id)->delete();
+            Like::where('id',$blog->id)->where('name','Article')->delete();
             return response()->json(['success'=>'Blog Like Removed']);
         }
         else{
-            $blog_like= new BlogLike;
+            $blog_like= new Like;
+            $blog_like->name = 'Article';
             $blog_like->blog_id = $request->blog_id;
             $blog_like->user_id = $user_id;
             $blog_like->save();
@@ -283,15 +284,16 @@ class FrontEndController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
-        $blog = BlogBookmark::where('user_id',$user_id)->where('blog_id',$request->blog_id)->first();
+        $blog = Bookmark::where('user_id',$user_id)->where('blog_id',$request->blog_id)->where('name','Article')->first();
         // dd($blog);
         if($blog)
         {
-            BlogBookmark::where('id',$blog->id)->delete();
+            Bookmark::where('id',$blog->id)->where('name','Article')->delete();
             return response()->json(['success'=>'Blog Bookmark Removed']);
         }
         else{
-            $blog_bookmark= new BlogBookmark;
+            $blog_bookmark= new Bookmark;
+            $blog_bookmark->name = 'Article';
             $blog_bookmark->blog_id = $request->blog_id;
             $blog_bookmark->user_id = $user_id;
             $blog_bookmark->save();
@@ -299,5 +301,18 @@ class FrontEndController extends Controller
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
     }
+
+    public function bookmarks()
+    {
+        $categories = Category::get();
+        $cities = City::get();
+        $likes =Like::with('blog')->where('user_id' , Auth::id())->get();
+        $bookmarks =Bookmark::with('blog')->where('user_id' , Auth::id())->get();
+        // dd($bookmarks,Auth::id());
+        return view('frontend.bookmark',compact('cities','categories','likes','bookmarks'));
+        
+        // dd($recomanded_blogs);
+        
+    }  
 
 }
