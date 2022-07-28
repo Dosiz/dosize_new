@@ -140,6 +140,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @if(count($blogs) > 0 && $blogs['0']->id != null)
         <div class="line spacing"></div>
         <div class="affordable_consumption spacing">
             <div class="container-fluid">
@@ -185,6 +186,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @endif
         <div class="line spacing"></div>
         <div class="order_div spacing">
             <div class="deals deal_one">
