@@ -42,7 +42,7 @@ class CategoriesTableSeeder extends Seeder
         Category::create([
             'name' => 'Software',
             'image' => '35465764.png',
-            'category_order_id' => '3',
+            'category_order_id' => '5',
         ]);
     }
 }

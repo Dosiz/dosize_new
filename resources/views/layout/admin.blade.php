@@ -3,6 +3,7 @@
   <head>
     @include('layout.partials.admin_head')
     <title>@yield('title')</title>
+    @livewireStyles
   </head>
   @if(Route::is(['error-404','error-500']))
   <body class="error-page">
@@ -13,6 +14,7 @@
     @yield('content')
 
     @include('layout.partials.admin_footer_scripts')
+    @livewireScripts
     @yield('js')
   </body>
 </html>
