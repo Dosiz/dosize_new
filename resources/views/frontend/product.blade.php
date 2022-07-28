@@ -37,11 +37,12 @@ Course - Details
                                 @foreach($categories as $key=>$category)
                               
                                 <div class="category_box swiper-slide">
-                       
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                        <div class="img_box box_shahdow">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                        </div>
+                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    </a>
                                 </div>
                                 @endforeach
                                 @endif
@@ -237,18 +238,21 @@ Course - Details
                             @else
                             @if(Auth::user()->hasRole('User'))
                             <ul>
-                            <li>
+                                <li>
                                     <span>
                                         <div class="rating">
                                             <input type="radio" id="field1_star5" name="bedside_manner_rating" value="5" /><label class = "full" for="field1_star5"></label>
-                                                <input type="radio" id="field1_star4" name="bedside_manner_rating" value="4" /><label class = "full" for="field1_star4"></label>
-                                                <input type="radio" id="field1_star3" name="bedside_manner_rating" value="3" /><label class = "full" for="field1_star3"></label>
-                                                <input type="radio" id="field1_star2" name="bedside_manner_rating" value="2" /><label class = "full" for="field1_star2"></label>
-                                                <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
-                                            </div>
-                                        </span>
-                             </li>                        
-                        </ul>
+                                            <input type="radio" id="field1_star4" name="bedside_manner_rating" value="4" /><label class = "full" for="field1_star4"></label>
+                                            <input type="radio" id="field1_star3" name="bedside_manner_rating" value="3" /><label class = "full" for="field1_star3"></label>
+                                            <input type="radio" id="field1_star2" name="bedside_manner_rating" value="2" /><label class = "full" for="field1_star2"></label>
+                                            <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
+                                        </div>
+                                    </span>
+                                </li>                        
+                            </ul>
+                            @else
+                            <ul style="visibility: hidden">
+                            </ul>
                         @endif
                         @endguest
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
@@ -267,11 +271,11 @@ Course - Details
                                 class="text-right font-size-16 comment_input" style="width:">
                                 <span class="text-danger comment_valid" style=""></span>
                             <div class="comment_hearder mr-4">
-                                @guest
+                                @auth
                                 <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
                                 @else
                                 <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
-                                @endguest
+                                @endauth
                                 <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
                                     <span class="checkBox">
                                         <input type="checkbox" name="name" id="approve">
@@ -292,6 +296,8 @@ Course - Details
                                     @else
                                     @if(Auth::user()->hasRole('Brand'))
                                     <p class="add_comment font-size-12">הוספת תגובה</p>
+                                    @else
+                                    <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
                                     @endif
                                     @endguest
                                     <div class="user_detail">
@@ -299,6 +305,7 @@ Course - Details
                                         <p class="font-size-14">{{$comment->comment}}</p>
                                     </div>
                                 </li>
+                                
                                 @endforeach
                                 @endif
                             </ul>
@@ -513,6 +520,12 @@ Course - Details
 });
 </script>
 <script>
+
+$('.replyForm').fadeOut();
+    $('.add_comment').click(function(e){
+        e.preventDefault();
+        $(this).parent().parent().children('.replyForm').fadeToggle();
+    })
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll >= 10) {

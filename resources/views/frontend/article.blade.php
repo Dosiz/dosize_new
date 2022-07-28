@@ -34,11 +34,12 @@ Articles
                                 @foreach($categories as $key=>$category)
                               
                                 <div class="category_box swiper-slide">
-                       
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                        <div class="img_box box_shahdow">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                        </div>
+                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    </a>
                                 </div>
                                 @endforeach
                                 @endif
@@ -239,9 +240,16 @@ Articles
                                     @foreach($blog_comments as $comment)
                                     <div>
                                     <li>
-                                        {{-- @if(Auth::user()->hasRole('Brand')) --}}
+                                        @guest
+                                        <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                        {{-- {{Auth::user()->hasRole('Brand')}} --}}
+                                        @else
+                                        @if(Auth::user()->hasRole('Brand') == 1)
                                         <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
-                                        {{-- @endif --}}
+                                        @else
+                                        <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                        @endif
+                                        @endguest
                                         <div class="user_detail">
                                             <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                             <p class="font-size-14">{{$comment->comment}}</p>

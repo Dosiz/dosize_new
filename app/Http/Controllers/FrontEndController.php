@@ -132,6 +132,7 @@ class FrontEndController extends Controller
         {
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
+            // dd($product_like);
             return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         else{
