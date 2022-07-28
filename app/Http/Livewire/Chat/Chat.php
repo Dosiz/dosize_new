@@ -90,8 +90,8 @@ class Chat extends Component
                     $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
                 }
                 else{
-                    $this->current = null;
-                    $this->messages = null;
+                    $this->current  = "";
+                    $this->messages = [];
                 }
                 return view('livewire.chat.chat');
                 
