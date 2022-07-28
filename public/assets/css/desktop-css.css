@@ -212,7 +212,7 @@
         width: 150px;
     }
 
-    #enrollmentModal .modal-dialog {
+    .enrollmentModel .modal-dialog {
         height: 95%;
     }
 
@@ -229,11 +229,11 @@
         margin-top: 45px;
     }
 
-    #enrollmentModal .formDiv button {
+    .enrollmentModel .formDiv button {
         padding: 9px 0px;
     }
 
-    #enrollmentModal .formDiv .checkBox_div {
+    .enrollmentModel .formDiv .checkBox_div {
         margin-bottom: 0;
     }
 
@@ -299,5 +299,23 @@
 
     .commentBTN {
         width: 150px;
+    }
+
+    .searchInput {
+        width: 80%;
+    }
+
+    .searchInput input {
+        width: 100% !important;
+    }
+
+    #searchModal .modal-content {
+        background: transparent;
+        border: 0;
+    }
+
+    #searchModal {
+        left: 50%;
+        top: 34% !important;
     }
 }
