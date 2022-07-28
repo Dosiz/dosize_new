@@ -81,11 +81,21 @@ class Chat extends Component
                 $user = Auth::user()->id;
                 // check if current user is friend
                 $this->friend = Friend::with('endusers')->where('friend', $user)->get();
-                $receiver = $this->receiver=$this->friend[0]->user;
-                $this->current=User::find($receiver);
-                // get all chats
-                $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
+                if($this->friend)
+                {
+                    $receiver = $this->receiver=$this->friend[0]->user;
+                    
+                    $this->current=User::find($receiver);
+                    // get all chats
+                    $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
+                }
+                else{
+                    $this->current = null;
+                    $this->messages = null;
+                }
                 return view('livewire.chat.chat');
+                
+                
 
             }
             else
