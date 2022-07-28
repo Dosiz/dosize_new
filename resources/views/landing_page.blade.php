@@ -344,7 +344,7 @@ Dosize
                                                     class="img-fluid">
                                             </h3>
                                             <span class="read_more">
-                                                <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" class="font-size-12 font-weight-400">
+                                                <a href="{{route('category_by_city',['category_id'=>$product_category->id,'city_id'=>5])}}" class="font-size-12 font-weight-400">
                                                     כתבות ביגוד והנעלה</a> </span>
                                         </div>
                                     </div>
