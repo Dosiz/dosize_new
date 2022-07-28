@@ -203,6 +203,9 @@ Articles
                                         class="img-fluid"></p>
                             </div>
                             <div class="formDiv">
+                                @guest
+                                @else
+                                @if(Auth::user()->hasRole('User'))
                                 <form id="blog_comment">
                                     @csrf
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
@@ -222,6 +225,8 @@ Articles
                                     </div>
                                     <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
+                                @endif
+                                @endguest
                             </div>
 
                             <div class="comment_list">
@@ -230,7 +235,9 @@ Articles
                                     @foreach($blog_comments as $comment)
                                     <div>
                                     <li>
+                                        {{-- @if(Auth::user()->hasRole('Brand')) --}}
                                         <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
+                                        {{-- @endif --}}
                                         <div class="user_detail">
                                             <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                             <p class="font-size-14">{{$comment->comment}}</p>

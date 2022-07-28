@@ -47,11 +47,20 @@
                                 <li>
                                     <form id="">
                                         @csrf
-                                        <span>11 </span>
+                                        @if(count($product_likes) > 0)
+                                        <span class="like_count"> {{count($product_likes)}} </span>
+                                        @else
+                                        <span class="like_count"> 0 </span>
+                                        @endif
                                         {{-- <img src="{{ asset('assets/img/mobile_component/fillHeart.png') }}" alt="" --}}
                                             {{-- class="img-fluid"> --}}
+                                            
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                                        <span id="heart" class="nav_ftn_icon cursor-pointer blog_like"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                        @if($product_like)
+                                        <span id="heart" class="nav_ftn_icon cursor-pointer product_like active"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                        @else 
+                                        <span id="heart" class="nav_ftn_icon cursor-pointer product_like"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                                        @endif
                                     </form>
                                 </li>
                                 <li>

@@ -231,6 +231,11 @@ Course - Details
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </p> -->
+                            @guest
+                            <ul style="visibility: hidden">
+                            </ul>
+                            @else
+                            @if(Auth::user()->hasRole('User'))
                             <ul>
                             <li>
                                     <span>
@@ -244,22 +249,28 @@ Course - Details
                                         </span>
                              </li>                        
                         </ul>
+                        @endif
+                        @endguest
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
                             </p>
                         </div>
+                        @guest
+                        
+                        @else
+                        @if(Auth::user()->hasRole('User'))
                         <form id="product_comment" class="d-flex flex-row-reverse align-items-center">
                             @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                            <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                 class="text-right font-size-16 comment_input" style="width:">
                                 <span class="text-danger comment_valid" style=""></span>
                             <div class="comment_hearder mr-4">
                                 @guest
-                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
                                 @else
-                                <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
                                 @endguest
                                 <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
                                     <span class="checkBox">
@@ -268,13 +279,21 @@ Course - Details
                             </div>
                             
                         </form>
+                        @endif
+                        @endguest
 
                         <div class="comment_list">
                             <ul class="new_comment_list">
                                 @if(count($product_comments) > 0)
                                 @foreach($product_comments as $comment)
                                 <li>
+                                    @guest
+                                    <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
+                                    @else
+                                    @if(Auth::user()->hasRole('Brand'))
                                     <p class="add_comment font-size-12">הוספת תגובה</p>
+                                    @endif
+                                    @endguest
                                     <div class="user_detail">
                                         <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                         <p class="font-size-14">{{$comment->comment}}</p>
@@ -503,6 +522,68 @@ Course - Details
             $("header .desktop_header").css("display", "block");
             $("header .mobile_header").css("display", "none");
         }
+    });
+
+    $('.product_like').click(function(e){
+        e.preventDefault();
+        var product_id = $('.product_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-product-comment-like') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                product_id:product_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Product Like Removed')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum-=1)
+                }
+                else if(data.success == 'Product Like successfully')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });   
+
+    $('.product_bookmark').click(function(e){
+        e.preventDefault();
+        var product_id = $('.product_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-product-bookmark') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                product_id:product_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Product Bookmark Removed')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum-=1)
+                }
+                else if(data.success == 'Product Bookmark Successfully')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
     });
 
     $('#product_comment').submit(function(e){

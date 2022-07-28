@@ -122,8 +122,23 @@ class FrontEndController extends Controller
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
         $product_comments = ProductComment::where('product_id',$product_id)->orderBy('id','DESC')->get();
         $cities = City::get();
+
+        $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
+        $product_bookmarks =Bookmark::where('product_id',$product_id)->where('name','Product')->get();
+        $user = User::where('id',Auth::id())->first();
+        if($user)
+        {
+            $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
+            $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
+            return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+        }
+        else{
+            $product_like = null;
+            $product_bookmark = null;
+            return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+        }
         // dd($recomanded_products);   
-        return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments'));
+        
     }  
 
     public function store_blog_comment(Request $request)    
@@ -315,6 +330,51 @@ class FrontEndController extends Controller
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
     }
+
+    public function store_product_comment_like(Request $request)
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $product = Like::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Product')->first();
+        // dd($product);
+        if($product)
+        {
+            Like::where('id',$product->id)->where('name','Product')->delete();
+            return response()->json(['success'=>'Product Like Removed']);
+        }
+        else{
+            $product_like= new Like;
+            $product_like->name = 'Product';
+            $product_like->product_id = $request->product_id;
+            $product_like->user_id = $user_id;
+            $product_like->save();
+            return response()->json(['success'=>'Product Like successfully']);
+        }
+        // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
+    }
+
+    public function store_product_bookmark(Request $request)
+    {
+        // dd($request->all());
+        $user_id = Auth::id();
+        $product = Bookmark::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Article')->first();
+        // dd($product);
+        if($product)
+        {
+            Bookmark::where('id',$product->id)->where('name','Product')->delete();
+            return response()->json(['success'=>'Product Bookmark Removed']);
+        }
+        else{
+            $product_bookmark= new Bookmark;
+            $product_bookmark->name = 'Product';
+            $product_bookmark->product_id = $request->product_id;
+            $product_bookmark->user_id = $user_id;
+            $product_bookmark->save();
+            return response()->json(['success'=>'Product Bookmark Successfully']);
+        }
+        // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
+    }
+
     public function messages()
     {
         return view('brand.message.index');

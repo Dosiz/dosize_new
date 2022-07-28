@@ -29,8 +29,14 @@ Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::cla
 // blog comment
 Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment'); 
 Route::post('/store_blog_comment_reply',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_reply'])->name('store-blog-comment-reply'); 
+
+//articles and products like and bookmarks
 Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_like'])->name('store-blog-comment-like'); 
-Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark'); 
+Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark');
+
+Route::post('/store_product_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_product_comment_like'])->name('store-product-comment-like'); 
+Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_product_bookmark'])->name('store-product-bookmark'); 
+
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks'); 
 
 Route::get('/brands/{city_id}',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
