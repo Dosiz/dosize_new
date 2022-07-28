@@ -58,7 +58,7 @@
                         </div>
                         <div class="message_list">
                             <ul>
-                                @if ($messages->count())
+                                @if (count($messages) > 0)
                                  @foreach ($messages as $chat)
                                     @if ($chat->sender_id == Auth::user()->id && $chat->receiver_id == $receiver)
                                     <li>
