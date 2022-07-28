@@ -118,7 +118,7 @@ class BlogController extends Controller
             $blog_city->city_id = $city_id;
             $blog_city->save();
         }
-        return redirect('dashboard/brand/blog');
+        return redirect('/brand/blog');
     }
 
     public function edit($id)

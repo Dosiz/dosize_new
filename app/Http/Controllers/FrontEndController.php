@@ -379,13 +379,15 @@ class FrontEndController extends Controller
 
     public function messages()
     {
+        $cities = City::get();
+        $categories = Category::get();
         $id=$_GET['id'];
         if(Auth::user()->hasRole('Brand'))
         {
-            return view('brand.message.index',compact('id'));
+            return view('brand.message.index',compact('id','cities','categories'));
         }
         else{
-            return view('frontend.messages',compact('id'));
+            return view('frontend.messages',compact('id','cities','categories'));
         }
         
     }
