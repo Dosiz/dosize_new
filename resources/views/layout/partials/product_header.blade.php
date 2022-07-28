@@ -38,7 +38,11 @@
                         <div class="heart_tag_message_list">
                             <ul>
                                 <li>
-                                    <span>33</span>
+                                    @if(count($product_comments) > 0)
+                                    <span class="comment_count"> {{count($product_comments)}} </span>
+                                    @else
+                                    <span class="comment_count"> 0 </span>
+                                    @endif
                                     <img src="{{ asset('assets/img/mobile_component/notificationIcon.png') }}" alt=""
                                         class="img-fluid desktop_hide">
                                     <img src="{{ asset('assets/img/mobile_component/white_notification.png') }}" alt=""
@@ -64,10 +68,22 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <span></span>
+                                    <form id="">
+                                        @csrf
+                                        @if(count($product_bookmarks) > 0)
+                                        <span class="bookmark_count"> {{count($product_bookmarks)}} </span>
+                                        @else
+                                        <span class="bookmark_count"> 0 </span>
+                                        @endif
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                     <!-- <img src="{{ asset('assets/img/mobile_component/fillTag.png') }}" alt=""
                                         class="img-fluid"> -->
-                                    <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                                        @if($product_bookmark)
+                                        <span id="save" class="nav_ftn_icon active"><i class="fa fa-bookmark product_bookmark " aria-hidden="true"></i></span>
+                                        @else
+                                        <span id="save" class="nav_ftn_icon"><i class="fa fa-bookmark product_bookmark" aria-hidden="true"></i></span>
+                                        @endif
+                                    </form>
                                 </li>
                             </ul>
                         </div>

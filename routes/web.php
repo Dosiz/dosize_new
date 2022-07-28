@@ -59,7 +59,7 @@ Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
 Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
 Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
 
-
+});
 
     
 /********************DASHBOARD ROUTES END******************************/
@@ -121,7 +121,6 @@ Route::get('products', function () {
     return view('frontend.product');
 });
 
-});
 
 Route::get('inbox-message', function () {
     return view('frontend.inbox_message');
