@@ -81,7 +81,7 @@ class Chat extends Component
                 $user = Auth::user()->id;
                 // check if current user is friend
                 $this->friend = Friend::with('endusers')->where('friend', $user)->get();
-                if($this->friend[0] == null)
+                if($this->friend == null)
                 {
                     $receiver = $this->receiver=$this->friend[0]->user;
                     
