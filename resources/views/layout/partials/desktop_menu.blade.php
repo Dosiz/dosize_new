@@ -3,11 +3,11 @@
         <img src="{{asset('assets/img/dektopLogo.png') }}" alt="" class="img-fluid">
         <div class="auth_button">
             @if(! isset(Auth::user()->name))
-            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
+            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
             @else
             <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
             @endif
-            <a href="">התחברות</a>
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
             
         </div>
         <div class="desktop_menu_list">
