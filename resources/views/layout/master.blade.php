@@ -16,19 +16,18 @@
     </div>
 
 <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialo" role="document">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-    </div> -->
-    <div class="modal-body">
+      <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+    </div>
+    <div class="modal-body">
                 <form class="form-inline">
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="search" class="sr-only">Password</label>
+                    <div class="form-group searchInput mx-sm-3 mb-2">
+                        <label for="search" class="sr-only">Search</label>
                         <input type="Search" class="form-control" id="search" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Search</button>

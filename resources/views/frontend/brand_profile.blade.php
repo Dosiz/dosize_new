@@ -19,6 +19,20 @@ Dosize
     font-size: 16px;
     font-family: PloniRegular;
 }
+.desktop_menu_body .desktop_menu_list li a, header .desktop_menu .logout_user a {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.mobile_side_menu .auth_button, header .desktop_menu .desktop_menu_body .auth_button {
+    flex-direction: row-reverse;
+}
+@media (min-width: 1024px){
+.main_footer .btn {
+    width: 135px;
+}
+}
 </style>
 @endpush
 @section('content')
@@ -353,11 +367,11 @@ Dosize
                     </div>
                     <div class="col-4">
                         <div class="box px-3 border_Side">
-                            <div class="statments_links d-flex flex-column align-items-end">
-                                <p class="txt">
+                            <div class="statments_links d-flex flex-column">
+                                <p class="txt text-right">
                                     דוסיז משפט הנעה על דוסיז >>
                                 </p>
-                                <div class="btns d-flex mt-4">
+                                <div class="btns d-flex mt-4 flex-row-reverse">
                                     <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>
                                     <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                                 </div>

@@ -300,4 +300,22 @@
     .commentBTN {
         width: 150px;
     }
+
+    .searchInput {
+        width: 80%;
+    }
+
+    .searchInput input {
+        width: 100% !important;
+    }
+
+    #searchModal .modal-content {
+        background: transparent;
+        border: 0;
+    }
+
+    #searchModal {
+        left: 50%;
+        top: 34% !important;
+    }
 }
