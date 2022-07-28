@@ -330,7 +330,7 @@ class FrontEndController extends Controller
         
     } 
     
-    public function category($category_id,$city_id = 2)
+    public function category($category_id,$city_id = 5)
     {
         $categories = Category::get();
         $cities = City::get();
@@ -354,6 +354,7 @@ class FrontEndController extends Controller
         ->where('categories.id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
+
 
         $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
