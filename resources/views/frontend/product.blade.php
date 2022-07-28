@@ -104,7 +104,9 @@ Course - Details
                         </div>
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
+                                <a href="{{route('brand-profile',$product->brand_profile_id)}}" >
                                 <span> {{$product->brandprofile->brand_name }}</span>
+                                </a>
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
@@ -173,13 +175,17 @@ Course - Details
                                 <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="width:100%;">
                             </a>
                             <div class="content_div">
+                                <a  href="{{route('brand-profile',$product->brand_profile_id)}}" >
                                 <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
-                                <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
-                                            class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
+                                </a>
+                                <a href="{{route('product',$product_value->id ?? '')}}" style="color: #212529 !important;">
+                                    <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
+                                    <div class="rating_price_div">
+                                        <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
+                                                class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
+                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         @endforeach
@@ -202,7 +208,7 @@ Course - Details
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
                         <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt="" class="img-fluid">
-                        <a class="font-size-16" href="">לעמוד המותג</a>
+                        <a class="font-size-16" href="{{route('brand-profile',$product->brand_profile_id)}}">לעמוד המותג</a>
                         <a class="font-size-16" href="">שליחת הודעה</a>
                     </div>
                 </div>
@@ -225,6 +231,11 @@ Course - Details
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </p> -->
+                            @guest
+                            <ul style="visibility: hidden">
+                            </ul>
+                            @else
+                            @if(Auth::user()->hasRole('User'))
                             <ul>
                             <li>
                                     <span>
@@ -238,22 +249,28 @@ Course - Details
                                         </span>
                              </li>                        
                         </ul>
+                        @endif
+                        @endguest
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
                             </p>
                         </div>
+                        @guest
+                        
+                        @else
+                        @if(Auth::user()->hasRole('User'))
                         <form id="product_comment" class="d-flex flex-row-reverse align-items-center">
                             @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                            <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                 class="text-right font-size-16 comment_input" style="width:">
                                 <span class="text-danger comment_valid" style=""></span>
                             <div class="comment_hearder mr-4">
                                 @guest
-                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
                                 @else
-                                <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
                                 @endguest
                                 <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
                                     <span class="checkBox">
@@ -262,13 +279,21 @@ Course - Details
                             </div>
                             
                         </form>
+                        @endif
+                        @endguest
 
                         <div class="comment_list">
                             <ul class="new_comment_list">
                                 @if(count($product_comments) > 0)
                                 @foreach($product_comments as $comment)
                                 <li>
+                                    @guest
+                                    <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
+                                    @else
+                                    @if(Auth::user()->hasRole('Brand'))
                                     <p class="add_comment font-size-12">הוספת תגובה</p>
+                                    @endif
+                                    @endguest
                                     <div class="user_detail">
                                         <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                         <p class="font-size-14">{{$comment->comment}}</p>
@@ -305,7 +330,9 @@ Course - Details
                                         <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                            <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        </a>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
                                             {{$recomanded_product->recomended_product->name}}
@@ -495,6 +522,68 @@ Course - Details
             $("header .desktop_header").css("display", "block");
             $("header .mobile_header").css("display", "none");
         }
+    });
+
+    $('.product_like').click(function(e){
+        e.preventDefault();
+        var product_id = $('.product_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-product-comment-like') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                product_id:product_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Product Like Removed')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum-=1)
+                }
+                else if(data.success == 'Product Like successfully')
+                {
+                let likeNum = Number($('.like_count').text())
+                $('.like_count').text(likeNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });   
+
+    $('.product_bookmark').click(function(e){
+        e.preventDefault();
+        var product_id = $('.product_id_like').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-product-bookmark') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "_token": "{{ csrf_token() }}",
+                product_id:product_id} ,
+            cache: false,
+            success: function (data) {
+                console.table(data);
+                if(data.success == 'Product Bookmark Removed')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum-=1)
+                }
+                else if(data.success == 'Product Bookmark Successfully')
+                {
+                let bookmarkNum = Number($('.bookmark_count').text())
+                $('.bookmark_count').text(bookmarkNum+=1)
+                }
+                 
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
     });
 
     $('#product_comment').submit(function(e){

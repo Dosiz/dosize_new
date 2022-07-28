@@ -28,11 +28,21 @@ Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::cla
 // blog comment
 Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment'); 
 Route::post('/store_blog_comment_reply',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_reply'])->name('store-blog-comment-reply'); 
+
+//articles and products like and bookmarks
 Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_like'])->name('store-blog-comment-like'); 
-Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark'); 
+Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark');
+
+Route::post('/store_product_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_product_comment_like'])->name('store-product-comment-like'); 
+Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_product_bookmark'])->name('store-product-bookmark'); 
+
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks'); 
 
-Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city'); 
+Route::get('/brands/{city_id}',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
+Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');
+
+Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city');  
+Route::get('/category_article_detail/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category_article_detail'])->name('category_article_detail');  
 
 // product comment
 Route::post('/store_product_comment',[App\Http\Controllers\FrontEndController::class, 'store_product_comment'])->name('store-product-comment');
@@ -45,12 +55,13 @@ Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::clas
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-    //brand-profile
-    Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
-    Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
+//brand-profile
+Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
+Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
+
+
+
     
-    
-});
 /********************DASHBOARD ROUTES END******************************/
 
 /*****************ADMIN ROUTES*******************/
@@ -110,12 +121,6 @@ Route::get('products', function () {
     return view('frontend.product');
 });
 
-Route::get('brand', function () {
-    return view('frontend.brand');
-});
-
-Route::get('messages', function () {
-    return view('frontend.messages');
 });
 
 Route::get('inbox-message', function () {
@@ -126,7 +131,7 @@ Route::get('archive-message', function () {
     return view('frontend.archive_message');
 });
 
-Route::get('archive-category', function () {
+Route::get('archive/category', function () {
     return view('frontend.archive.category');
 });
 
@@ -134,6 +139,6 @@ Route::get('archive_category', function () {
     return view('frontend.archive.archive_category');
 });
 
-Route::get('wallet', function () {
+Route::get('/brand/wallet', function () {
     return view('frontend.wallet');
 });

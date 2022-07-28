@@ -276,7 +276,7 @@ main .main-wrapper {
     pointer-events: none !important;
 } */
 
-#enrollmentModal .modal-content::-webkit-scrollbar {
+.enrollmentModel .modal-content::-webkit-scrollbar {
     display: none;
 }
 
@@ -538,12 +538,12 @@ header .article_header .heart_tag_message_list ul li span {
 }
 
 /************* Enrollemnt - Modal - Css ************/
-#enrollmentModal {
+.enrollmentModel {
     height: 100%;
     bottom: 0px;
 }
 
-#enrollmentModal .modal-dialog {
+.enrollmentModel .modal-dialog {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -554,13 +554,13 @@ header .article_header .heart_tag_message_list ul li span {
     overflow: auto;
 }
 
-#enrollmentModal .modal-content {
+.enrollmentModel .modal-content {
     border-radius: 20px;
     height: 100%;
     overflow: auto;
 }
 
-#enrollmentModal .modal-title {
+.enrollmentModel .modal-title {
     text-align: center;
     width: 100%;
     font-size: 30px;
@@ -570,7 +570,7 @@ header .article_header .heart_tag_message_list ul li span {
     -webkit-text-fill-color: transparent;
 }
 
-#enrollmentModal .modal-header button {
+.enrollmentModel .modal-header button {
     position: absolute;
     right: 25px;
     top: 25px;
@@ -582,17 +582,17 @@ header .article_header .heart_tag_message_list ul li span {
     font-size: 14px;
 }
 
-#enrollmentModal .formDiv .inputDiv {
+.enrollmentModel .formDiv .inputDiv {
     text-align: right;
     margin-bottom: 20px;
 }
 
-#enrollmentModal .formDiv .inputDiv label {
+.enrollmentModel .formDiv .inputDiv label {
     font-family: ploniBold;
 }
 
-#enrollmentModal .formDiv .inputDiv input,
-#enrollmentModal .formDiv .inputDiv select {
+.enrollmentModel .formDiv .inputDiv input,
+.enrollmentModel .formDiv .inputDiv select {
     width: 100%;
     background: #F6F6F6;
     border: none;
@@ -602,32 +602,32 @@ header .article_header .heart_tag_message_list ul li span {
     font-size: 14px;
 }
 
-#enrollmentModal .formDiv .inputDiv .password_div {
+.enrollmentModel .formDiv .inputDiv .password_div {
     position: relative;
 }
 
-#enrollmentModal .formDiv .inputDiv .password_div i {
+.enrollmentModel .formDiv .inputDiv .password_div i {
     position: absolute;
     left: 10px;
     top: 10px;
 }
 
-#enrollmentModal .formDiv .checkBox_div {
+.enrollmentModel .formDiv .checkBox_div {
     direction: rtl;
     text-align: right;
     margin-bottom: 15px;
 }
 
-#enrollmentModal .formDiv .checkBox_div label {
+.enrollmentModel .formDiv .checkBox_div label {
     font-family: ploniRegular;
 }
 
-#enrollmentModal .formDiv .checkBox_div label a {
+.enrollmentModel .formDiv .checkBox_div label a {
     color: var(--categoryTextColor);
     text-decoration: underline;
 }
 
-#enrollmentModal .formDiv button {
+.enrollmentModel .formDiv button {
     width: 100%;
     background-color: var(--categoryTextColor);
     color: var(--whiteColor);
@@ -637,12 +637,12 @@ header .article_header .heart_tag_message_list ul li span {
     border: none;
 }
 
-#enrollmentModal .signup_btn {
+.enrollmentModel .signup_btn {
     display: flex;
     justify-content: center;
 }
 
-#enrollmentModal .signup_btn a {
+.enrollmentModel .signup_btn a {
     display: block;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
@@ -650,15 +650,15 @@ header .article_header .heart_tag_message_list ul li span {
     margin: 0px 6px;
 }
 
-#enrollmentModal .sign_up_with {
+.enrollmentModel .sign_up_with {
     margin-top: 30px;
 }
 
-#enrollmentModal .sign_up_with h6 {
+.enrollmentModel .sign_up_with h6 {
     margin-bottom: 15px;
 }
 
-#enrollmentModal .formDiv .checkBox_div input[type="checkbox"]:checked+label::after {
+.enrollmentModel .formDiv .checkBox_div input[type="checkbox"]:checked+label::after {
     content: '';
     position: absolute;
     width: 10px;
@@ -676,23 +676,23 @@ header .article_header .heart_tag_message_list ul li span {
     transform: rotate(-45deg);
 }
 
-#enrollmentModal .formDiv .checkBox_div input[type="checkbox"] {
+.enrollmentModel .formDiv .checkBox_div input[type="checkbox"] {
     line-height: 2.1ex;
 }
 
-#enrollmentModal .formDiv .checkBox_div input[type="radio"],
-#enrollmentModal .formDiv .checkBox_div input[type="checkbox"] {
+.enrollmentModel .formDiv .checkBox_div input[type="radio"],
+.enrollmentModel .formDiv .checkBox_div input[type="checkbox"] {
     position: absolute;
     left: -999em;
 }
 
-#enrollmentModal .formDiv .checkBox_div input[type="checkbox"]+label {
+.enrollmentModel .formDiv .checkBox_div input[type="checkbox"]+label {
     position: relative;
     overflow: hidden;
     cursor: pointer;
 }
 
-#enrollmentModal .formDiv .checkBox_div input[type="checkbox"]+label::before {
+.enrollmentModel .formDiv .checkBox_div input[type="checkbox"]+label::before {
     content: "";
     display: inline-block;
     vertical-align: -25%;

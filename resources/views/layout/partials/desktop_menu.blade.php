@@ -3,11 +3,11 @@
         <img src="{{asset('assets/img/dektopLogo.png') }}" alt="" class="img-fluid">
         <div class="auth_button">
             @if(! isset(Auth::user()->name))
-            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
+            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
             @else
             <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
             @endif
-            <a href="">התחברות</a>
             
         </div>
         <div class="desktop_menu_list">
@@ -21,7 +21,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
+                    <a href="{{route('city-brands',5)}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>
@@ -40,7 +40,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
+                    <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>

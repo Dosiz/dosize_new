@@ -42,6 +42,7 @@ class BlogController extends Controller
             {
                 $brand_cities = User::where('id',$user_id)->get();
             }
+            // dd($brand_cities);
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
             return view('brand.blog.add', compact('brand_profile','sub_categories','addresses','brand_cities','blogs'));
         
@@ -106,7 +107,7 @@ class BlogController extends Controller
                 $recomended_blogs->save();
             }
         }
-        BlogsHasCity::where('brand_profile_id',$request->profile_id)->delete();
+        
         
         foreach($request->city_id as $city_id)
         {
@@ -117,7 +118,7 @@ class BlogController extends Controller
             $blog_city->city_id = $city_id;
             $blog_city->save();
         }
-        return redirect('brand/blog');
+        return redirect('dashboard/brand/blog');
     }
 
     public function edit($id)

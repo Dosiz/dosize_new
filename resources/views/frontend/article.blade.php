@@ -89,7 +89,10 @@ Articles
                             <div class="city_shoe">
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" style="width: 39px;" alt=""
                                     class="img-fluid">
-                                <p class="font-size-18"><span class="category" > {{ $blog->brandprofile->brand_name}} </span>
+                                <p class="font-size-18">
+                                    <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
+                                        <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
+                                    </a>
                                     <span>24.05.22</span> <span>| כ”ג אייר פ”ב</span>
                                 </p>
                             </div>
@@ -116,45 +119,7 @@ Articles
                                 </h4>
                             </div>
                         </div>
-                        <div class="deals deal_two">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12 text-right">
-                                        <h3 class="common_title">הכי מומלצים <img
-                                                src="{{asset('assets/img/mobile_component/star.png') }}" alt=""
-                                                class="img-fluid">
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider_div">
-                                <div class="multiple_deals swiper">
-                                    <div class="swiper-wrapper">
-                                        @if(count($products) > 0)
-                                        @foreach($products as $product)
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
-                                            </a>
-
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
-                                                <h4 class="title font-size-14 font-weight-700">
-                                                    {{$product->name}}
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -169,6 +134,49 @@ Articles
                     </div>
                 </div>
             </div>
+            <div class="deals deal_two">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <h3 class="common_title">הכי מומלצים <img
+                                    src="{{asset('assets/img/mobile_component/star.png') }}" alt=""
+                                    class="img-fluid">
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider_div">
+                    <div class="multiple_deals swiper">
+                        <div class="swiper-wrapper">
+                            @if(count($products) > 0)
+                            @foreach($products as $product)
+                            <div class="deals_box box_shahdow swiper-slide">
+                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
+                                </a>
+
+                                <div class="content_div">
+                                    <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                        <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
+                                    </a>
+                                    <a href="{{route('product',$product->id ?? '')}}" style="color: #212529 !important">
+                                        <h4 class="title font-size-14 font-weight-700">
+                                            {{$product->name}}
+                                        </h4>
+                                        <div class="rating_price_div">
+                                            <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
+                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -176,8 +184,12 @@ Articles
                             <div class="stand_brand_message">
                                 <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                     class="img-fluid">
+
                                 <a class="font-size-16" href="">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
+                      
+                                <a class="font-size-16" href="">שליחת הודעה</a>
+
                             </div>
                             <div class="sign_up_div">
                                 <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
@@ -195,6 +207,9 @@ Articles
                                         class="img-fluid"></p>
                             </div>
                             <div class="formDiv">
+                                @guest
+                                @else
+                                @if(Auth::user()->hasRole('User'))
                                 <form id="blog_comment">
                                     @csrf
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
@@ -214,6 +229,8 @@ Articles
                                     </div>
                                     <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
+                                @endif
+                                @endguest
                             </div>
 
                             <div class="comment_list">
@@ -222,7 +239,9 @@ Articles
                                     @foreach($blog_comments as $comment)
                                     <div>
                                     <li>
+                                        {{-- @if(Auth::user()->hasRole('Brand')) --}}
                                         <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
+                                        {{-- @endif --}}
                                         <div class="user_detail">
                                             <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
                                             <p class="font-size-14">{{$comment->comment}}</p>
@@ -402,129 +421,6 @@ Articles
     </div>
 </main>
 
-<div class="modal fade" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content " id="sign_up_modal">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="formDiv">
-                    <form id="sign_up_form">
-                        @csrf
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">שם</label>
-                            <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            <span class="text-danger name_valid"></span>
-                        </div>
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">עיר</label>
-                            <select name="city_id" id="city_id">
-                                <option selected disabled value="">בחר מתוך הרשימה</option>
-                                @foreach($cities as $city)
-                                    <option value="{{$city->id}}"> {{$city->name}} </option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger city_valid"></span>
-                        </div>
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">דוא”ל</label>
-                            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
-                            <span class="text-danger email_valid"></span>
-                        </div>
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">סיסמה</label>
-                            <div class="password_div">
-                                <input id="password" type="password" name="password" required autocomplete="new-password">
-                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                <span class="text-danger password_valid"></span>
-                            </div>
-                        </div>
-                        <div class="checkBox_div">
-                            <input type="checkbox" name="" id="approve" checked>
-                            <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
-                        </div>
-                        <div class="checkBox_div">
-                            <input type="checkbox" name="" id="policy" checked>
-                            <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
-                                המערכת...</label>
-                        </div>
-                        <button type="submit" class="font-size-16">הרשמה</button>
-                        <div class="sign_up_with">
-                            <h6 class="text-center">או הרשם עם</h6>
-                            <div class="signup_btn">
-                                <a href="">
-                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                                <a href="">
-                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center mt-4">
-                            <a href="" id="signup_btn" class="text-dark">
-                                <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal-content" id="login-modal">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">התחברות</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="formDiv">
-                    <form id="login_form">
-                        @csrf
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">דוא”ל</label>
-                            <input id="email" type="email" name="email" required value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            <span class="text-danger email_valid"></span>
-                        </div>
-                        <div class="inputDiv">
-                            <label for="" class="font-size-16">סיסמה</label>
-                            <div class="password_div">
-                                <input id="password" type="password" name="password" required autocomplete="current-password">
-                                <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                <span class="text-danger password_valid"></span>
-                            </div>
-                        </div>
-                        <button type="submit" class="font-size-16"> הרשמה </button>
-                        <div class="sign_up_with">
-                            <h6 class="text-center">התחברו עם </h6>
-                            <div class="signup_btn">
-                                <a href="">
-                                    <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                                <a href="">
-                                    <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
-                                        class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-center mt-4">
-                            <a href="" id="login_btn" class="text-dark">
-                            </b> אין לכם חשבון? לחצו כאן להרשמה > </b>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  
 @endsection
 @section('script')
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
