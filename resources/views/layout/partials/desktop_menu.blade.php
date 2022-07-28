@@ -21,7 +21,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
+                    <a href="{{route('city-brands',5)}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>
@@ -40,7 +40,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
+                    <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>

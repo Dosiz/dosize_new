@@ -33,6 +33,9 @@ Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController:
 Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark'); 
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks'); 
 
+Route::get('/brands/{city_id}',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
+Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');
+
 Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city');  
 Route::get('/category_article_detail/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category_article_detail'])->name('category_article_detail');  
 
@@ -47,12 +50,13 @@ Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::clas
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-    //brand-profile
-    Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
-    Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
+//brand-profile
+Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
+Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
+
+
+
     
-    
-});
 /********************DASHBOARD ROUTES END******************************/
 
 /*****************ADMIN ROUTES*******************/
@@ -111,12 +115,6 @@ Route::get('products', function () {
     return view('frontend.product');
 });
 
-Route::get('brand', function () {
-    return view('frontend.brand');
-});
-
-Route::get('messages', function () {
-    return view('frontend.messages');
 });
 
 Route::get('inbox-message', function () {
@@ -135,6 +133,6 @@ Route::get('archive_category', function () {
     return view('frontend.archive.archive_category');
 });
 
-Route::get('wallet', function () {
+Route::get('/brand/wallet', function () {
     return view('frontend.wallet');
 });

@@ -89,7 +89,10 @@ Articles
                             <div class="city_shoe">
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" style="width: 39px;" alt=""
                                     class="img-fluid">
-                                <p class="font-size-18"><span class="category" > {{ $blog->brandprofile->brand_name}} </span>
+                                <p class="font-size-18">
+                                    <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
+                                        <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
+                                    </a>
                                     <span>24.05.22</span> <span>| כ”ג אייר פ”ב</span>
                                 </p>
                             </div>
@@ -116,45 +119,7 @@ Articles
                                 </h4>
                             </div>
                         </div>
-                        <div class="deals deal_two">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-lg-12 text-right">
-                                        <h3 class="common_title">הכי מומלצים <img
-                                                src="{{asset('assets/img/mobile_component/star.png') }}" alt=""
-                                                class="img-fluid">
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider_div">
-                                <div class="multiple_deals swiper">
-                                    <div class="swiper-wrapper">
-                                        @if(count($products) > 0)
-                                        @foreach($products as $product)
-                                        <div class="deals_box box_shahdow swiper-slide">
-                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
-                                            </a>
-
-                                            <div class="content_div">
-                                                <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
-                                                <h4 class="title font-size-14 font-weight-700">
-                                                    {{$product->name}}
-                                                </h4>
-                                                <div class="rating_price_div">
-                                                    <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                            class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -166,6 +131,49 @@ Articles
                             </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="deals deal_two">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <h3 class="common_title">הכי מומלצים <img
+                                    src="{{asset('assets/img/mobile_component/star.png') }}" alt=""
+                                    class="img-fluid">
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider_div">
+                    <div class="multiple_deals swiper">
+                        <div class="swiper-wrapper">
+                            @if(count($products) > 0)
+                            @foreach($products as $product)
+                            <div class="deals_box box_shahdow swiper-slide">
+                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
+                                </a>
+
+                                <div class="content_div">
+                                    <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                        <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
+                                    </a>
+                                    <a href="{{route('product',$product->id ?? '')}}" style="color: #212529 !important">
+                                        <h4 class="title font-size-14 font-weight-700">
+                                            {{$product->name}}
+                                        </h4>
+                                        <div class="rating_price_div">
+                                            <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
+                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
+                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

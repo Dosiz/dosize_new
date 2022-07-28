@@ -117,7 +117,7 @@ Dosize
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <a class="font-size-14 font-weight-700" href="" >
+                                            <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product->brand_profile_id)}}" >
                                                 <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
                                             </a>
                                         </div>
@@ -162,7 +162,7 @@ Dosize
                                     class="img-fluid" style="width: 131px; height: 160px">
                                 </a>
                                 <div class="content_div">
-                                    <a href="">
+                                    <a href="{{route('brand-profile',$blog->brand_profile_id)}}">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
@@ -209,7 +209,7 @@ Dosize
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="">
+                                            <a href="{{route('brand-profile',$product->brand_profile_id)}}">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
                                             <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
@@ -300,7 +300,7 @@ Dosize
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
                                 </a>
                                 <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="">
+                                    <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$recomanded_products->id)}}">
                                     <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
@@ -427,7 +427,7 @@ Dosize
                                                     <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
                                                 </a>
                                                 <div class="content_div">
-                                                    <a class="font-size-14 font-weight-700" href="">
+                                                    <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product_category->product['1']->brandprofile->id ?? '')}}">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
                                                     </a>
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}" style="color: #212529 !important;">
@@ -459,7 +459,7 @@ Dosize
                                                     <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
                                                 </a>
                                                 <div class="content_div">
-                                                    <a class="font-size-14 font-weight-700" href="">
+                                                    <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product_category->product['2']->brandprofile->id ?? '')}}">
                                                     <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
                                                     </a>
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}" style="color: #212529 !important;">

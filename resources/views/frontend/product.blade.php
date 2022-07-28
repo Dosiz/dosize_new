@@ -104,7 +104,9 @@ Course - Details
                         </div>
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
+                                <a href="{{route('brand-profile',$product->brand_profile_id)}}" >
                                 <span> {{$product->brandprofile->brand_name }}</span>
+                                </a>
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
@@ -173,13 +175,17 @@ Course - Details
                                 <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="width:100%;">
                             </a>
                             <div class="content_div">
+                                <a  href="{{route('brand-profile',$product->brand_profile_id)}}" >
                                 <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
-                                <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
-                                <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
-                                            class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                    <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                </div>
+                                </a>
+                                <a href="{{route('product',$product_value->id ?? '')}}" style="color: #212529 !important;">
+                                    <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
+                                    <div class="rating_price_div">
+                                        <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
+                                                class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
+                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         @endforeach
@@ -305,7 +311,9 @@ Course - Details
                                         <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
-                                        <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                            <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        </a>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
                                             {{$recomanded_product->recomended_product->name}}

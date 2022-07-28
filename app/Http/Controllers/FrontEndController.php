@@ -50,6 +50,7 @@ class FrontEndController extends Controller
         ->where('products_has_cities.city_id','5')
         ->get();
 
+
         $brand_messages = DB::table('brands_message_has_cities')
         ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
@@ -61,14 +62,16 @@ class FrontEndController extends Controller
             $q->where('city_id', '5');
         })
         ->get();
+
+        // dd($brands_recomanded_products);
         
         $blogs = $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
         // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
-        ->Join('blog_likes', 'blog_likes.blog_id', '=', 'blogs.id')
+        ->LeftJoin('blog_likes', 'blog_likes.blog_id', '=', 'blogs.id')
         ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(blog_likes.id) as totallikes'))
-        ->where('blogs_has_cities.city_id','2')
+        ->where('blogs_has_cities.city_id','5')
         // ->where('categories.id',$category_id)
         ->get();
 
@@ -323,7 +326,7 @@ class FrontEndController extends Controller
         $cities = City::get();
         $likes =Like::with('blog')->where('user_id' , Auth::id())->get();
         $bookmarks =Bookmark::with('blog')->where('user_id' , Auth::id())->get();
-        // dd($bookmarks,Auth::id());
+        // dd($likes);
         return view('frontend.bookmark',compact('cities','categories','likes','bookmarks'));
         
         // dd($recomanded_blogs);
@@ -354,7 +357,7 @@ class FrontEndController extends Controller
         ->where('categories.id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
-
+        // dd($products);
 
         $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
@@ -400,6 +403,27 @@ class FrontEndController extends Controller
 
         // dd($products);
         return view('frontend.city_category_article_detail',compact('cities','categories','blogs'));
+    }
+
+    public function city_brands($city_id)
+    {
+        $categories = Category::get();
+        $cities = City::get();
+
+        $city_brands = DB::table('brands_has_cities')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brands_has_cities.brand_profile_id')
+        ->select('brand_profiles.*')
+        ->where('brands_has_cities.city_id',$city_id)
+        ->get();
+        // dd($city_brands);
+        return view('frontend.city_brands',compact('cities','categories','city_brands'));
+    }
+
+    public function user_messages()
+    {
+        $categories = Category::get();
+        $cities = City::get();
+        return view('frontend.messages',compact('cities','categories'));
     }
 
 }

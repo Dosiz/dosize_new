@@ -23,7 +23,7 @@ Dosize
                                 @foreach($categories as $key=>$category)
                               
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',$category->id)}}" style="color:#212529">
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
                                             <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
@@ -113,6 +113,7 @@ Dosize
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">    
                         @if(count($likes) > 0)
+                        {{dd($likes)}}
                             @foreach($likes as $like)
                             <div class="container-fluid">
                                 <table class="table text-center">
@@ -128,7 +129,7 @@ Dosize
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>
                                                 @if($like->name == 'Article')
-                                                    <a href="{{route('article',$like->blog_id)}}" style="color:#212529"> {{$like->blog->title}} </a>
+                                                    <a href="{{route('article',['blog_id' => $like->blog_id])}}" style="color:#212529"> {{$like->blog->title}} </a>
                                                 @else
                                                     <a href="{{route('article',$like->blog_id)}}" style="color:#212529"> {{$like->blog->title}} </a>
                                                 @endif
