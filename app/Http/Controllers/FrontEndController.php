@@ -26,7 +26,9 @@ use App\Models\RecomendedProduct;
 use App\Models\RecomendedBlog;   
 use App\Models\BlogsCommentHasReply;    
 use App\Models\Like;    
-use App\Models\Bookmark;    
+use App\Models\Bookmark;
+use App\Models\Message;
+use App\Models\Friend;       
 use App\Models\ContactUs;    
 
 class FrontEndController extends Controller
@@ -377,7 +379,15 @@ class FrontEndController extends Controller
 
     public function messages()
     {
-        return view('brand.message.index');
+        $id=$_GET['id'];
+        if(Auth::user()->hasRole('Brand'))
+        {
+            return view('brand.message.index',compact('id'));
+        }
+        else{
+            return view('frontend.messages',compact('id'));
+        }
+        
     }
 
     public function bookmarks()

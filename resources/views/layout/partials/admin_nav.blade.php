@@ -53,6 +53,9 @@
 								<li class="{{ Request::is('brand/brand-message') ? 'active' : '' }}"> 
 									<a href="{{route('brand-message.index')}}"><span> הודעה למנוי	</span></a>
 								</li>
+                                <li class="{{ Request::is('brand/messages') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/messages?id='.Auth::user()->id.'')}}"><span>Chat</span></a>
+                                </li>
 
 								@endif
 
