@@ -1975,12 +1975,14 @@ main .main-wrapper .wallet_promotion .price_learn_more a {
 .messenger_announcment_main .messenger_main {
     width: 60%;
     position: relative;
+    height: 100vh;
 }
 
 .messenger_announcment_main .messenger_main .message_list {
-    margin-top: 50px;
-    height: 100%;
+   /* margin-top: 50px;*/
+    height: 80%;
     position: relative;
+    overflow: auto;
 }
 
 .messenger_announcment_main .messenger_main .message_list .sending_message {

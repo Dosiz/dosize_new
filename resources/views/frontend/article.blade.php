@@ -177,7 +177,7 @@ Articles
                                 <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
                                     class="img-fluid">
                                 <a class="font-size-16" href="">לעמוד המותג</a>
-                                <a class="font-size-16" href="">שליחת הודעה</a>
+                                <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
                             </div>
                             <div class="sign_up_div">
                                 <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""

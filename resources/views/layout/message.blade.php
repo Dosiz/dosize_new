@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
+  @livewireStyles
 </head>
 <body>
     <div class="bg_color">
@@ -12,5 +13,6 @@
     </div>
 </body>
 @include('layout.partials.footer_scripts')
+   @livewireScripts
 
 </html>
