@@ -4,10 +4,10 @@
         <div class="auth_button">
             @if(! isset(Auth::user()->name))
             <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
             @else
             <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
             @endif
-            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
             
         </div>
         <div class="desktop_menu_list">

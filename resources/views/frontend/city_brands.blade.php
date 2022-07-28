@@ -146,17 +146,23 @@ Brand List
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
                             <img src="{{asset('assets/img/card_img.png') }}" class="main_img d-xl-none" alt="item">
-                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  alt="card" class="d-xl-block d-none">
+                            <a href="{{route('brand-profile',$city_brand->id)}}">
+                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
+                            </a>
                             <div class="title d-flex justify-content-end align-items-center">
                                 <div class="txt">
+                                    <a href="{{route('brand-profile',$city_brand->id)}}" style="color: #212529 !important">
                                     <h3>{{$city_brand->brand_name}}</h3>
+                                    </a>
                                     <a href="#" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                                 </div>
                                 <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" class="d-xl-none"
                                     alt="flash">
-                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
+                                <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$city_brand->id)}}" >
+                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
                                     class="d-none d-xl-block titleImg">
+                                </a>
                             </div>
                             <a href="#" class="btn signForClub d-xl-none">הירשמו בקליק למועדון <img
                                     src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
