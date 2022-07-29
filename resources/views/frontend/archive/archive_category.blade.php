@@ -237,8 +237,8 @@ Archive - Catagorey
                                     דוסיז משפט הנעה על דוסיז >>
                                 </p>
                                 <div class="btns d-flex mt-4">
-                                    <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>
-                                    <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
+                                    <a href="" data-toggle="modal" data-target="#enrollmentModal" class="btn btn_grey_out">הצטרפות לעסקים</a>
+                                    <a  data-toggle="modal" data-target="#enrollmentModal2" href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                                 </div>
                             </div>
                         </div>
