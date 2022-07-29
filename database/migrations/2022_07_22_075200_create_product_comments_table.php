@@ -16,7 +16,8 @@ class CreateProductCommentsTable extends Migration
         Schema::create('product_comments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->longText('comment');
+            $table->longText('comment')->nullable();
+            $table->longText('reply')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedBigInteger('user_id')->nullable();

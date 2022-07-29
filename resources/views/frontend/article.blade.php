@@ -216,7 +216,6 @@ Articles
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
-                                    
                                     <div class="comment_hearder">
                                         @guest
                                         <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
@@ -233,7 +232,6 @@ Articles
                                 @endif
                                 @endguest
                             </div>
-
                             <div class="comment_list">
                                 <ul class="new_comment_list">
                                     @if(count($blog_comments) > 0)
@@ -256,11 +254,11 @@ Articles
                                         </div>
                                     </li>
                                     <div class="formDiv replyForm">
-                                        <form action="{{ route('store-blog-comment-reply') }}" method="post">
+                                        <form id="blog_comment">
                                             @csrf
                                             <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
-                                            <input type="hidden" name="blog_comment_id" value="{{$comment->id ?? ''}}" />
-                                            <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                            <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
+                                            <input type="text" name="reply" id="reply" placeholder="התגובה שלך"
                                                 class="text-right font-size-16">
                                             
                                             <div class="comment_hearder">

@@ -20,9 +20,4 @@ class BlogComment extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
-
-    public function b_comment_reply()
-    {
-        return $this->hasMany(BlogsCommentHasReply::class);
-    }
 }

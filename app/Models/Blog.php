@@ -31,11 +31,6 @@ class Blog extends Model
         return $this->hasMany(BlogComment::class);
     }
 
-    public function blogs_comment_reply()
-    {
-        return $this->hasMany(BlogsCommentHasReply::class);
-    }
-
     public function recomended_product()
     {
         return $this->hasMany(RecomendedProduct::class);

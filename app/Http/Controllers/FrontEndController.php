@@ -24,7 +24,6 @@ use App\Models\ProductComment;
 use App\Models\BrandsMessageHasCity; 
 use App\Models\RecomendedProduct;  
 use App\Models\RecomendedBlog;   
-use App\Models\BlogsCommentHasReply;    
 use App\Models\Like;    
 use App\Models\Bookmark;
 use App\Models\Message;
@@ -103,6 +102,7 @@ class FrontEndController extends Controller
         {
             $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
+            // dd($blog_comment_reply);
             return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
@@ -148,11 +148,25 @@ class FrontEndController extends Controller
         // dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
-        $this->validate($request,[ 
-            'comment'=>'required', 
+        if($request->comment){
+            $this->validate($request,[ 
+                'comment'=>'required', 
 
-        ]);
-        $blog_comment = new BlogComment;
+            ]);
+        }else{
+            $this->validate($request,[ 
+                'reply'=>'required', 
+
+            ]);
+        }
+        if($request->comment_id)
+        {
+            $blog_comment = BlogComment::find($request->comment_id);
+        }
+        else
+        {
+            $blog_comment = new BlogComment;
+        }
         
         if($request->name == 'on')
         {
@@ -164,7 +178,11 @@ class FrontEndController extends Controller
             $blog_comment->user_id = $user_id;
             $blog_user_name = $user->name;
         }
-        $blog_comment->comment = $request->comment;
+        if($request->comment){
+            $blog_comment->comment = $request->comment;
+        }else{
+            $blog_comment->reply = $request->reply;
+        }
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
 
@@ -172,37 +190,6 @@ class FrontEndController extends Controller
        
         return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
     }
-
-    public function store_blog_comment_reply(Request $request)    
-    {
-        // dd($request->all());
-        $user_id = Auth::id();
-        $user = User::where('id',Auth::id())->first();
-        $this->validate($request,[ 
-            'comment'=>'required', 
-
-        ]);
-        $blog_comment_reply = new BlogsCommentHasReply;
-        
-        if($request->name == 'on')
-        {
-            $blog_comment_reply->name = 'anonymous';
-        }
-        else
-        {
-            $blog_comment_reply->user_id = $user_id;
-        }
-        $blog_comment_reply->comment = $request->comment;
-        $blog_comment_reply->blog_comment_id = $request->blog_comment_id;
-        $blog_comment_reply->blog_id  = $request->blog_id;
-        $blog_comment_reply->save();
-
-
-       
-        return Redirect::back();
-    }
-
-    
 
     public function store_product_comment(Request $request)    
     {

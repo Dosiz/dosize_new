@@ -31,11 +31,6 @@ class Product extends Model
         return $this->hasMany(ProductComment::class);
     }
 
-    public function products_comment_reply()
-    {
-        return $this->hasMany(ProductsCommentHasReply::class);
-    }
-
     public function recomended_product()
     {
         return $this->hasMany(RecomendedProduct::class);
