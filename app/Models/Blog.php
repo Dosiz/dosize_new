@@ -28,7 +28,7 @@ class Blog extends Model
 
     public function blog_comment()
     {
-        return $this->hasMany(BlogComment::class);
+        return $this->hasMany(BlogComment::class)->whereNull('parent_id');
     }
 
     public function recomended_product()

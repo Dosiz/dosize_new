@@ -236,47 +236,64 @@ Articles
                                 <ul class="new_comment_list">
                                     @if(count($blog_comments) > 0)
                                     @foreach($blog_comments as $comment)
+                                    @if($comment->parent_id == null)
                                     <div>
-                                    <li>
-                                        @guest
-                                        <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
-                                        {{-- {{Auth::user()->hasRole('Brand')}} --}}
-                                        @else
-                                        @if(Auth::user()->hasRole('Brand') == 1)
-                                        <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
-                                        @else
-                                        <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
-                                        @endif
-                                        @endguest
-                                        <div class="user_detail">
-                                            <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
-                                            <p class="font-size-14">{{$comment->comment}}</p>
-                                        </div>
-                                    </li>
-                                    <div class="formDiv replyForm">
-                                        <form id="blog_comment">
-                                            @csrf
-                                            <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
-                                            <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
-                                            <input type="text" name="reply" id="reply" placeholder="התגובה שלך"
-                                                class="text-right font-size-16">
-                                            
-                                            <div class="comment_hearder">
-                                                @guest
-                                                <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                                @else
-                                                <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                                @endguest
-                                                <div class="anonymous_text font-size-16">אנונימי <span
-                                                        class="checkBox">
-                                                        <input type="checkbox" name="name" id="approve">
-                                                        </span></div>
+                                        <li>
+                                            @guest
+                                            <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                            {{-- {{Auth::user()->hasRole('Brand')}} --}}
+                                            @else
+                                            @if(Auth::user()->hasRole('Brand') == 1)
+                                            <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
+                                            @else
+                                            <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                            @endif
+                                            @endguest
+                                            <div class="user_detail">
+                                                <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}}</h4>
+                                                <p class="font-size-14">{{$comment->comment}}</p>
                                             </div>
-                                            <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
-                                         </form>
+                                        </li>
+                                        <div class="formDiv replyForm">
+                                            <form action="{{ route('store-blog-comment') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                                <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                                <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                                    class="text-right font-size-16">
+                                                
+                                                <div class="comment_hearder">
+                                                    @guest
+                                                    <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                                    @else
+                                                    <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                                    @endguest
+                                                    <div class="anonymous_text font-size-16">אנונימי <span
+                                                            class="checkBox">
+                                                            <input type="checkbox" name="name" id="approve">
+                                                            </span></div>
+                                                </div>
+                                                <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
+                                            </form>
                                         </div>
                                              
                                     </div>
+                                    @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->get(); @endphp
+                                    @if(count($replies) > 0)
+                                    @foreach($replies as $reply)
+                                    <div style="background-color:#db15801f; width:460px; margin-left:20px;">
+                                        <li>
+                                            <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                            {{-- {{Auth::user()->hasRole('Brand')}} --}}
+                                            <div class="user_detail" style="margin: 10px">
+                                                <h4 class="font-size-14"> {{$reply->name ?? $reply->user->name}} </h4>
+                                                <p class="font-size-14">{{$reply->comment}}</p>
+                                            </div>
+                                        </li>
+                                    </div>
+                                    @endforeach
+                                    @endif
+                                    @endif
                                     @endforeach
                                     @endif
                                 </ul>
@@ -604,8 +621,11 @@ $(document).ready(function() {
             contentType: false,
             cache: false,
             success: function (data) {
-                // console.table(data);
+                 console.table(data.success);
                 // console.table(data.comment);
+                if(data.success == 'Refesh') {
+                    location.reload();
+                }
                 $('.new_comment_list').prepend(`<li>
                                         <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
                                         <div class="user_detail">

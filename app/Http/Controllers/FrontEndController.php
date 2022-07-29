@@ -92,7 +92,7 @@ class FrontEndController extends Controller
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
-        $blog_comments = BlogComment::where('blog_id',$blog->id)->orderBy('id','DESC')->get();
+        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
@@ -148,25 +148,14 @@ class FrontEndController extends Controller
         // dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
-        if($request->comment){
-            $this->validate($request,[ 
-                'comment'=>'required', 
 
-            ]);
-        }else{
-            $this->validate($request,[ 
-                'reply'=>'required', 
+        $this->validate($request,[ 
+            'comment'=>'required', 
 
-            ]);
-        }
-        if($request->comment_id)
-        {
-            $blog_comment = BlogComment::find($request->comment_id);
-        }
-        else
-        {
-            $blog_comment = new BlogComment;
-        }
+        ]);
+
+        $blog_comment = new BlogComment;
+       
         
         if($request->name == 'on')
         {
@@ -178,17 +167,22 @@ class FrontEndController extends Controller
             $blog_comment->user_id = $user_id;
             $blog_user_name = $user->name;
         }
-        if($request->comment){
-            $blog_comment->comment = $request->comment;
-        }else{
-            $blog_comment->reply = $request->reply;
+        if($request->parent_id)
+        {
+            $blog_comment->parent_id = $request->parent_id;
         }
+        $blog_comment->comment = $request->comment;
+       
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
 
-
-       
+        if($request->parent_id)
+        {
+            return Redirect::back();
+        }
+        else{
         return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
+        }
     }
 
     public function store_product_comment(Request $request)    
