@@ -8,7 +8,7 @@ Blogs
 @section('content')		
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-	@livewire('chat.chat',['receiver'=>$id])		
+	@livewire('test',['receiver'=>$id])		
 </div>
 <!-- /Page Wrapper -->
 		

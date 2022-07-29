@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Chat;
+namespace App\Http\Livewire;
+
+use Livewire\Component;
 use App\Models\Message;
 use App\Models\Friend; 
 use App\Models\BrandProfile;
@@ -9,8 +11,9 @@ use Auth;
 use App\Models\User;
 use DB;
 
-class Chat extends Component
+class Test extends Component
 {
+   
     public $noChat = false;
     public $messages;
     public $friend;
@@ -92,7 +95,7 @@ class Chat extends Component
                     $this->current  = "";
                     $this->messages = [];
                 }
-                return view('livewire.chat.chat');
+               return view('livewire.test');
                 
                 
 
@@ -106,7 +109,7 @@ class Chat extends Component
                 $this->friend = Friend::with('users')->where('user', $user)->get();
                 // get all chats
                 $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
-                return view('livewire.chat.chat');
+               return view('livewire.test');
             }
     }
 
@@ -114,6 +117,5 @@ class Chat extends Component
     {
         $this->message = "";
     }
-
-    
+        
 }
