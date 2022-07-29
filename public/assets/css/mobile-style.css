@@ -1231,8 +1231,7 @@ header .article_header .heart_tag_message_list ul li span {
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) img {
     border-radius: 0px 12px 12px 0px;
-    width: auto;
-    height: auto;
+    
 }
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {

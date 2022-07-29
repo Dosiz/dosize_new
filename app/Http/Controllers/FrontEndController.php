@@ -79,9 +79,8 @@ class FrontEndController extends Controller
 
         // dd($blogs);
 
-        $products_by_categories = Category::with('product','brandprofile')
-                    ->orderBy('category_order_id', 'ASC')
-                    ->get();
+        $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
+        // dd($products_by_categories);
 
         $categories = Category::get();
         
