@@ -5,6 +5,7 @@ Articles
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <style>
     .mobile_header {
         display: none;
@@ -195,8 +196,16 @@ Articles
                             <div class="sign_up_div">
                                 <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
                                     class="img-fluid">
-                                <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br><a href="">{שם
-                                        המותג}</a> ולא תפספסו שום דיל!</p>
+                                <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
+                                    @guest
+                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{שםהמותג}</a>
+                                    @else
+                                        <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
+                                        <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                        <a href="" id="subscriber">{שםהמותג}</a>
+                                    @endguest
+                                        
+                                        ולא תפספסו שום דיל!</p>
                             </div>
                         </div>
                     </div>
@@ -494,6 +503,7 @@ Articles
 @section('script')
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
 
 $(document).ready(function() {
@@ -697,6 +707,37 @@ $(document).ready(function() {
                 else{
                     $('.comment_valid').text('');
                 }
+            }
+        });
+    });
+
+    $('#subscriber').click(function(e){
+        e.preventDefault();
+        const postFormData = {
+            'email'     : $('#email').val(),
+            "_token": "{{ csrf_token() }}"
+        };
+        // console.log(postFormData);
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-subscriber') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: postFormData ,
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                 console.table(data.success);
+                toastr.success(data.success);
+                // console.table(data.comment);
+                
+                 
+            },
+            error: function (data) {
+                // toastr.warning(data);
+                toastr.error("Already Subscribed");
+                
             }
         });
     });

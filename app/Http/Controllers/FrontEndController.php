@@ -28,7 +28,8 @@ use App\Models\Like;
 use App\Models\Bookmark;
 use App\Models\Message;
 use App\Models\Friend;       
-use App\Models\ContactUs;    
+use App\Models\ContactUs;     
+use App\Models\Subscriber;     
 
 class FrontEndController extends Controller
 {
@@ -481,6 +482,14 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $cities = City::get();
         return view('frontend.messages',compact('cities','categories'));
+    }
+
+    public function store_subscriber(Request $request)
+    {
+        $subscriber= new Subscriber;
+        $subscriber->email = Auth::user()->email;
+        $subscriber->save();
+        return response()->json(['success'=>'Successfully Subscribe']);
     }
 
 }
