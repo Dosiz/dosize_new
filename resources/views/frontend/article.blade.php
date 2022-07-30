@@ -202,17 +202,50 @@ Articles
                     </div>
                     <div class="col-lg-12">
                         <div class="post_comment">
+                            <form action="{{ route('store-blog-comment') }}" method="post" enctype="multipart/form-data" >
+                                @csrf
                             <div class="total_comment">
+                                <!-- <p>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </p> -->
+                                @guest
+                                    <ul style="visibility: hidden">
+                                    </ul>
+                                @else
+                                @if(Auth::user()->hasRole('User'))
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <div class="rating">
+                                                <input type="radio" id="field1_star5" name="bedside_manner_rating" value="5" /><label class = "full" for="field1_star5"></label>
+                                                <input type="radio" id="field1_star4" name="bedside_manner_rating" value="4" /><label class = "full" for="field1_star4"></label>
+                                                <input type="radio" id="field1_star3" name="bedside_manner_rating" value="3" /><label class = "full" for="field1_star3"></label>
+                                                <input type="radio" id="field1_star2" name="bedside_manner_rating" value="2" /><label class = "full" for="field1_star2"></label>
+                                                <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
+                                            </div>
+                                        </span>
+                                    </li>                        
+                                </ul>
+                                @else
+                                    <ul style="visibility: hidden">
+                                    </ul>
+                                @endif
+                                @endguest
                                 <p class="font-size-16">תגובות(<span class="blog_comment_count">{{count($blog_comments)}}</span> )<img
-                                        src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
-                                        class="img-fluid"></p>
+                                    src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
+                                    class="img-fluid"></p>
+                                </p>
                             </div>
+
                             <div class="formDiv">
                                 @guest
                                 @else
                                 @if(Auth::user()->hasRole('User'))
-                                <form id="blog_comment">
-                                    @csrf
+                                
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
@@ -251,6 +284,19 @@ Articles
                                             @endguest
                                             <div class="user_detail">
                                                 <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}}</h4>
+                                                @if($comment->rating)
+                                                
+
+                                                    @for($i= 1;$i<=$comment->rating;$i++)
+                                                        @if($i>5)
+                                                            @break(0);
+                                                        @endif
+                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) yellow @else green @endif"></i>
+                                                    @endfor
+                                                        <strong>Rating : </strong>
+                                                        
+
+                                                @endif
                                                 <p class="font-size-14">{{$comment->comment}}</p>
                                             </div>
                                         </li>
@@ -278,7 +324,7 @@ Articles
                                         </div>
                                              
                                     </div>
-                                    @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->get(); @endphp
+                                    @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
                                     @if(count($replies) > 0)
                                     @foreach($replies as $reply)
                                     <div style="background-color:#db15801f; width:460px; margin-left:20px;">

@@ -171,18 +171,22 @@ class FrontEndController extends Controller
         {
             $blog_comment->parent_id = $request->parent_id;
         }
+        if($request->bedside_manner_rating)
+        {
+            $blog_comment->rating = $request->bedside_manner_rating;
+        }
         $blog_comment->comment = $request->comment;
        
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
 
-        if($request->parent_id)
-        {
+        // if($request->parent_id)
+        // {
             return Redirect::back();
-        }
-        else{
-        return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
-        }
+        // }
+        // else{
+        // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
+        // }
     }
 
     public function store_product_comment(Request $request)    

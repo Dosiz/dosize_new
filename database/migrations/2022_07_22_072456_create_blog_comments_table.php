@@ -17,6 +17,7 @@ class CreateBlogCommentsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->longText('comment');
+            $table->longText('rating')->nullable();
             $table->unsignedBigInteger('blog_id');
             $table->foreign('blog_id')->references('id')->on('blogs');
             $table->unsignedBigInteger('user_id')->nullable();

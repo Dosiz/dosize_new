@@ -233,8 +233,8 @@ Course - Details
                                 <i class="fa fa-star"></i>
                             </p> -->
                             @guest
-                            <ul style="visibility: hidden">
-                            </ul>
+                                <ul style="visibility: hidden">
+                                </ul>
                             @else
                             @if(Auth::user()->hasRole('User'))
                             <ul>
@@ -251,10 +251,10 @@ Course - Details
                                 </li>                        
                             </ul>
                             @else
-                            <ul style="visibility: hidden">
-                            </ul>
-                        @endif
-                        @endguest
+                                <ul style="visibility: hidden">
+                                </ul>
+                            @endif
+                            @endguest
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid">
