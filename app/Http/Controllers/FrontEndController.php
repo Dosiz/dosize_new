@@ -494,4 +494,11 @@ class FrontEndController extends Controller
         return response()->json(['success'=>'Successfully Subscribe']);
     }
 
+    public function wallet()
+    {
+        $categories = Category::get();
+        $cities = City::get();
+        return view('frontend.user_wallet',compact('cities','categories'));
+    }
+
 }

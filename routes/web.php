@@ -71,6 +71,8 @@ Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, '
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
+    //admin_product
+    Route::resource('admin_product', App\Http\Controllers\admin\ProductController::class);
     //cateogry
     Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
     //city
@@ -119,6 +121,9 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 /*****************MANAGER ROUTES*******************/
 Route::middleware('auth')->group(function(){
     Route::get('/brand/messages',[App\Http\Controllers\FrontEndController::class, 'messages'])->name('messages');
+    
+    //wallet
+    Route::get('/user/wallet',[App\Http\Controllers\FrontEndController::class, 'wallet'])->name('user.wallet');
 });
 /********************MANAGER ROUTES END******************************/
 

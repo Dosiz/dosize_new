@@ -21,6 +21,11 @@
 								<li class="{{ Request::is('admin/sub-category') ? 'active' : '' }}"> 
 									<a href="{{url('admin/sub-category')}}"><span> קטגוריית משנה </span></a>
 								</li>
+
+								<li class="{{ Request::is('admin/admin_product') ? 'active' : '' }}"> 
+									<a href="{{url('admin/admin_product')}}"><span> Product </span></a>
+								</li>
+
 							<li class="menu-title"> 
 								<span><i class="fe fe-user"></i> מִשׁתַמֵשׁ </span>
 							</li>
