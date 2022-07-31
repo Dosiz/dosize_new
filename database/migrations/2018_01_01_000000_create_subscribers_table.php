@@ -16,6 +16,8 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('brand_profile_id')->nullable();
+            $table->foreign('brand_profile_id')->references('id')->on('brand_profiles');
             $table->timestamps();
 
             $table->timestamp('email_verified_at')->nullable();

@@ -313,6 +313,7 @@ Articles
                                             <form action="{{ route('store-blog-comment') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="blog_id" value="{{ $blog->id }}" />
+                                                <input type="hidden" value="{{$blog->brand_profile_id }}" id="brand_profile_id" />
                                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                                                 <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                                     class="text-right font-size-16">
@@ -713,20 +714,25 @@ $(document).ready(function() {
 
     $('#subscriber').click(function(e){
         e.preventDefault();
-        const postFormData = {
-            'email'     : $('#email').val(),
-            "_token": "{{ csrf_token() }}"
-        };
+        // const postFormData = {
+        //     brand_profile_id : $('#brand_profile_id').val(),
+        //     email     : $('#email').val(),
+        //     // _token: "{{ csrf_token() }}"
+        // };
+        let brand_profile_id = $('#brand_profile_id').val();
+        let email = $('#email').val();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
         // console.log(postFormData);
         $.ajax({
             type: "POST",
             url: "{{ route('store-subscriber') }}",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: postFormData ,
+            data: {
+                email:email,
+                brand_profile_id:brand_profile_id,
+                _token: _token
+            } ,
             datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
             success: function (data) {
                  console.table(data.success);
                 toastr.success(data.success);

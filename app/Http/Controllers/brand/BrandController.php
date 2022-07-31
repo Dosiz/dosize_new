@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\BrandProfile; 
 use App\Models\BrandsHasSubCategory;   
 use App\Models\BrandsHasAddress;   
-use App\Models\User;   
+use App\Models\User;
+use App\Models\Subscriber;   
 use Auth;
 
 class BrandController extends Controller
@@ -99,6 +100,13 @@ class BrandController extends Controller
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }
+    }
+
+    public function brand_subscriber()
+    {
+        $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
+        $subscribers =Subscriber::with('brandprofile')->where('brand_profile_id',$brand_profile->id)->get();
+        return view('brand.subscribers',compact('subscribers'));
     }
 
 }

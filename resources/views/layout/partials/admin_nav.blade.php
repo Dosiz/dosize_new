@@ -57,6 +57,10 @@
                                     <a href="{{url('brand/messages?id='.Auth::user()->id.'')}}"><span>Chat</span></a>
                                 </li>
 
+								<li class="{{ Request::is('brand/brand_subscriber') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/brand_subscriber?id='.Auth::user()->id.'')}}"><span>Subscriber</span></a>
+                                </li>
+
 								@endif
 
 							

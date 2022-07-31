@@ -485,9 +485,11 @@ class FrontEndController extends Controller
     }
 
     public function store_subscriber(Request $request)
-    {
+    {   
+        // dd($request);
         $subscriber= new Subscriber;
         $subscriber->email = Auth::user()->email;
+        $subscriber->brand_profile_id = $request->brand_profile_id;
         $subscriber->save();
         return response()->json(['success'=>'Successfully Subscribe']);
     }

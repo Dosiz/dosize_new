@@ -108,6 +108,9 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
+
+    //subscriber
+    Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
     
     
 });

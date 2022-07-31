@@ -223,6 +223,7 @@ Course - Details
                             @else
                                 <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                 <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
                                 <a href="" id="subscriber">{שםהמותג}</a>
                             @endguest
                             ולא תפספסו שום דיל!</p>
@@ -770,20 +771,25 @@ $(document).ready(function() {
 
     $('#subscriber').click(function(e){
         e.preventDefault();
-        const postFormData = {
-            'email'     : $('#email').val(),
-            "_token": "{{ csrf_token() }}"
-        };
+        // const postFormData = {
+        //     'brand_profile_id' : $('#brand_profile_id').val(),
+        //     'email'     : $('#email').val(),
+        //     "_token": "{{ csrf_token() }}"
+        // };
+        let brand_profile_id = $('#brand_profile_id').val();
+        let email = $('#email').val();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
         // console.log(postFormData);
         $.ajax({
             type: "POST",
             url: "{{ route('store-subscriber') }}",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: postFormData ,
+            data: {
+                email:email,
+                brand_profile_id:brand_profile_id,
+                _token: _token
+            } ,
             datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
             success: function (data) {
                  console.table(data.success);
                 toastr.success(data.success);
