@@ -543,7 +543,7 @@ class FrontEndController extends Controller
         return view('frontend.user_wallet',compact('cities','categories','products','admin','product_ratings','product_comments','likes'));
     }
 
-    public function store_wallet(Request $request){
+    public function store_wallet(Request $request)
     {
         $contact_us= new AdminProductOrder;
         $contact_us->f_name = $request->f_name;
