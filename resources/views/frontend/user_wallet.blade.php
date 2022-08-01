@@ -6,6 +6,7 @@ Dosize
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('content')
 
@@ -171,7 +172,7 @@ Dosize
                     <input type="hidden" name="coins" value="{{$product->price }}" />
                     <input type="hidden" name="product_id" value="{{$product->id }}" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Buy Product</button>
+                    <button type="submit" class="btn btn-primary" style="background-color:#db1580 !important; border-color:#db1580 !important;">Buy Product</button>
                 </form>
             </div>
         </div>
@@ -184,6 +185,7 @@ Dosize
 <script src="{{ asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script src="{{ asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#login-modal').fadeOut()
@@ -215,7 +217,7 @@ Dosize
             success: function (data) {
                 console.log("Success");
                 $('.close').click();
-                window.location.href="/dosiz/public";
+                window.location.href="/";
                  
             },
             error: function (data) {
@@ -241,7 +243,7 @@ Dosize
             success: function (data) {
                 // console.log(data);
                 $('.close').click();
-                window.location.href="/dosiz/public/dashboard/dashboard";
+                window.location.href="/dashboard/dashboard";
                  
             },
             error: function (data) {

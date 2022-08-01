@@ -551,7 +551,8 @@ class FrontEndController extends Controller
         $admin_product->product_id = $request->product_id;
         $admin_product->user_id = Auth::id();
         $admin_product->save();
-            return Redirect::back();
+        toastr()->success('You have successfully Purchased');
+        return Redirect::back();
     }
 
 }
