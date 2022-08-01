@@ -20,14 +20,14 @@
   <div class="modal-dialo" role="document">
     <div class="modal-content">
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-    </div>
+          </button> -->
+     </div>
     <div class="modal-body">
                 <form class="form-inline">
                     <div class="form-group searchInput mx-sm-3 mb-2">
-                        <label for="search" class="sr-only">Search</label>
+                        <label for="search" class="sr-only">Search kmkm</label>
                         <input type="Search" class="form-control" id="search" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Search</button>

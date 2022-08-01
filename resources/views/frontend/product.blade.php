@@ -192,14 +192,14 @@ Course - Details
                         </div>
                         @endforeach
                         @endif
+                        <div class="swiper-button-next btn-swiper">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
                     </div>
                     <!-- pagination -->
-                    <div class="swiper-button-next btn-swiper">
-                        <i class="fa fa-caret-right" aria-hidden="true"></i>
-                    </div>
-                    <div class="swiper-button-prev btn-swiper">
-                        <i class="fa fa-caret-left" aria-hidden="true"></i>
-                    </div>
                 </div>
             </div>
 
@@ -801,10 +801,10 @@ $(document).ready(function() {
                 autoHeight: true,
                 direction: "horizontal",
                 spaceBetween: 10,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                },
+                // navigation: {
+                //     nextEl: ".swiper-button-next",
+                //     prevEl: ".swiper-button-prev"
+                // },
                 thumbs: {
                     swiper: galleryThumbs
                 }
