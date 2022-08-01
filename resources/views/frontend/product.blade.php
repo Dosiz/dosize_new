@@ -475,7 +475,7 @@ Products
 
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -486,26 +486,30 @@ Products
                 </div>
                 <div class="modal-body">
                     <ul>
+                        @php
+                            $link = route('product',$product->id);
+                            $shareable_links = Share::page( $link, $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
+                        @endphp
                         <li>
-                            <a href="">
+                            <a target="_blank" href="#">
                                 <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" href="{{ $shareable_links['whatsapp'] }}">
                                 <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" href="{{ $shareable_links['twitter'] }}">
                                 <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" href="{{ $shareable_links['facebook'] }}">
                                 <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
