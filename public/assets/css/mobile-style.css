@@ -870,6 +870,16 @@ header .article_header .heart_tag_message_list ul li span {
     font-family: ploniBold;
 }
 
+.promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more button {
+    direction: rtl;
+    background-color: var(--categoryTextColor);
+    color: var(--whiteColor);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: ploniBold;
+    border: 1px solid #DB1580;
+}
+
 .promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more p {
     font-family: ploniMedium;
 }
@@ -1891,6 +1901,10 @@ main .main-wrapper .wallet_promotion .price_learn_more a {
     padding: 5px 15px !important;
 }
 
+main .main-wrapper .wallet_promotion .price_learn_more button {
+    padding: 5px 15px !important;
+}
+
 /************* Product - CSS *********************/
 .product_detail {
     background: #FFFFFF;
@@ -2442,6 +2456,11 @@ footer .inbox_footer .message_form .input_div_button button,
     }
 
     .promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more a {
+        font-size: 10px;
+        border-radius: 5px
+    }
+
+    .promotion .multiple_promotion .promotion_box .promotion_content .price_learn_more button {
         font-size: 10px;
         border-radius: 5px
     }

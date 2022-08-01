@@ -15,7 +15,7 @@ class CreateAdminProductOrdersTable extends Migration
     {
         Schema::create('admin_product_orders', function (Blueprint $table) {
             $table->id();
-
+            $table->integer('coins');
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('admin_products');
 

@@ -74,7 +74,10 @@ Dosize
                                     {!! substr($product->description, 0,  30) !!}
                                 </p>
                                 <div class="price_learn_more">
-                                    <a class="font-size-14 font-weight-700" href="" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @endif>קבל ></a>
+                                    <form>
+                                        @csrf
+                                    <a  id="purchase_product2" class="font-size-14 font-weight-700" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
+                                    </form>
                                     <p class="font-size-14 font-weight-600">{{$product->price}} <img
                                             src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
                                             class="img-fluid"></p>
@@ -230,7 +233,46 @@ Dosize
         }, function () {
             $(elem).parent().parent().parent().parent().addClass('d-none');
     });
+    });
+
+    document.querySelector('#purchase_product2').addEventListener('click', function(e) {
+        // e.stopPropagation();
+        e.preventDefault();
+        alert(100);
     })
+
+    // $('#purchase_product').click(function(e){
+    //     e.preventDefault();
+    //     alert('Purchase Product');
+    //     exit();
+    //     let brand_profile_id = $('#brand_profile_id').val();
+    //     let email = $('#email').val();
+    //     let _token   = $('meta[name="csrf-token"]').attr('content');
+    //     // console.log(postFormData);
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{{ route('store-subscriber') }}",
+    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //         data: {
+    //             email:email,
+    //             brand_profile_id:brand_profile_id,
+    //             _token: _token
+    //         } ,
+    //         datatype: "json",
+    //         success: function (data) {
+    //              console.table(data.success);
+    //             toastr.success(data.success);
+    //             // console.table(data.comment);
+                
+                 
+    //         },
+    //         error: function (data) {
+    //             // toastr.warning(data);
+    //             toastr.error("Already Subscribed");
+                
+    //         }
+    //     });
+    });
 
 </script>
 @endsection
