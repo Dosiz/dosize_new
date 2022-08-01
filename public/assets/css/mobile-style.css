@@ -1178,7 +1178,7 @@ header .article_header .heart_tag_message_list ul li span {
     margin: 18px 0px 18px auto !important;
 }
 
-.article_content_main .formDiv form {
+.formDiv form {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -1186,15 +1186,15 @@ header .article_header .heart_tag_message_list ul li span {
     position: relative;
 }
 
-.article_content_main .formDiv form input {
+.formDiv form input {
     width: 65%;
 }
 
-.article_content_main .formDiv .comment_hearder .anonymous_text {
+.formDiv .comment_hearder .anonymous_text {
     margin-left: 10px;
 }
 
-.article_content_main .post_comment .total_comment {
+.post_comment .total_comment {
     display: block;
 }
 
@@ -1755,6 +1755,7 @@ footer ul li.active:before {
     padding: 15px;
     border-radius: 10px;
     border: 0;
+    width: 150px;
 }
 
 .post_comment .comment_hearder .anonymous_text {
@@ -2301,7 +2302,7 @@ footer .inbox_footer .message_form .input_div_button button,
         width: 85%;
     }
 
-    .article_content_main .formDiv form input {
+    .formDiv form input {
         width: 54%;
     }
 
@@ -2723,11 +2724,11 @@ footer .inbox_footer .message_form .input_div_button button,
         display: none;
     }
 
-    .article_content_main .formDiv form {
+    .formDiv form {
         display: block;
     }
 
-    .article_content_main .formDiv form input {
+    .formDiv form input {
         width: 100%;
     }
 

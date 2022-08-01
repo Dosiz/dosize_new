@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -21,7 +22,15 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        logout as performLogout;
+    }
+
+    public function logout(Request $request)
+    {
+        $this->performLogout($request);
+        return redirect()->route('landing-page',1);
+    }
 
     /**
      * Where to redirect users after login.
@@ -67,13 +76,13 @@ class LoginController extends Controller
         elseif(Auth::user()->hasRole('User'))
         {
             $user = User::where('id',Auth::id())->first();
-            $this->redirectTo = route('landing-page');
+            $this->redirectTo = route('landing-page',1);
 
             return $this->redirectTo;
         }
         else
         {
-            $this->redirectTo = route('landing-page');
+            $this->redirectTo = route('landing-page',1);
 
             return $this->redirectTo;
 

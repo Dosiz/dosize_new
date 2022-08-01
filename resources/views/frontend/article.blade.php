@@ -280,7 +280,7 @@ Articles
                                     @foreach($blog_comments as $comment)
                                     @if($comment->parent_id == null)
                                     <div>
-                                        <li>
+                                        <li  class="align-items-center">
                                             @guest
                                             <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
                                             {{-- {{Auth::user()->hasRole('Brand')}} --}}
@@ -300,9 +300,9 @@ Articles
                                                         @if($i>5)
                                                             @break(0);
                                                         @endif
-                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) yellow @else green @endif"></i>
+                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
                                                     @endfor
-                                                        <strong>Rating : </strong>
+                                                        
                                                         
 
                                                 @endif
@@ -337,7 +337,7 @@ Articles
                                     @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
                                     @if(count($replies) > 0)
                                     @foreach($replies as $reply)
-                                    <div style="background-color:#db15801f; width:460px; margin-left:20px;">
+                                    <div style="width:560px; margin-left:20px;">
                                         <li>
                                             <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
                                             {{-- {{Auth::user()->hasRole('Brand')}} --}}
@@ -505,6 +505,17 @@ Articles
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript">
+    $("label").click(function(){
+    // $(this).parent().find("label").css({"background-color": "#D8D8D8"});
+    // $(this).css({"background-color": "#7ED321"});
+    // $(this).nextAll().css({"background-color": "#7ED321"});
+    $(this).prev().attr('checked','checked');
+    $(this).parent().find("label").css({"color": "#D8D8D8"});
+    $(this).css({"color": "#FEA73A"});
+    $(this).nextAll().css({"color": "#FEA73A"});
+  });
+</script>
 <script>
 
 $(document).ready(function() {

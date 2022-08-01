@@ -304,7 +304,7 @@ Course - Details
                                     <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
                                     @else
                                     @if(Auth::user()->hasRole('Brand'))
-                                    <p class="add_comment font-size-12">הוספת תגובה</p>
+                                    <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
                                     @else
                                     <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
                                     @endif
@@ -314,6 +314,30 @@ Course - Details
                                         <p class="font-size-14">{{$comment->comment}}</p>
                                     </div>
                                 </li>
+
+                                <div class="formDiv replyForm">
+                                    <form action="{{ route('store-product-comment') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                                        <input type="hidden" value="{{$product->brand_profile_id }}" id="brand_profile_id" />
+                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                        <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                            class="text-right font-size-16">
+                                        
+                                        <div class="comment_hearder">
+                                            @guest
+                                            <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
+                                            @else
+                                            <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
+                                            @endguest
+                                            <div class="anonymous_text font-size-16">אנונימי <span
+                                                    class="checkBox">
+                                                    <input type="checkbox" name="name" id="approve">
+                                                    </span></div>
+                                        </div>
+                                        <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
+                                    </form>
+                                </div>
                                 
                                 @endforeach
                                 @endif

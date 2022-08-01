@@ -101,14 +101,14 @@ class RegisterController extends Controller
         elseif(Auth::user()->hasRole('User'))
         {
             $user = User::where('id',Auth::id())->first();
-            $this->redirectTo = route('landing-page');
+            $this->redirectTo = route('landing-page',1);
 
             return $this->redirectTo;
         }
 
         else
         {
-            $this->redirectTo = route('landing-page');
+            $this->redirectTo = route('landing-page',1);
 
             return $this->redirectTo;
         }
