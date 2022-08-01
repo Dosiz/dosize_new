@@ -1,4 +1,4 @@
-<div class="content container-fluid p-0"  >
+<div class="content container-fluid p-0"  wire:poll>
     <div class="bg_color">
         @if(Auth::user()->hasRole('Brand'))
         <main>
