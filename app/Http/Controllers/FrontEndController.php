@@ -124,6 +124,15 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
         $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
+        // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
+        $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
+        ->groupBy('product_comments.product_id')
+        ->orderBy('avgrate', 'Desc')
+        // ->where('product_comments.parent_id',null)
+        ->where('product_comments.rating','!=',null)
+        // ->limit(10)
+        ->get();
+        // dd($product_ratings);
         $cities = City::get();
 
         $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
@@ -134,12 +143,12 @@ class FrontEndController extends Controller
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
-            return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         else{
             $product_like = null;
             $product_bookmark = null;
-            return view('frontend.product',compact('cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         // dd($recomanded_products);   
         

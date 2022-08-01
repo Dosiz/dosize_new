@@ -1,6 +1,6 @@
 @extends('layout.product')
 @section('title')
-Course - Details
+Products
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
@@ -112,11 +112,15 @@ Course - Details
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
-                            <img src="{{asset('assets/img/star.png') }}" alt="star">
-                            <img src="{{asset('assets/img/star.png') }}" alt="star">
-                            <img src="{{asset('assets/img/star.png') }}" alt="star">
-                            <img src="{{asset('assets/img/star.png') }}" alt="star">
-                            <img src="{{asset('assets/img/star.png') }}" alt="star">
+                            @if(count($product_ratings) > 0)
+                            @foreach($product_ratings as $product_rating)
+                                @if($product_rating->avgrate)
+                                    
+                                {!! str_repeat('<span><i class="fa fa-star" style="color:#ff9529;"></i></span>', $product_rating->avgrate) !!}
+                                {!! str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 6 - $product_rating->avgrate) !!}
+                                @endif
+                            @endforeach
+                            @endif
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
