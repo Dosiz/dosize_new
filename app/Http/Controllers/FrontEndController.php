@@ -545,14 +545,12 @@ class FrontEndController extends Controller
 
     public function store_wallet(Request $request)
     {
-        $contact_us= new AdminProductOrder;
-        $contact_us->f_name = $request->f_name;
-        $contact_us->l_name = $request->l_name;
-        $contact_us->email = $request->email;
-        $contact_us->phone = $request->phone;
-        $contact_us->subject = $request->subject;
-        $contact_us->brand_profile_id = $request->id;
-        $contact_us->save();
+        // dd($request->all());
+        $admin_product= new AdminProductOrder;
+        $admin_product->coins = $request->coins;
+        $admin_product->product_id = $request->product_id;
+        $admin_product->user_id = Auth::id();
+        $admin_product->save();
             return Redirect::back();
     }
 
