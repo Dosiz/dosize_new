@@ -6,7 +6,6 @@ use Livewire\Component;
 use App\Models\Message;
 use App\Models\Friend; 
 use App\Models\BrandProfile;
-use Livewire\Component;
 use Auth;
 use App\Models\User;
 use DB;
