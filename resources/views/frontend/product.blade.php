@@ -245,9 +245,21 @@ Course - Details
                                 <ul style="visibility: hidden">
                                 </ul>
                             @else
-                            @if(Auth::user()->hasRole('User'))
-                            <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-row-reverse align-items-center">
+                            
+                            @endguest
+                            <p></p>
+                            <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
+                                    src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
+                                    class="img-fluid">
+                            </p>
+                        </div>
+                        @guest
+                        
+                        @else
+                        @if(Auth::user()->hasRole('User'))
+                        <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-column align-items-cente">
                             @csrf
+                            
                             <ul>
                                 <li>
                                     <span>
@@ -261,35 +273,22 @@ Course - Details
                                     </span>
                                 </li>                        
                             </ul>
-                            @else
-                                <ul style="visibility: hidden">
-                                </ul>
-                            @endif
-                            @endguest
-                            <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
-                                    src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
-                                    class="img-fluid">
-                            </p>
-                        </div>
-                        @guest
-                        
-                        @else
-                        @if(Auth::user()->hasRole('User'))
-                        
-                            <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
-                            <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
-                                class="text-right font-size-16 comment_input" style="width:">
-                                <span class="text-danger comment_valid" style=""></span>
-                            <div class="comment_hearder mr-4">
-                                @auth
-                                <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
-                                @else
-                                <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
-                                @endauth
-                                <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
-                                    <span class="checkBox">
-                                        <input type="checkbox" name="name" id="approve">
-                                    </span></div>
+                            <div class="d-flex w-100 flex-row-reverse align-items-center">
+                                <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
+                                <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
+                                    class="text-right font-size-16 comment_input" style="width:">
+                                    <span class="text-danger comment_valid" style=""></span>
+                                <div class="comment_hearder mr-4">
+                                    @guest
+                                    <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
+                                    @else
+                                    <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
+                                    @endguest
+                                    <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
+                                        <span class="checkBox">
+                                            <input type="checkbox" name="name" id="approve">
+                                        </span></div>
+                                </div>
                             </div>
                             
                         </form>
@@ -310,17 +309,21 @@ Course - Details
                                     <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
                                     @endif
                                     @endguest
-                                    <div class="user_detail">
-                                        <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
-                                        @if($comment->rating)
-                                            @for($i= 1;$i<=$comment->rating;$i++)
-                                                @if($i>5)
-                                                    @break(0);
-                                                @endif
-                                                <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
-                                            @endfor
-                                        @endif
-                                        <p class="font-size-14">{{$comment->comment}}</p>
+                                    <div class="user_detail d-flex justify-content-between align-items-baseline">
+                                        <div class="mr-2">
+                                            @if($comment->rating)
+                                                @for($i= 1;$i<=$comment->rating;$i++)
+                                                    @if($i>5)
+                                                        @break(0);
+                                                    @endif
+                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
+                                                @endfor
+                                            @endif
+                                        </div>
+                                        <div>
+                                            <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
+                                            <p class="font-size-14">{{$comment->comment}}</p>
+                                        </div>
                                     </div>
                                 </li>
 
