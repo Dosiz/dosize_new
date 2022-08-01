@@ -246,6 +246,8 @@ Course - Details
                                 </ul>
                             @else
                             @if(Auth::user()->hasRole('User'))
+                            <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-row-reverse align-items-center">
+                            @csrf
                             <ul>
                                 <li>
                                     <span>
@@ -273,8 +275,7 @@ Course - Details
                         
                         @else
                         @if(Auth::user()->hasRole('User'))
-                        <form id="product_comment" class="d-flex flex-row-reverse align-items-center">
-                            @csrf
+                        
                             <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
                             <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                 class="text-right font-size-16 comment_input" style="width:">
@@ -311,6 +312,14 @@ Course - Details
                                     @endguest
                                     <div class="user_detail">
                                         <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
+                                        @if($comment->rating)
+                                            @for($i= 1;$i<=$comment->rating;$i++)
+                                                @if($i>5)
+                                                    @break(0);
+                                                @endif
+                                                <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
+                                            @endfor
+                                        @endif
                                         <p class="font-size-14">{{$comment->comment}}</p>
                                     </div>
                                 </li>
@@ -338,7 +347,21 @@ Course - Details
                                         <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                     </form>
                                 </div>
-                                
+                                @php $replies = App\Models\ProductComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
+                                    @if(count($replies) > 0)
+                                    @foreach($replies as $reply)
+                                    <div style="width:710px; margin-left:44px;">
+                                        <li>
+                                            <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
+                                            {{-- {{Auth::user()->hasRole('Brand')}} --}}
+                                            <div class="user_detail" style="margin: 10px">
+                                                <h4 class="font-size-14"> {{$reply->name ?? $reply->user->name}} </h4>
+                                                <p class="font-size-14">{{$reply->comment}}</p>
+                                            </div>
+                                        </li>
+                                    </div>
+                                    @endforeach
+                                    @endif
                                 @endforeach
                                 @endif
                             </ul>

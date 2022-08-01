@@ -12,7 +12,7 @@ Dosize
 <main>
     <div class="main-wrapper">
         <div class="main_wallet_div">
-            <img src="../../assets/img/mobile_component/wallet_main.png" alt="" class="img-fluid">
+            <img src="{{asset('assets/img/mobile_component/wallet_main.png') }}" alt="" class="img-fluid">
             <h3>הארנק שלי</h3>
             <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
                 בלה בלה...</p>
@@ -21,7 +21,7 @@ Dosize
             <div class="points_div">
                 <div class="row">
                     <div class="col-lg-5 text-center">
-                        <img src="../../assets/img/mobile_component/points_icon.png" alt="" class="img-fluid">
+                        <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
                         <h3 class="total_points">460 נקודות</h3>
                     </div>
                     <div class="col-lg-7">
@@ -44,7 +44,7 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">ההצעות הקרובות בשבילך <img
-                                src="../../assets/img/mobile_component/gift_pack.png" alt="" class="img-fluid">
+                                src="{{asset('assets/img/mobile_component/gift_pack.png') }}" alt="" class="img-fluid">
                         </h3>
                     </div>
                 </div>
@@ -52,115 +52,37 @@ Dosize
             <div class="slider_div">
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">
+                        @if(count($products) > 0)
+                        @foreach($products as $product)
                         <div class="promotion_box box_shahdow swiper-slide">
                             <div class="promotion_img_box">
-                                <img src="../../assets/img/mobile_component/promotionImg.png" alt=""
-                                    class="img-fluid">
-                                <span class="font-size-14 font-weight-700">30%</span>
+                                <img src="{{asset('admin_product/'.$product->image)}}" alt="" class="img-fluid" style="width:225px; height:112px;">
+                                <span class="font-size-14 font-weight-700" style="visibility: hidden">30%</span>
                             </div>
                             <div class="promotion_content">
                                 <div class="time_category_text">
-                                    <div class="time_div">
+                                    <div class="time_div" style="visibility: hidden">
                                         <p>
                                             <span class="font-size-12 font-weight-600">02</span> : <span
                                                 class="font-size-12 font-weight-600">35</span> : <span
                                                 class="font-size-12 font-weight-600">22</span>
                                         </p>
                                     </div>
-                                    <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
+                                    <p class="promotion_category font-size-12 font-weight-400"> {{$admin->name}} </p>
                                 </div>
-                                <p class="promotion_title font-size-14 font-weight-700 text-right">30% הנחה
-                                    ברשת...</p>
+                                <p class="promotion_title font-size-14 font-weight-700 text-right">
+                                    {!! substr($product->description, 0,  30) !!}
+                                </p>
                                 <div class="price_learn_more">
-                                    <a class="font-size-14 font-weight-700" href="">קבל ></a>
-                                    <p class="font-size-14 font-weight-600">300 <img
-                                            src="../../assets/img/mobile_component//points_icon.png" alt=""
+                                    <a class="font-size-14 font-weight-700" href="" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @endif>קבל ></a>
+                                    <p class="font-size-14 font-weight-600">{{$product->price}} <img
+                                            src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
                                             class="img-fluid"></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="promotion_box box_shahdow swiper-slide">
-                            <div class="promotion_img_box">
-                                <img src="../../assets/img/mobile_component/promotionImg.png" alt=""
-                                    class="img-fluid">
-                                <span class="font-size-14 font-weight-700">30%</span>
-                            </div>
-                            <div class="promotion_content">
-                                <div class="time_category_text">
-                                    <div class="time_div">
-                                        <p>
-                                            <span class="font-size-12 font-weight-600">02</span> : <span
-                                                class="font-size-12 font-weight-600">35</span> : <span
-                                                class="font-size-12 font-weight-600">22</span>
-                                        </p>
-                                    </div>
-                                    <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
-                                </div>
-                                <p class="promotion_title font-size-14 font-weight-700 text-right">30% הנחה
-                                    ברשת...</p>
-                                <div class="price_learn_more">
-                                    <a class="font-size-14 font-weight-700" href="">קבל ></a>
-                                    <p class="font-size-14 font-weight-600">300 <img
-                                            src="../../assets/img/mobile_component//points_icon.png" alt=""
-                                            class="img-fluid"></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="promotion_box box_shahdow swiper-slide">
-                            <div class="promotion_img_box">
-                                <img src="../../assets/img/mobile_component/promotionImg.png" alt=""
-                                    class="img-fluid">
-                                <span class="font-size-14 font-weight-700">30%</span>
-                            </div>
-                            <div class="promotion_content">
-                                <div class="time_category_text">
-                                    <div class="time_div">
-                                        <p>
-                                            <span class="font-size-12 font-weight-600">02</span> : <span
-                                                class="font-size-12 font-weight-600">35</span> : <span
-                                                class="font-size-12 font-weight-600">22</span>
-                                        </p>
-                                    </div>
-                                    <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
-                                </div>
-                                <p class="promotion_title font-size-14 font-weight-700 text-right">30% הנחה
-                                    ברשת...</p>
-                                <div class="price_learn_more">
-                                    <a class="font-size-14 font-weight-700" href="">קבל ></a>
-                                    <p class="font-size-14 font-weight-600">300 <img
-                                            src="../../assets/img/mobile_component//points_icon.png" alt=""
-                                            class="img-fluid"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="promotion_box box_shahdow swiper-slide">
-                            <div class="promotion_img_box">
-                                <img src="../../assets/img/mobile_component/promotionImg.png" alt=""
-                                    class="img-fluid">
-                                <span class="font-size-14 font-weight-700">30%</span>
-                            </div>
-                            <div class="promotion_content">
-                                <div class="time_category_text">
-                                    <div class="time_div">
-                                        <p>
-                                            <span class="font-size-12 font-weight-600">02</span> : <span
-                                                class="font-size-12 font-weight-600">35</span> : <span
-                                                class="font-size-12 font-weight-600">22</span>
-                                        </p>
-                                    </div>
-                                    <p class="promotion_category font-size-12 font-weight-400">נעלי העיר</p>
-                                </div>
-                                <p class="promotion_title font-size-14 font-weight-700 text-right">30% הנחה
-                                    ברשת...</p>
-                                <div class="price_learn_more">
-                                    <a class="font-size-14 font-weight-700" href="">קבל ></a>
-                                    <p class="font-size-14 font-weight-600">300 <img
-                                            src="../../assets/img/mobile_component//points_icon.png" alt=""
-                                            class="img-fluid"></p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

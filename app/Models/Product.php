@@ -28,7 +28,7 @@ class Product extends Model
 
     public function product_comment()
     {
-        return $this->hasMany(ProductComment::class);
+        return $this->hasMany(ProductComment::class)->whereNull('parent_id');
     }
 
     public function recomended_product()

@@ -58,7 +58,7 @@ Products
 														{{ $admin_product->price}}
 													</td>
 													<td>
-														{{ $admin_product->description}}
+														{!! $admin_product->description !!}
 													</td>
 
 													<td class="text-right">

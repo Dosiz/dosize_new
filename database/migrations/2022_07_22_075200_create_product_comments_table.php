@@ -17,11 +17,12 @@ class CreateProductCommentsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->longText('comment')->nullable();
-            $table->longText('reply')->nullable();
+            $table->longText('rating')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });

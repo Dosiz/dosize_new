@@ -29,7 +29,8 @@ use App\Models\Bookmark;
 use App\Models\Message;
 use App\Models\Friend;       
 use App\Models\ContactUs;     
-use App\Models\Subscriber;     
+use App\Models\Subscriber;   
+use App\Models\AdminProduct;  
 
 class FrontEndController extends Controller
 {
@@ -122,7 +123,7 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
-        $product_comments = ProductComment::where('product_id',$product_id)->orderBy('id','DESC')->get();
+        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
         $cities = City::get();
 
         $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
@@ -211,11 +212,21 @@ class FrontEndController extends Controller
             $product_comment->user_id = $user_id;
             $product_user_name = $user->name;
         }
+        if($request->parent_id)
+        {
+            $product_comment->parent_id = $request->parent_id;
+        }
+        if($request->bedside_manner_rating)
+        {
+            $product_comment->rating = $request->bedside_manner_rating;
+        }
         $product_comment->comment = $request->comment;
         $product_comment->product_id  = $request->product_id;
         $product_comment->save();
+
+        return Redirect::back();
        
-        return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
+        // return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
     }
 
     public function brand_profile($brand_id)
@@ -498,7 +509,12 @@ class FrontEndController extends Controller
     {
         $categories = Category::get();
         $cities = City::get();
-        return view('frontend.user_wallet',compact('cities','categories'));
+        $products = AdminProduct::orderBy('id', 'DESC')->get();
+        $admin = User::with(array('Roles' => function($query) {
+            $query->where('name','Admin');
+        }))
+        ->first();
+        return view('frontend.user_wallet',compact('cities','categories','products','admin'));
     }
 
 }

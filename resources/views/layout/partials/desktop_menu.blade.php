@@ -17,7 +17,7 @@
                             class="img-fluid"></a>
                 </li>
                 <li>
-                    <a href="">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>
