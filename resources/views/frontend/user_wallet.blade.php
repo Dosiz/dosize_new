@@ -34,10 +34,10 @@ Dosize
                             </div>
                             <div class="col-lg_7">
                                 <ul>
-                                    <li class="font-size-12 mb-lg-3">לייק (50) <i class="fa fa-heart-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">תגובות (10) <i class="fa fa-comment-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">לייק @if(count($likes) > 0)({{count($likes)}})@endif <i class="fa fa-heart-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">תגובות @if(count($product_comments) > 0)@foreach($product_comments as $product_comment)({{$product_comment->count_comment}})@endforeach @endif <i class="fa fa-comment-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">שיתופים (35) <i class="fa fa-share-square-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">דירוגים (30) <i class="fa fa-star-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">דירוגים @if(count($product_ratings) > 0)@foreach($product_ratings as $rating)({{$rating->count_rating}})@endforeach @endif<i class="fa fa-star-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">קבלות (2) <i class="fa fa-file-text-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">הרשמות למועדונים <i class="fa fa-file-text-o"></i></li>
                                 </ul>
@@ -88,10 +88,7 @@ Dosize
                                             {!! substr($product->description, 0,  30) !!}
                                         </p>
                                         <div class="price_learn_more">
-                                            <form>
-                                                @csrf
-                                            <a  id="purchase_product2" class="font-size-14 font-weight-700" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
-                                            </form>
+                                            <a href=""  data-toggle="modal" data-target="#exampleModal" class="font-size-14 font-weight-700" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
                                             <p class="font-size-14 font-weight-600">{{$product->price}} <img
                                                     src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
                                                     class="img-fluid"></p>
@@ -155,6 +152,30 @@ Dosize
     </div>
 </main>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Product Purchase</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            Are you sure you want to buy this product ?
+            </div>
+            <div class="modal-footer">
+                <form action="" method="POST" >
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{$product->id }}" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Buy Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 @section('script')

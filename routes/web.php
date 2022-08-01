@@ -124,6 +124,7 @@ Route::middleware('auth')->group(function(){
     
     //wallet
     Route::get('/user/wallet',[App\Http\Controllers\FrontEndController::class, 'wallet'])->name('user.wallet');
+    Route::post('/store-wallet',[App\Http\Controllers\FrontEndController::class, 'store_wallet'])->name('store-wallet');
 });
 /********************MANAGER ROUTES END******************************/
 

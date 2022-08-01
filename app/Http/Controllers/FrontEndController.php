@@ -31,6 +31,7 @@ use App\Models\Friend;
 use App\Models\ContactUs;     
 use App\Models\Subscriber;   
 use App\Models\AdminProduct;  
+use App\Models\AdminProductOrder;  
 
 class FrontEndController extends Controller
 {
@@ -523,7 +524,36 @@ class FrontEndController extends Controller
             $query->where('name','Admin');
         }))
         ->first();
-        return view('frontend.user_wallet',compact('cities','categories','products','admin'));
+        $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
+        ->groupBy('product_comments.product_id')
+        ->orderBy('avgrate', 'Desc')
+        // ->where('product_comments.parent_id',null)
+        ->where('product_comments.rating','!=',null)
+        ->where('product_comments.user_id', Auth::user()->id)
+        // ->limit(10)
+        ->get();
+
+        $product_comments = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_comment')])
+        ->groupBy('product_comments.product_id')
+        ->orderBy('avgrate', 'Desc')
+        ->where('product_comments.user_id', Auth::user()->id)
+        ->get();
+        $likes = Like::where('user_id',Auth::user()->id)->get();
+        // dd($product_ratings);
+        return view('frontend.user_wallet',compact('cities','categories','products','admin','product_ratings','product_comments','likes'));
+    }
+
+    public function store_wallet(Request $request){
+    {
+        $contact_us= new AdminProductOrder;
+        $contact_us->f_name = $request->f_name;
+        $contact_us->l_name = $request->l_name;
+        $contact_us->email = $request->email;
+        $contact_us->phone = $request->phone;
+        $contact_us->subject = $request->subject;
+        $contact_us->brand_profile_id = $request->id;
+        $contact_us->save();
+            return Redirect::back();
     }
 
 }

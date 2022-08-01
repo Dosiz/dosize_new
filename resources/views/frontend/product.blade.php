@@ -117,7 +117,7 @@ Products
                                 @if($product_rating->avgrate)
                                     
                                 {!! str_repeat('<span><i class="fa fa-star" style="color:#ff9529;"></i></span>', $product_rating->avgrate) !!}
-                                {!! str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 6 - $product_rating->avgrate) !!}
+                                {!! str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 5 - $product_rating->avgrate) !!}
                                 @endif
                             @endforeach
                             @endif
