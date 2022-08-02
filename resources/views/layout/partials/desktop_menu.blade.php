@@ -48,6 +48,8 @@
                             class="img-fluid"></a>
                 </li>
             </ul>
+            @guest
+            @else
             <div class="logout_user">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >התנתקות <img src="{{asset('assets/img/mobile_component/logout_icon.png') }}" alt=""
                         class="img-fluid">
@@ -56,6 +58,7 @@
                     @csrf
                 </form>
             </div>
+            @endguest
         </div>
     </div>
     <div class="dektop_mobile_menu_body">
