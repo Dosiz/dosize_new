@@ -212,10 +212,10 @@ Dosize
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="{{route('brand-profile',$product->brand_profile_id)}}">
+                                            <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
-                                            <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
+                                            <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
                                                 {{$product->name}}
                                             </h4>
