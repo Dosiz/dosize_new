@@ -13,7 +13,7 @@
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
+                    <a href="{{route('landing-page',5)}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>
@@ -48,6 +48,8 @@
                             class="img-fluid"></a>
                 </li>
             </ul>
+            @guest
+            @else
             <div class="logout_user">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >התנתקות <img src="{{asset('assets/img/mobile_component/logout_icon.png') }}" alt=""
                         class="img-fluid">
@@ -56,6 +58,7 @@
                     @csrf
                 </form>
             </div>
+            @endguest
         </div>
     </div>
     <div class="dektop_mobile_menu_body">
@@ -95,6 +98,8 @@
                     <a href=""><img src="{{asset('assets/img/mobile_search.png') }}" alt="" class="img-fluid"></a>
                 </li>
             </ul>
+            @guest
+            @else
             <div class="logout_user">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><img src="{{asset('assets/img/mobile_component/logout_icon.png') }}" alt=""
                         class="img-fluid"></a>
@@ -103,6 +108,7 @@
                     @csrf
                 </form>
             </div>
+            @endguest
         </div>
     </div>
 </div>

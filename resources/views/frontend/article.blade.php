@@ -5,7 +5,6 @@ Articles
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <style>
     .mobile_header {
         display: none;
@@ -168,7 +167,7 @@ Articles
                                         <div class="rating_price_div">
                                             <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                     class="font-size-12 font-weight-400">80 ₪</span></p>
-                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                            <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                         </div>
                                     </a>
                                 </div>
@@ -504,7 +503,6 @@ Articles
 @section('script')
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript">
     $("label").click(function(){
     // $(this).parent().find("label").css({"background-color": "#D8D8D8"});

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body>
     <div class="bg_color">
@@ -46,7 +48,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="formDiv">
-                        <form id="sign_up_form">
+                        <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">שם</label>
@@ -123,7 +125,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="formDiv">
-                        <form id="login_form">
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">דוא”ל</label>

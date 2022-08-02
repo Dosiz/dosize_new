@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -25,12 +27,13 @@
           </button> -->
      </div>
     <div class="modal-body">
-                <form class="form-inline">
+                <form action="{{route('search-product')}}" method="POST" class="form-inline">
+                    @csrf
                     <div class="form-group searchInput mx-sm-3 mb-2">
                         <label for="search" class="sr-only">Search kmkm</label>
-                        <input type="Search" class="form-control" id="search" placeholder="Search">
+                        <input type="Search" class="form-control" id="search" name="search_product" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Search</button>
+                    <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
                 </form>
       </div>
       <!-- <div class="modal-footer">
@@ -51,7 +54,7 @@
             </div>
             <div class="modal-body">
                 <div class="formDiv">
-                    <form id="sign_up_form">
+                    <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <div class="inputDiv">
                             <label for="" class="font-size-16">שם</label>
@@ -128,7 +131,7 @@
             </div>
             <div class="modal-body">
                 <div class="formDiv">
-                    <form id="login_form">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="inputDiv">
                             <label for="" class="font-size-16">דוא”ל</label>

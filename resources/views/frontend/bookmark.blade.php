@@ -75,14 +75,14 @@ Dosize
                                             @if($bookmark->name == 'Article')
                                                 <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529"> {{$bookmark->blog->title}} </a>
                                             @else
-                                                <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529"> {{$bookmark->blog->title}} </a>
+                                                <a href="{{route('product',$bookmark->product_id)}}" style="color:#212529"> {{$bookmark->product->name}} </a>
                                             @endif
                                         </td>
                                         <td>
                                             @if($bookmark->name == 'Article')
                                             <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529"> {{$bookmark->name}}</a>
                                             @else
-                                            <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529">{{$bookmark->name}}</a>
+                                            <a href="{{route('product',$bookmark->product_id ?? '')}}" style="color:#212529">{{$bookmark->name}}</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -113,7 +113,7 @@ Dosize
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">    
                         @if(count($likes) > 0)
-                        {{dd($likes)}}
+                        {{-- {{dd($likes)}} --}}
                             @foreach($likes as $like)
                             <div class="container-fluid">
                                 <table class="table text-center">
@@ -131,14 +131,14 @@ Dosize
                                                 @if($like->name == 'Article')
                                                     <a href="{{route('article',['blog_id' => $like->blog_id])}}" style="color:#212529"> {{$like->blog->title}} </a>
                                                 @else
-                                                    <a href="{{route('article',$like->blog_id)}}" style="color:#212529"> {{$like->blog->title}} </a>
+                                                    <a href="{{route('product',$like->product_id ?? '')}}" style="color:#212529"> {{$like->product->name ?? ''}} </a>
                                                 @endif
                                             </td>
                                             <td>
                                                 @if($like->name == 'Article')
                                                 <a href="{{route('article',$like->blog_id)}}" style="color:#212529"> {{$like->name}}</a>
                                                 @else
-                                                <a href="{{route('article',$like->blog_id)}}" style="color:#212529">{{$like->name}}</a>
+                                                <a href="{{route('product',$like->product_id ?? '')}}" style="color:#212529">{{$like->name ?? ''}}</a>
                                                 @endif
                                             </td>
                                         </tr>

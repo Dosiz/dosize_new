@@ -75,6 +75,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @if(count($discount_products) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
             <div class="container-fluid">
@@ -140,6 +141,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @endif
         @if(count($blogs) > 0 && $blogs['0']->id != null)
         <div class="line spacing"></div>
         <div class="affordable_consumption spacing">
@@ -187,6 +189,7 @@ Dosize
             </div>
         </div>
         @endif
+        @if(count($products) > 0 && $products[0]->id != null)
         <div class="line spacing"></div>
         <div class="order_div spacing">
             <div class="deals deal_one">
@@ -202,24 +205,24 @@ Dosize
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($products) > 0)
+                            @if(count($products) > 0 && $products[0]->id != null)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="{{route('brand-profile',$product->brand_profile_id)}}">
+                                            <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
-                                            <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
+                                            <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
                                                 {{$product->name}}
                                             </h4>
                                             <div class="rating_price_div">
-                                                <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
@@ -279,6 +282,7 @@ Dosize
                     </div>
                 </div>
             </div>
+            @if(count($brands_recomanded_products) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -310,7 +314,7 @@ Dosize
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                 class="font-size-12 font-weight-400">80 ₪</span></p>
-                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>
                                 </div>
@@ -322,7 +326,9 @@ Dosize
                     </div>
                 </div>
             </div>
+            @endif
         </div>
+        @endif
         <?php $i = 1; ?>
         @if (count($products_by_categories) > 0 )
         <div class="row">
@@ -354,8 +360,8 @@ Dosize
                                         <div class="article_div">
                                             <div class="row">
                                                 <div class="col-lg-6 d-none">
-                                                    <div class="article_list">
-                                                        <ul>
+                                                    <div class="article_list" style="visibility: hidden">
+                                                        {{-- <ul>
                                                             <li class="text-right">
                                                                 <a href="">
                                                                     <h4 class="font-size-14">
@@ -369,33 +375,7 @@ Dosize
                                                                     </p>
                                                                 </a>
                                                             </li>
-                                                            <li class="text-right">
-                                                                <a href="">
-                                                                    <h4 class="font-size-14">
-                                                                        קולקציית קיץ הושקה בלידר
-                                                                        אתמול אחרי הצהריים
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        בגלריית התמונות של
-                                                                        הקולקצייה המדהימה הזאת
-                                                                        כאן
-                                                                    </p>
-                                                                </a>
-                                                            </li>
-                                                            <li class="text-right">
-                                                                <a href="">
-                                                                    <h4 class="font-size-14">
-                                                                        קולקציית קיץ הושקה בלידר
-                                                                        אתמול אחרי הצהריים
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        בגלריית התמונות של
-                                                                        הקולקצייה המדהימה הזאת
-                                                                        כאן
-                                                                    </p>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                                        </ul> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -449,7 +429,7 @@ Dosize
                                                                     {{$product_category->product['1']->price ?? ''}} ₪
                                                                 </p>
                                                                 </a>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -481,7 +461,7 @@ Dosize
                                                                     {{$product_category->product['2']->price ?? '' }} ₪
                                                                 </p>
                                                                 </a>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -513,7 +493,7 @@ Dosize
                                                                 <p class="font-size-14 font-weight-600">
                                                                     2,100 ₪
                                                                 </p>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -600,7 +580,7 @@ Dosize
                                                                 <p class="font-size-14 font-weight-600">
                                                                     ₪ {{$product_category->product['1']->price ?? ''}}
                                                                 </p>
-                                                                <p class="rating_text"><i class="fa fa-star"></i>
+                                                                <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
                                                                     4.8
                                                                 </p>
                                                             </div>
@@ -919,66 +899,66 @@ Dosize
     
 
     $('#sign_up_form').submit(function(e){
-        e.preventDefault();
-        $('.main-wrapper').addClass('active');
-        $.ajax({
-            type: "POST",
-            url: "{{ route('register') }}",
-            data: new FormData(this),
-            datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {
-                console.log("Success");
-                $('.close').click();
-                window.location.href="/";
+        // e.preventDefault();
+        // $('.main-wrapper').addClass('active');
+        // $.ajax({
+        //     type: "POST",
+        //     url: "{{ route('register') }}",
+        //     data: new FormData(this),
+        //     datatype: "json",
+        //     processData: false,
+        //     contentType: false,
+        //     cache: false,
+        //     success: function (data) {
+        //         console.log("Success");
+        //         $('.close').click();
+        //         window.location.href="/";
                  
-            },
-            error: function (data) {
-                    $('.name_valid').text(data?.responseJSON?.errors?.name);
-                    $('.email_valid').text(data?.responseJSON?.errors?.email);
-                    $('.city_valid').text(data?.responseJSON?.errors?.city_id);
-                    $('.password_valid').text(data?.responseJSON?.errors?.password);
-            }
-        });
+        //     },
+        //     error: function (data) {
+        //             $('.name_valid').text(data?.responseJSON?.errors?.name);
+        //             $('.email_valid').text(data?.responseJSON?.errors?.email);
+        //             $('.city_valid').text(data?.responseJSON?.errors?.city_id);
+        //             $('.password_valid').text(data?.responseJSON?.errors?.password);
+        //     }
+        // });
     });
 
     $('#login_form').submit(function(e){
-        e.preventDefault();
-        $('.main-wrapper').addClass('active');
-        $.ajax({
-            type: "POST",
-            url: "{{ route('login') }}",
-            data: new FormData(this),
-            datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {
-                // console.log(data);
-                $('.close').click();
-                window.location.href="/dashboard/dashboard";
+        // e.preventDefault();
+        // $('.main-wrapper').addClass('active');
+        // $.ajax({
+        //     type: "POST",
+        //     url: "{{ route('login') }}",
+        //     data: new FormData(this),
+        //     datatype: "json",
+        //     processData: false,
+        //     contentType: false,
+        //     cache: false,
+        //     success: function (data) {
+        //         console.log(data);
+        //         $('.close').click();
+        //         // window.location.href="/dashboard/dashboard";
                  
-            },
-            error: function (data) {
-                console.log('Error:', data.responseJSON);
-                if($('#email').val() == ''){
-                    $('.email_valid').text(data.responseJSON.errors.email);
-                }
-                else{
-                    $('.email_valid').text('');
-                }
-                if($('#password').val() == ''){
-                    $('.password_valid').text(data.responseJSON.errors.password);
-                }
-                else{
-                    $('.password_valid').text('');
-                }
+        //     },
+        //     error: function (data) {
+        //         console.log('Error:', data.responseJSON);
+        //         if($('#email').val() == ''){
+        //             $('.email_valid').text(data.responseJSON.errors.email);
+        //         }
+        //         else{
+        //             $('.email_valid').text('');
+        //         }
+        //         if($('#password').val() == ''){
+        //             $('.password_valid').text(data.responseJSON.errors.password);
+        //         }
+        //         else{
+        //             $('.password_valid').text('');
+        //         }
                 
                 
-            }
-        });
+        //     }
+        // });
     });
 
     // console.log($('.example'))

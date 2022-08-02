@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body>
     <div class="bg_color">
@@ -26,7 +28,7 @@
                             <label for="search" class="sr-only">Search</label>
                             <input type="Search" class="form-control" id="search" placeholder="Search">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Search</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
                     </form>
           </div>
           <!-- <div class="modal-footer">
@@ -47,7 +49,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="formDiv">
-                        <form id="sign_up_form">
+                        <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">שם</label>
@@ -124,7 +126,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="formDiv">
-                        <form id="login_form">
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">דוא”ל</label>

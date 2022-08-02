@@ -7,7 +7,7 @@ Products
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 <!-- <link rel="stylesheet" href="{{asset('assets/star-rating-svg-master/thumb-slider.css') }}"> -->
 <style>
     .mobile_header {
@@ -189,7 +189,7 @@ Products
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
                                                 class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        <p class="rating_text">{{$product_value->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                 </a>
                             </div>
@@ -575,7 +575,7 @@ Products
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <script type="text/javascript">
   $("label").click(function(){
   // $(this).parent().find("label").css({"background-color": "#D8D8D8"});

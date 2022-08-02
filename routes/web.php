@@ -28,6 +28,7 @@ Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::cla
 // blog comment
 Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment'); 
 Route::post('/store_blog_comment_reply',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_reply'])->name('store-blog-comment-reply'); 
+Route::post('/user/search_product',[App\Http\Controllers\FrontEndController::class, 'search_product'])->name('search-product'); 
 
 //subscriber
 Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class, 'store_subscriber'])->name('store-subscriber'); 
