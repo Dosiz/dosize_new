@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
-                        <button class="share_button" data-toggle="modal" data-target="#exampleModal">
+                        <button class="share_button" data-toggle="modal" data-target="#shareModal">
                             <img src="{{ asset('assets/img/mobile_component/shareBtn.png') }}" alt=""
                                 class="img-fluid desktop_hide">
                             <img src="{{ asset('assets/img/mobile_component/white_share_btn.png') }}" alt=""
