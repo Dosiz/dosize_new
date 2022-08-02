@@ -75,6 +75,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @if(count($discount_products) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
             <div class="container-fluid">
@@ -140,6 +141,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @endif
         @if(count($blogs) > 0 && $blogs['0']->id != null)
         <div class="line spacing"></div>
         <div class="affordable_consumption spacing">
@@ -187,6 +189,7 @@ Dosize
             </div>
         </div>
         @endif
+        @if(count($products) > 0)
         <div class="line spacing"></div>
         <div class="order_div spacing">
             <div class="deals deal_one">
@@ -279,6 +282,7 @@ Dosize
                     </div>
                 </div>
             </div>
+            @if(count($brands_recomanded_products) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -322,7 +326,9 @@ Dosize
                     </div>
                 </div>
             </div>
+            @endif
         </div>
+        @endif
         <?php $i = 1; ?>
         @if (count($products_by_categories) > 0 )
         <div class="row">
@@ -354,8 +360,8 @@ Dosize
                                         <div class="article_div">
                                             <div class="row">
                                                 <div class="col-lg-6 d-none">
-                                                    <div class="article_list">
-                                                        <ul>
+                                                    <div class="article_list" style="visibility: hidden">
+                                                        {{-- <ul>
                                                             <li class="text-right">
                                                                 <a href="">
                                                                     <h4 class="font-size-14">
@@ -369,33 +375,7 @@ Dosize
                                                                     </p>
                                                                 </a>
                                                             </li>
-                                                            <li class="text-right">
-                                                                <a href="">
-                                                                    <h4 class="font-size-14">
-                                                                        קולקציית קיץ הושקה בלידר
-                                                                        אתמול אחרי הצהריים
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        בגלריית התמונות של
-                                                                        הקולקצייה המדהימה הזאת
-                                                                        כאן
-                                                                    </p>
-                                                                </a>
-                                                            </li>
-                                                            <li class="text-right">
-                                                                <a href="">
-                                                                    <h4 class="font-size-14">
-                                                                        קולקציית קיץ הושקה בלידר
-                                                                        אתמול אחרי הצהריים
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        בגלריית התמונות של
-                                                                        הקולקצייה המדהימה הזאת
-                                                                        כאן
-                                                                    </p>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
+                                                        </ul> --}}
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">

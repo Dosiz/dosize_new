@@ -555,4 +555,15 @@ class FrontEndController extends Controller
         return Redirect::back();
     }
 
+    public function search_product(Request $request)
+    {
+        // dd($request->all());
+        $categories = Category::get();
+        $cities = City::get();
+        $results = Product::with('brandprofile')->select('*')->where("name","LIKE","%{$request->search_product}%")->get();
+
+        // dd($results);
+        return view('frontend.search_product',compact('cities','categories','results'));
+    }
+
 }
