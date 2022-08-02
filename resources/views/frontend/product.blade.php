@@ -7,7 +7,7 @@ Products
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 <!-- <link rel="stylesheet" href="{{asset('assets/star-rating-svg-master/thumb-slider.css') }}"> -->
 <style>
     .mobile_header {
@@ -571,7 +571,7 @@ Products
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <script type="text/javascript">
   $("label").click(function(){
   // $(this).parent().find("label").css({"background-color": "#D8D8D8"});

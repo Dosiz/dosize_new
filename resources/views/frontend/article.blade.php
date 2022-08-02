@@ -5,7 +5,6 @@ Articles
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <style>
     .mobile_header {
         display: none;
@@ -504,7 +503,6 @@ Articles
 @section('script')
 <script src="{{asset('assets/js/swiper.min.js') }}"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript">
     $("label").click(function(){
     // $(this).parent().find("label").css({"background-color": "#D8D8D8"});

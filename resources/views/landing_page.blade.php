@@ -919,66 +919,66 @@ Dosize
     
 
     $('#sign_up_form').submit(function(e){
-        e.preventDefault();
-        $('.main-wrapper').addClass('active');
-        $.ajax({
-            type: "POST",
-            url: "{{ route('register') }}",
-            data: new FormData(this),
-            datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {
-                console.log("Success");
-                $('.close').click();
-                window.location.href="/";
+        // e.preventDefault();
+        // $('.main-wrapper').addClass('active');
+        // $.ajax({
+        //     type: "POST",
+        //     url: "{{ route('register') }}",
+        //     data: new FormData(this),
+        //     datatype: "json",
+        //     processData: false,
+        //     contentType: false,
+        //     cache: false,
+        //     success: function (data) {
+        //         console.log("Success");
+        //         $('.close').click();
+        //         window.location.href="/";
                  
-            },
-            error: function (data) {
-                    $('.name_valid').text(data?.responseJSON?.errors?.name);
-                    $('.email_valid').text(data?.responseJSON?.errors?.email);
-                    $('.city_valid').text(data?.responseJSON?.errors?.city_id);
-                    $('.password_valid').text(data?.responseJSON?.errors?.password);
-            }
-        });
+        //     },
+        //     error: function (data) {
+        //             $('.name_valid').text(data?.responseJSON?.errors?.name);
+        //             $('.email_valid').text(data?.responseJSON?.errors?.email);
+        //             $('.city_valid').text(data?.responseJSON?.errors?.city_id);
+        //             $('.password_valid').text(data?.responseJSON?.errors?.password);
+        //     }
+        // });
     });
 
     $('#login_form').submit(function(e){
-        e.preventDefault();
-        $('.main-wrapper').addClass('active');
-        $.ajax({
-            type: "POST",
-            url: "{{ route('login') }}",
-            data: new FormData(this),
-            datatype: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {
-                // console.log(data);
-                $('.close').click();
-                window.location.href="/dashboard/dashboard";
+        // e.preventDefault();
+        // $('.main-wrapper').addClass('active');
+        // $.ajax({
+        //     type: "POST",
+        //     url: "{{ route('login') }}",
+        //     data: new FormData(this),
+        //     datatype: "json",
+        //     processData: false,
+        //     contentType: false,
+        //     cache: false,
+        //     success: function (data) {
+        //         console.log(data);
+        //         $('.close').click();
+        //         // window.location.href="/dashboard/dashboard";
                  
-            },
-            error: function (data) {
-                console.log('Error:', data.responseJSON);
-                if($('#email').val() == ''){
-                    $('.email_valid').text(data.responseJSON.errors.email);
-                }
-                else{
-                    $('.email_valid').text('');
-                }
-                if($('#password').val() == ''){
-                    $('.password_valid').text(data.responseJSON.errors.password);
-                }
-                else{
-                    $('.password_valid').text('');
-                }
+        //     },
+        //     error: function (data) {
+        //         console.log('Error:', data.responseJSON);
+        //         if($('#email').val() == ''){
+        //             $('.email_valid').text(data.responseJSON.errors.email);
+        //         }
+        //         else{
+        //             $('.email_valid').text('');
+        //         }
+        //         if($('#password').val() == ''){
+        //             $('.password_valid').text(data.responseJSON.errors.password);
+        //         }
+        //         else{
+        //             $('.password_valid').text('');
+        //         }
                 
                 
-            }
-        });
+        //     }
+        // });
     });
 
     // console.log($('.example'))

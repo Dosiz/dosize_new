@@ -32,6 +32,8 @@ class LoginController extends Controller
         return redirect()->route('landing-page',1);
     }
 
+    
+
     /**
      * Where to redirect users after login.
      *
@@ -76,9 +78,11 @@ class LoginController extends Controller
         elseif(Auth::user()->hasRole('User'))
         {
             $user = User::where('id',Auth::id())->first();
-            $this->redirectTo = route('landing-page',1);
-
+            $city_id = 5;
+            $this->redirectTo = url('/',$city_id);
+            toastr()->success('Successfully Updated');
             return $this->redirectTo;
+            // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
         }
         else
         {
