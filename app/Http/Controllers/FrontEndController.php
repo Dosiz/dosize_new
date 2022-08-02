@@ -46,7 +46,7 @@ class FrontEndController extends Controller
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id','5')
         ->get();
-        // dd($products);
+        dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
         $discount_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
