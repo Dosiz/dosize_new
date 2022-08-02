@@ -189,7 +189,7 @@ Dosize
             </div>
         </div>
         @endif
-        @if(count($products) > 0)
+        @if(count($products) > 0 && $products[0]->id != null)
         <div class="line spacing"></div>
         <div class="order_div spacing">
             <div class="deals deal_one">
