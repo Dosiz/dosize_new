@@ -220,7 +220,7 @@ Dosize
                                                 {{$product->name}}
                                             </h4>
                                             <div class="rating_price_div">
-                                                <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
