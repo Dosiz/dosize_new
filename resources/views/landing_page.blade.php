@@ -208,7 +208,7 @@ Dosize
                             @if(count($products) > 0)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
