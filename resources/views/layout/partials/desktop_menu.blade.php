@@ -95,6 +95,8 @@
                     <a href=""><img src="{{asset('assets/img/mobile_search.png') }}" alt="" class="img-fluid"></a>
                 </li>
             </ul>
+            @guest
+            @else
             <div class="logout_user">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><img src="{{asset('assets/img/mobile_component/logout_icon.png') }}" alt=""
                         class="img-fluid"></a>
@@ -103,6 +105,7 @@
                     @csrf
                 </form>
             </div>
+            @endguest
         </div>
     </div>
 </div>
