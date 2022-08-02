@@ -189,7 +189,7 @@ Products
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
                                                 class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        <p class="rating_text">{{$product_value->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                 </a>
                             </div>

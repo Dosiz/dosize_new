@@ -222,7 +222,7 @@ Dosize
                                             <div class="rating_price_div">
                                                 <p class="font-size-14 font-weight-600">50 ₪ <span
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
@@ -314,7 +314,7 @@ Dosize
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                 class="font-size-12 font-weight-400">80 ₪</span></p>
-                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                        <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>
                                 </div>
@@ -429,7 +429,7 @@ Dosize
                                                                     {{$product_category->product['1']->price ?? ''}} ₪
                                                                 </p>
                                                                 </a>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -461,7 +461,7 @@ Dosize
                                                                     {{$product_category->product['2']->price ?? '' }} ₪
                                                                 </p>
                                                                 </a>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -493,7 +493,7 @@ Dosize
                                                                 <p class="font-size-14 font-weight-600">
                                                                     2,100 ₪
                                                                 </p>
-                                                                <p class="rating_text">4.8 <i
+                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
                                                                         class="fa fa-star"></i></p>
                                                             </div>
                                                         </div>
@@ -580,7 +580,7 @@ Dosize
                                                                 <p class="font-size-14 font-weight-600">
                                                                     ₪ {{$product_category->product['1']->price ?? ''}}
                                                                 </p>
-                                                                <p class="rating_text"><i class="fa fa-star"></i>
+                                                                <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
                                                                     4.8
                                                                 </p>
                                                             </div>

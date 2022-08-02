@@ -167,7 +167,7 @@ Articles
                                         <div class="rating_price_div">
                                             <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                     class="font-size-12 font-weight-400">80 ₪</span></p>
-                                            <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                            <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                         </div>
                                     </a>
                                 </div>

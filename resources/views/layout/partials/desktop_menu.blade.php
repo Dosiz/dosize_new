@@ -13,7 +13,7 @@
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
+                    <a href="{{route('landing-page',5)}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <li>
