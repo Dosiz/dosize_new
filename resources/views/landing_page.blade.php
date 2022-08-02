@@ -205,7 +205,7 @@ Dosize
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($products) > 0)
+                            @if(count($products) > 0 && $products[0] > 0)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
