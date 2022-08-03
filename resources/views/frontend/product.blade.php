@@ -34,9 +34,9 @@ Products
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
                                 @if(count($categories) > 0)
-                                
+
                                 @foreach($categories as $key=>$category)
-                              
+
                                 <div class="category_box swiper-slide">
                                     <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
@@ -487,29 +487,28 @@ Products
                 <div class="modal-body">
                     <ul>
                         @php
-                            $link = route('product',$product->id);
-                            $shareable_links = Share::page( $link, $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
+                            $shareable_links = Share::page( 'product_link', $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
                         @endphp
                         <li>
-                            <a target="_blank" href="#">
+                            <a target="_blank" class="productLink" href="#">
                                 <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['whatsapp'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['whatsapp'] }}">
                                 <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['twitter'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['twitter'] }}">
                                 <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['facebook'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['facebook'] }}">
                                 <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
@@ -518,7 +517,7 @@ Products
                     <div class="copy_input">
                         <i class="fa fa-clone" aria-hidden="true"></i>
                         <input type="text" name="copy_text" id="copy_text"
-                            value="{{ $link }}" readonly>
+                            value="" readonly>
                     </div>
                 </div>
             </div>
@@ -573,7 +572,7 @@ Products
 @endsection
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 <script src="{{asset('assets/js/script.js') }}"></script>
 
 <script type="text/javascript">
@@ -587,7 +586,7 @@ Products
   $(this).nextAll().css({"color": "#FEA73A"});
 });
 </script>
-<script>
+<script type="text/javascript">
 
 $('.replyForm').fadeOut();
     $('.add_comment').click(function(e){
@@ -863,6 +862,37 @@ $(document).ready(function() {
         });
     });
 
+
+
+    $('#shareButton').click(function () {
+        console.log('here share btn is clicked');
+        let url = "{{ url()->current() }}";
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+        // $('#login-modal').fadeIn()
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('getShortUrl') }}",
+            data: {
+                url:url,
+                _token: _token
+            } ,
+            datatype: "json",
+            success: function (shortUrl) {
+                $(".productLink").each(function() {
+                    var shareUrl = $( this ).attr('href');
+                    let newUrl = shareUrl.replace('product_link',shortUrl);
+                    $( this ).attr('href', newUrl);
+                });
+
+                $("#copy_text").val(shortUrl);
+                $("#shareModal").modal();
+            },
+            error: function (data) {
+                window.location.href;
+            }
+        });
+    });
 
 </script>
 @endsection
