@@ -43,7 +43,7 @@ Dosize
         </div>
         @if(count($bookmark_blogs) > 0)
         <div class="line spacing"></div>
-        <div class="promotion spacing">
+        <div class="affordable_consumption spacing">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
@@ -54,13 +54,23 @@ Dosize
                     </div>
                 </div>
             </div>
-            <div class="slider_div">
-                <div class="multiple_promotion swiper">
-                    <div class="swiper-wrapper">    
-                        @if(count($bookmark_blogs) > 0)
-                            
-                           
-                        @endif
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                        @foreach($bookmark_blogs as $blog)
+                        <div class="affordable_consumption_box box_shahdow">
+                            <img src="{{asset('blog/'.$blog->blog->image)}}" alt="" class="img-fluid" style="width: 131px; height:160px;">
+                            <div class="content_div">
+                                
+                                <h4 class="font-size-12 font-weight-700">
+                                    {{$blog->blog->title}}
+                                </h4>
+                                <p class="discription font-size-10 font-weight-400">
+                                    {!! \Illuminate\Support\Str::limit($blog->blog->description ?? '',40,'...') !!}
+                                </p>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -68,7 +78,7 @@ Dosize
         @endif
         @if(count($bookmark_products) > 0)
         <div class="line spacing"></div>
-        <div class="promotion spacing">
+        <div class="deals deal_two">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
@@ -80,16 +90,23 @@ Dosize
                 </div>
             </div>
             <div class="slider_div">
-                <div class="multiple_promotion swiper">
-                    <div class="swiper-wrapper">    
-                        @if(count($bookmark_products) > 0)
-                        {{-- {{dd($likes)}} --}}
-                            
-                            <div class="container-fluid">
-                                
+                <div class="multiple_deals swiper">
+                    <div class="swiper-wrapper">
+                        @foreach($bookmark_products as $product)
+                        <div class="deals_box box_shahdow swiper-slide">
+                            <img src="{{asset('product/'.$product->product->image)}}" alt="" class="img-fluid" style="width: 235px; height:146px;">
+                            <div class="content_div">
+                               
+                                <h4 class="title font-size-14 font-weight-700">
+                                    {{ $product->product->name }}
+                                </h4>
+                                <div class="rating_price_div">
+                                    <p class="font-size-14 font-weight-600">{{$product->product->price}} ₪ <span
+                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                </div>
                             </div>
-                            
-                        @endif
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

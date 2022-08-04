@@ -186,7 +186,6 @@ Articles
                                 <a class="font-size-16" href="">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
                       
-                                <a class="font-size-16" href="">שליחת הודעה</a>
 
                             </div>
                             <div class="sign_up_div">

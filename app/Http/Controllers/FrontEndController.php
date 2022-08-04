@@ -406,9 +406,9 @@ class FrontEndController extends Controller
     {
         $categories = Category::get();
         $cities = City::get();
-        $bookmark_products =Bookmark::with('product')->where('name' , 'Article')->where('user_id' , Auth::id())->get();
-        $bookmark_blogs =Bookmark::with('blog')->where('name' , 'Product')->where('user_id' , Auth::id())->get();
-        // dd($likes , $bookmarks);
+        $bookmark_products =Bookmark::with('product')->where('name' , 'Product')->where('user_id' , Auth::id())->get();
+        $bookmark_blogs =Bookmark::with('blog')->where('name' , 'Article')->where('user_id' , Auth::id())->get();
+        // dd($bookmark_products);
         return view('frontend.bookmark',compact('cities','categories','bookmark_products','bookmark_blogs'));
         
         // dd($recomanded_blogs);
