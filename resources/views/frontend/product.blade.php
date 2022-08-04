@@ -34,9 +34,9 @@ Products
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
                                 @if(count($categories) > 0)
-                                
+
                                 @foreach($categories as $key=>$category)
-                              
+
                                 <div class="category_box swiper-slide">
                                     <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
@@ -115,7 +115,7 @@ Products
                             @if(count($product_ratings) > 0)
                             @foreach($product_ratings as $product_rating)
                                 @if($product_rating->avgrate)
-                                    
+
                                 {!! str_repeat('<span><i class="fa fa-star" style="color:#ff9529;"></i></span>', $product_rating->avgrate) !!}
                                 {!! str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 5 - $product_rating->avgrate) !!}
                                 @endif
@@ -249,7 +249,7 @@ Products
                                 <ul style="visibility: hidden">
                                 </ul>
                             @else
-                            
+
                             @endguest
                             <p></p>
                             <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
@@ -258,12 +258,12 @@ Products
                             </p>
                         </div>
                         @guest
-                        
+
                         @else
                         @if(Auth::user()->hasRole('User'))
                         <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-column align-items-cente">
                             @csrf
-                            
+
                             <ul>
                                 <li>
                                     <span>
@@ -275,7 +275,7 @@ Products
                                             <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
                                         </div>
                                     </span>
-                                </li>                        
+                                </li>
                             </ul>
                             <div class="d-flex w-100 flex-row-reverse align-items-center">
                                 <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
@@ -288,13 +288,13 @@ Products
                                     @else
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
                                     @endguest
-                                    <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי 
+                                    <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
                                             <input type="checkbox" name="name" id="approve">
                                         </span></div>
                                 </div>
                             </div>
-                            
+
                         </form>
                         @endif
                         @endguest
@@ -339,7 +339,7 @@ Products
                                         <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                                         <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                             class="text-right font-size-16">
-                                        
+
                                         <div class="comment_hearder">
                                             @guest
                                             <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
@@ -487,29 +487,28 @@ Products
                 <div class="modal-body">
                     <ul>
                         @php
-                            $link = route('product',$product->id);
-                            $shareable_links = Share::page( $link, $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
+                            $shareable_links = Share::page( 'product_link', $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
                         @endphp
                         <li>
-                            <a target="_blank" href="#">
+                            <a target="_blank" class="productLink" href="#">
                                 <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['whatsapp'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['whatsapp'] }}">
                                 <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['twitter'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['twitter'] }}">
                                 <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" href="{{ $shareable_links['facebook'] }}">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['facebook'] }}">
                                 <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
                                     class="img-fluid">
                             </a>
@@ -518,7 +517,7 @@ Products
                     <div class="copy_input">
                         <i class="fa fa-clone" aria-hidden="true"></i>
                         <input type="text" name="copy_text" id="copy_text"
-                            value="https://dossiz-vmnlvb/dfv.co.il" readonly>
+                            value="" readonly>
                     </div>
                 </div>
             </div>
@@ -573,7 +572,7 @@ Products
 @endsection
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 <script src="{{asset('assets/js/script.js') }}"></script>
 
 <script type="text/javascript">
@@ -587,7 +586,7 @@ Products
   $(this).nextAll().css({"color": "#FEA73A"});
 });
 </script>
-<script>
+<script type="text/javascript">
 
 $('.replyForm').fadeOut();
     $('.add_comment').click(function(e){
@@ -628,13 +627,13 @@ $('.replyForm').fadeOut();
                 let likeNum = Number($('.like_count').text())
                 $('.like_count').text(likeNum+=1)
                 }
-                 
+
             },
             error: function (data) {
                 console.log(data);
             }
         });
-    });   
+    });
 
     $('.product_bookmark').click(function(e){
         e.preventDefault();
@@ -659,7 +658,7 @@ $('.replyForm').fadeOut();
                 let bookmarkNum = Number($('.bookmark_count').text())
                 $('.bookmark_count').text(bookmarkNum+=1)
                 }
-                 
+
             },
             error: function (data) {
                 console.log(data);
@@ -691,7 +690,7 @@ $('.replyForm').fadeOut();
                 let commentNum = Number($('.product_comment_count').text())
                 $('.product_comment_count').text(commentNum+=1)
                 $('.close').click();
-                 
+
             },
             error: function (data) {
                 if($('#comment').val() == ''){
@@ -704,7 +703,7 @@ $('.replyForm').fadeOut();
         });
     });
 
-    
+
 $(document).ready(function() {
         $('#login-modal').fadeOut()
         $("#signup_btn").click(function(e) {
@@ -719,7 +718,7 @@ $(document).ready(function() {
         });
     });
 
-    
+
 
     $('#sign_up_form').submit(function(e){
         e.preventDefault();
@@ -736,7 +735,7 @@ $(document).ready(function() {
                 console.log("Success");
                 $('.close').click();
                 window.location.href="/";
-                 
+
             },
             error: function (data) {
                     $('.name_valid').text(data?.responseJSON?.errors?.name);
@@ -762,7 +761,7 @@ $(document).ready(function() {
                 // console.log(data);
                 $('.close').click();
                 window.location.href="/dashboard/dashboard";
-                 
+
             },
             error: function (data) {
                 console.log('Error:', data.responseJSON);
@@ -778,8 +777,8 @@ $(document).ready(function() {
                 else{
                     $('.password_valid').text('');
                 }
-                
-                
+
+
             }
         });
     });
@@ -852,17 +851,48 @@ $(document).ready(function() {
                  console.table(data.success);
                 toastr.success(data.success);
                 // console.table(data.comment);
-                
-                 
+
+
             },
             error: function (data) {
                 // toastr.warning(data);
                 toastr.error("Already Subscribed");
-                
+
             }
         });
     });
 
-    
+
+
+    $('#shareButton').click(function () {
+        console.log('here share btn is clicked');
+        let url = "{{ url()->current() }}";
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+        // $('#login-modal').fadeIn()
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('getShortUrl') }}",
+            data: {
+                url:url,
+                _token: _token
+            } ,
+            datatype: "json",
+            success: function (shortUrl) {
+                $(".productLink").each(function() {
+                    var shareUrl = $( this ).attr('href');
+                    let newUrl = shareUrl.replace('product_link',shortUrl);
+                    $( this ).attr('href', newUrl);
+                });
+
+                $("#copy_text").val(shortUrl);
+                $("#shareModal").modal();
+            },
+            error: function (data) {
+                window.location.href;
+            }
+        });
+    });
+
 </script>
 @endsection

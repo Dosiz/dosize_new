@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('getShortUrl',function (Request $request){
+    $shortURL = \App\Helpers\Helpers::createShortUrl($request->url);
+    return response()->json($shortURL);
+});
+
 
 Auth::routes();
 
@@ -26,32 +32,32 @@ Route::post('/contact_us', [App\Http\Controllers\FrontEndController::class,'stor
 Route::get('/articles/{id}', [App\Http\Controllers\FrontEndController::class,'articles'])->name('articles');
 Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::class,'products'])->name('brand-products');
 // blog comment
-Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment'); 
-Route::post('/store_blog_comment_reply',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_reply'])->name('store-blog-comment-reply'); 
-Route::post('/user/search_product',[App\Http\Controllers\FrontEndController::class, 'search_product'])->name('search-product'); 
+Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment');
+Route::post('/store_blog_comment_reply',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_reply'])->name('store-blog-comment-reply');
+Route::post('/user/search_product',[App\Http\Controllers\FrontEndController::class, 'search_product'])->name('search-product');
 
 //subscriber
-Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class, 'store_subscriber'])->name('store-subscriber'); 
+Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class, 'store_subscriber'])->name('store-subscriber');
 
 //articles and products like and bookmarks
-Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_like'])->name('store-blog-comment-like'); 
+Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_like'])->name('store-blog-comment-like');
 Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark');
 
-Route::post('/store_product_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_product_comment_like'])->name('store-product-comment-like'); 
-Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_product_bookmark'])->name('store-product-bookmark'); 
+Route::post('/store_product_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_product_comment_like'])->name('store-product-comment-like');
+Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_product_bookmark'])->name('store-product-bookmark');
 
-Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks'); 
+Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks');
 
 Route::get('/brands/{city_id}',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
 Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');
 
-Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city');  
-Route::get('/category_article_detail/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category_article_detail'])->name('category_article_detail');  
+Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city');
+Route::get('/category_article_detail/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category_article_detail'])->name('category_article_detail');
 
 // product comment
 Route::post('/store_product_comment',[App\Http\Controllers\FrontEndController::class, 'store_product_comment'])->name('store-product-comment');
 
-//blog and product comment 
+//blog and product comment
 Route::post('/blog_comment', [App\Http\Controllers\FrontEndController::class, 'blog_comment'])->name('blog-comment');
 
 Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::class, 'fetch_subcategory'])->name('fetch-subcategory');
@@ -65,7 +71,7 @@ Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, '
 
 });
 
-    
+
 /********************DASHBOARD ROUTES END******************************/
 
 /*****************ADMIN ROUTES*******************/
@@ -91,9 +97,9 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
     // view profile
     Route::get('/view-brand/{id}',[App\Http\Controllers\admin\DashboardController::class, 'view_brand'])->name('admin.view-brand');
     // allow multiple city
-    Route::post('/update_brand_city/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_city'])->name('update-brand-city');  
+    Route::post('/update_brand_city/{id}', [App\Http\Controllers\admin\DashboardController::class,'update_brand_city'])->name('update-brand-city');
 
-    Route::post('/add-city-brand/{brand_profile_id}', [App\Http\Controllers\admin\DashboardController::class,'add_city_brand'])->name('add-city-brand');  
+    Route::post('/add-city-brand/{brand_profile_id}', [App\Http\Controllers\admin\DashboardController::class,'add_city_brand'])->name('add-city-brand');
 
     //users
     Route::get('/users',[App\Http\Controllers\admin\DashboardController::class, 'users'])->name('admin.users');
@@ -118,15 +124,15 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 
     //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
-    
-    
+
+
 });
 /********************Brand ROUTES END******************************/
 
 /*****************MANAGER ROUTES*******************/
 Route::middleware('auth')->group(function(){
     Route::get('/brand/messages',[App\Http\Controllers\FrontEndController::class, 'messages'])->name('messages');
-    
+
     //wallet
     Route::get('/user/wallet',[App\Http\Controllers\FrontEndController::class, 'wallet'])->name('user.wallet');
     Route::post('/store-wallet',[App\Http\Controllers\FrontEndController::class, 'store_wallet'])->name('store-wallet');
