@@ -223,7 +223,7 @@ Products
                         <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid">
                         <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                             @guest
-                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{שםהמותג}</a>
+                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $product->brandprofile->brand_name}}</a>
                             @else
                                 <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                 <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
