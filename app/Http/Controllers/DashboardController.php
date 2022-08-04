@@ -82,7 +82,7 @@ class DashboardController extends Controller
 
     public function profile_store(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
