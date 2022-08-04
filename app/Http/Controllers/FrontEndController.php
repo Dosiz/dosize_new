@@ -369,7 +369,7 @@ class FrontEndController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
-        $product = Bookmark::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Article')->first();
+        $product = Bookmark::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Product')->first();
         // dd($product);
         if($product)
         {
@@ -406,10 +406,10 @@ class FrontEndController extends Controller
     {
         $categories = Category::get();
         $cities = City::get();
-        $likes =Like::with('blog','product')->where('user_id' , Auth::id())->get();
-        $bookmarks =Bookmark::with('blog','product')->where('user_id' , Auth::id())->get();
+        $bookmark_products =Bookmark::with('product')->where('name' , 'Article')->where('user_id' , Auth::id())->get();
+        $bookmark_blogs =Bookmark::with('blog')->where('name' , 'Product')->where('user_id' , Auth::id())->get();
         // dd($likes , $bookmarks);
-        return view('frontend.bookmark',compact('cities','categories','likes','bookmarks'));
+        return view('frontend.bookmark',compact('cities','categories','bookmark_products','bookmark_blogs'));
         
         // dd($recomanded_blogs);
         

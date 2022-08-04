@@ -27,7 +27,7 @@
                             <label for="search" class="sr-only">Search</label>
                             <input type="Search" class="form-control" id="search" placeholder="Search">
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Search</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
                     </form>
           </div>
           <!-- <div class="modal-footer">

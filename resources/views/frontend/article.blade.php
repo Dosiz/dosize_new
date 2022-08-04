@@ -135,6 +135,7 @@ Articles
                     </div>
                 </div>
             </div>
+            @if(count($recomanded_blogs) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -149,25 +150,20 @@ Articles
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($products) > 0)
-                            @foreach($products as $product)
+                            @if(count($recomanded_blogs) > 0)
+                            @foreach($recomanded_blogs as $recomanded_blog)
                             <div class="deals_box box_shahdow swiper-slide">
-                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}">
+                                    <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                 </a>
 
                                 <div class="content_div">
-                                    <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
-                                        <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
-                                    </a>
-                                    <a href="{{route('product',$product->id ?? '')}}" style="color: #212529 !important">
+                                    <a href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
-                                            {{$product->name}}
+                                            {{$recomanded_blog->recomended_blog->title}}
                                         </h4>
                                         <div class="rating_price_div">
-                                            <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                    class="font-size-12 font-weight-400">80 ₪</span></p>
-                                            <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                            <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -178,13 +174,14 @@ Articles
                     </div>
                 </div>
             </div>
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="stand_brand_sign_up_div">
                             <div class="stand_brand_message">
-                                <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                    class="img-fluid">
+                                <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
+                                    class="img-fluid" style="width:39px ; height: 38px;">
 
                                 <a class="font-size-16" href="">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
@@ -201,7 +198,7 @@ Articles
                                     @else
                                         <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
-                                        <a href="" id="subscriber">{שםהמותג}</a>
+                                        <a href="" id="subscriber">{{ $blog->brandprofile->brand_name}}</a>
                                     @endguest
                                         
                                         ולא תפספסו שום דיל!</p>
@@ -220,29 +217,10 @@ Articles
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </p> -->
-                                @guest
-                                    <ul style="visibility: hidden">
-                                    </ul>
-                                @else
-                                @if(Auth::user()->hasRole('User'))
-                                <ul>
-                                    <li>
-                                        <span>
-                                            <div class="rating">
-                                                <input type="radio" id="field1_star5" name="bedside_manner_rating" value="5" /><label class = "full" for="field1_star5"></label>
-                                                <input type="radio" id="field1_star4" name="bedside_manner_rating" value="4" /><label class = "full" for="field1_star4"></label>
-                                                <input type="radio" id="field1_star3" name="bedside_manner_rating" value="3" /><label class = "full" for="field1_star3"></label>
-                                                <input type="radio" id="field1_star2" name="bedside_manner_rating" value="2" /><label class = "full" for="field1_star2"></label>
-                                                <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
-                                            </div>
-                                        </span>
-                                    </li>                        
+                               
+                                <ul style="visibility: hidden">
+                                                           
                                 </ul>
-                                @else
-                                    <ul style="visibility: hidden">
-                                    </ul>
-                                @endif
-                                @endguest
                                 <p class="font-size-16">תגובות(<span class="blog_comment_count">{{count($blog_comments)}}</span> )<img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
                                     class="img-fluid"></p>
@@ -292,19 +270,7 @@ Articles
                                             @endguest
                                             <div class="user_detail">
                                                 <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}}</h4>
-                                                @if($comment->rating)
                                                 
-
-                                                    @for($i= 1;$i<=$comment->rating;$i++)
-                                                        @if($i>5)
-                                                            @break(0);
-                                                        @endif
-                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
-                                                    @endfor
-                                                        
-                                                        
-
-                                                @endif
                                                 <p class="font-size-14">{{$comment->comment}}</p>
                                             </div>
                                         </li>
@@ -336,7 +302,7 @@ Articles
                                     @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
                                     @if(count($replies) > 0)
                                     @foreach($replies as $reply)
-                                    <div style="width:560px; margin-left:20px;">
+                                    <div style="width:490px; margin-left:20px;">
                                         <li>
                                             <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
                                             {{-- {{Auth::user()->hasRole('Brand')}} --}}

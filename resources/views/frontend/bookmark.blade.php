@@ -41,13 +41,13 @@ Dosize
                 </div>
             </div>
         </div>
-        @if(count($bookmarks) > 0)
+        @if(count($bookmark_blogs) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        <h3 class="common_title">המבצעים שלא תרצו לפספס <img
+                        <h3 class="common_title"> סימניית מאמר <img
                                 src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
                                 class="img-fluid">
                         </h3>
@@ -57,52 +57,22 @@ Dosize
             <div class="slider_div">
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">    
-                        @if(count($bookmarks) > 0)
-                            @foreach($bookmarks as $key => $bookmark)
-                            <div class="container-fluid">
-                                <table class="table text-center">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col" width="10%">#</th>
-                                        <th scope="col" width="70%">Name</th>
-                                        <th scope="col" width="20%">Type</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">{{ $key + 1 }}</th>
-                                        <td>
-                                            @if($bookmark->name == 'Article')
-                                                <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529"> {{$bookmark->blog->title}} </a>
-                                            @else
-                                                <a href="{{route('product',$bookmark->product_id)}}" style="color:#212529"> {{$bookmark->product->name}} </a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if($bookmark->name == 'Article')
-                                            <a href="{{route('article',$bookmark->blog_id)}}" style="color:#212529"> {{$bookmark->name}}</a>
-                                            @else
-                                            <a href="{{route('product',$bookmark->product_id ?? '')}}" style="color:#212529">{{$bookmark->name}}</a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                              </table>
-                            </div>
-                            @endforeach
+                        @if(count($bookmark_blogs) > 0)
+                            
+                           
                         @endif
                     </div>
                 </div>
             </div>
         </div>
         @endif
-        @if(count($likes) > 0)
+        @if(count($bookmark_products) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        <h3 class="common_title">המבצעים שלא תרצו לפספס <img
+                        <h3 class="common_title"> מוצר סימניה <img
                                 src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
                                 class="img-fluid">
                         </h3>
@@ -112,40 +82,13 @@ Dosize
             <div class="slider_div">
                 <div class="multiple_promotion swiper">
                     <div class="swiper-wrapper">    
-                        @if(count($likes) > 0)
+                        @if(count($bookmark_products) > 0)
                         {{-- {{dd($likes)}} --}}
-                            @foreach($likes as $like)
+                            
                             <div class="container-fluid">
-                                <table class="table text-center">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" width="10%">#</th>
-                                            <th scope="col" width="70%">Name</th>
-                                            <th scope="col" width="20%">Type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">{{ $key + 1 }}</th>
-                                            <td>
-                                                @if($like->name == 'Article')
-                                                    <a href="{{route('article',['blog_id' => $like->blog_id])}}" style="color:#212529"> {{$like->blog->title}} </a>
-                                                @else
-                                                    <a href="{{route('product',$like->product_id ?? '')}}" style="color:#212529"> {{$like->product->name ?? ''}} </a>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($like->name == 'Article')
-                                                <a href="{{route('article',$like->blog_id)}}" style="color:#212529"> {{$like->name}}</a>
-                                                @else
-                                                <a href="{{route('product',$like->product_id ?? '')}}" style="color:#212529">{{$like->name ?? ''}}</a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                
                             </div>
-                            @endforeach
+                            
                         @endif
                     </div>
                 </div>

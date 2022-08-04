@@ -6,7 +6,11 @@
             <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
             <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
             @else
-            <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
+                @if(Auth::user()->hasRole('User'))
+                    <p> ברוך הבא {{Auth::user()->name }} </p>
+                @else
+                <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
+                @endif
             @endif
             
         </div>

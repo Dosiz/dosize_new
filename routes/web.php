@@ -74,6 +74,10 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
     //admin_product
     Route::resource('admin_product', App\Http\Controllers\admin\ProductController::class);
+    //admin product order
+    Route::get('/admin_product_orders',[App\Http\Controllers\admin\ProductController::class, 'admin_product_orders'])->name('admin-product-orders');
+    Route::get('/admin_order_detail/{order_id}',[App\Http\Controllers\admin\ProductController::class, 'admin_order_detail'])->name('order.show');
+    
     //cateogry
     Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
     //city

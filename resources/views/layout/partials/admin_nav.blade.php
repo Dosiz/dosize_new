@@ -26,6 +26,10 @@
 									<a href="{{url('admin/admin_product')}}"><span> Product </span></a>
 								</li>
 
+								<li class="{{ Request::is('admin/admin_product_orders') ? 'active' : '' }}"> 
+									<a href="{{url('admin/admin_product_orders')}}"><span> Order </span></a>
+								</li>
+
 							<li class="menu-title"> 
 								<span><i class="fe fe-user"></i> מִשׁתַמֵשׁ </span>
 							</li>
