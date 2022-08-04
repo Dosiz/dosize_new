@@ -149,7 +149,7 @@ class DashboardController extends Controller
         
         foreach($request->addmore as $address)
         {
-            // dd($address);
+            //  dd($address);
             $brand_address= new BrandsHasAddress;
             $brand_address->brand_profile_id=$brand_profile->id;
             $brand_address->address = $address['address'];
