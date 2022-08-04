@@ -865,7 +865,6 @@ $(document).ready(function() {
 
 
     $('#shareButton').click(function () {
-        console.log('here share btn is clicked');
         let url = "{{ url()->current() }}";
         let _token   = $('meta[name="csrf-token"]').attr('content');
         // $('#login-modal').fadeIn()

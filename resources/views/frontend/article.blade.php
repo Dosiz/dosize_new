@@ -30,9 +30,9 @@ Articles
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
                                 @if(count($categories) > 0)
-                                
+
                                 @foreach($categories as $key=>$category)
-                              
+
                                 <div class="category_box swiper-slide">
                                     <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
@@ -120,7 +120,7 @@ Articles
                                 </h4>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -188,7 +188,7 @@ Articles
 
                                 <a class="font-size-16" href="">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
-                      
+
                                 <a class="font-size-16" href="">שליחת הודעה</a>
 
                             </div>
@@ -203,7 +203,7 @@ Articles
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <a href="" id="subscriber">{שםהמותג}</a>
                                     @endguest
-                                        
+
                                         ולא תפספסו שום דיל!</p>
                             </div>
                         </div>
@@ -236,7 +236,7 @@ Articles
                                                 <input type="radio" id="field1_star1" name="bedside_manner_rating" value="1" /><label class = "full" for="field1_star1"></label>
                                             </div>
                                         </span>
-                                    </li>                        
+                                    </li>
                                 </ul>
                                 @else
                                     <ul style="visibility: hidden">
@@ -253,7 +253,7 @@ Articles
                                 @guest
                                 @else
                                 @if(Auth::user()->hasRole('User'))
-                                
+
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
@@ -293,7 +293,7 @@ Articles
                                             <div class="user_detail">
                                                 <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}}</h4>
                                                 @if($comment->rating)
-                                                
+
 
                                                     @for($i= 1;$i<=$comment->rating;$i++)
                                                         @if($i>5)
@@ -301,8 +301,8 @@ Articles
                                                         @endif
                                                         <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
                                                     @endfor
-                                                        
-                                                        
+
+
 
                                                 @endif
                                                 <p class="font-size-14">{{$comment->comment}}</p>
@@ -316,7 +316,7 @@ Articles
                                                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                                                 <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                                     class="text-right font-size-16">
-                                                
+
                                                 <div class="comment_hearder">
                                                     @guest
                                                     <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
@@ -331,7 +331,7 @@ Articles
                                                 <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                             </form>
                                         </div>
-                                             
+
                                     </div>
                                     @php $replies = App\Models\BlogComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
                                     @if(count($replies) > 0)
@@ -452,7 +452,7 @@ Articles
         </div>
         <!-- main footer start end here -->
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -463,28 +463,31 @@ Articles
                 </div>
                 <div class="modal-body">
                     <ul>
+                        @php
+                            $shareable_links = Share::page( 'article_link')->facebook()->whatsapp()->twitter()->getRawLinks();
+                        @endphp
                         <li>
-                            <a href="">
+                            <a target="_blank" class="productLink" href="#">
                                 <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
-                                    class="img-fluid">
+                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['whatsapp'] }}">
                                 <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
-                                    class="img-fluid">
+                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['twitter'] }}">
                                 <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
-                                    class="img-fluid">
+                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a target="_blank" class="productLink" href="{{ $shareable_links['facebook'] }}">
                                 <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
-                                    class="img-fluid">
+                                     class="img-fluid">
                             </a>
                         </li>
                     </ul>
@@ -530,7 +533,7 @@ $(document).ready(function() {
         });
     });
 
-    
+
 
     $('#sign_up_form').submit(function(e){
         e.preventDefault();
@@ -547,7 +550,7 @@ $(document).ready(function() {
                 console.log("Success");
                 $('.close').click();
                 window.location.href="/";
-                 
+
             },
             error: function (data) {
                     $('.name_valid').text(data?.responseJSON?.errors?.name);
@@ -573,7 +576,7 @@ $(document).ready(function() {
                 // console.log(data);
                 $('.close').click();
                 window.location.href="/dashboard/dashboard";
-                 
+
             },
             error: function (data) {
                 console.log('Error:', data.responseJSON);
@@ -589,8 +592,8 @@ $(document).ready(function() {
                 else{
                     $('.password_valid').text('');
                 }
-                
-                
+
+
             }
         });
     });
@@ -636,13 +639,13 @@ $(document).ready(function() {
                 let likeNum = Number($('.like_count').text())
                 $('.like_count').text(likeNum+=1)
                 }
-                 
+
             },
             error: function (data) {
                 console.log(data);
             }
         });
-    });   
+    });
 
     $('.blog_bookmark').click(function(e){
         e.preventDefault();
@@ -667,17 +670,17 @@ $(document).ready(function() {
                 let bookmarkNum = Number($('.bookmark_count').text())
                 $('.bookmark_count').text(bookmarkNum+=1)
                 }
-                 
+
             },
             error: function (data) {
                 console.log(data);
             }
         });
-    }); 
+    });
 
     $('#blog_comment').submit(function(e){
         e.preventDefault();
-        
+
         $.ajax({
             type: "POST",
             url: "{{ route('store-blog-comment') }}",
@@ -699,7 +702,7 @@ $(document).ready(function() {
                                             <p class="font-size-14">${data.comment}</p>
                                         </div>
                                     </li>`);
-                
+
                 $('.comment_input').val('');
                 let commentNum = Number($('.blog_comment_count').text())
                 $('.blog_comment_count').text(commentNum+=1)
@@ -708,7 +711,7 @@ $(document).ready(function() {
                 $('.comment_count').text(commentsNum+=1)
 
                 $('.close').click();
-                 
+
             },
             error: function (data) {
                 if($('#comment').val() == ''){
@@ -746,13 +749,43 @@ $(document).ready(function() {
                  console.table(data.success);
                 toastr.success(data.success);
                 // console.table(data.comment);
-                
-                 
+
+
             },
             error: function (data) {
                 // toastr.warning(data);
                 toastr.error("Already Subscribed");
-                
+
+            }
+        });
+    });
+
+    //Generating short urls for social media sharing
+    //By Assad Yaqoob
+    $('#shareButton').click(function () {
+        let url = "{{ url()->current() }}";
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            type: "POST",
+            url: "{{ url('getShortUrl') }}",
+            data: {
+                url:url,
+                _token: _token
+            } ,
+            datatype: "json",
+            success: function (shortUrl) {
+                $(".productLink").each(function() {
+                    var shareUrl = $( this ).attr('href');
+                    let newUrl = shareUrl.replace('article_link',shortUrl);
+                    $( this ).attr('href', newUrl);
+                });
+
+                $("#copy_text").val(shortUrl);
+                $("#shareModal").modal();
+            },
+            error: function (data) {
+                window.location.href;
             }
         });
     });
