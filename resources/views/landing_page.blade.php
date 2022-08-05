@@ -358,7 +358,7 @@ Dosize
                                             </div>
                                         </div>
                                         <div class="article_div">
-                                            <div class="row">
+                                            <div class="row justify-content-end">
                                                 
                                                 <div class="col-lg-6">
                                                     <div class="main_article">
