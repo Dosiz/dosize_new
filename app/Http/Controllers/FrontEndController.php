@@ -521,7 +521,14 @@ class FrontEndController extends Controller
         $subscriber->email = Auth::user()->email;
         $subscriber->brand_profile_id = $request->brand_profile_id;
         $subscriber->save();
-        return response()->json(['success'=>'Successfully Subscribe']);
+        if($request->brand_page)
+        {
+            toastr()->success('Successfully Subscribe');
+        return Redirect::back();
+        }
+        else{
+            return response()->json(['success'=>'Successfully Subscribe']);
+        }
     }
 
     public function wallet()
