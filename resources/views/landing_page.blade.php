@@ -359,25 +359,7 @@ Dosize
                                         </div>
                                         <div class="article_div">
                                             <div class="row">
-                                                <div class="col-lg-6 d-none">
-                                                    <div class="article_list" style="visibility: hidden">
-                                                        {{-- <ul>
-                                                            <li class="text-right">
-                                                                <a href="">
-                                                                    <h4 class="font-size-14">
-                                                                        קולקציית קיץ הושקה בלידר
-                                                                        אתמול אחרי הצהריים
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        בגלריית התמונות של
-                                                                        הקולקצייה המדהימה הזאת
-                                                                        כאן
-                                                                    </p>
-                                                                </a>
-                                                            </li>
-                                                        </ul> --}}
-                                                    </div>
-                                                </div>
+                                                
                                                 <div class="col-lg-6">
                                                     <div class="main_article">
                                                         <div class="article_box">
@@ -467,37 +449,6 @@ Dosize
                                                         </div>
                                                     </div>
                                                     @endif
-                                                    <div class="affordable_consumption_box box_shahdow d-none">
-                                                        <img src="{{ asset('assets/img/mobile_component/affordable_iten.png') }}"
-                                                            alt="" class="img-fluid">
-                                                        <div class="content_div">
-                                                            <span class="category font-size-12 font-weight-400">נעלי
-                                                                העיר</span>
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                קולקציית קיץ
-                                                                הושקה
-                                                                בלידר אתמול
-                                                                אחרי
-                                                                הצהריים
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                צפו
-                                                                בגלריית התמונות
-                                                                של
-                                                                הקולקצייה המדהימה הזאת כאן בכתבה
-                                                            </p>
-                                                            <span class="font-size-12 like_span">5 <i
-                                                                    class="fa fa-heart"
-                                                                    aria-hidden="true"></i></span>
-                                                            <div class="rating_price_div">
-                                                                <p class="font-size-14 font-weight-600">
-                                                                    2,100 ₪
-                                                                </p>
-                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                        class="fa fa-star"></i></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="slider_div">
                                                         <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                             alt="" class="img-fluid">

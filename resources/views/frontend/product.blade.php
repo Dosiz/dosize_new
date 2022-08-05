@@ -228,7 +228,7 @@ Products
                                 <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                 <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                 <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
-                                <a href="" id="subscriber">{שםהמותג}</a>
+                                <a href="" id="subscriber">{{ $product->brandprofile->brand_name}}</a>
                             @endguest
                             ולא תפספסו שום דיל!</p>
                     </div>

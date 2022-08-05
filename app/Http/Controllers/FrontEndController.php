@@ -35,7 +35,7 @@ use App\Models\AdminProductOrder;
 
 class FrontEndController extends Controller
 {
-    public function landing_page($id = 5)
+    public function landing_page($city_id)
     {
         $cities = City::get();
         $products = DB::table('products_has_cities')
@@ -44,7 +44,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*','brand_profiles.brand_name',DB::raw('avg(product_comments.rating) as avgrate'))
         ->where('products.discount_price' , null)
-        ->where('products_has_cities.city_id','5')
+        ->where('products_has_cities.city_id',$city_id)
         ->get();
         // dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
@@ -53,7 +53,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*','brand_profiles.brand_name')
         ->where('products.discount_price','!=', null)
-        ->where('products_has_cities.city_id','5')
+        ->where('products_has_cities.city_id',$city_id)
         ->get();
 
 
@@ -61,9 +61,8 @@ class FrontEndController extends Controller
         ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
         ->select('brand_messages.*','brand_profiles.brand_image')
-        ->where('brands_message_has_cities.city_id','5')
+        ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
-        // dd($brand_messages);
         $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) {
             $q->where('city_id', '5');
         })
@@ -77,7 +76,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
         ->LeftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
         ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(likes.id) as totallikes'))
-        ->where('blogs_has_cities.city_id','5')
+        ->where('blogs_has_cities.city_id',$city_id)
         // ->where('categories.id',$category_id)
         ->get();
 
