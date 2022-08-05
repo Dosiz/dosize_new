@@ -54,19 +54,17 @@ Dosize
                                 $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
                                 $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
                             @endphp
-                            @if($diff_in_days >= 0)
-                            @if($loop->first)
+                            
                             <li class="active">
-                                <a class="font-size-12" href=""> {!! $brand_message->message !!} <img
-                                        src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
-                                        class="img-fluid" style="width: 20px; height: 20px;"></a>
+                                <a class="font-size-12" href="">מבזקים חמים <img
+                                        src="{{asset('assets/img/mobile_component/anaoucment.png') }}"
+                                        class="img-fluid"></a>
                             </li>
-                            @else
+                            @if($diff_in_days >= 0)
                             <li>
-                                <a class="font-size-12" href="">{{$brand_message->message}}<img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
+                                <a class="font-size-12" href="">{{ $brand_message->message }}<img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
                                         class="img-fluid" style="width: 20px; height: 20px;"></a>
                             </li>
-                            @endif
                             @endif
                             @endforeach
                             @endif

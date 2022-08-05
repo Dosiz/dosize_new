@@ -22,7 +22,7 @@
                 </li>
                 <?php if(! isset(Auth::user()->name)): ?>
                     <li>
-                        <a href="" data-toggle="modal" data-target="#enrollmentModal">כתבות צרכנות <img src="<?php echo e(asset('assets/img/mobile_component/wallet.png')); ?>" alt=""
+                        <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="<?php echo e(asset('assets/img/mobile_component/wallet.png')); ?>" alt=""
                                 class="img-fluid"></a>
                     </li>
                 <?php else: ?>
@@ -45,16 +45,31 @@
             <ul>
                  <!-- Need to add  profile link here -->
                 <li>
+                    <?php if(auth()->guard()->guest()): ?>
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="<?php echo e(asset('assets/img/mobile_component/user_icon.png')); ?>" alt=""
+                            class="img-fluid"></a>
+                    <?php else: ?>
                     <a href="">איזור אישי <img src="<?php echo e(asset('assets/img/mobile_component/user_icon.png')); ?>" alt=""
-                            class="img-fluid"></a>
+                        class="img-fluid"></a>
+                    <?php endif; ?>
                 </li>
                 <li>
+                    <?php if(auth()->guard()->guest()): ?>
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">שמורים <img src="<?php echo e(asset('assets/img/tag_icon.png')); ?>" alt=""
+                            class="img-fluid"></a>
+                    <?php else: ?>
                     <a href="<?php echo e(route('bookmarks')); ?>">שמורים <img src="<?php echo e(asset('assets/img/tag_icon.png')); ?>" alt=""
-                            class="img-fluid"></a>
+                        class="img-fluid"></a>
+                    <?php endif; ?>
                 </li>
                 <li>
-                    <a href="<?php echo e(route('user-message')); ?>">הודעות <img src="<?php echo e(asset('assets/img/message_icon.png')); ?>" alt=""
+                    <?php if(auth()->guard()->guest()): ?>
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="<?php echo e(asset('assets/img/message_icon.png')); ?>" alt=""
                             class="img-fluid"></a>
+                    <?php else: ?>
+                    <a href="<?php echo e(route('user-message')); ?>">הודעות <img src="<?php echo e(asset('assets/img/message_icon.png')); ?>" alt=""
+                        class="img-fluid"></a>
+                    <?php endif; ?>
                 </li>
                 <li>
                     <a href=""  data-toggle="modal" data-target="#searchModal">חיפוש<img src="<?php echo e(asset('assets/img/mobile_search.png')); ?>" alt=""

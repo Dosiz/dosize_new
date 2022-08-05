@@ -83,6 +83,12 @@ class FrontEndController extends Controller
         $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
         // dd($products_by_categories);
 
+          $p_city = City::with('products')->find($city_id);
+        //    dd($p_city->products->groupBy('category_id'));
+        // $city = City::with('products')->where('id',$city_id)->first();
+        
+        // die();
+
         $categories = Category::get();
         
         // dd($categories);
@@ -496,16 +502,18 @@ class FrontEndController extends Controller
         ->select('categories.*','brand_profiles.brand_name')
         ->where('products_has_cities.city_id',5 )
         ->where('products.discount_price', null)
+        ->groupBy('categories.id')
         ->get();
-        // dd($product_categories);
-        if($product_categories['0']->name == null)
+        // dd($product_categories); 
+        if(count($product_categories) > 0)
         {
-            toastr()->error('Categories with product not found');
-            return Redirect::back();
+            
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
         }
         else
         {
-            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
+            toastr()->error('Categories with product not found');
+            return Redirect::back();
         }
     }
     public function city_brands($city_id)
