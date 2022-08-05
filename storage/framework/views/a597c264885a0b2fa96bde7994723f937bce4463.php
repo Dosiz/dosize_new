@@ -1,14 +1,14 @@
-@extends('layout.product')
-@section('title')
-Products
-@endsection
-@push('styles')
-<link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
 
-<!-- <link rel="stylesheet" href="{{asset('assets/star-rating-svg-master/thumb-slider.css') }}"> -->
+<?php $__env->startSection('title'); ?>
+Products
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/thumb-slider.css')); ?>">
+
+<!-- <link rel="stylesheet" href="<?php echo e(asset('assets/star-rating-svg-master/thumb-slider.css')); ?>"> -->
 <style>
     .mobile_header {
         display: none;
@@ -21,10 +21,10 @@ Products
         left: 0px;
     }
 </style>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <main>
     <div class="main-wrapper">
         <div class="article_category_slider categories spacing">
@@ -33,20 +33,20 @@ Products
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
-                                @if(count($categories) > 0)
+                                <?php if(count($categories) > 0): ?>
 
-                                @foreach($categories as $key=>$category)
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                    <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" style="color:#212529">
                                         <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                            <img src="<?php echo e(asset('category/'.$category->image)); ?>" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
-                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                        <p class="font-weight-600 font-size-12"> <?php echo e($category->name); ?></p>
                                     </a>
                                 </div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -62,13 +62,13 @@ Products
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
 
                                 </div>
@@ -81,13 +81,13 @@ Products
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                     <div class="swiper-slide swiperThumbImg">
-                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
+                                        <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
                                 </div>
                             </div>
@@ -106,39 +106,35 @@ Products
                         </div>
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
-                                <a href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                <span> {{$product->brandprofile->brand_name }}</span>
+                                <a href="<?php echo e(route('brand-profile',$product->brand_profile_id)); ?>" >
+                                <span> <?php echo e($product->brandprofile->brand_name); ?></span>
                                 </a>
                             </div>
                         </div>
                         <div class="col-12 d-none d-xl-flex my-4 justify-content-end">
-                            @if(count($product_ratings) > 0)
-                            @foreach($product_ratings as $product_rating)
-                                @if($product_rating->avgrate)
+                            <?php if(count($product_ratings) > 0): ?>
+                            <?php $__currentLoopData = $product_ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product_rating): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($product_rating->avgrate): ?>
 
-                                {!! str_repeat('<span><i class="fa fa-star" style="color:#ff9529;"></i></span>', $product_rating->avgrate) !!}
-                                {!! str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 5 - $product_rating->avgrate) !!}
-                                @endif
-                            @endforeach
-                            @endif
+                                <?php echo str_repeat('<span><i class="fa fa-star" style="color:#ff9529;"></i></span>', $product_rating->avgrate); ?>
+
+                                <?php echo str_repeat('<span><i class="fa fa-star"  style="color:#d3cbc2;"></i></span>', 5 - $product_rating->avgrate); ?>
+
+                                <?php endif; ?>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
-                                <p><b>{{$product->name}}</b></p>
+                                <p><b><?php echo e($product->name); ?></b></p>
                             </div>
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
-                                <p>{{$product->discount_price ?? $product->price}} ₪ <span class=" font-size-14">@if($product->discount_price){{$product->price}} ₪ @endif</span></p>
+                                <p><?php echo e($product->discount_price ?? $product->price); ?> ₪ <span class=" font-size-14"><?php if($product->discount_price): ?><?php echo e($product->price); ?> ₪ <?php endif; ?></span></p>
                             </div>
                         </div>
-                        {{-- <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
-                            <hr>
-                            <div class="product_price d-flex justify-content-end py-4">
-                                <p><b>מידות</b>: 4, 6, 8, 10, 12</p>
-                            </div>
-                            <hr>
-                        </div> --}}
+                        
                     </div>
                 </div>
                 <div class="product_category_div d-xl-flex justify-content-end">
@@ -154,7 +150,7 @@ Products
                         <div class="col-12">
                             <div class="product_description">
                                 <p class="font-size-16"><b>פרטים:</b></p>
-                                <p class="font-size-16"> {!! $product->description !!} </p>
+                                <p class="font-size-16"> <?php echo $product->description; ?> </p>
                             </div>
                         </div>
                     </div>
@@ -167,35 +163,35 @@ Products
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title px-xl-2">מוצרים שאולי יעניינו אתכם גם <img
-                                src="{{asset('assets/img/mobile_component/deals.png') }}" alt="" class="img-fluid"></h3>
+                                src="<?php echo e(asset('assets/img/mobile_component/deals.png')); ?>" alt="" class="img-fluid"></h3>
                     </div>
                 </div>
             </div>
             <div class="slider_div">
                 <div class="multiple_deals swiper">
                     <div class="swiper-wrapper">
-                        @if(count($products)>0)
-                        @foreach($products as $product_value)
+                        <?php if(count($products)>0): ?>
+                        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product_value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="deals_box box_shahdow swiper-slide">
-                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_value->id ?? '')}}">
-                                <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="width:100%;">
+                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_value->id ?? '')); ?>">
+                                <img src="<?php echo e(asset('product/'.$product_value->image)); ?>" alt="" class="img-fluid"style="width:100%;">
                             </a>
                             <div class="content_div">
-                                <a  href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
+                                <a  href="<?php echo e(route('brand-profile',$product->brand_profile_id)); ?>" >
+                                <span class="deal_category font-size-12 font-weight-400"> <?php echo e($product_value->brandprofile->brand_name); ?> </span>
                                 </a>
-                                <a href="{{route('product',$product_value->id ?? '')}}" style="color: #212529 !important;">
-                                    <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
+                                <a href="<?php echo e(route('product',$product_value->id ?? '')); ?>" style="color: #212529 !important;">
+                                    <h4 class="title font-size-14 font-weight-700"><?php echo e($product_value->name); ?></h4>
                                     <div class="rating_price_div">
-                                        <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                        <p class="rating_text">{{$product_value->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                        <p class="font-size-14 font-weight-600"><?php echo e($product_value->discount_price ?? $product_value->price); ?> ₪ <span
+                                                class="font-size-12 font-weight-400"><?php if($product_value->discount_price): ?><?php echo e($product_value->price); ?> ₪ <?php endif; ?></span></p>
+                                        <p class="rating_text"><?php echo e($product_value->product_comment->avg('rating') ?? 'no rating'); ?> <i class="fa fa-star"></i></p>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        @endforeach
-                        @endif
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endif; ?>
                         <div class="swiper-button-next btn-swiper">
                             <i class="fa fa-caret-right" aria-hidden="true"></i>
                         </div>
@@ -213,23 +209,23 @@ Products
 
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
-                        <img src="{{asset('brand_image/'.$product->brandprofile->brand_image)}}" alt="" class="img-fluid" style="width:39px ; height: 38px;">
-                        <a class="font-size-16" href="{{route('brand-profile',$product->brand_profile_id)}}">לעמוד המותג</a>
+                        <img src="<?php echo e(asset('brand_image/'.$product->brandprofile->brand_image)); ?>" alt="" class="img-fluid" style="width:39px ; height: 38px;">
+                        <a class="font-size-16" href="<?php echo e(route('brand-profile',$product->brand_profile_id)); ?>">לעמוד המותג</a>
                         <a class="font-size-16" href="">שליחת הודעה</a>
                     </div>
                 </div>
                 <div class="col-lg-12 col-xl-6">
                     <div class="sign_up_div">
-                        <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid">
+                        <img src="<?php echo e(asset('assets/img/mobile_component/sign_up_icon.png')); ?>" alt="" class="img-fluid">
                         <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                            @guest
-                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $product->brandprofile->brand_name}}</a>
-                            @else
-                                <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
-                                <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
-                                <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
-                                <a href="" id="subscriber">{{ $product->brandprofile->brand_name}}</a>
-                            @endguest
+                            <?php if(auth()->guard()->guest()): ?>
+                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2"><?php echo e($product->brandprofile->brand_name); ?></a>
+                            <?php else: ?>
+                                <input type="hidden" name="token" id="token" value="<?php echo e(csrf_token()); ?>"/>
+                                <input type="hidden" name="email" id="email" value="<?php echo e(Auth::user()->email); ?>" />
+                                <input type="hidden" id="brand_profile_id" value="<?php echo e($product->brand_profile_id); ?>" />
+                                <a href="" id="subscriber"><?php echo e($product->brandprofile->brand_name); ?></a>
+                            <?php endif; ?>
                             ולא תפספסו שום דיל!</p>
                     </div>
                 </div>
@@ -245,24 +241,24 @@ Products
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </p> -->
-                            @guest
+                            <?php if(auth()->guard()->guest()): ?>
                                 <ul style="visibility: hidden">
                                 </ul>
-                            @else
+                            <?php else: ?>
 
-                            @endguest
+                            <?php endif; ?>
                             <p></p>
-                            <p class="font-size-16">תגובות (<span class="product_comment_count">{{count($product_comments)}}</span>) <img
-                                    src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
+                            <p class="font-size-16">תגובות (<span class="product_comment_count"><?php echo e(count($product_comments)); ?></span>) <img
+                                    src="<?php echo e(asset('assets/img/mobile_component/comment.png')); ?>" alt=""
                                     class="img-fluid">
                             </p>
                         </div>
-                        @guest
+                        <?php if(auth()->guard()->guest()): ?>
 
-                        @else
-                        @if(Auth::user()->hasRole('User'))
-                        <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-column align-items-cente">
-                            @csrf
+                        <?php else: ?>
+                        <?php if(Auth::user()->hasRole('User')): ?>
+                        <form action="<?php echo e(route('store-product-comment')); ?>" method="POST" class="d-flex flex-column align-items-cente">
+                            <?php echo csrf_field(); ?>
 
                             <ul>
                                 <li>
@@ -278,16 +274,16 @@ Products
                                 </li>
                             </ul>
                             <div class="d-flex w-100 flex-row-reverse align-items-center">
-                                <input type="hidden" name="product_id" class="product_id_like" value="{{ $product->id }}" />
+                                <input type="hidden" name="product_id" class="product_id_like" value="<?php echo e($product->id); ?>" />
                                 <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                     class="text-right font-size-16 comment_input" style="width:">
                                     <span class="text-danger comment_valid" style=""></span>
                                 <div class="comment_hearder mr-4">
-                                    @guest
+                                    <?php if(auth()->guard()->guest()): ?>
                                     <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
-                                    @else
+                                    <?php else: ?>
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
-                                    @endguest
+                                    <?php endif; ?>
                                     <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
                                             <input type="checkbox" name="name" id="approve">
@@ -296,56 +292,56 @@ Products
                             </div>
 
                         </form>
-                        @endif
-                        @endguest
+                        <?php endif; ?>
+                        <?php endif; ?>
 
                         <div class="comment_list">
                             <ul class="new_comment_list">
-                                @if(count($product_comments) > 0)
-                                @foreach($product_comments as $comment)
+                                <?php if(count($product_comments) > 0): ?>
+                                <?php $__currentLoopData = $product_comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
-                                    @guest
+                                    <?php if(auth()->guard()->guest()): ?>
                                     <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
-                                    @else
-                                    @if(Auth::user()->hasRole('Brand'))
+                                    <?php else: ?>
+                                    <?php if(Auth::user()->hasRole('Brand')): ?>
                                     <a href="#" class="add_comment font-size-12 text-dark">הוספת תגובה</a>
-                                    @else
+                                    <?php else: ?>
                                     <p class="add_comment font-size-12" style="visibility: hidden">הוספת תגובה</p>
-                                    @endif
-                                    @endguest
+                                    <?php endif; ?>
+                                    <?php endif; ?>
                                     <div class="user_detail d-flex justify-content-between align-items-baseline">
                                         <div class="mr-2">
-                                            @if($comment->rating)
-                                                @for($i= 1;$i<=$comment->rating;$i++)
-                                                    @if($i>5)
-                                                        @break(0);
-                                                    @endif
-                                                        <i class="fa fa-star" style="color: @if($comment->rating<3) #FDCC0D; @else #ff9529; @endif"></i>
-                                                @endfor
-                                            @endif
+                                            <?php if($comment->rating): ?>
+                                                <?php for($i= 1;$i<=$comment->rating;$i++): ?>
+                                                    <?php if($i>5): ?>
+                                                        <?php break 1; ?>;
+                                                    <?php endif; ?>
+                                                        <i class="fa fa-star" style="color: <?php if($comment->rating<3): ?> #FDCC0D; <?php else: ?> #ff9529; <?php endif; ?>"></i>
+                                                <?php endfor; ?>
+                                            <?php endif; ?>
                                         </div>
                                         <div>
-                                            <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}} </h4>
-                                            <p class="font-size-14">{{$comment->comment}}</p>
+                                            <h4 class="font-size-14"> <?php echo e($comment->name ?? $comment->user->name); ?> </h4>
+                                            <p class="font-size-14"><?php echo e($comment->comment); ?></p>
                                         </div>
                                     </div>
                                 </li>
 
                                 <div class="formDiv replyForm">
-                                    <form action="{{ route('store-product-comment') }}" method="post">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}" />
-                                        <input type="hidden" value="{{$product->brand_profile_id }}" id="brand_profile_id" />
-                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
+                                    <form action="<?php echo e(route('store-product-comment')); ?>" method="post">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="product_id" value="<?php echo e($product->id); ?>" />
+                                        <input type="hidden" value="<?php echo e($product->brand_profile_id); ?>" id="brand_profile_id" />
+                                        <input type="hidden" name="parent_id" value="<?php echo e($comment->id); ?>" />
                                         <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                             class="text-right font-size-16">
 
                                         <div class="comment_hearder">
-                                            @guest
+                                            <?php if(auth()->guard()->guest()): ?>
                                             <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                            @else
+                                            <?php else: ?>
                                             <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                            @endguest
+                                            <?php endif; ?>
                                             <div class="anonymous_text font-size-16">אנונימי <span
                                                     class="checkBox">
                                                     <input type="checkbox" name="name" id="approve">
@@ -354,23 +350,23 @@ Products
                                         <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                     </form>
                                 </div>
-                                @php $replies = App\Models\ProductComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); @endphp
-                                    @if(count($replies) > 0)
-                                    @foreach($replies as $reply)
+                                <?php $replies = App\Models\ProductComment::where('parent_id', $comment->id)->orderBy('id', 'DESC')->get(); ?>
+                                    <?php if(count($replies) > 0): ?>
+                                    <?php $__currentLoopData = $replies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reply): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div style="width:710px; margin-left:44px;">
                                         <li>
                                             <a href="#" class="add_comment font-size-12 text-dark" style="visibility: hidden">הוספת תגובה</a>
-                                            {{-- {{Auth::user()->hasRole('Brand')}} --}}
+                                            
                                             <div class="user_detail" style="margin: 10px">
-                                                <h4 class="font-size-14"> {{$reply->name ?? $reply->user->name}} </h4>
-                                                <p class="font-size-14">{{$reply->comment}}</p>
+                                                <h4 class="font-size-14"> <?php echo e($reply->name ?? $reply->user->name); ?> </h4>
+                                                <p class="font-size-14"><?php echo e($reply->comment); ?></p>
                                             </div>
                                         </li>
                                     </div>
-                                    @endforeach
-                                    @endif
-                                @endforeach
-                                @endif
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
@@ -384,7 +380,7 @@ Products
                             <div
                                 class="col-lg-12 d-flex flex-xl-row-reverse justify-content-between align-items-center text-right">
                                 <h3 class="common_title">צרכנות משתלמת <img
-                                        src="{{asset('assets/img/mobile_component/beg.png') }}" alt=""
+                                        src="<?php echo e(asset('assets/img/mobile_component/beg.png')); ?>" alt=""
                                         class="img-fluid"></h3>
                                 <p class="d-none d-xl-block"><a href="#" class="text-dark">לכל הכתבות ></a></p>
                             </div>
@@ -393,30 +389,32 @@ Products
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                                @if(count($recomanded_products) > 0)
-                                @foreach($recomanded_products as $recomanded_product)
+                                <?php if(count($recomanded_products) > 0): ?>
+                                <?php $__currentLoopData = $recomanded_products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recomanded_product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}">
-                                        <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                    <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$recomanded_product->recomended_product->id ?? '')); ?>">
+                                        <img src="<?php echo e(asset('product/'.$recomanded_product->recomended_product->image)); ?>" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
-                                        <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
-                                            <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                        <a href="<?php echo e(route('brand-profile',$product->brandprofile->id ?? '')); ?>">
+                                            <span class="category font-size-12 font-weight-400"> <?php echo e($product->brandprofile->brand_name); ?> </span>
                                         </a>
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
+                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$recomanded_product->recomended_product->id ?? '')); ?>" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
-                                            {{$recomanded_product->recomended_product->name}}
+                                            <?php echo e($recomanded_product->recomended_product->name); ?>
+
                                         </h4>
                                         <p class="discription font-size-10 font-weight-400">
-                                            {!! $recomanded_product->recomended_product->description ?? '' !!}
+                                            <?php echo $recomanded_product->recomended_product->description ?? ''; ?>
+
                                         </p>
                                         </a>
                                         <span class="font-size-12">4 <i class="fa fa-heart"
                                                 aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                                 <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                     הכתבות ></a>
                             </div>
@@ -436,16 +434,16 @@ Products
                             <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/fb.png') }}" alt="fb">
+                                    <img src="<?php echo e(asset('assets/img/fb.png')); ?>" alt="fb">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/inst.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/inst.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/twitter.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/twitter.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/whatsapp.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/whatsapp.png')); ?>" alt="">
                                 </a>
                             </div>
                         </div>
@@ -465,7 +463,7 @@ Products
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="<?php echo e(asset('assets/img/footer_img.png')); ?>" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -486,30 +484,30 @@ Products
                 </div>
                 <div class="modal-body">
                     <ul>
-                        @php
+                        <?php
                             $shareable_links = Share::page( 'product_link', $product->name)->facebook()->whatsapp()->twitter()->getRawLinks();
-                        @endphp
+                        ?>
                         <li>
                             <a target="_blank" class="productLink" href="#">
-                                <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/email_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" class="productLink" href="{{ $shareable_links['whatsapp'] }}">
-                                <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
+                            <a target="_blank" class="productLink" href="<?php echo e($shareable_links['whatsapp']); ?>">
+                                <img src="<?php echo e(asset('assets/img/mobile_component/whtsapp_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" class="productLink" href="{{ $shareable_links['twitter'] }}">
-                                <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
+                            <a target="_blank" class="productLink" href="<?php echo e($shareable_links['twitter']); ?>">
+                                <img src="<?php echo e(asset('assets/img/mobile_component/twitter_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" class="productLink" href="{{ $shareable_links['facebook'] }}">
-                                <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
+                            <a target="_blank" class="productLink" href="<?php echo e($shareable_links['facebook']); ?>">
+                                <img src="<?php echo e(asset('assets/img/mobile_component/facebook_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
@@ -536,25 +534,25 @@ Products
                     <ul>
                         <li>
                             <a href="">
-                                <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/email_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/whtsapp_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/twitter_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/facebook_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
@@ -569,11 +567,11 @@ Products
         </div>
     </div>
 </main>
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
-<script src="{{asset('assets/js/script.js') }}"></script>
+
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 
 <script type="text/javascript">
   $("label").click(function(){
@@ -609,10 +607,10 @@ $('.replyForm').fadeOut();
         var product_id = $('.product_id_like').val();
         $.ajax({
             type: "POST",
-            url: "{{ route('store-product-comment-like') }}",
+            url: "<?php echo e(route('store-product-comment-like')); ?>",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "_token": "{{ csrf_token() }}",
+                "_token": "<?php echo e(csrf_token()); ?>",
                 product_id:product_id} ,
             cache: false,
             success: function (data) {
@@ -640,10 +638,10 @@ $('.replyForm').fadeOut();
         var product_id = $('.product_id_like').val();
         $.ajax({
             type: "POST",
-            url: "{{ route('store-product-bookmark') }}",
+            url: "<?php echo e(route('store-product-bookmark')); ?>",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "_token": "{{ csrf_token() }}",
+                "_token": "<?php echo e(csrf_token()); ?>",
                 product_id:product_id} ,
             cache: false,
             success: function (data) {
@@ -670,7 +668,7 @@ $('.replyForm').fadeOut();
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "{{ route('store-product-comment') }}",
+            url: "<?php echo e(route('store-product-comment')); ?>",
             data: new FormData(this),
             datatype: "json",
             processData: false,
@@ -725,7 +723,7 @@ $(document).ready(function() {
         $('.main-wrapper').addClass('active');
         $.ajax({
             type: "POST",
-            url: "{{ route('register') }}",
+            url: "<?php echo e(route('register')); ?>",
             data: new FormData(this),
             datatype: "json",
             processData: false,
@@ -751,7 +749,7 @@ $(document).ready(function() {
         $('.main-wrapper').addClass('active');
         $.ajax({
             type: "POST",
-            url: "{{ route('login') }}",
+            url: "<?php echo e(route('login')); ?>",
             data: new FormData(this),
             datatype: "json",
             processData: false,
@@ -831,7 +829,7 @@ $(document).ready(function() {
         // const postFormData = {
         //     'brand_profile_id' : $('#brand_profile_id').val(),
         //     'email'     : $('#email').val(),
-        //     "_token": "{{ csrf_token() }}"
+        //     "_token": "<?php echo e(csrf_token()); ?>"
         // };
         let brand_profile_id = $('#brand_profile_id').val();
         let email = $('#email').val();
@@ -839,7 +837,7 @@ $(document).ready(function() {
         // console.log(postFormData);
         $.ajax({
             type: "POST",
-            url: "{{ route('store-subscriber') }}",
+            url: "<?php echo e(route('store-subscriber')); ?>",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
                 email:email,
@@ -866,13 +864,13 @@ $(document).ready(function() {
 
     $('#shareButton').click(function () {
         console.log('here share btn is clicked');
-        let url = "{{ url()->current() }}";
+        let url = "<?php echo e(url()->current()); ?>";
         let _token   = $('meta[name="csrf-token"]').attr('content');
         // $('#login-modal').fadeIn()
 
         $.ajax({
             type: "POST",
-            url: "{{ url('getShortUrl') }}",
+            url: "<?php echo e(url('getShortUrl')); ?>",
             data: {
                 url:url,
                 _token: _token
@@ -895,4 +893,6 @@ $(document).ready(function() {
     });
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.product', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/frontend/product.blade.php ENDPATH**/ ?>

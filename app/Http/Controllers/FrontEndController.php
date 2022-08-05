@@ -35,7 +35,7 @@ use App\Models\AdminProductOrder;
 
 class FrontEndController extends Controller
 {
-    public function landing_page($id = 5)
+    public function landing_page($city_id)
     {
         $cities = City::get();
         $products = DB::table('products_has_cities')
@@ -44,7 +44,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*','brand_profiles.brand_name',DB::raw('avg(product_comments.rating) as avgrate'))
         ->where('products.discount_price' , null)
-        ->where('products_has_cities.city_id','5')
+        ->where('products_has_cities.city_id',$city_id)
         ->get();
         // dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
@@ -53,7 +53,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*','brand_profiles.brand_name')
         ->where('products.discount_price','!=', null)
-        ->where('products_has_cities.city_id','5')
+        ->where('products_has_cities.city_id',$city_id)
         ->get();
 
 
@@ -61,15 +61,12 @@ class FrontEndController extends Controller
         ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
         ->select('brand_messages.*','brand_profiles.brand_image')
-        ->where('brands_message_has_cities.city_id','5')
+        ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
-        // dd($brand_messages);
         $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) {
-            $q->where('city_id', '5');
+            $q->where('city_id','5');
         })
         ->get();
-
-        // dd($brands_recomanded_products);
         
         $blogs = $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
@@ -77,7 +74,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
         ->LeftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
         ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(likes.id) as totallikes'))
-        ->where('blogs_has_cities.city_id','5')
+        ->where('blogs_has_cities.city_id',$city_id)
         // ->where('categories.id',$category_id)
         ->get();
 
@@ -441,7 +438,6 @@ class FrontEndController extends Controller
         ->where('categories.id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
-        // dd($products);
 
         $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
@@ -488,7 +484,30 @@ class FrontEndController extends Controller
         // dd($products);
         return view('frontend.city_category_article_detail',compact('cities','categories','blogs'));
     }
-
+    public function archive_cat()
+    {
+        $categories = Category::get();
+        $cities = City::get();
+        $product_categories = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->Join('categories', 'categories.id', '=', 'products.category_id')
+        // ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('categories.*','brand_profiles.brand_name')
+        ->where('products_has_cities.city_id',5 )
+        ->where('products.discount_price', null)
+        ->get();
+        // dd($product_categories);
+        if($product_categories['0']->name == null)
+        {
+            toastr()->error('Categories with product not found');
+            return Redirect::back();
+        }
+        else
+        {
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
+        }
+    }
     public function city_brands($city_id)
     {
         $categories = Category::get();
@@ -499,7 +518,7 @@ class FrontEndController extends Controller
         ->select('brand_profiles.*')
         ->where('brands_has_cities.city_id',$city_id)
         ->get();
-        // dd($city_brands);
+        //  dd($city_brands);
         return view('frontend.city_brands',compact('cities','categories','city_brands'));
     }
 
@@ -517,7 +536,14 @@ class FrontEndController extends Controller
         $subscriber->email = Auth::user()->email;
         $subscriber->brand_profile_id = $request->brand_profile_id;
         $subscriber->save();
-        return response()->json(['success'=>'Successfully Subscribe']);
+        if($request->brand_page)
+        {
+            toastr()->success('Successfully Subscribe');
+        return Redirect::back();
+        }
+        else{
+            return response()->json(['success'=>'Successfully Subscribe']);
+        }
     }
 
     public function wallet()
