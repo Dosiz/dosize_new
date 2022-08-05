@@ -1,19 +1,19 @@
-@extends('layout.master')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 Dosize
-@endsection
-@push('styles')
-<link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 
 <main>
     <div class="main-wrapper">
         <div class="main_wallet_div d-lg-none">
-            <img src="{{asset('assets/img/mobile_component/wallet_main.png') }}" alt="" class="img-fluid">
+            <img src="<?php echo e(asset('assets/img/mobile_component/wallet_main.png')); ?>" alt="" class="img-fluid">
             <h3>הארנק שלי</h3>
             <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
                 בלה בלה...</p>
@@ -22,7 +22,7 @@ Dosize
             <div class="col-lg-3">
                 <div class="container-fluid">
                 <div class="main_wallet_div d-none d-lg-block bg-white py-3 mb-0 mt-4 rounded">
-                    <img src="{{asset('assets/img/mobile_component/wallet_main.png') }}" alt="" class="img-fluid">
+                    <img src="<?php echo e(asset('assets/img/mobile_component/wallet_main.png')); ?>" alt="" class="img-fluid">
                     <h3>הארנק שלי</h3>
                     <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
                         בלה בלה...</p>
@@ -30,21 +30,21 @@ Dosize
                     <div class="points_div mt-lg-0">
                         <div class="ro">
                             <div class="col-lg_5 d-lg-none text-center">
-                                <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
+                                <img src="<?php echo e(asset('assets/img/mobile_component/points_icon.png')); ?>" alt="" class="img-fluid">
                                 <h3 class="total_points">460 נקודות</h3>
                             </div>
                             <div class="col-lg_7">
                                 <ul>
-                                    <li class="font-size-12 mb-lg-3">לייק @if(count($likes) > 0)({{count($likes)}})@endif <i class="fa fa-heart-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">תגובות @if(count($product_comments) > 0)@foreach($product_comments as $product_comment)({{$product_comment->count_comment}})@endforeach @endif <i class="fa fa-comment-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">לייק <?php if(count($likes) > 0): ?>(<?php echo e(count($likes)); ?>)<?php endif; ?> <i class="fa fa-heart-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">תגובות <?php if(count($product_comments) > 0): ?><?php $__currentLoopData = $product_comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product_comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>(<?php echo e($product_comment->count_comment); ?>)<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?> <i class="fa fa-comment-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">שיתופים (35) <i class="fa fa-share-square-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">דירוגים @if(count($product_ratings) > 0)@foreach($product_ratings as $rating)({{$rating->count_rating}})@endforeach @endif<i class="fa fa-star-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">דירוגים <?php if(count($product_ratings) > 0): ?><?php $__currentLoopData = $product_ratings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rating): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>(<?php echo e($rating->count_rating); ?>)<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> <?php endif; ?><i class="fa fa-star-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">קבלות (2) <i class="fa fa-file-text-o"></i></li>
                                     <li class="font-size-12 mb-lg-3">הרשמות למועדונים <i class="fa fa-file-text-o"></i></li>
                                 </ul>
                             </div>
                             <div class="col-lg_5 d-none d-lg-block mt-3 text-center">
-                                <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
+                                <img src="<?php echo e(asset('assets/img/mobile_component/points_icon.png')); ?>" alt="" class="img-fluid">
                                 <h3 class="total_points">460 נקודות</h3>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ Dosize
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 <h3 class="common_title">ההצעות הקרובות בשבילך <img
-                                        src="{{asset('assets/img/mobile_component/gift_pack.png') }}" alt="" class="img-fluid">
+                                        src="<?php echo e(asset('assets/img/mobile_component/gift_pack.png')); ?>" alt="" class="img-fluid">
                                 </h3>
                             </div>
                         </div>
@@ -67,11 +67,11 @@ Dosize
                     <div class="slider_div">
                         <div class="multiple_promotion swiper">
                             <div class="swiper-wrapper">
-                                @if(count($products) > 0)
-                                @foreach($products as $product)
+                                <?php if(count($products) > 0): ?>
+                                <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
-                                        <img src="{{asset('admin_product/'.$product->image)}}" alt="" class="img-fluid" style="width:225px; height:112px;">
+                                        <img src="<?php echo e(asset('admin_product/'.$product->image)); ?>" alt="" class="img-fluid" style="width:225px; height:112px;">
                                         <span class="font-size-14 font-weight-700" style="visibility: hidden">30%</span>
                                     </div>
                                     <div class="promotion_content">
@@ -83,21 +83,22 @@ Dosize
                                                         class="font-size-12 font-weight-600">22</span>
                                                 </p>
                                             </div>
-                                            <p class="promotion_category font-size-12 font-weight-400"> {{$admin->name}} </p>
+                                            <p class="promotion_category font-size-12 font-weight-400"> <?php echo e($admin->name); ?> </p>
                                         </div>
                                         <p class="promotion_title font-size-14 font-weight-700 text-right">
-                                            {!! substr($product->description, 0,  30) !!}
+                                            <?php echo substr($product->description, 0,  30); ?>
+
                                         </p>
                                         <div class="price_learn_more">
-                                            <a href=""  data-toggle="modal" data-target="#exampleModal" class="font-size-14 font-weight-700" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
-                                            <p class="font-size-14 font-weight-600">{{$product->price}} <img
-                                                    src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
+                                            <a href=""  data-toggle="modal" data-target="#exampleModal" class="font-size-14 font-weight-700" <?php if(($product->price) > 460): ?> style="pointer-events: none;opacity: 0.5;" <?php else: ?> style="cursor:pointer;"" <?php endif; ?>>קבל ></a>
+                                            <p class="font-size-14 font-weight-600"><?php echo e($product->price); ?> <img
+                                                    src="<?php echo e(asset('assets/img/mobile_component/points_icon.png')); ?>" alt=""
                                                     class="img-fluid"></p>
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -167,10 +168,10 @@ Dosize
             Are you sure you want to buy this product ?
             </div>
             <div class="modal-footer">
-                <form action="{{route('store-wallet') }}" method="POST" >
-                    @csrf
-                    <input type="hidden" name="coins" value="{{$product->price ?? '' }}" />
-                    <input type="hidden" name="product_id" value="{{$product->id ?? '' }}" />
+                <form action="<?php echo e(route('store-wallet')); ?>" method="POST" >
+                    <?php echo csrf_field(); ?>
+                    <input type="hidden" name="coins" value="<?php echo e($product->price ?? ''); ?>" />
+                    <input type="hidden" name="product_id" value="<?php echo e($product->id ?? ''); ?>" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" style="background-color:#db1580 !important; border-color:#db1580 !important;">Buy Product</button>
                 </form>
@@ -179,12 +180,12 @@ Dosize
     </div>
 </div>
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 
-<script src="{{ asset('assets/js/swiper.min.js') }}"></script>
-<script src="{{ asset('assets/js/script.js') }}"></script>
-<script src="{{ asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js') }}"></script>
+<script src="<?php echo e(asset('assets/js/swiper.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js')); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -208,7 +209,7 @@ Dosize
         $('.main-wrapper').addClass('active');
         $.ajax({
             type: "POST",
-            url: "{{ route('register') }}",
+            url: "<?php echo e(route('register')); ?>",
             data: new FormData(this),
             datatype: "json",
             processData: false,
@@ -234,7 +235,7 @@ Dosize
         $('.main-wrapper').addClass('active');
         $.ajax({
             type: "POST",
-            url: "{{ route('login') }}",
+            url: "<?php echo e(route('login')); ?>",
             data: new FormData(this),
             datatype: "json",
             processData: false,
@@ -291,7 +292,7 @@ Dosize
     //     // console.log(postFormData);
     //     $.ajax({
     //         type: "POST",
-    //         url: "{{ route('store-subscriber') }}",
+    //         url: "<?php echo e(route('store-subscriber')); ?>",
     //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     //         data: {
     //             email:email,
@@ -315,4 +316,5 @@ Dosize
     });
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/frontend/user_wallet.blade.php ENDPATH**/ ?>

@@ -37,7 +37,7 @@
                 </li>
                 <!-- Need to add all archived categoies heref for the city -->
                 <li>
-                    <a href="archive/category">התראות <img src="{{asset('assets/img/mobile_component/shopping_icon.png') }}" alt=""
+                    <a href="{{route('archive_cat')}}">התראות <img src="{{asset('assets/img/mobile_component/shopping_icon.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
             </ul>

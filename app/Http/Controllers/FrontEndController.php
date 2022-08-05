@@ -64,11 +64,9 @@ class FrontEndController extends Controller
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
         $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) {
-            $q->where('city_id', '5');
+            $q->where('city_id','5');
         })
         ->get();
-
-        // dd($brands_recomanded_products);
         
         $blogs = $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
@@ -440,7 +438,6 @@ class FrontEndController extends Controller
         ->where('categories.id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
-        // dd($products);
 
         $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
@@ -491,7 +488,25 @@ class FrontEndController extends Controller
     {
         $categories = Category::get();
         $cities = City::get();
-        return view('frontend.archive.archive_category',compact('cities','categories'));
+        $product_categories = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->Join('categories', 'categories.id', '=', 'products.category_id')
+        // ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('categories.*','brand_profiles.brand_name')
+        ->where('products_has_cities.city_id',5 )
+        ->where('products.discount_price', null)
+        ->get();
+        // dd($product_categories);
+        if($product_categories['0']->name == null)
+        {
+            toastr()->error('Categories with product not found');
+            return Redirect::back();
+        }
+        else
+        {
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
+        }
     }
     public function city_brands($city_id)
     {

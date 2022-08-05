@@ -1,11 +1,11 @@
-@extends('layout.master')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 Archive - Catagorey
-@endsection
-@push('styles')
-<link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
-<link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
 <style>
     .mobile_header {
         display: none;
@@ -18,10 +18,10 @@ Archive - Catagorey
         left: 0px;
     }
 </style>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <main style="height: auto;">
     <div class="main-wrapper" style="height: auto;">
         <div class="article_category_slider categories spacing">
@@ -30,20 +30,20 @@ Archive - Catagorey
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
-                                @if(count($categories) > 0)
+                                <?php if(count($categories) > 0): ?>
                                 
-                                @foreach($categories as $key=>$category)
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                    <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" style="color:#212529">
                                         <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                            <img src="<?php echo e(asset('category/'.$category->image)); ?>" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
-                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                        <p class="font-weight-600 font-size-12"> <?php echo e($category->name); ?></p>
                                     </a>
                                 </div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -60,27 +60,27 @@ Archive - Catagorey
             </div>
             <div class="cloth_footwear d-flex align-items-center">
                 <p class="mr-2 font-bold"><b>ביגוד והנעלה</b></p>
-                <img src="{{ asset('assets/img/clothFoot.png') }}" alt="clothFootWear">
+                <img src="<?php echo e(asset('assets/img/clothFoot.png')); ?>" alt="clothFootWear">
             </div>
         </div>
         <!--  -->
         <div class="arch_products mt-5">
             <div class="container-fluid">
                 <div class="row justify-content-end">
-                    @if(count($product_categories) > 0)
-                    @foreach($product_categories as $p_category)
+                    <?php if(count($product_categories) > 0): ?>
+                    <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-6 col-xxl-4 col-xl-3">
                         <div class="arch_product d-flex flex-column align-items-center">
-                            <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                            <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" style="color:#212529">
                                 <div class="img">
-                                    <img src="{{asset('category/'.$p_category->image)}}" alt="arch_product" style="width: 75px; height:54px;">
+                                    <img src="<?php echo e(asset('category/'.$p_category->image)); ?>" alt="arch_product" style="width: 75px; height:54px;">
                                 </div>
-                                <p class="txt">{{$p_category->name}}</p>
+                                <p class="txt"><?php echo e($p_category->name); ?></p>
                             </a>
                         </div>
                     </div>
-                    @endforeach
-                    @endif
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -94,16 +94,16 @@ Archive - Catagorey
                             <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/fb.png') }}" alt="fb">
+                                    <img src="<?php echo e(asset('assets/img/fb.png')); ?>" alt="fb">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/inst.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/inst.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/twitter.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/twitter.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/whatsapp.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/whatsapp.png')); ?>" alt="">
                                 </a>
                             </div>
                         </div>
@@ -123,7 +123,7 @@ Archive - Catagorey
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="<?php echo e(asset('assets/img/footer_img.png')); ?>" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -146,25 +146,25 @@ Archive - Catagorey
                     <ul>
                         <li>
                             <a href="">
-                                <img src="{{ asset('assets/img/mobile_component/email_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/email_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{ asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/whtsapp_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{ asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/twitter_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
                         <li>
                             <a href="">
-                                <img src="{{ asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
+                                <img src="<?php echo e(asset('assets/img/mobile_component/facebook_icon.png')); ?>" alt=""
                                     class="img-fluid">
                             </a>
                         </li>
@@ -181,10 +181,10 @@ Archive - Catagorey
     </div>
 
 </main>
-@endsection
-@section('script')
-<script src="{{asset('assets/js/swiper.min.js') }}"></script>
-<script src="{{asset('assets/js/script.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(asset('assets/js/swiper.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script>
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
@@ -197,4 +197,6 @@ Archive - Catagorey
         }
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/frontend/archive/archive_category.blade.php ENDPATH**/ ?>
