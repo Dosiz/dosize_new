@@ -4,7 +4,9 @@ Articles
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
+<link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
 <style>
     .mobile_header {
         display: none;
@@ -227,19 +229,12 @@ Articles
                             </div>
 
                             <div class="formDiv">
-                                @guest
-                                @else
-                                @if(Auth::user()->hasRole('User'))
                                 
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
                                     <div class="comment_hearder">
-                                        @guest
-                                        <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                        @else
                                         <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                        @endguest
                                         <div class="anonymous_text font-size-16">אנונימי <span
                                                 class="checkBox">
                                                 <input type="checkbox" name="name" id="approve">
@@ -247,8 +242,6 @@ Articles
                                     </div>
                                     <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
-                                @endif
-                                @endguest
                             </div>
                             <div class="comment_list">
                                 <ul class="new_comment_list">
@@ -466,7 +459,8 @@ Articles
 
 @endsection
 @section('script')
-<script src="{{asset('assets/js/swiper.min.js') }}"></script>
+{{-- <script src="{{asset('assets/js/swiper.min.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="{{asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $("label").click(function(){

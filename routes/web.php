@@ -124,6 +124,10 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 
     //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
+    
+    // blog and products comments status
+    Route::get('/blog_comments',[App\Http\Controllers\brand\BrandController::class, 'blog_comments'])->name('brand-blog-comments');
+    Route::get('/product_comments',[App\Http\Controllers\brand\BrandController::class, 'product_comments'])->name('brand-product-comments');
 
 
 });

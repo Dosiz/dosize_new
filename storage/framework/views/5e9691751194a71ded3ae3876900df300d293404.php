@@ -44,6 +44,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <!-- <span aria-hidden="true">&times;</span> -->
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -101,12 +102,6 @@
                                             class="img-fluid">
                                     </a>
                                 </div>
-                            </div>
-                            <!-- <div class="d-flex justify-content-center mt-4">
-                                <a href="" id="signup_btn" class="text-dark">
-                                    <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
-                                </a>
-                            </div> -->
                         </form>
                     </div>
                 </div>

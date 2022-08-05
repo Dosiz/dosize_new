@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\BrandProfile; 
 use App\Models\BrandsHasSubCategory;   
 use App\Models\BrandsHasAddress;   
+use App\Models\BlogComment;   
+use App\Models\ProductComment;   
 use App\Models\User;
 use App\Models\Subscriber;   
 use Auth;
+use DB;
 
 class BrandController extends Controller
 {
@@ -107,6 +110,29 @@ class BrandController extends Controller
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
         $subscribers =Subscriber::with('brandprofile')->where('brand_profile_id',$brand_profile->id)->get();
         return view('brand.subscribers',compact('subscribers'));
+    }
+
+    public function blog_comments()
+    {
+        $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
+        $brand_profile_id = $brand_profile->id;
+        $blog_comments = BlogComment::with('blog','user')->whereHas('blog', function ($q) use ($brand_profile_id) {
+            $q->where('brand_profile_id',$brand_profile_id);
+        })->where('parent_id',null)->get();
+        // dd($blog_comments);
+        return view('brand.comment.blog_comments',compact('blog_comments'));
+    }
+
+    public function product_comments()
+    {
+        // dd("sdfdsf");
+        $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
+        $brand_profile_id = $brand_profile->id;
+        $product_comments = ProductComment::with('product','user')->whereHas('product', function ($q) use ($brand_profile_id) {
+            $q->where('brand_profile_id',$brand_profile_id);
+        })->where('parent_id',null)->get();
+        // dd($product_comments,$brand_profile->id);
+        return view('brand.comment.product_comments',compact('product_comments'));
     }
 
 }

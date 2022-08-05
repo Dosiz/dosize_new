@@ -63,8 +63,8 @@ class FrontEndController extends Controller
         ->select('brand_messages.*','brand_profiles.brand_image')
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
-        $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) {
-            $q->where('city_id','5');
+        $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) use ($city_id){
+            $q->where('city_id',$city_id);
         })
         ->get();
         
@@ -100,7 +100,7 @@ class FrontEndController extends Controller
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
-        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
+        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
@@ -131,7 +131,8 @@ class FrontEndController extends Controller
         $categories = Category::get();
         // dd($products);
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
-        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
+        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
+        // dd($product_comments);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
         $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
         ->groupBy('product_comments.product_id')
@@ -176,7 +177,7 @@ class FrontEndController extends Controller
         $blog_comment = new BlogComment;
        
         
-        if($request->name == 'on')
+        if($request->name == 'on' || $user == null)
         {
             $blog_comment->name = 'anonymous';
             $blog_user_name = 'anonymous';
@@ -189,6 +190,7 @@ class FrontEndController extends Controller
         if($request->parent_id)
         {
             $blog_comment->parent_id = $request->parent_id;
+            $blog_comment->status = 1;
         }
         if($request->bedside_manner_rating)
         {
@@ -212,14 +214,16 @@ class FrontEndController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
+        //  dd($user_id);
         $user = User::where('id',Auth::id())->first();
+        // dd($user);
         $this->validate($request,[ 
             'comment'=>'required', 
 
         ]);
         $product_comment = new ProductComment;
         
-        if($request->name == 'on')
+        if($request->name == 'on' || $user == null)
         {
             $product_comment->name = 'anonymous';
             $product_user_name = 'anonymous';
@@ -232,9 +236,11 @@ class FrontEndController extends Controller
         if($request->parent_id)
         {
             $product_comment->parent_id = $request->parent_id;
+            $product_comment->status = 1;
         }
         if($request->bedside_manner_rating)
         {
+            // dd("sdd");
             $product_comment->rating = $request->bedside_manner_rating;
         }
         $product_comment->comment = $request->comment;

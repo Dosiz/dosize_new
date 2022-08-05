@@ -4,7 +4,9 @@ Articles
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('styles'); ?>
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/thumb-slider.css')); ?>">
 <style>
     .mobile_header {
         display: none;
@@ -229,19 +231,12 @@ Articles
                             </div>
 
                             <div class="formDiv">
-                                <?php if(auth()->guard()->guest()): ?>
-                                <?php else: ?>
-                                <?php if(Auth::user()->hasRole('User')): ?>
                                 
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="<?php echo e($blog->id); ?>" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
                                     <div class="comment_hearder">
-                                        <?php if(auth()->guard()->guest()): ?>
-                                        <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                        <?php else: ?>
                                         <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                        <?php endif; ?>
                                         <div class="anonymous_text font-size-16">אנונימי <span
                                                 class="checkBox">
                                                 <input type="checkbox" name="name" id="approve">
@@ -249,8 +244,6 @@ Articles
                                     </div>
                                     <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
-                                <?php endif; ?>
-                                <?php endif; ?>
                             </div>
                             <div class="comment_list">
                                 <ul class="new_comment_list">
@@ -470,7 +463,8 @@ Articles
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<script src="<?php echo e(asset('assets/js/swiper.min.js')); ?>"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script type="text/javascript">
     $("label").click(function(){

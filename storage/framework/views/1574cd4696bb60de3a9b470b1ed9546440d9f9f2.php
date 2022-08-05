@@ -326,13 +326,13 @@ Dosize
         <?php endif; ?>
         <?php $i = 1; ?>
         <?php if(count($products_by_categories) > 0 ): ?>
-        <div class="row">
+        <div class="row flex-row-reverse">
         <?php $__currentLoopData = $products_by_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <?php if( count($product_category->product) > 0): ?>
             <?php if($i == 1 || $i == 2): ?>
             <div class="col-md-6">
-                <div class="products_div spacing">
-                    <div class="container-fluid">
+                <div class="products_div spacing p-0">
+                    <div class="container-fluid p-0">
                        
                             <div class="no_padding">
                                 <div class="affordable_consumption">
@@ -359,7 +359,7 @@ Dosize
                                                     <div class="main_article">
                                                         <div class="article_box">
                                                             <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['0']->id ?? '')); ?>">
-                                                                <img src="<?php echo e(asset('product/'.$product_category->product['0']->image ?? '' )); ?>" width="120px" height="111px">
+                                                                <img src="<?php echo e(asset('product/'.$product_category->product['0']->image ?? '' )); ?>" width="120px" height="100%">
                                                             </a>
                                                             <a style="color: #212529 !important" href="<?php echo e(route('product',$product_category->product['0']->id ?? '')); ?>">
                                                             <div class="article_content">
