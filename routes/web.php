@@ -153,9 +153,8 @@ Route::get('archive-message', function () {
     return view('frontend.archive_message');
 });
 
-Route::get('archive/category', function () {
-    return view('frontend.archive.category');
-});
+Route::get('archive/category' ,[App\Http\Controllers\FrontEndController::class, 'archive_cat'])->name('archive_cat'); 
+
 
 Route::get('archive_category', function () {
     return view('frontend.archive.archive_category');

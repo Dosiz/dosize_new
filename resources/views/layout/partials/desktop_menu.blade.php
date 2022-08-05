@@ -20,21 +20,30 @@
                     <a href="{{route('landing-page',5)}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
+                @if(! isset(Auth::user()->name))
+                    <li>
+                        <a href="" data-toggle="modal" data-target="#enrollmentModal">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                                class="img-fluid"></a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                                class="img-fluid"></a>
+                    </li>
+                @endif
                 <li>
-                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                    <a href="{{route('city-brands',2)}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
+                <!-- Need to add all archived categoies heref for the city -->
                 <li>
-                    <a href="{{route('city-brands',5)}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
-                            class="img-fluid"></a>
-                </li>
-                <li>
-                    <a href="">התראות <img src="{{asset('assets/img/mobile_component/shopping_icon.png') }}" alt=""
+                    <a href="archive/category">התראות <img src="{{asset('assets/img/mobile_component/shopping_icon.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
             </ul>
             <div class="line"></div>
             <ul>
+                 <!-- Need to add  profile link here -->
                 <li>
                     <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.png') }}" alt=""
                             class="img-fluid"></a>

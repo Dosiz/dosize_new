@@ -1,4 +1,4 @@
-@extends('layout.product')
+@extends('layout.master')
 @section('title')
 Archive - Catagorey
 @endsection

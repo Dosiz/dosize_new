@@ -488,7 +488,12 @@ class FrontEndController extends Controller
         // dd($products);
         return view('frontend.city_category_article_detail',compact('cities','categories','blogs'));
     }
-
+    public function archive_cat()
+    {
+        $categories = Category::get();
+        $cities = City::get();
+        return view('frontend.archive.archive_category',compact('cities','categories'));
+    }
     public function city_brands($city_id)
     {
         $categories = Category::get();
@@ -499,7 +504,7 @@ class FrontEndController extends Controller
         ->select('brand_profiles.*')
         ->where('brands_has_cities.city_id',$city_id)
         ->get();
-        // dd($city_brands);
+        //  dd($city_brands);
         return view('frontend.city_brands',compact('cities','categories','city_brands'));
     }
 
