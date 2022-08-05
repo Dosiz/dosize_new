@@ -56,8 +56,8 @@ class BlogController extends Controller
         try {
             $blog = Blog::where('id',$id)->first();
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
-            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
-
+            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->where('blog_id',$id)->get();
+            // dd($blog_cities);
             return view('brand.blog.show', compact('blog','brand_profile','blog_cities'));
         } catch (\Exception $exception) {
             return Redirect::back();
@@ -66,7 +66,7 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd($request->all() , explode(",", $request->tags));
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
         $this->validate($request,[ 
             'image'=>'required', 
@@ -77,9 +77,13 @@ class BlogController extends Controller
             'profile_id'=>'required', 
             'sub_category_id'=>'required', 
             'city_id'=>'required', 
+            'tags' => 'required',
 
         ]);
         $blog= new Blog;
+
+        $blog->tags = $request->tags;
+
         $blog->title = $request->title;
         $blog->sub_title = $request->sub_title;
         $blog->brand_profile_id = $request->profile_id;
@@ -131,7 +135,9 @@ class BlogController extends Controller
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
-            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
+            $blog_cities = BlogsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->where('blog_id',$id)->get();
+
+            // dd($blog_cities , $brand_cities);
             if(count($brand_cities) <= 0)
             {
                 $brand_cities = User::where('id',Auth::id())->get();
@@ -155,9 +161,11 @@ class BlogController extends Controller
             'profile_id'=>'required', 
             'sub_category_id'=>'required', 
             'city_id'=>'required', 
+            'tags' => 'required',
 
         ]);
         $blog= Blog::find($blog);
+        $blog->tags = $request->tags;
         $blog->title = $request->title;
         $blog->sub_title = $request->sub_title;
         $blog->brand_profile_id = $request->profile_id;
@@ -181,7 +189,7 @@ class BlogController extends Controller
         {
             $recomended_blogs = new RecomendedBlog;
             $recomended_blogs->blog_id = $blog->id;
-            $recomended_blogs->recomended_blog_id = $request->blog_id;
+            $recomended_blogs->recomended_blog_id = $blog_id;
             $recomended_blogs->brand_profile_id = $request->profile_id;
             $recomended_blogs->save();
         }

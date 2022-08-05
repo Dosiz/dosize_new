@@ -4,6 +4,19 @@ Blog Detail
 @endsection
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+<style>
+	.bootstrap-tagsinput
+	{
+		display: block !important;
+	}
+	.tag.label.label-info
+	{
+		color: #222 !important;
+		background-color: rgb(207, 202, 202); 
+		padding: 0px 4px
+	}
+</style>
 @endpush
 @section('content')		
 <!-- Page Wrapper -->
@@ -71,6 +84,11 @@ Blog Detail
 								<strong>תיאור המוצר</strong><br>
 								{!! $blog->description !!}
 							</div>
+							<div class="col-md-12"><br>
+								<label> תגים </label>
+								<input readonly class="form-control" data-role="tagsinput" type="text" name="tags" value="{{$blog->tags}}"
+								placeholder="Tags" style="display: block; color:#111;">
+							</div>
 						</div>
 						<!-- /Add details -->
 
@@ -86,6 +104,7 @@ Blog Detail
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 <script>
 $(document).ready(function() {
 	$('#select2MultipleE').select2({

@@ -124,10 +124,10 @@ Articles
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
-                                    <li class="font-size-12">מבצע</li>
-                                    <li class="font-size-12">סנדלים</li>
-                                    <li class="font-size-12">נעלי ילדים</li>
-                                    <li class="font-size-12">נעלי העיר</li>
+                                    @php $tags = explode(",", $blog->tags); @endphp
+                                    @foreach($tags as $tag)
+                                    <li class="font-size-12">{{$tag}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
