@@ -83,16 +83,24 @@ class FrontEndController extends Controller
         $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
         // dd($products_by_categories);
 
-          $p_city = City::with('products')->find($city_id);
-        //    dd($p_city->products->groupBy('category_id'));
-        // $city = City::with('products')->where('id',$city_id)->first();
-        
+        $p_city = City::with('products','blogs')->find($city_id);
+
+        // dd($p_city->blogs->groupBy('category_id'),$p_city->products->groupBy('category_id'));
+        // foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories){
+        //     echo $product_categories;
+        //     foreach ($p_city->blogs->groupBy('category_id') as $key=>$product_categories)
+        //     {
+        //         echo $product_categories;
+        //     }
+        // }
         // die();
+            // dd($b_city->products->groupBy('category_id'));
+            // dd($b_city->blogs->groupBy('category_id'));
 
         $categories = Category::get();
         
         // dd($categories);
-        return view('landing_page' , compact('categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
+        return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 
     public function article_detail($blog_id)

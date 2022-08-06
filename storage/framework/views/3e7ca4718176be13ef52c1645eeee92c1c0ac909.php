@@ -62,7 +62,7 @@ Brand List
             ?>
             <?php if($diff_in_days >= 0): ?>
             <div class="box mr-2 d-flex align-items-center">
-                <p class="txt m-1 mr-1"> <?php echo e($brand_message->message); ?></p>
+                <p class="txt m-0 mr-1"> <?php echo e($brand_message->message); ?></p>
                 <img src="<?php echo e(asset('brand_image/'.$brand_message->brand_image)); ?>" alt="" class="img-fluid" style="width: 34px; height: 35px;"></a>
             </div>
             <?php endif; ?>

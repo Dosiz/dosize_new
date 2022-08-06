@@ -40,4 +40,9 @@ class City extends Model
     {
         return $this->belongsToMany(Product::class, 'products_has_cities','city_id', 'product_id');
     }
+
+    public function blogs()
+    {
+        return $this->belongsToMany(Blog::class, 'blogs_has_cities','city_id', 'blog_id');
+    }
 }

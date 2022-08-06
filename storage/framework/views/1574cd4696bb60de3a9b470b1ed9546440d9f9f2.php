@@ -325,15 +325,17 @@ Dosize
         </div>
         <?php endif; ?>
         <?php $i = 1; ?>
-        <?php if(count($products_by_categories) > 0 ): ?>
-        <div class="row flex-row-reverse">
-        <?php $__currentLoopData = $products_by_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php if( count($product_category->product) > 0): ?>
-            <?php if($i == 1 || $i == 2): ?>
-            <div class="col-md-6">
-                <div class="products_div spacing p-0">
-                    <div class="container-fluid p-0">
-                       
+        <?php if(count($p_city->products->groupBy('category_id')) > 0 ): ?>
+            <div class="row flex-row-reverse">
+            <?php $__currentLoopData = $p_city->products->groupBy('category_id'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product_categories): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $category =  \App\Models\Category::where('id',$key)->first(); ?>
+            
+                <?php if($i == 1 || $i == 2): ?>
+                
+                
+                <div class="col-md-6">
+                    <div class="products_div spacing p-0">
+                        <div class="container-fluid p-0">
                             <div class="no_padding">
                                 <div class="affordable_consumption">
                                     <div class="container-fluid">
@@ -341,35 +343,36 @@ Dosize
                                             <div class="col-lg-12 text-right">
                                                 <div class="header_cloth">
                                                     
-                                                    <img src="<?php echo e(asset('category/'.$product_category->image ?? '')); ?>" width="60px" height="50px">
-                                                    <h3 class="common_title"> <?php echo e($product_category->name ?? ''); ?><img
+                                                    <img src="<?php echo e(asset('category/'.$category->image ?? '')); ?>" width="60px" height="50px">
+                                                    <h3 class="common_title"> <?php echo e($category->name ?? ''); ?><img
                                                             src="<?php echo e(asset('assets/img/mobile_component/Line.png')); ?>" alt=""
                                                             class="img-fluid">
                                                     </h3>
                                                     <span class="read_more">
-                                                        <a href="<?php echo e(route('category_by_city',['category_id'=>$product_category->id,'city_id'=>5])); ?>" class="font-size-12 font-weight-400">
+                                                        <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" class="font-size-12 font-weight-400">
                                                             כתבות ביגוד והנעלה</a> </span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="article_div">
+                                            <?php $__currentLoopData = $category->blog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            
                                             <div class="row">
-                                                
                                                 <div class="col-lg-6">
                                                     <div class="main_article">
                                                         <div class="article_box">
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['0']->id ?? '')); ?>">
-                                                                <img src="<?php echo e(asset('product/'.$product_category->product['0']->image ?? '' )); ?>" width="120px" height="100%">
+                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('article',$blog->id ?? '')); ?>">
+                                                                <img src="<?php echo e(asset('blog/'.$blog->image ?? '' )); ?>" width="120px" height="100%">
                                                             </a>
-                                                            <a style="color: #212529 !important" href="<?php echo e(route('product',$product_category->product['0']->id ?? '')); ?>">
+                                                            <a style="color: #212529 !important" href="<?php echo e(route('article',$blog->id ?? '')); ?>">
                                                             <div class="article_content">
                                                                 <h4 class="font-size-18"
                                                                     style="margin-bottom: 20px;">
-                                                                    <?php echo e($product_category->product['0']->name ?? ''); ?>
+                                                                    <?php echo e($blog->title ?? ''); ?>
 
                                                                 </h4>
-                                                                <p class="font-size-12">צפו
-                                                                    <?php echo \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...'); ?>
+                                                                <p class="font-size-12">
+                                                                    <?php echo \Illuminate\Support\Str::limit($blog->description ?? '',60,'...'); ?>
 
                                                                 </p>
                                                             </div>
@@ -378,201 +381,155 @@ Dosize
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="affordable_consumption_list">
-                                                    <?php if( count($product_category->product) > 1): ?>
-                                                    <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['1']->id ?? '')); ?>">
-                                                            <img src="<?php echo e(asset('product/'.$product_category->product['1']->image ?? '')); ?>" width="238px" height="120px">
-                                                        </a>
-                                                        <div class="content_div">
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('brand-profile',$product_category->product['1']->brandprofile->id ?? '')); ?>">
-                                                            <span class="category font-size-12 font-weight-400"> <?php echo e($product_category->product['1']->brandprofile->brand_name ?? ''); ?> </span>
-                                                            </a>
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['1']->id ?? '')); ?>" style="color: #212529 !important;">
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                <?php echo e($product_category->product['1']->name ?? ''); ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                <?php echo \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...'); ?>
-
-                                                            </p>
+                                            
+                                            
+                                            <div class="row">
+                                                
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <div class="affordable_consumption_box box_shahdow">
+                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>">
+                                                                <img src="<?php echo e(asset('product/'.$product->image ?? '')); ?>" width="238px" height="120px">
                                                             </a>
-                                                            <span class="font-size-12 like_span">4 <i
-                                                                    class="fa fa-heart"
-                                                                    aria-hidden="true"></i></span>
-                                                            <div class="rating_price_div">
-                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['1']->id ?? '')); ?>" style="color: #212529 !important">
-                                                                <p class="font-size-14 font-weight-600">
-                                                                    <?php echo e($product_category->product['1']->price ?? ''); ?> ₪
+                                                            <div class="content_div">
+                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('brand-profile',$product->brandprofile->id ?? '')); ?>">
+                                                                <span class="category font-size-12 font-weight-400"> <?php echo e($product->brandprofile->brand_name ?? ''); ?> </span>
+                                                                </a>
+                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>" style="color: #212529 !important;">
+                                                                <h4 class="font-size-14 font-weight-700">
+                                                                    <?php echo e($product->name ?? ''); ?>
+
+                                                                </h4>
+                                                                <p class="discription font-size-12 font-weight-400">
+                                                                    <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
+
                                                                 </p>
                                                                 </a>
-                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                        class="fa fa-star"></i></p>
+                                                                <span class="font-size-12 like_span">4 <i
+                                                                        class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span>
+                                                                <div class="rating_price_div">
+                                                                    <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>" style="color: #212529 !important">
+                                                                    <p class="font-size-14 font-weight-600">
+                                                                        <?php echo e($product->price ?? ''); ?> ₪
+                                                                    </p>
+                                                                    </a>
+                                                                    <p class="rating_text" style="visibility: hidden;">4.8 <i
+                                                                            class="fa fa-star"></i></p>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </div>
-                                                    <?php endif; ?>
-                                                    <?php if( count($product_category->product) > 2): ?>
-                                                    <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['2']->id ?? '')); ?>">
-                                                            <img src="<?php echo e(asset('product/'.$product_category->product['2']->image ?? '')); ?>" width="238px" height="120px">
-                                                        </a>
-                                                        <div class="content_div">
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('brand-profile',$product_category->product['2']->brandprofile->id ?? '')); ?>">
-                                                            <span class="category font-size-12 font-weight-400"> <?php echo e($product_category->product['2']->brandprofile->brand_name ?? ''); ?> </span>
-                                                            </a>
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['2']->id ?? '')); ?>" style="color: #212529 !important;">
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                <?php echo e($product_category->product['2']->name ?? ''); ?>
-
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                <?php echo \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...'); ?>
-
-                                                            </p>
-                                                            </a>
-                                                            <span class="font-size-12 like_span">5 <i
-                                                                    class="fa fa-heart"
-                                                                    aria-hidden="true"></i></span>
-                                                            <div class="rating_price_div">
-                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['2']->id ?? '')); ?>" style="color: #212529 !important;">
-                                                                <p class="font-size-14 font-weight-600">
-                                                                    <?php echo e($product_category->product['2']->price ?? ''); ?> ₪
-                                                                </p>
-                                                                </a>
-                                                                <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                        class="fa fa-star"></i></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php endif; ?>
-                                                    <div class="slider_div">
-                                                        <img src="<?php echo e(asset('assets/img/mobile_component/slider_img.png')); ?>"
-                                                            alt="" class="img-fluid">
-                                                    </div>
-                                                    <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                        כתבות ביגוד
-                                                        והנעלה
-                                                        ></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                      
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php endif; ?>
-            <?php if($i == 3 || $i == 4): ?>
-            <div class="col-md-6">
-                <div class="home_medical_items spacing">
-                    <div class="container-fluid">
-                        
-                                <div class="affordable_consumption">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-lg-12 text-right">
-                                                <div class="header_cloth">
-                                                    
-                                                    <img src="<?php echo e(asset('category/'.$product_category->image)); ?>" width="60px" height="50px">
-                                                    <h3 class="common_title">  <?php echo e($product_category->name); ?> <img
-                                                            src="<?php echo e(asset('assets/img/mobile_component/Line.png')); ?>" alt=""
-                                                            class="img-fluid">
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="affordable_consumption_list">
-                                                    <?php if( count($product_category->product) > 3): ?>
-                                                    <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['0']->id ?? '')); ?>">
-                                                            <img src="<?php echo e(asset('product/'.$product_category->product['0']->image ?? '')); ?>" width="131px" height="226px">
-                                                        </a>
-                                                        <div class="content_div">
-                                                            
-                                                            <span class="category font-size-12 font-weight-400"> <?php echo e($product_category->product['0']->brandprofile->brand_name ?? ''); ?> </span>
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                <?php echo e($product_category->product['0']->name ?? ''); ?>
-
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                <?php echo \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...'); ?>
-
-                                                            </p>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    <?php endif; ?>
-                                                    <?php if( count($product_category->product) > 1): ?>
-                                                    <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product_category->product['1']->id ?? '')); ?>">
-                                                            <img src="<?php echo e(asset('product/'.$product_category->product['1']->image ?? '')); ?>" width="131px" height="137px">
-                                                        </a>
-                                                        <div class="content_div">
-                                                            <span class="category font-size-12 font-weight-400">
-                                                                <?php echo e($product_category->product['1']->brandprofile->brand_name ?? ''); ?>
-
-                                                            </span>
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                <?php echo e($product_category->product['1']->name ?? ''); ?>
-
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                <?php echo \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...'); ?>
-
-                                                            </p>
-                                                            <span class="font-size-12 like_span">4
-                                                                <i class="fa fa-heart"
-                                                                    aria-hidden="true"></i></span>
-                                                            <div class="rating_price_div">
-                                                                <p class="font-size-14 font-weight-600">
-                                                                    ₪ <?php echo e($product_category->product['1']->price ?? ''); ?>
-
-                                                                </p>
-                                                                <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
-                                                                    4.8
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <?php endif; ?>
-                                                    <?php if( count($product_category->product) > 2): ?>
-                                                    <div clas
-                                                    <?php endif; ?>
-                                                    <div class="slider_div">
-                                                        <img src="<?php echo e(asset('assets/img/mobile_component/slider_img.png')); ?>"
-                                                            alt="" class="img-fluid">
-                                                    </div>
-                                                    <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                        כתבות ביגוד
-                                                        והנעלה
-                                                        ></a>
-                                                </div>
+                <?php endif; ?>
+                <?php if($i == 3 || $i == 4): ?>
+                <div class="col-md-6">
+                    <div class="home_medical_items spacing p-0">
+                        <div class="container-fluid">
+                            <div class="affordable_consumption">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-right">
+                                            <div class="header_cloth">
+                                                
+                                                <img src="<?php echo e(asset('category/'.$category->image)); ?>" width="60px" height="50px">
+                                                <h3 class="common_title">  <?php echo e($category->name); ?> <img
+                                                        src="<?php echo e(asset('assets/img/mobile_component/Line.png')); ?>" alt=""
+                                                        class="img-fluid">
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                           
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="affordable_consumption_list">
+                                                <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <div class="affordable_consumption_box box_shahdow">
+                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>">
+                                                            <img src="<?php echo e(asset('product/'.$product->image ?? '')); ?>" width="131px" height="226px">
+                                                        </a>
+                                                        <div class="content_div">
+                                                            
+                                                            
+                                                            <h4 class="font-size-14 font-weight-700">
+                                                                <?php echo e($product->name ?? ''); ?>
+
+                                                            </h4>
+                                                            <p class="discription font-size-12 font-weight-400">
+                                                                <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
+
+                                                            </p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <div class="affordable_consumption_box box_shahdow">
+                                                    <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>">
+                                                        <img src="<?php echo e(asset('product/'.$product->image ?? '')); ?>" width="131px" height="137px">
+                                                    </a>
+                                                    <div class="content_div">
+                                                        <span class="category font-size-12 font-weight-400">
+                                                            <?php echo e($product->brand_name ?? ''); ?>
+
+                                                        </span>
+                                                        <h4 class="font-size-14 font-weight-700">
+                                                            <?php echo e($product->name ?? ''); ?>
+
+                                                        </h4>
+                                                        <p class="discription font-size-12 font-weight-400">
+                                                            <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
+
+                                                        </p>
+                                                        <span class="font-size-12 like_span">4
+                                                            <i class="fa fa-heart"
+                                                                aria-hidden="true"></i></span>
+                                                        <div class="rating_price_div">
+                                                            <p class="font-size-14 font-weight-600">
+                                                                ₪ <?php echo e($product->price ?? ''); ?>
+
+                                                            </p>
+                                                            <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
+                                                                4.8
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <div class="slider_div">
+                                                    <img src="<?php echo e(asset('assets/img/mobile_component/slider_img.png')); ?>"
+                                                        alt="" class="img-fluid">
+                                                </div>
+                                                <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" class="learn_more font-size-12 font-weight-400">לעוד
+                                                    כתבות ביגוד
+                                                    והנעלה
+                                                    ></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <?php endif; ?>
+                <?php $i++; ?>
+                <?php if($i == 5): ?>
+                <?php $i = 1; ?>
+                <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <?php endif; ?>
-            <?php $i++; ?>
-            <?php if($i == 5): ?>
-            <?php $i = 1; ?>
-            <?php endif; ?>
-        <?php endif; ?>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </div>
         <?php endif; ?>
         
         <!--  -->
