@@ -3,7 +3,7 @@
 Blog Comments
 @endsection
 @push('styles')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('content')		
 <!-- Page Wrapper -->
@@ -52,10 +52,16 @@ Blog Comments
 											{{ $comment->blog->title ?? ''}}
 										</td>
 										<td>
-											@if($comment->status == 1)
-												active
+											@if($comment->status == 1) 
+											<form action="{{ route('update-blog-comment', $comment->id) }}" method="POST">
+												@csrf()                         
+												<button type="submit" class="btn btn-success" name="status" value="0">Inactive</button>
+											</form>                    
 											@else
-												InActive
+												<form action="{{ route('update-blog-comment', $comment->id) }}" method="POST">
+													@csrf()                             
+													<button type="submit" class="btn btn-danger" name="status" value="1">Active</button>
+												</form>
 											@endif
 										</td>
 										
@@ -83,4 +89,5 @@ Blog Comments
 @endsection
 
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 @endsection

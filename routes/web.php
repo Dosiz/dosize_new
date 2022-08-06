@@ -128,6 +128,8 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     // blog and products comments status
     Route::get('/blog_comments',[App\Http\Controllers\brand\BrandController::class, 'blog_comments'])->name('brand-blog-comments');
     Route::get('/product_comments',[App\Http\Controllers\brand\BrandController::class, 'product_comments'])->name('brand-product-comments');
+    Route::post('/update_product_comment/{id}', [App\Http\Controllers\brand\BrandController::class,'update_product_comment'])->name('update-product-comment');
+    Route::post('/update_blog_comment/{id}', [App\Http\Controllers\brand\BrandController::class,'update_blog_comment'])->name('update-blog-comment');
 
 
 });

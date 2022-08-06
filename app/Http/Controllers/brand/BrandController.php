@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Subscriber;   
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Redirect;
 
 class BrandController extends Controller
 {
@@ -133,6 +134,44 @@ class BrandController extends Controller
         })->where('parent_id',null)->get();
         // dd($product_comments,$brand_profile->id);
         return view('brand.comment.product_comments',compact('product_comments'));
+    }
+
+    public function update_product_comment(Request $request , $product_comment_id)    
+    {
+        $brand_profile= BrandProfile::where('user_id',Auth::id())->first();
+        $product_comment = ProductComment::FindorFail($product_comment_id);
+        $check_product_comment = ProductComment::where('parent_id',$product_comment->id)->first();
+        if($check_product_comment)
+        {
+            toastr()->error('Kindly delete reply of this comment');
+            return Redirect::back();
+        }
+        else
+        {
+            $product_comment->status = $request->status;
+            $product_comment->update();
+            return Redirect::back();
+        }
+        
+    }
+
+    public function update_blog_comment(Request $request , $blog_comment_id)    
+    {
+        $brand_profile= BrandProfile::where('user_id',Auth::id())->first();
+        $blog_comment = BlogComment::FindorFail($blog_comment_id);
+        $check_blog_comment = BlogComment::where('parent_id',$blog_comment->id)->first();
+        // dd($check_blog_comment);
+        if($check_blog_comment)
+        {
+            toastr()->error('Kindly delete reply of this comment');
+            return Redirect::back();
+        }
+        else
+        {
+            $blog_comment->status = $request->status;
+            $blog_comment->update();
+            return Redirect::back();
+        }
     }
 
 }

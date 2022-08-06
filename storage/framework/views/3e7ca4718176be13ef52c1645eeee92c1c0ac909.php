@@ -1,11 +1,11 @@
-@extends('layout.master')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 Brand List
-@endsection
-@push('styles')
-<link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
     <style>
         .mobile_header {
             display: none;
@@ -18,8 +18,8 @@ Brand List
             left: 0px;
         }
     </style>
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
 <main class="brand_main">
     <div class="main-wrapper">
 
@@ -31,20 +31,20 @@ Brand List
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
-                                @if(count($categories) > 0)
+                                <?php if(count($categories) > 0): ?>
                                 
-                                @foreach($categories as $key=>$category)
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                    <a href="<?php echo e(route('category_by_city',['category_id'=>$category->id,'city_id'=>5])); ?>" style="color:#212529">
                                         <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                            <img src="<?php echo e(asset('category/'.$category->image)); ?>" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
-                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                        <p class="font-weight-600 font-size-12"> <?php echo e($category->name); ?></p>
                                     </a>
                                 </div>
-                                @endforeach
-                                @endif
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -53,22 +53,22 @@ Brand List
         </div>
         <!--  -->
         <div class="noteBox d-xl-flex position-relative d-none">
-            @if($brand_messages)
-            @foreach($brand_messages as $brand_message)
-            @php  
+            <?php if($brand_messages): ?>
+            <?php $__currentLoopData = $brand_messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand_message): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php  
                 $current_date = \Carbon\Carbon::now();
                 $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
                 $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
-            @endphp
-            @if($diff_in_days >= 0)
+            ?>
+            <?php if($diff_in_days >= 0): ?>
             <div class="box mr-2 d-flex align-items-center">
-                <p class="txt m-0 mr-1"> {{ $brand_message->message }}</p>
-                <img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt="" class="img-fluid" style="width: 34px; height: 35px;"></a>
+                <p class="txt m-1 mr-1"> <?php echo e($brand_message->message); ?></p>
+                <img src="<?php echo e(asset('brand_image/'.$brand_message->brand_image)); ?>" alt="" class="img-fluid" style="width: 34px; height: 35px;"></a>
             </div>
-            @endif
-            @endforeach
-            @endif
-            <a href="#" class="btn hotFlashes">מבזקים חמים <img src="{{asset('assets/img/bell_right.png') }}" alt="bell"
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php endif; ?>
+            <a href="#" class="btn hotFlashes">מבזקים חמים <img src="<?php echo e(asset('assets/img/bell_right.png')); ?>" alt="bell"
                     class="ml-1"></a>
         </div>
         <!--  -->
@@ -86,7 +86,7 @@ Brand List
         </div>
         <!--  -->
         <div class="consumption_block d-xl-none py-5 text-center">
-            <img src="{{asset('assets/img/home_icon.png') }}" class="mb-2" alt="consumption">
+            <img src="<?php echo e(asset('assets/img/home_icon.png')); ?>" class="mb-2" alt="consumption">
             <p><b>מוזמנים להירשם למועדוני הצרכנות<br>
                     ולא לפספס שום הטבה! </b></p>
         </div>
@@ -96,13 +96,13 @@ Brand List
                 <div class="row">
                     <div class="col-lg-12">
                         <span class="annoucment_text font-size-16 font-weight-600">מבזקים חמים <img
-                                src="{{asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
+                                src="<?php echo e(asset('assets/img/mobile_component/anaoucment.png')); ?>" alt=""
                                 class="img-fluid"></span>
                         <div class="hot_flashes_list">
                             <ul>
                                 <li>
                                     <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
+                                        <img src="<?php echo e(asset('assets/img/mobile_component/flashes_2.png')); ?>" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -113,7 +113,7 @@ Brand List
                                 </li>
                                 <li>
                                     <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
+                                        <img src="<?php echo e(asset('assets/img/mobile_component/flashes_1.png')); ?>" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -124,7 +124,7 @@ Brand List
                                 </li>
                                 <li>
                                     <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
+                                        <img src="<?php echo e(asset('assets/img/mobile_component/flashes_2.png')); ?>" alt=""
                                             class="img-fluid">
                                     </div>
                                     <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
@@ -144,47 +144,47 @@ Brand List
         <div class="bazaar_cards mt-4">
             <div class="container-fluid">
                 <div class="row">
-                    @if(count($city_brands) > 0)
-                    @foreach($city_brands as $city_brand)
+                    <?php if(count($city_brands) > 0): ?>
+                    <?php $__currentLoopData = $city_brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city_brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
-                            <img src="{{asset('assets/img/card_img.png') }}" class="main_img d-xl-none" alt="item">
-                            <a href="{{route('brand-profile',$city_brand->id)}}">
-                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
+                            <img src="<?php echo e(asset('assets/img/card_img.png')); ?>" class="main_img d-xl-none" alt="item">
+                            <a href="<?php echo e(route('brand-profile',$city_brand->id)); ?>">
+                            <img src="<?php echo e(asset('brand_image/'.$city_brand->brand_image)); ?>"  style="width: 330px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
                             </a>
                             <div class="title d-flex justify-content-end align-items-center">
                                 <div class="txt">
-                                    <a href="{{route('brand-profile',$city_brand->id)}}" style="color: #212529 !important">
-                                    <h3>{{$city_brand->brand_name}}</h3>
+                                    <a href="<?php echo e(route('brand-profile',$city_brand->id)); ?>" style="color: #212529 !important">
+                                    <h3><?php echo e($city_brand->brand_name); ?></h3>
                                     </a>
-                                    @guest
+                                    <?php if(auth()->guard()->guest()): ?>
                                     <a href="" class="btn signForClub d-none d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
-                                        <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
-                                    @else
-                                        <form action="{{ route('store-subscriber') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                        <img src="<?php echo e(asset('assets/img/star_2.png')); ?>" alt="star"></a>
+                                    <?php else: ?>
+                                        <form action="<?php echo e(route('store-subscriber')); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="email" id="email" value="<?php echo e(Auth::user()->email); ?>" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
-                                        <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
+                                        <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="<?php echo e($city_brand->id); ?>" />
                                         <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
-                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                            <img src="<?php echo e(asset('assets/img/star_2.png')); ?>" alt="star">
                                         </button>
-                                    @endguest
+                                    <?php endif; ?>
                                 </div>
-                                <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" class="d-xl-none"
+                                <img src="<?php echo e(asset('assets/img/mobile_component/flashes_2.png')); ?>" class="d-xl-none"
                                     alt="flash">
-                                <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$city_brand->id)}}" >
-                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
+                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('brand-profile',$city_brand->id)); ?>" >
+                                    <img src="<?php echo e(asset('brand_logo/'.$city_brand->brand_logo)); ?>" style="width: 80px; height: 80px" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>
                             </div>
                             <a href="#" class="btn signForClub d-xl-none">הירשמו בקליק למועדון <img
-                                    src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
+                                    src="<?php echo e(asset('assets/img/star_2.png')); ?>" alt="star"></a>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     
-                    @endif
+                    <?php endif; ?>
                     
                 </div>
             </div>
@@ -204,25 +204,25 @@ Brand List
                         <ul>
                             <li>
                                 <a href="">
-                                    <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
+                                    <img src="<?php echo e(asset('assets/img/mobile_component/email_icon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="{{asset('assets/img/mobile_component/whtsapp_icon.png') }}" alt=""
+                                    <img src="<?php echo e(asset('assets/img/mobile_component/whtsapp_icon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="{{asset('assets/img/mobile_component/twitter_icon.png') }}" alt=""
+                                    <img src="<?php echo e(asset('assets/img/mobile_component/twitter_icon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="{{asset('assets/img/mobile_component/facebook_icon.png') }}" alt=""
+                                    <img src="<?php echo e(asset('assets/img/mobile_component/facebook_icon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
                             </li>
@@ -245,16 +245,16 @@ Brand List
                             <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/fb.png') }}" alt="fb">
+                                    <img src="<?php echo e(asset('assets/img/fb.png')); ?>" alt="fb">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/inst.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/inst.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/twitter.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/twitter.png')); ?>" alt="">
                                 </a>
                                 <a href="#" class="social_link mx-2">
-                                    <img src="{{ asset('assets/img/whatsapp.png') }}" alt="">
+                                    <img src="<?php echo e(asset('assets/img/whatsapp.png')); ?>" alt="">
                                 </a>
                             </div>
                         </div>
@@ -274,7 +274,7 @@ Brand List
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="<?php echo e(asset('assets/img/footer_img.png')); ?>" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -285,10 +285,10 @@ Brand List
     </div>
 </main>
 
-@endsection
-@section('script')
-<script src="{{asset('assets/js/swiper.min.js') }}"></script>
-<script src="{{asset('assets/js/script.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(asset('assets/js/swiper.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script>
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
@@ -306,7 +306,7 @@ Brand List
     //     // const postFormData = {
     //     //     brand_profile_id : $('#brand_profile_id').val(),
     //     //     email     : $('#email').val(),
-    //     //     // _token: "{{ csrf_token() }}"
+    //     //     // _token: "<?php echo e(csrf_token()); ?>"
     //     // };
     //     let brand_profile_id = $('#brand_profile_id').val();
     //     let email = $('#email').val();
@@ -314,7 +314,7 @@ Brand List
     //     // console.log(postFormData);
     //     $.ajax({
     //         type: "POST",
-    //         url: "{{ route('store-subscriber') }}",
+    //         url: "<?php echo e(route('store-subscriber')); ?>",
     //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     //         data: {
     //             email:email,
@@ -338,4 +338,6 @@ Brand List
     // });
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/frontend/city_brands.blade.php ENDPATH**/ ?>

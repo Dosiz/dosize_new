@@ -532,8 +532,15 @@ class FrontEndController extends Controller
         ->select('brand_profiles.*')
         ->where('brands_has_cities.city_id',$city_id)
         ->get();
+
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id',$city_id)
+        ->get();
         //  dd($city_brands);
-        return view('frontend.city_brands',compact('cities','categories','city_brands'));
+        return view('frontend.city_brands',compact('cities','categories','city_brands','brand_messages'));
     }
 
     public function user_messages()
