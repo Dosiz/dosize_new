@@ -39,6 +39,18 @@ Product Detail
 								<strong>תמונת ראשית</strong><br>
 									<img src="{{asset('product/'.$product->image)}}" width="100px" height="100px">
 							</div>
+							
+							@if($product->images != null)
+							<div class="col-md-12"><br>
+								<strong>Images</strong><br>
+							@foreach(json_decode($product->images) as $all)
+							
+								
+									<img src="{{asset('product/'.$all)}}" width="100px" height="100px">
+							
+							@endforeach
+							</div>
+							@endif
 
 							<div class="col-md-6"><br>
 								<strong>מחיר רגיל</strong>

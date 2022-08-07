@@ -1,8 +1,8 @@
-@extends('layout.admin')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 Blog Detail
-@endsection
-@push('styles')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
 <style>
@@ -17,8 +17,8 @@ Blog Detail
 		padding: 0px 4px
 	}
 </style>
-@endpush
-@section('content')		
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>		
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
@@ -29,7 +29,7 @@ Blog Detail
 				<div class="col-sm-12">
 					<h3 class="page-title">העלאת כתבה/מאמר חדש לאתר</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{route('dashboard')}}">דשבורד</a></li>
+						<li class="breadcrumb-item"><a href="<?php echo e(route('dashboard')); ?>">דשבורד</a></li>
 						<li class="breadcrumb-item active">הוספת כתבה</li>
 					</ul>
 				</div>
@@ -46,13 +46,15 @@ Blog Detail
 						<div class="row">
 							<div class="col-md-6">
 								<strong>כותרת ראשית</strong> <br>
-								{{$blog->title}}
+								<?php echo e($blog->title); ?>
+
 							</div>
 
 							<div class="col-md-6">
 								<strong>כותרת משנה</strong><br>
 								<div>
-									{{$blog->sub_title ?? ''}}
+									<?php echo e($blog->sub_title ?? ''); ?>
+
 									
 								</div>
 							</div>
@@ -60,46 +62,47 @@ Blog Detail
 							<div class="col-md-12">
 								<br>
 								<strong>תמונת ראשית</strong><br>
-									<img src="{{asset('blog/'.$blog->image)}}" width="100px" height="100px">
+									<img src="<?php echo e(asset('blog/'.$blog->image)); ?>" width="100px" height="100px">
 							</div>
 
-							@if($blog->images != null)
+							<?php if($blog->images != null): ?>
 							<div class="col-md-12"><br>
 								<strong>Images</strong><br>
-							@foreach(json_decode($blog->images) as $all)
+							<?php $__currentLoopData = json_decode($blog->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							
 								
-									<img src="{{asset('blog/'.$all)}}" width="100px" height="100px">
+									<img src="<?php echo e(asset('blog/'.$all)); ?>" width="100px" height="100px">
 							
-							@endforeach
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</div>
-							@endif
+							<?php endif; ?>
 
 							<div class="col-md-12"><br>
 								<strong>Select Sub-Category</strong>
 								<select name="sub_category_id" class="form-control" >
-										<option value="{{$blog->sub_category_id}}" disabled selected>{{$blog->subcategory->name}}</option>
+										<option value="<?php echo e($blog->sub_category_id); ?>" disabled selected><?php echo e($blog->subcategory->name); ?></option>
 								</select>
 							</div>
 
 							<div class="col-md-12"><br>
 								<strong for="blog_category">Select Multiple Cities</strong>
 								<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
-									@if(count($blog_cities) > 0)
-									@foreach($blog_cities as $city)
-										<option value="{{$city->city_id}}" disabled selected>{{$city->city->name}}</option>
-									@endforeach
-									@endif
+									<?php if(count($blog_cities) > 0): ?>
+									<?php $__currentLoopData = $blog_cities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $city): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($city->city_id); ?>" disabled selected><?php echo e($city->city->name); ?></option>
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+									<?php endif; ?>
 								</select>
 							</div><br>
 
 							<div class="col-md-12"><br>
 								<strong>תיאור המוצר</strong><br>
-								{!! $blog->description !!}
+								<?php echo $blog->description; ?>
+
 							</div>
 							<div class="col-md-12"><br>
 								<label> תגים </label>
-								<input readonly class="form-control" data-role="tagsinput" type="text" name="tags" value="{{$blog->tags}}"
+								<input readonly class="form-control" data-role="tagsinput" type="text" name="tags" value="<?php echo e($blog->tags); ?>"
 								placeholder="Tags" style="display: block; color:#111;">
 							</div>
 						</div>
@@ -113,9 +116,9 @@ Blog Detail
 	</div>			
 </div>
 <!-- /Page Wrapper -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('js')
+<?php $__env->startSection('js'); ?>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 <script>
@@ -126,4 +129,5 @@ $(document).ready(function() {
 	});
   });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/brand/blog/show.blade.php ENDPATH**/ ?>

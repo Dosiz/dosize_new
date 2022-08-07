@@ -61,6 +61,13 @@ Products
                             <!-- Slider main container -->
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
+                                    <?php if($product->images != null): ?>
+                                    <?php $__currentLoopData = json_decode($product->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="swiper-slide">
+                                        <img src="<?php echo e(asset('product/'.$all)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                    </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>
                                     <div class="swiper-slide">
                                         <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
@@ -70,6 +77,7 @@ Products
                                     <div class="swiper-slide">
                                         <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
+                                    <?php endif; ?>
 
                                 </div>
 

@@ -56,6 +56,14 @@ Articles
                 <div class="slider_div">
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
+                            @if($blog->images != null)
+                            @foreach(json_decode($blog->images) as $all)
+                            <div class="swiper-slide">
+                                <img src="{{asset('blog/'.$all)}}" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                            </div>
+                            @endforeach
+                            @else
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
@@ -68,10 +76,7 @@ Articles
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px; height:298px;">
-                            </div>
+                            @endif
 
                         </div>
                         <div class="swiper-pagination"></div>
@@ -123,6 +128,9 @@ Articles
                             </div>
                         </div>
                         
+                        <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                                    
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>

@@ -56,6 +56,14 @@ Articles
                 <div class="slider_div">
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
+                            <?php if($blog->images != null): ?>
+                            <?php $__currentLoopData = json_decode($blog->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="swiper-slide">
+                                <img src="<?php echo e(asset('blog/'.$all)); ?>" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                            </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
                             <div class="swiper-slide">
                                 <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
@@ -68,10 +76,7 @@ Articles
                                 <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
-                                    class="img-fluid"style="width:580px; height:298px;">
-                            </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="swiper-pagination"></div>
@@ -124,6 +129,9 @@ Articles
                             </div>
                         </div>
                         
+                        <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                                    
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
