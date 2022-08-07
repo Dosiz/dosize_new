@@ -188,7 +188,7 @@ $(document).ready(function() {
     for(var i=0;i<data.length;i++){
     	  nietos.push({
 	        id: data[i],
-	        src: 'http://127.0.0.1:8000/blog/'+data[i]+'',
+	        src: 'https://phplaravel-505339-2789556.cloudwaysapps.com/blog/'+data[i]+'',
 	    });
     	 
     }
