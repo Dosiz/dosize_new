@@ -53,6 +53,12 @@ Edit Product
 		                                </div>
 		                            </div>
 
+									<div class="uploadDiv" style="padding-left: 10px;">
+										<label class="active">Blog Images</label>
+										<div class="input-images-2"></div>
+										<div style="color:red;">{{$errors->first('images')}}</div> <br>
+									</div>
+
 		                            <div class="form-group">
 		                                <label>מחיר מקורי</label>
 		                                <div>
@@ -208,6 +214,23 @@ $(document).ready(function() {
 	$('#select2MultipleEe').select2({
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
+	});
+
+	let data=<?php echo ($product->images);?>;
+    console.log(data.length);
+    var nietos = [];
+    var obj = {};
+    for(var i=0;i<data.length;i++){
+    	  nietos.push({
+	        id: data[i],
+	        src: 'https://phplaravel-505339-2789556.cloudwaysapps.com/product/'+data[i]+'',
+	    });
+    	 
+    }
+	// console.log(nietos);
+	$('.input-images-2').imageUploader({
+	    preloaded:nietos,
+	    
 	});
 
   });

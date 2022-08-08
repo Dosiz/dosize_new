@@ -36,4 +36,9 @@ class Product extends Model
         return $this->hasMany(RecomendedProduct::class);
     }
 
+    public function cities()
+    {
+        return $this->belongsToMany(City::class, 'products_has_cities','product_id', 'city_id');
+    }
+
 }

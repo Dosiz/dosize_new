@@ -30,7 +30,7 @@
 
 		<!-- multple image js -->
 
-		<script  src="{{ asset('assets_admin/js/image-uploader.min.js') }}"></script>
+		<script  src="{{ asset('assets_admin/js/image-uploader.js') }}"></script>
 		<script  src="{{ asset('assets_admin/js/jquery-ui.min.js') }}"></script>
 
         <script type="text/javascript">

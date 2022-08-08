@@ -70,6 +70,14 @@
                                     <a href="{{url('brand/brand_subscriber?id='.Auth::user()->id.'')}}"><span>Subscriber</span></a>
                                 </li>
 
+								<li class="{{ Request::is('brand/product_comments') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/product_comments?id='.Auth::user()->id.'')}}"><span>Product Comments</span></a>
+                                </li>
+
+								<li class="{{ Request::is('brand/blog_comments') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/blog_comments?id='.Auth::user()->id.'')}}"><span>Blog Comments</span></a>
+                                </li>
+
 								@endif
 
 							

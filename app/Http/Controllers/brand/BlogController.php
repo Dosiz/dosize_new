@@ -70,6 +70,7 @@ class BlogController extends Controller
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
         $this->validate($request,[ 
             'image'=>'required', 
+            'images'=>'required', 
             'title'=>'required', 
             'sub_title'=>'required', 
             'category_id'=>'required', 
@@ -98,6 +99,19 @@ class BlogController extends Controller
             $image_name =time().'.'. $extensions;
             $image->move('blog/',$image_name);
             $blog->image=$image_name;
+        }
+
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('blog/', $name);  
+                $files[] = $name; 
+            }
+            $blog->images = json_encode($files);;
+            
         }
         $blog->save();
         if($request->blog_id)
@@ -181,6 +195,21 @@ class BlogController extends Controller
             $image->move('blog/',$image_name);
             $blog->image=$image_name;
         }
+
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            // dd($request->file('images'));
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('blog/', $name);  
+                $files[] = $name; 
+            }
+            $blog->images = json_encode($files);;
+            
+        }
+        
         $blog->save();
 
         RecomendedBlog::where('blog_id',$blog->id)->delete();

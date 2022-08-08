@@ -65,6 +65,7 @@ class ProductController extends Controller
         // dd($request->all());
         $this->validate($request,[ 
             'image'=>'required', 
+            'images'=>'required', 
             'name'=>'required', 
             'price'=>'required', 
             'category_id'=>'required', 
@@ -95,6 +96,20 @@ class ProductController extends Controller
             $image->move('product/',$image_name);
             $product->image=$image_name;
         }
+
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('product/', $name);  
+                $files[] = $name; 
+            }
+            $product->images = json_encode($files);;
+            
+        }
+
         $product->save();
 
         if($request->product_id)
@@ -184,6 +199,18 @@ class ProductController extends Controller
             $image_name =time().'.'. $extensions;
             $image->move('product/',$image_name);
             $product->image=$image_name;
+        }
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('product/', $name);  
+                $files[] = $name; 
+            }
+            $product->images = json_encode($files);;
+            
         }
         $product->save();
         // dd($product->id);

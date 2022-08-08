@@ -22,7 +22,7 @@
                 </li>
                 @if(! isset(Auth::user()->name))
                     <li>
-                        <a href="" data-toggle="modal" data-target="#enrollmentModal">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                        <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
                                 class="img-fluid"></a>
                     </li>
                 @else
@@ -45,16 +45,31 @@
             <ul>
                  <!-- Need to add  profile link here -->
                 <li>
+                    @guest
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.png') }}" alt=""
+                            class="img-fluid"></a>
+                    @else
                     <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.png') }}" alt=""
-                            class="img-fluid"></a>
+                        class="img-fluid"></a>
+                    @endif
                 </li>
                 <li>
+                    @guest
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">שמורים <img src="{{asset('assets/img/tag_icon.png') }}" alt=""
+                            class="img-fluid"></a>
+                    @else
                     <a href="{{route('bookmarks')}}">שמורים <img src="{{asset('assets/img/tag_icon.png') }}" alt=""
-                            class="img-fluid"></a>
+                        class="img-fluid"></a>
+                    @endguest
                 </li>
                 <li>
-                    <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
+                    @guest
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
                             class="img-fluid"></a>
+                    @else
+                    <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
+                        class="img-fluid"></a>
+                    @endguest
                 </li>
                 <li>
                     <a href=""  data-toggle="modal" data-target="#searchModal">חיפוש<img src="{{asset('assets/img/mobile_search.png') }}" alt=""

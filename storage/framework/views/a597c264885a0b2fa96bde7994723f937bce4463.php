@@ -61,6 +61,13 @@ Products
                             <!-- Slider main container -->
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
+                                    <?php if($product->images != null): ?>
+                                    <?php $__currentLoopData = json_decode($product->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="swiper-slide">
+                                        <img src="<?php echo e(asset('product/'.$all)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                    </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>
                                     <div class="swiper-slide">
                                         <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
@@ -70,6 +77,7 @@ Products
                                     <div class="swiper-slide">
                                         <img src="<?php echo e(asset('product/'.$product->image)); ?>" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
+                                    <?php endif; ?>
 
                                 </div>
 
@@ -253,10 +261,6 @@ Products
                                     class="img-fluid">
                             </p>
                         </div>
-                        <?php if(auth()->guard()->guest()): ?>
-
-                        <?php else: ?>
-                        <?php if(Auth::user()->hasRole('User')): ?>
                         <form action="<?php echo e(route('store-product-comment')); ?>" method="POST" class="d-flex flex-column align-items-cente">
                             <?php echo csrf_field(); ?>
 
@@ -279,11 +283,8 @@ Products
                                     class="text-right font-size-16 comment_input" style="width:">
                                     <span class="text-danger comment_valid" style=""></span>
                                 <div class="comment_hearder mr-4">
-                                    <?php if(auth()->guard()->guest()): ?>
-                                    <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
-                                    <?php else: ?>
+                                   
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
-                                    <?php endif; ?>
                                     <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
                                             <input type="checkbox" name="name" id="approve">
@@ -292,8 +293,6 @@ Products
                             </div>
 
                         </form>
-                        <?php endif; ?>
-                        <?php endif; ?>
 
                         <div class="comment_list">
                             <ul class="new_comment_list">
@@ -337,11 +336,7 @@ Products
                                             class="text-right font-size-16">
 
                                         <div class="comment_hearder">
-                                            <?php if(auth()->guard()->guest()): ?>
-                                            <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                            <?php else: ?>
                                             <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                            <?php endif; ?>
                                             <div class="anonymous_text font-size-16">אנונימי <span
                                                     class="checkBox">
                                                     <input type="checkbox" name="name" id="approve">

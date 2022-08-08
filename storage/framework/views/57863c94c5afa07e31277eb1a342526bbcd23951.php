@@ -4,7 +4,9 @@ Articles
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('styles'); ?>
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/mobile-style.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/desktop-css.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/swiper.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/thumb-slider.css')); ?>">
 <style>
     .mobile_header {
         display: none;
@@ -54,6 +56,14 @@ Articles
                 <div class="slider_div">
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
+                            <?php if($blog->images != null): ?>
+                            <?php $__currentLoopData = json_decode($blog->images); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $all): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="swiper-slide">
+                                <img src="<?php echo e(asset('blog/'.$all)); ?>" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                            </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php else: ?>
                             <div class="swiper-slide">
                                 <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
@@ -66,10 +76,7 @@ Articles
                                 <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
                                     class="img-fluid"style="width:580px; height:298px;">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
-                                    class="img-fluid"style="width:580px; height:298px;">
-                            </div>
+                            <?php endif; ?>
 
                         </div>
                         <div class="swiper-pagination"></div>
@@ -122,6 +129,9 @@ Articles
                             </div>
                         </div>
                         
+                        <img src="<?php echo e(asset('blog/'.$blog->image)); ?>" alt=""
+                                    class="img-fluid"style="width:580px; height:298px;">
+                                    
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -229,19 +239,12 @@ Articles
                             </div>
 
                             <div class="formDiv">
-                                <?php if(auth()->guard()->guest()): ?>
-                                <?php else: ?>
-                                <?php if(Auth::user()->hasRole('User')): ?>
                                 
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="<?php echo e($blog->id); ?>" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
                                     <div class="comment_hearder">
-                                        <?php if(auth()->guard()->guest()): ?>
-                                        <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                        <?php else: ?>
                                         <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                        <?php endif; ?>
                                         <div class="anonymous_text font-size-16">אנונימי <span
                                                 class="checkBox">
                                                 <input type="checkbox" name="name" id="approve">
@@ -249,8 +252,6 @@ Articles
                                     </div>
                                     <span class="text-danger comment_valid" style="position:absolute; bottom:0px;"></span>
                                 </form>
-                                <?php endif; ?>
-                                <?php endif; ?>
                             </div>
                             <div class="comment_list">
                                 <ul class="new_comment_list">
@@ -470,7 +471,8 @@ Articles
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<script src="<?php echo e(asset('assets/js/swiper.min.js')); ?>"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 <script type="text/javascript">
     $("label").click(function(){

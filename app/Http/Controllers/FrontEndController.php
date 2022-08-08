@@ -63,8 +63,8 @@ class FrontEndController extends Controller
         ->select('brand_messages.*','brand_profiles.brand_image')
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
-        $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) {
-            $q->where('city_id','5');
+        $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) use ($city_id){
+            $q->where('city_id',$city_id);
         })
         ->get();
         
@@ -83,10 +83,24 @@ class FrontEndController extends Controller
         $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
         // dd($products_by_categories);
 
+        $p_city = City::with('products','blogs')->find($city_id);
+
+        // dd($p_city->blogs->groupBy('category_id'),$p_city->products->groupBy('category_id'));
+        // foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories){
+        //     echo $product_categories;
+        //     foreach ($p_city->blogs->groupBy('category_id') as $key=>$product_categories)
+        //     {
+        //         echo $product_categories;
+        //     }
+        // }
+        // die();
+            // dd($b_city->products->groupBy('category_id'));
+            // dd($b_city->blogs->groupBy('category_id'));
+
         $categories = Category::get();
         
         // dd($categories);
-        return view('landing_page' , compact('categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
+        return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 
     public function article_detail($blog_id)
@@ -94,7 +108,7 @@ class FrontEndController extends Controller
         $blog = Blog::with('brandprofile','category')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
-        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
+        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
@@ -125,7 +139,8 @@ class FrontEndController extends Controller
         $categories = Category::get();
         // dd($products);
         $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
-        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->orderBy('id', 'DESC')->get();
+        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
+        // dd($product_comments);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
         $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
         ->groupBy('product_comments.product_id')
@@ -170,7 +185,7 @@ class FrontEndController extends Controller
         $blog_comment = new BlogComment;
        
         
-        if($request->name == 'on')
+        if($request->name == 'on' || $user == null)
         {
             $blog_comment->name = 'anonymous';
             $blog_user_name = 'anonymous';
@@ -183,6 +198,7 @@ class FrontEndController extends Controller
         if($request->parent_id)
         {
             $blog_comment->parent_id = $request->parent_id;
+            $blog_comment->status = 1;
         }
         if($request->bedside_manner_rating)
         {
@@ -206,14 +222,16 @@ class FrontEndController extends Controller
     {
         // dd($request->all());
         $user_id = Auth::id();
+        //  dd($user_id);
         $user = User::where('id',Auth::id())->first();
+        // dd($user);
         $this->validate($request,[ 
             'comment'=>'required', 
 
         ]);
         $product_comment = new ProductComment;
         
-        if($request->name == 'on')
+        if($request->name == 'on' || $user == null)
         {
             $product_comment->name = 'anonymous';
             $product_user_name = 'anonymous';
@@ -226,9 +244,11 @@ class FrontEndController extends Controller
         if($request->parent_id)
         {
             $product_comment->parent_id = $request->parent_id;
+            $product_comment->status = 1;
         }
         if($request->bedside_manner_rating)
         {
+            // dd("sdd");
             $product_comment->rating = $request->bedside_manner_rating;
         }
         $product_comment->comment = $request->comment;
@@ -496,16 +516,18 @@ class FrontEndController extends Controller
         ->select('categories.*','brand_profiles.brand_name')
         ->where('products_has_cities.city_id',5 )
         ->where('products.discount_price', null)
+        ->groupBy('categories.id')
         ->get();
-        // dd($product_categories);
-        if($product_categories['0']->name == null)
+        // dd($product_categories); 
+        if(count($product_categories) > 0)
         {
-            toastr()->error('Categories with product not found');
-            return Redirect::back();
+            
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
         }
         else
         {
-            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
+            toastr()->error('Categories with product not found');
+            return Redirect::back();
         }
     }
     public function city_brands($city_id)
@@ -518,8 +540,15 @@ class FrontEndController extends Controller
         ->select('brand_profiles.*')
         ->where('brands_has_cities.city_id',$city_id)
         ->get();
+
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id',$city_id)
+        ->get();
         //  dd($city_brands);
-        return view('frontend.city_brands',compact('cities','categories','city_brands'));
+        return view('frontend.city_brands',compact('cities','categories','city_brands','brand_messages'));
     }
 
     public function user_messages()
