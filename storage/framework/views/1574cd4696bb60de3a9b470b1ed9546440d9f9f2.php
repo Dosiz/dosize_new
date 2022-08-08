@@ -355,78 +355,105 @@ Dosize
                                             </div>
                                         </div>
                                         <div class="article_div">
-                                            <?php $__currentLoopData = $category->blog; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="main_article">
-                                                        <div class="article_box">
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('article',$blog->id ?? '')); ?>">
-                                                                <img src="<?php echo e(asset('blog/'.$blog->image ?? '' )); ?>" width="120px" height="100%">
-                                                            </a>
-                                                            <a style="color: #212529 !important" href="<?php echo e(route('article',$blog->id ?? '')); ?>">
-                                                            <div class="article_content">
-                                                                <h4 class="font-size-18"
-                                                                    style="margin-bottom: 20px;">
-                                                                    <?php echo e($blog->title ?? ''); ?>
+                                            <?php $__currentLoopData = $p_city->blogs->groupBy('category_id'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog_key=>$article_categories): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($blog_key == $key): ?>
+                                                    <?php $__currentLoopData = $article_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <div class="main_article">
+                                                                    <div class="article_box" style="margin-bottom: 8px">
+                                                                        <a class="font-size-14 font-weight-700"
+                                                                           href="<?php echo e(route('article',$blog->id ?? '')); ?>">
+                                                                            <img
+                                                                                src="<?php echo e(asset('blog/'.$blog->image ?? '' )); ?>"
+                                                                                width="120px" height="100%">
+                                                                        </a>
+                                                                        <a style="color: #212529 !important"
+                                                                           href="<?php echo e(route('article',$blog->id ?? '')); ?>">
+                                                                            <div class="article_content">
+                                                                                <h4 class="font-size-18"
+                                                                                    style="margin-bottom: 20px;">
+                                                                                    <?php echo e($blog->title ?? ''); ?>
 
-                                                                </h4>
-                                                                <p class="font-size-12">
-                                                                    <?php echo \Illuminate\Support\Str::limit($blog->description ?? '',60,'...'); ?>
+                                                                                </h4>
+                                                                                <p class="font-size-12">
+                                                                                    <?php echo \Illuminate\Support\Str::limit($blog->description ?? '',60,'...'); ?>
 
-                                                                </p>
-                                                            </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                            
-                                            
-                                            <div class="row">
-                                                
-                                                <div class="col-lg-12">
-                                                    <div class="affordable_consumption_list">
-                                                        <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <div class="affordable_consumption_box box_shahdow">
-                                                            <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>">
-                                                                <img src="<?php echo e(asset('product/'.$product->image ?? '')); ?>" width="238px" height="120px">
-                                                            </a>
-                                                            <div class="content_div">
-                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('brand-profile',$product->brandprofile->id ?? '')); ?>">
-                                                                <span class="category font-size-12 font-weight-400"> <?php echo e($product->brandprofile->brand_name ?? ''); ?> </span>
-                                                                </a>
-                                                                <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>" style="color: #212529 !important;">
-                                                                <h4 class="font-size-14 font-weight-700">
-                                                                    <?php echo e($product->name ?? ''); ?>
-
-                                                                </h4>
-                                                                <p class="discription font-size-12 font-weight-400">
-                                                                    <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
-
-                                                                </p>
-                                                                </a>
-                                                                <span class="font-size-12 like_span">4 <i
-                                                                        class="fa fa-heart"
-                                                                        aria-hidden="true"></i></span>
-                                                                <div class="rating_price_div">
-                                                                    <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>" style="color: #212529 !important">
-                                                                    <p class="font-size-14 font-weight-600">
-                                                                        <?php echo e($product->price ?? ''); ?> ₪
-                                                                    </p>
-                                                                    </a>
-                                                                    <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                            class="fa fa-star"></i></p>
+                                                                                </p>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                            
+
+                                            <div class="row">
+
+                                                <div class="col-lg-12">
+                                                    <div class="affordable_consumption_list">
+                                                        <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <div
+                                                                class="affordable_consumption_box box_shahdow">
+                                                                <a class="font-size-14 font-weight-700"
+                                                                   href="<?php echo e(route('product',$product->id ?? '')); ?>">
+                                                                    <img
+                                                                        src="<?php echo e(asset('product/'.$product->image ?? '')); ?>"
+                                                                        width="238px"
+                                                                        height="120px">
+                                                                </a>
+                                                                <div class="content_div">
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="<?php echo e(route('brand-profile',$product->brandprofile->id ?? '')); ?>">
+                                                                                <span
+                                                                                    class="category font-size-12 font-weight-400"> <?php echo e($product->brandprofile->brand_name ?? ''); ?> </span>
+                                                                    </a>
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="<?php echo e(route('product',$product->id ?? '')); ?>"
+                                                                       style="color: #212529 !important;">
+                                                                        <h4 class="font-size-14 font-weight-700">
+                                                                            <?php echo e($product->name ?? ''); ?>
+
+                                                                        </h4>
+                                                                        <p class="discription font-size-12 font-weight-400">
+                                                                            <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
+
+                                                                        </p>
+                                                                    </a>
+                                                                    <span
+                                                                        class="font-size-12 like_span">4 <i
+                                                                            class="fa fa-heart"
+                                                                            aria-hidden="true"></i></span>
+                                                                    <div class="rating_price_div">
+                                                                        <a class="font-size-14 font-weight-700"
+                                                                           href="<?php echo e(route('product',$product->id ?? '')); ?>"
+                                                                           style="color: #212529 !important">
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                <?php echo e($product->price ?? ''); ?>
+
+                                                                                ₪
+                                                                            </p>
+                                                                        </a>
+                                                                        <p class="rating_text"
+                                                                           style="visibility: hidden;">
+                                                                            4.8 <i
+                                                                                class="fa fa-star"></i>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -454,25 +481,29 @@ Dosize
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="affordable_consumption_list">
-                                                <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php $__currentLoopData = $p_city->blogs->groupBy('category_id'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog_key=>$article_categories): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($blog_key == $key): ?>
+                                                    <?php $__currentLoopData = $article_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('product',$product->id ?? '')); ?>">
-                                                            <img src="<?php echo e(asset('product/'.$product->image ?? '')); ?>" width="131px" height="226px">
+                                                        <a class="font-size-14 font-weight-700" href="<?php echo e(route('article',$blog->id ?? '')); ?>">
+                                                            <img src="<?php echo e(asset('blog/'.$blog->image ?? '')); ?>" style="width:131px; height:226px;">
                                                         </a>
                                                         <div class="content_div">
                                                             
                                                             
                                                             <h4 class="font-size-14 font-weight-700">
-                                                                <?php echo e($product->name ?? ''); ?>
+                                                                <?php echo e($blog->title ?? ''); ?>
 
                                                             </h4>
                                                             <p class="discription font-size-12 font-weight-400">
-                                                                <?php echo \Illuminate\Support\Str::limit($product->description ?? '',60,'...'); ?>
+                                                                <?php echo \Illuminate\Support\Str::limit($blog->description ?? '',60,'...'); ?>
 
                                                             </p>
                                                             
                                                         </div>
                                                     </div>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                                 <?php $__currentLoopData = $product_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
