@@ -53,18 +53,21 @@ Brand List
         </div>
         <!--  -->
         <div class="noteBox d-xl-flex position-relative d-none">
+            @if($brand_messages)
+            @foreach($brand_messages as $brand_message)
+            @php  
+                $current_date = \Carbon\Carbon::now();
+                $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+            @endphp
+            @if($diff_in_days >= 0)
             <div class="box mr-2 d-flex align-items-center">
-                <p class="txt m-0 mr-1">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300 ש”חשימו לב, חדש בא</p>
-                <img src="{{asset('assets/img/note1.png') }}" alt="note1">
+                <p class="txt m-0 mr-1"> {{ $brand_message->message }}</p>
+                <img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt="" class="img-fluid" style="width: 34px; height: 35px;"></a>
             </div>
-            <div class="box mr-2 d-flex align-items-center">
-                <p class="txt m-0 mr-1">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300 ש”ח</p>
-                <img src="{{asset('assets/img/note2.png') }}" alt="note1">
-            </div>
-            <div class="box mr-2 d-flex align-items-center">
-                <p class="txt m-0 mr-1">שימו לב, חדש באתר! משלוח חינם בקנייה מעל 300 ש”ח</p>
-                <img src="{{asset('assets/img/note1.png') }}" alt="note1">
-            </div>
+            @endif
+            @endforeach
+            @endif
             <a href="#" class="btn hotFlashes">מבזקים חמים <img src="{{asset('assets/img/bell_right.png') }}" alt="bell"
                     class="ml-1"></a>
         </div>
@@ -154,8 +157,19 @@ Brand List
                                     <a href="{{route('brand-profile',$city_brand->id)}}" style="color: #212529 !important">
                                     <h3>{{$city_brand->brand_name}}</h3>
                                     </a>
-                                    <a href="#" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
+                                    @guest
+                                    <a href="" class="btn signForClub d-none d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
+                                    @else
+                                        <form action="{{ route('store-subscriber') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                        <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
+                                        <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
+                                        <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
+                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                        </button>
+                                    @endguest
                                 </div>
                                 <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" class="d-xl-none"
                                     alt="flash">
@@ -286,5 +300,42 @@ Brand List
             $("header .mobile_header").css("display", "none");
         }
     });
+
+    // $('#subscriber').click(function(e){
+    //     e.preventDefault();
+    //     // const postFormData = {
+    //     //     brand_profile_id : $('#brand_profile_id').val(),
+    //     //     email     : $('#email').val(),
+    //     //     // _token: "{{ csrf_token() }}"
+    //     // };
+    //     let brand_profile_id = $('#brand_profile_id').val();
+    //     let email = $('#email').val();
+    //     let _token   = $('meta[name="csrf-token"]').attr('content');
+    //     // console.log(postFormData);
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{{ route('store-subscriber') }}",
+    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //         data: {
+    //             email:email,
+    //             brand_profile_id:brand_profile_id,
+    //             _token: _token
+    //         } ,
+    //         datatype: "json",
+    //         success: function (data) {
+    //              console.table(data.success);
+    //             toastr.success(data.success);
+    //             // console.table(data.comment);
+                
+                 
+    //         },
+    //         error: function (data) {
+    //             // toastr.warning(data);
+    //             toastr.error("Already Subscribed");
+                
+    //         }
+    //     });
+    // });
+
 </script>
 @endsection

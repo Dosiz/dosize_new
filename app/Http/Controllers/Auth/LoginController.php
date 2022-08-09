@@ -78,9 +78,10 @@ class LoginController extends Controller
         elseif(Auth::user()->hasRole('User'))
         {
             $user = User::where('id',Auth::id())->first();
-            $city_id = 5;
-            $this->redirectTo = url('/',$city_id);
-            toastr()->success('Successfully Updated');
+            $url = $_SERVER['HTTP_REFERER']; 
+            $url_components = parse_url($url); 
+            $this->redirectTo = url($url_components['path']);
+            toastr()->success('Successfully Login');
             return $this->redirectTo;
             // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
         }

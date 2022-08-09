@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\BrandProfile; 
 use App\Models\BrandsHasSubCategory;   
 use App\Models\BrandsHasAddress;   
+use App\Models\BlogComment;   
+use App\Models\ProductComment;   
 use App\Models\User;
 use App\Models\Subscriber;   
 use Auth;
+use DB;
+use Illuminate\Support\Facades\Redirect;
 
 class BrandController extends Controller
 {
@@ -26,6 +30,18 @@ class BrandController extends Controller
             'brand_image'=>'required', 
             'brand_logo'=>'required', 
             'sub_category_id'=>'required', 
+            'header_font'=>'required',
+            'header_color'=>'required',
+            'footer_font'=>'required',
+            'footer_color'=>'required',
+            'button_font'=>'required',
+            'button_color'=>'required',
+            'title_font'=>'required',
+            'title_color'=>'required',
+            'text_font'=>'required',
+            'text_color'=>'required',
+            'whatsapp_no'=>'required',
+            
 
         ],
         [
@@ -52,6 +68,26 @@ class BrandController extends Controller
         // $collection->implode('name', ', ');
         // $brand_profile->address = $request->address;
         $brand_profile->description = $request->description;
+
+        $fonts = [];
+        $colors = [];
+        
+        $fonts['header_font'] =$request->header_font;
+        $fonts['footer_font'] =$request->footer_font;
+        $fonts['button_font'] =$request->button_font;
+        $fonts['title_font']  =$request->title_font;
+        $fonts['text_font']  =$request->text_font;
+
+        $colors['header_color'] =$request->header_color;
+        $colors['footer_color'] =$request->footer_color;
+        $colors['button_color'] =$request->button_color;
+        $colors['title_color']  =$request->title_color;
+        $colors['text_color']  =$request->text_color;
+
+        $brand_profile->color = json_encode($colors);
+        $brand_profile->font = json_encode($fonts);
+        $brand_profile->whatsapp_no = $request->whatsapp_no;
+
         $brand_profile->user_id = $user_id;
         if($request->hasfile('brand_image'))
         {
@@ -107,6 +143,67 @@ class BrandController extends Controller
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
         $subscribers =Subscriber::with('brandprofile')->where('brand_profile_id',$brand_profile->id)->get();
         return view('brand.subscribers',compact('subscribers'));
+    }
+
+    public function blog_comments()
+    {
+        $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
+        $brand_profile_id = $brand_profile->id;
+        $blog_comments = BlogComment::with('blog','user')->whereHas('blog', function ($q) use ($brand_profile_id) {
+            $q->where('brand_profile_id',$brand_profile_id);
+        })->where('parent_id',null)->get();
+        // dd($blog_comments);
+        return view('brand.comment.blog_comments',compact('blog_comments'));
+    }
+
+    public function product_comments()
+    {
+        // dd("sdfdsf");
+        $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
+        $brand_profile_id = $brand_profile->id;
+        $product_comments = ProductComment::with('product','user')->whereHas('product', function ($q) use ($brand_profile_id) {
+            $q->where('brand_profile_id',$brand_profile_id);
+        })->where('parent_id',null)->get();
+        // dd($product_comments,$brand_profile->id);
+        return view('brand.comment.product_comments',compact('product_comments'));
+    }
+
+    public function update_product_comment(Request $request , $product_comment_id)    
+    {
+        $brand_profile= BrandProfile::where('user_id',Auth::id())->first();
+        $product_comment = ProductComment::FindorFail($product_comment_id);
+        $check_product_comment = ProductComment::where('parent_id',$product_comment->id)->first();
+        if($check_product_comment)
+        {
+            toastr()->error('Kindly delete reply of this comment');
+            return Redirect::back();
+        }
+        else
+        {
+            $product_comment->status = $request->status;
+            $product_comment->update();
+            return Redirect::back();
+        }
+        
+    }
+
+    public function update_blog_comment(Request $request , $blog_comment_id)    
+    {
+        $brand_profile= BrandProfile::where('user_id',Auth::id())->first();
+        $blog_comment = BlogComment::FindorFail($blog_comment_id);
+        $check_blog_comment = BlogComment::where('parent_id',$blog_comment->id)->first();
+        // dd($check_blog_comment);
+        if($check_blog_comment)
+        {
+            toastr()->error('Kindly delete reply of this comment');
+            return Redirect::back();
+        }
+        else
+        {
+            $blog_comment->status = $request->status;
+            $blog_comment->update();
+            return Redirect::back();
+        }
     }
 
 }

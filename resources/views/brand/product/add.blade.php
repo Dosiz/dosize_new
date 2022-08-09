@@ -51,6 +51,12 @@ Add Product
 										</div>
 									</div>
 
+									<div class="uploadDiv" style="padding-left: 10px;">
+										<label>גלריית תמונות לכתבה</label>
+										<div class="input-images"></div>
+										<div style="color:red;">{{$errors->first('images')}}</div> <br>
+									</div>
+
 									<div class="form-group">
 										<label>מחיר רגיל</label>
 										<div>

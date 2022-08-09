@@ -5,6 +5,20 @@ Add Blog
 @push('styles')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" />
+
+<style>
+	.bootstrap-tagsinput
+	{
+		display: block !important;
+	}
+	.tag.label.label-info
+	{
+		color: #222 !important;
+		background-color: rgb(207, 202, 202); 
+		padding: 0px 4px
+	}
+</style>
 @endpush
 @section('content')		
 <!-- Page Wrapper -->
@@ -56,6 +70,12 @@ Add Blog
 					                                </div>
 					                            </div>
 
+												<div class="uploadDiv" style="padding-left: 10px;">
+					                            	<label>גלריית תמונות לכתבה</label>
+					                                <div class="input-images"></div>
+					                                <div style="color:red;">{{$errors->first('images')}}</div> <br>
+					                            </div>
+
 												<div class="form-group">
 													<label>Select Recomended Blog</label>
 													<select name="blog_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleEe">
@@ -98,6 +118,12 @@ Add Blog
 					                                <textarea cols="30" rows="6" class="form-control summernote" name="description" placeholder="כתוב טקסט עם סימני פיסוק ושורות על מנת שהכתבה תראה טובה ומכובדת" id="description" value="{{old('description')}}"></textarea>
 					                                <div style="color:red;">{{$errors->first('description')}}</div> <br>
 					                            </div>
+
+												<div class="form-group">
+					                                <label> תגים </label>
+					                                <input class="form-control" data-role="tagsinput" type="text" name="tags" value="{{old('tags')}}" placeholder="Tags" style="display: block; color:#111;">
+					                                <div style="color:red;">{{$errors->first('tags')}}</div> <br>
+					                            </div>
 					                           
 					                            <div class="m-t-20 text-center">
 												<p>הכתבה תפורסם לאחר שמומחי הדיגיטל שלנו יעברו על הכתבה ויוודאו שהיא כתובה בצורה הטובה והאטרקטיבית ביותר</p>	
@@ -120,6 +146,7 @@ Add Blog
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"></script>
 <script>
 $(document).ready(function() {
 

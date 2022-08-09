@@ -61,6 +61,13 @@ Products
                             <!-- Slider main container -->
                             <div class="swiper-container gallery-top">
                                 <div class="swiper-wrapper">
+                                    @if($product->images != null)
+                                    @foreach(json_decode($product->images) as $all)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset('product/'.$all)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
+                                    </div>
+                                    @endforeach
+                                    @else
                                     <div class="swiper-slide">
                                         <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
@@ -70,6 +77,7 @@ Products
                                     <div class="swiper-slide">
                                         <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:360px; height:353px;">
                                     </div>
+                                    @endif
 
                                 </div>
 
@@ -213,7 +221,7 @@ Products
 
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
-                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt="" class="img-fluid">
+                        <img src="{{asset('brand_image/'.$product->brandprofile->brand_image)}}" alt="" class="img-fluid" style="width:39px ; height: 38px;">
                         <a class="font-size-16" href="{{route('brand-profile',$product->brand_profile_id)}}">לעמוד המותג</a>
                         <a class="font-size-16" href="">שליחת הודעה</a>
                     </div>
@@ -223,12 +231,12 @@ Products
                         <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid">
                         <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                             @guest
-                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{שםהמותג}</a>
+                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $product->brandprofile->brand_name}}</a>
                             @else
                                 <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                 <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                 <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
-                                <a href="" id="subscriber">{שםהמותג}</a>
+                                <a href="" id="subscriber">{{ $product->brandprofile->brand_name}}</a>
                             @endguest
                             ולא תפספסו שום דיל!</p>
                     </div>
@@ -257,10 +265,6 @@ Products
                                     class="img-fluid">
                             </p>
                         </div>
-                        @guest
-
-                        @else
-                        @if(Auth::user()->hasRole('User'))
                         <form action="{{ route('store-product-comment') }}" method="POST" class="d-flex flex-column align-items-cente">
                             @csrf
 
@@ -283,11 +287,8 @@ Products
                                     class="text-right font-size-16 comment_input" style="width:">
                                     <span class="text-danger comment_valid" style=""></span>
                                 <div class="comment_hearder mr-4">
-                                    @guest
-                                    <button type="submit" class="font-size-16 enrollemnt_button commentBTN cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">  פירסום תגובה  </button>
-                                    @else
+                                   
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
-                                    @endguest
                                     <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
                                             <input type="checkbox" name="name" id="approve">
@@ -296,8 +297,6 @@ Products
                             </div>
 
                         </form>
-                        @endif
-                        @endguest
 
                         <div class="comment_list">
                             <ul class="new_comment_list">
@@ -341,11 +340,7 @@ Products
                                             class="text-right font-size-16">
 
                                         <div class="comment_hearder">
-                                            @guest
-                                            <button type="submit" class="font-size-16 enrollemnt_button cursor-pointer" data-toggle="modal" data-target="#enrollmentModal">פירסום תגובה</button>
-                                            @else
                                             <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
-                                            @endguest
                                             <div class="anonymous_text font-size-16">אנונימי <span
                                                     class="checkBox">
                                                     <input type="checkbox" name="name" id="approve">

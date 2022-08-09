@@ -76,8 +76,7 @@
                                         <span class="bookmark_count"> 0 </span>
                                         @endif
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-                                    <!-- <img src="{{ asset('assets/img/mobile_component/fillTag.png') }}" alt=""
-                                        class="img-fluid"> -->
+                                    
                                         @if($product_bookmark)
                                         <span id="save" class="nav_ftn_icon active"><i class="fa fa-bookmark product_bookmark " aria-hidden="true"></i></span>
                                         @else

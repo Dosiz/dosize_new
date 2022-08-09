@@ -1,4 +1,4 @@
-@extends('layout.product')
+@extends('layout.master')
 @section('title')
 Archive - Catagorey
 @endsection
@@ -30,76 +30,20 @@ Archive - Catagorey
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
+                                @if(count($categories) > 0)
+                                
+                                @foreach($categories as $key=>$category)
+                              
                                 <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                        <div class="img_box box_shahdow">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                        </div>
+                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
+                                    </a>
                                 </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_10.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">מזון</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_9.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">פיננסים</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_8.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">לבית ולגינה</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">בריאות</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_3.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">אופנה וטיפוח</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_4.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">חינוך</p>
-                                </div>
-                                <div class="category_box swiper-slide">
-                                    <div class="img_box box_shahdow">
-                                        <img src="{{ asset('assets/img/mobile_component/category_5.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="font-weight-600 font-size-12">ביגוד והנעלה</p>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -123,86 +67,20 @@ Archive - Catagorey
         <div class="arch_products mt-5">
             <div class="container-fluid">
                 <div class="row justify-content-end">
+                    @if(count($product_categories) > 0)
+                    @foreach($product_categories as $p_category)
                     <div class="col-6 col-xxl-4 col-xl-3">
                         <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">אופנה וטיפוח</p>
+                            <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                <div class="img">
+                                    <img src="{{asset('category/'.$p_category->image)}}" alt="arch_product" style="width: 75px; height:54px;">
+                                </div>
+                                <p class="txt">{{$p_category->name}}</p>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">לבית ולגינה</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">אופנה וטיפוח</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">אופנה וטיפוח</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">ביגוד והנעלה</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">קמעונאות ומזון</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">פיננסים</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">בריאות ורפואה</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">מתנות וארועים</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xxl-4 col-xl-3">
-                        <div class="arch_product d-flex flex-column align-items-center">
-                            <div class="img">
-                                <img src="{{ asset('assets/img/archiv_product1.png') }}" alt="arch_product">
-                            </div>
-                            <p class="txt">חינוך ולימודים</p>
-                        </div>
-                    </div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>

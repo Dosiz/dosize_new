@@ -169,8 +169,8 @@ Dosize
             <div class="modal-footer">
                 <form action="{{route('store-wallet') }}" method="POST" >
                     @csrf
-                    <input type="hidden" name="coins" value="{{$product->price }}" />
-                    <input type="hidden" name="product_id" value="{{$product->id }}" />
+                    <input type="hidden" name="coins" value="{{$product->price ?? '' }}" />
+                    <input type="hidden" name="product_id" value="{{$product->id ?? '' }}" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" style="background-color:#db1580 !important; border-color:#db1580 !important;">Buy Product</button>
                 </form>

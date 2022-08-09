@@ -38,7 +38,7 @@
 												<input type="hidden" name="profile_id" value="{{ $brand_profile->id }}" />
 					                            <div class="form-group">
 					                                <label> Message</label>
-					                                <textarea cols="30" rows="6" class="form-control summernote" name="message" placeholder="Enter Message" id="message" value="{{old('message')}}"></textarea>
+					                                <textarea cols="30" rows="6" class="form-control" name="message" placeholder="Enter Message" id="message" value="{{old('message')}}"></textarea>
 					                                <div style="color:red;">{{$errors->first('message')}}</div> <br>
 					                            </div>
 

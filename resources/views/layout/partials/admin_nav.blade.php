@@ -26,6 +26,10 @@
 									<a href="{{url('admin/admin_product')}}"><span> Product </span></a>
 								</li>
 
+								<li class="{{ Request::is('admin/admin_product_orders') ? 'active' : '' }}"> 
+									<a href="{{url('admin/admin_product_orders')}}"><span> Order </span></a>
+								</li>
+
 							<li class="menu-title"> 
 								<span><i class="fe fe-user"></i> מִשׁתַמֵשׁ </span>
 							</li>
@@ -64,6 +68,14 @@
 
 								<li class="{{ Request::is('brand/brand_subscriber') ? 'active' : '' }}"> 
                                     <a href="{{url('brand/brand_subscriber?id='.Auth::user()->id.'')}}"><span>Subscriber</span></a>
+                                </li>
+
+								<li class="{{ Request::is('brand/product_comments') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/product_comments?id='.Auth::user()->id.'')}}"><span>Product Comments</span></a>
+                                </li>
+
+								<li class="{{ Request::is('brand/blog_comments') ? 'active' : '' }}"> 
+                                    <a href="{{url('brand/blog_comments?id='.Auth::user()->id.'')}}"><span>Blog Comments</span></a>
                                 </li>
 
 								@endif

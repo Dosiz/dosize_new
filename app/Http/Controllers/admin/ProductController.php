@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AdminProduct;
+use App\Models\AdminProductOrder;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -100,5 +101,17 @@ class ProductController extends Controller
             // dd($exception->getMessage());
             return Redirect::back();
         }
+    }
+
+    public function admin_product_orders()
+    {
+        $admin_product_orders =  AdminProductOrder::with('product','user')->orderBy('id', 'DESC')->get();
+        return view('admin.admin_product.orders', compact('admin_product_orders'));
+    }
+
+    public function admin_order_detail($order_id)
+    {
+        $admin_product_order =  AdminProductOrder::with('product','user')->where('id', $order_id)->first();
+        return view('admin.admin_product.admin_order_detail', compact('admin_product_order'));
     }
 }

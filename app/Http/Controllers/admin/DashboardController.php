@@ -76,10 +76,19 @@ class DashboardController extends Controller
         // try {
 
             $brand_profile= BrandProfile::where('id',$id)->first();
+            $user = User::where('id',$brand_profile->user_id)->first();
+            // dd($user);
             if($brand_profile->status == '0'){
             $brand_profile->status = 1;
+            
+            $brand_city= new BrandsHasCity;
+            $brand_city->brand_profile_id=$id;
+            $brand_city->city_id = $user->city_id;
+            $brand_city->save();
+            
             }
             else{
+                BrandsHasCity::where('brand_profile_id',$id)->delete();
                 $brand_profile->status = 0;
             }
             $brand_profile->update();

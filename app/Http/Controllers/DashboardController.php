@@ -40,6 +40,7 @@ class DashboardController extends Controller
                     $sub_categories = null;
                     $addresses = null;
                 }
+                // dd($brand_profile);
                 return view('brand.brand_profile',compact('categories','brand_profile','sub_categories','addresses'));
             }
             else{
@@ -82,7 +83,7 @@ class DashboardController extends Controller
 
     public function profile_store(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
@@ -149,7 +150,7 @@ class DashboardController extends Controller
         
         foreach($request->addmore as $address)
         {
-            // dd($address);
+            //  dd($address);
             $brand_address= new BrandsHasAddress;
             $brand_address->brand_profile_id=$brand_profile->id;
             $brand_address->address = $address['address'];

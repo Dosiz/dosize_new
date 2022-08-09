@@ -153,7 +153,7 @@ Category By city
 
         <div class="line spacing"></div>
         <div class="order_div spacing">
-            @if(count($products) > 0)
+            @if(count($products) > 0 && $products['0']->id != null)
             <div class="deals deal_one">
                 <div class="container-fluid">
                     <div class="row">
@@ -167,10 +167,10 @@ Category By city
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($products) > 0)
+                            @if(count($products) > 0 && $products['0']->id != null)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">

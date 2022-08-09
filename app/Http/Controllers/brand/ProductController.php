@@ -65,6 +65,7 @@ class ProductController extends Controller
         // dd($request->all());
         $this->validate($request,[ 
             'image'=>'required', 
+            'images'=>'required', 
             'name'=>'required', 
             'price'=>'required', 
             'category_id'=>'required', 
@@ -77,11 +78,11 @@ class ProductController extends Controller
         $product= new Product;
         $product->name = $request->name;
         $product->price = $request->price;
-        if($request->discount_price)
-        {
-            $product->discount_price = $request->discount_price; 
-            $product->sale_time = $request->sale_time; 
-        }
+        // if($request->discount_price)
+        // {
+        $product->discount_price = $request->discount_price; 
+        $product->sale_time = $request->sale_time; 
+        // }
         $product->brand_profile_id = $request->profile_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->category_id = $request->category_id;
@@ -95,6 +96,20 @@ class ProductController extends Controller
             $image->move('product/',$image_name);
             $product->image=$image_name;
         }
+
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('product/', $name);  
+                $files[] = $name; 
+            }
+            $product->images = json_encode($files);;
+            
+        }
+
         $product->save();
 
         if($request->product_id)
@@ -148,6 +163,7 @@ class ProductController extends Controller
 
     public function update(Request $request,$id)
     {
+        // dd($request->all());
         $user_id = Auth::id();
         $brand_profile = BrandProfile::where('user_id',$user_id)->first();
         $this->validate($request,[ 
@@ -164,11 +180,13 @@ class ProductController extends Controller
         $product= Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price;
-        if($request->discount_price)
-        {
+        // if($request->discount_price == null || $request->discount_price != null)
+        // {
+            // dd("inside loop");
             $product->discount_price = $request->discount_price; 
             $product->sale_time = $request->sale_time;
-        }
+        // }
+        // dd("outside loop");
         $product->brand_profile_id = $request->profile_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->category_id = $request->category_id;
@@ -181,6 +199,18 @@ class ProductController extends Controller
             $image_name =time().'.'. $extensions;
             $image->move('product/',$image_name);
             $product->image=$image_name;
+        }
+        $images = [];
+        if($request->hasfile('images'))
+        {
+            foreach(($request->file('images')) as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move('product/', $name);  
+                $files[] = $name; 
+            }
+            $product->images = json_encode($files);;
+            
         }
         $product->save();
         // dd($product->id);

@@ -491,8 +491,10 @@ header .heart_tag_message_list ul {
     justify-content: flex-end;
 }
 
+
 header .desktop_menu {
     position: fixed;
+    top: 0;
     right: 0px;
     background: #fff;
     background: #FFFFFF;
@@ -532,12 +534,13 @@ header .dektop_mobile_menu_body .desktop_menu_list .line {
     margin: 40px 0px;
 }
 
+
 header .article_header .mobile_header .share_button,
 header .article_header .heart_tag_message_list ul li span {
     color: var(--whiteColor);
 }
 
-/************* Enrollemnt - Modal - Css ************/
+/************* Enrollemnt - Modal - Css styling ************/
 .enrollmentModel {
     height: 100%;
     bottom: 0px;
@@ -1241,7 +1244,7 @@ header .article_header .heart_tag_message_list ul li span {
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) img {
     border-radius: 0px 12px 12px 0px;
-    
+
 }
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
@@ -1992,7 +1995,7 @@ main .main-wrapper .wallet_promotion .price_learn_more button {
 }
 
 .messenger_announcment_main .messenger_main .message_list {
-   /* margin-top: 50px;*/
+    /* margin-top: 50px;*/
     height: 80%;
     position: relative;
     overflow: auto;

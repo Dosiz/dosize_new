@@ -187,13 +187,13 @@ Profile
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        var i = 0;
+        var i = '{{count($addresses) - 1 ??  '0'}}';
        
        $("#add").click(function(){
        
            ++i;
        
-           $("#dynamicTable").append('<tr><td><textarea type="text" name="addmore['+i+'][address]" placeholder="הכנס כתובת" rows="4" cols="50" class="form-control" ></textarea></td><td><div class="form-group"> <select name="addmore['+i+'][city_id]" class="form-control"> @foreach($brand_cities as $b_city) <option value="{{$b_city->id ?? $b_city->city_id}}"> {{$b_city->city->name}} </option> @endforeach </select></div></td><td><button type="button" class="btn btn-danger remove-tr add_remove">Remove</button></td></tr>');
+           $("#dynamicTable").append(`<tr><td><textarea type="text" name="addmore['+i+'][address]" placeholder="הכנס כתובת" rows="4" cols="50" class="form-control" ></textarea></td><td><div class="form-group"> <select name="addmore['+i+'][city_id]" class="form-control"> @foreach($brand_cities as $b_city) <option value="{{$b_city->city_id ?? $b_city->city_id}}" {{ $address->city_id == $b_city->city_id ? 'selected' : '' }}> {{$b_city->city->name}} </option> @endforeach </select></div></td><td><button type="button" class="btn btn-danger remove-tr add_remove">Remove</button></td></tr>`);
        });
        
        $(document).on('click', '.remove-tr', function(){  

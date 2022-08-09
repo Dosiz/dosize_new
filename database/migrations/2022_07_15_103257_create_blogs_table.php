@@ -18,7 +18,9 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('sub_title');
             $table->string('image');
+            $table->longText('images',10000);
             $table->longText('description');
+            $table->longText('tags');
             
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
