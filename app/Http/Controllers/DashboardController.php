@@ -40,6 +40,7 @@ class DashboardController extends Controller
                     $sub_categories = null;
                     $addresses = null;
                 }
+                // dd($brand_profile);
                 return view('brand.brand_profile',compact('categories','brand_profile','sub_categories','addresses'));
             }
             else{

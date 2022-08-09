@@ -1,11 +1,11 @@
-@extends('layout.brand_signup')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 פרופיל המותג
-@endsection
-@push('styles')
+<?php $__env->stopSection(); ?>
+<?php $__env->startPush('styles'); ?>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-@endpush
-@section('content')
+<?php $__env->stopPush(); ?>
+<?php $__env->startSection('content'); ?>
     <!-- Main Wrapper -->
     <div class="main-wrapper login-body register">
         <div class="login-wrapper">
@@ -14,50 +14,50 @@
                     
                     <div class="login-right">
                         <div class="login-right-wrap">
-                            <strong>לא מאומת. אנא המתן {{ $brand_profile->brand_name ?? '' }}</strong>
+                            <strong>לא מאומת. אנא המתן <?php echo e($brand_profile->brand_name ?? ''); ?></strong>
                             <h1>הרשמה</h1>
-                            <form method="POST" action="{{ route('brand-register') }}" enctype="multipart/form-data">
-                                @csrf
-                                @if ($errors->any())
+                            <form method="POST" action="<?php echo e(route('brand-register')); ?>" enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
+                                <?php if($errors->any()): ?>
                                     <div class="alert alert-danger">
                                         <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
+                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li><?php echo e($error); ?></li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </ul>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                                 <div class="form-group">
                                     <label for=""> שם מותג <span>*</span></label>
                                     <div class="inputIcon">
-                                        <img src="{{asset('assets_admin/img/user.svg')}}" alt="">
-                                        <input class="form-control" type="text" value="{{ $brand_profile->brand_name ?? '' }}" name="brand_name" id="brand_name" placeholder="הזן שם מותג" required>
+                                        <img src="<?php echo e(asset('assets_admin/img/user.svg')); ?>" alt="">
+                                        <input class="form-control" type="text" value="<?php echo e($brand_profile->brand_name ?? ''); ?>" name="brand_name" id="brand_name" placeholder="הזן שם מותג" required>
                                     </div>
-                                    <div style="color:red;">{{$errors->first('name')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('name')); ?></div> <br>
                                 </div>
                                 <div class="form-group">
                                     <label for="">אימייל <span>*</span></label>
                                     <div class="inputIcon">
-                                        <img src="{{asset('assets_admin/img/email.svg')}}" alt="">
-                                        <input readonly class="form-control" type="email" id="email" value="{{ Auth::user()->email }}">
+                                        <img src="<?php echo e(asset('assets_admin/img/email.svg')); ?>" alt="">
+                                        <input readonly class="form-control" type="email" id="email" value="<?php echo e(Auth::user()->email); ?>">
                                     </div>
-                                    <div style="color:red;">{{$errors->first('email')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('email')); ?></div> <br>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="" >  תמונת מותג  <span>*</span></label>
                                     <div class="inputIcon">
-                                        <input class="form-control" type="file" name="brand_image" id="brand_image" value="{{ $brand_profile->brand_image ?? '' }}">
+                                        <input class="form-control" type="file" name="brand_image" id="brand_image" value="<?php echo e($brand_profile->brand_image ?? ''); ?>">
                                     </div>
-                                    <div style="color:red;">{{$errors->first('brand_image')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('brand_image')); ?></div> <br>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="" > לוגו מותג <span>*</span></label>
                                     <div class="inputIcon">
-                                        <input class="form-control" type="file" name="brand_logo" id="brand_logo" value="{{ $brand_profile->brand_logo ?? '' }}">
+                                        <input class="form-control" type="file" name="brand_logo" id="brand_logo" value="<?php echo e($brand_profile->brand_logo ?? ''); ?>">
                                     </div>
-                                    <div style="color:red;">{{$errors->first('brand_logo')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('brand_logo')); ?></div> <br>
                                 </div>
                                 
                                 <div class="form-group"> 
@@ -65,17 +65,17 @@
                                     <div class="inputIcon">
                                         <select required class="select" name="category_id" id="category-dropdown">
                                             <option selected disabled>Select Category</option>
-                                            @if($brand_profile)
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}" {{ $brand_profile->category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
-                                            @endforeach
-                                            @else
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                            @endif
+                                            <?php if($brand_profile): ?>
+                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($category->id); ?>" <?php echo e($brand_profile->category_id == $category->id ? 'selected' : ''); ?>><?php echo e($category->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
                                         </select>
-                                        <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
+                                        <div style="color:red;"><?php echo e($errors->first('category_id')); ?></div> <br>
                                     </div>
                                 </div>
 
@@ -83,20 +83,14 @@
                                     <label for=""> קטגוריה <span>* </span></label>
                                     <div class="inputIcon">
                                         <select name="sub_category_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
-                                            @if($sub_categories)
-                                            @foreach($sub_categories as $sub_category)
-                                                <option value="{{$sub_category->id}}" selected>{{$sub_category->subcategory->name}}</option>
-                                            @endforeach
-                                            @endif
+                                            <?php if($sub_categories): ?>
+                                            <?php $__currentLoopData = $sub_categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($sub_category->id); ?>" selected><?php echo e($sub_category->subcategory->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
                                         </select>
-                                        <div style="color:red;">{{$errors->first('category_id')}}</div> <br>
+                                        <div style="color:red;"><?php echo e($errors->first('category_id')); ?></div> <br>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>מספר הווצאפ של העסק שלך (אופציונלי)</label>
-                                    <input class="form-control" type="number" name="whatsapp_no" value="{{ $brand_profile->whatsapp_no }}" id="whatsapp_no">
-                                    <div style="color:red;">{{$errors->first('address')}}</div> <br>
                                 </div>
 
                                 <h2>Brand Style</h2><br>
@@ -123,12 +117,12 @@
                                         <option value="Bodoni MT Black">Bodoni MT Black</option>
                                         <option value="Copperplate Gothic Light" >Copperplate Gothic Light</option>
                                     </select>
-                                    <div style="color:red;">{{$errors->first('header_font')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('header_font')); ?></div> <br>
                                 </div>
                                 <div class="form-group">
                                     <label>צבע תחתית האתר</label>
-                                    <input class="form-control" type="color" name="header_color" value="{{ old('header_color') }}" id="header_color">
-                                    <div style="color:red;">{{$errors->first('footer_color')}}</div> <br>
+                                    <input class="form-control" type="color" name="header_color" value="<?php echo e(old('header_color')); ?>" id="header_color">
+                                    <div style="color:red;"><?php echo e($errors->first('footer_color')); ?></div> <br>
                                     
                                 </div>
 
@@ -155,13 +149,13 @@
                                         <option value="Bodoni MT Black">Bodoni MT Black</option>
                                         <option value="Copperplate Gothic Light" >Copperplate Gothic Light</option>
                                     </select>
-                                    <div style="color:red;">{{$errors->first('footer_font')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('footer_font')); ?></div> <br>
                                 
                                 </div>
                                 <div class="form-group">
                                     <label>בחר פונט לתחתית האתר</label>
-                                    <input class="form-control" type="color" name="footer_color" value="{{ old('footer_color') }}" id="footer_color">
-                                    <div style="color:red;">{{$errors->first('footer_color')}}</div> <br>
+                                    <input class="form-control" type="color" name="footer_color" value="<?php echo e(old('footer_color')); ?>" id="footer_color">
+                                    <div style="color:red;"><?php echo e($errors->first('footer_color')); ?></div> <br>
                                         
                                 </div>
 
@@ -189,12 +183,12 @@
                                         <option value="Copperplate Gothic Light" >Copperplate Gothic Light</option>
                                               
                                     </select>
-                                    <div style="color:red;">{{$errors->first('button_font')}}</div><br>
+                                    <div style="color:red;"><?php echo e($errors->first('button_font')); ?></div><br>
                                 </div>
                                 <div class="form-group">
                                     <label>צבע הכפתורים באתר</label>
-                                    <input class="form-control" type="color" name="button_color" value="{{ old('button_color') }}" id="button_color">
-                                    <div style="color:red;">{{$errors->first('button_color')}}</div> <br>
+                                    <input class="form-control" type="color" name="button_color" value="<?php echo e(old('button_color')); ?>" id="button_color">
+                                    <div style="color:red;"><?php echo e($errors->first('button_color')); ?></div> <br>
                                 </div>
                                 <div class="form-group"> 
                                     <label>בחר פונט לכותרות באתר</label>
@@ -219,12 +213,12 @@
                                         <option value="Bodoni MT Black">Bodoni MT Black</option>
                                         <option value="Copperplate Gothic Light" >Copperplate Gothic Light</option>
                                     </select>
-                                    <div style="color:red;">{{$errors->first('title_font')}}</div> <br>
+                                    <div style="color:red;"><?php echo e($errors->first('title_font')); ?></div> <br>
                                 </div>
                                 <div class="form-group">
                                     <label>צבע הכותרות באתר</label>
-                                    <input class="form-control" type="color" name="title_color" value="{{ old('title_color') }}" id="title_color">
-                                    <div style="color:red;">{{$errors->first('title_color')}}</div> <br>
+                                    <input class="form-control" type="color" name="title_color" value="<?php echo e(old('title_color')); ?>" id="title_color">
+                                    <div style="color:red;"><?php echo e($errors->first('title_color')); ?></div> <br>
                                     
                                 </div>
                                 <div class="form-group"> 
@@ -250,12 +244,12 @@
                                             <option value="Bodoni MT Black">Bodoni MT Black</option>
                                             <option value="Copperplate Gothic Light" >Copperplate Gothic Light</option>
                                         </select>
-                                        <div style="color:red;">{{$errors->first('text_font')}}</div> <br>
+                                        <div style="color:red;"><?php echo e($errors->first('text_font')); ?></div> <br>
                                     </div>
                                     <div class="form-group">
                                         <label>צבע הטקסטים הרגילים באתר</label>
-                                        <input class="form-control" type="color" name="text_color" value="{{ old('text_color') }}" id="text_color">
-                                        <div style="color:red;">{{$errors->first('text_color')}}</div> <br>
+                                        <input class="form-control" type="color" name="text_color" value="<?php echo e(old('text_color')); ?>" id="text_color">
+                                        <div style="color:red;"><?php echo e($errors->first('text_color')); ?></div> <br>
                                         
                                     </div>
 
@@ -268,48 +262,69 @@
                                     <tr>
                                         <th>כתובת</th>
                                     </tr>
-                                    @if($addresses)
-                                    @foreach($addresses as $address)  
+                                    <?php if($addresses): ?>
+                                    <?php $__currentLoopData = $addresses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $address): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
                                     <tr>
                                         
                                         <td>
                                             <div class="inputIcon">
                                                 
-                                                <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" >{{$address->address ?? ''}} </textarea>
+                                                <textarea class="form-control <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" ><?php echo e($address->address ?? ''); ?> </textarea>
                                                 
-                                                <div style="color:red;">{{$errors->first('addmore[0][address]')}}</div> <br>
+                                                <div style="color:red;"><?php echo e($errors->first('addmore[0][address]')); ?></div> <br>
                                             </div>
                                         </td> 
-                                        @if(($loop->first))
+                                        <?php if(($loop->first)): ?>
                                         <td><button type="button" name="add" id="add" class="btn btn-success add_remove">Add More</button></td> 
-                                        @else
+                                        <?php else: ?>
                                         <td>
                                             <button type="button" class="btn btn-danger remove-tr add_remove">Remove</button>
                                         </td>
-                                        @endif 
+                                        <?php endif; ?> 
                                     </tr>
-                                    @endforeach
-                                    @else
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>
                                     <tr>
                                         
                                         <td>
                                             <div class="inputIcon">
                                                 
-                                                <textarea class="form-control @error('address') is-invalid @enderror" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" >{{$address->address ?? ''}} </textarea>
+                                                <textarea class="form-control <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder="הכנס כתובת" id="address" name="addmore[0]" rows="4" cols="50" ><?php echo e($address->address ?? ''); ?> </textarea>
                                                 
-                                                <div style="color:red;">{{$errors->first('addmore[0][address]')}}</div> <br>
+                                                <div style="color:red;"><?php echo e($errors->first('addmore[0][address]')); ?></div> <br>
                                             </div>
                                         </td> 
                                         <td><button type="button" name="add" id="add" class="btn btn-success add_remove">Add More</button></td> 
                                     </tr>
-                                    @endif   
+                                    <?php endif; ?>   
                                 </table> 
 
                                 <div class="form-group">
                                     <label for=""> תיאור </label>
                                     <div class="inputIcon">
-                                        <textarea class="form-control @error('description') is-invalid @enderror" placeholder=" הזן תיאור " id="description" name="description" rows="4" cols="50" >{{ $brand_profile->description ?? ''}}</textarea>
-                                        <div style="color:red;">{{$errors->first('description')}}</div> <br>
+                                        <textarea class="form-control <?php $__errorArgs = ['description'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder=" הזן תיאור " id="description" name="description" rows="4" cols="50" ><?php echo e($brand_profile->description ?? ''); ?></textarea>
+                                        <div style="color:red;"><?php echo e($errors->first('description')); ?></div> <br>
                                     </div>
                                 </div>
 
@@ -325,8 +340,8 @@
         </div>
     </div>
     <!-- /Main Wrapper -->
-@endsection
-@section('js')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('js'); ?>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         var i = 0;
@@ -355,11 +370,11 @@
                 // alert(idCategory);
                 $("#select2MultipleE").html('');
                 $.ajax({
-                    url: "{{url('/fetch-subcategory')}}",
+                    url: "<?php echo e(url('/fetch-subcategory')); ?>",
                     type: "POST",
                     data: {
                         category_id: idCategory,
-                        _token: '{{csrf_token()}}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     },
                     dataType: 'json',
                     success: function (result) {
@@ -374,4 +389,6 @@
 
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.brand_signup', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\dosize_new\resources\views/brand/brand_profile.blade.php ENDPATH**/ ?>

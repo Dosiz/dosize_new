@@ -30,6 +30,18 @@ class BrandController extends Controller
             'brand_image'=>'required', 
             'brand_logo'=>'required', 
             'sub_category_id'=>'required', 
+            'header_font'=>'required',
+            'header_color'=>'required',
+            'footer_font'=>'required',
+            'footer_color'=>'required',
+            'button_font'=>'required',
+            'button_color'=>'required',
+            'title_font'=>'required',
+            'title_color'=>'required',
+            'text_font'=>'required',
+            'text_color'=>'required',
+            'whatsapp_no'=>'required',
+            
 
         ],
         [
@@ -56,6 +68,26 @@ class BrandController extends Controller
         // $collection->implode('name', ', ');
         // $brand_profile->address = $request->address;
         $brand_profile->description = $request->description;
+
+        $fonts = [];
+        $colors = [];
+        
+        $fonts['header_font'] =$request->header_font;
+        $fonts['footer_font'] =$request->footer_font;
+        $fonts['button_font'] =$request->button_font;
+        $fonts['title_font']  =$request->title_font;
+        $fonts['text_font']  =$request->text_font;
+
+        $colors['header_color'] =$request->header_color;
+        $colors['footer_color'] =$request->footer_color;
+        $colors['button_color'] =$request->button_color;
+        $colors['title_color']  =$request->title_color;
+        $colors['text_color']  =$request->text_color;
+
+        $brand_profile->color = json_encode($colors);
+        $brand_profile->font = json_encode($fonts);
+        $brand_profile->whatsapp_no = $request->whatsapp_no;
+
         $brand_profile->user_id = $user_id;
         if($request->hasfile('brand_image'))
         {

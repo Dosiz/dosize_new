@@ -94,7 +94,7 @@
                                     <img src="<?php echo e(asset('assets/img/mobile_component/facebookIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="<?php echo e(url('auth/google')); ?>">
+                                <a href="">
                                     <img src="<?php echo e(asset('assets/img/mobile_component/googleIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
@@ -147,7 +147,7 @@
                                     <img src="<?php echo e(asset('assets/img/mobile_component/facebookIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="<?php echo e(url('auth/google')); ?>">
+                                <a href="">
                                     <img src="<?php echo e(asset('assets/img/mobile_component/googleIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
