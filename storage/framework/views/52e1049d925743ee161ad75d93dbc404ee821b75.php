@@ -120,7 +120,7 @@ Edit Blog
 									            
 												<div class="form-group">
 													<label>Blog Description</label>
-													<textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" ><?php echo e($blog->description); ?></textarea>
+													<textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" ><?php echo $blog->description; ?></textarea>
 													<div style="color:red;"><?php echo e($errors->first('description')); ?></div> <br>
 												</div>
 
@@ -188,7 +188,7 @@ $(document).ready(function() {
     for(var i=0;i<data.length;i++){
     	  nietos.push({
 	        id: data[i],
-	        src: 'http://127.0.0.1:8000/blog/'+data[i]+'',
+	        src: 'https://phplaravel-505339-2789556.cloudwaysapps.com/blog/'+data[i]+'',
 	    });
     	 
     }
