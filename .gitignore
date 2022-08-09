@@ -17,3 +17,13 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 composer.lock
+
+/public/uploads
+/public/isocloud
+/public/index.php
+/storage
+/nbproject
+package-lock.json
+.idea
+/nbproject/private/
+/storage/logs/
