@@ -48,6 +48,7 @@ class SocialController extends Controller
                     'city_id'=> 5,
                     'password' => encrypt('12345678')
                 ]);
+                $newUser->assignRole('User'); 
 
                 Auth::login($newUser);
 
