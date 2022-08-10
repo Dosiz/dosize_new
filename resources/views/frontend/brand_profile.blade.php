@@ -59,20 +59,25 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div> --}}
                             <div class="brandInfo">
-                                <h5>
+                                <h5 style="margin:6px 0px; font-family:ploniBold; text-align:right;">
                                    <a href="{{url('product/' .$product->id)}}" > {{ $product->name}} </a>
                                 </h5>
-                                @if($product->discount_price != null)
-                                <p>₪ {{$product->price}}</p>
-                                <p class="price">
-                                    <a href="{{url('product/' .$product->id)}}" >
-                                        ₪ {{$product->discount_price}}
-                                    </a>
-                                </p>
-                                @else
-                                <br>
-                                <p class="price">₪ {{$product->price}}</p>
-                                @endif
+                                <div class="rating_price_div" style="display:flex;align-items:center; justify-content:space-between; flex-direction:row-reverse;">
+                                    @if($product->discount_price != null)
+                                    <div class="d-flex ">
+                                        <p>₪ {{$product->price}}</p>
+                                        <p class="price mr-2">
+                                            <a href="{{url('product/' .$product->id)}}" >
+                                                ₪ {{$product->discount_price}}
+                                            </a>
+                                        </p>        
+                                    </div>
+                                    @else
+                                    <br>
+                                    <p class="price">₪ {{$product->price}}</p>
+                                    @endif
+                                <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> {{$product->product_comment->avg('rating') ?? 'no rating'}} </p>
+                            </div>
                             </div>
                         </div>
                         @endforeach

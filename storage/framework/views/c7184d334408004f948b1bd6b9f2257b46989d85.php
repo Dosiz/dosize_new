@@ -53,21 +53,26 @@
                             </a>
                             
                             <div class="brandInfo">
-                                <h5>
+                                <h5 style="margin:6px 0px; font-family:ploniBold; text-align:right;">
                                    <a href="<?php echo e(url('product/' .$product->id)); ?>" > <?php echo e($product->name); ?> </a>
                                 </h5>
-                                <?php if($product->discount_price != null): ?>
-                                <p>₪ <?php echo e($product->price); ?></p>
-                                <p class="price">
-                                    <a href="<?php echo e(url('product/' .$product->id)); ?>" >
-                                        ₪ <?php echo e($product->discount_price); ?>
+                                <div class="rating_price_div" style="display:flex;align-items:center; justify-content:space-between; flex-direction:row-reverse;">
+                                    <?php if($product->discount_price != null): ?>
+                                    <div class="d-flex ">
+                                        <p>₪ <?php echo e($product->price); ?></p>
+                                        <p class="price mr-2">
+                                            <a href="<?php echo e(url('product/' .$product->id)); ?>" >
+                                                ₪ <?php echo e($product->discount_price); ?>
 
-                                    </a>
-                                </p>
-                                <?php else: ?>
-                                <br>
-                                <p class="price">₪ <?php echo e($product->price); ?></p>
-                                <?php endif; ?>
+                                            </a>
+                                        </p>        
+                                    </div>
+                                    <?php else: ?>
+                                    <br>
+                                    <p class="price">₪ <?php echo e($product->price); ?></p>
+                                    <?php endif; ?>
+                                <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> <?php echo e($product->product_comment->avg('rating') ?? 'no rating'); ?> </p>
+                            </div>
                             </div>
                         </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
