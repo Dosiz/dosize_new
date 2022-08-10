@@ -77,13 +77,14 @@ class SocialController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->intended('dashboard');
+                return redirect('/5');
 
             }else{
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'facebook_id'=> $user->id,
+                    'city_id'=> 5,
                     'password' => encrypt('12345678')
                 ]);
 

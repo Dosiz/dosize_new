@@ -37,9 +37,21 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => 'app id',
-        'client_secret' => 'add secret',
-        'redirect' => 'http://arikliger.com/auth/facebook/callback',
+        'client_id' => '399800382047564',
+        'client_secret' => '25194238b9dda253d46602431677b166',
+        'redirect' => 'https://arikliger.com/auth/facebook/callback',
     ],
+
+    // 'google' => [
+    //     'client_id' => env('GOOGLE_CLIENT_ID'),
+    //     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    //     'redirect' => env('GOOGLE_CALLBACK_URL'),
+    // ],
+
+    // 'facebook' => [
+    //     'client_id' => env('FACEBOOK_CLIENT_ID'),
+    //     'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+    //     'redirect' => env('FACEBOOK_CALLBACK_URL'),
+    // ],
 
 ];
