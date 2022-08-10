@@ -33,13 +33,13 @@ return [
     'google' => [
         'client_id' => '301749209154-2564ivmngpgoaam0jdsl8fbntuspm39r.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://arikliger.com/auth/facebook/callback',
+        'redirect' => 'http://arikliger.com/auth/google/callback',
     ],
 
     'facebook' => [
         'client_id' => 'app id',
         'client_secret' => 'add secret',
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'redirect' => 'http://arikliger.com/auth/facebook/callback',
     ],
 
 ];
