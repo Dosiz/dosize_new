@@ -214,13 +214,15 @@ class BlogController extends Controller
 
         RecomendedBlog::where('blog_id',$blog->id)->delete();
 
-        foreach($request->blog_id as $blog_id)
-        {
-            $recomended_blogs = new RecomendedBlog;
-            $recomended_blogs->blog_id = $blog->id;
-            $recomended_blogs->recomended_blog_id = $blog_id;
-            $recomended_blogs->brand_profile_id = $request->profile_id;
-            $recomended_blogs->save();
+        if($request->blog_id){
+            foreach($request->blog_id as $blog_id)
+            {
+                $recomended_blogs = new RecomendedBlog;
+                $recomended_blogs->blog_id = $blog->id;
+                $recomended_blogs->recomended_blog_id = $blog_id;
+                $recomended_blogs->brand_profile_id = $request->profile_id;
+                $recomended_blogs->save();
+            }
         }
 
         BlogsHasCity::where('blog_id',$blog->id)->delete();

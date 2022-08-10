@@ -33,27 +33,7 @@
                             <li class="nav-item">
                                 <a href="<?php echo e(url('/5')); ?>"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
                             </li>
-                            
-                        <?php else: ?>
-                            <li class="nav-item">
-                                <a style="font-size:18px;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo e(Auth::user()->name); ?>
 
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a style="color: black; position: static;" href="<?php echo e(route('logout')); ?>"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Logout')); ?>
-
-                                    </a>
-
-                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
-                                        <?php echo csrf_field(); ?>
-                                    </form>
-                                </div>
-                            </li>
                         <?php endif; ?>
 
 					<!-- <li class="nav-item">

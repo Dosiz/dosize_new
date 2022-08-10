@@ -88,10 +88,10 @@ Articles
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h5 class="article_category font-size-14"> {{$blog->category->name}} </h5>
-                            <h2 class="article_title">הולך מעולה: מבצע חם בנעלי העיר על 2 זוגות סנדלים</h2>
-                            <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות
+                            <h2 class="article_title">{{$blog->title}}</h2>
+                            {{-- <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות
                                 סנדלים לכל המשפחה ולצאת בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159
-                                ₪ בלבד • אל תחמיצו את ההזדמנות</p>
+                                ₪ בלבד • אל תחמיצו את ההזדמנות</p> --}}
                         </div>
                         <div class="col-lg-12">
                             <div class="city_shoe">

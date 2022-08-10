@@ -33,7 +33,7 @@
                             <li class="nav-item">
                                 <a href="{{url('/5')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
                             </li>
-                            
+{{--                             
                         @else
                             <li class="nav-item">
                                 <a style="font-size:18px;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -51,7 +51,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li> --}}
                         @endguest
 
 					<!-- <li class="nav-item">

@@ -3,6 +3,44 @@
 פרופיל המותג
 @endsection
 @push('styles')
+<style>
+    .float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    }
+    .my-float {
+    font-weight: 300 !important;
+    font-family: "fontawesome" !important;
+    margin-top: 16px;
+    }
+
+    #float_text {
+    direction: rtl;
+    color: #000;
+    position: relative;
+    left: 140px;
+    top: -46px;
+    padding: 10px;
+    background: #fff;
+    font-size: 15px;
+    text-decoration: none !important;
+    width: 130px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+}
+
+</style>
 @endpush
 @section('content') 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -344,6 +382,10 @@
             </div>
         </div>
     </div>
+    <a href="https://api.whatsapp.com/send?phone=+972546457720&amp;text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%95%D7%91%D7%A8%D7%9B%D7%94%2C%20%D7%90%D7%A0%D7%99%20%D7%A4%D7%95%D7%A0%D7%94%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%91%D7%93%D7%95%D7%A1%D7%99%D7%96%20%D7%A6%D7%A8%D7%9B%D7%A0%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%91%D7%91%D7%A7%D7%A9%D7%94..." class="float" target="_blank">			  
+        <i class="fab fa-whatsapp my-float" aria-hidden="true"></i>
+        <div id="float_text">זמינים עבורכם כאן!</div>
+        </a>
 </section>
 
 

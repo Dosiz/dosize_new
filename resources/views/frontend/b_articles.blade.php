@@ -28,7 +28,8 @@
                             <div class="badgeDiv">
                                 <img src="{{asset('assets/img/user/badge.png')}}" alt="">
                                 <span class="whishlistText">
-                                    <span>0</span>
+                                    @php $likes = App\Models\Like::where('blog_id', $article->id)->get(); @endphp
+                                    <span>{{count($likes ?? '0')}}</span>
                                     <img src="{{asset('assets/img/user/heart.png')}}" alt="">
                                 </span>
                             </div>

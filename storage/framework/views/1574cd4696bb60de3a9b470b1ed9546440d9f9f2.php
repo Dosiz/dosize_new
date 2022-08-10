@@ -41,6 +41,7 @@ Dosize
                 </div>
             </div>
         </div>
+        <?php if(count($brand_messages) > 0): ?>
         <div class="line spacing"></div>
         <div class="hot_flashes_div spacing">
             <div class="container-fluid">
@@ -73,6 +74,7 @@ Dosize
                 </div>
             </div>
         </div>
+        <?php endif; ?>
         <?php if(count($discount_products) > 0): ?>
         <div class="line spacing"></div>
         <div class="promotion spacing">
