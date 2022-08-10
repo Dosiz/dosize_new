@@ -37,7 +37,7 @@ class SocialController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect()->back();
+                return redirect('/5');
 
             }else{
 
@@ -51,7 +51,7 @@ class SocialController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect()->back();
+                return redirect('/5');
             }
     }
 
@@ -89,7 +89,7 @@ class SocialController extends Controller
 
                 Auth::login($newUser);
 
-                return Redirect::back();
+                return redirect('/5');
             }
 
         } catch (Exception $e) {
