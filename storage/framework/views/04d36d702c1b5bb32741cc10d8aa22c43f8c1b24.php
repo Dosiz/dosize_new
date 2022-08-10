@@ -94,7 +94,7 @@
                                     <img src="<?php echo e(asset('assets/img/mobile_component/facebookIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="">
+                                <a href="<?php echo e(route('auth.google')); ?>">
                                     <img src="<?php echo e(asset('assets/img/mobile_component/googleIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
@@ -143,11 +143,11 @@
                         <div class="sign_up_with">
                             <h6 class="text-center">התחברו עם </h6>
                             <div class="signup_btn">
-                                <a href="">
+                                <a href="<?php echo e(route('auth.facebook')); ?>">
                                     <img src="<?php echo e(asset('assets/img/mobile_component/facebookIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="">
+                                <a href="<?php echo e(route('auth.google')); ?>">
                                     <img src="<?php echo e(asset('assets/img/mobile_component/googleIcon.png')); ?>" alt=""
                                         class="img-fluid">
                                 </a>

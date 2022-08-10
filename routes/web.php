@@ -169,3 +169,10 @@ Route::get('archive_category', function () {
 Route::get('/brand/wallet', function () {
     return view('frontend.wallet');
 });
+
+Route::get('auth/google', [App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google_callback');
+
+Route::get('auth/facebook', [App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
+Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook_callback');
+
