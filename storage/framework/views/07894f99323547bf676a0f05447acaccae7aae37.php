@@ -38,6 +38,42 @@
 		<?php echo $__env->yieldPushContent('styles'); ?>
 
         <style type="text/css">
+
+.float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        left: 40px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        }
+        .my-float {
+        font-weight: 300 !important;
+        font-family: "fontawesome" !important;
+        margin-top: 16px;
+    }
+
+    #float_text {
+        direction: rtl;
+        color: #000;
+        position: relative;
+        left: 140px;
+        top: -46px;
+        padding: 10px;
+        background: #fff;
+        font-size: 15px;
+        text-decoration: none !important;
+        width: 130px;
+        border: 1px solid #000;
+        border-radius: 10px;
+        text-align: center;
+    }
         	<?php if(isset($brand_profile)): ?>
         	
         	.header {

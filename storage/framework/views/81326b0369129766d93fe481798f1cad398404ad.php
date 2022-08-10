@@ -10,7 +10,7 @@
 				<span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
 			</button>
 			<?php if(isset($brand_profile)): ?>
-				<a href="<?php echo e(url('brand')); ?>" class="logo logo-small">
+				<a href="<?php echo e(url('brand-profile/'.$brand_profile->id ?? '')); ?>" class="logo logo-small">
 					<img src="<?php echo e(asset('brand_logo/'.$brand_profile->brand_logo) ?? '../assets_admin/img/logo.png'); ?> " style="width:50px; height:50px;" alt="Logo">
 					
 				</a>
