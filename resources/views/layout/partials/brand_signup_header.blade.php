@@ -22,6 +22,56 @@
 			@endif
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					@if(isset($brand_profile))
+					<li class="nav-item active">
+						<a href="{{ route('brand-articles',$brand_profile->id)}}"> מאמרים </a>
+					</li>
+					<li class="nav-item">
+						<a href="{{ route('brand-product',$brand_profile->id)}}"> קטלוג המוצרים </a>
+					</li>
+					@guest
+                            <li class="nav-item">
+                                <a href="{{url('/5')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
+                            </li>
+                            
+                        @else
+                            <li class="nav-item">
+                                <a style="font-size:18px;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a style="color: black; position: static;" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
+					<!-- <li class="nav-item">
+						<a href="{{ url('cities',$brand_profile->id)}}" target="_blank"> עִיר</a>
+					</li> -->
+
+					@else
+					<!-- <li class="nav-item active">
+						<img  src="../assets_admin/img/home.svg" alt=""><a href=""> תיבה ףד </a>
+					</li>
+					<li class="nav-item">
+						<img  src="../assets_admin/img/lock.svg" alt=""><a href="">תונכרצ ןויכרא</a>
+					</li>
+					<li class="nav-item">
+						<img  src="../assets_admin/img/glases.svg" alt=""><a href="">םירמאמ</a>
+					</li>
+					<li class="nav-item">
+						<img  src="../assets_admin/img/mail.svg" alt=""><a href="{{route('register')}}">העידי תחילש</a>
+					</li> -->
+					@endif
 					<!-- User Menu -->
 				@if(isset(Auth::user()->name))
 				<li class="nav-item dropdown has-arrow">

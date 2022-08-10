@@ -628,4 +628,20 @@ class FrontEndController extends Controller
         return view('frontend.search_product',compact('cities','categories','results'));
     }
 
+    public function brand_articles($brand_profile_id)
+    {
+        $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
+        $articles = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+
+        return view('frontend.b_articles',compact('brand_profile','articles'));
+    }
+
+    public function brand_products($brand_profile_id)
+    {
+        $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
+        $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+
+        return view('frontend.b_products',compact('brand_profile','products'));
+    }
+
 }

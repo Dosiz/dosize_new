@@ -43,17 +43,17 @@
                 <div class="brandSlider">
                     @if($brand_products)
                         @foreach($brand_products as $product)
-                        <div class="sliderCommonDiv" style="width:20px !important;">
+                        <div class="sliderCommonDiv" style="">
                             <a href="{{url('product/' .$product->id)}}" > 
                                 <img src="{{asset('product/' .$product->image ?? '')}}" alt="" style="width:188.27px; height:205.69px;">
                             </a>
-                            <div class="ratingDiv">
+                            {{-- <div class="ratingDiv">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
+                            </div> --}}
                             <div class="brandInfo">
                                 <h5>
                                    <a href="{{url('product/' .$product->id)}}" > {{ $product->name}} </a>
@@ -84,13 +84,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2><a href="{{url('articles',$brand_profile->id)}}" >הכתבות האחרונות שלנו: </a></h2>
+                <h2><a href="{{route('brand-articles',$brandprofile->id ?? '')}}" >הכתבות האחרונות שלנו: </a></h2>
             </div>
             @if($blog_1 != null)
             <div class="col-md-4">
                 <div class="articleRightDiv">
                     <div class="articleCard">
-                        <a href="{{url('article',$blog_1->id)}}"><img src="{{asset($blog_1->image ?? '')}}" alt="" style="width:446.59px; height:301.78px;" class="img-fluid"></a>
+                        <a href="{{url('article',$blog_1->id)}}"><img src="{{asset('blog/'.$blog_1->image ?? '')}}" alt="" style="width:446.59px; height:301.78px;" class="img-fluid"></a>
                         <div class="articleInfo">
                             <div class="dateInput">
                             <a href="{{url('article',$blog_1->id)}}"> <img src="{{asset('assets_admin/img/calendar.png')}}" alt="" style="width:18px !important; height: 18px !important;"></a>
@@ -115,7 +115,7 @@
                     <div class="articleCard">
                         <div class="row">
                             <div class="col-md-6 desktopHide">
-                            <a href="{{url('article',$blog_2->id)}}"><img src="{{asset($blog_2->image ?? '')}}" alt="" style="width:378.96px; height:287.03px;" class="img-fluid"></a>
+                            <a href="{{url('article',$blog_2->id)}}"><img src="{{asset('blog/'.$blog_2->image ?? '')}}" alt="" style="width:378.96px; height:287.03px;" class="img-fluid"></a>
                             </div>
                             <div class="col-md-6">
                                 <div class="articleInfo">
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mobileHide">
-                                <img src="{{asset($blog_2->image ?? '')}}" alt="" class="img-fluid">
+                                <img src="{{asset('blog/'.$blog_2->image ?? '')}}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                     <div class="articleCard">
                         <div class="row">
                             <div class="col-md-6 desktopHide">
-                            <a href="{{url('article',$blog_3->id)}}"> <img src="{{asset($blog_3->image ?? '')}}" alt="" style="width:378.96px; height:287.03px;" class="img-fluid"></a>
+                            <a href="{{url('article',$blog_3->id)}}"> <img src="{{asset('blog/'.$blog_3->image ?? '')}}" alt="" style="width:378.96px; height:287.03px;" class="img-fluid"></a>
                             </div>
                             <div class="col-md-6">
                                 <div class="articleInfo">
@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mobileHide">
-                                <img src="{{asset($blog_3->image ?? '')}}" alt="" class="img-fluid">
+                                <img src="{{asset('blog/'.$blog_3->image ?? '')}}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
             </div>
             <div class="col-12 text-center mt-60">
                 <button class="loadMore">
-                <a href="{{url('articles',$brand_profile->id)}}">כל הכתבות</a>
+                <a href="{{route('brand-articles',$brand_profile->id)}}">כל הכתבות</a>
                 </button>
             </div>
         </div>
@@ -351,10 +351,111 @@
 <!-- The Modal -->
   
 @section('js')
-    <script type="text/javascript">
-        
+<script>
+    $('.brandSlider').slick({
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    rtl: true,
+    arrows: true,
+    responsive: [
+            {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            }
+            },
+            {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+});
+$('.productSlider').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    rtl: true,
+    arrows: true,
+    responsive: [
+            {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+            }
+            },
+            {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+            }
+        ]
+});
+$(".productSlider .sliderImg img").click(function(){
+    console.log("here")
+    var src=$(this).attr("src");
+    $(".sliderDiv .mainImg img").attr("src", src)
+});
 
+$('.articleSlider').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    rtl: true,
+    arrows: true,
+    responsive: [
+            {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+            }
+            },
+            {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+            }
+            }
+        ]
+});
+$(".articleSlider .sliderImg img").click(function(){
+    console.log("here")
+    var src=$(this).attr("src");
+    $(".sliderDiv .detailImg img").attr("src", src)
+});
 
-
-    </script>
+</script>
 @endsection
