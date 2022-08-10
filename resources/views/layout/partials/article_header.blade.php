@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
-                        <button class="share_button" data-toggle="modal" data-target="#exampleModal">
+                        <button class="share_button" id="shareButton">
                             <img src="{{ asset('assets/img/mobile_component/shareBtn.png') }}" alt=""
                                 class="img-fluid desktop_hide">
                             <img src="{{ asset('assets/img/mobile_component/white_share_btn.png') }}" alt=""
@@ -61,7 +61,7 @@
                                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                         @if($blog_like)
                                         <span id="heart" class="nav_ftn_icon cursor-pointer blog_like active"><i class="fa fa-heart" aria-hidden="true"></i></span>
-                                        @else 
+                                        @else
                                         <span id="heart" class="nav_ftn_icon cursor-pointer blog_like"><i class="fa fa-heart" aria-hidden="true"></i></span>
                                         @endif
                                     </form>
