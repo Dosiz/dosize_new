@@ -93,6 +93,12 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>מספר הווצאפ של העסק שלך (אופציונלי)</label>
+                                    <input class="form-control" type="number" name="whatsapp_no" value="<?php echo e(old('whatsapp_no')); ?>" id="whatsapp_no">
+                                    <div style="color:red;"><?php echo e($errors->first('address')); ?></div> <br>
+                                </div>
+
                                 <h2>Brand Style</h2><br>
                                 <div class="form-group"> 
                                     <label>בחר פונט לראש האתר</label>

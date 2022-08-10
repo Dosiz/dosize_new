@@ -41,45 +41,45 @@
         	@if(isset($brand_profile))
         	
         	.header {
-        		background:{{$brand_profile->color['header_color'] ?? '#2B004F'}}  ;
+        		background:{{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}  ;
         	}
         	.footer {
-        		background:{{$brand_profile->color['footer_color'] ?? '#2B004F'}}  ;
+        		background:{{json_decode($brand_profile->color)->footer_color ?? '#2B004F'}}  ;
         	}
 
         	.loadMore, .commonBtn
         	{
-        		background: {{$brand_profile->color['button_color'] ?? 'linear-gradient(292deg, #EE7047 0%, #F40990 100%)'}}  ;
+        		background: {{json_decode($brand_profile->color)->button_color ?? 'linear-gradient(292deg, #EE7047 0%, #F40990 100%)'}}  ;
         	}
         	body {
-        		color: {{$brand_profile->color['text_color'] ?? '#26292c'}}  ;
+        		color: {{json_decode($brand_profile->color)->text_color ?? '#26292c'}}  ;
         	}
         	 h1, h2, h3, h4, h5, h6 , a{
-        	 	color: {{$brand_profile->color['title_color'] ?? '#26292c'}}  ;
+        	 	color: {{json_decode($brand_profile->color)->title_color ?? '#26292c'}}  ;
         	}
         	.header .navbar-nav>li a {
-        		font-family: {{$brand_profile->font['header_font'] ?? 'PloniMedium'}}  ;
+        		font-family: {{json_decode($brand_profile->color)->header_font ?? 'PloniMedium'}}  ;
         	}
 
         	.footer-title , .footer .footer-widget p , .inputDiv label , .copyright-text .mb-0 {
-        		font-family: {{$brand_profile->font['footer_font'] ?? 'PloniMedium'}}  ;
+        		font-family: {{json_decode($brand_profile->color)->footer_font ?? 'PloniMedium'}}  ;
         	}
 
         	h1, h2, h3, h4, h5, h6 , a{
-        		font-family: {{$brand_profile->font['title_font'] ?? 'PloniDBold'}}  ;
+        		font-family: {{json_decode($brand_profile->color)->title_font ?? 'PloniDBold'}}  ;
         	}
 
         	button {
-        		font-family: {{$brand_profile->font['button_font'] ?? 'PloniDBold'}}  ;
+        		font-family: {{json_decode($brand_profile->color)->button_font ?? 'PloniDBold'}}  ;
         	}
         	#contactSection .commonContactDiv .infoDiv .infoDetail {
-        		border: 1px solid {{$brand_profile->color['header_color'] ?? '#2B004F'}}
+        		border: 1px solid {{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}
         	}
         	#contactSection .commonContactDiv .infoDiv h5{
-        		color:{{$brand_profile->color['header_color'] ?? '#2B004F'}}
+        		color:{{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}
         	}
         	#contactSection .commonContactDiv .infoDiv .infoDetail:hover{
-			background-color:{{$brand_profile->color['header_color'] ?? '#2B004F'}}
+			background-color:{{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}
         	}
         	#contactSection .commonContactDiv .infoDiv .infoDetail:hover h5{
         		color: #fff;

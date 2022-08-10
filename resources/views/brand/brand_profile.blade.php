@@ -95,7 +95,7 @@
 
                                 <div class="form-group">
                                     <label>מספר הווצאפ של העסק שלך (אופציונלי)</label>
-                                    <input class="form-control" type="number" name="whatsapp_no" value="{{ $brand_profile->whatsapp_no }}" id="whatsapp_no">
+                                    <input class="form-control" type="number" name="whatsapp_no" value="{{ old('whatsapp_no') }}" id="whatsapp_no">
                                     <div style="color:red;">{{$errors->first('address')}}</div> <br>
                                 </div>
 

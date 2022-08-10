@@ -263,12 +263,14 @@ class FrontEndController extends Controller
     public function brand_profile($brand_id)
     {
         $cities = City::get();
-        $brand_profile = BrandProfile::with('category','user')->where('id',$brand_id)->first();
+        $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
         $brand_products = Product::where('brand_profile_id',$brand_id)->get();
         $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
         $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
         $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
         $categories = Category::get();
+
+        
 
         // dd($blog_1,$blog_2,$blog_3);
         return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));

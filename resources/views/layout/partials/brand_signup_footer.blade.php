@@ -1,5 +1,29 @@
 	<!-- Footer -->
 	<footer class="footer">
+		<!-- Footer Top -->
+		@if(isset($brand_profile))
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4 text-center pt-4">
+
+					<p style="font-size: 18px; color: #fff;">
+						{{$brand_profile->user->email}} <i class="fa fa-envelope"></i>
+					</p>
+				</div>
+				<div class="col-md-4 text-center pt-4">
+					<p style="font-size: 18px; color: #fff;">
+						{{$brand_profile->whatsapp_no}} <i class="fa fa-phone"></i>
+					</p>
+				</div>
+				<div class="col-md-4 text-center pt-4">
+					<p style="font-size: 18px; color: #fff;">
+						{{$brand_profile->brandaddresses['0']->address}} <i class="fa fa-map-marker"></i>
+					</p>
+				</div>
+			</div>
+		</div>
+		@endif
+		<!-- /Footer Top -->
 		<!-- Footer Bottom -->
 		<div class="footer-bottom">
 			<div class="container-fluid">
