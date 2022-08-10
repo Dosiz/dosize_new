@@ -31,9 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => '301749209154-p9tsjnso8t4fa8nhts6q0td93p1nv3s0.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://localhost:8000/auth/google/callback',
+        'client_id' => '301749209154-2564ivmngpgoaam0jdsl8fbntuspm39r.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://arikliger.com/auth/facebook/callback',
     ],
 
     'facebook' => [
