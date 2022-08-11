@@ -16,8 +16,14 @@ Profile Message
                         <div class="login-right-wrap">
                             <h1> Hello {{ $brand_profile->brand_name ?? '' }} </h1>
                             
+                            @if($brand_profile)
+                            <a href="{{url('dashboard/dashboard')}}" class="btn btn-success">Move to Dashboard</a>
+                            @else
                             <p> We receive Your Brand information. We will contact/update in next 24 hours.</p>
                             <strong> Thanks </strong>
+                            @endif
+
+                            
 
                         </div>
                     </div>

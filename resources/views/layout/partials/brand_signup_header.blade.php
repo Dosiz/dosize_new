@@ -54,9 +54,9 @@
                             </li> --}}
                         @endguest
 
-					<!-- <li class="nav-item">
+					{{-- <li class="nav-item">
 						<a href="{{ url('cities',$brand_profile->id)}}" target="_blank"> עִיר</a>
-					</li> -->
+					</li> --}}
 
 					@else
 					<!-- <li class="nav-item active">

@@ -130,7 +130,7 @@ class BrandController extends Controller
             $brand_subcategory->brand_profile_id = $brand_profile->id;
             $brand_subcategory->save();
         }
-        $brand_profile = BrandProfile::where('id',$brand_profile->id)->first();
+        $brand_profile = BrandProfile::where('id',$brand_profile->id)->where('status', 1)->first();
         return view('brand.brand_profile_message',compact('brand_profile'));
         // return redirect('dashboard/dashboard');
         // } catch (\Exception $exception) {

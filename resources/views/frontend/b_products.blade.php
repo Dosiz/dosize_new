@@ -24,28 +24,39 @@
                 <div class="row">
                     @if($products)
                     @foreach($products as $product)
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="articleCard">
-                            <div class="badgeDiv">
+                            {{-- <div class="badgeDiv">
                                 <img src="{{asset('assets/img/user/badge.png')}}" alt="">
                                 <span class="whishlistText">
                                     @php $likes = App\Models\Like::where('product_id', $product->id)->get(); @endphp
                                     <span>{{count($likes ?? '0')}}</span>
                                     <img src="{{asset('assets/img/user/heart.png')}}" alt="">
                                 </span>
-                            </div>
-                        <img src="{{asset('product/'.$product->image ?? '')}}" style="width:365px; height:345px;" alt="" class="img-fluid">
+                            </div> --}}
+                        <img src="{{asset('product/'.$product->image ?? '')}}" style="height:165px;" alt="" class="img-fluid">
                             <div class="articleInfo">
-                                <div class="dateInput">
+                                {{-- <div class="dateInput">
                                     <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($product->created_at)) }}</span>
-                                </div>
+                                </div> --}}
                                 <a href="{{url('product/'. $brand_profile->id. '/' .$product->id)}}" ><h3> {{$product->name}} </h3></a>
-                                <p>{!! \Illuminate\Support\Str::limit($product->description, 130, $end='...') !!} </p>
-                                @if($product->discount_price)
-                                <p>₪ {{$product->discount_price}} </p>
-                                @else
-                                <p>₪ {{$product->price}} </p>
-                                @endif
+                                {{-- <p>{!! \Illuminate\Support\Str::limit($product->description, 130, $end='...') !!} </p> --}}
+                                <div class="rating_price_div" style="display:flex;align-items:center; justify-content:space-between; flex-direction:row-reverse;">
+                                    @if($product->discount_price != null)
+                                    <div class="d-flex ">
+                                        <p style="text-decoration: line-through">₪ {{$product->price}}</p>
+                                        <p class="price mr-2">
+                                            <a href="{{url('product/' .$product->id)}}">
+                                                ₪ {{$product->discount_price}}
+                                            </a>
+                                        </p>        
+                                    </div>
+                                    @else
+                                    <br>
+                                    <p class="price">₪ {{$product->price}}</p>
+                                    @endif
+                                <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> {{$product->product_comment->avg('rating') ?? 'no rating'}} </p>
+                            </div>
                                 <div class="readMore">
                                     <p>
                                         <a href="{{url('product/'.$product->id)}}">דקרא עוד<i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
