@@ -24,10 +24,10 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					@if(isset($brand_profile))
 					<li class="nav-item active">
-						<a href="{{ route('brand-articles',$brand_profile->id)}}"> מאמרים </a>
+						<a href="{{ url('/brand/articles',$brand_profile->id)}}"> מאמרים </a>
 					</li>
 					<li class="nav-item">
-						<a href="{{ route('brand-product',$brand_profile->id)}}"> קטלוג המוצרים </a>
+						<a href="{{ url('/brand/products',$brand_profile->id)}}"> קטלוג המוצרים </a>
 					</li>
 					@guest
                             <li class="nav-item">
