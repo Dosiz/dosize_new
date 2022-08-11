@@ -206,7 +206,7 @@
         </div> -->
         <div class="contactInfoDiv">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="commonContactDiv">
                         <div class="iconDiv">
                             <img src="{{asset('assets/img/user/map.svg')}}" alt="" class="img-fluid">
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="commonContactDiv">
                         <div class="iconDiv">
                             <a href='tel:{{$brand_profile->whatsapp_no}}'><img src="{{asset('assets/img/user/call.svg')}}" alt="" id="for_phone" class="img-fluid"></a>
@@ -230,7 +230,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
+                    <div class="commonContactDiv">
+                        <div class="iconDiv">
+                            <a href='{{$brand_profile->website_url}}' target="_blank"><img src="{{asset('assets/img/user/webbbb.png')}}" alt="" id="for_email" class="img-fluid"></a>
+                        </div>
+                        <div class="infoDiv">
+                            <h5>שלח לנו הודעה:</h5>
+                            <a href='{{$brand_profile->website_url}}' target="_blank"><p>בקר אותנו</p></a>
+                            <span>מחכים לשמוע ממך </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="commonContactDiv">
                         <div class="iconDiv">
                             <a href='mailto:{{$brand_profile->user->email}}'><img src="{{asset('assets/img/user/message.svg')}}" alt="" id="for_email" class="img-fluid"></a>

@@ -60,7 +60,10 @@ class BrandController extends Controller
         $brand_profile->description = $request->description;
 
         $brand_profile->whatsapp_no = $request->whatsapp_no;
-
+        if($request->website_url)
+        {
+            $brand_profile->website_url = $request->website_url;
+        }
         $brand_profile->user_id = $user_id;
         if($request->hasfile('brand_image'))
         {

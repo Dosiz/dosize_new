@@ -77,6 +77,16 @@ Profile
 					                                </div>
 					                            </div>
 												<div class="form-group">
+					                                <label>Whatsapp Number</label>
+					                                <input class="form-control" type="number" name="whatsapp_no" value="{{ $brand_profile->whatsapp_no ?? '' }}" id="whatsapp_no">
+			                                        <div style="color:red;">{{$errors->first('whatsapp_no')}}</div> <br>
+					                            </div>
+												<div class="form-group">
+					                                <label>Website Url</label>
+					                                <input class="form-control" type="url" name="website_url" value="{{$brand_profile->website_url ?? ''}}" id="website_url">
+			                                        <div style="color:red;">{{$errors->first('website_url')}}</div> <br>
+					                            </div>
+												<div class="form-group">
 					                                <label>Description</label>
 					                                <textarea class="form-control @error('description') is-invalid @enderror" placeholder=" הזן תיאור " id="description" name="description" rows="4" cols="50" >{{ $brand_profile->description ?? ''}}</textarea>
 			                                        <div style="color:red;">{{$errors->first('description')}}</div> <br>

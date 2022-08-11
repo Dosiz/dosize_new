@@ -94,9 +94,15 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>כתובת אתר (אופציונלי)</label>
+                                    <input class="form-control" type="url" name="website_url" value="{{$brand_profile->website_url ?? ''}}" id="website_url">
+                                    <div style="color:red;">{{$errors->first('website_url')}}</div> <br>
+                                </div>
+
+                                <div class="form-group">
                                     <label>מספר הווצאפ של העסק שלך (אופציונלי)</label>
-                                    <input class="form-control" type="number" name="whatsapp_no" value="{{ old('whatsapp_no') }}" id="whatsapp_no">
-                                    <div style="color:red;">{{$errors->first('address')}}</div> <br>
+                                    <input class="form-control" type="number" name="whatsapp_no" value="{{ $brand_profile->whatsapp_no ?? '' }}" id="whatsapp_no">
+                                    <div style="color:red;">{{$errors->first('whatsapp_no')}}</div> <br>
                                 </div>
 
                                 <table class="table table-bordered" id="dynamicTable">  

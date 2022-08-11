@@ -91,6 +91,7 @@ class DashboardController extends Controller
             'addmore.*address' => 'required',
             'addmore.*city_id' => 'required',
             'description'=>'required', 
+            'whatsapp_no'=>'required',
 
         ],
         [
@@ -121,6 +122,11 @@ class DashboardController extends Controller
         $brand_profile = BrandProfile::find($id);
         
         $brand_profile->brand_name = $request->brand_name;
+        $brand_profile->whatsapp_no = $request->whatsapp_no;
+        if($request->website_url)
+        {
+            $brand_profile->website_url = $request->website_url;
+        }
         $brand_profile->description = $request->description;
         $brand_profile->user_id = $user_id;
         if($request->hasfile('brand_image'))

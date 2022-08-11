@@ -24,6 +24,9 @@ class CreateBrandProfilesTable extends Migration
             $table->longText('font')->nullable();
             $table->longText('description');
             $table->integer('whatsapp_no')->nullable();
+            $table->string('business_email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('website_url')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users'); 
             $table->tinyInteger('city_status')->default('1');
