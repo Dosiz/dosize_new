@@ -34,7 +34,9 @@
                                     <img src="{{asset('assets/img/user/heart.png')}}" alt="">
                                 </span>
                             </div> --}}
+                            <a href="{{url('product/'. $brand_profile->id. '/' .$product->id)}}" >
                         <img src="{{asset('product/'.$product->image ?? '')}}" style="height:165px;" alt="" class="img-fluid">
+                            </a>
                             <div class="articleInfo">
                                 {{-- <div class="dateInput">
                                     <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($product->created_at)) }}</span>
@@ -53,13 +55,14 @@
                                     </div>
                                     @else
                                     <br>
+                                    
                                     <p class="price">₪ {{$product->price}}</p>
                                     @endif
                                 <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> {{$product->product_comment->avg('rating') ?? 'no rating'}} </p>
                             </div>
                                 <div class="readMore">
-                                    <p>
-                                        <a href="{{url('product/'.$product->id)}}">דקרא עוד<i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                                    <p style="text-align: left">
+                                        <a class="btn btn-success" style="background-color: #db1580 !important; color: #fff !important; border: 1px solid #db1580 !important" href="{{url('product/'.$product->id)}}">דקרא עוד<i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
                                     </p>
                                 </div>
                             </div>

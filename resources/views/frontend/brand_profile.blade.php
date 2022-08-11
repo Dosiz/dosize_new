@@ -101,17 +101,23 @@
                     <div class="articleCard">
                         <a href="{{url('article',$blog_1->id)}}"><img src="{{asset('blog/'.$blog_1->image ?? '')}}" alt="" style="width:446.59px; height:301.78px;" class="img-fluid"></a>
                         <div class="articleInfo">
-                            <div class="dateInput">
+                            {{-- <div class="dateInput">
                             <a href="{{url('article',$blog_1->id)}}"> <img src="{{asset('assets_admin/img/calendar.png')}}" alt="" style="width:18px !important; height: 18px !important;"></a>
                                 <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($blog_1->created_at)) }}</span>
-                            </div>
-                            <a href="{{url('article',$blog_1->id)}}"><h3>{{$blog_1->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}} </h3></a>
+                            </div> --}}
+                            <a href="{{url('article',$blog_1->id)}}"><h3>{{$blog_1->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}} </h3>
                             <p> {{ $blog_1->sub_title }} </p>
-                            <div class="readMore">
+                            <p>
+                                <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
+                                @php $likes = App\Models\Like::where('blog_id', $blog_1->id)->get(); @endphp
+                                <span>{{count($likes ?? '0')}}</span>
+                                
+                            </p></a>
+                            {{-- <div class="readMore">
                                 <p>
                                     <a href="{{url('article',$blog_1->id)}}">קרא עוד <i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
                                 </p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -128,22 +134,25 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="articleInfo">
-                                    <div class="dateInput">
+                                    {{-- <div class="dateInput">
                                     <a href="{{url('article',$blog_2->id)}}"><img src="{{asset('assets_admin/img/calendar.png')}}" alt="" style="width:18px !important; height: 18px !important;"></a>
                                         <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($blog_2->created_at)) }}</span>
-                                    </div>
-                                    <a href="{{url('article',$blog_2->id)}}"><h3>{{$blog_2->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3></a>
+                                    </div> --}}
+                                    <a href="{{url('article',$blog_2->id)}}"><h3>{{$blog_2->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3>
                                     <p> {{ $blog_2->sub_title }} </p>
 
-                                    <div class="readMore">
-                                        <p>
-                                            <a href="{{url('article',$blog_2->id)}}">קרא עוד <i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
-                                        </p>
-                                    </div>
+                                    <p>
+                                        <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
+                                        @php $likes = App\Models\Like::where('blog_id', $blog_2->id)->get(); @endphp
+                                        <span>{{count($likes ?? '0')}}</span>
+                                        
+                                    </p></a>
                                 </div>
                             </div>
                             <div class="col-md-6 mobileHide">
-                                <img src="{{asset('blog/'.$blog_2->image ?? '')}}" alt="" class="img-fluid">
+                                <a href="{{url('article',$blog_2->id)}}">
+                                    <img src="{{asset('blog/'.$blog_2->image ?? '')}}" alt="" class="img-fluid">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -159,17 +168,20 @@
                                     <div class="dateInput">
                                     <a href="{{url('article',$blog_3->id)}}"><img src="{{asset('assets_admin/img/calendar.png')}}" alt="" style="width:18px !important; height: 18px !important;"> <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($blog_3->created_at)) }}</span></a>
                                     </div>
-                                    <a href="{{url('article',$blog_3->id)}}"><h3>{{$blog_3->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3></a>
+                                    <a href="{{url('article',$blog_3->id)}}"><h3>{{$blog_3->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3>
                                     <p>{{ $blog_3->sub_title }} </p>
-                                    <div class="readMore">
-                                        <p>
-                                            <a href="{{url('article',$blog_3->id)}}">קרא עוד <i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
-                                        </p>
-                                    </div>
+                                    <p>
+                                        <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
+                                        @php $likes = App\Models\Like::where('blog_id', $blog_3->id)->get(); @endphp
+                                        <span>{{count($likes ?? '0')}}</span>
+                                        
+                                    </p></a>
                                 </div>
                             </div>
                             <div class="col-md-6 mobileHide">
-                                <img src="{{asset('blog/'.$blog_3->image ?? '')}}" alt="" class="img-fluid">
+                                <a href="{{url('article',$blog_3->id)}}">
+                                    <img src="{{asset('blog/'.$blog_3->image ?? '')}}" alt="" class="img-fluid">
+                                </a>
                             </div>
                         </div>
                     </div>
