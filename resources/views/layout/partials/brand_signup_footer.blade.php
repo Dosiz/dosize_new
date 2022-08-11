@@ -7,7 +7,7 @@
 				<div class="col-md-4 text-center pt-4">
 
 					<p style="font-size: 18px; color: #fff;">
-						{{$brand_profile->user->email}} <i class="fa fa-envelope"></i>
+						<a href='mailto:{{$brand_profile->user->email}}' style="font-size: 18px; color: #fff !important; ">{{$brand_profile->user->email}} <i class="fa fa-envelope"></i></a>
 					</p>
 				</div>
 				<div class="col-md-4 text-center pt-4">

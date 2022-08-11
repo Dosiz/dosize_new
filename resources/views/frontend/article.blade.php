@@ -101,7 +101,8 @@ Articles
                                     <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
                                         <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
                                     </a>
-                                    <span>24.05.22</span> <span>| כ”ג אייר פ”ב</span>
+                                    <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span> 
+                                    {{-- <span>| כ”ג אייר פ”ב</span> --}}
                                 </p>
                             </div>
                         </div>

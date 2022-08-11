@@ -31,7 +31,8 @@ use App\Models\Friend;
 use App\Models\ContactUs;     
 use App\Models\Subscriber;   
 use App\Models\AdminProduct;  
-use App\Models\AdminProductOrder;  
+use App\Models\AdminProductOrder;   
+use App\Models\BrandTimming;   
 
 class FrontEndController extends Controller
 {
@@ -269,11 +270,12 @@ class FrontEndController extends Controller
         $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
         $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
         $categories = Category::get();
+        $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
 
         
 
         // dd($blog_1,$blog_2,$blog_3);
-        return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
+        return view('frontend.brand_profile',compact('brand_timming','brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
     }
 
     public function store(Request $request)

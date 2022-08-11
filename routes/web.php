@@ -124,6 +124,9 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
 
+    //brand_timming
+    Route::resource('/brand_timming', App\Http\Controllers\brand\BrandTimmingController::class);
+
     //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
     
