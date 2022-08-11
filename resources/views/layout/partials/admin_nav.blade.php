@@ -52,7 +52,7 @@
 					</li>
 
 					<li class="{{ Request::is('brand/brand_timming') ? 'active' : '' }}"> 
-						<a href="{{route('brand_timming.index')}}"><span> Brand Timming</span></a>
+						<a href="{{url('brand/brand_timming')}}"><span> Brand Timming</span></a>
 					</li>
 
 					<li class="{{ Request::is('brand/blog') ? 'active' : '' }}"> 
