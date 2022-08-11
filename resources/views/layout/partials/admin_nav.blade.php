@@ -51,8 +51,16 @@
 						<a href="{{route('dashboard')}}"><span>דף ניהול</span></a>
 					</li>
 
+					<li class="{{ Request::is('/dashboard/profile') ? 'active' : '' }}"> 
+						<a href="{{url('/dashboard/profile')}}"><span> לנהל מותג </span></a>
+					</li>
+
+					<li class="{{ Request::is('brand/design') ? 'active' : '' }}"> 
+						<a href="{{url('brand/design')}}"><span> עיצוב אתרים </span></a>
+					</li>
+
 					<li class="{{ Request::is('brand/brand_timming') ? 'active' : '' }}"> 
-						<a href="{{url('brand/brand_timming')}}"><span> Brand Timming</span></a>
+						<a href="{{url('brand/brand_timming')}}"><span> תזמון המותג </span></a>
 					</li>
 
 					<li class="{{ Request::is('brand/blog') ? 'active' : '' }}"> 

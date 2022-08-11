@@ -128,6 +128,10 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     Route::resource('/brand_timming', App\Http\Controllers\brand\BrandTimmingController::class);
 
     //subscriber
+    Route::get('/design',[App\Http\Controllers\brand\BrandController::class, 'brand_design'])->name('brand-design');
+    Route::post('/store_design',[App\Http\Controllers\brand\BrandController::class, 'store_brand_design'])->name('store-design');
+
+    //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
     
     // blog and products comments status
