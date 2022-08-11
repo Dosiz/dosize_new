@@ -15,8 +15,8 @@ use App\Models\BlogsHasCity;
 use App\Models\BrandProfile;
 use App\Models\BrandsHasSubCategory;
 use App\Models\BrandsHasAddress;
-use App\Models\BrandsHasCity;  
-use App\Models\RecomendedBlog;  
+use App\Models\BrandsHasCity;
+use App\Models\RecomendedBlog;
 use Illuminate\Support\Facades\Redirect;
 
 class BlogController extends Controller
@@ -162,8 +162,8 @@ class BlogController extends Controller
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
             $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get()->except($blog->id);
             $products = Product::where('brand_profile_id',$brand_profile->id)->get();
-            $recomended_blogs = RecomendedBlog::where([['brand_profile_id',$brand_profile->id],['type','blog']])->get();
-            $recomended_products = RecomendedBlog::where([['brand_profile_id',$brand_profile->id],['type','product']])->get();
+            $recomended_blogs = RecomendedBlog::where([['blog_id',$id],['brand_profile_id',$brand_profile->id],['type','blog']])->get();
+            $recomended_products = RecomendedBlog::where([['blog_id',$id],['brand_profile_id',$brand_profile->id],['type','product']])->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
