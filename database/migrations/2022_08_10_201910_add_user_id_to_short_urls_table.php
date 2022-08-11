@@ -14,8 +14,8 @@ class AddUserIdToShortUrlsTable extends Migration
     public function up()
     {
         Schema::table('short_urls', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable();
-            $tweable->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->after('id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
