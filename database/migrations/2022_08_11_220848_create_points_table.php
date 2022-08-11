@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdToShortUrlsTable extends Migration
+class CreatePointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class AddUserIdToShortUrlsTable extends Migration
      */
     public function up()
     {
-        Schema::table('short_urls', function (Blueprint $table) {
+        Schema::create('points', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id')->after('id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->morphs(‘pointable’);
+            $table->string('source')->nullable();
+            $table->integer('points');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +32,6 @@ class AddUserIdToShortUrlsTable extends Migration
      */
     public function down()
     {
-        Schema::table('short_urls', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('points');
     }
 }
