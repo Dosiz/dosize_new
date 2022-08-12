@@ -149,7 +149,7 @@
                     </div>
                 </div>
             </div>
-            {{-- @if(count($recomanded_blogs) > 0)
+            @if(count($recomanded_blogs) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -188,7 +188,7 @@
                     </div>
                 </div>
             </div>
-            @endif --}}
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
