@@ -150,6 +150,7 @@ $(document).ready(function() {
 
 	$('.check_price').click(function() {
 		if($('#price').val() < $('#discount_price').val()){
+			// console.log($('#price').val() , $('#discount_price').val());
 			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
 			return false;
 		}

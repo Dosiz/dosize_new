@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    @if(isset($brand_profile))
+    <meta property="og:title" content="{{$brand_profile->brand_name ?? ''}}"> />
+    <meta property="og:image:alt" content="{{$brand_profile->brand_name ?? ''}}" />
+    <meta name="twitter:title" content="{{$brand_profile->brand_name ?? ''}}" />
+    <meta property="og:image" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
+    <meta property="og:image:secure_url" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
+    <meta name="twitter:image" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
+    <meta name="twitter:description" content="{{$brand_profile->description ?? ''}}" />
+    @endif
     @include('layout.partials.brand_signup_head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

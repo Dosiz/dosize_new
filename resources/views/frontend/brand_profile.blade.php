@@ -1,6 +1,6 @@
 @extends('layout.brand_signup')
 @section('title')
-פרופיל המותג
+{{$brand_profile->brand_name ?? '' }}
 @endsection
 @push('styles')
 <style>
