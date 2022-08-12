@@ -133,8 +133,7 @@
                             </div>
                         </div>
 
-{{--                        <img src="{{asset('blog/'.$blog->image)}}" alt=""--}}
-{{--                                    class="img-fluid"style="width:580px; height:298px;">--}}
+                       {{-- <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid"style="width:580px; height:298px;"> --}}
 
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
@@ -329,7 +328,7 @@
                 </div>
             </div>
         </div>
-        @if(count($recommended_products) > 0)
+        {{-- @if(count($recommended_products) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
@@ -375,7 +374,7 @@
                 </div>
             </div>
         </div>
-        @endif
+        @endif --}}
         <!-- main footer -->
         <!-- main footer start from here -->
         <div class="main_footer mt-5 d-none d-xl-block">
