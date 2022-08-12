@@ -57,6 +57,10 @@
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
                             @if($blog->images != null)
+                                <div class="swiper-slide">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                         class="img-fluid"style="width:580px; height:298px;">
+                                </div>
                             @foreach(json_decode($blog->images) as $all)
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$all)}}" alt=""
@@ -128,10 +132,10 @@
                                 </h4>
                             </div>
                         </div>
-                        
-                        <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px; height:298px;">
-                                    
+
+{{--                        <img src="{{asset('blog/'.$blog->image)}}" alt=""--}}
+{{--                                    class="img-fluid"style="width:580px; height:298px;">--}}
+
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -342,20 +346,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                            @if(count($recomanded_blogs) > 0)
-                            @foreach($recomanded_blogs as $recomended_blog)
+                            @if(count($recommended_products) > 0)
+                            @foreach($recommended_products as $recommended_product)
                             <div class="affordable_consumption_box box_shahdow">
-                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}">
-                                    <img src="{{asset('blog/'.$recomended_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
+                                    <img src="{{asset('blog/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
-                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
-                                        {{$recomended_blog->recomended_blog->title}}
+                                        {{$recommended_product->recommended_product->name}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $recomended_blog->recomended_blog->description ?? '' !!}
+                                        {!! $recommended_product->recommended_product->description ?? '' !!}
                                     </p>
                                     </a>
                                     <span class="font-size-12">4 <i class="fa fa-heart"
