@@ -178,6 +178,8 @@
                                         </h4>
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
+
+                                            <p class="font-size-14 font-weight-300">{!! substr($recomanded_blog->recomended_blog->description ?? '', 0,  20) !!}</p>
                                         </div>
                                     </a>
                                 </div>
