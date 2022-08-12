@@ -171,40 +171,43 @@ Edit Product
 $(document).ready(function() {
 
 	$('.check_price').click(function() {
-		if($('#price').val() < $('#discount_price').val()){
+        var price = parseInt($('#price').val());
+        var discount = parseInt($('#discount_price').val());
+
+        if(price < discount){
 			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
 			return false;
 		}
-		else if($('#discount_price').val()){
+		else if(discount){
 			if(!($('#sale_time').val())){
 				$('.sale_time_valid').text('Sale Time is manadetory When discount price entered');
 				return false;
 			}
 			else{
 				$('#product_form').submit();
-				
+
 			}
 		}
 		else{
 			$('#product_form').submit();
-			
+
 		}
 	});
 
     $('.summernote').summernote({
      });
-	
+
 	$(".multi_city_checkbox").click(function(){
 	if($(".multi_city_checkbox").is(':checked') ){
 		$(this).parent().find('option').prop("selected","selected");
 		$(this).parent().find('option').trigger("change");
 		$(this).parent().find('option').click();
-		
+
 	}else{
 		$(this).parent().find('option').removeAttr("selected","selected");
 		$(this).parent().find('option').trigger("change");
 	}
-		
+
 	});
 	$('#select2MultipleE').select2({
 		placeholder: "בחר תת-קטגוריה",
