@@ -67,8 +67,11 @@ Dosize
                                     <h4 class="font-size-12 font-weight-700">
                                         {{$blog->blog->title}}
                                     </h4>
-                                    <p class="discription font-size-10 font-weight-400">
+                                    {{-- <p class="discription font-size-10 font-weight-400">
                                     {!! \Illuminate\Support\Str::limit($blog->blog->description ?? '',40,'...') !!}
+                                    </p> --}}
+                                    <p class="discription font-size-10 font-weight-400">
+                                        {!! substr($blog->blog->description ?? '', 0,  20) !!}
                                     </p>
                                 </a>
                             </div>
