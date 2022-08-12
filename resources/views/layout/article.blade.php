@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
-    {{-- @if(isset($blog))
+    @if(isset($blog))
         <meta property="og:title" content="{{$blog->title ?? ''}}">
         <meta property="og:image:alt" content="{{$blog->title ?? ''}}" />
         <meta name="twitter:title" content="{{$blog->title ?? ''}}" />
@@ -10,7 +10,7 @@
         <meta property="og:image:secure_url" content="{{asset('blog/'.$blog->image ?? '')}}" />
         <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
         <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
-    @endif --}}
+    @endif
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
