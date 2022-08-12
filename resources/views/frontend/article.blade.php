@@ -329,7 +329,7 @@
                 </div>
             </div>
         </div>
-        @if(count($recomanded_blogs) > 0)
+        @if(count($recommended_products) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
