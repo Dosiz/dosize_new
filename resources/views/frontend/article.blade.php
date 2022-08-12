@@ -1,6 +1,6 @@
 @extends('layout.article')
 @section('title')
-Articles
+{{$blog->title}}
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
@@ -124,7 +124,7 @@ Articles
                         <div class="col-lg-12">
                             <div class="article_like">
                                 <h4 class="font-size-18 font-weight-600">אהבתם את הכתבה? רוצים לא לפספס את
-                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותתי של דוסיז >>>
+                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותי של {{ $blog->brandprofile->brand_name }} >>>
                                 </h4>
                             </div>
                         </div>

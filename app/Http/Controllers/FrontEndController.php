@@ -110,7 +110,8 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
+        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
+        $recommended_products = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','product']])->get();
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
         $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
@@ -121,17 +122,17 @@ class FrontEndController extends Controller
             $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             // dd($blog_comment_reply);
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
             $blog_bookmark = null;
             $blog_like = null;
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
+            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
         }
-        
+
         // dd($recomanded_blogs);
-        
-    }  
+
+    }
 
     public function product_detail($product_id)
     {
@@ -552,7 +553,16 @@ class FrontEndController extends Controller
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
         //  dd($city_brands);
-        return view('frontend.city_brands',compact('cities','categories','city_brands','brand_messages'));
+        if(auth::id())
+        {
+            $user_id = Auth::user();
+            $chk_subscriber = Subscriber::where('email',$user_id->email)->first();
+            return view('frontend.city_brands',compact('chk_subscriber','cities','categories','city_brands','brand_messages'));
+        }
+        else{
+            $chk_subscriber = null;
+            return view('frontend.city_brands',compact('chk_subscriber','cities','categories','city_brands','brand_messages'));
+        }
     }
 
     public function user_messages()

@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
+    @if(isset($product))
+        <meta property="og:title" content="{{$product->name ?? ''}}">
+        <meta property="og:image:alt" content="{{$product->name ?? ''}}" />
+        <meta name="twitter:title" content="{{$product->name ?? ''}}" />
+        <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta name="twitter:description" content="{{$product->description ?? ''}}" />
+    @endif
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>

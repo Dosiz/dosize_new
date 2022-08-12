@@ -1,6 +1,6 @@
 @extends('layout.product')
 @section('title')
-Products
+{{$product->name}}
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
