@@ -171,16 +171,16 @@
                                     <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                 </a>
 
-                                {{-- <div class="content_div">
+                                <div class="content_div">
                                     <a href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
                                             {{$recomanded_blog->recomended_blog->title}}
                                         </h4>
                                         <div class="rating_price_div">
-                                            <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p>
+                                            {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
                                         </div>
                                     </a>
-                                </div> --}}
+                                </div>
                             </div>
                             @endforeach
                             @endif
