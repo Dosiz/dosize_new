@@ -182,23 +182,23 @@
             <div class="slider_div">
                 <div class="multiple_deals swiper">
                     <div class="swiper-wrapper">
-                        @if(count($products)>0)
-                        @foreach($products as $product_value)
+                        @if(count($recomanded_products)>0)
+                        @foreach($recomanded_products as $recomanded_product)
                         <div class="deals_box box_shahdow swiper-slide">
-                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_value->id ?? '')}}">
-                                <img src="{{asset('product/'.$product_value->image)}}" alt="" class="img-fluid"style="width:100%;">
+                            <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}">
+                                <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}"  alt="" class="img-fluid"style="width:100%;">
                             </a>
                             <div class="content_div">
-                                <a  href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                <span class="deal_category font-size-12 font-weight-400"> {{$product_value->brandprofile->brand_name}} </span>
+                                <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
                                 </a>
-                                <a href="{{route('product',$product_value->id ?? '')}}" style="color: #212529 !important;">
-                                    <h4 class="title font-size-14 font-weight-700">{{$product_value->name}}</h4>
-                                    <div class="rating_price_div">
-                                        <p class="font-size-14 font-weight-600">{{$product_value->discount_price ?? $product_value->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">@if($product_value->discount_price){{$product_value->price}} ₪ @endif</span></p>
-                                        <p class="rating_text">{{$product_value->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                    </div>
+                                <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
+                                    <h4 class="font-size-12 font-weight-700">
+                                        {{$recomanded_product->recomended_product->name}}
+                                    </h4>
+                                    <p class="discription font-size-10 font-weight-400">
+                                        {!! $recomanded_product->recomended_product->description ?? '' !!}
+                                    </p>
                                 </a>
                             </div>
                         </div>
@@ -287,7 +287,7 @@
                                     class="text-right font-size-16 comment_input" style="width:">
                                     <span class="text-danger comment_valid" style=""></span>
                                 <div class="comment_hearder mr-4">
-                                   
+
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
                                     <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
@@ -388,22 +388,22 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                                @if(count($recomanded_products) > 0)
-                                @foreach($recomanded_products as $recomanded_product)
+                                @if(count($recomanded_blogs) > 0)
+                                @foreach($recomanded_blogs as $recomanded_blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}">
-                                        <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_blog->recomended_blog->id ?? '')}}">
+                                        <img src="{{asset('product/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
                                         <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
                                             <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
                                         </a>
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
-                                            {{$recomanded_product->recomended_product->name}}
+                                            {{$recomanded_blog->recomended_blog->name}}
                                         </h4>
                                         <p class="discription font-size-10 font-weight-400">
-                                            {!! $recomanded_product->recomended_product->description ?? '' !!}
+                                            {!! $recomanded_blog->recomended_blog->description ?? '' !!}
                                         </p>
                                         </a>
                                         <span class="font-size-12">4 <i class="fa fa-heart"
