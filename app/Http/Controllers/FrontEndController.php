@@ -99,7 +99,7 @@ class FrontEndController extends Controller
             // dd($b_city->blogs->groupBy('category_id'));
 
         $categories = Category::get();
-        
+
         // dd($categories);
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
@@ -140,7 +140,8 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
         // dd($products);
-        $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
+        $recomanded_products = RecomendedProduct::with('recomended_product')->where([['product_id',$product_id],['type','product']])->get();
+        $recomanded_blogs = RecomendedProduct::with('recomended_blog')->where([['product_id',$product_id],['type','blog']])->get();
         $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
         // dd($product_comments);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
@@ -162,31 +163,31 @@ class FrontEndController extends Controller
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         else{
             $product_like = null;
             $product_bookmark = null;
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
-        // dd($recomanded_products);   
-        
-    }  
+        // dd($recomanded_products);
 
-    public function store_blog_comment(Request $request)    
+    }
+
+    public function store_blog_comment(Request $request)
     {
         // dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
 
-        $this->validate($request,[ 
-            'comment'=>'required', 
+        $this->validate($request,[
+            'comment'=>'required',
 
         ]);
 
         $blog_comment = new BlogComment;
-       
-        
+
+
         if($request->name == 'on' || $user == null)
         {
             $blog_comment->name = 'anonymous';

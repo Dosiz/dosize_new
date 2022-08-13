@@ -101,6 +101,16 @@ Edit Product
 											@endif
 										</select>
 									</div>
+                                    <div class="form-group">
+                                        <label>Select Recomended Blog</label>
+                                        <select name="blog_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select3MultipleEe">
+                                            @if(count($blogs) > 0)
+                                                @foreach($blogs as $recommended_blog)
+                                                    <option value="{{$recommended_blog->id}}" @if(count($recommended_blogs) > 0 ) @foreach($recommended_blogs as $r_blog) {{ $r_blog->recomended_product_id == $recommended_blog->id ? 'selected' : '' }} @endforeach @endif>{{$recommended_blog->title}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
 
 
 									<div class="form-group">
@@ -219,6 +229,10 @@ $(document).ready(function() {
 		allowClear: true
 	});
 
+    $('#select3MultipleEe').select2({
+        placeholder: "בחר תת-קטגוריה",
+        allowClear: true
+    });
 	let data=<?php echo ($product->images);?>;
     console.log(data.length);
     var nietos = [];
