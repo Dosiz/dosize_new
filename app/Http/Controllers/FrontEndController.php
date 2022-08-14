@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PointsHelper;
+use App\Models\Point;
 use Illuminate\Http\Request;
 use App\Models\City;
 use App\Models\Product;
@@ -18,20 +20,20 @@ use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use DB;
 use Auth;
-use App\Models\BrandMessage;  
-use App\Models\BlogComment;  
-use App\Models\ProductComment;  
-use App\Models\BrandsMessageHasCity; 
-use App\Models\RecomendedProduct;  
-use App\Models\RecomendedBlog;   
-use App\Models\Like;    
+use App\Models\BrandMessage;
+use App\Models\BlogComment;
+use App\Models\ProductComment;
+use App\Models\BrandsMessageHasCity;
+use App\Models\RecomendedProduct;
+use App\Models\RecomendedBlog;
+use App\Models\Like;
 use App\Models\Bookmark;
 use App\Models\Message;
-use App\Models\Friend;       
-use App\Models\ContactUs;     
-use App\Models\Subscriber;   
-use App\Models\AdminProduct;  
-use App\Models\AdminProductOrder;  
+use App\Models\Friend;
+use App\Models\ContactUs;
+use App\Models\Subscriber;
+use App\Models\AdminProduct;
+use App\Models\AdminProductOrder;
 
 class FrontEndController extends Controller
 {
@@ -67,7 +69,7 @@ class FrontEndController extends Controller
             $q->where('city_id',$city_id);
         })
         ->get();
-        
+
         $blogs = $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
         // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
@@ -98,7 +100,7 @@ class FrontEndController extends Controller
             // dd($b_city->blogs->groupBy('category_id'));
 
         $categories = Category::get();
-        
+
         // dd($categories);
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
@@ -127,10 +129,10 @@ class FrontEndController extends Controller
             $blog_like = null;
             return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
         }
-        
+
         // dd($recomanded_blogs);
-        
-    }  
+
+    }
 
     public function product_detail($product_id)
     {
@@ -167,24 +169,24 @@ class FrontEndController extends Controller
             $product_bookmark = null;
             return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
-        // dd($recomanded_products);   
-        
-    }  
+        // dd($recomanded_products);
 
-    public function store_blog_comment(Request $request)    
+    }
+
+    public function store_blog_comment(Request $request)
     {
         // dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
 
-        $this->validate($request,[ 
-            'comment'=>'required', 
+        $this->validate($request,[
+            'comment'=>'required',
 
         ]);
 
         $blog_comment = new BlogComment;
-       
-        
+
+
         if($request->name == 'on' || $user == null)
         {
             $blog_comment->name = 'anonymous';
@@ -205,7 +207,7 @@ class FrontEndController extends Controller
             $blog_comment->rating = $request->bedside_manner_rating;
         }
         $blog_comment->comment = $request->comment;
-       
+
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
 
@@ -218,19 +220,19 @@ class FrontEndController extends Controller
         // }
     }
 
-    public function store_product_comment(Request $request)    
+    public function store_product_comment(Request $request)
     {
         // dd($request->all());
         $user_id = Auth::id();
         //  dd($user_id);
         $user = User::where('id',Auth::id())->first();
         // dd($user);
-        $this->validate($request,[ 
-            'comment'=>'required', 
+        $this->validate($request,[
+            'comment'=>'required',
 
         ]);
         $product_comment = new ProductComment;
-        
+
         if($request->name == 'on' || $user == null)
         {
             $product_comment->name = 'anonymous';
@@ -256,7 +258,7 @@ class FrontEndController extends Controller
         $product_comment->save();
 
         return Redirect::back();
-       
+
         // return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
     }
 
@@ -276,12 +278,12 @@ class FrontEndController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[ 
-            'f_name'=>'required', 
-            'l_name'=>'required', 
-            'email'=>'required', 
-            'phone'=>'required|numeric|size:11',  
-            'subject'=>'required',  
+        $this->validate($request,[
+            'f_name'=>'required',
+            'l_name'=>'required',
+            'email'=>'required',
+            'phone'=>'required|numeric|size:11',
+            'subject'=>'required',
         ]);
         try {
         $contact_us= new ContactUs;
@@ -319,13 +321,17 @@ class FrontEndController extends Controller
 
     public function store_blog_comment_like(Request $request)
     {
-        // dd($request->all());
         $user_id = Auth::id();
         $blog = Like::where('user_id',$user_id)->where('blog_id',$request->blog_id)->where('name','Article')->first();
-        // dd($blog);
         if($blog)
         {
             Like::where('id',$blog->id)->where('name','Article')->delete();
+
+            Point::where([
+                'source' => PointsHelper::Article,
+                'user_id' => $user_id,
+                'pointable_id' => $request->blog_id
+            ])->delete();
             return response()->json(['success'=>'Blog Like Removed']);
         }
         else{
@@ -334,6 +340,16 @@ class FrontEndController extends Controller
             $blog_like->blog_id = $request->blog_id;
             $blog_like->user_id = $user_id;
             $blog_like->save();
+
+            $point = Point::create([
+                'source' => PointsHelper::Article,
+                'points' => PointsHelper::Comment,
+                'user_id' => $user_id
+            ]);
+
+            $blog = Blog::find($request->blog_id);
+
+            $blog->points()->save($point);
             return response()->json(['success'=>'Blog Like successfully']);
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
@@ -363,13 +379,22 @@ class FrontEndController extends Controller
 
     public function store_product_comment_like(Request $request)
     {
-        // dd($request->all());
+        if(!Auth::check()){
+            return response()->json(['success'=>'Login Required']);
+        }
+
+
         $user_id = Auth::id();
+
         $product = Like::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Product')->first();
-        // dd($product);
         if($product)
         {
             Like::where('id',$product->id)->where('name','Product')->delete();
+            Point::where([
+                'source' => PointsHelper::Product,
+                'user_id' => $user_id,
+                'pointable_id' => $request->product_id
+            ])->delete();
             return response()->json(['success'=>'Product Like Removed']);
         }
         else{
@@ -378,6 +403,17 @@ class FrontEndController extends Controller
             $product_like->product_id = $request->product_id;
             $product_like->user_id = $user_id;
             $product_like->save();
+
+            $point = Point::create([
+                'source' => PointsHelper::Product,
+                'points' => PointsHelper::Like,
+                'user_id' => $user_id
+            ]);
+
+            $product = Product::find($request->product_id);
+
+            $product->points()->save($point);
+
             return response()->json(['success'=>'Product Like successfully']);
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
@@ -388,7 +424,6 @@ class FrontEndController extends Controller
         // dd($request->all());
         $user_id = Auth::id();
         $product = Bookmark::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Product')->first();
-        // dd($product);
         if($product)
         {
             Bookmark::where('id',$product->id)->where('name','Product')->delete();
@@ -417,7 +452,7 @@ class FrontEndController extends Controller
         else{
             return view('frontend.messages',compact('id','cities','categories'));
         }
-        
+
     }
 
     public function bookmarks()
@@ -428,11 +463,11 @@ class FrontEndController extends Controller
         $bookmark_blogs =Bookmark::with('blog')->where('name' , 'Article')->where('user_id' , Auth::id())->get();
         // dd($bookmark_products,$bookmark_blogs);
         return view('frontend.bookmark',compact('cities','categories','bookmark_products','bookmark_blogs'));
-        
+
         // dd($recomanded_blogs);
-        
-    } 
-    
+
+    }
+
     public function category($category_id,$city_id = 5)
     {
         $categories = Category::get();
@@ -518,10 +553,10 @@ class FrontEndController extends Controller
         ->where('products.discount_price', null)
         ->groupBy('categories.id')
         ->get();
-        // dd($product_categories); 
+        // dd($product_categories);
         if(count($product_categories) > 0)
         {
-            
+
             return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
         }
         else
@@ -559,7 +594,7 @@ class FrontEndController extends Controller
     }
 
     public function store_subscriber(Request $request)
-    {   
+    {
         // dd($request);
         $subscriber= new Subscriber;
         $subscriber->email = Auth::user()->email;

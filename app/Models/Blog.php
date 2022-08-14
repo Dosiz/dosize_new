@@ -38,6 +38,6 @@ class Blog extends Model
 
     public function points()
     {
-        return $this->morphMany('App\Point', 'pointable');
+        return $this->morphMany('App\Models\Point', 'pointable');
     }
 }

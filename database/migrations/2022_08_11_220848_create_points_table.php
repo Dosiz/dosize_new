@@ -15,10 +15,10 @@ class CreatePointsTable extends Migration
     {
         Schema::create('points', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->after('id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->morphs(‘pointable’);
+            $table->morphs('pointable');
             $table->string('source')->nullable();
             $table->integer('points');
             $table->timestamps();
