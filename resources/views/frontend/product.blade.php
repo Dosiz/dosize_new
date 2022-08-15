@@ -229,16 +229,25 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="sign_up_div">
                         <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid">
-                        <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                            @guest
+                        @guest
+                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important;">
+                            <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                             <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $product->brandprofile->brand_name}}</a>
-                            @else
-                                <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
-                                <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
-                                <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
-                                <a href="" id="subscriber">{{ $product->brandprofile->brand_name}}</a>
-                            @endguest
+                            <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important;">
                             ולא תפספסו שום דיל!</p>
+                            </a>
+                            @else
+                            <a href="" id="subscriber" style="color: #212529 !important;">
+                            <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
+                        
+                            <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
+                            <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                            <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
+                            <a href="" id="subscriber">{{ $product->brandprofile->brand_name}}</a>
+                            <a href="" id="subscriber" style="color: #212529 !important;">
+                            ולא תפספסו שום דיל!</p>
+                            </a>
+                        @endguest
                     </div>
                 </div>
             </div>

@@ -18,6 +18,13 @@
         z-index: 999;
         left: 0px;
     }
+    .swiper-pagination.swiper-pagination-clickable{
+        transform: translateY(-39px);
+        right: 20px;
+    }
+    .swiper-pagination-bullet{
+        margin: 0 4px;
+    }
 </style>
 @endpush
 @section('content')
@@ -119,7 +126,7 @@
                 <div class="container-fluid article_mobile_bg_color">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="article_title"> {{$blog->title}} </h4>
+                            <h4 class="article_title" style="font-family: Ploni DL 1.1 AAA;"> {{$blog->sub_title}} </h4>
                             <div class="line"></div>
                             <div class="article_detail_para">
                                 {!! $blog->description !!}
@@ -187,6 +194,7 @@
                             @endforeach
                             @endif
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
@@ -199,7 +207,7 @@
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
                                     class="img-fluid" style="width:39px ; height: 38px;">
 
-                                <a class="font-size-16" href="">לעמוד המותג</a>
+                                <a class="font-size-16" href="{{route('brand-profile',$blog->brand_profile_id)}}">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
                       
 
@@ -207,16 +215,25 @@
                             <div class="sign_up_div">
                                 <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
                                     class="img-fluid">
-                                <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                    @guest
+                                @guest
+                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important;">
+                                    <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                                     <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $blog->brandprofile->brand_name}}</a>
-                                    @else
-                                        <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
-                                        <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
-                                        <a href="" id="subscriber">{{ $blog->brandprofile->brand_name}}</a>
-                                    @endguest
-
-                                        ולא תפספסו שום דיל!</p>
+                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important;">
+                                    ולא תפספסו שום דיל!</p>
+                                    </a>
+                                @else
+                                    <a href="" id="subscriber" style="color: #212529 !important;">
+                                    <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
+                                
+                                    <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
+                                    <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                    <input type="hidden" id="brand_profile_id" value="{{$blog->brand_profile_id }}" />
+                                    <a href="" id="subscriber">{{ $blog->brandprofile->brand_name}}</a>
+                                    <a href="" id="subscriber" style="color: #212529 !important;">
+                                    ולא תפספסו שום דיל!</p>
+                                    </a>
+                                @endguest
                             </div>
                         </div>
                     </div>

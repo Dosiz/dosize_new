@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
-    @if(isset($blog))
-        <meta property="og:title" content="{{$blog->title ?? ''}}">
-        <meta property="og:image:alt" content="{{$blog->title ?? ''}}" />
-        <meta name="twitter:title" content="{{$blog->title ?? ''}}" />
-        <meta property="og:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
-        <meta property="og:image:secure_url" content="{{asset('blog/'.$blog->image ?? '')}}" />
-        <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
-        <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
-    @endif
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  @if(isset($blog))
+    <meta property="og:title" content="{{$blog->title ?? ''}}">
+    <meta property="og:image:alt" content="{{$blog->title ?? ''}}" />
+    <meta name="twitter:title" content="{{$blog->title ?? ''}}" />
+    <meta property="og:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
+    <meta property="og:image:secure_url" content="{{asset('blog/'.$blog->image ?? '')}}" />
+    <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
+    <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
+   @endif
+    
 </head>
 <body>
     <div class="bg_color">
@@ -21,13 +20,12 @@
       @include('layout.partials.footer')
 
     </div>
-
     <!-- Modal -->
     <div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
       <div class="modal-dialo" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button> -->
         </div>
@@ -53,7 +51,6 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <!-- <span aria-hidden="true">&times;</span> -->
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -111,6 +108,12 @@
                                             class="img-fluid">
                                     </a>
                                 </div>
+                            </div>
+                            <!-- <div class="d-flex justify-content-center mt-4">
+                                <a href="" id="signup_btn" class="text-dark">
+                                    <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
+                                </a>
+                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -172,5 +175,7 @@
     </div>
 </body>
 @include('layout.partials.footer_scripts')
+@toastr_js
+@toastr_render
 
 </html>

@@ -11,7 +11,7 @@
         <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta name="twitter:description" content="{{$product->description ?? ''}}" />
     @endif
-    @toastr_css
+    
 </head>
 <body>
     <div class="bg_color">
