@@ -27,12 +27,12 @@
     </div>
     <!-- Modal -->
     <div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialo" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <!-- <div class="modal-header">
+          <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button> -->
+              </button>
         </div>
         <div class="modal-body">
                     <form class="form-inline">
