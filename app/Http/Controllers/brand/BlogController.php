@@ -5,6 +5,7 @@ namespace App\Http\Controllers\brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Product;
 use Auth;
 use DB;
 use App\Models\User;
@@ -14,8 +15,8 @@ use App\Models\BlogsHasCity;
 use App\Models\BrandProfile;
 use App\Models\BrandsHasSubCategory;
 use App\Models\BrandsHasAddress;
-use App\Models\BrandsHasCity;  
-use App\Models\RecomendedBlog;  
+use App\Models\BrandsHasCity;
+use App\Models\RecomendedBlog;
 use Illuminate\Support\Facades\Redirect;
 
 class BlogController extends Controller
@@ -36,6 +37,7 @@ class BlogController extends Controller
             $brand_profile = BrandProfile::with('category')->where('user_id',$user_id)->first();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get();
+            $products = Product::where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
             if(count($brand_cities) <= 0)
@@ -44,11 +46,11 @@ class BlogController extends Controller
             }
             // dd($brand_cities);
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
-            return view('brand.blog.add', compact('brand_profile','sub_categories','addresses','brand_cities','blogs'));
-        
+            return view('brand.blog.add', compact('brand_profile','sub_categories','addresses','brand_cities','blogs','products'));
+
     }
 
-    
+
 
 
     public function show($id)
@@ -122,11 +124,25 @@ class BlogController extends Controller
                 $recomended_blogs->blog_id = $blog->id;
                 $recomended_blogs->recomended_blog_id = $blog_id;
                 $recomended_blogs->brand_profile_id = $request->profile_id;
+                $recomended_blogs->type = 'blog';
                 $recomended_blogs->save();
             }
         }
-        
-        
+
+        if($request->product_id)
+        {
+            foreach($request->product_id as $product_id)
+            {
+                $recomended_products = new RecomendedBlog;
+                $recomended_products->blog_id = $blog->id;
+                $recomended_products->recomended_blog_id = $product_id;
+                $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'product';
+                $recomended_products->save();
+            }
+        }
+
+
         foreach($request->city_id as $city_id)
         {
             // dd($address);
@@ -145,7 +161,9 @@ class BlogController extends Controller
             $blog = Blog::where('id',$id)->first();
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
             $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get()->except($blog->id);
-            $recomended_blogs = RecomendedBlog::where('brand_profile_id',$brand_profile->id)->get();
+            $products = Product::where('brand_profile_id',$brand_profile->id)->get();
+            $recomended_blogs = RecomendedBlog::where([['blog_id',$id],['brand_profile_id',$brand_profile->id],['type','blog']])->get();
+            $recomended_products = RecomendedBlog::where([['blog_id',$id],['brand_profile_id',$brand_profile->id],['type','product']])->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
@@ -156,7 +174,7 @@ class BlogController extends Controller
             {
                 $brand_cities = User::where('id',Auth::id())->get();
             }
-            return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities','blog_cities','blogs','recomended_blogs'));
+            return view('brand.blog.edit', compact('blog','brand_profile','sub_categories','addresses','brand_cities','blog_cities','blogs','products','recomended_blogs','recomended_products'));
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }
@@ -214,17 +232,33 @@ class BlogController extends Controller
 
         RecomendedBlog::where('blog_id',$blog->id)->delete();
 
-        foreach($request->blog_id as $blog_id)
+        if($request->blog_id){
+            foreach($request->blog_id as $blog_id)
+            {
+                $recomended_blogs = new RecomendedBlog;
+                $recomended_blogs->blog_id = $blog->id;
+                $recomended_blogs->recomended_blog_id = $blog_id;
+                $recomended_blogs->brand_profile_id = $request->profile_id;
+                $recomended_blogs->type = 'blog';
+                $recomended_blogs->save();
+            }
+        }
+
+        if($request->product_id)
         {
-            $recomended_blogs = new RecomendedBlog;
-            $recomended_blogs->blog_id = $blog->id;
-            $recomended_blogs->recomended_blog_id = $blog_id;
-            $recomended_blogs->brand_profile_id = $request->profile_id;
-            $recomended_blogs->save();
+            foreach($request->product_id as $product_id)
+            {
+                $recomended_products = new RecomendedBlog;
+                $recomended_products->blog_id = $blog->id;
+                $recomended_products->recomended_blog_id = $product_id;
+                $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'product';
+                $recomended_products->save();
+            }
         }
 
         BlogsHasCity::where('blog_id',$blog->id)->delete();
-        
+
         foreach($request->city_id as $city_id)
         {
             // dd($address);

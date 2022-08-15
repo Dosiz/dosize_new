@@ -101,6 +101,16 @@ Edit Product
 											@endif
 										</select>
 									</div>
+                                    <div class="form-group">
+                                        <label>Select Recomended Blog</label>
+                                        <select name="blog_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select3MultipleEe">
+                                            @if(count($blogs) > 0)
+                                                @foreach($blogs as $recommended_blog)
+                                                    <option value="{{$recommended_blog->id}}" @if(count($recommended_blogs) > 0 ) @foreach($recommended_blogs as $r_blog) {{ $r_blog->recomended_product_id == $recommended_blog->id ? 'selected' : '' }} @endforeach @endif>{{$recommended_blog->title}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
 
 
 									<div class="form-group">
@@ -171,40 +181,43 @@ Edit Product
 $(document).ready(function() {
 
 	$('.check_price').click(function() {
-		if($('#price').val() < $('#discount_price').val()){
+        var price = parseInt($('#price').val());
+        var discount = parseInt($('#discount_price').val());
+
+        if(price < discount){
 			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
 			return false;
 		}
-		else if($('#discount_price').val()){
+		else if(discount){
 			if(!($('#sale_time').val())){
 				$('.sale_time_valid').text('Sale Time is manadetory When discount price entered');
 				return false;
 			}
 			else{
 				$('#product_form').submit();
-				
+
 			}
 		}
 		else{
 			$('#product_form').submit();
-			
+
 		}
 	});
 
     $('.summernote').summernote({
      });
-	
+
 	$(".multi_city_checkbox").click(function(){
 	if($(".multi_city_checkbox").is(':checked') ){
 		$(this).parent().find('option').prop("selected","selected");
 		$(this).parent().find('option').trigger("change");
 		$(this).parent().find('option').click();
-		
+
 	}else{
 		$(this).parent().find('option').removeAttr("selected","selected");
 		$(this).parent().find('option').trigger("change");
 	}
-		
+
 	});
 	$('#select2MultipleE').select2({
 		placeholder: "בחר תת-קטגוריה",
@@ -216,6 +229,10 @@ $(document).ready(function() {
 		allowClear: true
 	});
 
+    $('#select3MultipleEe').select2({
+        placeholder: "בחר תת-קטגוריה",
+        allowClear: true
+    });
 	let data=<?php echo ($product->images);?>;
     console.log(data.length);
     var nietos = [];

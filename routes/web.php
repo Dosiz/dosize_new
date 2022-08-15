@@ -30,6 +30,8 @@ Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::cla
 Route::get('/brand-profile/{brand_id}',[App\Http\Controllers\FrontEndController::class, 'brand_profile'])->name('brand-profile');
 Route::post('/contact_us', [App\Http\Controllers\FrontEndController::class,'store'])->name('contact_us.store');
 Route::get('/articles/{id}', [App\Http\Controllers\FrontEndController::class,'articles'])->name('articles');
+Route::get('/brand/articles/{id}', [App\Http\Controllers\FrontEndController::class,'brand_articles'])->name('brand-articles');
+Route::get('/brand/products/{id}', [App\Http\Controllers\FrontEndController::class,'brand_products'])->name('brand-product');
 Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::class,'products'])->name('brand-products');
 // blog comment
 Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment');
@@ -122,6 +124,13 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
 
+    //brand_timming
+    Route::resource('/brand_timming', App\Http\Controllers\brand\BrandTimmingController::class);
+
+    //subscriber
+    Route::get('/design',[App\Http\Controllers\brand\BrandController::class, 'brand_design'])->name('brand-design');
+    Route::post('/store_design',[App\Http\Controllers\brand\BrandController::class, 'store_brand_design'])->name('store-design');
+
     //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
     
@@ -169,3 +178,10 @@ Route::get('archive_category', function () {
 Route::get('/brand/wallet', function () {
     return view('frontend.wallet');
 });
+
+Route::get('auth/google', [App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google_callback');
+
+Route::get('auth/facebook', [App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
+Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook_callback');
+

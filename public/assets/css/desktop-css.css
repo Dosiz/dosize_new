@@ -121,6 +121,8 @@
 
     .affordable_consumption .affordable_consumption_list.d-flex {
         flex-wrap: wrap;
+        justify-content: end;
+        width: 100%;
     }
 
     .affordable_consumption {
@@ -237,6 +239,11 @@
         margin-bottom: 0;
     }
 
+    .recommeded_product_slider
+    {
+        padding: 0 50px;
+    }
+
 }
 
 @media (min-width: 1500px) {
@@ -317,5 +324,9 @@
     #searchModal {
         left: 50%;
         top: 34% !important;
+    }
+    #searchModal .modal-dialog{
+        min-width: 600px;
+        width: 100%;
     }
 }

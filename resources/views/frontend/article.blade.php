@@ -1,12 +1,15 @@
 @extends('layout.article')
 @section('title')
-Articles
+{{$blog->title}}
 @endsection
 @push('styles')
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/thumb-slider.css') }}">
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <style>
     .mobile_header {
         display: none;
@@ -17,6 +20,23 @@ Articles
         width: 100%;
         z-index: 999;
         left: 0px;
+    }
+    .swiper-pagination.swiper-pagination-clickable{
+        transform: translateY(-39px);
+        right: 20px;
+    }
+    .swiper-pagination-bullet{
+        margin: 0 4px;
+    }
+
+    #subscriber{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        color: #212529
+    }
+    #subscriber span{
+        color: #db1580
     }
 </style>
 @endpush
@@ -57,6 +77,10 @@ Articles
                     <div class="multiple_articles swiper_article">
                         <div class="swiper-wrapper">
                             @if($blog->images != null)
+                                <div class="swiper-slide">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                         class="img-fluid"style="width:580px; height:298px;">
+                                </div>
                             @foreach(json_decode($blog->images) as $all)
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$all)}}" alt=""
@@ -88,10 +112,10 @@ Articles
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h5 class="article_category font-size-14"> {{$blog->category->name}} </h5>
-                            <h2 class="article_title">הולך מעולה: מבצע חם בנעלי העיר על 2 זוגות סנדלים</h2>
-                            <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות
+                            <h2 class="article_title">{{$blog->title}}</h2>
+                            {{-- <p class="article_description font-size-16">הילד שלכם רוצה סנדלים? רוצים לקנות
                                 סנדלים לכל המשפחה ולצאת בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159
-                                ₪ בלבד • אל תחמיצו את ההזדמנות</p>
+                                ₪ בלבד • אל תחמיצו את ההזדמנות</p> --}}
                         </div>
                         <div class="col-lg-12">
                             <div class="city_shoe">
@@ -101,7 +125,8 @@ Articles
                                     <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
                                         <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
                                     </a>
-                                    <span>24.05.22</span> <span>| כ”ג אייר פ”ב</span>
+                                    <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span> 
+                                    {{-- <span>| כ”ג אייר פ”ב</span> --}}
                                 </p>
                             </div>
                         </div>
@@ -114,7 +139,7 @@ Articles
                 <div class="container-fluid article_mobile_bg_color">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h4 class="article_title"> {{$blog->title}} </h4>
+                            <h4 class="article_title" style="font-family: Ploni DL 1.1 AAA;"> {{$blog->sub_title}} </h4>
                             <div class="line"></div>
                             <div class="article_detail_para">
                                 {!! $blog->description !!}
@@ -123,14 +148,13 @@ Articles
                         <div class="col-lg-12">
                             <div class="article_like">
                                 <h4 class="font-size-18 font-weight-600">אהבתם את הכתבה? רוצים לא לפספס את
-                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותתי של דוסיז >>>
+                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותי של {{ $blog->brandprofile->brand_name }} >>>
                                 </h4>
                             </div>
                         </div>
-                        
-                        <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px; height:298px;">
-                                    
+
+                       {{-- <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid"style="width:580px; height:298px;"> --}}
+
                         <div class="col-lg-12">
                             <div class="multiple_shoe">
                                 <ul>
@@ -173,7 +197,9 @@ Articles
                                             {{$recomanded_blog->recomended_blog->title}}
                                         </h4>
                                         <div class="rating_price_div">
-                                            <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p>
+                                            {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
+
+                                            <p class="font-size-14 font-weight-300">{!! substr($recomanded_blog->recomended_blog->description ?? '', 0,  20) !!}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -181,6 +207,7 @@ Articles
                             @endforeach
                             @endif
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
@@ -193,24 +220,42 @@ Articles
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
                                     class="img-fluid" style="width:39px ; height: 38px;">
 
-                                <a class="font-size-16" href="">לעמוד המותג</a>
+                                <a class="font-size-16" href="{{route('brand-profile',$blog->brand_profile_id)}}">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
                       
 
                             </div>
                             <div class="sign_up_div">
-                                <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
-                                    class="img-fluid">
-                                <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                    @guest
-                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">{{ $blog->brandprofile->brand_name}}</a>
+                                
+                                @guest
+                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
+                                    @if($chk_subscriber == null)
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
                                     @else
-                                        <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
-                                        <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
-                                        <a href="" id="subscriber">{{ $blog->brandprofile->brand_name}}</a>
-                                    @endguest
-
-                                        ולא תפספסו שום דיל!</p>
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @endif
+                                    <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
+                                    <span style="color: #db1580">{{ $blog->brandprofile->brand_name}}</span>
+                                    ולא תפספסו שום דיל!</p>
+                                    </a>
+                                @else
+                                    <a href="" id="subscriber">
+                                    @if($chk_subscriber == null)
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    @else
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @endif
+                                    <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
+                                
+                                    <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
+                                    <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                    <input type="hidden" id="brand_profile_id" value="{{$blog->brand_profile_id }}" />
+                                    <span>{{ $blog->brandprofile->brand_name}}</span>
+                                    ולא תפספסו שום דיל!</p>
+                                    </a>
+                                @endguest
                             </div>
                         </div>
                     </div>
@@ -324,7 +369,7 @@ Articles
                 </div>
             </div>
         </div>
-        @if(count($recomanded_blogs) > 0)
+        @if(count($recommended_products) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
@@ -341,20 +386,20 @@ Articles
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                            @if(count($recomanded_blogs) > 0)
-                            @foreach($recomanded_blogs as $recomended_blog)
+                            @if(count($recommended_products) > 0)
+                            @foreach($recommended_products as $recommended_product)
                             <div class="affordable_consumption_box box_shahdow">
-                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}">
-                                    <img src="{{asset('blog/'.$recomended_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
+                                    <img src="{{asset('blog/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
-                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recomended_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
-                                        {{$recomended_blog->recomended_blog->title}}
+                                        {{$recommended_product->recommended_product->name}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $recomended_blog->recomended_blog->description ?? '' !!}
+                                        {!! $recommended_product->recommended_product->description ?? '' !!}
                                     </p>
                                     </a>
                                     <span class="font-size-12">4 <i class="fa fa-heart"
@@ -715,6 +760,8 @@ $(document).ready(function() {
             success: function (data) {
                  console.table(data.success);
                 toastr.success(data.success);
+                $('.new_subscriber').toggleClass('d-none');
+                $('.subscribed').toggleClass('d-none');
                 // console.table(data.comment);
 
 

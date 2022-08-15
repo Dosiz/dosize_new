@@ -20,4 +20,9 @@ class RecomendedBlog extends Model
     {
         return $this->belongsTo(Blog::class,'recomended_blog_id','id');
     }
+
+    public function recommended_product()
+    {
+        return $this->belongsTo(Product::class,'recomended_blog_id','id');
+    }
 }

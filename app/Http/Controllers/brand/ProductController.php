@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\brand;
 
 use App\Http\Controllers\Controller;
+use App\Models\RecomendedBlog;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Auth;
 use DB;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Blog;
 use App\Models\SubCategory;
 use App\Models\ProductsHasCity;
 use App\Models\BrandProfile;
@@ -27,14 +29,15 @@ class ProductController extends Controller
         $products = Product::with('category')->with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
         // dd($products);
         return view('brand.product.index', compact('products','brand_profile'));
-        
-    }      
+
+    }
 
     public function create(Request $request)
     {
             $user_id = Auth::id();
             $brand_profile = BrandProfile::with('category')->where('user_id',$user_id)->first();
             $products = Product::where('brand_profile_id',$brand_profile->id)->get();
+            $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
@@ -43,11 +46,11 @@ class ProductController extends Controller
                 $brand_cities = User::where('id',$user_id)->get();
             }
             // dd($brand_profile,$sub_categories,$brand_cities,$addresses);
-            return view('brand.product.add', compact('brand_profile','sub_categories','addresses','brand_cities','products'));
-        
+            return view('brand.product.add', compact('brand_profile','sub_categories','addresses','brand_cities','products','blogs'));
+
     }
 
-    
+
 
 
     public function show($id)
@@ -80,8 +83,8 @@ class ProductController extends Controller
         $product->price = $request->price;
         // if($request->discount_price)
         // {
-        $product->discount_price = $request->discount_price; 
-        $product->sale_time = $request->sale_time; 
+        $product->discount_price = $request->discount_price;
+        $product->sale_time = $request->sale_time;
         // }
         $product->brand_profile_id = $request->profile_id;
         $product->sub_category_id = $request->sub_category_id;
@@ -103,11 +106,11 @@ class ProductController extends Controller
             foreach(($request->file('images')) as $file)
             {
                 $name = time().rand(1,100).'.'.$file->extension();
-                $file->move('product/', $name);  
-                $files[] = $name; 
+                $file->move('product/', $name);
+                $files[] = $name;
             }
             $product->images = json_encode($files);;
-            
+
         }
 
         $product->save();
@@ -121,12 +124,27 @@ class ProductController extends Controller
                 $recomended_products->product_id = $product->id;
                 $recomended_products->recomended_product_id = $product_id;
                 $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'product';
                 $recomended_products->save();
             }
         }
 
+        if($request->blog_id)
+        {
+
+            foreach($request->blog_id as $blog_id)
+            {
+                $recomended_blogs = new RecomendedProduct;
+                $recomended_blogs->product_id = $product->id;
+                $recomended_blogs->recomended_product_id = $blog_id;
+                $recomended_blogs->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'blog';
+                $recomended_blogs->save();
+            }
+        }
+
         ProductsHasCity::where('product_id',$product->id)->delete();
-        
+
         foreach($request->city_id as $city_id)
         {
             // dd($address);
@@ -145,7 +163,9 @@ class ProductController extends Controller
             $product = Product::where('id',$id)->first();
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
             $products = Product::where('brand_profile_id',$brand_profile->id)->get();
-            $recomended_products = RecomendedProduct::where('brand_profile_id',$brand_profile->id)->get();
+            $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get();
+            $recomended_products = RecomendedProduct::where([['product_id',$id],['brand_profile_id',$brand_profile->id],['type','product']])->get();
+            $recommended_blogs = RecomendedProduct::where([['product_id',$id],['brand_profile_id',$brand_profile->id],['type','blog']])->get();
             $sub_categories = BrandsHasSubCategory::with('subcategory')->where('brand_profile_id',$brand_profile->id)->get();
             $addresses = BrandsHasAddress::with('brandprofile')->with('city')->where('brand_profile_id',$brand_profile->id)->get();
             $brand_cities = BrandsHasCity::with('city')->where('brand_profile_id',$brand_profile->id)->get();
@@ -155,7 +175,7 @@ class ProductController extends Controller
                 $brand_cities = User::where('id',Auth::id())->get();
             }
             // dd($product_cities);
-            return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities','recomended_products','products'));
+            return view('brand.product.edit', compact('product','brand_profile','sub_categories','addresses','brand_cities','product_cities','recomended_products','recommended_blogs','products','blogs'));
         // } catch (\Exception $exception) {
         //     return Redirect::back();
         // }
@@ -183,7 +203,7 @@ class ProductController extends Controller
         // if($request->discount_price == null || $request->discount_price != null)
         // {
             // dd("inside loop");
-            $product->discount_price = $request->discount_price; 
+            $product->discount_price = $request->discount_price;
             $product->sale_time = $request->sale_time;
         // }
         // dd("outside loop");
@@ -206,11 +226,11 @@ class ProductController extends Controller
             foreach(($request->file('images')) as $file)
             {
                 $name = time().rand(1,100).'.'.$file->extension();
-                $file->move('product/', $name);  
-                $files[] = $name; 
+                $file->move('product/', $name);
+                $files[] = $name;
             }
             $product->images = json_encode($files);;
-            
+
         }
         $product->save();
         // dd($product->id);
@@ -223,12 +243,26 @@ class ProductController extends Controller
                 $recomended_products->product_id = $product->id;
                 $recomended_products->recomended_product_id = $product_id;
                 $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'product';
+                $recomended_products->save();
+            }
+        }
+
+        if($request->blog_id)
+        {
+            foreach($request->blog_id as $blog_id)
+            {
+                $recomended_products = new RecomendedProduct;
+                $recomended_products->product_id = $product->id;
+                $recomended_products->recomended_product_id = $blog_id;
+                $recomended_products->brand_profile_id = $request->profile_id;
+                $recomended_products->type = 'blog';
                 $recomended_products->save();
             }
         }
 
         ProductsHasCity::where('product_id',$id)->delete();
-        
+
         foreach($request->city_id as $city_id)
         {
             // dd($address);
