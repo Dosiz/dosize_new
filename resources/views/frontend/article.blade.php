@@ -229,16 +229,24 @@
                                 
                                 @guest
                                     <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
-                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
-                                        class="img-fluid">
+                                    @if($chk_subscriber == null)
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    @else
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                                     <span style="color: #db1580">{{ $blog->brandprofile->brand_name}}</span>
                                     ולא תפספסו שום דיל!</p>
                                     </a>
                                 @else
                                     <a href="" id="subscriber">
-                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt=""
-                                        class="img-fluid">
+                                    @if($chk_subscriber == null)
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    @else
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                                 
                                     <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
@@ -752,6 +760,8 @@ $(document).ready(function() {
             success: function (data) {
                  console.table(data.success);
                 toastr.success(data.success);
+                $('.new_subscriber').toggleClass('d-none');
+                $('.subscribed').toggleClass('d-none');
                 // console.table(data.comment);
 
 

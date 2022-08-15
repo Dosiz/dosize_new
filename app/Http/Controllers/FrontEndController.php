@@ -116,18 +116,19 @@ class FrontEndController extends Controller
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
         $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
         $user = User::where('id',Auth::id())->first();
+        $chk_subscriber=Subscriber::where('email',$user->email)->first();
         // dd($blog);
         if($user)
         {
             $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             // dd($blog_comment_reply);
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
             $blog_bookmark = null;
             $blog_like = null;
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
         }
 
         // dd($recomanded_blogs);
@@ -158,17 +159,18 @@ class FrontEndController extends Controller
         $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
         $product_bookmarks =Bookmark::where('product_id',$product_id)->where('name','Product')->get();
         $user = User::where('id',Auth::id())->first();
+        $chk_subscriber=Subscriber::where('email',$user->email)->first();
         if($user)
         {
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         else{
             $product_like = null;
             $product_bookmark = null;
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         // dd($recomanded_products);
 
