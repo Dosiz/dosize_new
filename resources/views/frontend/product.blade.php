@@ -100,6 +100,13 @@
                                 <!-- Additional required wrapper -->
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
+                                    @if($product->images != null)
+                                    @foreach(json_decode($product->images) as $all)
+                                    <div class="swiper-slide swiperThumbImg">
+                                        <img src="{{asset('product/'.$all)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
+                                    </div>
+                                    @endforeach
+                                    @else
                                     <div class="swiper-slide swiperThumbImg">
                                         <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
@@ -109,6 +116,7 @@
                                     <div class="swiper-slide swiperThumbImg">
                                         <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                             <!-- container end -->
@@ -193,7 +201,7 @@
             </div>
             <div class="slider_div">
                 <div class="multiple_deals swiper">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper recommeded_product_slider">
                         @if(count($recomanded_products)>0)
                         @foreach($recomanded_products as $recomanded_product)
                         <div class="deals_box box_shahdow swiper-slide">
@@ -209,7 +217,7 @@
                                         {{$recomanded_product->recomended_product->name}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $recomanded_product->recomended_product->description ?? '' !!}
+                                        {!! substr($recomanded_product->recomended_product->description, 0,  30) ?? '' !!}
                                     </p>
                                 </a>
                             </div>
@@ -423,7 +431,7 @@
                                 @foreach($recomanded_blogs as $recomanded_blog)
                                 <div class="affordable_consumption_box box_shahdow">
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_blog->recomended_blog->id ?? '')}}">
-                                        <img src="{{asset('product/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                        <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                     </a>
                                     <div class="content_div">
                                         <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
@@ -431,7 +439,7 @@
                                         </a>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
-                                            {{$recomanded_blog->recomended_blog->name}}
+                                            {{$recomanded_blog->recomended_blog->title}}
                                         </h4>
                                         <p class="discription font-size-10 font-weight-400">
                                             {!! $recomanded_blog->recomended_blog->description ?? '' !!}

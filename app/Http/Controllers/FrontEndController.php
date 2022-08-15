@@ -140,13 +140,14 @@ class FrontEndController extends Controller
     public function product_detail($product_id)
     {
         $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
+        // dd($product);
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
         // dd($products);
         $recomanded_products = RecomendedProduct::with('recomended_product')->where([['product_id',$product_id],['type','product']])->get();
         $recomanded_blogs = RecomendedProduct::with('recomended_blog')->where([['product_id',$product_id],['type','blog']])->get();
         $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        // dd($product_comments);
+        // dd($recomanded_blogs,$product_id);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
         $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
         ->groupBy('product_comments.product_id')

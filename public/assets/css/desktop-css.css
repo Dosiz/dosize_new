@@ -239,6 +239,11 @@
         margin-bottom: 0;
     }
 
+    .recommeded_product_slider
+    {
+        padding: 0 50px;
+    }
+
 }
 
 @media (min-width: 1500px) {
