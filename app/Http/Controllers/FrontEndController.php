@@ -161,9 +161,10 @@ class FrontEndController extends Controller
         $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
         $product_bookmarks =Bookmark::where('product_id',$product_id)->where('name','Product')->get();
         $user = User::where('id',Auth::id())->first();
-        $chk_subscriber=Subscriber::where('email',$user->email)->first();
+        
         if($user)
         {
+            $chk_subscriber=Subscriber::where('email',$user->email)->first();
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
@@ -172,6 +173,7 @@ class FrontEndController extends Controller
         else{
             $product_like = null;
             $product_bookmark = null;
+            $chk_subscriber = null;
             return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         // dd($recomanded_products);
