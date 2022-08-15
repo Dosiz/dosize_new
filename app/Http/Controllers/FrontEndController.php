@@ -579,18 +579,24 @@ class FrontEndController extends Controller
     public function store_subscriber(Request $request)
     {   
         // dd($request);
-        $subscriber= new Subscriber;
-        $subscriber->email = Auth::user()->email;
-        $subscriber->brand_profile_id = $request->brand_profile_id;
-        $subscriber->save();
-        if($request->brand_page)
-        {
-            toastr()->success('Successfully Subscribe');
-        return Redirect::back();
-        }
-        else{
-            return response()->json(['success'=>'Successfully Subscribe']);
-        }
+        // $subscriber = Subscriber::where('email',Auth::user()->email)->first();
+        // if($subscriber == null){
+            $subscriber= new Subscriber;
+            $subscriber->email = Auth::user()->email;
+            $subscriber->brand_profile_id = $request->brand_profile_id;
+            $subscriber->save();
+            // if($request->brand_page)
+            // {
+            //     // toastr()->success('Successfully Subscribe');
+            // return Redirect::back()->with('success','Successfully Subscribe');
+            // }
+            // else{
+                return response()->json(['success'=>'Successfully Subscribe']);
+            // }
+        // }
+        // else{
+        //     return Redirect::back()->with('warning','Already Subscribe');
+        // }
     }
 
     public function wallet()
