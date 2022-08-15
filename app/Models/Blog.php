@@ -35,4 +35,9 @@ class Blog extends Model
     {
         return $this->hasMany(RecomendedProduct::class);
     }
+
+    public function points()
+    {
+        return $this->morphMany('App\Models\Point', 'pointable');
+    }
 }
