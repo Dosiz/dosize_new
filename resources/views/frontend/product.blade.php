@@ -32,6 +32,9 @@
     #subscriber span{
         color: #db1580
     }
+    s{
+        text-decoration: none;
+    }
 </style>
 @endpush
 @section('content')
@@ -242,6 +245,7 @@
             </div>
 
         </div>
+    {{-- </s></p> --}}
         <div class="container-fluid container_desk">
             <div class="row flex-xl-row-reverse">
 
