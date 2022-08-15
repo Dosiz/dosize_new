@@ -101,6 +101,9 @@
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     @if($product->images != null)
+                                    <div class="swiper-slide swiperThumbImg">
+                                        <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
+                                    </div>
                                     @foreach(json_decode($product->images) as $all)
                                     <div class="swiper-slide swiperThumbImg">
                                         <img src="{{asset('product/'.$all)}}" alt="" class="img-fluid"style="width:131px; height:129px;">
