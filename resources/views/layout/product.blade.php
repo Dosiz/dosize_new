@@ -11,8 +11,7 @@
         <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta name="twitter:description" content="{{$product->description ?? ''}}" />
     @endif
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @toastr_css
 </head>
 <body>
     <div class="bg_color">
@@ -176,5 +175,7 @@
     </div>
 </body>
 @include('layout.partials.footer_scripts')
+@toastr_js
+@toastr_render
 
 </html>

@@ -176,7 +176,7 @@ class FrontEndController extends Controller
 
     public function store_blog_comment(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
 
@@ -214,7 +214,8 @@ class FrontEndController extends Controller
 
         // if($request->parent_id)
         // {
-            return Redirect::back();
+            
+            return Redirect::back()->with('success','תגובתך נשלחה לאישור, לאחר האישור תזוכה בנקודות, והתגובה תופיע באתר! ');
         // }
         // else{
         // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
@@ -257,6 +258,8 @@ class FrontEndController extends Controller
         $product_comment->comment = $request->comment;
         $product_comment->product_id  = $request->product_id;
         $product_comment->save();
+
+        toastr()->success('תגובתך נשלחה לאישור, לאחר האישור תזוכה בנקודות, והתגובה תופיע באתר!');
 
         return Redirect::back();
        
