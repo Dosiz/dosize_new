@@ -325,4 +325,8 @@
         left: 50%;
         top: 34% !important;
     }
+    #searchModal .modal-dialog{
+        min-width: 600px;
+        width: 100%;
+    }
 }
