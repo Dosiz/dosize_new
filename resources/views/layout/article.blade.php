@@ -13,6 +13,8 @@
     <meta name="twitter:title" content="{{$blog->title ?? ''}}" />
     <meta property="og:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
     <meta property="og:image:secure_url" content="{{asset('blog/'.$blog->image ?? '')}}" />
+    <meta property="og:image:width" content="999" />
+    <meta property="og:image:height" content="984" />
     <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
     <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
    @endif

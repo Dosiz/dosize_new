@@ -13,6 +13,8 @@
         <meta name="twitter:title" content="{{$product->name ?? ''}}" />
         <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta property="og:image:width" content="999" />
+        <meta property="og:image:height" content="984" />
         <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta name="twitter:description" content="{{$product->description ?? ''}}" />
     @endif
