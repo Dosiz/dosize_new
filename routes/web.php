@@ -185,14 +185,10 @@ Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::
 Route::get('auth/facebook', [App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook_callback');
 
-Route::domain('{username}.' . env('APP_URL'))->group(function () {    
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
     // Route::get('/brand', 'BrandProfileController@brand_profile')->name('brand');
     // Route::get('/city', 'BrandProfileController@city_search')->name('city'); 
     Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
     // Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 
 });
-
-Route::get('/', function () {
-    return 'First sub domain';
-})->domain('blog.' . env('APP_URL'));
