@@ -478,7 +478,7 @@
                             $shareable_links = Share::page( 'article_link')->facebook()->whatsapp()->twitter()->getRawLinks();
                         @endphp
                         <li>
-                            <a target="_blank" class="productLink" href="#">
+                            <a target="_blank" class="productLink" href="mailto:">
                                 <img src="{{asset('assets/img/mobile_component/email_icon.png') }}" alt=""
                                      class="img-fluid">
                             </a>
@@ -503,7 +503,8 @@
                         </li>
                     </ul>
                     <div class="copy_input">
-                        <i class="fa fa-clone" aria-hidden="true"></i>
+                        <i class="fa fa-clone copy" aria-hidden="true" onclick="copyToClipboard()"></i>
+                        <i class="fa fa-check checked d-none" aria-hidden="true" style="color:green;border:1px solid green; padding:4px; margin-top:-5px;margin-left:-5px;"></i>
                         <input type="text" name="copy_text" id="copy_text"
                             value="https://dossiz-vmnlvb/dfv.co.il" readonly>
                     </div>
@@ -528,6 +529,21 @@
     $(this).css({"color": "#FEA73A"});
     $(this).nextAll().css({"color": "#FEA73A"});
   });
+
+  function copyToClipboard() {
+        document.getElementById("copy_text").select();
+        document.execCommand('copy');
+        $('.copy').toggleClass('d-none');
+        $('.checked').toggleClass('d-none');
+        // $('.checked').css({'color':'green','border':'1px solid green','padding':'4px'});
+        // $('.checked').css('border', '1px solid green');
+        setTimeout(() => {
+            $('.copy').toggleClass('d-none');
+            $('.checked').toggleClass('d-none');
+        }, 5000);
+
+    }
+
 </script>
 <script>
 
