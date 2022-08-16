@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'short_url' => preg_replace('#^https?://#', '', rtrim(env('APP_URL', 'http://arikliger.com'),'/')),
+    // 'short_url' => preg_replace('#^https?://#', '', rtrim(env('APP_URL', 'http://127.0.0.1:8000'),'/')),
 
     'asset_url' => env('ASSET_URL', null),
 
