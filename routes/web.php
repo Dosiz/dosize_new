@@ -192,7 +192,3 @@ Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {
     // Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 
 });
-
-Route::get('/', function () {
-    return 'First sub domain';
-})->domain('blog.' . env('APP_URL'));
