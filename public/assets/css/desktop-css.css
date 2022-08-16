@@ -329,4 +329,14 @@
         min-width: 600px;
         width: 100%;
     }
+
+    #searchModel .modal-header{
+        height: 50px !important;
+    }
+
+    #searchModal .modal-header button{
+        margin: 0 auto;
+        font-size: 28px;
+        color: #fff;
+    }
 }
