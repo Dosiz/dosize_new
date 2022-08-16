@@ -12,7 +12,7 @@
     <meta property="og:image:alt" content="בית האופנה GOLBARY משיק קולקציית בישום לנשים. סקירה דוסיז צרכנות." />
     <meta property="og:image:type" content="image/jpeg/png" />
     <meta name="twitter:image" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
-    <meta name="twitter:description" content="{{$brand_profile->description ?? ''}}" />
+    {{-- <meta name="twitter:description" content="{{$brand_profile->description ?? ''}}" /> --}}
     @endif
     @include('layout.partials.brand_signup_head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
