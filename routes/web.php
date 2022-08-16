@@ -174,9 +174,19 @@ Route::get('archive_category', function () {
     return view('frontend.archive.archive_category');
 });
 
-Route::get('/brand/wallet', function () {
-    return view('frontend.wallet');
+
+
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
+    Route::get('/brand/wallet', function () {
+        return view('frontend.wallet');
+    });
+
 });
+
+// Route::get('/brand/wallet', function () {
+//     return view('frontend.wallet');
+// })->domain('test.' . env('APP_URL'));
+
 
 Route::get('auth/google', [App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google_callback');
