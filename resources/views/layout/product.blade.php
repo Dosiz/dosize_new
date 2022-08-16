@@ -37,13 +37,14 @@
               </button>
         </div>
         <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group searchInput mx-sm-3 mb-2">
-                            <label for="search" class="sr-only">Search</label>
-                            <input type="Search" class="form-control" id="search" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
-                    </form>
+            <form action="{{route('search-product')}}" method="POST" class="form-inline">
+                @csrf
+                <div class="form-group searchInput mx-sm-3 mb-2">
+                    <label for="search" class="sr-only">Search kmkm</label>
+                    <input type="Search" class="form-control" id="search" name="search_product" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
+            </form>
           </div>
           <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

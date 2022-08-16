@@ -648,13 +648,21 @@ class FrontEndController extends Controller
 
     public function search_product(Request $request)
     {
-        // dd($request->all());
+        //  dd($request->all());
         $categories = Category::get();
         $cities = City::get();
-        $results = Product::with('brandprofile')->select('*')->where("name","LIKE","%{$request->search_product}%")->get();
+        $product_results = Product::with('brandprofile','cities')->select('*')->where("name","LIKE","%{$request->search_product}%")->whereHas('cities', function ($q){
+            $q->where('city_id',5);
+        })
+        ->get();
+
+        $article_results = Blog::with('brandprofile','cities')->select('*')->where("title","LIKE","%{$request->search_product}%")->whereHas('cities', function ($q){
+            $q->where('city_id',5);
+        })
+        ->get();
 
         // dd($results);
-        return view('frontend.search_product',compact('cities','categories','results'));
+        return view('frontend.search_product',compact('cities','categories','article_results','product_results'));
     }
 
     public function brand_articles($brand_profile_id)
