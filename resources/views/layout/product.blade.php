@@ -2,8 +2,23 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(isset($product))
+        <meta property="og:title" content="{{$product->name ?? ''}}">
+        <meta property="og:title" content="{{$product->description ?? ''}}">
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="דוסיז צרכנות" />
+    <meta property="og:url" content="http://arikliger.com/article/{{$product->id ?? ''}}/%d7%91%d7%99%d7%aa-%d7%94%d7%90%d7%95%d7%a4%d7%a0%d7%94-golbary-%d7%9e%d7%a9%d7%99%d7%a7-%d7%a7%d7%95%d7%9c%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%91%d7%99%d7%a9%d7%95%d7%9d-%d7%9c%d7%a0%d7%a9%d7%99%d7%9d/" />
+        <meta property="og:image:alt" content="{{$product->name ?? ''}}" />
+        <meta name="twitter:title" content="{{$product->name ?? ''}}" />
+        <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta name="twitter:description" content="{{$product->description ?? ''}}" />
+    @endif
+
+    
+    
 </head>
 <body>
     <div class="bg_color">
@@ -14,12 +29,12 @@
     </div>
     <!-- Modal -->
     <div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-      <div class="modal-dialo" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <!-- <div class="modal-header">
+          <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button> -->
+              </button>
         </div>
         <div class="modal-body">
                     <form class="form-inline">
@@ -167,5 +182,7 @@
     </div>
 </body>
 @include('layout.partials.footer_scripts')
+@toastr_js
+@toastr_render
 
 </html>

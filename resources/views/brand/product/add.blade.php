@@ -95,6 +95,17 @@ Add Product
 										</select>
 									</div>
 
+                                    <div class="form-group">
+                                        <label>Select Recomended Blog</label>
+                                        <select name="blog_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select3MultipleEe">
+                                            @if(count($blogs) > 0)
+                                                @foreach($blogs as $recomended_blog)
+                                                    <option value="{{$recomended_blog->id}}" >{{$recomended_blog->title}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+
 									<div class="form-group">
 										<label>Select Sub-Category</label>
 										<select name="sub_category_id" class="form-control" >
@@ -149,23 +160,27 @@ Add Product
 $(document).ready(function() {
 
 	$('.check_price').click(function() {
-		if($('#price').val() < $('#discount_price').val()){
+        var price = parseInt($('#price').val());
+        var discount = parseInt($('#discount_price').val());
+
+		if(price < discount){
+			// console.log($('#price').val() , $('#discount_price').val());
 			$('.discount_price_valid').text('Kindly Enter Discount price less then actual price');
 			return false;
 		}
-		else if($('#discount_price').val()){
+		else if(discount){
 			if(!($('#sale_time').val())){
 				$('.sale_time_valid').text('Sale Time is manadetory When discount price entered');
 				return false;
 			}
 			else{
 				$('#product_form').submit();
-				
+
 			}
 		}
 		else{
 			$('#product_form').submit();
-			
+
 		}
 	});
 
@@ -195,6 +210,10 @@ $(document).ready(function() {
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
 	});
+    $('#select3MultipleEe').select2({
+        placeholder: "בחר תת-קטגוריה",
+        allowClear: true
+    });
   });
 </script>
 @endsection

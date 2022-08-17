@@ -29,11 +29,13 @@ use App\Models\RecomendedBlog;
 use App\Models\Like;
 use App\Models\Bookmark;
 use App\Models\Message;
+
 use App\Models\Friend;
 use App\Models\ContactUs;
 use App\Models\Subscriber;
 use App\Models\AdminProduct;
 use App\Models\AdminProductOrder;
+use App\Models\BrandTimming;
 
 class FrontEndController extends Controller
 {
@@ -111,23 +113,27 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where('blog_id',$blog_id)->get();
+        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
+        $recommended_products = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','product']])->get();
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
         $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
         $user = User::where('id',Auth::id())->first();
+
         // dd($blog);
         if($user)
         {
+            $chk_subscriber=Subscriber::where('email',$user->email)->first();
             $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             // dd($blog_comment_reply);
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
         }
         else{
             $blog_bookmark = null;
             $blog_like = null;
-            return view('frontend.article',compact('cities','blog','products','categories','blog_comments','recomanded_blogs','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
+            $chk_subscriber = null;
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
         }
 
         // dd($recomanded_blogs);
@@ -137,12 +143,14 @@ class FrontEndController extends Controller
     public function product_detail($product_id)
     {
         $product = Product::with('brandprofile','category')->where('id',$product_id)->first();
+        // dd($product);
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
         // dd($products);
-        $recomanded_products = RecomendedProduct::with('recomended_product')->where('product_id',$product_id)->get();
+        $recomanded_products = RecomendedProduct::with('recomended_product')->where([['product_id',$product_id],['type','product']])->get();
+        $recomanded_blogs = RecomendedProduct::with('recomended_blog')->where([['product_id',$product_id],['type','blog']])->get();
         $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        // dd($product_comments);
+        // dd($recomanded_blogs,$product_id);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
         $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
         ->groupBy('product_comments.product_id')
@@ -157,17 +165,20 @@ class FrontEndController extends Controller
         $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
         $product_bookmarks =Bookmark::where('product_id',$product_id)->where('name','Product')->get();
         $user = User::where('id',Auth::id())->first();
+
         if($user)
         {
+            $chk_subscriber=Subscriber::where('email',$user->email)->first();
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         else{
             $product_like = null;
             $product_bookmark = null;
-            return view('frontend.product',compact('product_ratings','cities','product','products','recomanded_products','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            $chk_subscriber = null;
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
         }
         // dd($recomanded_products);
 
@@ -222,11 +233,7 @@ class FrontEndController extends Controller
 
         $blog->points()->save($point);
 
-        return Redirect::back();
-        // }
-        // else{
-        // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
-        // }
+        return Redirect::back()->with('success','תגובתך נשלחה לאישור, לאחר האישור תזוכה בנקודות, והתגובה תופיע באתר! ');
     }
 
     public function store_product_comment(Request $request)
@@ -279,6 +286,9 @@ class FrontEndController extends Controller
 
 
         }
+
+        toastr()->success('תגובתך נשלחה לאישור, לאחר האישור תזוכה בנקודות, והתגובה תופיע באתר!');
+
         return Redirect::back();
 
         // return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
@@ -287,15 +297,18 @@ class FrontEndController extends Controller
     public function brand_profile($brand_id)
     {
         $cities = City::get();
-        $brand_profile = BrandProfile::with('category','user')->where('id',$brand_id)->first();
-        $brand_products = Product::where('brand_profile_id',$brand_id)->get();
+        $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
+        $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->get();
         $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
         $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
         $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
         $categories = Category::get();
+        $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
+
+
 
         // dd($blog_1,$blog_2,$blog_3);
-        return view('frontend.brand_profile',compact('brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
+        return view('frontend.brand_profile',compact('brand_timming','brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
     }
 
     public function store(Request $request)
@@ -613,7 +626,16 @@ class FrontEndController extends Controller
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
         //  dd($city_brands);
-        return view('frontend.city_brands',compact('cities','categories','city_brands','brand_messages'));
+        if(auth::id())
+        {
+            $user_id = Auth::user();
+            $chk_subscriber = Subscriber::where('email',$user_id->email)->first();
+            return view('frontend.city_brands',compact('chk_subscriber','cities','categories','city_brands','brand_messages'));
+        }
+        else{
+            $chk_subscriber = null;
+            return view('frontend.city_brands',compact('chk_subscriber','cities','categories','city_brands','brand_messages'));
+        }
     }
 
     public function user_messages()
@@ -626,18 +648,24 @@ class FrontEndController extends Controller
     public function store_subscriber(Request $request)
     {
         // dd($request);
-        $subscriber= new Subscriber;
-        $subscriber->email = Auth::user()->email;
-        $subscriber->brand_profile_id = $request->brand_profile_id;
-        $subscriber->save();
-        if($request->brand_page)
-        {
-            toastr()->success('Successfully Subscribe');
-        return Redirect::back();
-        }
-        else{
-            return response()->json(['success'=>'Successfully Subscribe']);
-        }
+        // $subscriber = Subscriber::where('email',Auth::user()->email)->first();
+        // if($subscriber == null){
+            $subscriber= new Subscriber;
+            $subscriber->email = Auth::user()->email;
+            $subscriber->brand_profile_id = $request->brand_profile_id;
+            $subscriber->save();
+            // if($request->brand_page)
+            // {
+            //     // toastr()->success('Successfully Subscribe');
+            // return Redirect::back()->with('success','Successfully Subscribe');
+            // }
+            // else{
+                return response()->json(['success'=>'Successfully Subscribe']);
+            // }
+        // }
+        // else{
+        //     return Redirect::back()->with('warning','Already Subscribe');
+        // }
     }
 
     public function wallet()
@@ -689,6 +717,22 @@ class FrontEndController extends Controller
 
         // dd($results);
         return view('frontend.search_product',compact('cities','categories','results'));
+    }
+
+    public function brand_articles($brand_profile_id)
+    {
+        $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
+        $articles = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+
+        return view('frontend.b_articles',compact('brand_profile','articles'));
+    }
+
+    public function brand_products($brand_profile_id)
+    {
+        $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
+        $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+
+        return view('frontend.b_products',compact('brand_profile','products'));
     }
 
 }

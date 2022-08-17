@@ -19,10 +19,13 @@
 
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialo" role="document">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-     </div>
+    <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
     <div class="modal-body">
                 <form action="{{route('search-product')}}" method="POST" class="form-inline">
                     @csrf
@@ -94,7 +97,7 @@
                                     <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="">
+                                <a href="{{route('auth.google')}}">
                                     <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
@@ -143,11 +146,11 @@
                         <div class="sign_up_with">
                             <h6 class="text-center">התחברו עם </h6>
                             <div class="signup_btn">
-                                <a href="">
+                                <a href="{{route('auth.facebook')}}">
                                     <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>
-                                <a href="">
+                                <a href="{{route('auth.google')}}">
                                     <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
                                         class="img-fluid">
                                 </a>

@@ -93,6 +93,18 @@ Edit Blog
 													<div style="color:red;">{{$errors->first('sub_category_id')}}</div> <br>
 												</div>
 
+                                                <div class="form-group">
+                                                    <label>Select Recomended Product</label>
+                                                    <select name="product_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select3MultipleEe">
+                                                        @if(count($products) > 0)
+                                                            @foreach($products as $recomended_product)
+                                                                <option value="{{$recomended_product->id}}" @if(count($recomended_products) > 0 ) @foreach($recomended_products as $r_blog) {{ $r_blog->recomended_blog_id == $recomended_product->id ? 'selected' : '' }} @endforeach @endif>{{$recomended_product->name}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                    <div style="color:red;">{{$errors->first('sub_category_id')}}</div> <br>
+                                                </div>
+
 			                                    <div class="form-group">
 									                <label>Select Sub-Category</label>
 													<select name="sub_category_id" class="form-control" >
@@ -181,7 +193,13 @@ $(document).ready(function() {
 		allowClear: true
 	});
 
-	let data=<?php echo ($blog->images);?>;
+    $('#select3MultipleEe').select2({
+        placeholder: "בחר תת-קטגוריה",
+        allowClear: true
+    });
+
+
+    let data=<?php echo ($blog->images);?>;
     console.log(data.length);
     var nietos = [];
     var obj = {};

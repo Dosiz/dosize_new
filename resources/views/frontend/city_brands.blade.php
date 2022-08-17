@@ -161,6 +161,7 @@ Brand List
                                     <a href="" class="btn signForClub d-none d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                                     @else
+                                        @if($chk_subscriber == null)
                                         <form action="{{ route('store-subscriber') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
@@ -169,6 +170,12 @@ Brand List
                                         <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                         </button>
+                                        </form>
+                                        @else
+                                        <button class="btn signForClub d-none d-xl-block"> הירשמו בקליק למועדון
+                                            <img src="{{asset('assets/img/verfied.png') }}" alt="star">
+                                        </button>
+                                        @endif
                                     @endguest
                                 </div>
                                 <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" class="d-xl-none"

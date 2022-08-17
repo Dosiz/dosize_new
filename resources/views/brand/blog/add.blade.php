@@ -87,6 +87,17 @@ Add Blog
 													</select>
 												</div>
 
+                                                <div class="form-group">
+                                                    <label>Select Recommended Product</label>
+                                                    <select name="product_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select3MultipleEe">
+                                                        @if(count($products) > 0)
+                                                            @foreach($products as $recomended_product)
+                                                                <option value="{{$recomended_product->id}}" >{{$recomended_product->name}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
+
 
 												<div class="form-group">
 													<label>Select Sub-Category</label>
@@ -175,6 +186,11 @@ $(document).ready(function() {
 		placeholder: "בחר תת-קטגוריה",
 		allowClear: true
 	});
+
+    $('#select3MultipleEe').select2({
+        placeholder: "בחר תת-קטגוריה",
+        allowClear: true
+    });
 
   });
 </script>
