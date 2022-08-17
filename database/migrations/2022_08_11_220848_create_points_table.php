@@ -19,6 +19,7 @@ class CreatePointsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->morphs('pointable');
+            $table->morphs('sourceable');
             $table->string('source')->nullable();
             $table->integer('points');
             $table->timestamps();

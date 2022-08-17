@@ -287,7 +287,7 @@ Products
                                     class="text-right font-size-16 comment_input" style="width:">
                                     <span class="text-danger comment_valid" style=""></span>
                                 <div class="comment_hearder mr-4">
-                                   
+
                                     <button type="submit" class="font-size-16 cursor-pointer" style="white-space: pre">פירסום תגובה</button>
                                     <div class="anonymous_text font-size-16 ml-2 d-flex flex-column">אנונימי
                                         <span class="checkBox">
@@ -861,6 +861,7 @@ $(document).ready(function() {
 
     $('#shareButton').click(function () {
         let url = "{{ url()->current() }}";
+        let source = "{{ \App\Helpers\PointsHelper::Product }}";
         let _token   = $('meta[name="csrf-token"]').attr('content');
         // $('#login-modal').fadeIn()
 
@@ -869,6 +870,7 @@ $(document).ready(function() {
             url: "{{ url('getShortUrl') }}",
             data: {
                 url:url,
+                source:source,
                 _token: _token
             } ,
             datatype: "json",

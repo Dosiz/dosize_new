@@ -17,9 +17,9 @@ use App\Models\BrandsHasSubCategory;
 use App\Models\BrandsHasAddress;
 use App\Models\BrandsHasCity;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use DB;
-use Auth;
 use App\Models\BrandMessage;
 use App\Models\BlogComment;
 use App\Models\ProductComment;
@@ -175,7 +175,6 @@ class FrontEndController extends Controller
 
     public function store_blog_comment(Request $request)
     {
-        // dd($request->all());
         $user_id = Auth::id();
         $user = User::where('id',Auth::id())->first();
 
@@ -211,9 +210,19 @@ class FrontEndController extends Controller
         $blog_comment->blog_id  = $request->blog_id;
         $blog_comment->save();
 
-        // if($request->parent_id)
-        // {
-            return Redirect::back();
+        $point = Point::create([
+            'source' => PointsHelper::Article,
+            'points' => PointsHelper::Comment,
+            'user_id' => $user_id,
+            'sourceable_id' => $blog_comment->id,
+            'sourceable_type' => BlogComment::class
+        ]);
+
+        $blog = Blog::find($request->blog_id);
+
+        $blog->points()->save($point);
+
+        return Redirect::back();
         // }
         // else{
         // return response()->json(['success'=>'Blog Comment saved successfully' , 'comment' => $request->comment,'name'=>$blog_user_name]);
@@ -222,11 +231,9 @@ class FrontEndController extends Controller
 
     public function store_product_comment(Request $request)
     {
-        // dd($request->all());
         $user_id = Auth::id();
-        //  dd($user_id);
-        $user = User::where('id',Auth::id())->first();
-        // dd($user);
+        $user = User::where('id',$user_id)->first();
+
         $this->validate($request,[
             'comment'=>'required',
 
@@ -257,6 +264,21 @@ class FrontEndController extends Controller
         $product_comment->product_id  = $request->product_id;
         $product_comment->save();
 
+        if (Auth::check()){
+            $point = Point::create([
+                'source' => PointsHelper::Product,
+                'points' => PointsHelper::Comment,
+                'user_id' => $user_id,
+                'sourceable_id' => $product_comment->id,
+                'sourceable_type' => ProductComment::class
+            ]);
+
+            $product = Product::find($request->product_id);
+
+            $product->points()->save($point);
+
+
+        }
         return Redirect::back();
 
         // return response()->json(['success'=>'Product Comment saved successfully', 'comment' => $request->comment,'name'=>$product_user_name]);
@@ -330,7 +352,9 @@ class FrontEndController extends Controller
             Point::where([
                 'source' => PointsHelper::Article,
                 'user_id' => $user_id,
-                'pointable_id' => $request->blog_id
+                'pointable_id' => $request->blog_id,
+                'sourceable_id' => $blog->id,
+                'sourceable_type' => Like::class
             ])->delete();
             return response()->json(['success'=>'Blog Like Removed']);
         }
@@ -343,13 +367,16 @@ class FrontEndController extends Controller
 
             $point = Point::create([
                 'source' => PointsHelper::Article,
-                'points' => PointsHelper::Comment,
-                'user_id' => $user_id
+                'points' => PointsHelper::Like,
+                'user_id' => $user_id,
+                'sourceable_id' => $blog_like->id,
+                'sourceable_type' => Like::class
             ]);
 
             $blog = Blog::find($request->blog_id);
 
             $blog->points()->save($point);
+
             return response()->json(['success'=>'Blog Like successfully']);
         }
         // return view('frontend.brand_products',compact('products','brand_profile','cities','categories'));
@@ -383,7 +410,6 @@ class FrontEndController extends Controller
             return response()->json(['success'=>'Login Required']);
         }
 
-
         $user_id = Auth::id();
 
         $product = Like::where('user_id',$user_id)->where('product_id',$request->product_id)->where('name','Product')->first();
@@ -393,7 +419,9 @@ class FrontEndController extends Controller
             Point::where([
                 'source' => PointsHelper::Product,
                 'user_id' => $user_id,
-                'pointable_id' => $request->product_id
+                'pointable_id' => $request->product_id,
+                'sourceable_id' => $product->id,
+                'sourceable_type' => Like::class
             ])->delete();
             return response()->json(['success'=>'Product Like Removed']);
         }
@@ -407,7 +435,9 @@ class FrontEndController extends Controller
             $point = Point::create([
                 'source' => PointsHelper::Product,
                 'points' => PointsHelper::Like,
-                'user_id' => $user_id
+                'user_id' => $user_id,
+                'sourceable_id' => $product_like->id,
+                'sourceable_type' => Like::class
             ]);
 
             $product = Product::find($request->product_id);

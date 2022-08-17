@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('getShortUrl',function (Request $request){
-    $shortURL = \App\Helpers\Helpers::createShortUrl($request->url);
+    $shortURL = \App\Helpers\Helpers::createShortUrl($request->url,$request->source);
     return response()->json($shortURL);
 });
 
@@ -83,7 +83,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
     //admin product order
     Route::get('/admin_product_orders',[App\Http\Controllers\admin\ProductController::class, 'admin_product_orders'])->name('admin-product-orders');
     Route::get('/admin_order_detail/{order_id}',[App\Http\Controllers\admin\ProductController::class, 'admin_order_detail'])->name('order.show');
-    
+
     //cateogry
     Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
     //city
@@ -124,7 +124,7 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 
     //subscriber
     Route::get('/brand_subscriber',[App\Http\Controllers\brand\BrandController::class, 'brand_subscriber'])->name('brand-subscriber');
-    
+
     // blog and products comments status
     Route::get('/blog_comments',[App\Http\Controllers\brand\BrandController::class, 'blog_comments'])->name('brand-blog-comments');
     Route::get('/product_comments',[App\Http\Controllers\brand\BrandController::class, 'product_comments'])->name('brand-product-comments');
@@ -159,7 +159,7 @@ Route::get('archive-message', function () {
     return view('frontend.archive_message');
 });
 
-Route::get('archive/category' ,[App\Http\Controllers\FrontEndController::class, 'archive_cat'])->name('archive_cat'); 
+Route::get('archive/category' ,[App\Http\Controllers\FrontEndController::class, 'archive_cat'])->name('archive_cat');
 
 
 Route::get('archive_category', function () {

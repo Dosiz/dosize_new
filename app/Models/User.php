@@ -44,5 +44,19 @@ class User extends Authenticatable
         return $this->belongsTo(City::class,'city_id','id');
     }
 
-       
+    public function points()
+    {
+        return $this->hasMany(Point::class, 'user_id');
+    }
+
+    public function product_points()
+    {
+        return $this->hasMany(Point::class, 'user_id')->where('pointable_type','App\Models\Product');
+    }
+
+    public function blog_points()
+    {
+        return $this->hasMany(Point::class, 'user_id')->where('pointable_type','App\Models\Blog');
+    }
+
 }
