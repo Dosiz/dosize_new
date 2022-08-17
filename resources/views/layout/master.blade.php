@@ -12,7 +12,7 @@
         <div class="main_page">
           @include('layout.partials.header')
           @yield('content')
-          {{-- @include('layout.partials.footer') --}}
+          @include('layout.partials.footer')
             
         </div>
     </div>

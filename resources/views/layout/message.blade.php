@@ -3,6 +3,13 @@
 <head>
   @include('layout.partials.head')
   @livewireStyles
+
+  <style>
+    header .desktop_menu .logout_user 
+    {
+        margin-top: 20px;
+    }
+    </style>
 </head>
 <body>
     <div class="bg_color">
