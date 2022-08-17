@@ -125,7 +125,7 @@
                                     <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
                                         <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
                                     </a>
-                                    <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span> 
+                                    <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span>
                                     {{-- <span>| כ”ג אייר פ”ב</span> --}}
                                 </p>
                             </div>
@@ -152,7 +152,6 @@
                                 </h4>
                             </div>
                         </div>
-
                        {{-- <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-fluid"style="width:580px; height:298px;"> --}}
 
                         <div class="col-lg-12">
@@ -222,11 +221,11 @@
 
                                 <a class="font-size-16" href="{{route('brand-profile',$blog->brand_profile_id)}}">לעמוד המותג</a>
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
-                      
+
 
                             </div>
                             <div class="sign_up_div">
-                                
+
                                 @guest
                                     <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
                                     @if($chk_subscriber == null)
@@ -248,7 +247,7 @@
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                
+
                                     <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                     <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                     <input type="hidden" id="brand_profile_id" value="{{$blog->brand_profile_id }}" />
@@ -271,9 +270,9 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </p> -->
-                               
+
                                 <ul style="visibility: hidden">
-                                                           
+
                                 </ul>
                                 <p class="font-size-16">תגובות(<span class="blog_comment_count">{{count($blog_comments)}}</span> )<img
                                     src="{{asset('assets/img/mobile_component/comment.png') }}" alt=""
@@ -282,7 +281,7 @@
                             </div>
 
                             <div class="formDiv">
-                                
+
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
@@ -315,7 +314,7 @@
                                             @endguest
                                             <div class="user_detail">
                                                 <h4 class="font-size-14"> {{$comment->name ?? $comment->user->name}}</h4>
-                                                
+
                                                 <p class="font-size-14">{{$comment->comment}}</p>
                                             </div>
                                         </li>
@@ -794,6 +793,7 @@ $(document).ready(function() {
     //By Assad Yaqoob
     $('#shareButton').click(function () {
         let url = "{{ url()->current() }}";
+        let source = "{{ \App\Helpers\PointsHelper::Article }}";
         let _token   = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
@@ -801,6 +801,7 @@ $(document).ready(function() {
             url: "{{ url('getShortUrl') }}",
             data: {
                 url:url,
+                source:source,
                 _token: _token
             } ,
             datatype: "json",

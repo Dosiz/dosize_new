@@ -36,6 +36,12 @@ class Blog extends Model
         return $this->hasMany(RecomendedProduct::class);
     }
 
+    public function points()
+    {
+        return $this->morphMany('App\Models\Point', 'pointable');
+    }
+    
+    
     public function cities()
     {
         return $this->belongsToMany(City::class, 'blogs_has_cities','blog_id', 'city_id');

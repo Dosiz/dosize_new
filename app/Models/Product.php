@@ -41,4 +41,9 @@ class Product extends Model
         return $this->belongsToMany(City::class, 'products_has_cities','product_id', 'city_id');
     }
 
+    public function points()
+    {
+        return $this->morphMany('App\Models\Point', 'pointable');
+    }
+
 }
