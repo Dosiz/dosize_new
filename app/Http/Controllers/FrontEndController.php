@@ -111,7 +111,9 @@ class FrontEndController extends Controller
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
-        $recommended_products = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','product']])->get();
+        $recommended_products = RecomendedBlog::with('recommended_product')->where([['blog_id',$blog_id],['type','product']])->get();
+
+        // dd($recommended_products);
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
         $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
@@ -147,7 +149,7 @@ class FrontEndController extends Controller
         $recomanded_products = RecomendedProduct::with('recomended_product')->where([['product_id',$product_id],['type','product']])->get();
         $recomanded_blogs = RecomendedProduct::with('recomended_blog')->where([['product_id',$product_id],['type','blog']])->get();
         $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        // dd($recomanded_blogs,$product_id);
+        // dd($recomanded_blogs,$recomanded_products);
         // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
         $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
         ->groupBy('product_comments.product_id')

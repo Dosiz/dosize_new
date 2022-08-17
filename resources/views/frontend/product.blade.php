@@ -455,8 +455,8 @@
                                             {!! $recomanded_blog->recomended_blog->description ?? '' !!}
                                         </p>
                                         </a>
-                                        <span class="font-size-12">4 <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span>
+                                        {{-- <span class="font-size-12">4 <i class="fa fa-heart"
+                                                aria-hidden="true"></i></span> --}}
                                     </div>
                                 </div>
                                 @endforeach

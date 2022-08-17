@@ -136,9 +136,9 @@ class ProductController extends Controller
             {
                 $recomended_blogs = new RecomendedProduct;
                 $recomended_blogs->product_id = $product->id;
-                $recomended_blogs->recomended_product_id = $blog_id;
+                $recomended_blogs->recomended_blog_id = $blog_id;
                 $recomended_blogs->brand_profile_id = $request->profile_id;
-                $recomended_products->type = 'blog';
+                $recomended_blogs->type = 'blog';
                 $recomended_blogs->save();
             }
         }

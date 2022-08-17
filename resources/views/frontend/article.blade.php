@@ -390,7 +390,7 @@
                             @foreach($recommended_products as $recommended_product)
                             <div class="affordable_consumption_box box_shahdow">
                                 <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
-                                    <img src="{{asset('blog/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
@@ -402,8 +402,8 @@
                                         {!! $recommended_product->recommended_product->description ?? '' !!}
                                     </p>
                                     </a>
-                                    <span class="font-size-12">4 <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
+                                    {{-- <span class="font-size-12">4 <i class="fa fa-heart"
+                                            aria-hidden="true"></i></span> --}}
                                 </div>
                             </div>
                             @endforeach

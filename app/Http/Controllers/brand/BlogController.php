@@ -135,7 +135,7 @@ class BlogController extends Controller
             {
                 $recomended_products = new RecomendedBlog;
                 $recomended_products->blog_id = $blog->id;
-                $recomended_products->recomended_blog_id = $product_id;
+                $recomended_products->recomended_product_id = $product_id;
                 $recomended_products->brand_profile_id = $request->profile_id;
                 $recomended_products->type = 'product';
                 $recomended_products->save();
@@ -250,7 +250,7 @@ class BlogController extends Controller
             {
                 $recomended_products = new RecomendedBlog;
                 $recomended_products->blog_id = $blog->id;
-                $recomended_products->recomended_blog_id = $product_id;
+                $recomended_products->recomended_product_id = $product_id;
                 $recomended_products->brand_profile_id = $request->profile_id;
                 $recomended_products->type = 'product';
                 $recomended_products->save();

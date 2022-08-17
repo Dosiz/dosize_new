@@ -18,10 +18,15 @@ class CreateRecomendedProductsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
 
-            $table->unsignedBigInteger('recomended_product_id');
+            $table->unsignedBigInteger('recomended_product_id')->nullable();
             $table->foreign('recomended_product_id')->references('id')->on('products');
+
+            $table->unsignedBigInteger('recomended_blog_id')->nullable();
+            $table->foreign('recomended_blog_id')->references('id')->on('blogs');
+
             $table->unsignedBigInteger('brand_profile_id')->nullable();
             $table->foreign('brand_profile_id')->references('id')->on('brand_profiles');
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -23,6 +23,6 @@ class RecomendedBlog extends Model
 
     public function recommended_product()
     {
-        return $this->belongsTo(Product::class,'recomended_blog_id','id');
+        return $this->belongsTo(Product::class,'recomended_product_id','id');
     }
 }
