@@ -30,5 +30,6 @@
 @include('layout.partials.brand_signup_footer')
 @include('layout.partials.brand_signup_footer_scripts')
  @yield('js')
+ <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
   </body>
 </html>
