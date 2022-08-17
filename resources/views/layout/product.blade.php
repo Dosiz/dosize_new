@@ -5,14 +5,16 @@
     @if(isset($product))
         <meta property="og:title" content="{{$product->name ?? ''}}">
         <meta property="og:title" content="{{$product->description ?? ''}}">
-    <meta property="og:locale" content="he_IL" />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="דוסיז צרכנות" />
-    <meta property="og:url" content="http://arikliger.com/article/{{$product->id ?? ''}}/%d7%91%d7%99%d7%aa-%d7%94%d7%90%d7%95%d7%a4%d7%a0%d7%94-golbary-%d7%9e%d7%a9%d7%99%d7%a7-%d7%a7%d7%95%d7%9c%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%91%d7%99%d7%a9%d7%95%d7%9d-%d7%9c%d7%a0%d7%a9%d7%99%d7%9d/" />
+        <meta property="og:locale" content="he_IL" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="דוסיז צרכנות" />
+        <meta property="og:url" content="http://arikliger.com/article/{{$product->id ?? ''}}/%d7%91%d7%99%d7%aa-%d7%94%d7%90%d7%95%d7%a4%d7%a0%d7%94-golbary-%d7%9e%d7%a9%d7%99%d7%a7-%d7%a7%d7%95%d7%9c%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%91%d7%99%d7%a9%d7%95%d7%9d-%d7%9c%d7%a0%d7%a9%d7%99%d7%9d/" />
         <meta property="og:image:alt" content="{{$product->name ?? ''}}" />
         <meta name="twitter:title" content="{{$product->name ?? ''}}" />
         <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+        <meta property="og:image:width" content="999" />
+        <meta property="og:image:height" content="984" />
         <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta name="twitter:description" content="{{$product->description ?? ''}}" />
     @endif
@@ -37,13 +39,14 @@
               </button>
         </div>
         <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group searchInput mx-sm-3 mb-2">
-                            <label for="search" class="sr-only">Search</label>
-                            <input type="Search" class="form-control" id="search" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
-                    </form>
+            <form action="{{route('search-product')}}" method="POST" class="form-inline">
+                @csrf
+                <div class="form-group searchInput mx-sm-3 mb-2">
+                    <label for="search" class="sr-only">Search kmkm</label>
+                    <input type="Search" class="form-control" id="search" name="search_product" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
+            </form>
           </div>
           <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -180,6 +183,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
 @toastr_js

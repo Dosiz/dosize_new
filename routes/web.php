@@ -23,7 +23,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
@@ -175,9 +174,19 @@ Route::get('archive_category', function () {
     return view('frontend.archive.archive_category');
 });
 
-Route::get('/brand/wallet', function () {
-    return view('frontend.wallet');
+
+
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
+    Route::get('/brand/wallet', function () {
+        return view('frontend.wallet');
+    });
+
 });
+
+// Route::get('/brand/wallet', function () {
+//     return view('frontend.wallet');
+// })->domain('test.' . env('APP_URL'));
+
 
 Route::get('auth/google', [App\Http\Controllers\Auth\SocialController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleGoogleCallback'])->name('auth.google_callback');
@@ -185,3 +194,10 @@ Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::
 Route::get('auth/facebook', [App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook_callback');
 
+// Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
+//     // Route::get('/brand', 'BrandProfileController@brand_profile')->name('brand');
+//     // Route::get('/city', 'BrandProfileController@city_search')->name('city'); 
+//     Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+//     // Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+
+// });

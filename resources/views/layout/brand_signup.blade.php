@@ -7,6 +7,10 @@
     <meta name="twitter:title" content="{{$brand_profile->brand_name ?? ''}}" />
     <meta property="og:image" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
     <meta property="og:image:secure_url" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
+    <meta property="og:image:width" content="999" />
+    <meta property="og:image:height" content="984" />
+    <meta property="og:image:alt" content="בית האופנה GOLBARY משיק קולקציית בישום לנשים. סקירה דוסיז צרכנות." />
+    <meta property="og:image:type" content="image/jpeg/png" />
     <meta name="twitter:image" content="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" />
     <meta name="twitter:description" content="{{$brand_profile->description ?? ''}}" />
     @endif
@@ -26,5 +30,6 @@
 @include('layout.partials.brand_signup_footer')
 @include('layout.partials.brand_signup_footer_scripts')
  @yield('js')
+ <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
   </body>
 </html>

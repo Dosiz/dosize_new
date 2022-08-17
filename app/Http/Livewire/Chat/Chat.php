@@ -26,7 +26,7 @@ class Chat extends Component
     {
            $user = Auth::user()->id;
            $this->receiver = $id;
-           if(Auth::user()->hasRole('brand'))
+           if(Auth::user()->hasRole('Brand'))
             {
                 $this->current_user =$user;
                 $this->friend = Friend::with('endusers')->where('friend', $user)->get();
@@ -34,7 +34,7 @@ class Chat extends Component
                 // get all chats
                 // $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
                 Message::where('thread', $this->current_user.'-'.$this->receiver)->orWhere('thread', $this->receiver.'-'.$this->current_user)->update(['is_read' => '1']);
-
+                
             }
             else
             {
@@ -80,19 +80,27 @@ class Chat extends Component
                 $user = Auth::user()->id;
                 // check if current user is friend
                 $this->friend = Friend::with('endusers')->where('friend', $user)->get();
-                // dd($this->friend);
-                if($this->friend)
+            //    dd($this->friend);
+                if(count($this->friend) > 0)
                 {
+                    if($this->receiver == 0)
+                    {
                     $receiver = $this->receiver=$this->friend[0]->user;
+                    }
+                    else{
+                        $receiver = $this->receiver;
+                    }
                     
                     $this->current=User::find($receiver);
                     // get all chats
                     $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
+                    // dd($this->messages);
                 }
                 else{
                     $this->current  = "";
                     $this->messages = [];
                 }
+                // dd($this->current);
                 return view('livewire.chat.chat');
                 
                 

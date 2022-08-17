@@ -96,7 +96,7 @@ $(".open_mobile_menu").click(function(){
   }
 })
 $(".logo").click(function(){
-  $(".main_page").addClass("changed_position");
+  $(".main_page").toggleClass("changed_position");
 })
 $(".enrollemnt_button").click(function(){
   $(".main_page").removeClass("changed_position");

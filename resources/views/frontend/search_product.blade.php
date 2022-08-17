@@ -48,7 +48,7 @@ Search Product
             {{-- <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה --}}
                 בלה בלה...</p>
         </div>
-        <div class="d-lg-flex flex-row-reverse">
+        <div class="">
             {{-- <div class="col-lg-3">
                 <div class="container-fluid">
                     <div class="main_wallet_div d-none d-lg-block bg-white py-3 mb-0 mt-4 rounded">
@@ -59,7 +59,7 @@ Search Product
                     
                 </div>
             </div> --}}
-            @if(count($results) > 0)
+            @if(count($product_results) > 0)
             <div class="col-lg-12">
                 <div class="promotion wallet_promotion">
                     <div class="container-fluid">
@@ -74,8 +74,8 @@ Search Product
                     <div class="slider_div">
                         <div class="multiple_promotion swiper">
                             <div class="swiper-wrapper">
-                                @if(count($results) > 0)
-                                @foreach($results as $result)
+                                @if(count($product_results) > 0)
+                                @foreach($product_results as $result)
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
                                         <img src="{{asset('product/'.$result->image)}}" alt="" class="img-fluid" style="width:225px; height:112px;">
@@ -113,6 +113,55 @@ Search Product
                 </div>
             </div>
             @endif
+
+            @if(count($article_results) > 0)
+            <div class="line spacing"></div>
+            <div class="affordable_consumption spacing ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <h3 class="common_title">צרכנות משתלמת <img
+                                    src="{{ asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                                @if(count($article_results) > 0)
+                                @foreach($article_results as $blog)
+                                
+                                <div class="affordable_consumption_box box_shahdow">
+                                    <a href="{{route('article',$blog->id)}}">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                        class="img-fluid" style="width: 131px; height: 160px">
+                                    </a>
+                                    <div class="content_div">
+                                        <a href="{{route('brand-profile',$blog->brand_profile_id)}}">
+                                        <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                        </a>
+                                        <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
+                                        <h4 class="font-size-12 font-weight-700">
+                                            {{$blog->title}}
+                                        </h4>
+                                        <p class="discription font-size-10 font-weight-400">
+                                            {!! substr($blog->description, 0,  30) !!}  
+                                        </p>
+                                        </a>
+                                        {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
+                                                aria-hidden="true"></i></span> --}}
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
+                                <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                                    הכתבות ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
         </div>
             <!-- main footer start from here -->
             <div class="main_footer mt-5 d-none d-xl-block">

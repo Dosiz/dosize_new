@@ -12,7 +12,7 @@
         <div class="main_page">
           @include('layout.partials.header')
           @yield('content')
-          {{-- @include('layout.partials.footer') --}}
+          @include('layout.partials.footer')
             
         </div>
     </div>
@@ -167,6 +167,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
 </html>

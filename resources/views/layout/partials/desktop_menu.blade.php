@@ -67,7 +67,7 @@
                     <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
                             class="img-fluid"></a>
                     @else
-                    <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
+                    <a href="{{route('user-message','id='.Auth::user()->id)}}">הודעות <img src="{{asset('assets/img/message_icon.png') }}" alt=""
                         class="img-fluid"></a>
                     @endguest
                 </li>

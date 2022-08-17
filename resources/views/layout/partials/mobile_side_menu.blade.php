@@ -11,15 +11,19 @@
                         class="img-fluid"></a>
             </li>
             <li>
-                <a href="">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/cartIcon.png') }}" alt=""
+                <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/cartIcon.png') }}" alt=""
                         class="img-fluid"></a>
             </li>
             <li>
-                <a href="">הודעות <img src="{{asset('assets/img/mobile_component/messageIcon.png') }}" alt=""
-                        class="img-fluid"></a>
+                
+                @guest
+                <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="{{asset('assets/img/mobile_component/messageIcon.png') }}" alt="" class="img-fluid"></a>
+                @else
+                <a href="{{route('user-message')}}">הודעות <img src="{{asset('assets/img/mobile_component/messageIcon.png') }}" alt="" class="img-fluid"></a>
+                @endguest
             </li>
             <li>
-                <a href="">התראות <img src="{{asset('assets/img/mobile_component/bellIcon.png') }}" alt=""
+                <a href="{{route('archive_cat')}}">התראות <img src="{{asset('assets/img/mobile_component/bellIcon.png') }}" alt=""
                         class="img-fluid"></a>
             </li>
             <li>

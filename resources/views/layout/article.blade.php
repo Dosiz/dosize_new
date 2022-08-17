@@ -13,6 +13,8 @@
     <meta name="twitter:title" content="{{$blog->title ?? ''}}" />
     <meta property="og:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
     <meta property="og:image:secure_url" content="{{asset('blog/'.$blog->image ?? '')}}" />
+    <meta property="og:image:width" content="999" />
+    <meta property="og:image:height" content="984" />
     <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
     <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
    @endif
@@ -35,14 +37,15 @@
               </button>
         </div>
         <div class="modal-body">
-                    <form class="form-inline">
-                        <div class="form-group searchInput mx-sm-3 mb-2">
-                            <label for="search" class="sr-only">Search</label>
-                            <input type="Search" class="form-control" id="search" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
-                    </form>
-          </div>
+            <form action="{{route('search-product')}}" method="POST" class="form-inline">
+                @csrf
+                <div class="form-group searchInput mx-sm-3 mb-2">
+                    <label for="search" class="sr-only">Search kmkm</label>
+                    <input type="Search" class="form-control" id="search" name="search_product" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
+            </form>
+        </div>
           <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
@@ -178,6 +181,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
 @toastr_js

@@ -270,10 +270,10 @@
                             <div class="infoDetail">
                                 <h5>יום ראשון: </h5>
                                 <p style="font-size:15px;">שעת פתיחה: {{ date("g:i a", strtotime($brand_timming->sat_thu_mor_open['sun_mor_open'] ))}}
-                                @if(isset($time->sat_thu_noon_open['sun_mor_close']))
-                                 שעת סגירה לפנה''צ:{{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['sun_mor_close'] ))}}
+                                @if(isset($brand_timming->sat_thu_mor_close['sun_mor_close']))
+                                 שעת סגירה לפנה''צ:{{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['sun_mor_close'] ))}}<br>
                                 @endif
-                                @if(isset($time->sat_thu_noon_open['sun_noon_open']))
+                                @if(isset($brand_timming->sat_thu_noon_open['sun_noon_open']))
                                 שעת פתיחה אחה''צ:{{ date("g:i a", strtotime($brand_timming->sat_thu_noon_open['sun_noon_open']))}}
                                 @endif
                                 שעת סגירה: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_close['sun_noon_close'] ))}}</p>
@@ -281,10 +281,10 @@
                             <div class="infoDetail">
                                 <h5>יום שני: </h5>
                                 <p style="font-size:15px;">שעת פתיחה:  : {{ date("g:i a", strtotime($brand_timming->sat_thu_mor_open['mon_mor_open'] ))}}
-                                @if(isset($time->sat_thu_noon_open['mon_mor_close']))
-                                שת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['mon_mor_close'] ))}}
+                                @if(isset($brand_timming->sat_thu_mor_close['mon_mor_close']))
+                                שת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['mon_mor_close'] ))}}<br>
                                 @endif
-                                @if(isset($time->sat_thu_noon_open['mon_noon_open']))
+                                @if(isset($brand_timming->sat_thu_noon_open['mon_noon_open']))
                                 שעת פתיחה אחה''צ: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_open['mon_noon_open']))}}
                                 @endif
                                 שעת סגירה: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_close['mon_noon_close'] ))}}</p>
@@ -292,10 +292,10 @@
                             <div class="infoDetail">
                                 <h5>יום שלישי: </h5>
                                 <p style="font-size:15px;">שעת פתיחה: {{ date("g:i a", strtotime($brand_timming->sat_thu_mor_open['wed_mor_open'] ))}}
-                                @if(isset($time->sat_thu_noon_open['tue_mor_close']))
-                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['tue_mor_close'] ))}}
+                                @if(isset($brand_timming->sat_thu_mor_close['tue_mor_close']))
+                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['tue_mor_close'] ))}}<br>
                                 @endif
-                                @if(isset($time->sat_thu_noon_open['tue_noon_open']))
+                                @if(isset($brand_timming->sat_thu_noon_open['tue_noon_open']))
                                 שעת פתיחה אחה''צ: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_open['tue_noon_open']))}}
                                 @endif
                                 שעת סגירה: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_close['wed_noon_close'] ))}}</p>
@@ -303,10 +303,10 @@
                             <div class="infoDetail">
                                 <h5>יום רביעי: </h5>
                                 <p style="font-size:15px;">שעת פתיחה: {{ date("g:i a", strtotime($brand_timming->sat_thu_mor_open['wed_mor_open'] ))}}
-                                @if(isset($time->sat_thu_noon_open['wed_mor_close']))
-                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['wed_mor_close'] ))}}
+                                @if(isset($brand_timming->sat_thu_mor_close['wed_mor_close']))
+                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['wed_mor_close'] ))}}<br>
                                 @endif
-                                @if(isset($time->sat_thu_noon_open['wed_noon_open']))
+                                @if(isset($brand_timming->sat_thu_noon_open['wed_noon_open']))
                                 שעת פתיחה אחה''צ: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_open['wed_noon_open']))}}
                                 @endif
                                 שעת סגירה: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_close['wed_noon_close'] ))}}</p>
@@ -314,10 +314,10 @@
                             <div class="infoDetail">
                                 <h5>יום חמישי: </h5>
                                 <p style="font-size:15px;">שעת פתיחה: {{ date("g:i a", strtotime($brand_timming->sat_thu_mor_open['thu_mor_open'] ))}}
-                                @if(isset($time->sat_thu_noon_open['thu_mor_close']))
-                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['thu_mor_close'] ))}}
+                                @if(isset($brand_timming->sat_thu_mor_close['thu_mor_close']))
+                                שעת סגירה לפנה''צ: {{ date("g:i a", strtotime( $brand_timming->sat_thu_mor_close['thu_mor_close'] ))}}<br>
                                 @endif
-                                @if(isset($time->sat_thu_noon_open['thu_noon_open']))
+                                @if(isset($brand_timming->sat_thu_noon_open['thu_noon_open']))
                                 שעת פתיחה אחה''צ: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_open['thu_noon_open']))}}
                                 @endif
                                 שעת סגירה: {{ date("g:i a", strtotime($brand_timming->sat_thu_noon_close['thu_noon_close'] ))}}</p>

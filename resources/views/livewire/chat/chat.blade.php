@@ -122,7 +122,7 @@
                                                @foreach($friend as $item)
                                                 @php
                                                  $chatmessage=\App\Models\Message::where('thread',Auth::user()->id.'-'.$item->fiend)->orWhere('thread',$item->friend.'-'.Auth::user()->id)->latest()->get();
-                                                 $chatunread=\App\Models\Message::where(['receiver_id'=>$item->friend,'is_read'=> '0'])->count();
+                                                 $chatunread=\App\Models\Message::where(['sender_id'=>$item->user,'is_read'=> '0'])->count();
                                                 
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->user}})">
@@ -130,7 +130,7 @@
                                                         <img src="../../assets/img/mobile_component/flashes_2.png" alt=""
                                                             class="img-fluid">
                                                         <div class="annoucment_content">
-                                                            <h5 class="font-size-16">{{$item->users->name}}<i
+                                                            <h5 class="font-size-16">{{$item->endusers->name}}<i
                                                                     class="fa fa-check-circle" aria-hidden="true"></i></h5>
                                                             <p class="font-size-14">{{$chatmessage[0]->message ?? ''}}</p>
                                                         </div>
@@ -140,6 +140,7 @@
                                                         <span class="font-size-12">{{$chatunread ?? ''}}</span>
                                                     </div>
                                                 </li>
+                                                @php $chatunread = 0; @endphp
                                                 @endforeach
                                         </ul>
                                     </div>

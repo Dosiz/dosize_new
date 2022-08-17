@@ -233,6 +233,7 @@ Dosize
                     </div>
                 </div>
             </div>
+            @if(count($brand_messages) > 0)
             <div class="hot_flashes">
                 <div class="container-fluid">
                     <div class="row">
@@ -242,39 +243,23 @@ Dosize
                                     class="img-fluid"></span>
                             <div class="hot_flashes_list">
                                 <ul>
+                                    @foreach($brand_messages as $brand_message)
+                                    @php  
+                                        $current_date = \Carbon\Carbon::now();
+                                        $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                                        $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+                                    @endphp
+                                    @if($diff_in_days >= 0)
                                     <li>
                                         <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
+                                            <img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt="" class="img-fluid" style="width: 20px; height: 20px;">
                                         </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
+                                        <p class="flashes_comment font-size-14">
+                                            {{ $brand_message->message }}
                                         </p>
                                     </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                                 <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
                             </div>
@@ -282,6 +267,7 @@ Dosize
                     </div>
                 </div>
             </div>
+            @endif
             @if(count($brands_recomanded_products) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
@@ -490,11 +476,11 @@ Dosize
                         <div class="container-fluid">
                             <div class="affordable_consumption">
                                     <div class="row">
-                                        <div class="col-lg-12 text-right">
+                                        <div class="col-lg-12 text-right" style="padding-right: 15px; padding-left: 15px;">
                                             <div class="header_cloth">
                                                 
                                                 <img src="{{asset('category/'.$category->image)}}" width="60px" height="50px">
-                                                <h3 class="common_title">  {{ $category->name}} <img
+                                                <h3 class="common_title">  {{ $category->name}}<img
                                                         src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                         class="img-fluid">
                                                 </h3>
@@ -861,68 +847,7 @@ Dosize
 
     
 
-    $('#sign_up_form').submit(function(e){
-        // e.preventDefault();
-        // $('.main-wrapper').addClass('active');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "{{ route('register') }}",
-        //     data: new FormData(this),
-        //     datatype: "json",
-        //     processData: false,
-        //     contentType: false,
-        //     cache: false,
-        //     success: function (data) {
-        //         console.log("Success");
-        //         $('.close').click();
-        //         window.location.href="/";
-                 
-        //     },
-        //     error: function (data) {
-        //             $('.name_valid').text(data?.responseJSON?.errors?.name);
-        //             $('.email_valid').text(data?.responseJSON?.errors?.email);
-        //             $('.city_valid').text(data?.responseJSON?.errors?.city_id);
-        //             $('.password_valid').text(data?.responseJSON?.errors?.password);
-        //     }
-        // });
-    });
-
-    $('#login_form').submit(function(e){
-        // e.preventDefault();
-        // $('.main-wrapper').addClass('active');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "{{ route('login') }}",
-        //     data: new FormData(this),
-        //     datatype: "json",
-        //     processData: false,
-        //     contentType: false,
-        //     cache: false,
-        //     success: function (data) {
-        //         console.log(data);
-        //         $('.close').click();
-        //         // window.location.href="/dashboard/dashboard";
-                 
-        //     },
-        //     error: function (data) {
-        //         console.log('Error:', data.responseJSON);
-        //         if($('#email').val() == ''){
-        //             $('.email_valid').text(data.responseJSON.errors.email);
-        //         }
-        //         else{
-        //             $('.email_valid').text('');
-        //         }
-        //         if($('#password').val() == ''){
-        //             $('.password_valid').text(data.responseJSON.errors.password);
-        //         }
-        //         else{
-        //             $('.password_valid').text('');
-        //         }
-                
-                
-        //     }
-        // });
-    });
+    
 
     // console.log($('.example'))
     [...document.querySelectorAll('.example')].forEach(elem => {
