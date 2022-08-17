@@ -498,8 +498,15 @@ class FrontEndController extends Controller
         ->where('products.discount_price','==', null)
         ->get();
 
-        // dd($products);
-        return view('frontend.city_category',compact('cities','categories','discount_products','products','brands_recomanded_products','blogs'));
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id',$city_id)
+        ->get();
+
+        // dd($brand_messages,$city_id);
+        return view('frontend.city_category',compact('cities','brand_messages','categories','discount_products','products','brands_recomanded_products','blogs'));
     }
 
     public function category_article_detail($category_id,$city_id = 2)

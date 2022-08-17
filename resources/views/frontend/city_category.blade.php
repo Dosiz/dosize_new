@@ -196,6 +196,7 @@ Category By city
                 </div>
             </div>
             @endif
+            @if(count($brand_messages) > 0)
             <div class="hot_flashes">
                 <div class="container-fluid">
                     <div class="row">
@@ -205,39 +206,22 @@ Category By city
                                     class="img-fluid"></span>
                             <div class="hot_flashes_list">
                                 <ul>
+                                    @foreach($brand_messages as $brand_message)
+                                    @php  
+                                        $current_date = \Carbon\Carbon::now();
+                                        $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                                        $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+                                    @endphp
+                                    @if($diff_in_days >= 0)
                                     <li>
                                         <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
+                                            <img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt="" class="img-fluid" style="width: 20px; height: 20px;">
                                         </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
+                                        <p class="flashes_comment font-size-14">{{ $brand_message->message }}
                                         </p>
                                     </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                                 <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
                             </div>
@@ -245,6 +229,7 @@ Category By city
                     </div>
                 </div>
             </div>
+            @endif
             @if(count($brands_recomanded_products) > 0) 
             <div class="deals deal_two">
                 <div class="container-fluid">
