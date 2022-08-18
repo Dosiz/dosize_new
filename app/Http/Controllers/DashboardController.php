@@ -14,6 +14,7 @@ use App\Models\BrandsHasCity;
 use App\Models\BrandsHasAddress;
 use App\Models\BrandProfile;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -120,7 +121,10 @@ class DashboardController extends Controller
         $brand = BrandProfile::where('user_id', '=', $user_id)->first();
         $id = $brand->id;
         $brand_profile = BrandProfile::find($id);
-        
+        $lower_name = Str::lower($request->brand_name);
+        $short_name = str_replace(' ', '_', $lower_name);
+        // dd($brand_name);
+        $brand_profile->short_name = $short_name;
         $brand_profile->brand_name = $request->brand_name;
         $brand_profile->whatsapp_no = $request->whatsapp_no;
         if($request->website_url)

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Support\Facades\Route;
 use App\Models\City; 
+use App\Models\BrandProfile; 
 
 class Helpers
 {
@@ -57,6 +58,23 @@ class Helpers
         $city_id = City::where('name',$city_name)->first();
         $city_id = $city_id->id;
         return $city_id;
+    }
+
+    public static function profile_id()
+    {
+        // dd(session()->all());
+        $profile_id=Route::input('subdomain');
+        // dd(Route::input('subdomain'));
+       if($profile_id)
+       {
+        Session::put('profile_id', $profile_id);
+       }
+       else{
+        $profile_id = Session::get('profile_id');
+       }
+        $profile_id = BrandProfile::where('short_name',$profile_id)->first();
+        $profile_id = $profile_id->id;
+        return $profile_id;
     }
 
 }

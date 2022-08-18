@@ -14,6 +14,7 @@ use App\Models\Subscriber;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -53,6 +54,10 @@ class BrandController extends Controller
         else {
             $brand_profile= new BrandProfile;
         }
+        $lower_name = Str::lower($request->brand_name);
+        $short_name = str_replace(' ', '_', $lower_name);
+        //  dd($short_name);
+        $brand_profile->short_name = $short_name;
         $brand_profile->brand_name = $request->brand_name;
         $brand_profile->category_id = $request->category_id;
         // $collection->implode('name', ', ');

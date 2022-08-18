@@ -16,6 +16,7 @@ class CreateBrandProfilesTable extends Migration
         Schema::create('brand_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('brand_name');
+            $table->string('short_name');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->longText('brand_logo');
