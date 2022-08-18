@@ -37,6 +37,7 @@ Product Orders
 													<th>Product Name</th>
 													<th>User Name</th>
 													<th>User Email</th>
+													<th>Order Date</th>
 													<th>Coins</th>
 												</tr>
 											</thead>
@@ -52,6 +53,9 @@ Product Orders
 													</td>
 													<td>
 														{{ $admin_product_order->user->email}}
+													</td>
+													<td>
+														{{ date('Y/m/d', strtotime($admin_product_order->created_at))}}
 													</td>
 													<td>
 														{{ $admin_product_order->coins}}
