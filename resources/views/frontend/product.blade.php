@@ -928,6 +928,7 @@ $(document).ready(function() {
 
     $('#shareButton').click(function () {
         let url = "{{ url()->current() }}";
+        let source = "{{ \App\Helpers\PointsHelper::Product }}";
         let _token   = $('meta[name="csrf-token"]').attr('content');
         // $('#login-modal').fadeIn()
 
@@ -936,6 +937,7 @@ $(document).ready(function() {
             url: "{{ url('getShortUrl') }}",
             data: {
                 url:url,
+                source:source,
                 _token: _token
             } ,
             datatype: "json",
