@@ -29,25 +29,15 @@ use App\Models\RecomendedBlog;
 use App\Models\Like;
 use App\Models\Bookmark;
 use App\Models\Message;
-<<<<<<< HEAD
 use App\Models\Friend;       
 use App\Models\ContactUs;     
 use App\Models\Subscriber;   
 use App\Models\AdminProduct;  
 use App\Models\AdminProductOrder;   
-use App\Models\BrandTimming;   
+use App\Models\BrandTimming;  
 use Session;
 use Illuminate\Support\Facades\Route;
-use App\Helpers\Helpers;
-=======
-
-use App\Models\Friend;
-use App\Models\ContactUs;
-use App\Models\Subscriber;
-use App\Models\AdminProduct;
-use App\Models\AdminProductOrder;
-use App\Models\BrandTimming;
->>>>>>> 74727e55e4d4bdc019fe932c194a4ee0975560bc
+use App\Helpers\Helpers; 
 
 class FrontEndController extends Controller
 {
