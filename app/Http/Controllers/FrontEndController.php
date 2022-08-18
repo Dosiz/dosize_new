@@ -33,11 +33,16 @@ use App\Models\Subscriber;
 use App\Models\AdminProduct;  
 use App\Models\AdminProductOrder;   
 use App\Models\BrandTimming;   
+use Session;
+use Illuminate\Support\Facades\Route;
+use App\Helpers\Helpers;
 
 class FrontEndController extends Controller
 {
-    public function landing_page($city_id)
+    public function landing_page()
     {
+        $city_id = Helpers::city_id();
+        // dd($city_id);
         $cities = City::get();
         $products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -47,7 +52,7 @@ class FrontEndController extends Controller
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id',$city_id)
         ->get();
-        // dd($products);
+        //  dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
         $discount_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -100,7 +105,7 @@ class FrontEndController extends Controller
 
         $categories = Category::get();
 
-        // dd($categories);
+        // dd($p_city);
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 
@@ -555,8 +560,9 @@ class FrontEndController extends Controller
             return Redirect::back();
         }
     }
-    public function city_brands($city_id)
+    public function city_brands()
     {
+        $city_id = Helpers::city_id();
         $categories = Category::get();
         $cities = City::get();
 

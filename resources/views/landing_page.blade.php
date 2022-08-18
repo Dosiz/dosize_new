@@ -316,6 +316,7 @@ Dosize
         </div>
         @endif
         <?php $i = 1; ?>
+        @if ($p_city )
         @if (count($p_city->products->groupBy('category_id')) > 0 )
             <div class="row flex-row-reverse">
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
@@ -564,6 +565,7 @@ Dosize
                 @endif
             @endforeach
             </div>
+        @endif
         @endif
         {{-- <div class="gifts_event_div spacing">
             <div class="affordable_consumption">

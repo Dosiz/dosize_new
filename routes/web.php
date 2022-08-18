@@ -22,8 +22,10 @@ Route::post('getShortUrl',function (Request $request){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
 
-Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
 Route::get('/brand-profile/{brand_id}',[App\Http\Controllers\FrontEndController::class, 'brand_profile'])->name('brand-profile');
@@ -49,7 +51,7 @@ Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::
 
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks');
 
-Route::get('/brands/{city_id}',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
+Route::get('/brands',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
 Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');
 
 Route::get('/category/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'category'])->name('category_by_city');
@@ -176,8 +178,10 @@ Route::get('archive_category', function () {
 
 
 
-Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {   
+    
     Route::get('/brand/wallet', function () {
+        // dd(session());
         return view('frontend.wallet');
     });
 

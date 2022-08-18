@@ -17,7 +17,7 @@
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="{{route('landing-page',5)}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
+                    <a href="{{url('/')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 @if(! isset(Auth::user()->name))
@@ -32,7 +32,7 @@
                     </li>
                 @endif
                 <li>
-                    <a href="{{route('city-brands',2)}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
+                    <a href="{{route('city-brands')}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <!-- Need to add all archived categoies heref for the city -->
