@@ -321,19 +321,26 @@ class FrontEndController extends Controller
     {
         $brand_id = Helpers::profile_id();
         // dd($brand_id);
-        $cities = City::get();
-        $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
-        $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->get();
-        $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
-        $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
-        $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
-        $categories = Category::get();
-        $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
+        if($brand_id != null)
+        {
+            $cities = City::get();
+            $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
+            $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->get();
+            $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
+            $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
+            $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
+            $categories = Category::get();
+            $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
+            return view('frontend.brand_profile',compact('brand_timming','brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
+
+        }
+        else{
+            return redirect('Not Any brand Created Yet');
+        }
 
 
 
         // dd($blog_1,$blog_2,$blog_3);
-        return view('frontend.brand_profile',compact('brand_timming','brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
     }
 
     public function store(Request $request)

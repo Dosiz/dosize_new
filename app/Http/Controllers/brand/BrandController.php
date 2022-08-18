@@ -55,7 +55,7 @@ class BrandController extends Controller
             $brand_profile= new BrandProfile;
         }
         $lower_name = Str::lower($request->brand_name);
-        $short_name = str_replace(' ', '_', $lower_name);
+        $short_name = str_replace(' ', '-', $lower_name);
         //  dd($short_name);
         $brand_profile->short_name = $short_name;
         $brand_profile->brand_name = $request->brand_name;

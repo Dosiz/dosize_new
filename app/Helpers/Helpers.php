@@ -73,7 +73,13 @@ class Helpers
         $profile_id = Session::get('profile_id');
        }
         $profile_id = BrandProfile::where('short_name',$profile_id)->first();
-        $profile_id = $profile_id->id;
+        if($profile_id)
+        {
+            $profile_id = $profile_id->id;
+        }
+        else{
+            $profile_id = null;
+        }
         return $profile_id;
     }
 
