@@ -1,3 +1,8 @@
+function get_input_value(coin,product_id)
+    {
+        $('[name="coins"]').val(coin)
+        $('[name="product_id"]').val(product_id)
+    }
 const swiper = new Swiper('.swiper', {
     direction: 'horizontal',
     // slidesPerView: "auto",

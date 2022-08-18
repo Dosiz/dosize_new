@@ -9,6 +9,7 @@
 /public/category
 /public/blog
 /public/product
+/public/admin_product
 .env
 .env.backup
 .phpunit.result.cache

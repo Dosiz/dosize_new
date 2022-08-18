@@ -31,7 +31,7 @@ Dosize
                         <div class="ro">
                             <div class="col-lg_5 d-lg-none text-center">
                                 <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
-                                <h3 class="total_points">460 נקודות</h3>
+                                <h3 class="total_points">{{$coins - $usedcoins}} נקודות</h3>
                             </div>
                             <div class="col-lg_7">
                                 <ul>
@@ -45,7 +45,7 @@ Dosize
                             </div>
                             <div class="col-lg_5 d-none d-lg-block mt-3 text-center">
                                 <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
-                                <h3 class="total_points">460 נקודות</h3>
+                                <h3 class="total_points">{{$coins - $usedcoins}} נקודות</h3>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ Dosize
                                             {!! substr($product->description, 0,  30) !!}
                                         </p>
                                         <div class="price_learn_more">
-                                            <a href=""  data-toggle="modal" data-target="#exampleModal" class="font-size-14 font-weight-700" @if(($product->price) > 460) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
+                                            <a href=""  data-toggle="modal" onClick="get_input_value({{$product->price}},{{$product->id}})" data-target="#exampleModal" class="font-size-14 font-weight-700" @if(($product->price) > $totalcoins) style="pointer-events: none;opacity: 0.5;" @else style="cursor:pointer;"" @endif>קבל ></a>
                                             <p class="font-size-14 font-weight-600">{{$product->price}} <img
                                                     src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
                                                     class="img-fluid"></p>
@@ -114,16 +114,16 @@ Dosize
                                 <p class="txt">בואו לעקוב אחרנו :)</p>
                                 <div class="socials_icons mt-4">
                                     <a href="#" class="social_link mx-2">
-                                        <img src="../../assets/img/fb.png" alt="fb">
+                                        <img src="{{asset('assets/img/fb.png') }}" alt="fb">
                                     </a>
                                     <a href="#" class="social_link mx-2">
-                                        <img src="../../assets/img/inst.png" alt="">
+                                        <img src="{{asset('assets/img/inst.png') }}" alt="">
                                     </a>
                                     <a href="#" class="social_link mx-2">
-                                        <img src="../../assets/img/twitter.png" alt="">
+                                        <img src="{{asset('assets/img/twitter.png') }}" alt="">
                                     </a>
                                     <a href="#" class="social_link mx-2">
-                                        <img src="../../assets/img/whatsapp.png" alt="">
+                                        <img src="{{asset('assets/img/whatsapp.png') }}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ Dosize
                         </div>
                         <div class="col-4">
                             <div class="box px-3 d-flex align-items-center justify-content-center">
-                                <img src="../../assets/img/footer_img.png" class="footer_Img" alt="footer">
+                                <img src="{{asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
                             </div>
                         </div>
                     </div>
@@ -187,6 +187,8 @@ Dosize
 <script src="{{ asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
+
+
     $(document).ready(function() {
         $('#login-modal').fadeOut()
         $("#signup_btn").click(function(e) {

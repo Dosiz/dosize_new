@@ -732,8 +732,13 @@ class FrontEndController extends Controller
         ->where('product_comments.user_id', Auth::user()->id)
         ->get();
         $likes = Like::where('user_id',Auth::user()->id)->get();
-        // dd($product_ratings);
-        return view('frontend.user_wallet',compact('cities','categories','products','admin','product_ratings','product_comments','likes'));
+
+        $coins = Point::where('user_id',Auth::user()->id)->sum('points');
+        $usedcoins = AdminProductOrder::where('user_id',Auth::user()->id)->sum('coins');
+        // dd($usedcoins,$coins);
+        // dd($coins);
+        $totalcoins = $coins - $usedcoins;
+        return view('frontend.user_wallet',compact('totalcoins','usedcoins','coins','cities','categories','products','admin','product_ratings','product_comments','likes'));
     }
 
     public function store_wallet(Request $request)
