@@ -287,4 +287,15 @@ class BlogController extends Controller
         // }
         
     }
+
+    public function update_brand_blog(Request $request,$id)
+    {
+        
+        $blog= Blog::find($id); 
+        $blog->status = $request->status;
+        $blog->save();
+
+        return Redirect::back();
+        
+    }
 }

@@ -63,9 +63,15 @@ Products
 										</td>
 										<td>
 											@if($product->status == 1)
-												active
+											<form action="{{ route('update-brand-product', $product->id) }}" method="POST">
+												@csrf()                         
+												<button type="submit" class="btn btn-success" name="status" value="0">Active</button>
+											</form>                    
 											@else
-												InActive
+												<form action="{{ route('update-brand-product', $product->id) }}" method="POST">
+													@csrf()                             
+													<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
+												</form>
 											@endif
 										</td>
 										

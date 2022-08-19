@@ -31,6 +31,17 @@
                                 class="img-fluid"></a>
                     </li>
                 @endif
+                @php 
+                    $check_user = \App\Models\User::where('id',Auth::id())->whereHas('roles', function($q){ $q->where('name', 'User'); })->first();
+                    // dd($check_user);
+                @endphp
+                @if(isset($check_user))
+                    <li>
+                        <a href="{{route('user-order')}}"> הזמנות <img src="{{asset('assets/img/mobile_component/wallet.png') }}" alt=""
+                                class="img-fluid"></a>
+                    </li>
+                @endif
+
                 <li>
                     <a href="{{route('city-brands')}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.png') }}" alt=""
                             class="img-fluid"></a>

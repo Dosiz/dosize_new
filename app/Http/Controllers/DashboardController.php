@@ -15,6 +15,8 @@ use App\Models\BrandsHasAddress;
 use App\Models\BrandProfile;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use App\Models\AdminProduct;  
+use App\Models\AdminProductOrder;   
 
 class DashboardController extends Controller
 {
@@ -169,5 +171,13 @@ class DashboardController extends Controller
         }
         return redirect('dashboard/profile');
         
+    }
+
+    public function user_order()
+    {
+        $cities = City::get();
+        $orders = AdminProductOrder::with('product','user')->where('user_id',Auth::id())->orderby('id' , 'DESC')->get();
+        // dd($orders,Auth::id());
+        return view('frontend.user_order', compact('orders','cities'));
     }
 }

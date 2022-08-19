@@ -291,4 +291,15 @@ class ProductController extends Controller
         // }
         
     }
+
+    public function update_brand_product(Request $request,$id)
+    {
+        
+        $product= Product::find($id); 
+        $product->status = $request->status;
+        $product->save();
+
+        return Redirect::back();
+        
+    }
 }

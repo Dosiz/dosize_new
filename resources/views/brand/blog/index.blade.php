@@ -62,10 +62,17 @@ Blogs
 											{{ $blog->subcategory->name}}
 										</td>
 										<td>
-											@if($blog->status == 1)
-												active
+											
+											@if($blog->status == 1) 
+											<form action="{{ route('update-brand-blog', $blog->id) }}" method="POST">
+												@csrf()                         
+												<button type="submit" class="btn btn-success" name="status" value="0">Active</button>
+											</form>                    
 											@else
-												InActive
+												<form action="{{ route('update-brand-blog', $blog->id) }}" method="POST">
+													@csrf()                             
+													<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
+												</form>
 											@endif
 										</td>
 										

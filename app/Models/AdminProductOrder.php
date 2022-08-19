@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminProductOrder extends Model
 {
+    protected $table = 'admin_product_orders';
     use HasFactory;
 
     protected $guarded = [];

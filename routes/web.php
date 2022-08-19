@@ -80,6 +80,12 @@ Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, '
 /********************DASHBOARD ROUTES END******************************/
 
 /*****************ADMIN ROUTES*******************/
+Route::prefix('user')->middleware('can:user')->group(function(){
+    Route::get('/user_order',[App\Http\Controllers\DashboardController::class, 'user_order'])->name('user-order');
+});
+/********************DASHBOARD ROUTES END******************************/
+
+/*****************ADMIN ROUTES*******************/
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
@@ -122,10 +128,12 @@ Route::prefix('brand')->middleware('can:brand')->group(function(){
 
     //blog
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
+    Route::post('/update_brand_blog/{id}', [App\Http\Controllers\brand\BlogController::class,'update_brand_blog'])->name('update-brand-blog');
     //blog-comment
     Route::resource('blog', App\Http\Controllers\brand\BlogController::class);
     //product
     Route::resource('product', App\Http\Controllers\brand\ProductController::class);
+    Route::post('/update_brand_product/{id}', [App\Http\Controllers\brand\ProductController::class,'update_brand_product'])->name('update-brand-product');
 
     //brand_timming
     Route::resource('/brand_timming', App\Http\Controllers\brand\BrandTimmingController::class);
