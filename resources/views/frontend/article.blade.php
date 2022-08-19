@@ -220,14 +220,18 @@
                                     class="img-fluid" style="width:39px ; height: 38px;">
 
                                 <a class="font-size-16" href="{{route('brand-profile',$blog->brand_profile_id)}}">לעמוד המותג</a>
+                                @guest
+                                <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="" >שליחת הודעה</a>
+                                @else
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
+                                @endif
 
 
                             </div>
                             <div class="sign_up_div">
 
                                 @guest
-                                    <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
+                                    <a href="" id="" class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
                                     @if($chk_subscriber == null)
                                     <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">

@@ -253,7 +253,11 @@
                     <div class="stand_brand_message">
                         <img src="{{asset('brand_image/'.$product->brandprofile->brand_image)}}" alt="" class="img-fluid" style="width:39px ; height: 38px;">
                         <a class="font-size-16" href="{{route('brand-profile',$product->brand_profile_id)}}">לעמוד המותג</a>
+                        @guest
+                        <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="">שליחת הודעה</a>
+                        @else
                         <a class="font-size-16" href="{{url('brand/messages?id='.$product->brandprofile->user_id.'')}}">שליחת הודעה</a>
+                        @endguest
                     </div>
                 </div>
                 <div class="col-lg-12 col-xl-6">
