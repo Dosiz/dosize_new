@@ -213,7 +213,7 @@
                         </div>
                         <div class="infoDiv">
                             <h5>כתובתינו: </h5>
-                            <p>{{$brand_profile->brandaddresses['0']->address ?? ''}}</p>
+                            <a target="_blank" href="https://maps.google.com/?q={{$brand_profile->brandaddresses['0']->address ?? ''}}" ><p>{{$brand_profile->brandaddresses['0']->address ?? ''}}</p></a>
                             <span>בקר אותנו</span>
                         </div>
                     </div>
