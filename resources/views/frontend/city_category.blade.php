@@ -130,7 +130,7 @@ Category By city
                                         {{$blog->title}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $blog->description !!}
+                                        {!! substr($blog->description, 0,  30) !!}
                                     </p>
                                     <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
@@ -148,6 +148,21 @@ Category By city
                 </div>
             </div>
         </div>
+        @else
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         @endif
 
 

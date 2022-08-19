@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="commonContactDiv">
+                    <div class="commonContactDiv mb-3">
                         <div class="iconDiv">
                             <a href='tel:{{$brand_profile->whatsapp_no}}'><img src="{{asset('assets/img/user/call.svg')}}" alt="" id="for_phone" class="img-fluid"></a>
                         </div>
