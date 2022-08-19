@@ -237,7 +237,7 @@
                         </div>
                         <div class="infoDiv">
                             <h5>שלח לנו הודעה:</h5>
-                            <a href='{{$brand_profile->website_url}}' target="_blank"><p>{{$brand_profile->website_url}}</p></a>
+                            <a href='{{$brand_profile->website_url}}' target="_blank"><p style="direction: ltr;">{{$brand_profile->website_url}}</p></a>
                             <span>מחכים לשמוע ממך </span>
                         </div>
                     </div>
