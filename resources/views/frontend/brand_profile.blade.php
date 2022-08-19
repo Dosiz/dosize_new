@@ -213,7 +213,7 @@
                         </div>
                         <div class="infoDiv">
                             <h5>כתובתינו: </h5>
-                            <p>{{$brand_profile->city->name ?? ''}}</p>
+                            <p>{{$brand_profile->brandaddresses['0']->address ?? ''}}</p>
                             <span>בקר אותנו</span>
                         </div>
                     </div>
@@ -237,7 +237,7 @@
                         </div>
                         <div class="infoDiv">
                             <h5>שלח לנו הודעה:</h5>
-                            <a href='{{$brand_profile->website_url}}' target="_blank"><p>בקר אותנו</p></a>
+                            <a href='{{$brand_profile->website_url}}' target="_blank"><p>{{$brand_profile->website_url}}</p></a>
                             <span>מחכים לשמוע ממך </span>
                         </div>
                     </div>

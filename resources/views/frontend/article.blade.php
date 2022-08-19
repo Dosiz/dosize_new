@@ -224,7 +224,7 @@
                                 <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="" >שליחת הודעה</a>
                                 @else
                                 <a class="font-size-16" href="{{url('brand/messages?id='.$blog->brandprofile->user_id.'')}}">שליחת הודעה</a>
-                                @endif
+                                @endguest
 
 
                             </div>

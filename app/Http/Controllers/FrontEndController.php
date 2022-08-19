@@ -331,6 +331,7 @@ class FrontEndController extends Controller
             $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
             $categories = Category::get();
             $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
+            // dd($brand_profile->brandaddresses);
             return view('frontend.brand_profile',compact('brand_timming','brand_profile','brand_products','blog_1','blog_2','blog_3','cities','categories'));
 
         }
