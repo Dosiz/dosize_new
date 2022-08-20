@@ -520,7 +520,7 @@ class FrontEndController extends Controller
     {
         $cities = City::get();
         $categories = Category::get();
-        $id=$_GET['id'];
+        $id=$_GET['id'] ?? '';
         if(Auth::user()->hasRole('Brand'))
         {
             return view('brand.message.index',compact('id','cities','categories'));

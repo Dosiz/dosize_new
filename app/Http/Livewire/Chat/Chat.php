@@ -31,8 +31,6 @@ class Chat extends Component
                 $this->current_user =$user;
                 $this->friend = Friend::with('endusers')->where('friend', $user)->get();
                 $this->current=User::find($id);
-                // get all chats
-                // $this->messages = Message::where('thread', $user.'-'.$receiver)->orWhere('thread', $receiver.'-'.$user)->get();
                 Message::where('thread', $this->current_user.'-'.$this->receiver)->orWhere('thread', $this->receiver.'-'.$this->current_user)->update(['is_read' => '1']);
                 
             }
@@ -41,8 +39,6 @@ class Chat extends Component
                 $this->current_user =$user;
                 $this->current=BrandProfile::with('user')->where('user_id',$id)->first();
                 $this->friend = Friend::with('users')->where('user', $user)->get();
-                // change to chat read
-                // $this->messages = Message::where('thread', $this->current_user.'-'.$this->receiver)->orWhere('thread', $this->receiver.'-'.$this->current_user)->get();
                 Message::where('thread', $this->current_user.'-'.$this->receiver)->orWhere('thread', $this->receiver.'-'.$this->current_user)->update(['is_read' => '1']);
             }
            

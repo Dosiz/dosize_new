@@ -7,6 +7,12 @@ Message
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
 @endpush
 @section('content')
+@php 
+if($id=="")
+{
+    $id=Auth::user()->id;
+}
+@endphp
 @livewire('chat.chat',['receiver'=>$id])
 @endsection
 @section('script')
