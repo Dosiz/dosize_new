@@ -681,9 +681,10 @@ class FrontEndController extends Controller
 
     public function user_messages()
     {
-        $categories = Category::get();
         $cities = City::get();
-        return view('frontend.messages',compact('cities','categories'));
+        $categories = Category::get();
+        $id=$_GET['id'] ?? '';
+        return view('frontend.messages',compact('id','cities','categories'));
     }
 
     public function store_subscriber(Request $request)
