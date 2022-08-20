@@ -188,7 +188,10 @@
                                     <div class="col-8 text-right">
                                         <div class="inbox_header_content">
                                             <a href=""><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                           
+                                            @if(isset($current->brand_image))
+                                            <img src="{{asset('brand_image/'.$current->brand_image ?? '')}}" alt=""
+                                                class="img-fluid" width="70px" height="70px">
+                                            @endif
                                             <p class="font-size-16">
                                                 {{$current->user->name ?? ''}}<i class="fa fa-check-circle" aria-hidden="true"></i>
                                             </p>
