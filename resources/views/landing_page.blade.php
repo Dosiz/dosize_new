@@ -161,7 +161,7 @@ Dosize
                             <div class="affordable_consumption_box box_shahdow">
                                 <a href="{{route('article',$blog->id)}}">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px; height: 160px">
+                                    class="img-fluid" style="width: 300px; height: 205px">
                                 </a>
                                 <div class="content_div">
                                     <a href="{{route('brand-profile',$blog->brand_profile_id)}}">

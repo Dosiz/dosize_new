@@ -180,7 +180,11 @@
                 </div>
                 <div class="product_category_div d-xl-flex justify-content-end">
                     <div class="more_detail_for_purchase">
-                        <a href="" class="font-size-16">לפרטים נוספים ולרכישה</a>
+                        @guest
+                        <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="">לפרטים נוספים ולרכישה</a>
+                        @else
+                        <a class="font-size-16" href="{{url('brand/messages?id='.$product->brandprofile->user_id.'')}}">לפרטים נוספים ולרכישה</a>
+                        @endguest
                     </div>
                     <div class="choose_size d-xl-none">
                         <a href="" class="font-size-16">בחר מידה ></a>
