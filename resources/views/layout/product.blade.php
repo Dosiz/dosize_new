@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('layout.partials.head')
-    @if(isset($product))
-        <meta property="og:title" content="{{$product->name ?? ''}}">
-        <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
-        <meta property="og:title" content="{{$product->name ?? ''}}">
-        <meta property="og:locale" content="he_IL" />
-        <meta property="og:type" content="product" />
-        <meta property="og:site_name" content="דוסיז צרכנות" />
-        <meta property="og:url" content="http://arikliger.com/product/{{$product->id ?? ''}}" />
-        <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
-        <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+    @include('layout.partials.head')
+    @if(Request::is('product/*'))
+        @if(isset($product))
+            <meta property="og:title" content="{{$product->name ?? ''}}">
+            <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
+            <meta property="og:locale" content="he_IL" />
+            <meta property="og:type" content="product" />
+            <meta property="og:site_name" content="דוסיז צרכנות" />
+            <meta property="og:url" content="http://arikliger.com/product/{{$product->id ?? ''}}" />
+            <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
+            <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+        @endif
     @endif
     {{-- @if(Request::is('product/*'))
     @if(isset($product))
