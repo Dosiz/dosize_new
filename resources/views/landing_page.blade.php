@@ -220,8 +220,11 @@ Dosize
                                                 {{$product->name}}
                                             </h4>
                                             <div class="rating_price_div">
-                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span
-                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @if($product->price)
+                                                <p class="font-size-14 font-weight-600" {{$product->price ?? ''}}> ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @else
+                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @endif
                                                 <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
@@ -298,8 +301,11 @@ Dosize
                                         {{$product->name}}
                                     </h4>
                                     <div class="rating_price_div">
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        @if($product->price)
+                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        @else
+                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        @endif
                                         <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>
@@ -443,10 +449,16 @@ Dosize
                                                                         <a class="font-size-14 font-weight-700"
                                                                            href="{{route('product',$product->id ?? '')}}"
                                                                            style="color: #212529 !important">
+                                                                           @if($product->price)
                                                                             <p class="font-size-14 font-weight-600">
                                                                                 {{$product->price ?? ''}}
                                                                                 ₪
                                                                             </p>
+                                                                            @else
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                
+                                                                            </p>
+                                                                            @endif
                                                                         </a>
                                                                         <p class="rating_text"
                                                                            style="visibility: hidden;">
@@ -533,9 +545,14 @@ Dosize
                                                             <i class="fa fa-heart"
                                                                 aria-hidden="true"></i></span>
                                                         <div class="rating_price_div">
+                                                            @if($product->price)
                                                             <p class="font-size-14 font-weight-600">
                                                                 ₪ {{$product->price ?? ''}}
                                                             </p>
+                                                            @else
+                                                            <p class="font-size-14 font-weight-600">
+                                                            </p>
+                                                            @endif
                                                             <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
                                                                 4.8
                                                             </p>

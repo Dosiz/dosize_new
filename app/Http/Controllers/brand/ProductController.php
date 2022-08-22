@@ -66,18 +66,35 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $this->validate($request,[ 
-            'image'=>'required', 
-            'images'=>'required', 
-            'name'=>'required', 
-            'price'=>'required', 
-            'category_id'=>'required', 
-            'description'=>'required', 
-            'profile_id'=>'required', 
-            'sub_category_id'=>'required', 
-            'city_id'=>'required', 
-
-        ]);
+        if($request->price)
+        {
+            $this->validate($request,[ 
+                'image'=>'required', 
+                'images'=>'required', 
+                'name'=>'required', 
+                'price'=>'required', 
+                'category_id'=>'required', 
+                'description'=>'required', 
+                'profile_id'=>'required', 
+                'sub_category_id'=>'required', 
+                'city_id'=>'required', 
+    
+            ]);
+        }
+        else{
+            $this->validate($request,[ 
+                'image'=>'required', 
+                'images'=>'required', 
+                'name'=>'required', 
+                'category_id'=>'required', 
+                'description'=>'required', 
+                'profile_id'=>'required', 
+                'sub_category_id'=>'required', 
+                'city_id'=>'required', 
+    
+            ]);
+        }
+       
         $product= new Product;
         $product->name = $request->name;
         $product->price = $request->price;
