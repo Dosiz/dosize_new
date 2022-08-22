@@ -10,8 +10,14 @@
             <meta property="og:type" content="product" />
             <meta property="og:site_name" content="דוסיז צרכנות" />
             <meta property="og:url" content="http://arikliger.com/product/{{$product->id ?? ''}}/%d7%91%d7%99%d7%aa-%d7%94%d7%90%d7%95%d7%a4%d7%a0%d7%94-golbary-%d7%9e%d7%a9%d7%99%d7%a7-%d7%a7%d7%95%d7%9c%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%91%d7%99%d7%a9%d7%95%d7%9d-%d7%9c%d7%a0%d7%a9%d7%99%d7%9d/" />
-            <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
+            <meta property="og:image:alt" content="{{$product->name ?? ''}}" />
             <meta property="og:image:secure_url" content="{{asset('product/'.$product->image ?? '')}}" />
+            <meta name="twitter:title" content="{{$product->title ?? ''}}" />
+            <meta property="og:image" content="{{asset('product/'.$product->image ?? '')}}" />
+            <meta property="og:image:width" content="999" />
+            <meta property="og:image:height" content="984" />
+            <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
+            <meta name="twitter:description" content="{{$product->description ?? ''}}" />
         @endif
     @endif
     {{-- @if(Request::is('product/*'))
