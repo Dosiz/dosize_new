@@ -5,7 +5,7 @@
     @if(isset($product))
         <meta property="og:title" content="{{$product->name ?? ''}}">
         <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
-        <meta property="og:title" content="{{$product->description ?? ''}}">
+        {{-- <meta property="og:title" content="{{$product->description ?? ''}}"> --}}
         <meta property="og:locale" content="he_IL" />
         <meta property="og:type" content="product" />
         <meta property="og:site_name" content="דוסיז צרכנות" />
