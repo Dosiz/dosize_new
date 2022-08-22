@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   @include('layout.partials.head')
-    {{-- @if(isset($product))
+    @if(isset($product))
         <meta property="og:title" content="{{$product->name ?? ''}}">
+        <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
         <meta property="og:title" content="{{$product->description ?? ''}}">
         <meta property="og:locale" content="he_IL" />
         <meta property="og:type" content="article" />
@@ -17,13 +18,13 @@
         <meta property="og:image:height" content="984" />
         <meta name="twitter:image" content="{{asset('product/'.$product->image ?? '')}}" />
         <meta name="twitter:description" content="{{$product->description ?? ''}}" />
-    @endif --}}
-    @if(Request::is('product/*'))
+    @endif
+    {{-- @if(Request::is('product/*'))
     @if(isset($product))
-        <link href="{{asset('brand_image/'.$product->brandprofile->brand_image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
+        <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
         <meta property="og:image" content="https://arikliger.com/{{ $product->image ?? '' }}" aria-setsize="200x200">
     @endif
-    @endif
+    @endif --}}
 
     
     
