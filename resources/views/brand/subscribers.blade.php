@@ -3,7 +3,11 @@
 Subscribers
 @endsection
 @push('styles')
-
+	<style>
+		body{
+			direction:ltr !important;
+		}
+	</style>
 @endpush
 @section('content')		
 <!-- Page Wrapper -->
@@ -28,7 +32,10 @@ Subscribers
 			<div class="col-sm-12">
 				<div class="card">
 					<div class="card-body">
-						{{-- <a href="{{route('blog.create')}}" class="btn btn-primary">Add New <i class="fa fa-plus"></i></a><br><br> --}}
+						@if(count($subscribers) > 0)
+							<a href="" data-toggle="modal" data-target="#sendMessageModal" style="padding: 5px !important;" class="btn btn-warning"> שלח הודעת שידור <i class="fa fa-send"></i></a><br><br>
+							
+						@endif
 						<div class="table-responsive">
 							<table class="datatable table table-hover table-center mb-0">
 								<thead>
@@ -72,6 +79,42 @@ Subscribers
 	</div>			
 </div>
 <!-- /Page Wrapper -->
+
+<!-- Select Type user Modal -->
+<div class="modal fade" id="sendMessageModal" aria-hidden="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered mx-auto" role="document" >
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="form-content p-2">
+					<div class="modal-header border-0">
+						<h4 class="modal-title"> שלח הודעות </h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<form id="update_category" method="post" autocomplete="off" action="{{route('send-message-to-subscriber')}}" novalidate="novalidate" class="bv-form"><button type="submit" class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+							@method('POST')
+							@csrf
+								<div class="form-group">
+									<label>טקסט</label>
+									<textarea cols="30" rows="6" class="form-control summernote" name="message" id="message" ></textarea>
+									<div style="color:red;">{{$errors->first('text')}}</div> <br>
+								</div>
+								<div class="mt-4">
+									<button class="btn btn-primary" name="form_submit" value="submit" type="submit">שלח הודעה</button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal"> לְבַטֵל </button>
+								</div>
+							</form>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Select Type user Modal -->
 		
 @endsection
 

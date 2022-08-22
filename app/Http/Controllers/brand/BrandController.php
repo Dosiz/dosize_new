@@ -11,6 +11,8 @@ use App\Models\BlogComment;
 use App\Models\ProductComment;   
 use App\Models\User;
 use App\Models\Subscriber;   
+use App\Models\Friend;   
+use App\Models\Message;   
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Redirect;
@@ -123,6 +125,7 @@ class BrandController extends Controller
     {
         $brand_profile = BrandProfile::where('user_id',Auth::id())->first();
         $subscribers =Subscriber::with('brandprofile')->where('brand_profile_id',$brand_profile->id)->get();
+        // dd($subscribers);
         return view('brand.subscribers',compact('subscribers'));
     }
 
@@ -237,6 +240,38 @@ class BrandController extends Controller
         $brand_profile->save();
         
         return Redirect::back();
+    }
+
+    public function brand_subscriber_messages(Request $request)
+    {
+        $brand_id = Auth::id();
+        $brand = BrandProfile::where('user_id', $brand_id)->first();
+        $subscribers = Subscriber::where('brand_profile_id', '=', $brand->id)->get();
+        // dd($subscribers);
+        foreach($subscribers as $subscriber)
+        {
+            $user_id = User::where('email', $subscriber->email)->first();
+            // dd($brand->id);
+
+            $chk_friend = Friend::where('user', $user_id->id)->where('friend',$brand_id)->first();
+            if(!$chk_friend)
+            {
+                $friend= new Friend;
+                $friend->friend = $brand_id;
+                $friend->user = $user_id->id;
+                $friend->save();
+            }
+
+            $message= new Message;
+            $message->thread = ($brand_id).'-'.($user_id->id);
+            $message->sender_id = $brand_id;
+            $message->receiver_id = $user_id->id;
+            $message->message = $request->message;
+            $message->save();
+            toastr()->success('Message sent successfully');
+            return Redirect::back();
+        }
+        
     }
 
 }
