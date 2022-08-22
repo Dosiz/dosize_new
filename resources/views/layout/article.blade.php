@@ -4,7 +4,7 @@
   @include('layout.partials.head')
   @if(isset($blog))
     <meta property="og:title" content="{{$blog->title ?? ''}}">
-    <meta property="og:title" content="{{$blog->description ?? ''}}">
+    <link href="{{asset('blog/'.$blog->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
     <meta property="og:locale" content="he_IL" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="דוסיז צרכנות" />
