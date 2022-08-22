@@ -16,8 +16,8 @@
 					</p>
 				</div>
 				<div class="col-md-4 text-center pt-4">
-					<p style="font-size: 18px; color: #fff;">
-						{{$brand_profile->brandaddresses['0']->address}} <i class="fa fa-map-marker"></i>
+					<p style="font-size: 18px; color: #fff !important;">
+						<a style="color: #fff !important;" href="https://maps.google.com/?q={{$brand_profile->brandaddresses['0']->address ?? ''}}">{{$brand_profile->brandaddresses['0']->address ?? ''}} <i class="fa fa-map-marker"></i></a>
 					</p>
 				</div>
 			</div>
