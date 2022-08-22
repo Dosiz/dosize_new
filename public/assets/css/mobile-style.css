@@ -1976,10 +1976,16 @@ main .main-wrapper .wallet_promotion .price_learn_more button {
 }
 
 /************* Message - CSS *********************/
+
 .messenger_announcment_main {
     width: 100%;
     display: flex;
     height: 100%;
+}
+@media (max-width: 768px) {
+    .messenger_announcment_main {
+        flex-direction: column-reverse !important;
+    }
 }
 
 .messenger_announcment_main .announcment_main {
@@ -1997,7 +2003,7 @@ main .main-wrapper .wallet_promotion .price_learn_more button {
 .messenger_announcment_main .messenger_main .message_list {
     /* margin-top: 50px;*/
     height: 80%;
-    position: relative;
+    /* position: relative; */
     overflow: auto;
 }
 
@@ -2535,7 +2541,8 @@ footer .inbox_footer .message_form .input_div_button button,
 
     .messenger_announcment_main .messenger_main,
     .messenger_announcment_main .announcment_main {
-        width: 50%;
+        width: 100%;
+        overflow: scroll;
     }
 
     .article_content_main .post_comment {
@@ -2609,9 +2616,9 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 @media screen and (max-width: 680px) {
-    .messenger_announcment_main .messenger_main {
+    /* .messenger_announcment_main .messenger_main {
         display: none;
-    }
+    } */
 
     .messenger_announcment_main .announcment_main {
         width: 100%;
@@ -2697,7 +2704,7 @@ footer .inbox_footer .message_form .input_div_button button,
 @media screen and (max-width: 580px) {
     .messenger_announcment_main .messenger_main .message_list {
         margin: 0px;
-        height: auto;
+        /* height: auto; */
     }
 
     .message_main_wrapper .inbox_header {
