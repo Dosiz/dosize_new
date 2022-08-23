@@ -30,7 +30,7 @@
                                 class="img-fluid desktop_hide">
                             <img src="{{ asset('assets/img/mobile_component/white_share_btn.png') }}" alt=""
                                 class="img-fluid mobile_hide">
-                            <span class="font-size-14">שתפו</span>
+                            <span class="font-size-14" style="cursor: pointer;">שתפו</span>
                         </button>
                     </div>
                     <div class="col-6 text-right"
