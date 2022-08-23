@@ -82,7 +82,7 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">המבצעים שלא תרצו לפספס <img
-                                src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
+                                src="{{ asset('assets/img/mobile_component/percentage_icon.svg') }}" alt=""
                                 class="img-fluid">
                         </h3>
                     </div>
@@ -197,7 +197,7 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">דילים חמים מהתנור <img
-                                    src="{{ asset('assets/img/mobile_component/deals.png') }}" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/deals.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
@@ -277,7 +277,7 @@ Dosize
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">הכי מומלצים <img
-                                    src="{{ asset('assets/img/mobile_component/star.png') }}" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/star.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
@@ -831,7 +831,7 @@ Dosize
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="{{asset('assets/img/mobile_component/footer_img.svg') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>

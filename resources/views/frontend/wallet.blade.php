@@ -19,7 +19,7 @@ Message
             <div class="points_div">
                 <div class="row">
                     <div class="col-lg-5 text-center">
-                        <img src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt="" class="img-fluid">
+                        <img src="{{asset('assets/img/mobile_component/points_icon.svg') }}" alt="" class="img-fluid">
                         <h3 class="total_points">460 נקודות</h3>
                     </div>
                     <div class="col-lg-7">
@@ -72,7 +72,7 @@ Message
                                 <div class="price_learn_more">
                                     <a class="font-size-14 font-weight-700" href="">קבל ></a>
                                     <p class="font-size-14 font-weight-600">300 <img
-                                            src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
+                                            src="{{asset('assets/img/mobile_component/points_icon.svg') }}" alt=""
                                             class="img-fluid"></p>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ Message
                                 <div class="price_learn_more">
                                     <a class="font-size-14 font-weight-700" href="">קבל ></a>
                                     <p class="font-size-14 font-weight-600">300 <img
-                                            src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
+                                            src="{{asset('assets/img/mobile_component/points_icon.svg') }}" alt=""
                                             class="img-fluid"></p>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@ Message
                                 <div class="price_learn_more">
                                     <a class="font-size-14 font-weight-700" href="">קבל ></a>
                                     <p class="font-size-14 font-weight-600">300 <img
-                                            src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
+                                            src="{{asset('assets/img/mobile_component/points_icon.svg') }}" alt=""
                                             class="img-fluid"></p>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@ Message
                                 <div class="price_learn_more">
                                     <a class="font-size-14 font-weight-700" href="">קבל ></a>
                                     <p class="font-size-14 font-weight-600">300 <img
-                                            src="{{asset('assets/img/mobile_component/points_icon.png') }}" alt=""
+                                            src="{{asset('assets/img/mobile_component/points_icon.svg') }}" alt=""
                                             class="img-fluid"></p>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@ Message
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="{{asset('assets/img/mobile_component/footer_img.svg') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>

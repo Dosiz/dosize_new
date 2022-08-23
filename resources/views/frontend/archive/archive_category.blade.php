@@ -123,7 +123,7 @@ Archive - Catagorey
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="{{asset('assets/img/mobile_component/footer_img.svg') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>

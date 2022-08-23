@@ -107,7 +107,7 @@
                     </div>
                     <div class="announcment_main">
                         <div class="main_wallet_div announcment_updates">
-                            <img src="../../assets/img/mobile_component/notifiction_main_img.png" alt="" class="img-fluid">
+                            <img src="../../assets/img/mobile_component/notifiction_main_img.svg" alt="" class="img-fluid">
                             <h3>הודעות ועידכונים</h3>
                             <p class="font-size-14">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית לורם שבצק גק
                                 ליץ,
@@ -251,7 +251,7 @@
                     </div>
                     <div class="announcment_main">
                         <div class="main_wallet_div announcment_updates">
-                            <img src="{{ asset('assets/img/mobile_component/notifiction_main_img.png') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('assets/img/mobile_component/notifiction_main_img.svg') }}" alt="" class="img-fluid">
                             <h3>הודעות ועידכונים</h3>
                             <p class="font-size-14">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית לורם שבצק גק
                                 ליץ,
