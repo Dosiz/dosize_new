@@ -124,7 +124,7 @@ Dosize
                                         </div>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                             <p class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
-                                                {{$product->name}}
+                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </p>
                                         </a>
                                         <div class="price_learn_more">
@@ -169,7 +169,7 @@ Dosize
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
-                                        {{$blog->title}}
+                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
                                         {!! substr($blog->description, 0,  30) !!}  
@@ -217,7 +217,7 @@ Dosize
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
-                                                {{$product->name}}
+                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </h4>
                                             <div class="rating_price_div">
                                                 @if($product->price)
@@ -371,7 +371,7 @@ Dosize
                                                                             <div class="article_content">
                                                                                 <h4 class="font-size-18"
                                                                                     style="margin-bottom: 20px;">
-                                                                                    {{$blog->title ?? ''}}
+                                                                                    {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
                                                                                     {!! \Illuminate\Support\Str::limit($blog->description ?? '',60,'...') !!}
@@ -435,7 +435,7 @@ Dosize
                                                                        href="{{route('product',$product->id ?? '')}}"
                                                                        style="color: #212529 !important;">
                                                                         <h4 class="font-size-14 font-weight-700">
-                                                                            {{$product->name ?? '' }}
+                                                                            {{\Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                                         </h4>
                                                                         <p class="discription font-size-12 font-weight-400">
                                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
@@ -514,7 +514,7 @@ Dosize
                                                             
                                                             
                                                             <h4 class="font-size-14 font-weight-700">
-                                                                {{$blog->title ?? ''}}
+                                                                {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                             </h4>
                                                             <p class="discription font-size-12 font-weight-400">
                                                                 {!! \Illuminate\Support\Str::limit($blog->description ?? '',60,'...') !!}
@@ -536,7 +536,7 @@ Dosize
                                                             {{$product->brand_name ?? ''}}
                                                         </span>
                                                         <h4 class="font-size-14 font-weight-700">
-                                                            {{$product->name ?? ''}}
+                                                            {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
                                                         <p class="discription font-size-12 font-weight-400">
                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
