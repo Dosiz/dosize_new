@@ -17,11 +17,8 @@ Dosize
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
-                                
                                 @if(count($categories) > 0)
-                                
                                 @foreach($categories as $key=>$category)
-                              
                                 <div class="category_box swiper-slide">
                                     <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">

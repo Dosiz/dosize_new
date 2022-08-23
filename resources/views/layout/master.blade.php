@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @include('layout.partials.head')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @include('layout.partials.head')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(isset($product))
+        <meta property="og:title" content="{{$p_city->name ?? ''}}">
+        <link href="{{asset('city/'.$p_city->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
+        <meta property="og:locale" content="he_IL" />
+        <meta property="og:type" content="City" />
+        <meta property="og:site_name" content="דוסיז צרכנות" />
+        <meta property="og:url" content="http://arikliger.com/%d7%91%d7%99%d7%aa-%d7%94%d7%90%d7%95%d7%a4%d7%a0%d7%94-golbary-%d7%9e%d7%a9%d7%99%d7%a7-%d7%a7%d7%95%d7%9c%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%91%d7%99%d7%a9%d7%95%d7%9d-%d7%9c%d7%a0%d7%a9%d7%99%d7%9d/" />
+        <meta property="og:image:alt" content="{{$p_city->name ?? ''}}" />
+        <meta name="twitter:title" content="{{$p_city->name ?? ''}}" />
+        <meta property="og:image" content="{{asset('city/'.$p_city->image ?? '')}}" />
+        <meta property="og:image:secure_url" content="{{asset('city/'.$p_city->image ?? '')}}" />
+        <meta property="og:image:width" content="999" />
+        <meta property="og:image:height" content="984" />
+        <meta name="twitter:image" content="{{asset('city/'.$p_city->image ?? '')}}" />
+        <meta name="twitter:description" content="{{$p_city->name ?? ''}}" />
+    @endif
 </head>
 
 <body>
@@ -16,17 +32,18 @@
             
         </div>
     </div>
+    
 
 <!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-        </div>
-    <div class="modal-body">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form action="{{route('search-product')}}" method="POST" class="form-inline">
                     @csrf
                     <div class="form-group searchInput mx-sm-3 mb-2">
@@ -35,9 +52,9 @@
                     </div>
                     <button type="submit" class="btn btn-primary mb-2" style="background-color: #db1580; border-color:#db1580">Search</button>
                 </form>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div class="modal fade enrollmentModel" id="enrollmentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="top: 0; left: 0;">
@@ -112,13 +129,12 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 <!-- 2nd -->
 <div class="modal fade enrollmentModel" id="enrollmentModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="top: 0; left: 0;">
-    <div class="modal-content" id="login-moda">
+        <div class="modal-content" id="login-moda">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">התחברות</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -174,6 +190,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
