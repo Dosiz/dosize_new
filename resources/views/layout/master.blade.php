@@ -143,6 +143,13 @@
                             </div>
                         </div>
                         <button type="submit" class="font-size-16" style="cursor: pointer;"> הרשמה </button>
+                        @if (Route::has('password.request'))
+                            <div class="text-center forgotpass">
+                                <a class="btn btn-link" target="_blank" href="{{ route('password.request') }}">
+                                {{ __('שכחת את הסיסמה? לחץ כאן לשיחזור!') }}
+                                </a>
+                            </div>
+                        @endif
                         <div class="sign_up_with">
                             <h6 class="text-center">התחברו עם </h6>
                             <div class="signup_btn">
