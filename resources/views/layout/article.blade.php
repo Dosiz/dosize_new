@@ -4,6 +4,8 @@
   @include('layout.partials.head')
   @if(isset($blog))
     <meta property="og:title" content="{{$blog->title ?? ''}}">
+    <meta name="description" content="{{$blog->sub_title ?? ''}}"/>
+    <meta property="og:description" content="{{$blog->sub_title ?? ''}}" />
     <link href="{{asset('blog/'.$blog->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
     <meta property="og:locale" content="he_IL" />
     <meta property="og:type" content="article" />
@@ -16,7 +18,7 @@
     <meta property="og:image:width" content="999" />
     <meta property="og:image:height" content="984" />
     <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
-    <meta name="twitter:description" content="{{$blog->description ?? ''}}" />
+    <meta name="twitter:description" content="{{$blog->sub_title ?? ''}}" />
    @endif
     
 </head>

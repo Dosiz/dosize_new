@@ -5,6 +5,8 @@
     @if(Request::is('product/*'))
         @if(isset($product))
             <meta property="og:title" content="{{$product->name ?? ''}}">
+            <meta name="description" content="{{$product->description ?? ''}}"/>
+            <meta property="og:description" content="{{$product->description ?? ''}}" />
             <link href="{{asset('product/'.$product->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
             <meta property="og:locale" content="he_IL" />
             <meta property="og:type" content="product" />

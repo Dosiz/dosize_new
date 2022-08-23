@@ -6,6 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @if(isset($product))
         <meta property="og:title" content="{{$p_city->name ?? ''}}">
+        <meta name="description" content="{{$p_city->name ?? ''}}"/>
+        <meta property="og:description" content="{{$p_city->name ?? ''}}" />
         <link href="{{asset('city/'.$p_city->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
         <meta property="og:locale" content="he_IL" />
         <meta property="og:type" content="City" />
