@@ -186,7 +186,7 @@
                         <a class="font-size-16" href="{{url('brand/messages?id='.$product->brandprofile->user_id.'')}}">לפרטים נוספים ולרכישה</a>
                         @endguest
                     </div>
-                    <div class="choose_size d-xl-none">
+                    <div class="choose_size d-none">
                         <a href="" class="font-size-16">בחר מידה ></a>
                     </div>
                 </div>

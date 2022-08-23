@@ -190,7 +190,5 @@
     <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
-@toastr_js
-@toastr_render
 
 </html>
