@@ -123,7 +123,7 @@ Category By city
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 300px; width: 205px" class="img-fluid">
+                                <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 160px; height: 154px" class="img-fluid">
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
                                     <h4 class="font-size-12 font-weight-700">
