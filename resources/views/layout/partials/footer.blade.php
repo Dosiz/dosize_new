@@ -35,7 +35,7 @@
                 @endif
             </li>
             <li class="active">
-                <a href="{{route('landing-page',5)}}">
+                <a href="{{url('/')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt="" class="img-fluid">
                         <p class="font-size-12 font-weight-400">איזור אישי </p>
