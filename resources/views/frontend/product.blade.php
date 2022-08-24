@@ -429,7 +429,7 @@
                 </div>
             </div>
 
-            <div class="affordable_consumption spacing article_affordable_consumption">
+            <div class="affordable_consumption spacing article_affordable_consumption" style="min-height: 100px; position: relative; display:flex;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-right">

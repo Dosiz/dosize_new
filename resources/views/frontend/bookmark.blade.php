@@ -120,6 +120,10 @@ Dosize
                 </div>
             </div>
         </div>
+        @else
+        <div style="height:472px">
+            <p class="text-center">No Bookmark Yet</p>
+        </div>
         @endif
         
         <!-- main footer start from here -->

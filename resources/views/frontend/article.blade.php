@@ -262,7 +262,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="min-height: 300px; position: relative; display:flex;">
                         <div class="post_comment">
                             <form action="{{ route('store-blog-comment') }}" method="post" enctype="multipart/form-data" >
                                 @csrf

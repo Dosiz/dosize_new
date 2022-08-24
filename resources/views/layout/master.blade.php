@@ -4,7 +4,7 @@
     @include('layout.partials.head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    @if(isset($product))
+    @if(isset($p_city))
         <meta property="og:title" content="{{$p_city->name ?? ''}}">
         <meta name="description" content="{{$p_city->name ?? ''}}"/>
         <meta property="og:description" content="{{$p_city->name ?? ''}}" />

@@ -52,6 +52,7 @@ Brand List
             </div>
         </div>
         <!--  -->
+        @if(count($brand_messages) > 0)
         <div class="noteBox d-xl-flex position-relative d-none">
             @if($brand_messages)
             @foreach($brand_messages as $brand_message)
@@ -68,9 +69,9 @@ Brand List
             @endif
             @endforeach
             @endif
-            <a href="#" class="btn hotFlashes">מבזקים חמים <img src="{{asset('assets/img/bell_right.png') }}" alt="bell"
-                    class="ml-1"></a>
+            <a href="#" class="btn hotFlashes">מבזקים חמים <img src="{{asset('assets/img/bell_right.png') }}" alt="bell" class="ml-1"></a>
         </div>
+        @endif
         <!--  -->
         <div class="search_clothFoot d-none d-xl-flex justify-content-xl-between justify-content-end">
             <div class="d-none d-xl-block">
@@ -91,55 +92,39 @@ Brand List
                     ולא לפספס שום הטבה! </b></p>
         </div>
         <!--  -->
-        <div class="hot_flashes brand_chat d-xl-none">
+        @if(count($brand_messages) > 0)
+        <div class="hot_flashes_div spacing">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <span class="annoucment_text font-size-16 font-weight-600">מבזקים חמים <img
-                                src="{{asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
-                                class="img-fluid"></span>
-                        <div class="hot_flashes_list">
-                            <ul>
-                                <li>
-                                    <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                        חינם בקנייה
-                                        מעל
-                                        300 ש”ח
-                                    </p>
-                                </li>
-                                <li>
-                                    <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                        חינם בקנייה
-                                        מעל
-                                        300 ש”ח
-                                    </p>
-                                </li>
-                                <li>
-                                    <div class="img_box">
-                                        <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                            class="img-fluid">
-                                    </div>
-                                    <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                        חינם בקנייה
-                                        מעל
-                                        300 ש”ח
-                                    </p>
-                                </li>
-                            </ul>
-                            <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
-                        </div>
+                        <ul>
+                            @if($brand_messages)
+                            @foreach($brand_messages as $brand_message)
+                            @php  
+                                $current_date = \Carbon\Carbon::now();
+                                $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                                $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+                            @endphp
+                            
+                            <li class="active">
+                                <a class="font-size-12" href="">מבזקים חמים <img
+                                        src="{{asset('assets/img/mobile_component/anaoucment.png') }}"
+                                        class="img-fluid"></a>
+                            </li>
+                            @if($diff_in_days >= 0)
+                            <li>
+                                <a class="font-size-12" href="">{{ $brand_message->message }}<img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt=""
+                                        class="img-fluid" style="width: 20px; height: 20px;"></a>
+                            </li>
+                            @endif
+                            @endforeach
+                            @endif
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
         <!--  -->
         <div class="bazaar_cards mt-4">
             <div class="container-fluid">
@@ -148,7 +133,7 @@ Brand List
                     @foreach($city_brands as $city_brand)
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
-                            <img src="{{asset('assets/img/card_img.png') }}" class="main_img d-xl-none" alt="item">
+                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}" class="main_img d-xl-none" style="width: 143px !important;" alt="item">
                             <a href="{{route('brand-profile',$city_brand->id)}}">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
                             </a>
@@ -178,15 +163,32 @@ Brand List
                                         @endif
                                     @endguest
                                 </div>
-                                <img src="{{asset('assets/img/mobile_component/flashes_2.png') }}" class="d-xl-none"
-                                    alt="flash">
+                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:39px;" alt="flash">
                                 <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$city_brand->id)}}" >
                                     <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>
                             </div>
-                            <a href="#" class="btn signForClub d-xl-none">הירשמו בקליק למועדון <img
-                                    src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
+                            @guest
+                            <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
+                            @else
+                            @if($chk_subscriber == null)
+                            <form action="{{ route('store-subscriber') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                            <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
+                            <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
+                            <button type="submit" class="btn signForClub d-xl-block">הירשמו בקליק למועדון
+                                <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                            </button>
+                            </form>
+                            @else
+                            <button class="btn signForClub d-xl-block"> הירשמו בקליק למועדון
+                                <img src="{{asset('assets/img/verfied.png') }}" alt="star">
+                            </button>
+                            @endif
+                            @endguest
                         </div>
                     </div>
                     @endforeach
