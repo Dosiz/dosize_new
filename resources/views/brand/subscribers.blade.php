@@ -32,10 +32,10 @@ Subscribers
 			<div class="col-sm-12">
 				<div class="card">
 					<div class="card-body">
-						@if(count($subscribers) > 0)
+						{{-- @if(count($subscribers) > 0)
 							<a href="" data-toggle="modal" data-target="#sendMessageModal" style="padding: 5px !important;" class="btn btn-warning"> שלח הודעת שידור <i class="fa fa-send"></i></a><br><br>
 							
-						@endif
+						@endif --}}
 						<div class="table-responsive">
 							<table class="datatable table table-hover table-center mb-0">
 								<thead>
