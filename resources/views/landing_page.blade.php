@@ -105,7 +105,7 @@ Dosize
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
                                             class="img-fluid" style="width: 209px; height:105px;">
                                         </a>
-                                        <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
+                                        <span class="font-size-14 font-weight-700">{{ (int)(( ($product->price - $product->discount_price) / $product->price ) * 100) }} %</span>
                                     </div>
                                     <div class="promotion_content">
                                         <div class="time_category_text">
