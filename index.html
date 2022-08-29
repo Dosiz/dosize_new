@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-md-4 col-lg-3">
                 <div class="side_menu">
-                    <a href="#" class="menu_item item1 active d-flex align-items-center">
+                    <a href="#" class="menu_item item1 active d-flex align-items-center" onclick="changePag(1)">
                         <div class="icon">
                             <svg width="24" height="26" viewBox="0 0 24 26" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +55,7 @@
                         </div>
                         <span>ראשי</span>
                     </a>
-                    <a href="#" class="menu_item item2 d-flex align-items-center">
+                    <a href="#" class="menu_item item2 d-flex align-items-center" onclick="changePag(2)">
                         <div class="icon">
                             <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                         </div>
                         <span>הארנק</span>
                     </a>
-                    <a href="#" class="menu_item item3 d-flex align-items-center">
+                    <a href="#" class="menu_item item3 d-flex align-items-center" onclick="changePag(3)">
                         <div class="icon">
                             <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@
                         </div>
                         <span>צרכנות</span>
                     </a>
-                    <a href="#" class="menu_item item4 d-flex align-items-center">
+                    <a href="#" class="menu_item item4 d-flex align-items-center" onclick="changePag(4)">
                         <div class="icon">
                             <svg width="27" height="30" viewBox="0 0 27 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@
                     </a>
                     <hr class="my-5 hidemobile">
                     <div class="d-none d-lg-block hidemobile">
-                        <a href="#" class="menu_item item5 d-flex align-items-center">
+                        <a href="#" class="menu_item item5 d-flex align-items-center" onclick="changePag(5)">
                             <div class="icon">
                                 <svg width="23" height="26" viewBox="0 0 23 26" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,7 @@
                             </div>
                             <span>איזור אישי</span>
                         </a>
-                        <a href="#" class="menu_item item6 d-flex align-items-center">
+                        <a href="#" class="menu_item item6 d-flex align-items-center" onclick="changePag(6)">
                             <div class="icon">
                                 <svg width="20" height="27" viewBox="0 0 20 27" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -136,7 +136,7 @@
                             </div>
                             <span>שמורים</span>
                         </a>
-                        <a href="#" class="menu_item item7 d-flex align-items-center">
+                        <a href="#" class="menu_item item7 d-flex align-items-center" onclick="changePag(7)">
                             <div class="icon">
                                 <svg width="26" height="27" viewBox="0 0 26 27" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +148,7 @@
                             </div>
                             <span>הודעות</span>
                         </a>
-                        <a href="#" class="menu_item item8 d-flex align-items-center">
+                        <a href="#" class="menu_item item8 d-flex align-items-center" onclick="changePag(8)">
                             <div class="icon">
                                 <svg width="27" height="26" viewBox="0 0 27 26" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -706,7 +706,7 @@
                                 <div class="swiper_main">
                                     <div class="row align-items-center">
                                         <div class="text col-md-6 mt-5">
-                                            <div class="srch2">
+                                            <div class="srch2 mt-lg-5 pt-lg-5">
                                                 <input type="text" placeholder="חיפוש ...">
                                                 <a href="#" class="btn btn_search">
                                                     <img src="img/search_icon.png" alt="search_icon">
@@ -809,6 +809,9 @@
                 $('.menu_item.item1').addClass('active');
             }
         });
+        function changePag(num) {
+            $(`[aria-label="Go to slide ${num}"]`).click();
+        }
     </script>
 
     <!-- main js -->
