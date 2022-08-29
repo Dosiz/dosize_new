@@ -41,6 +41,11 @@ Profile
 			                                        <div style="color:red;">{{$errors->first('brand_name')}}</div> <br>
 					                            </div>
 												<div class="form-group">
+					                                <label>Sub-domain Name</label>
+					                                <input class="form-control" id="short_name" name="short_name" placeholder="Enter sub-domain Name" value="{{$brand_profile->short_name}}" type="text">
+			                                        <div style="color:red;">{{$errors->first('short_name')}}</div> <br>
+					                            </div>
+												<div class="form-group">
 					                                <label>Email</label>
 					                                <input class="form-control" readonly value="{{ $user->email }}" type="text"><br>
 					                            </div>

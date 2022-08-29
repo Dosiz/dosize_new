@@ -91,6 +91,7 @@ class DashboardController extends Controller
         $user = User::where('id',Auth::id())->first();
         $this->validate($request,[ 
             'brand_name'=>'required', 
+            'short_name'=>'required', 
             'addmore.*address' => 'required',
             'addmore.*city_id' => 'required',
             'description'=>'required', 
@@ -123,9 +124,9 @@ class DashboardController extends Controller
         $brand = BrandProfile::where('user_id', '=', $user_id)->first();
         $id = $brand->id;
         $brand_profile = BrandProfile::find($id);
-        $lower_name = Str::lower($request->brand_name);
-        $short_name = str_replace(' ', '-', $lower_name);
-        // dd($brand_name);
+        $short_name = Str::lower($request->short_name);
+        // $short_name = str_replace(' ', '-', $lower_name);
+        // dd($short_name);
         $brand_profile->short_name = $short_name;
         $brand_profile->brand_name = $request->brand_name;
         $brand_profile->whatsapp_no = $request->whatsapp_no;

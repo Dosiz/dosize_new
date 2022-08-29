@@ -49,6 +49,7 @@ const swiper = new Swiper('.swiper', {
     slidesPerView: 5,
     // slidesPerView: "auto",
     loop: true,
+    clickable: true,
     
     breakpoints: {
       // when window width is >= 320px
