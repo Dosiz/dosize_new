@@ -33,6 +33,8 @@ nav{
 }
 nav .btn{
     width: 123px;
+    height: 61px;
+    padding: 13px 9px !important;
 }
 
 .main_content{
@@ -84,7 +86,7 @@ nav .btn{
 } */
 
 .side_menu{
-    margin-left: 80px;
+    margin-left: 57px;
     max-width: 214px;
     margin-right: auto;
     background: #FFFFFF;
@@ -99,7 +101,8 @@ nav .btn{
     font-weight: 700;
 }
 .swiper_main .para{
-    font-size: 25px;
+    font-size: 30px;
+    color: #000;
 }
 .blog_card {
     background-color: #fff;

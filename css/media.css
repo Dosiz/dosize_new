@@ -11,6 +11,9 @@
     .textTOp{
         margin-top: 20%;
     }
+    .blog_card .img{
+        width: 275px;
+    }
 }
 
 @media (max-width: 1500px){
@@ -207,5 +210,8 @@
         position: absolute;
         bottom: -45px;
         left: 0;
+    }
+    .top_hang_img{
+        display: none;
     }
 }
