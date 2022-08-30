@@ -61,15 +61,22 @@
         width: 130px;
     }
     .likes_img{
-        width: 120px;
+        
+    width: 83px;
+    margin-right: -29px;
+
     }
     body{
         height: 100vh;
         background-image: url(../img/mobile_bg.png);
-        background-size: 100%;
+        background-size: 100% 100%;
+    }
+    .flexMobile{
+        display: flex;
+        flex-direction: column-reverse;
     }
     .hidemobile{
-        display: none;
+        display: none !important;
     }
     .side_menu{
         display: flex;
@@ -108,7 +115,7 @@
         padding: 12px;
     }
     .swiper_parent{
-        height: 78vh;
+        min-height: 78vh;
     }
     .swiper-pagination-bullet{
         width: 6px;
@@ -132,7 +139,7 @@
         font-size: 7px;
     } 
     .blog_card {
-        max-width: 204px;
+        max-width: 345px;
         height: 145px;
     }
     .main_content {
@@ -159,12 +166,14 @@
     .main_links svg{
         width: 20px;
     }    
-        
     .main_links .link{
-        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+    .blog_cards{
+        width: 315px;
     }
     .swiper_main .head {
-        margin-top: 12px;
+        margin-top: 44px;
         font-size: 25px;
     }  
     .swiper_main .para {
@@ -212,6 +221,46 @@
         left: 0;
     }
     .top_hang_img{
+        display: none !important;
+    }
+    .cardsec2 .blog_card{
+        max-width: 100%;
+    }
+    .main_content .menu_item{
+        position: relative;
+    }
+    .main_content .menu_item::before{
+        content: '';
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background-image: url(../img/arrow.png);
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .main_content .menu_item.active::before{
+        opacity: 1;
+    }
+    .blackitem .menu_item::before{
         display: none;
     }
+    .coin_card{
+        display: none;
+    }
+    .coin_card .head{
+        margin-top: -4px;
+        font-size: 11px;
+    }
+    .widthText {
+        width: 38px;
+    font-size: 7px;
+    }  
+    .ballon_img{
+        width: 145px;
+    }   
 }
