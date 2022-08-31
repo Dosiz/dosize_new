@@ -183,9 +183,12 @@
         width: 315px;
     }
     .swiper_main .head {
-        margin-top: 44px;
+        margin-top: 0px;
         font-size: 25px;
     }  
+    .firstHead{
+        margin-top: 25px !important;
+    }
     .swiper_main .para {
         font-size: 18px;
     }  
