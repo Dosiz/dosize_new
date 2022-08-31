@@ -341,8 +341,9 @@ Dosize
                                         <div class="row">
                                             <div class="col-lg-12 text-right">
                                                 <div class="header_cloth">
-                                                    
+                                                    @if(isset($category->image))
                                                     <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="50px">
+                                                    @endif
                                                     <h3 class="common_title"> {{ $category->name ?? ''}}<img
                                                             src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                             class="img-fluid">
