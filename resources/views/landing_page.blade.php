@@ -488,7 +488,7 @@ Dosize
                                     <div class="row">
                                         <div class="col-lg-12 text-right" style="padding-right: 15px; padding-left: 15px;">
                                             <div class="header_cloth">
-                                                @if($category->image != null)
+                                                @if(isset($category->image))
                                                 <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="50px">
                                                 @endif
                                                 <h3 class="common_title">  {{ $category->name}}<img
