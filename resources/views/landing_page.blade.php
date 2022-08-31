@@ -326,7 +326,7 @@ Dosize
         @if ($p_city )
         @if (count($p_city->products->groupBy('category_id')) > 0 )
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
-            @foreach ($p_city->products->groupBy('category_id')->take(4) as $key=>$product_categories)
+            @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             @php $category =  \App\Models\Category::where('id',$key)->first(); @endphp
             {{-- @dd($category) --}}
                 @if($i == 1 || $i == 2)
@@ -356,7 +356,7 @@ Dosize
                                             </div>
                                         </div>
                                         <div class="article_div">
-                                            @foreach ($p_city->blogs->groupBy('category_id')->take(4) as $blog_key=>$article_categories)
+                                            @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                     @foreach($article_categories as $blog)
                                                         <div class="row">
@@ -418,7 +418,7 @@ Dosize
 
                                                 <div class="col-lg-12">
                                                     <div class="affordable_consumption_list">
-                                                        @foreach($product_categories as $product)
+                                                        @foreach($product_categories->take(4)  as $product)
                                                             <div
                                                                 class="affordable_consumption_box box_shahdow">
                                                                 <a class="font-size-14 font-weight-700"
@@ -507,7 +507,7 @@ Dosize
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="affordable_consumption_list">
-                                                @foreach ($p_city->blogs->groupBy('category_id')->take(4) as $blog_key=>$article_categories)
+                                                @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                     @foreach($article_categories as $blog)
                                                     <div class="affordable_consumption_box box_shahdow">
