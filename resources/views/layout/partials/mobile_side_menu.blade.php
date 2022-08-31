@@ -1,8 +1,8 @@
 <div class="mobile_side_menu">
     <h4>צהריים טובים!</h4>
     <div class="auth_button">
-        <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
-        <a href="">התחברות</a>
+        <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
+        <a class="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
     </div>
     <div class="mobile_menu_list">
         <ul>
