@@ -43,6 +43,7 @@ class FrontEndController extends Controller
 {
     public function landing_page()
     {
+        // dd(Auth::user()->role('User'));
         $city_id = Helpers::city_id();
         // dd($city_id);
         $cities = City::get();
