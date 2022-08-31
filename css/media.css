@@ -1,0 +1,211 @@
+@media (min-width: 1300px){
+    .coin_card{
+        margin-top: 100px !important;
+    }
+    .coin_card .link{
+        margin-left: 100px;
+    }
+    .checkImg{
+        margin-right: 24%;
+    }
+    .textTOp{
+        margin-top: 20%;
+    }
+}
+
+@media (max-width: 1500px){
+    .swiper_main .head {
+        font-size: 28px;
+    }    
+    .swiper_main .para {
+        font-size: 18px;
+    }
+    .main_content .menu_item {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+    .btn_orange {
+        font-size: 16px;
+        padding: 12px 9px;
+    }
+    .btn_outline {
+        font-size: 17px;
+        padding: 12px 9px;
+    }
+    nav .btn {
+        width: 100px;
+    }
+    nav {
+        padding: 15px;
+    }
+    .blog_card .heading {
+        margin-top: 9px;
+        font-size: 16px;
+    }
+    .blog_card {
+        max-width: 433px;
+        height: 185px;
+    }
+    .timer_top svg{
+        width: 120px;
+    }
+    .product_card {
+        max-width: 250px;
+    }
+}
+@media (max-width: 426px){
+    .rating_img{
+        width: 130px;
+    }
+    .likes_img{
+        width: 120px;
+    }
+    body{
+        height: 100vh;
+        background-image: url(../img/mobile_bg.png);
+        background-size: 100%;
+    }
+    .hidemobile{
+        display: none;
+    }
+    .side_menu{
+        display: flex;
+        margin: 0 !important;
+        width: 100%;
+        max-width: 100%;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .main_content .menu_item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0 !important;
+        font-size: 10px;
+    }
+    .main_content .menu_item span{
+        margin-right: 0;
+    }
+    nav .logo img{
+        width: 100px;
+    }
+    nav .btn {
+        width: 90px;
+    }
+    .btn_outline {
+        font-size: 16px;
+        padding: 11px 9px;
+    }
+    .btn_orange {
+        font-size: 15px;
+        padding: 11px 9px;
+    }
+    nav {
+        padding: 12px;
+    }
+    .swiper_parent{
+        height: 78vh;
+    }
+    .swiper-pagination-bullet{
+        width: 6px;
+        height: 6px;
+    }
+    .swiper-pagination-bullet-active{
+        background-color: #DB1580;
+        width: 14px;
+        height: 6px;
+        opacity: 1;
+        border-radius: 30px;
+    }
+    .blog_card .label {
+        font-size: 7px;
+    }
+    .blog_card .heading {
+        margin-top: 5px;
+        font-size: 9px;
+    }   
+    .card_para{
+        font-size: 7px;
+    } 
+    .blog_card {
+        max-width: 204px;
+        height: 145px;
+    }
+    .main_content {
+        padding: 14px;
+    }
+    img{
+        max-width: 100%;
+    }
+    .timer_top svg{
+        width: 100px;
+    }
+    .productLables img{
+        width: 30px;
+    }
+    .product_heading h3 {
+        font-size: 8px;
+    }
+    .product_card .btn_orange {
+        font-size: 7px;
+    }
+    .btns_price .price {
+        font-size: 9px;
+    }
+    .main_links svg{
+        width: 20px;
+    }    
+        
+    .main_links .link{
+        margin-left: 10px !important;
+    }
+    .swiper_main .head {
+        margin-top: 12px;
+        font-size: 25px;
+    }  
+    .swiper_main .para {
+        font-size: 18px;
+    }  
+    .coinImg{
+        width: 50px;
+    }
+    .srch2{
+        width: 100%;
+        max-width: 100%;
+        height: 42px;
+    }
+    .srchInput{
+        width: 100%;
+        max-width: 100%;
+        height: 50px;
+    }
+    .blackitem .menu_item{
+        display: none !important;
+        background-color: #353039;
+        color: #fff !important;
+        flex-direction: row;
+        padding: 8px 13px;
+    }
+    .blackitem .menu_item svg{
+        width: 12px;
+        margin-left: 4px;
+    }
+    .blackitem .menu_item .icon::before{
+        display: none;
+    }
+    .blackitem .menu_item svg path{
+        stroke: #fff;
+    }
+    .blackitem .menu_item.active{
+        display: flex !important;
+    }
+    .side_menu{
+        position: relative;
+    }
+    .blackitem {
+        position: absolute;
+        bottom: -45px;
+        left: 0;
+    }
+}

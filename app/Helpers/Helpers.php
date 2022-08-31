@@ -10,22 +10,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Session;
 use Illuminate\Support\Facades\Route;
-use App\Models\City; 
-use App\Models\BrandProfile; 
+use App\Models\City;
+use App\Models\BrandProfile;
 
 class Helpers
 {
     public static function createShortUrl($url,$source){
-        if (Auth::check()){
-            $result = DB::table('short_urls')
-                ->where('user_id',Auth::id())
-                ->where('source',$source)
-                ->where('destination_url',$url)
-                ->get();
+        $result = DB::table('short_urls')
+            ->where('destination_url',$url);
 
-            if (count($result) > 0){
-                return $result[0]->default_short_url;
-            }
+        if (Auth::check()){
+            $result = $result->where('user_id',Auth::id())->get();
+        }else{
+            $result = $result->whereNull('user_id')->get();
+        }
+
+        if (count($result) > 0){
+            return $result[0]->default_short_url;
         }
 
         $urlObject = new Builder();
