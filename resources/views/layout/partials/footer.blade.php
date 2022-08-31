@@ -34,7 +34,7 @@
                 </a>
                 @endif
             </li>
-            <li class="active">
+            <li class="active" style="margin:0px 31px 0px 0px !important;">
                 <a href="{{url('/')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt="" class="img-fluid">
