@@ -1,3 +1,7 @@
+<?php
+use App\Helpers\Helpers; 
+$city_id = Helpers::city_id();
+?>
 @extends('layout.master')
 @section('title')
 Dosize
@@ -20,7 +24,7 @@ Dosize
                                 @if(count($categories) > 0)
                                 @foreach($categories as $key=>$category)
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
                                             <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
@@ -344,7 +348,7 @@ Dosize
                                                             class="img-fluid">
                                                     </h3>
                                                     <span class="read_more">
-                                                        <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" class="font-size-12 font-weight-400">
+                                                        <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
                                                             כתבות ביגוד והנעלה</a> </span>
                                                 </div>
                                             </div>
@@ -562,7 +566,7 @@ Dosize
                                                     <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                         alt="" class="img-fluid">
                                                 </div>
-                                                <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" class="learn_more font-size-12 font-weight-400">לעוד
+                                                <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
                                                     כתבות ביגוד
                                                     והנעלה
                                                     ></a>
