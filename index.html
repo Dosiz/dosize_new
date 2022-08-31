@@ -7,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dosize | Home</title>
     <!-- bootstrap 5 CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- font awesome 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- font awesome 5 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.0/css/brands.min.css">
 
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
@@ -795,44 +794,53 @@
                 $('.menu_item.item1').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon1').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 2') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item2').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon2').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 3') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item3').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon3').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 4') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item4').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon4').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 5') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item5').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon5').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 6') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item6').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon6').show();
+                $('.side_menu').hide()
             } else if (active == 'Go to slide 7') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item7').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon7').show();
+                $('.side_menu').show()
             } else if (active == 'Go to slide 8') {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item8').addClass('active');
                 $('.top_hang_img').hide();
                 $('.top_hang_img.icon8').show();
+                $('.side_menu').show()
             } else {
                 $('.menu_item').removeClass('active');
                 $('.menu_item.item1').addClass('active');
+                $('.side_menu').show()
             }
         });
         function changePag(num) {

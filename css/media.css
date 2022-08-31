@@ -14,6 +14,9 @@
     .blog_card .img{
         width: 275px;
     }
+    .side_menu{
+        display: block !important;
+    }
 }
 
 @media (max-width: 1500px){
@@ -37,6 +40,13 @@
     }
     nav .btn {
         width: 100px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+    }
+    .main_content .menu_item .icon::before {
+        top: -6px;
     }
     nav {
         padding: 15px;
@@ -229,26 +239,28 @@
     .main_content .menu_item{
         position: relative;
     }
-    .main_content .menu_item::before{
+    .main_content .menu_item::before,
+    .srchInput .icon.icon2::before{
         content: '';
         position: absolute;
-        top: 70px;
+        top: 60px;
         left: 50%;
         transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         background-image: url(../img/arrow.png);
         opacity: 0;
         transition: all 0.3s ease-in-out;
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .main_content .menu_item.active::before{
+    .main_content .menu_item.active::before,
+    .srchInput .icon.icon2::before{
         opacity: 1;
     }
-    .blackitem .menu_item::before{
+    /* .blackitem .menu_item::before{
         display: none;
-    }
+    } */
     .coin_card{
         display: none;
     }
@@ -263,4 +275,7 @@
     .ballon_img{
         width: 145px;
     }   
+    .swiper_parent{
+        height: 600px;
+    }
 }
