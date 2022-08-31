@@ -481,7 +481,6 @@ Dosize
                 </div>
                 @endif
                 @if($i == 3 || $i == 4)
-                    {{dd($category);}}
                 <div class="col-md-6">
                     <div class="home_medical_items spacing p-0">
                         <div class="container-fluid">
