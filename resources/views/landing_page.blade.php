@@ -566,6 +566,7 @@ Dosize
                                                     <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                         alt="" class="img-fluid">
                                                 </div>
+                                                {{dd($category->id , $city_id)}}
                                                 <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
                                                     כתבות ביגוד
                                                     והנעלה
