@@ -62,6 +62,7 @@ class FrontEndController extends Controller
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*','brand_profiles.brand_name')
         ->where('products.discount_price','!=', null)
+        ->where('products.sale_time','!=', null)
         ->where('products_has_cities.city_id',$city_id)
         ->get();
 
