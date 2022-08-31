@@ -567,7 +567,7 @@ Dosize
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 {{-- {{ $category->id , $city_id)}} --}}
-                                                <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
+                                                <a href="#" class="learn_more font-size-12 font-weight-400">לעוד
                                                     כתבות ביגוד
                                                     והנעלה
                                                     ></a>
