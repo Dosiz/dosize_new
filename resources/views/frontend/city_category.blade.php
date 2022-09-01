@@ -127,17 +127,23 @@ Category By city
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
                             <div class="affordable_consumption_box box_shahdow">
-                                <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 160px; height: 154px" class="img-fluid">
+                                <a href="{{route('article',$blog->id)}}">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 131px;" class="img-fluid">
+                                </a>
                                 <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
-                                    <h4 class="font-size-12 font-weight-700">
-                                        {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">
-                                        {!! \Illuminate\Support\Str::limit($blog->description ?? '',60,'...') !!}
-                                    </p>
-                                    <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
+                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
+                                        <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                    </a>
+                                    <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
+                                        <h4 class="font-size-12 font-weight-700">
+                                            {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                        </h4>
+                                        <p class="discription font-size-10 font-weight-400">
+                                            {!! \Illuminate\Support\Str::limit($blog->sub_title ?? '',60,'...') !!}
+                                        </p>
+                                    </a>
+                                        {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
+                                                aria-hidden="true"></i></span> --}}
                                 </div>
                             </div>
                             @endforeach
@@ -203,7 +209,7 @@ Category By city
                                             <div class="rating_price_div">
                                                 <p class="font-size-14 font-weight-600">50 ₪ <span
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                                {{-- <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p> --}}
                                             </div>
                                             </a>
                                         </div>

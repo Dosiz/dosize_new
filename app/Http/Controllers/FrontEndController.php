@@ -569,26 +569,30 @@ class FrontEndController extends Controller
         ->get();
 
         $products = DB::table('products_has_cities')
-        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
-        ->Join('categories', 'categories.id', '=', 'products.category_id')
-        ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+        ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+        // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
-        ->select('products.*','brand_profiles.brand_name',DB::raw('avg(product_comments.rating) as avgrate'))
+        ->select('products.*'
+        ,'brand_profiles.brand_name'
+        // ,DB::raw('avg(product_comments.rating) as avgrate')
+        )
         ->where('products_has_cities.city_id',$city_id)
-        ->where('categories.id',$category_id)
+        ->where('products.category_id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
 
-        
-
+        // dd($products,$category_id,$city_id);
         $blogs = DB::table('blogs_has_cities')
-        ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
-        ->Join('categories', 'categories.id', '=', 'blogs.category_id')
+        ->LeftJoin('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        ->LeftJoin('categories', 'categories.id', '=', 'blogs.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
-        ->Join('likes', 'likes.blog_id', '=', 'blogs.id')
-        ->select('blogs.*','brand_profiles.brand_name',DB::raw('count(likes.id) as totallikes'))
+        // ->Join('likes', 'likes.blog_id', '=', 'blogs.id')
+        ->select('blogs.*','brand_profiles.brand_name','brand_profiles.short_name'
+        // ,DB::raw('count(likes.id) as totallikes')
+        )
         ->where('blogs_has_cities.city_id',$city_id)
-        ->where('categories.id',$category_id)
+        ->where('blogs.category_id',$category_id)
         ->limit(6)
         ->get();
         // dd($blogs);
