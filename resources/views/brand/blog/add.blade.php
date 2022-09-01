@@ -18,6 +18,9 @@ Add Blog
 		background-color: rgb(207, 202, 202); 
 		padding: 0px 4px
 	}
+	.select2-container{
+		max-width:100%;
+	}
 </style>
 @endpush
 @section('content')		
