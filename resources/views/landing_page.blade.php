@@ -214,7 +214,7 @@ Dosize
                                         </a>
                                         <div class="content_div">
                                             <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
+                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
