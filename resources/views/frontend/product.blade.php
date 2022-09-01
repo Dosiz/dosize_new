@@ -282,7 +282,7 @@
                                     <a href="" id="subscriber">
                                     @if($chk_subscriber == null)
                                     <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
-                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid subscribed" style="display: none !important;">
                                     @else
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
                                     @endif
