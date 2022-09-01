@@ -108,7 +108,7 @@ class FrontEndController extends Controller
 
         $categories = Category::get();
 
-        // dd($p_city);
+        // dd($categories);
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
     }
 

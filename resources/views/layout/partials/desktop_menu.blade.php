@@ -104,7 +104,7 @@
         <img src="{{asset('assets/img/mobile_component/tablet_logo.svg') }}" alt="" class="img-fluid">
         <div class="desktop_menu_list">
             <ul>
-                <li>
+                <li >
                     <a href=""><img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>

@@ -350,7 +350,7 @@ Dosize
                                                     </h3>
                                                     <span class="read_more">
                                                         {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
-                                                        <a href="#" class="font-size-12 font-weight-400">
+                                                        <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
                                                             כתבות ביגוד והנעלה</a> </span>
                                                 </div>
                                             </div>
@@ -358,7 +358,7 @@ Dosize
                                         <div class="article_div">
                                             @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
-                                                    @foreach($article_categories as $blog)
+                                                    @foreach($article_categories->take(1) as $blog)
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
@@ -418,7 +418,7 @@ Dosize
 
                                                 <div class="col-lg-12">
                                                     <div class="affordable_consumption_list">
-                                                        @foreach($product_categories->take(4)  as $product)
+                                                        @foreach($product_categories->take(3)  as $product)
                                                             <div
                                                                 class="affordable_consumption_box box_shahdow">
                                                                 <a class="font-size-14 font-weight-700"
@@ -509,7 +509,7 @@ Dosize
                                             <div class="affordable_consumption_list">
                                                 @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
-                                                    @foreach($article_categories as $blog)
+                                                    @foreach($article_categories->take(1) as $blog)
                                                     <div class="affordable_consumption_box box_shahdow">
                                                         <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
                                                             <img src="{{asset('blog/'.$blog->image ?? '')}}" style="width:131px; height:226px;">
@@ -530,7 +530,7 @@ Dosize
                                                     @endif
                                                 @endforeach
 
-                                                @foreach($product_categories as $product)
+                                                @foreach($product_categories->take(3) as $product)
                                                 <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                                         <img src="{{asset('product/'.$product->image ?? '')}}" width="131px" height="137px">
@@ -569,7 +569,7 @@ Dosize
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 {{-- {{ $category->id , $city_id)}} --}}
-                                                <a href="#" class="learn_more font-size-12 font-weight-400">לעוד
+                                                <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
                                                     כתבות ביגוד
                                                     והנעלה
                                                     ></a>
