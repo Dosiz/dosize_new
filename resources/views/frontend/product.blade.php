@@ -1,7 +1,3 @@
-<?php
-use App\Helpers\Helpers; 
-$city_id = Helpers::city_id();
-?>
 @extends('layout.product')
 @section('title')
 {{$product->name}}
@@ -53,11 +49,10 @@ $city_id = Helpers::city_id();
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
                                 @if(count($categories) > 0)
-
+                                {{-- {{dd($product);}} --}}
                                 @foreach($categories as $key=>$category)
-
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" style="color:#212529">
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$product->cities['0']->id])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
                                             <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
                                         </div>
