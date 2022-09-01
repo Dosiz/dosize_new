@@ -196,6 +196,7 @@ Dosize
         @endif
         @if(count($products) > 0 && $products[0]->id != null)
         <div class="line spacing"></div>
+        <div class="line spacing"></div>
         <div class="order_div spacing">
             <div class="deals deal_one">
                 <div class="container-fluid">
@@ -327,10 +328,8 @@ Dosize
                     </div>
                 </div>
             </div>
-            <div class="line spacing"></div>
             @endif
         </div>
-        <div class="line spacing"></div>
         @endif
         <?php $i = 1; ?>
         @if ($p_city )
