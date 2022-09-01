@@ -180,8 +180,8 @@ Dosize
                                         {!! substr($blog->description, 0,  30) !!}  
                                     </p>
                                     </a>
-                                    <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span>
+                                    {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
+                                            aria-hidden="true"></i></span> --}}
                                 </div>
                             </div>
                             @endforeach
