@@ -1399,6 +1399,7 @@ header .article_header .heart_tag_message_list ul li span {
 .deals .multiple_deals .deals_box .content_div .title {
     margin: 6px 0px;
     font-family: ploniBold;
+    height:40px;
 }
 
 .deals .multiple_deals .deals_box .content_div .rating_price_div {
