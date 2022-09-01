@@ -78,17 +78,21 @@ class FrontEndController extends Controller
         })
         ->get();
 
-        $blogs = $blogs = DB::table('blogs_has_cities')
+        $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
         // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
-        ->LeftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
-        ->select('blogs.*','brand_profiles.brand_name','brand_profiles.short_name',DB::raw('count(likes.id) as totallikes'))
+        // ->Join('likes', 'likes.blog_id', '=', 'blogs.id')
+        ->select('blogs.*'
+        ,'brand_profiles.brand_name','brand_profiles.short_name'
+        // ,DB::raw('count(likes.id) as totallikes')
+        )
         ->where('blogs_has_cities.city_id',$city_id)
         // ->where('categories.id',$category_id)
         ->get();
 
-        // dd($blogs);
+
+        dd($blogs);
 
         $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
         // dd($products_by_categories);
