@@ -120,7 +120,7 @@ Dosize
                                                 </p>
                                             </div>
                                             <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
+                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </p>
                                             </a>
                                         </div>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
@@ -166,7 +166,7 @@ Dosize
                                 </a>
                                 <div class="content_div">
                                     <a href="{{route('brand-profile',$blog->brand_profile_id)}}">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                    <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
@@ -214,7 +214,7 @@ Dosize
                                         </a>
                                         <div class="content_div">
                                             <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
+                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}}</span>
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
@@ -295,7 +295,7 @@ Dosize
                                 </a>
                                 <div class="content_div">
                                     <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$recomanded_products->id)}}">
-                                    <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
+                                    <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brandprofile->brand_name}} </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
                                     <h4 class="title font-size-14 font-weight-700">
@@ -538,7 +538,7 @@ Dosize
                                                     </a>
                                                     <div class="content_div">
                                                         <span class="category font-size-12 font-weight-400">
-                                                            {{$product->brand_name ?? ''}}
+                                                            {{$product->brandprofile->brand_name ?? ''}}
                                                         </span>
                                                         <h4 class="font-size-14 font-weight-700">
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
