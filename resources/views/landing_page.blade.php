@@ -327,7 +327,7 @@ Dosize
         @if (count($p_city->products->groupBy('category_id')) > 0 )
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
-            $a =1;
+            <?php $a =1; ?>
             @php $category =  \App\Models\Category::where('id',$i)->first(); @endphp
             {{-- @dd($category) --}}
                 @if($i == 1 || $i == 2)
