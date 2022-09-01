@@ -555,7 +555,7 @@ Dosize
                                                         <h4 class="font-size-14 font-weight-700">
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
-                                                        <p class="discription font-size-12 font-weight-400">
+                                                        <p class="discription font-size-12 font-weight-400" style="display: block !important;">
                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
                                                         </p>
                                                         <span class="font-size-12 like_span">4
