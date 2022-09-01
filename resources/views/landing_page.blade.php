@@ -327,6 +327,7 @@ Dosize
                     </div>
                 </div>
             </div>
+            <div class="line spacing"></div>
             @endif
         </div>
         @endif
