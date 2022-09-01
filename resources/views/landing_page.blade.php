@@ -522,7 +522,7 @@ Dosize
                                                                 {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                             </h4>
                                                             <p class="discription font-size-12 font-weight-400">
-                                                                {!! \Illuminate\Support\Str::limit($blog->description ?? '',150,'...') !!}
+                                                                {!! \Illuminate\Support\Str::limit($blog->description ?? '',250,'...') !!}
                                                             </p>
                                                             
                                                         </div>
