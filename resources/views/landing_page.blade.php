@@ -538,7 +538,7 @@ Dosize
                                                     </a>
                                                     <div class="content_div">
                                                         <a target="_blank" class="font-size-14 font-weight-700"
-                                                                       href="{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                                       href="URL::to('{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand')">
                                                         <span class="category font-size-12 font-weight-400">
                                                             {{$product->brandprofile->brand_name ?? ''}}
                                                         </span>
