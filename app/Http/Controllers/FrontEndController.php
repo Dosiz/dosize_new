@@ -49,9 +49,9 @@ class FrontEndController extends Controller
         $cities = City::get();
         $products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
-        ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+        // ->Join('product_comments', 'product_comments.product_id', '=', 'products.id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
-        ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name',DB::raw('avg(product_comments.rating) as avgrate'))
+        ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name')
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id',$city_id)
         ->get();
@@ -545,8 +545,9 @@ class FrontEndController extends Controller
 
     }
 
-    public function category($category_id,$city_id = 5)
+    public function category($category_id,$city_id)
     {
+        // dd($city_id);
         $categories = Category::get();
         $cities = City::get();
 
@@ -570,6 +571,8 @@ class FrontEndController extends Controller
         ->where('categories.id',$category_id)
         ->where('products.discount_price','=', null)
         ->get();
+
+        
 
         $blogs = DB::table('blogs_has_cities')
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
