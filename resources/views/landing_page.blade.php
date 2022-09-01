@@ -165,7 +165,7 @@ Dosize
                                     class="img-fluid" style="width: 300px; height: 205px">
                                 </a>
                                 <div class="content_div">
-                                    <a href="{{route('brand-profile',$blog->brand_profile_id)}}">
+                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
@@ -213,7 +213,7 @@ Dosize
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
+                                            <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
@@ -294,7 +294,7 @@ Dosize
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
                                 </a>
                                 <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$recomanded_products->id)}}">
+                                    <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
                                     <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
