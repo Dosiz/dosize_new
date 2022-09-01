@@ -114,7 +114,7 @@ class FrontEndController extends Controller
 
     public function article_detail($blog_id)
     {
-        $blog = Blog::with('brandprofile','category','citites')->where('id',$blog_id)->first();
+        $blog = Blog::with('brandprofile','category','cities')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
