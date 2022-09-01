@@ -160,28 +160,27 @@ Dosize
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
-                            
                             <div class="affordable_consumption_box box_shahdow">
                                 <a href="{{route('article',$blog->id)}}">
-                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 300px; height: 205px">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid" style="width: 131px;">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
-                                    <span class="category font-size-12 font-weight-400"> 
-                                        {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
-                                     </span>
+                                        <span class="category font-size-12 font-weight-400">
+                                            {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
+                                        </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
-                                    <h4 class="font-size-12 font-weight-700">
-                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">
-                                        {!! substr($blog->description, 0,  30) !!}  
-                                    </p>
+                                        <h4 class="font-size-12 font-weight-700">
+                                            {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                        </h4>
+                                        <p class="discription font-size-10 font-weight-400">
+                                            {!! \Illuminate\Support\Str::limit($blog->sub_title ?? '',30,'...') !!} 
+                                        </p>
                                     </a>
-                                    {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
-                                            aria-hidden="true"></i></span> --}}
+                                    <span class="font-size-12 d-none">4 <i class="fa fa-heart"
+                                            aria-hidden="true"></i></span>
                                 </div>
                             </div>
                             @endforeach

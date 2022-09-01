@@ -88,6 +88,9 @@ class FrontEndController extends Controller
         // ,DB::raw('count(likes.id) as totallikes')
         )
         ->where('blogs_has_cities.city_id',$city_id)
+        ->where('blogs.status',1)
+        ->take(3)
+        ->orderBy('id', 'ASC')
         // ->where('categories.id',$category_id)
         ->get();
 
