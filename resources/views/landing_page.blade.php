@@ -290,7 +290,7 @@ Dosize
                         </div>
                     </div>
                 </div>
-                <div class="slider_div">
+                <div class="slider_div border-bottom pb-4">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
                             @if(count($brands_recomanded_products) > 0)
