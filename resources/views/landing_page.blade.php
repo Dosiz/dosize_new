@@ -538,7 +538,7 @@ Dosize
                                                     </a>
                                                     <div class="content_div">
                                                         <a class="font-size-14 font-weight-700"
-                                                                       href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                                                       href="{{$product->brandprofile->id ?? ''}}.arikliger.com/brand">
                                                         <span class="category font-size-12 font-weight-400">
                                                             {{$product->brandprofile->brand_name ?? ''}}
                                                         </span>
