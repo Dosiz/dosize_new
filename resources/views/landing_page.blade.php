@@ -120,7 +120,9 @@ Dosize
                                                 </p>
                                             </div>
                                             <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand" >
-                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </p>
+                                                <p class="promotion_category font-size-12 font-weight-400"> 
+                                                    {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
+                                                </p>
                                             </a>
                                         </div>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
@@ -166,7 +168,9 @@ Dosize
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                    <span class="category font-size-12 font-weight-400"> 
+                                        {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
+                                     </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
@@ -214,7 +218,9 @@ Dosize
                                         </a>
                                         <div class="content_div">
                                             <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
+                                            <span class="deal_category font-size-12 font-weight-400">
+                                                {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
+                                            </span>
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
@@ -295,7 +301,9 @@ Dosize
                                 </a>
                                 <div class="content_div">
                                     <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
-                                    <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
+                                    <span class="deal_category font-size-12 font-weight-400"> 
+                                        {{\Illuminate\Support\Str::limit($recomanded_products->brand_name ?? '',15)}}
+                                    </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
                                     <h4 class="title font-size-14 font-weight-700">
@@ -433,7 +441,7 @@ Dosize
                                                                     <a class="font-size-14 font-weight-700"
                                                                        href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
                                                                                 <span
-                                                                                    class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name ?? ''}} </span>
+                                                                                    class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
                                                                     </a>
                                                                     <a class="font-size-14 font-weight-700"
                                                                        href="{{route('product',$product->id ?? '')}}"
@@ -540,7 +548,7 @@ Dosize
                                                         <a target="_blank" class="font-size-14 font-weight-700"
                                                                        href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
                                                         <span class="category font-size-12 font-weight-400">
-                                                            {{$product->brandprofile->brand_name ?? ''}}
+                                                            {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
                                                         </span>
                                                         </a>
                                                         <h4 class="font-size-14 font-weight-700">
