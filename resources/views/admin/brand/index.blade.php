@@ -53,7 +53,7 @@ Brands
 														  $brand_profile = App\Models\BrandProfile::with('category')->where('user_id', $brand->id)->first();	
 														@endphp
 														@if($brand_profile)
-														{{ $brand_profile->description}}
+														{{ \Illuminate\Support\Str::limit($brand_profile->description ?? '',60,'...')}}
 														@else
 														<p> Brand Not Created yet </p>
 														@endif
