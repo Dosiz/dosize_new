@@ -279,6 +279,7 @@ Dosize
             </div>
             @endif
             @if(count($brands_recomanded_products) > 0)
+            <div class="line spacing"></div>
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
