@@ -530,7 +530,7 @@ Dosize
                                                             <h4 class="font-size-14 font-weight-700">
                                                                 {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                             </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
+                                                            <p class="discription font-size-12 font-weight-400" style="display: block !important;">
                                                                 {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!}
                                                             </p>
                                                             
