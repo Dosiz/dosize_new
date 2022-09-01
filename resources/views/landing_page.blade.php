@@ -279,7 +279,6 @@ Dosize
             </div>
             @endif
             @if(count($brands_recomanded_products) > 0)
-            <div class="line spacing"></div>
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -331,6 +330,7 @@ Dosize
             <div class="line spacing"></div>
             @endif
         </div>
+        <div class="line spacing"></div>
         @endif
         <?php $i = 1; ?>
         @if ($p_city )
