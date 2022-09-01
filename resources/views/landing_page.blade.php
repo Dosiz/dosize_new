@@ -418,7 +418,7 @@ Dosize
                                             <div class="row">
 
                                                 <div class="col-lg-12">
-                                                    <div class="affordable_consumption_list">
+                                                    <div class="affordable_consumption_list" style="flex-direction:row-reverse;">
                                                         @foreach($product_categories->take(3)  as $product)
                                                             <div
                                                                 class="affordable_consumption_box box_shahdow">
@@ -507,7 +507,7 @@ Dosize
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="affordable_consumption_list">
+                                            <div class="affordable_consumption_list" style="flex-direction: row-reverse;">
                                                 @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                     @foreach($article_categories->take(1) as $blog)
