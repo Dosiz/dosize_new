@@ -537,9 +537,12 @@ Dosize
                                                         <img src="{{asset('product/'.$product->image ?? '')}}" width="131px" height="137px">
                                                     </a>
                                                     <div class="content_div">
+                                                        <a class="font-size-14 font-weight-700"
+                                                                       href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
                                                         <span class="category font-size-12 font-weight-400">
                                                             {{$product->brandprofile->brand_name ?? ''}}
                                                         </span>
+                                                        </a>
                                                         <h4 class="font-size-14 font-weight-700">
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
