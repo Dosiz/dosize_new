@@ -119,7 +119,7 @@ Dosize
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product->brand_profile_id)}}" >
+                                            <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand" >
                                                 <p class="promotion_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </p>
                                             </a>
                                         </div>
@@ -431,7 +431,7 @@ Dosize
                                                                 </a>
                                                                 <div class="content_div">
                                                                     <a class="font-size-14 font-weight-700"
-                                                                       href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
+                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
                                                                                 <span
                                                                                     class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name ?? ''}} </span>
                                                                     </a>

@@ -60,7 +60,7 @@ class FrontEndController extends Controller
         $discount_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
-        ->select('products.*','brand_profiles.brand_name')
+        ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name')
         ->where('products.discount_price','!=', null)
         ->where('products.sale_time','!=', null)
         ->where('products_has_cities.city_id',$city_id)
