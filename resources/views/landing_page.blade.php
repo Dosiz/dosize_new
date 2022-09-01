@@ -229,7 +229,7 @@ Dosize
                                             </h4>
                                             <div class="rating_price_div">
                                                 @if($product->price)
-                                                <p class="font-size-14 font-weight-600" {{$product->price ?? ''}}> ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                <p class="font-size-14 font-weight-600" {{$product->price}}> ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 @else
                                                 <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 @endif
