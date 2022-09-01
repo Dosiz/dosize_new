@@ -337,7 +337,7 @@ Dosize
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             <?php $a =1; ?>
-            @php $category =  \App\Models\Category::where('id',$i)->first(); @endphp
+            @php $category =  \App\Models\Category::where('id',$a)->first(); @endphp
             {{-- @dd($category) --}}
                 @if($i == 1 || $i == 2)
                 
@@ -450,7 +450,7 @@ Dosize
                                                                         <h4 class="font-size-14 font-weight-700">
                                                                             {{\Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                                         </h4>
-                                                                        <p class="discription font-size-12 font-weight-400" style="display: block !important;">
+                                                                        <p class="discription font-size-12 font-weight-400">
                                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
                                                                         </p>
                                                                     </a>
@@ -530,7 +530,7 @@ Dosize
                                                             <h4 class="font-size-14 font-weight-700">
                                                                 {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                             </h4>
-                                                            <p class="discription font-size-12 font-weight-400" style="display: block !important;">
+                                                            <p class="discription font-size-12 font-weight-400">
                                                                 {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!}
                                                             </p>
                                                             
@@ -555,7 +555,7 @@ Dosize
                                                         <h4 class="font-size-14 font-weight-700">
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
-                                                        <p class="discription font-size-12 font-weight-400" style="display: block !important;">
+                                                        <p class="discription font-size-12 font-weight-400">
                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
                                                         </p>
                                                         <span class="font-size-12 like_span">4
