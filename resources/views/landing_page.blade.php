@@ -240,8 +240,12 @@ Dosize
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next btn-swiper"></div>
-                        <div class="swiper-button-prev btn-swiper"></div>
+                        <div class="swiper-button-next btn-swiper">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
