@@ -568,6 +568,8 @@ class FrontEndController extends Controller
         ->where('products.discount_price','!=', null)
         ->get();
 
+        // dd($discount_products);
+
         $products = DB::table('products_has_cities')
         ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
         ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
