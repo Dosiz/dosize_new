@@ -447,23 +447,20 @@
                                 @if(count($recomanded_blogs) > 0)
                                 @foreach($recomanded_blogs as $recomanded_blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_blog->recomended_blog->id ?? '')}}">
-                                        <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
-                                    </a>
+                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
+                                        class="img-fluid">
                                     <div class="content_div">
-                                        <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
-                                            <span class="category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
-                                        </a>
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
-                                        <h4 class="font-size-12 font-weight-700">
-                                            {{$recomanded_blog->recomended_blog->title}}
+                                        <span class="category font-size-12 font-weight-400">נעלי העיר</span>
+                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
+                                            אחרי
+                                            הצהריים
                                         </h4>
-                                        <p class="discription font-size-10 font-weight-400" style="font-weight: 400px !important;">
-                                            {!! substr($recomanded_blog->recomended_blog->description, 0,  50) ?? '' !!}
+                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
+                                            של
+                                            הקולקצייה המדהימה הזאת כאן בכתבה
                                         </p>
-                                        </a>
-                                        {{-- <span class="font-size-12">4 <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span> --}}
+                                        <span class="font-size-12">4 <i class="fa fa-heart"
+                                                aria-hidden="true"></i></span>
                                     </div>
                                 </div>
                                 @endforeach
