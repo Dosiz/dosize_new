@@ -123,7 +123,7 @@ Category By city
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-between">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
                             <div class="affordable_consumption_box box_shahdow">
