@@ -355,7 +355,12 @@ Dosize
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             
-            @php $category =  \App\Models\Category::where('id',$a)->first(); @endphp
+            @php 
+            $category =  \App\Models\Category::find($key); 
+                if($category == null){
+                    continue;
+                }
+            @endphp
             {{-- @dd($product_categories) --}}
                 @if($i == 1 || $i == 2)
                 
@@ -372,7 +377,7 @@ Dosize
                                                     @if(isset($category->image))
                                                     <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="50px">
                                                     @endif
-                                                    <h3 class="common_title"> {{ $category->name ?? ''}}<img
+                                                    <h3 class="common_title"> {{ $category->name ?? 'hello'}}<img
                                                             src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                             class="img-fluid">
                                                     </h3>
@@ -416,32 +421,7 @@ Dosize
                                                     @endforeach
                                                 @endif
                                             @endforeach
-
-                                            {{-- @foreach($product_categories as $product)
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="main_article">
-                                                        <div class="article_box">
-                                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                                <img src="{{asset('product/'.$product->image ?? '' )}}" width="120px" height="100%">
-                                                            </a>
-                                                            <a style="color: #212529 !important" href="{{route('product',$product->id ?? '')}}">
-                                                            <div class="article_content">
-                                                                <h4 class="font-size-18"
-                                                                    style="margin-bottom: 20px;">
-                                                                    {{$p_city->blogs->groupBy('category_id')['0']->title ?? ''}}
-                                                                </h4>
-                                                                <p class="font-size-12">
-                                                                    {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
-                                                                </p>
-                                                            </div>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach --}}
-
+                                        
                                             <div class="row">
 
                                                 <div class="col-lg-12">
@@ -525,7 +505,7 @@ Dosize
                                                 @if(isset($category->image))
                                                 <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="100%">
                                                 @endif
-                                                <h3 class="common_title">  {{ $category->name ?? ''}}<img
+                                                <h3 class="common_title">  {{ $category->name ?? 'Haroon'}}<img
                                                         src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
                                                         class="img-fluid">
                                                 </h3>
@@ -600,7 +580,7 @@ Dosize
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 {{-- {{ $category->id , $city_id)}} --}}
-                                                <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
+                                                <a href="{{route('category_by_city',['category_id'=>$category->id ?? '','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
                                                     כתבות ביגוד
                                                     והנעלה
                                                     ></a>
