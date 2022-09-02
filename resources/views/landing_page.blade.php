@@ -163,7 +163,7 @@ Dosize
                             <div class="affordable_consumption_box box_shahdow">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px;">
+                                    class="img-fluid" style="width: 131px; height:164px;">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
