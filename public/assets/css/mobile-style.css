@@ -2949,7 +2949,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
         width: auto !important;
-        height: auto !important;
+        /* height: auto !important; */
     }
 
     .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
