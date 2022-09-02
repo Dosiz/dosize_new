@@ -2958,7 +2958,8 @@ footer .inbox_footer .message_form .input_div_button button,
     }
 
     .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
-        width: auto !important;
+        width: 100px !important;
+        height: 100%;
         border-radius: 0px 12px 12px 0px !important;
         margin-left: 15px;
     }
