@@ -355,7 +355,7 @@ Dosize
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             
-            @php $category =  \App\Models\Category::where('id',$a)->orderBy('order_id', 'DESC')->first(); @endphp
+            @php $category =  \App\Models\Category::where('id',$a)->orderBy('category_order_id', 'DESC')->first(); @endphp
             {{-- @dd($product_categories) --}}
                 @if($i == 1 || $i == 2)
                 
