@@ -141,6 +141,12 @@ Dosize
                             @endforeach
                         @endif
                     </div>
+                    <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
+                        <i class="fa fa-caret-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="swiper-button-prev btn-swiper swiper-right d-block">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -329,6 +335,12 @@ Dosize
                             @endforeach
                             @endforeach
                             @endif
+                        </div>
+                        <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper swiper-right d-block">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
