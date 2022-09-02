@@ -124,7 +124,7 @@
                                     class="img-fluid">
                                 <p class="font-size-18">
                                     <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
-                                        <span class="category" > {{ $blog->brandprofile->brand_name}} </span>
+                                        <span class="category" > {{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>
                                     </a>
                                     <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span>
                                     {{-- <span>| כ”ג אייר פ”ב</span> --}}
@@ -149,7 +149,7 @@
                         <div class="col-lg-12">
                             <div class="article_like">
                                 <h4 class="font-size-18 font-weight-600">אהבתם את הכתבה? רוצים לא לפספס את
-                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותי של {{ $blog->brandprofile->brand_name }} >>>
+                                    התכנים שלנו? הרשמו כאן ווקבלו ישירות למייל את התוכן האיכותי של {{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} >>>
                                 </h4>
                             </div>
                         </div>
@@ -240,7 +240,7 @@
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                    <span style="color: #db1580">{{ $blog->brandprofile->brand_name}}</span>
+                                    <span style="color: #db1580">{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}}</span>
                                     ולא תפספסו שום דיל!</p>
                                     </a>
                                 @else
@@ -256,7 +256,7 @@
                                     <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                     <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                     <input type="hidden" id="brand_profile_id" value="{{$blog->brand_profile_id }}" />
-                                    <span>{{ $blog->brandprofile->brand_name}}</span>
+                                    <span>{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}}</span>
                                     ולא תפספסו שום דיל!</p>
                                     </a>
                                 @endguest
@@ -397,7 +397,7 @@
                                     <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
+                                    <span class="category font-size-12 font-weight-400">{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>
                                     <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
                                         {{$recommended_product->recommended_product->name}}
