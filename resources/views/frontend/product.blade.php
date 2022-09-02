@@ -454,14 +454,14 @@
                                         <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
                                             <span class="category font-size-12 font-weight-400">{{$product->brandprofile->brand_name}}</span>
                                         </a>
-                                        <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
-                                            אחרי
-                                            הצהריים
-                                        </h4>
-                                        <p class="discription font-size-10 font-weight-400">צפו בגלריית התמונות
-                                            של
-                                            הקולקצייה המדהימה הזאת כאן בכתבה
-                                        </p>
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                            <h4 class="font-size-12 font-weight-700">
+                                                {{$recomanded_blog->recomended_blog->title}}
+                                            </h4>
+                                            <p class="discription font-size-10 font-weight-400" style="font-weight: 400px !important;">
+                                                {!! substr($recomanded_blog->recomended_blog->sub_title, 0,  50) ?? '' !!}
+                                            </p>
+                                        </a>
                                         <span class="font-size-12">4 <i class="fa fa-heart"
                                                 aria-hidden="true"></i></span>
                                     </div>
