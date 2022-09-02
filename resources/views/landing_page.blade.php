@@ -185,7 +185,11 @@ Dosize
                                             {!! \Illuminate\Support\Str::limit($blog->sub_title ?? '',30,'...') !!} 
                                         </p>
                                     </a>
-                                    <span class="font-size-12 d-none">4 <i class="fa fa-heart"
+                                    @php 
+                                        $like =  \App\Models\Like::where('blog_id',$blog->id)->count();
+                                        // dd($like);
+                                    @endphp 
+                                    <span class="font-size-12">{{$like}}<i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>
@@ -238,7 +242,11 @@ Dosize
                                                 @else
                                                 <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 @endif
-                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                                @php 
+                                                    $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                                    // dd($rating);
+                                                @endphp 
+                                                <p class="rating_text">{{$product->rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
@@ -556,9 +564,14 @@ Dosize
                                                         <p class="discription font-size-12 font-weight-400">
                                                             {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
                                                         </p>
-                                                        <span class="font-size-12 like_span">4
+                                                        {{-- <span class="font-size-12 like_span">4ss
                                                             <i class="fa fa-heart"
-                                                                aria-hidden="true"></i></span>
+                                                                aria-hidden="true"></i></span> --}}
+                                                        @php 
+                                                            $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                                            // dd($rating);
+                                                        @endphp 
+                                                        <p class="rating_text" >{{$product->rating ?? 'no rating'}} <i class="fa fa-star" style="color:#F5A41A !important;"></i></p>
                                                         <div class="rating_price_div">
                                                             @if($product->price)
                                                             <p class="font-size-14 font-weight-600">
