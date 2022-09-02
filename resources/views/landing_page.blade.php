@@ -26,7 +26,7 @@ Dosize
                                 <div class="category_box swiper-slide">
                                     <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px;">
                                         </div>
                                         <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
                                     </a>
@@ -107,7 +107,7 @@ Dosize
                                     <div class="promotion_img_box">
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
-                                            class="img-fluid" style="width: 209px; height:105px;">
+                                            class="img-fluid" style="width: 209px;">
                                         </a>
                                         <span class="font-size-14 font-weight-700">{{ (int)(( ($product->price - $product->discount_price) / $product->price ) * 100) }} %</span>
                                     </div>
@@ -169,7 +169,7 @@ Dosize
                             <div class="affordable_consumption_box box_shahdow">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px; height:164px;">
+                                    class="img-fluid" style="width: 131px;">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
@@ -454,7 +454,7 @@ Dosize
                                                                     <img
                                                                         src="{{asset('product/'.$product->image ?? '')}}"
                                                                         width="238px"
-                                                                        height="120px">
+                                                                        height="100%">
                                                                 </a>
                                                                 <div class="content_div">
                                                                     <a class="font-size-14 font-weight-700"
@@ -523,7 +523,7 @@ Dosize
                                         <div class="col-lg-12 text-right" style="padding-right: 15px; padding-left: 15px;">
                                             <div class="header_cloth">
                                                 @if(isset($category->image))
-                                                <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="50px">
+                                                <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="100%">
                                                 @endif
                                                 <h3 class="common_title">  {{ $category->name ?? ''}}<img
                                                         src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
@@ -540,7 +540,7 @@ Dosize
                                                     @foreach($article_categories->take(1) as $blog)
                                                     <div class="affordable_consumption_box box_shahdow">
                                                         <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
-                                                            <img src="{{asset('blog/'.$blog->image ?? '')}}" style="width:131px; height:226px;">
+                                                            <img src="{{asset('blog/'.$blog->image ?? '')}}" style="width:131px;">
                                                         </a>
                                                         <div class="content_div">
                                                             
@@ -561,7 +561,7 @@ Dosize
                                                 @foreach($product_categories->take(2) as $product)
                                                 <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                        <img src="{{asset('product/'.$product->image ?? '')}}" width="131px" height="137px">
+                                                        <img src="{{asset('product/'.$product->image ?? '')}}" width="131px" height="100%">
                                                     </a>
                                                     <div class="content_div">
                                                         <a target="_blank" class="font-size-14 font-weight-700"
