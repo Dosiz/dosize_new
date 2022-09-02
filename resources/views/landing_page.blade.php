@@ -220,7 +220,7 @@ Dosize
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
+                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style=" height:163px">
                                         </a>
                                         <div class="content_div">
                                             <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
@@ -309,7 +309,7 @@ Dosize
                             @foreach($recomanded_products->recommended_product as $product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style=" height: 165px;">
                                 </a>
                                 <div class="content_div">
                                     <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
@@ -336,7 +336,7 @@ Dosize
                             @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
+                        <div class="swiper-button-next btn-swiper swiper-left d-block">
                             <i class="fa fa-caret-left" aria-hidden="true"></i>
                         </div>
                         <div class="swiper-button-prev btn-swiper swiper-right d-block">
