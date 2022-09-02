@@ -210,212 +210,37 @@ Dosize
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            {{-- @if(count($products) > 0 && $products[0]->id != null)
-                                @foreach($products as $product) --}}
+                            @if(count($products) > 0 && $products[0]->id != null)
+                                @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
+                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
+                                            <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
                                             <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
+                                                {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
                                             </span>
                                             </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
+                                            <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
+                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </h4>
                                             <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @if($product->price)
+                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 @else
                                                 <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$products['0']->id ?? '')}}">
-                                            <img src="{{asset('product/'.$products['0']->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="https://{{$products['0']->short_name ?? ''}}.arikliger.com/brand">
-                                            <span class="deal_category font-size-12 font-weight-400">
-                                                {{\Illuminate\Support\Str::limit($products['0']->brand_name ?? '',15)}}
-                                            </span>
-                                            </a>
-                                            <a href="{{route('product',$products['0']->id ?? '')}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($products['0']->name ?? '',30,'...')}}
-                                            </h4>
-                                            <div class="rating_price_div">
-                                                @if($products['0']->price)
-                                                <p class="font-size-14 font-weight-600">{{$products['0']->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                @endif
-                                                <p class="rating_text">{{$products['0']->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                {{-- @endforeach
-                            @endif --}}
+                                @endforeach
+                            @endif
                         </div>
-                        <div class="swiper-button-next btn-swiper swiper-left d-block">
+                        <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
                             <i class="fa fa-caret-left" aria-hidden="true"></i>
                         </div>
                         <div class="swiper-button-prev btn-swiper swiper-right d-block">
@@ -1064,6 +889,7 @@ Dosize
     });
 
     
+    $('.removedDisable').removeClass('swiper-button-disabled');
 
     
 
