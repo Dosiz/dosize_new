@@ -246,7 +246,7 @@ Dosize
                                                     $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
                                                     // dd($rating);
                                                 @endphp 
-                                                <p class="rating_text">{{$product->rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                                <p class="rating_text">{{$rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
