@@ -447,8 +447,9 @@
                                 @if(count($recomanded_blogs) > 0)
                                 @foreach($recomanded_blogs as $recomanded_blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <img src="../../assets/img/mobile_component/affordable_iten.png" alt=""
-                                        class="img-fluid">
+                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_blog->recomended_blog->id ?? '')}}">
+                                        <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                    </a>
                                     <div class="content_div">
                                         <span class="category font-size-12 font-weight-400">נעלי העיר</span>
                                         <h4 class="font-size-12 font-weight-700">קולקציית קיץ הושקה בלידר אתמול
