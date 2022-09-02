@@ -1360,7 +1360,7 @@ header .article_header .heart_tag_message_list ul li span {
 }
 
 .deal_one .multiple_deals .deals_box {
-    max-width: 16% !important;
+    max-width: 100% !important;
 }
 
 .deal_two .multiple_deals .deals_box img,
