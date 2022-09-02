@@ -240,8 +240,8 @@ Dosize
                                 @endforeach
                             @endif
                         </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next btn-swiper"></div>
+                        <div class="swiper-button-prev btn-swiper"></div>
                     </div>
                 </div>
             </div>
