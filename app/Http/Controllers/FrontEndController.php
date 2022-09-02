@@ -82,7 +82,7 @@ class FrontEndController extends Controller
         ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
         // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
-        // ->RightJoin('likes', 'likes.blog_id', '=', 'blogs.id')
+        // ->leftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
         ->select('blogs.*'
         ,'brand_profiles.brand_name','brand_profiles.short_name'
         // ,DB::raw('count(likes.id) as totallikes')
@@ -90,12 +90,12 @@ class FrontEndController extends Controller
         ->where('blogs_has_cities.city_id',$city_id)
         ->where('blogs.status',1)
         ->take(4)
-        ->orderBy('id', 'ASC')
+        ->orderBy('id', 'DESC')
         // ->where('categories.id',$category_id)
         ->get();
 
 
-        // dd($blogs);
+        dd($blogs);
 
         $products_by_categories = Category::with('product','brandprofile')->orderBy('category_order_id', 'ASC')->get();
         // dd($products_by_categories);
