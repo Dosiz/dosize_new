@@ -356,7 +356,7 @@ Dosize
             @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             
             @php $category =  \App\Models\Category::where('id',$a)->first(); @endphp
-            {{-- @dd($category) --}}
+            @dd($product_categories)
                 @if($i == 1 || $i == 2)
                 
                 {{-- @dd($p_city->products->groupBy('category_id'),$key) --}}
