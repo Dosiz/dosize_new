@@ -143,7 +143,8 @@
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
                                 <a href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                <span> {{$product->brandprofile->brand_name }}</span>
+                                <span> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}
+                                </span>
                                 </a>
                             </div>
                         </div>
@@ -222,7 +223,7 @@
                             </a>
                             <div class="content_div">
                                 <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
-                                <span class="deal_category font-size-12 font-weight-400"> {{$product->brandprofile->brand_name}} </span>
+                                <span class="deal_category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}} </span>
                                 </a>
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
@@ -275,7 +276,7 @@
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                    <span style="color: #db1580">{{ $product->brandprofile->brand_name}}</span>
+                                    <span style="color: #db1580">{{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}</span>
                                     ולא תפספסו שום דיל!</p>
                                     </a>
                                 @else
@@ -291,7 +292,7 @@
                                     <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                     <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                     <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
-                                    <span>{{ $product->brandprofile->brand_name}}</span>
+                                    <span>{{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}</span>
                                     ולא תפספסו שום דיל!</p>
                                     </a>
                                 @endguest
@@ -452,7 +453,10 @@
                                     </a>
                                     <div class="content_div">
                                         <a href="{{route('brand-profile',$product->brandprofile->id ?? '')}}">
-                                            <span class="category font-size-12 font-weight-400">{{$product->brandprofile->brand_name}}</span>
+                                            <span class="category font-size-12 font-weight-400">
+                                                {{-- {{$product->brandprofile->brand_name}} --}}
+                                                {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}
+                                            </span>
                                         </a>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                             <h4 class="font-size-12 font-weight-700">
