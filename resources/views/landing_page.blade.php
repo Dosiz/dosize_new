@@ -392,7 +392,7 @@ Dosize
                                             @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                     @foreach($article_categories->take(1) as $blog)
-                                                        <div class="row">
+                                                        <div class="row" style="flex-direction: row-reverse;">
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box" style="margin-bottom: 8px">
