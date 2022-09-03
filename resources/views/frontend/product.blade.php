@@ -428,7 +428,7 @@
                     </div>
                 </div>
             </div>
-
+            @if(count($recomanded_blogs) > 0)
             <div class="affordable_consumption spacing article_affordable_consumption" style="min-height: 100px; position: relative; display:flex;">
                 <div class="container-fluid">
                     <div class="row">
@@ -479,6 +479,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
         </div>
 

@@ -10,6 +10,9 @@ Brand List
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
     <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
     <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
         .mobile_header {
             display: none;
@@ -151,7 +154,7 @@ Brand List
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                                     @else
                                         @if($chk_subscriber == null)
-                                        <form action="{{ route('store-subscriber') }}" method="POST">
+                                        <form href="" id="subscriber">
                                         @csrf
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
@@ -169,11 +172,11 @@ Brand List
                                 </div>
                                 <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:39px;" alt="flash">
                                 <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
-                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
+                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px;" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>
                             </div>
-                            @guest
+                            {{-- @guest
                             <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                 <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                             @else
@@ -192,7 +195,7 @@ Brand List
                                 <img src="{{asset('assets/img/verfied.png') }}" alt="star">
                             </button>
                             @endif
-                            @endguest
+                            @endguest --}}
                         </div>
                     </div>
                     @endforeach
@@ -314,41 +317,41 @@ Brand List
         }
     });
 
-    // $('#subscriber').click(function(e){
-    //     e.preventDefault();
-    //     // const postFormData = {
-    //     //     brand_profile_id : $('#brand_profile_id').val(),
-    //     //     email     : $('#email').val(),
-    //     //     // _token: "{{ csrf_token() }}"
-    //     // };
-    //     let brand_profile_id = $('#brand_profile_id').val();
-    //     let email = $('#email').val();
-    //     let _token   = $('meta[name="csrf-token"]').attr('content');
-    //     // console.log(postFormData);
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "{{ route('store-subscriber') }}",
-    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    //         data: {
-    //             email:email,
-    //             brand_profile_id:brand_profile_id,
-    //             _token: _token
-    //         } ,
-    //         datatype: "json",
-    //         success: function (data) {
-    //              console.table(data.success);
-    //             toastr.success(data.success);
-    //             // console.table(data.comment);
+    $('#subscriber').click(function(e){
+        e.preventDefault();
+        // const postFormData = {
+        //     brand_profile_id : $('#brand_profile_id').val(),
+        //     email     : $('#email').val(),
+        //     // _token: "{{ csrf_token() }}"
+        // };
+        let brand_profile_id = $('#brand_profile_id').val();
+        let email = $('#email').val();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+        // console.log(postFormData);
+        $.ajax({
+            type: "POST",
+            url: "{{ route('store-subscriber') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                email:email,
+                brand_profile_id:brand_profile_id,
+                _token: _token
+            } ,
+            datatype: "json",
+            success: function (data) {
+                 console.table(data.success);
+                toastr.success(data.success);
+                // console.table(data.comment);
                 
                  
-    //         },
-    //         error: function (data) {
-    //             // toastr.warning(data);
-    //             toastr.error("Already Subscribed");
+            },
+            error: function (data) {
+                // toastr.warning(data);
+                toastr.error("Already Subscribed");
                 
-    //         }
-    //     });
-    // });
+            }
+        });
+    });
 
 </script>
 @endsection
