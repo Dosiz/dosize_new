@@ -169,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            @if(count($recomanded_blogs) > 0)
+            @if(count($recommended_products) > 0)
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -184,22 +184,22 @@
                 <div class="slider_div">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($recomanded_blogs) > 0)
-                            @foreach($recomanded_blogs as $recomanded_blog)
+                            @if(count($recommended_products) > 0)
+                            @foreach($recommended_products as $recommended_product)
                             <div class="deals_box box_shahdow swiper-slide">
-                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}">
-                                    <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
+                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                 </a>
 
                                 <div class="content_div">
-                                    <a href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                    <a href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
-                                            {{$recomanded_blog->recomended_blog->title}}
+                                            {{$recommended_product->recommended_product->name}}
                                         </h4>
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
 
-                                            <p class="font-size-14 font-weight-300">{!! substr($recomanded_blog->recomended_blog->description ?? '', 0,  20) !!}</p>
+                                            <p class="font-size-14 font-weight-300">{!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -373,7 +373,7 @@
                 </div>
             </div>
         </div>
-        @if(count($recommended_products) > 0)
+        @if(count($recomanded_blogs) > 0)
         <div class="affordable_consumption spacing article_affordable_consumption">
             <div class="container-fluid">
                 <div class="row">
@@ -390,20 +390,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
-                            @if(count($recommended_products) > 0)
-                            @foreach($recommended_products as $recommended_product)
+                            @if(count($recomanded_blogs) > 0)
+                            @foreach($recomanded_blogs as $recomanded_blog)
                             <div class="affordable_consumption_box box_shahdow">
-                                <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
-                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
+                                <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}">
+                                    <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>
-                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id ?? '')}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
-                                        {{$recommended_product->recommended_product->name}}
+                                        {{$recomanded_blog->recomended_blog->title}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $recommended_product->recommended_product->description ?? '' !!}
+                                        {!! $recomanded_blog->recomended_blog->description ?? '' !!}
                                     </p>
                                     </a>
                                     {{-- <span class="font-size-12">4 <i class="fa fa-heart"
