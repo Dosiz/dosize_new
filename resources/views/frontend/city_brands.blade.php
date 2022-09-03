@@ -138,12 +138,12 @@ Brand List
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}" class="main_img d-xl-none" style="width: 143px !important;" alt="item">
-                            <a href="{{route('brand-profile',$city_brand->id)}}">
+                            <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
                             </a>
                             <div class="title d-flex justify-content-end align-items-center">
                                 <div class="txt">
-                                    <a href="{{route('brand-profile',$city_brand->id)}}" style="color: #212529 !important">
+                                    <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" style="color: #212529 !important">
                                     <h3>{{$city_brand->brand_name}}</h3>
                                     </a>
                                     @guest
@@ -168,7 +168,7 @@ Brand List
                                     @endguest
                                 </div>
                                 <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:39px;" alt="flash">
-                                <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$city_brand->id)}}" >
+                                <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
                                     <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>

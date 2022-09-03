@@ -123,7 +123,7 @@
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" style="width: 39px;" alt=""
                                     class="img-fluid">
                                 <p class="font-size-18">
-                                    <a href="{{route('brand-profile',$blog->brandprofile->id ?? '')}}" >
+                                    <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
                                         <span class="category" > {{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>
                                     </a>
                                     <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span>
@@ -220,7 +220,7 @@
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
                                     class="img-fluid" style="width:39px ; height: 38px;">
 
-                                <a class="font-size-16" href="{{route('brand-profile',$blog->brand_profile_id)}}">לעמוד המותג</a>
+                                <a class="font-size-16" href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand">לעמוד המותג</a>
                                 @guest
                                 <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="" >שליחת הודעה</a>
                                 @else
