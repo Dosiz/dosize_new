@@ -179,7 +179,7 @@ class ProductController extends Controller
         // try {
             $product = Product::where('id',$id)->first();
             $brand_profile = BrandProfile::with('category')->where('user_id',Auth::id())->first();
-            $products = Product::where('brand_profile_id',$brand_profile->id)->get();
+            $products = Product::where('brand_profile_id',$brand_profile->id)->get()->except($id);
             $blogs = Blog::where('brand_profile_id',$brand_profile->id)->get();
             $recomended_products = RecomendedProduct::where([['product_id',$id],['brand_profile_id',$brand_profile->id],['type','product']])->get();
             $recommended_blogs = RecomendedProduct::where([['product_id',$id],['brand_profile_id',$brand_profile->id],['type','blog']])->get();
