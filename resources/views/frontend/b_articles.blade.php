@@ -23,7 +23,7 @@
             <div class="multiDiv">
                 <div class="row">
                     @foreach($articles as $article)
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3">
                         <div class="articleCard">
                             {{-- <div class="badgeDiv">
                                 <img src="{{asset('assets/img/user/badge.png')}}" alt="">
@@ -35,7 +35,7 @@
                             </div> --}}
                             <div class="d-flex" style="height: 100%">
                                 <a href="{{url('article',$article->id)}}"> 
-                                    <img src="{{asset('blog/'.$article->image ?? '')}}" alt="" style="width:131px; height:135px;" class="img-fluid">
+                                    <img src="{{asset('blog/'.$article->image ?? '')}}" alt="" style="width:131px; height:100%;" class="img-flui">
                                 </a>
 
                                 <div class="articleInfo">

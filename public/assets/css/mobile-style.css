@@ -2972,6 +2972,10 @@ footer .inbox_footer .message_form .input_div_button button,
     .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
         display: flex !important;
     }
+    .imgresponsive{
+        width: 90px !important;
+        height: 100% !important;
+    }
 }
 
 @media screen and (max-width: 500px) {

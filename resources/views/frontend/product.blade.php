@@ -160,7 +160,7 @@
                             @endif
                         </div>
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
-                            <div class="product_price d-flex justify-content-end">
+                            <div class="product_price d-flex justify-content-end" style="text-align: right">
                                 <p><b>{{$product->name}}</b></p>
                             </div>
                         </div>

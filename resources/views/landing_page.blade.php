@@ -169,7 +169,7 @@ Dosize
                             <div class="affordable_consumption_box box_shahdow">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px;">
+                                    class="img-fluid" style="width: 131px;height:100%">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
@@ -317,7 +317,7 @@ Dosize
                             @foreach($recomanded_products->recommended_product as $product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style=" height: 165px;">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
                                 </a>
                                 <div class="content_div">
                                     <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
@@ -549,7 +549,7 @@ Dosize
                                                 @foreach($product_categories->take(2) as $product)
                                                 <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                        <img src="{{asset('product/'.$product->image ?? '')}}" width="131px" height="100%">
+                                                        <img src="{{asset('product/'.$product->image ?? '')}}" class="imgresponsive" alt="width="131px" height="100%">
                                                     </a>
                                                     <div class="content_div">
                                                         <a target="_blank" class="font-size-14 font-weight-700"
