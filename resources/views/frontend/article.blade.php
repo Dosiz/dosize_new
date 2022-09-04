@@ -237,7 +237,15 @@
                                     <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
                                     @else
+                                    @php
+                                        $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$blog->brand_profile_id)->first();
+                                    @endphp
+                                    @if($chk_sub)
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @else
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    @endif
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
                                     <span style="color: #db1580">{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}}</span>
@@ -249,7 +257,15 @@
                                     <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid subscribed" style="display: none !important;">
                                     @else
+                                    @php
+                                        $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$blog->brand_profile_id)->first();
+                                    @endphp
+                                    @if($chk_sub)
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
+                                    @else
+                                    <img src="{{asset('assets/img/mobile_component/sign_up_icon.png') }}" alt="" class="img-fluid new_subscriber">
+                                    <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid d-none subscribed">
+                                    @endif
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
 

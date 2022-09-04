@@ -705,6 +705,7 @@ class FrontEndController extends Controller
         ->select('brand_profiles.*')
         ->where('brands_has_cities.city_id',$city_id)
         ->get();
+        // dd($city_brands);
 
         $brand_messages = DB::table('brands_message_has_cities')
         ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
@@ -754,6 +755,19 @@ class FrontEndController extends Controller
         // else{
         //     return Redirect::back()->with('warning','Already Subscribe');
         // }
+    }
+
+    public function store_subscribers(Request $request)
+    {
+        // dd($request);
+        // $subscriber = Subscriber::where('email',Auth::user()->email)->first();
+        // if($subscriber == null){
+            $subscriber= new Subscriber;
+            $subscriber->email = Auth::user()->email;
+            $subscriber->brand_profile_id = $request->brand_profile_id;
+            $subscriber->save();
+            return Redirect::back();
+            
     }
 
     public function wallet()

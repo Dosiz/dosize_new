@@ -43,6 +43,8 @@ Route::post('/user/search_product',[App\Http\Controllers\FrontEndController::cla
 
 //subscriber
 Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class, 'store_subscriber'])->name('store-subscriber');
+//without ajax
+Route::post('/store_subscribers',[App\Http\Controllers\FrontEndController::class, 'store_subscribers'])->name('store-subscribers');
 
 //all articles 
 Route::get('/brand/article/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'show_all_blogs'])->name('all-blogs');

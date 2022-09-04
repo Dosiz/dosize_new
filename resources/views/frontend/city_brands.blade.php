@@ -154,7 +154,8 @@ Brand List
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                                     @else
                                         @if($chk_subscriber == null)
-                                        <form href="" id="subscriber">
+                                        
+                                        <form action="{{ route('store-subscriber') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
@@ -164,9 +165,24 @@ Brand List
                                         </button>
                                         </form>
                                         @else
+                                        @php
+                                            $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$city_brand->id)->first();
+                                        @endphp
+                                        @if($chk_sub)
                                         <button class="btn signForClub d-none d-xl-block"> הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/verfied.png') }}" alt="star">
                                         </button>
+                                        @else
+                                            <form action="{{ route('store-subscribers') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
+                                                <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
+                                                <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
+                                                <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
+                                                    <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                                </button>
+                                            </form>
+                                        @endif
                                         @endif
                                     @endguest
                                 </div>
