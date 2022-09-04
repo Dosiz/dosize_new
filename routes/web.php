@@ -44,6 +44,11 @@ Route::post('/user/search_product',[App\Http\Controllers\FrontEndController::cla
 //subscriber
 Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class, 'store_subscriber'])->name('store-subscriber');
 
+//all articles 
+Route::get('/brand/article/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'show_all_blogs'])->name('all-blogs');
+
+
+
 //articles and products like and bookmarks
 Route::post('/store_blog_comment_like',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment_like'])->name('store-blog-comment-like');
 Route::post('/store_blog_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_blog_bookmark'])->name('store-blog-bookmark');

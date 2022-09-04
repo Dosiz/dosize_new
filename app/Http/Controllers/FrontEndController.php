@@ -619,7 +619,35 @@ class FrontEndController extends Controller
         ->get();
 
         // dd($brand_messages,$city_id);
-        return view('frontend.city_category',compact('cities','brand_messages','categories','discount_products','products','brands_recomanded_products','blogs'));
+        return view('frontend.city_category',compact('cities','brand_messages','categories','discount_products','products','brands_recomanded_products','blogs','category_id','city_id'));
+    }
+
+    public function show_all_blogs($category_id,$city_id)
+    {       
+        // dd($city_id);
+        $categories = Category::get();
+        $cities = City::get();
+
+        $blogs = DB::table('blogs_has_cities')
+        ->LeftJoin('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        ->LeftJoin('categories', 'categories.id', '=', 'blogs.category_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
+        ->select('blogs.*','brand_profiles.brand_name','brand_profiles.short_name'
+        )
+        ->where('blogs_has_cities.city_id',$city_id)
+        ->where('blogs.category_id',$category_id)
+        ->get();
+        // dd($blogs);
+
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id',$city_id)
+        ->get();
+
+        // dd($brand_messages,$city_id);
+        return view('frontend.show_all_blogs',compact('cities','brand_messages','categories','blogs'));
     }
 
     public function category_article_detail($category_id,$city_id = 2)
