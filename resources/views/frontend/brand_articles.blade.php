@@ -56,7 +56,7 @@ Dosize
                             @foreach($blogs as $blog)
                             
                             <div class="affordable_consumption_box box_shahdow">
-                                <a href="{{route('brand_article',$blog->id)}}">
+                                <a href="{{route('article',$blog->id)}}">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
                                     class="img-fluid" style="width: 131px; height: 160px">
                                 </a>
@@ -64,7 +64,7 @@ Dosize
                                     <a href="">
                                     <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
                                     </a>
-                                    <a href="{{route('brand_article',$blog->id)}}" style="color: #212529 !important">
+                                    <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
                                     <h4 class="font-size-12 font-weight-700">
                                         {{$blog->title}}
                                     </h4>

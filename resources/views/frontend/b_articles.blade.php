@@ -34,7 +34,7 @@
                                 </span>
                             </div> --}}
                             <div class="d-flex" style="height: 100%">
-                                <a href="{{url('article',$article->id)}}"> 
+                                <a href="{{url('brand_article',$article->id)}}"> 
                                     <img src="{{asset('blog/'.$article->image ?? '')}}" alt="" style="width:131px; height:100%;" class="img-flui">
                                 </a>
 
@@ -43,7 +43,7 @@
                                     <a href="{{url('article',$article->id)}}"> <img src="{{asset('assets_admin/img/calendar.png')}}" alt="" style="width:18px !important; height: 18px !important;"></a>
                                     <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($article->created_at)) }}</span>
                                     </div> --}}
-                                    <a href="{{url('article',$article->id)}}"><h3>{{$article->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3>
+                                    <a href="{{url('brand_article',$article->id)}}"><h3>{{$article->title ?? '2022 ויתס םלוהקוטשב הנפואה עובשמ רתויב בוטה בוחרה ןונגס'}}</h3>
                                     <p>{{$article->sub_title }} </p></a>
                                     <p>
                                         <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
