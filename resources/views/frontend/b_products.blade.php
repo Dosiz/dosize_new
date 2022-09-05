@@ -34,14 +34,14 @@
                                     <img src="{{asset('assets/img/user/heart.png')}}" alt="">
                                 </span>
                             </div> --}}
-                            <a href="{{url('brand_product/'. $brand_profile->id. '/' .$product->id)}}" >
+                            <a href="{{url('brand_product/' .$product->id)}}" >
                         <img src="{{asset('product/'.$product->image ?? '')}}" style="height:165px;" alt="" class="img-fluid">
                             </a>
                             <div class="articleInfo">
                                 {{-- <div class="dateInput">
                                     <span style="border: none;color: #747474;font-size: 12px;font-family: PloniRegular;">{{ date('Y/m/d', strtotime($product->created_at)) }}</span>
                                 </div> --}}
-                                <a href="{{url('brand_product/'. $brand_profile->id. '/' .$product->id)}}" ><h3> {{$product->name}} </h3></a>
+                                <a href="{{url('brand_product/'.$product->id)}}" ><h3> {{$product->name}} </h3></a>
                                 {{-- <p>{!! \Illuminate\Support\Str::limit($product->description, 130, $end='...') !!} </p> --}}
                                 <div class="rating_price_div" style="display:flex;align-items:center; justify-content:space-between; flex-direction:row-reverse;">
                                     @if($product->discount_price != null)
