@@ -186,7 +186,7 @@ Brand List
                                         @endif
                                     @endguest
                                 </div>
-                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:39px;" alt="flash">
+                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:80px; height:80px" alt="flash">
                                 <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
                                     <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 80px; height: 80px;" alt="flash"
                                     class="d-none d-xl-block titleImg">
