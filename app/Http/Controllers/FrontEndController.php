@@ -83,14 +83,14 @@ class FrontEndController extends Controller
         // ->Join('categories', 'categories.id', '=', 'blogs.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
 
-        ->leftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
+        // ->leftJoin('likes', 'likes.blog_id', '=', 'blogs.id')
         ->select('blogs.*'
         ,'brand_profiles.brand_name','brand_profiles.short_name'
-        ,DB::raw('count(likes.id) as totallikes')
+        // ,DB::raw('count(likes.id) as totallikes')
         )
         ->where('blogs_has_cities.city_id',$city_id)
         ->where('blogs.status',1)
-        // ->take(4)
+        ->take(4)
         ->orderBy('id', 'DESC')
         // ->where('categories.id',$category_id)
         ->get();
