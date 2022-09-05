@@ -2807,7 +2807,7 @@ footer .inbox_footer .message_form .input_div_button button,
     .article_detail .article_title,
     .article_detail .article_title+.line,
     .article_category_slider,
-    .article_affordable_consumption,
+    .article_content_main .deals,
     .article_content_main .article_main_img_detail {
         display: none;
     }
