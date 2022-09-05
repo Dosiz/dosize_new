@@ -234,6 +234,59 @@ class FrontEndController extends Controller
 
     }
 
+    public function brand_product_detail($product_id)
+    {
+        $brand_id = Helpers::profile_id();
+        // dd($brand_id);
+        if($brand_id != null)
+        {
+        $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
+        }
+        else{
+            $brand_profile = null; 
+        }
+        $product = Product::with('brandprofile','category','cities')->where('id',$product_id)->first();
+        // dd($product);
+        $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$product->sub_category_id)->get();
+        $categories = Category::get();
+        // dd($products);
+        $recomanded_products = RecomendedProduct::with('recomended_product')->where([['product_id',$product_id],['type','product']])->get();
+        $recomanded_blogs = RecomendedProduct::with('recomended_blog')->where([['product_id',$product_id],['type','blog']])->get();
+        $product_comments = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
+        // dd($recomanded_blogs,$recomanded_products);
+        // $product_ratings = ProductComment::where('product_id',$product_id)->where('parent_id',null)->where('rating', '!=' ,'null')->orderBy('id', 'DESC')->get();
+        $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
+        ->groupBy('product_comments.product_id')
+        ->orderBy('avgrate', 'Desc')
+        // ->where('product_comments.parent_id',null)
+        ->where('product_comments.rating','!=',null)
+        // ->limit(10)
+        ->get();
+        // dd($product_ratings);
+        $cities = City::get();
+
+        $product_likes =Like::where('product_id',$product_id)->where('name','Product')->get();
+        $product_bookmarks =Bookmark::where('product_id',$product_id)->where('name','Product')->get();
+        $user = User::where('id',Auth::id())->first();
+
+        if($user)
+        {
+            $chk_subscriber=Subscriber::where('email',$user->email)->first();
+            $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
+            $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
+            // dd($product_like);
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark','brand_profile'));
+        }
+        else{
+            $product_like = null;
+            $product_bookmark = null;
+            $chk_subscriber = null;
+            return view('frontend.brand_product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark','brand_profile'));
+        }
+        // dd($recomanded_products);
+
+    }
+
     public function store_blog_comment(Request $request)
     {
         $user_id = Auth::id();

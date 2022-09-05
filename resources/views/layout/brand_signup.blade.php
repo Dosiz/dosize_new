@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     @if(isset($brand_profile))
-    <meta property="og:title" content="{{$brand_profile->brand_name ?? ''}}"> />
+    <meta property="og:title" content="{{$brand_profile->brand_name ?? ''}}">
     <meta name="description" content="{{$brand_profile->description ?? ''}}"/>
     <meta property="og:description" content="{{$brand_profile->description ?? ''}}" />
     <meta property="og:image:alt" content="{{$brand_profile->brand_name ?? ''}}" />
