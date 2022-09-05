@@ -125,7 +125,8 @@
                                 <p class="font-size-18">
                                     <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
                                         @php
-                                            $user_name = \App\Models\User::where('id',$blog->brandprofile->id ?? '')->first();
+                                            $user_name = \App\Models\User::where('id',$blog->brandprofile->user_id)->first();
+                                            // dd($user_name,$blog->brandprofile->user_id ,$blog->brandprofile->id )
                                         @endphp
                                         <span class="category" > {{\Illuminate\Support\Str::limit($user_name->name?? '',15)}} </span>
                                     </a>
