@@ -157,6 +157,15 @@ class FrontEndController extends Controller
 
     public function brand_article_detail($blog_id)
     {
+        $brand_id = Helpers::profile_id();
+        // dd($brand_id);
+        if($brand_id != null)
+        {
+        $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
+        }
+        else{
+            $brand_profile = null; 
+        }
         $blog = Blog::with('brandprofile','category','cities')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
@@ -177,13 +186,13 @@ class FrontEndController extends Controller
             $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
             // dd($blog_comment_reply);
-            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark','brand_profile'));
         }
         else{
             $blog_bookmark = null;
             $blog_like = null;
             $chk_subscriber = null;
-            return view('frontend.brand_article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
+            return view('frontend.brand_article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like','brand_profile'));
         }
 
         // dd($recomanded_blogs);
