@@ -37,8 +37,14 @@
     }
     #subscriber span{
         color: #db1580
-    } 
-
+    }
+    @media (min-width: 1024px)
+    {
+        .brand_article_slider
+        {
+            margin-top: 98px !important;
+        }
+    }
 </style>
 @endpush
 @section('content') 
@@ -67,21 +73,21 @@
                             @foreach(json_decode($blog->images) as $all)
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$all)}}" alt=""
-                                    class="img-fluid mt-lg-5"style="width:580px;">
+                                    class="img-fluid brand_article_slider"style="width:580px;">
                             </div>
                             @endforeach
                             @else
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid mt-lg-5"style="width:580px;">
+                                    class="img-fluid brand_article_slider"style="width:580px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid mt-lg-5"style="width:580px;">
+                                    class="img-fluid brand_article_slider"style="width:580px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid mt-lg-5"style="width:580px;">
+                                    class="img-fluid brand_article_slider"style="width:580px;">
                             </div>
                             @endif
 
