@@ -62,26 +62,26 @@
                             @if($blog->images != null)
                                 <div class="swiper-slide">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                         class="img-fluid mt-lg-5"style="width:580px;">
+                                         class="img-fluid"style="width:580px;">
                                 </div>
                             @foreach(json_decode($blog->images) as $all)
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$all)}}" alt=""
-                                    class="img-fluid"style="width:580px;">
+                                    class="img-fluid mt-lg-5"style="width:580px;">
                             </div>
                             @endforeach
                             @else
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px;">
+                                    class="img-fluid mt-lg-5"style="width:580px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px;">
+                                    class="img-fluid mt-lg-5"style="width:580px;">
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid"style="width:580px;">
+                                    class="img-fluid mt-lg-5"style="width:580px;">
                             </div>
                             @endif
 
