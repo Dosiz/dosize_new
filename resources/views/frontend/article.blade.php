@@ -427,7 +427,7 @@
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
                                         {{-- {!! $recomanded_blog->recomended_blog->description ?? '' !!} --}}
-                                        {!! \Str::words(str_replace('&nbsp;', ' ', $recomanded_blog->recomended_blog->description ?? ''),20) !!}
+                                        {!! \Str::words(str_replace('&nbsp;', ' ', $recomanded_blog->recomended_blog->sub_title ?? ''),20) !!}
                                     </p>
                                     </a>
                                     {{-- <span class="font-size-12">4 <i class="fa fa-heart"
