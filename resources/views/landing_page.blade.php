@@ -163,10 +163,10 @@ Dosize
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-between">
+                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-between" style="direction: ltr">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
-                            <div class="affordable_consumption_box box_shahdow">
+                            <div class="affordable_consumption_box box_shahdow" style="flex-direction: initial !important;">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
                                     class="img-fluid" style="width: 131px;height:100%">
