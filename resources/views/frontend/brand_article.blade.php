@@ -100,7 +100,7 @@
                                 סנדלים לכל המשפחה ולצאת בזול? • מבצע חם במיוחד לקיץ: זוג סנדלים ב-99 ₪ ו-2 ב-159
                                 ₪ בלבד • אל תחמיצו את ההזדמנות</p> --}}
                         </div>
-                        <div class="col-lg-12" style="direction: ltr;">
+                        <div class="col-lg-12">
                             <div class="city_shoe">
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" style="width: 39px;" alt=""
                                     class="img-fluid">
@@ -291,7 +291,7 @@
                                     <input type="hidden" name="blog_id" class="blog_id_like" value="{{ $blog->id }}" />
                                     <input type="text" name="comment" id="comment" placeholder="התגובה שלך"
                                         class="text-right font-size-16 comment_input">
-                                    <div class="comment_hearder" style="direction: initial">
+                                    <div class="comment_hearder">
                                         <button type="submit" class="font-size-16 cursor-pointer">פירסום תגובה</button>
                                         <div class="anonymous_text font-size-16">אנונימי <span
                                                 class="checkBox">
