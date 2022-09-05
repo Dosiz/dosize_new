@@ -60,14 +60,14 @@
                             </div> --}}
                             <div class="brandInfo">
                                 <h5 style="margin:6px 0px; font-family:ploniBold; text-align:right;">
-                                   <a href="{{url('product/' .$product->id)}}" > {{ $product->name}} </a>
+                                   <a href="{{url('brand_product/' .$product->id)}}" > {{ $product->name}} </a>
                                 </h5>
                                 <div class="rating_price_div" style="display:flex;align-items:center; justify-content:space-between; flex-direction:row-reverse;">
                                     @if($product->discount_price != null)
                                     <div class="d-flex ">
                                         <p>₪ {{$product->price}}</p>
                                         <p class="price mr-2">
-                                            <a href="{{url('product/' .$product->id)}}" >
+                                            <a href="{{url('brand_product/' .$product->id)}}" >
                                                 ₪ {{$product->discount_price}}
                                             </a>
                                         </p>        
