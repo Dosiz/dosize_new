@@ -45,6 +45,11 @@
             margin-top: 98px !important;
         }
     }
+    
+    .brand_article_slider
+    {
+        margin-top: 98px !important;
+    }
 </style>
 @endpush
 @section('content') 
