@@ -34,7 +34,7 @@
     s{
         text-decoration: none;
     }
-    
+
 </style>
 @endpush
 @section('content') 
@@ -47,7 +47,7 @@
 
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
-<main style="direction: ltr">
+<main style="direction: ltr; margin-top:86px">
     <div class="main-wrapper">
         
         <div class="product_div">
