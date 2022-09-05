@@ -93,7 +93,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2><a href="{{route('brand-articles',$brandprofile->id ?? '')}}" >הכתבות האחרונות שלנו: </a></h2>
+                <h2><a href="{{route('brand-articles',$brand_profile->id)}}" >הכתבות האחרונות שלנו: </a></h2>
             </div>
             @if($blog_1 != null)
             <div class="col-md-4">
