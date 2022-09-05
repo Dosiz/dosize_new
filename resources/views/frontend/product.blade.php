@@ -143,8 +143,12 @@
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
                                 <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
-                                <span> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}
-                                </span>
+                                    @php
+                                        $user_name = \App\Models\User::where('id',$product->brandprofile->id ?? '')->first();
+                                    @endphp
+                                    <span> 
+                                        {{\Illuminate\Support\Str::limit($user_name->name?? '',15)}}
+                                    </span>
                                 </a>
                             </div>
                         </div>
