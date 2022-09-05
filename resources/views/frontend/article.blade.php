@@ -205,7 +205,7 @@
 
                                             <p class="font-size-14 font-weight-300">
                                                 {{-- {!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!} --}}
-                                                {!! \Str::words(str_replace('&nbsp;', ' ', $recommended_product->recommended_product->description ?? ''),10) !!}
+                                                {!! \Illuminate\Support\Str::limit(str_replace('&nbsp;', ' ', $recommended_product->recommended_product->description ?? ''),20) !!}
                                             </p>
                                         </div>
                                     </a>
