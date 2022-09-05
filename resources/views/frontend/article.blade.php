@@ -124,7 +124,10 @@
                                     class="img-fluid">
                                 <p class="font-size-18">
                                     <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
-                                        <span class="category" > {{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>
+                                        @php
+                                            $user_name = \App\Models\User::where('id',$blog->brandprofile->id ?? '')->first();
+                                        @endphp
+                                        <span class="category" > {{\Illuminate\Support\Str::limit($user_name->name?? '',15)}} </span>
                                     </a>
                                     <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span>
                                     {{-- <span>| כ”ג אייר פ”ב</span> --}}
