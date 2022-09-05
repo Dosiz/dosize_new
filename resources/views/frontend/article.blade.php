@@ -406,7 +406,7 @@
                             <h3 class="common_title">צרכנות משתלמת <img
                                     src="{{asset('assets/img/mobile_component/beg.png') }}" alt=""
                                     class="img-fluid"></h3>
-                            <p class="d-none d-xl-block"><a href="https://{{$blog->brandprofile['0']->short_name?? ''}}.arikliger.com/articles/{{$blog->brandprofile['0']->id ?? ''}}" class="text-dark">לכל הכתבות ></a></p>
+                            <p class="d-none d-xl-block"><a href="https://{{$blog->brandprofile['0']->short_name}}.arikliger.com/articles/{{$blog->brandprofile['0']->id}}" class="text-dark">לכל הכתבות ></a></p>
                         </div>
                     </div>
                 </div>
