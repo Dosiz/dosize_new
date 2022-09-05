@@ -29,6 +29,8 @@ Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {
 });
 
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
+//article on brand page
+Route::get('/brand_article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'brand_article_detail'])->name('brand_article');
 Route::get('/product/{product_id}',[App\Http\Controllers\FrontEndController::class, 'product_detail'])->name('product');
 Route::get('/brand-profile/{brand_id}',[App\Http\Controllers\FrontEndController::class, 'brand_profile'])->name('brand-profile');
 Route::post('/contact_us', [App\Http\Controllers\FrontEndController::class,'store'])->name('contact_us.store');

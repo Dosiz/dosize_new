@@ -155,6 +155,41 @@ class FrontEndController extends Controller
 
     }
 
+    public function brand_article_detail($blog_id)
+    {
+        $blog = Blog::with('brandprofile','category','cities')->where('id',$blog_id)->first();
+        $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
+        $categories = Category::get();
+        $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
+        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
+        $recommended_products = RecomendedBlog::with('recommended_product')->where([['blog_id',$blog_id],['type','product']])->get();
+
+        // dd($recommended_products);
+        $cities = City::get();
+        $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
+        $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
+        $user = User::where('id',Auth::id())->first();
+
+        // dd($blog);
+        if($user)
+        {
+            $chk_subscriber=Subscriber::where('email',$user->email)->first();
+            $blog_like =Like::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
+            $blog_bookmark =Bookmark::where('blog_id',$blog_id)->where('user_id',$user->id)->where('name','Article')->first();
+            // dd($blog_comment_reply);
+            return view('frontend.article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_like','blog_likes','blog_bookmarks','blog_bookmark'));
+        }
+        else{
+            $blog_bookmark = null;
+            $blog_like = null;
+            $chk_subscriber = null;
+            return view('frontend.brand_article',compact('cities','chk_subscriber','blog','products','categories','blog_comments','recomanded_blogs','recommended_products','blog_likes','blog_bookmarks','blog_bookmark','blog_like'));
+        }
+
+        // dd($recomanded_blogs);
+
+    }
+
     public function product_detail($product_id)
     {
         $product = Product::with('brandprofile','category','cities')->where('id',$product_id)->first();
