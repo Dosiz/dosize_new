@@ -126,7 +126,7 @@ class FrontEndController extends Controller
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
         $categories = Category::get();
         $blog_comments = BlogComment::where('blog_id',$blog->id)->where('parent_id',null)->where('status','1')->orderBy('id', 'DESC')->get();
-        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
+        $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->take(3)->get();
         $recommended_products = RecomendedBlog::with('recommended_product')->where([['blog_id',$blog_id],['type','product']])->get();
 
         // dd($recommended_products);
