@@ -51,7 +51,7 @@
 
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
-<main>
+<main style="direction: ltr">
     <div class="main-wrapper article_main_wrapper">
         
         <div class="article_banner">
