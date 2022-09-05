@@ -34,6 +34,7 @@
     s{
         text-decoration: none;
     }
+    
 </style>
 @endpush
 @section('content') 
@@ -48,31 +49,7 @@
 </script>
 <main style="direction: ltr">
     <div class="main-wrapper">
-        <div class="article_category_slider categories spacing">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="swiper myCategorySlider">
-                            <div class="swiper-wrapper">
-                                @if(count($categories) > 0)
-                                {{-- {{dd($product);}} --}}
-                                @foreach($categories as $key=>$category)
-                                <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$product->cities['0']->id])}}" style="color:#212529">
-                                        <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
-                                        </div>
-                                        <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
-                                    </a>
-                                </div>
-                                @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="product_div">
             <div class="article_slider">
                 <div class="slider_div">
@@ -494,49 +471,7 @@
         </div>
 
         <!-- main footer start from here -->
-        <div class="main_footer mt-5 d-none d-xl-block">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-4">
-                        <div class="box text-right px-3">
-                            <p class="txt">בואו לעקוב אחרנו :)</p>
-                            <div class="socials_icons mt-4">
-                                <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/fb.png') }}" alt="fb">
-                                </a>
-                                <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/inst.png') }}" alt="">
-                                </a>
-                                <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/twitter.png') }}" alt="">
-                                </a>
-                                <a href="#" class="social_link mx-2">
-                                    <img src="{{asset('assets/img/whatsapp.png') }}" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="box px-3 border_Side">
-                            <div class="statments_links d-flex flex-column align-items-end">
-                                <p class="txt">
-                                    דוסיז משפט הנעה על דוסיז >>
-                                </p>
-                                <div class="btns d-flex mt-4">
-                                    <a href="" data-toggle="modal" data-target="#enrollmentModal" class="btn btn_grey_out">הצטרפות לעסקים</a>
-                                    <a  data-toggle="modal" data-target="#enrollmentModal2" href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{asset('assets/img/mobile_component/footer_img.svg') }}" class="footer_Img" alt="footer">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <!-- main footer start end here -->
 
     </div>
