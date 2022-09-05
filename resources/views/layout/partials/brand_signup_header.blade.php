@@ -31,7 +31,7 @@
 					</li>
 					@guest
                             <li class="nav-item">
-                                <a href="{{url('/')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
+                                <a href="{{url('/brand')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
                             </li>
 {{--                             
                         @else
