@@ -2711,6 +2711,7 @@ footer .inbox_footer .message_form .input_div_button button,
     .deals .multiple_deals .deals_box .content_div span
     {
         color: #000 !important;
+        text-decoration: none !important;
     }
 
     .message_main_wrapper .inbox_header {
