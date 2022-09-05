@@ -203,7 +203,10 @@
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
 
-                                            <p class="font-size-14 font-weight-300">{!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!}</p>
+                                            <p class="font-size-14 font-weight-300">
+                                                {{-- {!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!} --}}
+                                                {!! \Str::words(str_replace('&nbsp;', ' ', $recommended_product->recommended_product->description ?? ''),20) !!}
+                                            </p>
                                         </div>
                                     </a>
                                 </div>
@@ -423,7 +426,8 @@
                                         {{$recomanded_blog->recomended_blog->title}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! $recomanded_blog->recomended_blog->description ?? '' !!}
+                                        {{-- {!! $recomanded_blog->recomended_blog->description ?? '' !!} --}}
+                                        {!! \Str::words(str_replace('&nbsp;', ' ', $recomanded_blog->recomended_blog->description ?? ''),20) !!}
                                     </p>
                                     </a>
                                     {{-- <span class="font-size-12">4 <i class="fa fa-heart"
