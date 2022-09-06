@@ -48,7 +48,7 @@
                     @if($brand_products)
                         @foreach($brand_products as $product)
                         <div class="sliderCommonDiv" style="">
-                            <a href="{{url('product/' .$product->id)}}" > 
+                            <a href="{{url('brand_product/' .$product->id)}}" > 
                                 <img src="{{asset('product/' .$product->image ?? '')}}" alt="" style="width:188.27px; height:205.69px;">
                             </a>
                             {{-- <div class="ratingDiv">
