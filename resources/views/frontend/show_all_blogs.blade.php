@@ -65,9 +65,12 @@ Category By city
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
-                                        <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                        <span class="category font-size-12 font-weight-400"> 
+                                            {{-- {{$blog->brand_name}}  --}}
+                                            {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
+                                        </span>
                                     </a>
-                                    <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
+                                    <a href="{{route('brand_article',$blog->id)}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
                                             {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                         </h4>

@@ -117,11 +117,11 @@
                                     class="img-fluid">
                                 <p class="font-size-18">
                                     <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
-                                        @php
+                                        {{-- @php
                                             $user_name = \App\Models\User::where('id',$blog->brandprofile->user_id)->first();
                                             // dd($user_name);
-                                        @endphp
-                                        <span class="category" > {{\Illuminate\Support\Str::limit($user_name->name?? '',15)}} </span>
+                                        @endphp --}}
+                                        <span class="category" > {{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name ?? '',15)}} </span>
                                     </a>
                                     <span>{{ date('Y/m/d', strtotime($blog->created_at)) }}</span>
                                     {{-- <span>| כ”ג אייר פ”ב</span> --}}
@@ -211,7 +211,7 @@
             @endif
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    {{-- <div class="col-lg-12">
                         <div class="stand_brand_sign_up_div">
                             <div class="stand_brand_message">
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
@@ -275,7 +275,7 @@
                                 @endguest
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-12" style="min-height: 300px; position: relative; display:flex;">
                         <div class="post_comment">
                             <form action="{{ route('store-blog-comment') }}" method="post" enctype="multipart/form-data" >
