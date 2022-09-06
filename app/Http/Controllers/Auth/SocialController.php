@@ -37,7 +37,7 @@ class SocialController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect('/');
+                return redirect('https://gaza.arikliger.com');
 
             }else{
 
@@ -52,7 +52,7 @@ class SocialController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect('/');
+                return redirect('https://gaza.arikliger.com/');
             }
     }
 
