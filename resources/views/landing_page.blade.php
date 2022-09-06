@@ -399,7 +399,7 @@ Dosize
                                         <div class="article_div">
                                             @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
-                                                    @foreach($article_categories->take(1) as $blog)
+                                                    @foreach($article_categories->take(1)->orderBy('id','DESC') as $blog)
                                                         <div class="row" style="flex-direction: row-reverse;">
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
