@@ -433,7 +433,7 @@ Dosize
                                             <div class="row">
 
                                                 <div class="col-lg-12">
-                                                    <div class="affordable_consumption_list" style="flex-direction:row-reverse;">
+                                                    <div class="affordable_consumption_list">
                                                         @foreach($product_categories->take(3)  as $product)
                                                             <div
                                                                 class="affordable_consumption_box box_shahdow">
