@@ -54,6 +54,7 @@ class FrontEndController extends Controller
         ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name')
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id',$city_id)
+        ->orderBy('id', 'DESC')
         ->get();
         //  dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
