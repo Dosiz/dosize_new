@@ -425,7 +425,7 @@
                                 <h3 class="common_title">צרכנות משתלמת <img
                                         src="{{asset('assets/img/mobile_component/beg.png') }}" alt=""
                                         class="img-fluid"></h3>
-                                <p class="d-none d-xl-block"><a href="#" class="text-dark">לכל הכתבות ></a></p>
+                                <p class="d-none d-xl-block"><a href="{{route('all-blogs',['category_id'=>$recomanded_blogs['0']->recomended_blog->category_id,'city_id'=>$product->cities['0']->id]) }}" class="text-dark">לכל הכתבות ></a></p>
                             </div>
                         </div>
                     </div>
