@@ -37,7 +37,7 @@ class SocialController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect('/5');
+                return redirect('/');
 
             }else{
 
