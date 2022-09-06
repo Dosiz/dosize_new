@@ -459,7 +459,7 @@
                                 </div>
                                 @endforeach
                                 @endif
-                                <a href="{{route('all-blogs',['category_id'=>$category->id,'city_id'=>$product->cities['0']->id]) }}" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                                <a href="{{route('all-blogs',['category_id'=>$recomanded_blogs['0']->recomended_blog->category_id,'city_id'=>$product->cities['0']->id]) }}" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                     הכתבות ></a>
                             </div>
                         </div>
