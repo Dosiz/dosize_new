@@ -52,7 +52,7 @@ class SocialController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect('/5');
+                return redirect('/');
             }
     }
 
