@@ -767,6 +767,7 @@ class FrontEndController extends Controller
     }
     public function archive_cat()
     {
+        $city_id = Helpers::city_id();
         $categories = Category::get();
         $cities = City::get();
         $product_categories = DB::table('products_has_cities')
@@ -775,7 +776,7 @@ class FrontEndController extends Controller
         // ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('categories.*','brand_profiles.brand_name')
-        ->where('products_has_cities.city_id',5 )
+        ->where('products_has_cities.city_id',$city_id )
         ->where('products.discount_price', null)
         ->groupBy('categories.id')
         ->get();

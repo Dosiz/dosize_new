@@ -195,14 +195,14 @@ Category By city
                             @if(count($products) > 0 && $products['0']->id != null)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                        <a class="font-size-14 font-weight-700" href="{{route('brand_product',$product->id ?? '')}}">
                                             <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
                                         </a>
                                         <div class="content_div">
                                             <a href="">
                                             <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
                                             </a>
-                                            <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
+                                            <a href="{{route('brand_product',$product->id)}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
                                                 {{$product->name}}
                                             </h4>
