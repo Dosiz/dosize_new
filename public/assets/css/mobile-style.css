@@ -2994,6 +2994,12 @@ footer .inbox_footer .message_form .input_div_button button,
         max-width: 60%;
     }
 
+    .brand_main_image
+    {
+        width: auto !important;
+        height: 100% !important;
+    }
+
     main .main-wrapper .categories {
         padding-bottom: 20px !important;
     }
