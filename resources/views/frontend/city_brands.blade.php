@@ -333,41 +333,41 @@ Brand List
         }
     });
 
-    $('#subscriber').click(function(e){
-        e.preventDefault();
-        // const postFormData = {
-        //     brand_profile_id : $('#brand_profile_id').val(),
-        //     email     : $('#email').val(),
-        //     // _token: "{{ csrf_token() }}"
-        // };
-        let brand_profile_id = $('#brand_profile_id').val();
-        let email = $('#email').val();
-        let _token   = $('meta[name="csrf-token"]').attr('content');
-        // console.log(postFormData);
-        $.ajax({
-            type: "POST",
-            url: "{{ route('store-subscriber') }}",
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                email:email,
-                brand_profile_id:brand_profile_id,
-                _token: _token
-            } ,
-            datatype: "json",
-            success: function (data) {
-                 console.table(data.success);
-                toastr.success(data.success);
-                // console.table(data.comment);
+    // $('#subscriber').click(function(e){
+    //     e.preventDefault();
+    //     // const postFormData = {
+    //     //     brand_profile_id : $('#brand_profile_id').val(),
+    //     //     email     : $('#email').val(),
+    //     //     // _token: "{{ csrf_token() }}"
+    //     // };
+    //     let brand_profile_id = $('#brand_profile_id').val();
+    //     let email = $('#email').val();
+    //     let _token   = $('meta[name="csrf-token"]').attr('content');
+    //     // console.log(postFormData);
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "{{ route('store-subscriber') }}",
+    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //         data: {
+    //             email:email,
+    //             brand_profile_id:brand_profile_id,
+    //             _token: _token
+    //         } ,
+    //         datatype: "json",
+    //         success: function (data) {
+    //              console.table(data.success);
+    //             toastr.success(data.success);
+    //             // console.table(data.comment);
                 
                  
-            },
-            error: function (data) {
-                // toastr.warning(data);
-                toastr.error("Already Subscribed");
+    //         },
+    //         error: function (data) {
+    //             // toastr.warning(data);
+    //             toastr.error("Already Subscribed");
                 
-            }
-        });
-    });
+    //         }
+    //     });
+    // });
 
 </script>
 @endsection
