@@ -2,6 +2,9 @@
 @section('title')
 Brands 
 @endsection
+@push('styles')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+@endpush
 @section('content')		
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
