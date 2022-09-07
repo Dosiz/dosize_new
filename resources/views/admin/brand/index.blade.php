@@ -118,6 +118,7 @@ Brands
 									</table>
 										 
 									{{-- {!! $brands->links() !!} --}}
+									{!! $brands->appends(Request::all())->links() !!}
 									{{-- {!! $brands->appends(['sort' => 'votes'])->links() !!} --}}
 									{{-- <div class="table-responsive">
 										<table class="datatable table table-hover table-center mb-0">
