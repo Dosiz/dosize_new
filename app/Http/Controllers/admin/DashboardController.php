@@ -22,7 +22,7 @@ class DashboardController extends Controller
             'roles', function($q){
                 $q->where('name', 'Brand');
             }
-        )->paginate(5);
+        )->orderBy('id' , 'DESC')->paginate(5);
         // dd($brands);
         return view('admin.brand.index', compact('brands'));
     } 
