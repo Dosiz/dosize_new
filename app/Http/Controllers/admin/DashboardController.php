@@ -22,7 +22,8 @@ class DashboardController extends Controller
             'roles', function($q){
                 $q->where('name', 'Brand');
             }
-        )->get();
+        )->paginate(5);
+        // dd($brands);
         return view('admin.brand.index', compact('brands'));
     } 
 
