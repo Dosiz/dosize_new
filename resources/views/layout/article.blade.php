@@ -22,6 +22,7 @@
    @endif
     
 </head>
+</head>
 <body>
     <div class="bg_color">
       @include('layout.partials.article_header')

@@ -41,7 +41,6 @@
     }
 </style>
 @endpush
-@section('content')
 
 @section('content')
 <main>
