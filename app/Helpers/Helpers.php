@@ -56,7 +56,7 @@ class Helpers
        else{
         $city_name = Session::get('subdomain');
        }
-        $city_id = City::where('short_name',5)->first();
+        $city_id = City::where('short_name',$city_name)->first();
         $city_id = $city_id->id;
         return $city_id;
     }
