@@ -4,6 +4,11 @@ Brands
 @endsection
 @push('styles')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+<style>
+	.w-5 .h-5{
+		width: 30px !important;
+	}
+</style>
 @endpush
 @section('content')		
 			<!-- Page Wrapper -->
