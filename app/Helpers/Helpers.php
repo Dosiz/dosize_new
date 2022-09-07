@@ -48,14 +48,15 @@ class Helpers
     public static function city_id()
     {
         //dd(session()->all());
-        $city_name=Route::input('subdomain');
-       if($city_name)
-       {
-        Session::put('subdomain', $city_name);
-       }
-       else{
-        $city_name = Session::get('subdomain');
-       }
+    //     $city_name=Route::input('subdomain');
+    //    if($city_name)
+    //    {
+    //     Session::put('subdomain', $city_name);
+    //    }
+    //    else{
+    //     $city_name = Session::get('subdomain');
+    //    }
+        $city_name = current(explode('.', request()->getHost()));
         $city_id = City::where('short_name',$city_name)->first();
         $city_id = $city_id->id;
         return $city_id;
@@ -64,15 +65,16 @@ class Helpers
     public static function profile_id()
     {
         // dd(session()->all());
-        $profile_id=Route::input('subdomain');
-        // dd(Route::input('subdomain'));
-       if($profile_id)
-       {
-        Session::put('profile_id', $profile_id);
-       }
-       else{
-        $profile_id = Session::get('profile_id');
-       }
+    //     $profile_id=Route::input('subdomain');
+    //     // dd(Route::input('subdomain'));
+    //    if($profile_id)
+    //    {
+    //     Session::put('profile_id', $profile_id);
+    //    }
+    //    else{
+    //     $profile_id = Session::get('profile_id');
+    //    }
+        $profile_id = current(explode('.', request()->getHost()));
         $profile_id = BrandProfile::where('short_name',$profile_id)->first();
         if($profile_id)
         {
