@@ -33,7 +33,7 @@ Brands
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
-									<table class="table">
+									<table class="table table-bordered">
 										<thead>
 											<tr>
 												<th>Name</th>
@@ -117,7 +117,7 @@ Brands
 										</tbody>
 									</table>
 										 
-									{!! $brands->links() !!}
+									{{-- {!! $brands->links() !!} --}}
 									{{-- {!! $brands->appends(['sort' => 'votes'])->links() !!} --}}
 									{{-- <div class="table-responsive">
 										<table class="datatable table table-hover table-center mb-0">
