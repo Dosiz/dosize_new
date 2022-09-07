@@ -117,7 +117,8 @@ Brands
 										</tbody>
 									</table>
 										 
-									{!! $brands->links() !!}
+									{{-- {!! $brands->links() !!} --}}
+									{!! $brands->appends(['sort' => 'votes'])->links() !!}
 									{{-- <div class="table-responsive">
 										<table class="datatable table table-hover table-center mb-0">
 											<thead>
