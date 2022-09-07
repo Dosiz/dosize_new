@@ -133,7 +133,7 @@ Brand List
         </div>
         @endif
         <!--  -->
-        <div class="bazaar_cards mt-4">
+        <div class="bazaar_cards mt-4" style="margin-bottom: 70px !important;">
             <div class="container-fluid">
                 <div class="row">
                     @if(count($city_brands) > 0)

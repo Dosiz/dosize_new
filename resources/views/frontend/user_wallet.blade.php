@@ -65,7 +65,7 @@ Dosize
                         </div>
                     </div>
                     <div class="slider_div">
-                        <div class="multiple_promotion swiper">
+                        <div class="multiple_promotion swiper" style="margin-bottom: 70px">
                             <div class="swiper-wrapper">
                                 @if(count($products) > 0)
                                 @foreach($products as $product)

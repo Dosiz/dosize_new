@@ -201,8 +201,10 @@ Route::get('archive_category', function () {
 
 
 
-Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {   
-    
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {  
+    // $route = Route::getCurrentRoute();
+    // $subdomain = $route->getParameter('subdomain'); 
+    // dd($subdomain);
     Route::get('/brand/wallet', function () {
         // dd(session());
         return view('frontend.wallet');
