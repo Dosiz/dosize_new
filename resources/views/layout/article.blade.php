@@ -3,7 +3,7 @@
 <head>
   @include('layout.partials.head')
   @if(isset($blog))
-    <meta property="og:title" content="{{$blog->title ?? ''}}">
+    {{-- <meta property="og:title" content="{{$blog->title ?? ''}}">
     <meta name="description" content="{{$blog->sub_title ?? ''}}"/>
     <meta property="og:description" content="{{$blog->sub_title ?? ''}}" />
     <link href="{{asset('blog/'.$blog->image ?? '') ?? '../assets_admin/img/logo.png'}}" rel="icon">
@@ -18,7 +18,8 @@
     <meta property="og:image:width" content="999" />
     <meta property="og:image:height" content="984" />
     <meta name="twitter:image" content="{{asset('blog/'.$blog->image ?? '')}}" />
-    <meta name="twitter:description" content="{{$blog->sub_title ?? ''}}" />
+    <meta name="twitter:description" content="{{$blog->sub_title ?? ''}}" /> --}}
+    <meta property="og:image" content="https://dosizlocal.com/uploads/product_images/164922893043218.jpg" aria-setsize="200x200">
    @endif
     
 </head>
