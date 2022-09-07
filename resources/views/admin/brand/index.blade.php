@@ -7,6 +7,7 @@ Brands
 <style>
 	.w-5{
 		width: 30px !important;
+		transform: rotate(180deg);
 	}
 </style>
 @endpush
