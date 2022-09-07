@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{{-- <html lang="en"> --}}
+<html lang="en">
 <head>
     @include('layout.partials.head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
