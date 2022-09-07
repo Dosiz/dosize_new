@@ -23,6 +23,7 @@
         <meta name="twitter:description" content="{{$p_city->name ?? ''}}" />
     @endif
 </head>
+</head>
 
 <body>
     <div class="bg_color">
