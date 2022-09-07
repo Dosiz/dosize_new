@@ -9,12 +9,6 @@ Brands
 		width: 30px !important;
 		transform: rotate(180deg);
 	}
-	.table .flex .flex{
-		display: none !important;
-	} 
-	.table .flex .flex .text-sm{
-		display: none !important;
-	}
 </style>
 @endpush
 @section('content')		

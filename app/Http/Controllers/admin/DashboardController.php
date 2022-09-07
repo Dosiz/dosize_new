@@ -33,7 +33,7 @@ class DashboardController extends Controller
             'roles', function($q){
                 $q->where('name', 'User');
             }
-        )->get();
+        )->orderBy('id' , 'DESC')->paginate(5);
         return view('admin.user.index', compact('users'));
     } 
 
