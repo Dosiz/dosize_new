@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+{{-- <html lang="en"> --}}
 <head>
     @include('layout.partials.head')
     @if(Request::is('product/*'))
@@ -31,7 +31,6 @@
 
     
     
-</head>
 </head>
 <body>
     <div class="bg_color">
