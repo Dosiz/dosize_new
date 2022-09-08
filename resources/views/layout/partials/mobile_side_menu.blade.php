@@ -22,7 +22,7 @@
                 @guest
                     <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/cartIcon.png') }}" alt="" class="img-fluid"></a>
                 @else
-                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/cartIcon.png') }}" alt="" class="img-fluid"></a>
+                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
                 @endguest
             </li>
             <li>
@@ -34,7 +34,7 @@
                 @endguest
             </li>
             <li>
-                <a href="{{route('archive_cat')}}">התראות <img src="{{asset('assets/img/mobile_component/bellIcon.png') }}" alt=""
+                <a href="{{route('archive_cat')}}">התראות <img src="{{asset('assets/img/mobile_component/cartIcon.png') }}" alt=""
                         class="img-fluid"></a>
             </li>
             @guest
