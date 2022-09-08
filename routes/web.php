@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('qwerty', function () {
+    return view('index');
+})->name('qwerty');
+
+
 Route::post('getShortUrl',function (Request $request){
     $shortURL = \App\Helpers\Helpers::createShortUrl($request->url,$request->source);
     return response()->json($shortURL);
@@ -23,9 +29,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/user/static', function () {
-    return view('index');
-});
 
 Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
