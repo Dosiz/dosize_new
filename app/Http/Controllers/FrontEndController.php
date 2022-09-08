@@ -45,6 +45,7 @@ class FrontEndController extends Controller
     {
         $city_id = Helpers::city_id();
         if($city_id){
+            dd("sdsd");
         $cities = City::get();
         $products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -120,6 +121,7 @@ class FrontEndController extends Controller
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
         }
         else{
+            dd("aaa");
         return view('index');
         }
     }
