@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('city-brands',2)}}">
+                <a href="{{route('city-brands')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/consumption.svg') }}" alt="" class="img-fluid">
                         <p class="font-size-12 font-weight-400">הודעות </p>
