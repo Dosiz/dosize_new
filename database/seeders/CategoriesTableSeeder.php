@@ -15,34 +15,34 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'name' => 'Mobile',
-            'image' => '54636732.png',
-            'category_order_id' => '1',
-        ]);
+        // Category::create([
+        //     'name' => 'Mobile',
+        //     'image' => '54636732.png',
+        //     'category_order_id' => '1',
+        // ]);
 
-        Category::create([
-            'name' => 'Clothes',
-            'image' => '46483927.png',
-            'category_order_id' => '2',
-        ]);
+        // Category::create([
+        //     'name' => 'Clothes',
+        //     'image' => '46483927.png',
+        //     'category_order_id' => '2',
+        // ]);
 
-        Category::create([
-            'name' => 'Electronics',
-            'image' => '35465764.png',
-            'category_order_id' => '3',
-        ]);
+        // Category::create([
+        //     'name' => 'Electronics',
+        //     'image' => '35465764.png',
+        //     'category_order_id' => '3',
+        // ]);
 
-        Category::create([
-            'name' => 'Food',
-            'image' => '35465764.png',
-            'category_order_id' => '4',
-        ]);
+        // Category::create([
+        //     'name' => 'Food',
+        //     'image' => '35465764.png',
+        //     'category_order_id' => '4',
+        // ]);
 
-        Category::create([
-            'name' => 'Software',
-            'image' => '35465764.png',
-            'category_order_id' => '5',
-        ]);
+        // Category::create([
+        //     'name' => 'Software',
+        //     'image' => '35465764.png',
+        //     'category_order_id' => '5',
+        // ]);
     }
 }
