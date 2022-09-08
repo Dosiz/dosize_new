@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-Blogs
+Chat
 @endsection
 @push('styles')
 
