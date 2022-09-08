@@ -20,7 +20,7 @@ class CitiesTableSeeder extends Seeder
         
 
         $cities4 = array(
-            
+            array('name' => "Beitar illit" , 'short_name' => "beitar-illit"),
             array('name' => "Bethlehem" , 'short_name' => "bethlehem"),
             array('name' => "Caesarea" , 'short_name' => "caesarea"),
             array('name' => "Petach Tikva" , 'short_name' => "petach-tikva" ),
@@ -163,6 +163,7 @@ class CitiesTableSeeder extends Seeder
             array('name' => "Bet Shemesh", 'short_name' => "bet-shemesh"),
             array('name' => "Mevasserat Ziyyon", 'short_name' => "mevasserat-ziyyon"),
             array('name' => "Yerushalayim" , 'short_name' => "yerushalayim"),
+            
             
 
         );

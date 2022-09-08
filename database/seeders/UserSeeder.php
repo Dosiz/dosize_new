@@ -29,11 +29,11 @@ class UserSeeder extends Seeder
             $userRole = DB::table('roles')->where('name','User')->first();
 
             $admin = User::create([
-                'name' => 'Admin Name',
-                'email' => 'admin@gmail.com',
+                'name' => 'Admin',
+                'email' => 'dosizpr@gmail.com',
                 'status' => '1',
                 'city_id' => '1',
-                'password' => Hash::make('password1')
+                'password' => Hash::make('dosiz5378954')
             ]);
 
             $manager = User::create([
