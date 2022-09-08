@@ -32,7 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
     // dd("dsfdf");
     // Route::get('/',[App\Http\Controllers\FrontEndController::class, 'dfg']);
-
+Route::group(["domain" => "arikliger.com"], function() {
+    // -- website.com
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'dfg']);
+});
 
 Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
