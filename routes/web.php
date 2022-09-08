@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('qwerty', function () {
+Route::get('/', function () {
     return view('index');
-})->name('qwerty');
+});
 
 
 Route::post('getShortUrl',function (Request $request){
@@ -28,12 +28,6 @@ Route::post('getShortUrl',function (Request $request){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::domain('www..arikliger.com')->group(function () { 
-    Route::get('/', function () {
-        return view('index');
-    });
-});
 
 Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');

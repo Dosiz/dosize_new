@@ -41,6 +41,7 @@ use App\Helpers\Helpers;
 
 class FrontEndController extends Controller
 {
+    
     public function landing_page()
     {
         // dd(Auth::user()->role('User'));
