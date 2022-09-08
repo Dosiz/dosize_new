@@ -41,9 +41,8 @@ use App\Helpers\Helpers;
 
 class FrontEndController extends Controller
 {
-    public function dfg()
+    public function web_static_paage()
     {
-        dd("sdssd");
         return view('index');
     }
     public function landing_page()
