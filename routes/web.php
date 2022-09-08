@@ -29,11 +29,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::domain('www..arikliger.com')->group(function () { 
+    Route::get('/', function () {
+        return view('index');
+    });
+});
 
 Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
     Route::get('/brand',[App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
-
 });
 
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
