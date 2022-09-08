@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/static', function () {
+Route::get('/user/static', function () {
     return view('index');
 });
 
