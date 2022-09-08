@@ -78,8 +78,13 @@
                     <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
                             class="img-fluid"></a>
                     @else
-                    <a href="{{route('user-message','id='.Auth::user()->id)}}">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
+                    @if(Auth::user()->hasRole('User'))
+                        <a href="{{route('user-message','id='.Auth::user()->id)}}">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
                         class="img-fluid"></a>
+                    @elseif(Auth::user()->hasRole('Brand'))
+                        <a href="{{url('brand/messages')}}">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
+                        class="img-fluid"></a>
+                    @endif
                     @endguest
                 </li>
                 <li>
