@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
     <!-- custom stylesheet -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="{{asset('static/css/main.css') }}">
+    <link rel="stylesheet" href="{{asset('static/css/media.css') }}">
 
 </head>
 
@@ -27,7 +27,7 @@
 
     <nav class="d-flex justify-content-between">
         <a href="#" class="logo">
-            <img src="img/logo.png" alt="logo">
+            <img src="{{asset('static/img/logo.png') }}" alt="logo">
         </a>
         <div class="btns">
             <a href="#" class="btn btn_outline me-2">
@@ -225,28 +225,28 @@
             </div>
             <div class="col-md-8 col-lg-9">
                 <div class="top_hang_img icon1">
-                    <img src="img/home_hang.png" alt="home">
+                    <img src="{{asset('static/img/home_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon2">
-                    <img src="img/wallet_hang.png" alt="home">
+                    <img src="{{asset('static/img/wallet_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon3">
-                    <img src="img/shop_hang.png" alt="home">
+                    <img src="{{asset('static/img/shop_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon4">
-                    <img src="img/bag_hang.png" alt="home">
+                    <img src="{{asset('static/img/bag_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon5">
-                    <img src="img/user_hang.png" alt="home">
+                    <img src="{{asset('static/img/user_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon6">
-                    <img src="img/bookmark_hang.png" alt="home">
+                    <img src="{{asset('static/img/bookmark_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon7">
-                    <img src="img/message_hang.png" alt="home">
+                    <img src="{{asset('static/img/message_hang.png') }}" alt="home">
                 </div>
                 <div class="top_hang_img icon8">
-                    <img src="img/search_hang.png" alt="home">
+                    <img src="{{asset('static/img/search_hang.png') }}" alt="home">
                 </div>
                 <!-- Swiper -->
                 <div class="swiper_parent">
@@ -269,7 +269,7 @@
                                         <div class="blog_cards">
                                             <div class="blog_card d-flex shadow">
                                                 <div class="img overflow-hidden">
-                                                    <img src="img/blog_img.png" height="100%" alt="blog_img">
+                                                    <img src="{{asset('static/img/blog_img.png') }}" height="100%" alt="blog_img">
                                                 </div>
                                                 <div class="text">
                                                     <span class="label">הום סטייל</span>
@@ -352,14 +352,14 @@
                                             </div>
                                             <div class="product_card shadow mt-4">
                                                 <div class="img">
-                                                    <img src="img/product_img.png" class="w-100" alt="img">
+                                                    <img src="{{asset('static/img/product_img.png') }}" class="w-100" alt="img">
                                                 </div>
                                                 <div class="product_info">
                                                     <div
                                                         class="d-flex mt-2 justify-content-between align-items-center productLables">
                                                         <!-- <span class="label">ריהוט אב</span> -->
-                                                        <img src="img/label2.png" alt="lable">
-                                                        <img src="img/timer.png" alt="timer">
+                                                        <img src="{{asset('static/img/label2.png') }}" alt="lable">
+                                                        <img src="{{asset('static/img/timer.png') }}" alt="timer">
                                                     </div>
                                                     <div class="product_heading my-2">
                                                         <h3>רהיטי אב במצבע בלעדי ספה 3 מושבים במחיר מפתיע לחופש...</h3>
@@ -402,8 +402,8 @@
                                             </p>
                                             <div class="mt-5">
                                                 <div class="imgs d-flex align-items-start">
-                                                    <img src="img/rating.png" class="rating_img" alt="rating">
-                                                    <img src="img/likes_img.png" class="mt-5 d-block likes_img"
+                                                    <img src="{{asset('static/img/rating.png') }}" class="rating_img" alt="rating">
+                                                    <img src="{{asset('static/img/likes_img.png') }}" class="mt-5 d-block likes_img"
                                                         alt="likes_img">
                                                 </div>
                                             </div>
@@ -411,7 +411,7 @@
                                         <div class="col-md-5 mt-3">
                                             <div class="coin_card mt-lg-5 shadow">
                                                 <div class="head">
-                                                    <img src="img/coin.png" class="coinImg" alt="coin" class="">
+                                                    <img src="{{asset('static/img/coin.png') }}" class="coinImg" alt="coin" class="">
                                                     460 נקודות
                                                 </div>
                                                 <div class="new_links">
@@ -541,7 +541,7 @@
 
                                             <div class="mt-5">
                                                 <div class="imgs checkImg d-flex align-items-start ms-lg-5 ps-lg-5">
-                                                    <img src="img/text_lable.png" alt="rating">
+                                                    <img src="{{asset('static/img/text_lable.png') }}" alt="rating">
                                                 </div>
                                             </div>
                                         </div>
@@ -571,7 +571,7 @@
                                         <div class="col-md-5 mt-3">
                                             <div class="blog_card mb-3 d-flex shadow">
                                                 <div class="img overflow-hidden">
-                                                    <img src="img/blog_img.png" height="100%" alt="blog_img">
+                                                    <img src="{{asset('static/img/blog_img.png') }}" height="100%" alt="blog_img">
                                                 </div>
                                                 <div class="text">
                                                     <span class="label">הום סטייל</span>
@@ -587,7 +587,7 @@
                                             </div>
                                             <div class="blog_card mb-3 d-flex shadow">
                                                 <div class="img overflow-hidden">
-                                                    <img src="img/blog_img.png" height="100%" alt="blog_img">
+                                                    <img src="{{asset('static/img/blog_img.png') }}" height="100%" alt="blog_img">
                                                 </div>
                                                 <div class="text">
                                                     <span class="label">הום סטייל</span>
@@ -603,7 +603,7 @@
                                             </div>
                                             <div class="blog_card mb-3 d-flex shadow">
                                                 <div class="img overflow-hidden">
-                                                    <img src="img/blog_img.png" height="100%" alt="blog_img">
+                                                    <img src="{{asset('static/img/blog_img.png') }}" height="100%" alt="blog_img">
                                                 </div>
                                                 <div class="text">
                                                     <span class="label">הום סטייל</span>
@@ -634,7 +634,7 @@
                                             </p>
                                         </div>
                                         <div class="col-md-5 mt-5 pt-5">
-                                            <img src="img/ballons.png" alt="ballons">
+                                            <img src="{{asset('static/img/ballons.png') }}" alt="ballons">
                                         </div>
 
                                     </div>
@@ -645,7 +645,7 @@
                                     <div class="row align-items-center">
                                         <div class="text col-md-6 mt-5">
                                             <div class="input srchInput mb-5">
-                                                <img src="img/shortLogo.png" class="input_logo" alt="logo">
+                                                <img src="{{asset('static/img/shortLogo.png') }}" class="input_logo" alt="logo">
                                                 <input type="text">
                                                 <div class="icon icon1">
                                                     <svg width="19" height="18" viewBox="0 0 19 18" fill="none"
@@ -709,7 +709,7 @@
                                             <div class="srch2">
                                                 <input type="text" placeholder="חיפוש ...">
                                                 <a href="#" class="btn btn_search">
-                                                    <img src="img/search_icon.png" alt="search_icon">
+                                                    <img src="{{asset('static/img/search_icon.png') }}" alt="search_icon">
                                                 </a>
                                             </div>
                                             <h2 class="head text-orange mt-5"> עמוס לכם?
@@ -812,7 +812,7 @@
     </script>
 
     <!-- main js -->
-    <script src="js/main.js"></script>
+    <script src="{{asset('static/js/main.js') }}"></script>
 </body>
 
 </html>
