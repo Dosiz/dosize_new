@@ -15,7 +15,7 @@
     <div class="bg_color">
       @include('layout.partials.header')
       @yield('content')
-      @include('layout.partials.brand_footer')
+      @include('layout.partials.footer')
 
     </div>
 
