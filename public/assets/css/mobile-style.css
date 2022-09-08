@@ -2022,7 +2022,7 @@ main .main-wrapper .wallet_promotion .price_learn_more button {
 
 .messenger_announcment_main .messenger_main .inbox_footer {
     position: absolute;
-    bottom: 0px;
+    bottom: 60px;
     width: 100%;
 }
 
