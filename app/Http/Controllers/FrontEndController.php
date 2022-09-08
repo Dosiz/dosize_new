@@ -41,7 +41,11 @@ use App\Helpers\Helpers;
 
 class FrontEndController extends Controller
 {
-    
+    public function dfg()
+    {
+        dd("sdssd");
+        return view('index');
+    }
     public function landing_page()
     {
         // dd(Auth::user()->role('User'));
