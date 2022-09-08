@@ -43,9 +43,9 @@ class FrontEndController extends Controller
 {
     public function landing_page()
     {
+        // dd(Auth::user()->role('User'));
         $city_id = Helpers::city_id();
-        if($city_id){
-            dd("sdsd");
+        // dd($city_id);
         $cities = City::get();
         $products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -56,6 +56,7 @@ class FrontEndController extends Controller
         ->where('products_has_cities.city_id',$city_id)
         ->orderBy('id', 'DESC')
         ->get();
+        //  dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
         $discount_products = DB::table('products_has_cities')
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -119,11 +120,6 @@ class FrontEndController extends Controller
 
         // dd($categories);
         return view('landing_page' , compact('p_city','categories','cities','products','blogs','discount_products','brands_recomanded_products','products_by_categories','brand_messages'));
-        }
-        else{
-            dd("aaa");
-        return view('index');
-        }
     }
 
     public function article_detail($blog_id)

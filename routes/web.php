@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('qwerty', function () {
-//     return view('index');
-// })->name('qwerty');
+Route::get('qwerty', function () {
+    return view('index');
+})->name('qwerty');
 
 
 Route::post('getShortUrl',function (Request $request){
