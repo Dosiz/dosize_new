@@ -454,10 +454,10 @@ Dosize
                                                                        href="{{route('product',$product->id ?? '')}}"
                                                                        style="color: #212529 !important;">
                                                                         <h4 class="font-size-14 font-weight-700">
-                                                                            {{\Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
+                                                                            {{$product->name ?? '' }}
                                                                         </h4>
                                                                         <p class="discription font-size-12 font-weight-400">
-                                                                            {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
+                                                                            {{strip_tags($product->description ?? '')}}
                                                                         </p>
                                                                     </a>
                                                                     <span
@@ -537,7 +537,8 @@ Dosize
                                                                 {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                             </h4>
                                                             <p class="discription font-size-12 font-weight-400">
-                                                                {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!}
+                                                                {{-- {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!} --}}
+                                                                {{ strip_tags($blog->description ?? '') }}
                                                             </p>
                                                             
                                                         </div>
@@ -562,7 +563,7 @@ Dosize
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
                                                         <p class="discription font-size-12 font-weight-400">
-                                                            {!! \Illuminate\Support\Str::limit($product->description ?? '',60,'...') !!}
+                                                            {{ strip_tags($product->description ?? '') }}
                                                         </p>
                                                         {{-- <span class="font-size-12 like_span">4ss
                                                             <i class="fa fa-heart"
