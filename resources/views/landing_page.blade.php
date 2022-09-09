@@ -457,7 +457,7 @@ Dosize
                                                                             {{$product->name ?? '' }}
                                                                         </h4>
                                                                         <p class="discription font-size-12 font-weight-400">
-                                                                            {{strip_tags($product->description ?? '')}}
+                                                                            {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',60,'...')}}
                                                                         </p>
                                                                     </a>
                                                                     <span
@@ -538,7 +538,7 @@ Dosize
                                                             </h4>
                                                             <p class="discription font-size-12 font-weight-400">
                                                                 {{-- {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!} --}}
-                                                                {{ strip_tags($blog->description ?? '') }}
+                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
                                                             </p>
                                                             
                                                         </div>
@@ -563,7 +563,7 @@ Dosize
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...') }}
                                                         </h4>
                                                         <p class="discription font-size-12 font-weight-400">
-                                                            {{ strip_tags($product->description ?? '') }}
+                                                            {{ \Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',60,'...') }}
                                                         </p>
                                                         {{-- <span class="font-size-12 like_span">4ss
                                                             <i class="fa fa-heart"
