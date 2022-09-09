@@ -68,14 +68,14 @@ Archive - Catagorey
             <div class="container-fluid">
                 <div class="row justify-content-end">
                     @if(count($product_categories) > 0 || count($blog_categories) > 0)
-                    @foreach($product_categories as $p_category)
+                    @foreach($blog_categories as $b_category)
                     <div class="col-6 col-xxl-4 col-xl-3">
                         <div class="arch_product d-flex flex-column align-items-center">
-                            <a href="{{route('category_by_city',['category_id'=>$p_category->category_id,'city_id'=>$city_id])}}" style="color:#212529">
+                            <a href="{{route('category_by_city',['category_id'=>$b_category->category_id,'city_id'=>$city_id])}}" style="color:#212529">
                                 <div class="img">
-                                    <img src="{{asset('category/'.$p_category->image)}}" alt="arch_product" style="width: 75px; height:54px;">
+                                    <img src="{{asset('category/'.$b_category->image)}}" alt="arch_product" style="width: 75px; height:54px;">
                                 </div>
-                                <p class="txt">{{$p_category->name}}</p>
+                                <p class="txt">{{$b_category->name}}</p>
                             </a>
                         </div>
                     </div>
