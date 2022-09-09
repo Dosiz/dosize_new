@@ -67,7 +67,7 @@ Archive - Catagorey
         <div class="arch_products mt-5">
             <div class="container-fluid">
                 <div class="row justify-content-end">
-                    @if(count($product_categories) > 0)
+                    @if(count($product_categories) > 0 || count($blog_categories) > 0)
                     @foreach($product_categories as $p_category)
                     <div class="col-6 col-xxl-4 col-xl-3">
                         <div class="arch_product d-flex flex-column align-items-center">

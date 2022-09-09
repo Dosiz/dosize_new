@@ -790,11 +790,22 @@ class FrontEndController extends Controller
         ->where('products.discount_price', null)
         ->groupBy('categories.id')
         ->get();
+
+        $blog_categories = DB::table('blogs_has_cities')
+        ->Join('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
+        ->Join('categories', 'categories.id', '=', 'blogs.category_id')
+        // ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
+        ->select('categories.*','brand_profiles.brand_name','products.category_id')
+        ->where('blogs_has_cities.city_id',$city_id )
+        // ->where('products.discount_price', null)
+        ->groupBy('categories.id')
+        ->get();
         // dd($product_categories);
-        if(count($product_categories) > 0)
+        if(count($product_categories) > 0 || count($blog_categories) > 0)
         {
 
-            return view('frontend.archive.archive_category',compact('cities','categories','product_categories','city_id'));
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories','blog_categories','city_id'));
         }
         else
         {
