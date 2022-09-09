@@ -793,7 +793,7 @@ class FrontEndController extends Controller
         if(count($product_categories) > 0)
         {
 
-            return view('frontend.archive.archive_category',compact('cities','categories','product_categories'));
+            return view('frontend.archive.archive_category',compact('cities','categories','product_categories','city_id'));
         }
         else
         {
