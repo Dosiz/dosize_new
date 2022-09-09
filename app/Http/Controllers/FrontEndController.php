@@ -796,7 +796,7 @@ class FrontEndController extends Controller
         ->Join('categories', 'categories.id', '=', 'blogs.category_id')
         // ->Join('recomended_products', 'recomended_products.product_id', '=', 'products.id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'blogs.brand_profile_id')
-        ->select('categories.*','brand_profiles.brand_name','products.category_id')
+        ->select('categories.*','brand_profiles.brand_name','blogs.category_id')
         ->where('blogs_has_cities.city_id',$city_id )
         // ->where('products.discount_price', null)
         ->groupBy('categories.id')
