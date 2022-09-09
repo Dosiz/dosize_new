@@ -85,7 +85,7 @@
                                 <select name="city_id" id="city_id">
                                     <option selected disabled value="">בחר מתוך הרשימה</option>
                                     @foreach($cities as $city)
-                                        <option value="{{$city->id}}"> {{$city->name}} </option>
+                                        <option value="{{$city->id}}"> {{$city->hebrew_name}} </option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger city_valid"></span>

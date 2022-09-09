@@ -37,6 +37,11 @@ Add City
 					                                <input class="form-control" id="name" name="name" placeholder="Enter City Name" value="{{old('name')}}" type="text">
 			                                        <div style="color:red;">{{$errors->first('name')}}</div> <br>
 					                            </div>
+												<div class="form-group">
+					                                <label>City Hebrew Name</label>
+					                                <input class="form-control" id="hebrew_name" name="hebrew_name" placeholder="Enter City Hebrew Name" value="{{old('hebrew_name')}}" type="text">
+			                                        <div style="color:red;">{{$errors->first('hebrew_name')}}</div> <br>
+					                            </div>
 					                            <div class="form-group">
 					                                <label>City Image</label>
 					                                <div>

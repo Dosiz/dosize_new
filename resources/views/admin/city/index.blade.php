@@ -38,6 +38,7 @@ Cities
 											<thead>
 												<tr>
 													<th>City Name</th>
+													<th>Hebrew Name</th>
 													<th>City Image</th>
 													<th class="text-right">Action</th>
 												</tr>
@@ -48,6 +49,9 @@ Cities
 													@foreach($cities as $city)
 													<td>
 														{{ $city->name}}
+													</td>
+													<td>
+														{{ $city->hebrew_name ?? ''}}
 													</td>
 													<td> 
 														<img src="{{asset('city/'.$city->image)}}" width="100px" height="100px">

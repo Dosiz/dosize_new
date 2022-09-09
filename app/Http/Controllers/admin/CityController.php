@@ -39,10 +39,16 @@ class CityController extends Controller
          // dd($request->all());
         $this->validate($request,[ 
             'name'=>'required',
+            'hebrew_name'=>'required',
         ]);
         try {
         $city= new  City;
         $city->name = $request->name;
+        $lower_name = Str::lower($request->name);
+        $short_name = str_replace(' ', '-', $lower_name);
+        // dd($short_name);
+        $city->short_name = $short_name;
+        $city->hebrew_name = $request->hebrew_name;
         if($request->hasfile('image'))
         {
             $image = $request->file('image');
@@ -65,9 +71,15 @@ class CityController extends Controller
          // dd($request->all(),$id);
         $this->validate($request,[ 
             'name'=>'required',  
+            'hebrew_name'=>'required',  
         ]);
         $city=  City::find($id);
         $city->name = $request->name;
+        $lower_name = Str::lower($request->name);
+        $short_name = str_replace(' ', '-', $lower_name);
+        // dd($short_name);
+        $city->short_name = $short_name;
+        $city->hebrew_name = $request->hebrew_name;
         if($request->hasfile('image'))
         {
             $image = $request->file('image');
