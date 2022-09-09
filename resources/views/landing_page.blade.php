@@ -361,7 +361,7 @@ Dosize
         @if ($p_city )
         @if (count($p_city->products->groupBy('category_id')) > 0 || count($p_city->blogs->groupBy('category_id')) > 0 )
             <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
-            @foreach ($p_city->blogs->groupBy('category_id') as $key=>$product_categories)
+            @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
             
             @php 
             $category =  \App\Models\Category::find($key); 
