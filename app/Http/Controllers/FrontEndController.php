@@ -111,6 +111,8 @@ class FrontEndController extends Controller
         // dd($products_by_categories);
 
         $p_city = City::with('products','blogs')->find($city_id);
+
+        dd($p_city);
         // dd($p_city->blogs->groupBy('category_id'),$p_city->products->groupBy('category_id'));
         // foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories){
         //     echo $product_categories;
