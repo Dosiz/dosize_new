@@ -233,7 +233,8 @@
                                         {{$recomanded_product->recomended_product->name}}
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! substr($recomanded_product->recomended_product->description, 0,  30) ?? '' !!}
+                                        {{-- {!! substr($recomanded_product->recomended_product->description, 0,  30) ?? '' !!} --}}
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($recomanded_product->recomended_product->description) ?? '',20) }}
                                     </p>
                                 </a>
                             </div>
@@ -466,7 +467,8 @@
                                                 {{$recomanded_blog->recomended_blog->title}}
                                             </h4>
                                             <p class="discription font-size-10 font-weight-400" style="font-weight: 400px !important;">
-                                                {!! substr($recomanded_blog->recomended_blog->sub_title, 0,  50) ?? '' !!}
+                                                {{-- {!! substr($recomanded_blog->recomended_blog->description, 0,  50) ?? '' !!} --}}
+                                                {{ \Illuminate\Support\Str::limit(strip_tags($recomanded_blog->recomended_blog->description) ?? '',20) }}
                                             </p>
                                         </a>
                                         {{-- <span class="font-size-12">4 <i class="fa fa-heart"

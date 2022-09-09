@@ -197,14 +197,14 @@
                                 <div class="content_div">
                                     <a href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
-                                            {{$recommended_product->recommended_product->name}}
+                                            {{ \Illuminate\Support\Str::limit($recommended_product->recommended_product->name ?? '',10) }}
                                         </h4>
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
 
                                             <p class="font-size-14 font-weight-300">
                                                 {{-- {!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!} --}}
-                                                {!! \Illuminate\Support\Str::limit(str_replace('&nbsp;', ' ', $recommended_product->recommended_product->description ?? ''),20) !!}
+                                                {{ \Illuminate\Support\Str::limit(strip_tags($recommended_product->recommended_product->description) ?? '',20) }}
                                             </p>
                                         </div>
                                     </a>
@@ -426,7 +426,8 @@
                                     </h4>
                                     <p class="discription font-size-10 font-weight-400">
                                         {{-- {!! $recomanded_blog->recomended_blog->description ?? '' !!} --}}
-                                        {!! \Str::words(str_replace('&nbsp;', ' ', $recomanded_blog->recomended_blog->sub_title ?? ''),20) !!}
+                                        {{-- {!! \Str::words(str_replace('&nbsp;', ' ', $recomanded_blog->recomended_blog->sub_title ?? ''),20) !!} --}}
+                                        {{ \Str::words(strip_tags($recomanded_blog->recomended_blog->description) ?? '',20) }}
                                     </p>
                                     </a>
                                     {{-- <span class="font-size-12">4 <i class="fa fa-heart"
