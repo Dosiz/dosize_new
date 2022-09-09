@@ -14,15 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('qwerty', function () {
-//     return view('index');
-// })->name('qwerty');
+Route::get('qwerty', function () {
+    auth()->logout();
+    $cities = \App\Models\City::get();
+    return view('index' , compact('cities'));
+})->name('qwerty');
 
 
 Route::post('getShortUrl',function (Request $request){
     $shortURL = \App\Helpers\Helpers::createShortUrl($request->url,$request->source);
     return response()->json($shortURL);
 });
+
+Route::post('/user_login', [App\Http\Controllers\FrontEndController::class, 'static_login']);
+Route::post('/register_user', [App\Http\Controllers\FrontEndController::class, 'registerUser']);
 
 
 Auth::routes();

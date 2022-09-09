@@ -38,12 +38,15 @@ use App\Models\BrandTimming;
 use Session;
 use Illuminate\Support\Facades\Route;
 use App\Helpers\Helpers; 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class FrontEndController extends Controller
 {
     public function web_static_paage()
     {
-        return view('index');
+        $cities = City::get(); 
+        return view('index',compact('cities'));
     }
     public function landing_page()
     {
@@ -952,6 +955,72 @@ class FrontEndController extends Controller
         $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
 
         return view('frontend.b_products',compact('brand_profile','products'));
+    }
+
+    public function static_login(Request $request)
+    {
+        try {
+            $validateUser = Validator::make($request->all(), 
+            [
+                'email' => 'required|email',
+                'password' => 'required'
+            ]);
+
+            if($validateUser->fails()){
+                return $this->errorResponse($validateUser->messages(), 401);
+            }
+
+            if(!Auth::attempt($request->only(['email', 'password']))){
+
+                return $this->errorResponse('Email & Password does not match with our record.', 401);
+
+            }
+
+            $user = User::with('city')->where('email', $request->email)->first();
+
+            return redirect()->away('https://'.$user->city->short_name.'.arikliger.com');
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
+    }
+
+    public function registerUser(Request $request)
+    {
+        try {
+            //Validated
+            $validateUser = Validator::make($request->all(), 
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
+                'city_id' => 'required'
+            ]);
+
+            if($validateUser->fails()){
+                return $this->errorResponse($validateUser->messages(), 401);
+            }
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'city_id' => $request->city_id,
+            ]);
+
+            $user->assignRole('User'); 
+            $user_id = User::with('city')->where('id', $user->id)->first();
+            return redirect()->away('https://'.$user_id->city->short_name.'.arikliger.com');
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
 }

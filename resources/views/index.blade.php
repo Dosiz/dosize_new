@@ -22,7 +22,185 @@
     <link rel="stylesheet" href="{{asset('static/css/media.css') }}">
 
 </head>
+<style>
+    
+    /************* Enrollemnt - Modal - Css styling ************/
+    
+    /* .enrollmentModel .modal-dialog {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 90%;
+        height: 80%;
+        overflow: auto;
+    } */
+    .enrollmentModel .formDiv button {
+        width: 100%;
+        background-color: #db1580;
+        color: #fff;
+        font-family: ploniBold;
+        padding: 15px 0px;
+        border-radius: 10px;
+        border: none;
+    }
+    .enrollmentModel .modal-content {
+        border-radius: 20px;
+        height: 100%;
+        overflow: auto;
+    }
+    
+    .enrollmentModel .modal-title {
+        text-align: center;
+        width: 100%;
+        font-size: 30px;
+        font-family: ploniBold;
+        background: linear-gradient(267.72deg, #DB1580 16.93%, #F5A41A 87.34%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .enrollmentModel .modal-header button {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        padding: 6px 9px;
+        border-radius: 100%;
+        background: #353039;
+        opacity: 1;
+        color: #fff;
+        font-size: 14px;
+    }
+    
+    .enrollmentModel .formDiv .inputDiv {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    
+    .enrollmentModel .formDiv .inputDiv label {
+        font-family: ploniBold;
+    }
+    
+    .enrollmentModel .formDiv .inputDiv input,
+    .enrollmentModel .formDiv .inputDiv select {
+        width: 100%;
+        background: #e7e7e7;
+        border: none;
+        padding: 10px;
+        text-align: right;
+        font-family: ploniRegular;
+        font-size: 14px;
+    }
+    
+    .enrollmentModel .formDiv .inputDiv .password_div {
+        position: relative;
+    }
+    
+    .enrollmentModel .formDiv .inputDiv .password_div i {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div {
+        direction: rtl;
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div label {
+        font-family: ploniRegular;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div label a {
+        color: var(--categoryTextColor);
+        text-decoration: underline;
+    }
+    
+    .enrollmentModel .formDiv button {
+        width: 100%;
+        background-color: #db1580;
+        color: #fff;
+        font-family: ploniBold;
+        padding: 15px 0px;
+        border-radius: 10px;
+        border: none;
+    }
 
+    .btn-link {
+        font-weight: 400;
+        color: #007bff;
+        background-color: transparent;
+    }
+    
+    .enrollmentModel .signup_btn {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .enrollmentModel .signup_btn a {
+        display: block;
+        border: 1px solid #C4C4C4;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 0px 6px;
+    }
+    
+    .enrollmentModel .sign_up_with {
+        margin-top: 30px;
+    }
+    
+    .enrollmentModel .sign_up_with h6 {
+        margin-bottom: 15px;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div input[type="checkbox"]:checked+label::after {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 6px;
+        background: rgba(0, 0, 0, 0);
+        top: 9px;
+        right: 3px;
+        border: 2px solid var(--categoryTextColor);
+        border-top: none;
+        border-right: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div input[type="checkbox"] {
+        line-height: 2.1ex;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div input[type="radio"],
+    .enrollmentModel .formDiv .checkBox_div input[type="checkbox"] {
+        accent-color: #DB1580;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div input[type="checkbox"]+label {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .enrollmentModel .formDiv .checkBox_div input[type="checkbox"]+label::before {
+        content: "";
+        display: inline-block;
+        vertical-align: -25%;
+        height: 2ex;
+        width: 2ex;
+        background-color: #F6F6F6;
+        border-radius: 4px;
+        margin-left: 0.5em;
+        top: -2px;
+        position: relative;
+    }
+    </style>
 <body>
 
     <nav class="d-flex justify-content-between">
@@ -30,13 +208,27 @@
             <img src="{{asset('static/img/logo.png') }}" alt="logo">
         </a>
         <div class="btns">
-            <a href="#" class="btn btn_outline me-2">
+            @if(! isset(Auth::user()->name))
+            <a href="#" class="btn btn_outline me-2" data-bs-toggle="modal" data-bs-target="#model1">
                 הרשמה
             </a>
-            <a href="#" class="btn btn_orange me-2">
+            <a href="#" class="btn btn_orange me-2"  data-bs-toggle="modal" data-bs-target="#modal2">
                 התחברות
             </a>
-        </div>
+            @else
+                @if(Auth::user()->hasRole('User'))
+                    {{-- <p>{{Auth::user()->name }} </p> --}}
+                    @php
+                        $user = \App\Models\User::with('city')->where('id',Auth::user()->id)->first();
+                    @endphp
+                    <a href="https://{{$user->city->short_name}}.arikliger.com" class="btn btn_orange me-2" style="width: 200px !important">
+                        {{Auth::user()->name }}  לעבור לדף העיר
+                    </a>
+                @else
+                <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
+                @endif
+            @endif
+            
     </nav>
 
     <div class="main_content">
@@ -729,6 +921,147 @@
         </div>
     </div>
 
+    {{-- modals --}}
+
+    <!-- Modal -->
+    <div class="modal fade enrollmentModel " id="model1" tabindex="-1" aria-labelledby="model1Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="login-moda">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">התחברות</h5>
+                    <button type="button" class="close"  data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="formDiv">
+                        <form action="{{ url('user_login') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="static_page" value="static_page" />
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">דוא”ל</label>
+                                <input id="email" type="email" name="email" required value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <span class="text-danger email_valid"></span>
+                            </div>
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">סיסמה</label>
+                                <div class="password_div">
+                                    <input id="password" type="password" name="password" required autocomplete="current-password">
+                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    <span class="text-danger password_valid"></span>
+                                </div>
+                            </div>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;"> הרשמה </button>
+                            @if (Route::has('password.request'))
+                                <div class="text-center forgotpass">
+                                    <a class="btn btn-link" target="_blank" href="{{ route('password.request') }}">
+                                    {{ __('שכחת את הסיסמה? לחץ כאן לשיחזור!') }}
+                                    </a>
+                                </div>
+                            @endif
+
+                            <div class="sign_up_with">
+                                <h6 class="text-center">התחברו עם </h6>
+                                <div class="signup_btn">
+                                    <a href="{{route('auth.facebook')}}">
+                                        <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                    <a href="{{route('auth.google')}}">
+                                        <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <div class="d-flex justify-content-center mt-4">
+                                <a href="" id="login_btn" class="text-dark">
+                                </b> אין לכם חשבון? לחצו כאן להרשמה > </b>
+                                </a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade enrollmentModel " id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="login-moda">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">הַרשָׁמָה</h5>
+                    <button type="button" class="close"  data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="formDiv">
+                        <form action="{{ url('register_user') }}" method="POST">
+                            @csrf
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">שם</label>
+                                <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <span class="text-danger name_valid"></span>
+                            </div>
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">עיר</label>
+                                <select name="city_id" id="city_id">
+                                    <option selected disabled value="">בחר מתוך הרשימה</option>
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->id}}"> {{$city->name}} </option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger city_valid"></span>
+                            </div>
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">דוא”ל</label>
+                                <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <span class="text-danger email_valid"></span>
+                            </div>
+                            <div class="inputDiv">
+                                <label for="" class="font-size-16">סיסמה</label>
+                                <div class="password_div">
+                                    <input id="password" type="password" name="password" required autocomplete="new-password">
+                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                    <span class="text-danger password_valid"></span>
+                                </div>
+                            </div>
+                            <div class="checkBox_div">
+                                <input type="checkbox" name="" id="approve" checked>
+                                <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
+                            </div>
+                            <div class="checkBox_div">
+                                <input type="checkbox" name="" id="policy" checked>
+                                <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
+                                    המערכת...</label>
+                            </div>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button>
+                            <div class="sign_up_with">
+                                <h6 class="text-center">או הרשם עם</h6>
+                                <div class="signup_btn">
+                                    <a href="{{route('auth.facebook')}}">
+                                        <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                    <a href="{{route('auth.google')}}">
+                                        <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
+                                            class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <div class="d-flex justify-content-center mt-4">
+                                <a href="" id="signup_btn" class="text-dark">
+                                    <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
+                                </a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- bootstrap 5 script -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -736,6 +1069,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Initialize Swiper -->
     <script>
