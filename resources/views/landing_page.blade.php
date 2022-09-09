@@ -418,7 +418,7 @@ Dosize
                                                                                     {{$blog->title ?? ''}}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ strip_tags($blog->description ?? '') }}
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
                                                                                 </p>
                                                                             </div>
                                                                         </a>
