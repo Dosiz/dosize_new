@@ -155,7 +155,7 @@ Brand List
                                     @else
                                         @if($chk_subscriber == null)
                                         
-                                        <form action="{{ route('store-subscriber') }}" method="POST">
+                                        <form action="{{ route('store-subscribers') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />

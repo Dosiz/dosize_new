@@ -55,14 +55,17 @@
                                     </div>
                                     @else
                                     <br>
-                                    
+                                    <a href="{{url('brand_product/'.$product->id)}}" style="color:#212529">
                                     <p class="price">₪ {{$product->price}}</p>
+                                    </a>
                                     @endif
-                                <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> {{$product->product_comment->avg('rating') ?? 'no rating'}} </p>
+                                    <a href="{{url('brand_product/'.$product->id)}}" style="color:#212529">
+                                        <p style="text-decoration: none"><i class="fa fa-star" style="color: #ff9529;"></i> {{$product->product_comment->avg('rating') ?? 'no rating'}} </p>
+                                    </a>
                             </div>
                                 <div class="readMore">
                                     <p style="text-align: left">
-                                        <a class="btn btn-success" style="background-color: #db1580 !important; color: #fff !important; border: 1px solid #db1580 !important" href="{{url('product/'.$product->id)}}">דקרא עוד<i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                                        <a class="btn btn-success" style="background-color: #db1580 !important; color: #fff !important; border: 1px solid #db1580 !important" href="{{url('brand_product/'.$product->id)}}">דקרא עוד<i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
                                     </p>
                                 </div>
                             </div>

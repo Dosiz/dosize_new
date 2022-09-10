@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\City;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class CityController extends Controller
 {
