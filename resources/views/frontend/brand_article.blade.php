@@ -50,6 +50,9 @@
     {
         margin-top: 98px !important;
     }
+    footer {
+        display: block !important;
+    }
 </style>
 @endpush
 @section('content') 

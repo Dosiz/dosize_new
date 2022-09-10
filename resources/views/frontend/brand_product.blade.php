@@ -35,6 +35,10 @@
         text-decoration: none;
     }
 
+    footer{
+        display: block !important;
+    }
+
 </style>
 @endpush
 @section('content') 

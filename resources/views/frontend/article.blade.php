@@ -195,7 +195,7 @@
                                 </a>
 
                                 <div class="content_div">
-                                    <a href="{{route('article',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
+                                    <a href="{{route('product',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
                                             {{ \Illuminate\Support\Str::limit($recommended_product->recommended_product->name ?? '',10) }}
                                         </h4>
