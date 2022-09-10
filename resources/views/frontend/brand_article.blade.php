@@ -425,7 +425,7 @@
                             </div>
                             @endforeach
                             @endif
-                            <a href="{{route('all-blogs',['category_id'=>$category->id,'city_id'=>$blog->cities['0']->id]) }}" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                            <a href="{{route('all-blogs',['category_id'=>$recomanded_blogs->recomended_blog['0']->category_id,'city_id'=>$blog->cities['0']->id]) }}" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                 הכתבות ></a>
                         </div>
                     </div>
