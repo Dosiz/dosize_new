@@ -956,7 +956,7 @@ class FrontEndController extends Controller
     public function brand_articles($brand_profile_id)
     {
         $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
-        $articles = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+        $articles = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id','DESC')->get();
 
         return view('frontend.b_articles',compact('brand_profile','articles'));
     }
