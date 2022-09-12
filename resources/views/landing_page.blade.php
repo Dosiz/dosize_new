@@ -401,8 +401,10 @@ Dosize
                                         <div class="article_div">
                                             @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
-                                                    @foreach($article_categories->take(1) as $blog)
+                                                    @foreach($article_categories->take(4) as $blog)
+                                                        
                                                         <div class="row" style="flex-direction: row-reverse;">
+                                                            @if($blog['0'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box" style="margin-bottom: 8px">
@@ -420,15 +422,35 @@ Dosize
                                                                                     {{$blog->title ?? ''}}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',60,'...') }}
                                                                                 </p>
                                                                             </div>
                                                                         </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @else
+                                                            <div class="col-lg-6">
+                                                                <div class="main_article">
+                                                                    <div class="article_box">
+                                                                        <img src="../assets/img/mobile_component/recommendedItem.png"
+                                                                            alt="" class="img-fluid">
+                                                                        <div class="article_content">
+                                                                            <h4 class="font-size-18" style="margin-bottom: 20px;">
+                                                                                {{$blog->title ?? ''}}
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',60,'...') }}
+                                                                            </p>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endif
                                                         </div>
                                                     @endforeach
+                                                    
                                                 @endif
                                             @endforeach
                                         

@@ -2356,9 +2356,9 @@ footer .inbox_footer .message_form .input_div_button button,
 
     .article_div .col-lg-6 {
         width: 100%;
-        max-width: 100%;
+        max-width: 50%;
         flex: 100%;
-        margin-left: 25%;
+        /* margin-left: 25%; */
     }
 
     .gifts_event_div .article_div .col-lg-6 {

@@ -87,7 +87,6 @@ const deal = new Swiper('.multiple_deals', {
     loop: true,
     clickable: true,
     
-    
     breakpoints: {
       // when window width is >= 320px
       320: {

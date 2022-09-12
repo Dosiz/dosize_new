@@ -1,3 +1,7 @@
+<?php
+use App\Helpers\Helpers; 
+$city_id = Helpers::city_id();
+?>
 @extends('layout.master')
 @section('title')
 Dosize
@@ -17,15 +21,12 @@ Dosize
                     <div class="col-lg-12">
                         <div class="swiper myCategorySlider">
                             <div class="swiper-wrapper">
-                                
                                 @if(count($categories) > 0)
-                                
                                 @foreach($categories as $key=>$category)
-                              
                                 <div class="category_box swiper-slide">
-                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>5])}}" style="color:#212529">
+                                    <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" style="color:#212529">
                                         <div class="img_box box_shahdow">
-                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px width:28px;">
+                                            <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px;">
                                         </div>
                                         <p class="font-weight-600 font-size-12"> {{$category->name}}</p>
                                     </a>
@@ -41,6 +42,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @if(count($brand_messages) > 0)
         <div class="line spacing"></div>
         <div class="hot_flashes_div spacing">
             <div class="container-fluid">
@@ -73,6 +75,7 @@ Dosize
                 </div>
             </div>
         </div>
+        @endif
         @if(count($discount_products) > 0)
         <div class="line spacing"></div>
         <div class="promotion spacing">
@@ -80,7 +83,7 @@ Dosize
                 <div class="row">
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">המבצעים שלא תרצו לפספס <img
-                                src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
+                                src="{{ asset('assets/img/mobile_component/percentage_icon.svg') }}" alt=""
                                 class="img-fluid">
                         </h3>
                     </div>
@@ -104,9 +107,9 @@ Dosize
                                     <div class="promotion_img_box">
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                         <img src="{{asset('product/'.$product->image)}}" alt=""
-                                            class="img-fluid" style="width: 209px; height:105px;">
+                                            class="img-fluid" style="width: 209px;">
                                         </a>
-                                        <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
+                                        <span class="font-size-14 font-weight-700">{{ (int)(( ($product->price - $product->discount_price) / $product->price ) * 100) }} %</span>
                                     </div>
                                     <div class="promotion_content">
                                         <div class="time_category_text">
@@ -116,13 +119,15 @@ Dosize
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product->brand_profile_id)}}" >
-                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
+                                            <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand" >
+                                                <p class="promotion_category font-size-12 font-weight-400"> 
+                                                    {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
+                                                </p>
                                             </a>
                                         </div>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                             <p class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
-                                                {{$product->name}}
+                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </p>
                                         </a>
                                         <div class="price_learn_more">
@@ -135,6 +140,12 @@ Dosize
                                 </div>
                             @endforeach
                         @endif
+                    </div>
+                    <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
+                        <i class="fa fa-caret-left" aria-hidden="true"></i>
+                    </div>
+                    <div class="swiper-button-prev btn-swiper swiper-right d-block">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -152,28 +163,33 @@ Dosize
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption">
+                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-start" style="direction: rtl">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
-                            
-                            <div class="affordable_consumption_box box_shahdow">
+                            <div class="affordable_consumption_box box_shahdow" style="flex-direction: initial !important;">
                                 <a href="{{route('article',$blog->id)}}">
-                                <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px; height: 160px">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt=""
+                                    class="img-fluid" style="width: 131px;height:100%">
                                 </a>
                                 <div class="content_div">
-                                    <a href="{{route('brand-profile',$blog->brand_profile_id)}}">
-                                    <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
+                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
+                                        <span class="category font-size-12 font-weight-400">
+                                            {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
+                                        </span>
                                     </a>
                                     <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
-                                    <h4 class="font-size-12 font-weight-700">
-                                        {{$blog->title}}
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">
-                                        {!! substr($blog->description, 0,  30) !!}  
-                                    </p>
+                                        <h4 class="font-size-12 font-weight-700">
+                                            {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                        </h4>
+                                        <p class="discription font-size-10 font-weight-400">
+                                            {!! \Illuminate\Support\Str::limit($blog->sub_title ?? '',30,'...') !!} 
+                                        </p>
                                     </a>
-                                    <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
+                                    @php 
+                                        $like =  \App\Models\Like::where('blog_id',$blog->id)->count();
+                                        // dd($like);
+                                    @endphp 
+                                    <span class="font-size-12">{{$like}}<i class="fa fa-heart"
                                             aria-hidden="true"></i></span>
                                 </div>
                             </div>
@@ -189,13 +205,14 @@ Dosize
         @endif
         @if(count($products) > 0 && $products[0]->id != null)
         <div class="line spacing"></div>
+        <hr>
         <div class="order_div spacing">
             <div class="deals deal_one">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">דילים חמים מהתנור <img
-                                    src="{{ asset('assets/img/mobile_component/deals.png') }}" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/deals.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
@@ -207,20 +224,29 @@ Dosize
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
+                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style=" height:163px">
                                         </a>
                                         <div class="content_div">
-                                            <a href="{{route('brand-profile',$product->brand_profile_id ?? '')}}">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
+                                            <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
+                                            <span class="deal_category font-size-12 font-weight-400">
+                                                {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
+                                            </span>
                                             </a>
                                             <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;">
                                             <h4 class="title font-size-14 font-weight-700">  
-                                                {{$product->name}}
+                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </h4>
                                             <div class="rating_price_div">
-                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span
-                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
-                                                <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                                @if($product->price)
+                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @else
+                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                @endif
+                                                @php 
+                                                    $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                                    // dd($rating);
+                                                @endphp 
+                                                <p class="rating_text">{{$rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                             </div>
                                             </a>
                                         </div>
@@ -228,9 +254,16 @@ Dosize
                                 @endforeach
                             @endif
                         </div>
+                        <div class="swiper-button-next btn-swiper swiper-left removedDisable d-block">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper swiper-right d-block">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+            @if(count($brand_messages) > 0)
             <div class="hot_flashes">
                 <div class="container-fluid">
                     <div class="row">
@@ -240,39 +273,23 @@ Dosize
                                     class="img-fluid"></span>
                             <div class="hot_flashes_list">
                                 <ul>
+                                    @foreach($brand_messages as $brand_message)
+                                    @php  
+                                        $current_date = \Carbon\Carbon::now();
+                                        $sale_time = \Carbon\Carbon::parse($brand_message->end_date);
+                                        $diff_in_days = $current_date->diffInDays( $sale_time,false) + 1;
+                                    @endphp
+                                    @if($diff_in_days >= 0)
                                     <li>
                                         <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
+                                            <img src="{{asset('brand_image/'.$brand_message->brand_image)}}" alt="" class="img-fluid" style="width: 20px; height: 20px;">
                                         </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
+                                        <p class="flashes_comment font-size-14">
+                                            {{ $brand_message->message }}
                                         </p>
                                     </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_1.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <div class="img_box">
-                                            <img src="{{ asset('assets/img/mobile_component/flashes_2.png') }}" alt=""
-                                                class="img-fluid">
-                                        </div>
-                                        <p class="flashes_comment font-size-14">שימו לב, חדש באתר! משלוח
-                                            חינם בקנייה
-                                            מעל
-                                            300 ש”ח
-                                        </p>
-                                    </li>
+                                    @endif
+                                    @endforeach
                                 </ul>
                                 <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
                             </div>
@@ -280,46 +297,60 @@ Dosize
                     </div>
                 </div>
             </div>
-            @if(count($brands_recomanded_products) > 0)
+            @endif
+            @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null) 
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <h3 class="common_title">הכי מומלצים <img
-                                    src="{{ asset('assets/img/mobile_component/star.png') }}" alt="" class="img-fluid">
+                                    src="{{ asset('assets/img/mobile_component/star.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
                     </div>
                 </div>
-                <div class="slider_div">
+                <div class="slider_div border-bottom pb-4">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($brands_recomanded_products) > 0)
-                            @foreach($brands_recomanded_products as $recomanded_products)
-                            @foreach($recomanded_products->recommended_product as $product)
+                            @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null)
+                            @foreach($brands_recomanded_products as $product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
+                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
                                 </a>
                                 <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$recomanded_products->id)}}">
-                                    <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
+                                    <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
+                                    <span class="deal_category font-size-12 font-weight-400"> 
+                                        {{\Illuminate\Support\Str::limit($recomanded_products->brand_name ?? '',15)}}
+                                    </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
                                     <h4 class="title font-size-14 font-weight-700">
                                         {{$product->name}}
                                     </h4>
                                     <div class="rating_price_div">
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">80 ₪</span></p>
-                                        <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                        @if($product->price)
+                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        @else
+                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        @endif
+                                        @php 
+                                            $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                            // dd($rating);
+                                        @endphp 
+                                        <p class="rating_text">{{$rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>
                                 </div>
                             </div>
                             @endforeach
-                            @endforeach
                             @endif
+                        </div>
+                        <div class="swiper-button-next btn-swiper swiper-left d-block">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper swiper-right d-block">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -328,240 +359,262 @@ Dosize
         </div>
         @endif
         <?php $i = 1; ?>
-        @if (count($b_city->products->groupBy('category_id')) > 0 )
-            <div class="row flex-row-reverse">
-            @foreach ($b_city->products->groupBy('category_id') as $product_categories)
+        <?php $a =1; ?>
+        @if ($p_city )
+        @if (count($p_city->products->groupBy('category_id')) > 0 || count($p_city->products->groupBy('category_id')) > 0 )
+            <div class="row flex-row-reverse" style="min-height:600px; position: relative; display:flex;">
+            @foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories)
+            
+            @php 
+            $category =  \App\Models\Category::find($key); 
+                if($category == null){
+                    continue;
+                }
+            @endphp
+            {{-- @dd($product_categories) --}}
                 @if($i == 1 || $i == 2)
+                
+                {{-- @dd($p_city->products->groupBy('category_id'),$key) --}}
                 <div class="col-md-6">
                     <div class="products_div spacing p-0">
                         <div class="container-fluid p-0">
-                        
-                                <div class="no_padding">
-                                    <div class="affordable_consumption">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-lg-12 text-right">
-                                                    <div class="header_cloth">
-                                                        
-                                                        <img src="{{asset('category/'.$product_category->image ?? '')}}" width="60px" height="50px">
-                                                        <h3 class="common_title"> {{ $product_category->name ?? ''}}<img
-                                                                src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
-                                                                class="img-fluid">
-                                                        </h3>
-                                                        <span class="read_more">
-                                                            <a href="{{route('category_by_city',['category_id'=>$product_category->id,'city_id'=>5])}}" class="font-size-12 font-weight-400">
-                                                                כתבות ביגוד והנעלה</a> </span>
-                                                    </div>
+                            <div class="no_padding">
+                                <div class="affordable_consumption">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-12 text-right">
+                                                <div class="header_cloth">
+                                                    @if(isset($category->image))
+                                                    <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="50px">
+                                                    @endif
+                                                    <h3 class="common_title"> {{ $category->name ?? 'hello'}}<img
+                                                            src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
+                                                            class="img-fluid">
+                                                    </h3>
+                                                    <span class="read_more">
+                                                        {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
+                                                        <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
+                                                            {{$category->name}} כתבות </a> </span>
                                                 </div>
                                             </div>
-                                            <div class="article_div">
-                                                <div class="row">
-                                                    
-                                                    <div class="col-lg-6">
-                                                        <div class="main_article">
-                                                            <div class="article_box">
-                                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
-                                                                    <img src="{{asset('product/'.$product_category->product['0']->image ?? '' )}}" width="120px" height="100%">
-                                                                </a>
-                                                                <a style="color: #212529 !important" href="{{route('product',$product_category->product['0']->id ?? '')}}">
-                                                                <div class="article_content">
-                                                                    <h4 class="font-size-18"
-                                                                        style="margin-bottom: 20px;">
-                                                                        {{$product_category->product['0']->name ?? ''}}
-                                                                    </h4>
-                                                                    <p class="font-size-12">צפו
-                                                                        {!! \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...') !!}
-                                                                    </p>
+                                        </div>
+                                        <div class="article_div">
+                                            @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
+                                                @if($blog_key == $key)
+                                                    @foreach($article_categories->take(1) as $blog)
+                                                        <div class="row" style="flex-direction: row-reverse;">
+                                                            <div class="col-lg-6">
+                                                                <div class="main_article">
+                                                                    <div class="article_box" style="margin-bottom: 8px">
+                                                                        <a class="font-size-14 font-weight-700"
+                                                                           href="{{route('article',$blog->id ?? '')}}">
+                                                                            <img
+                                                                                src="{{asset('blog/'.$blog->image ?? '' )}}"
+                                                                                width="120px" height="100%">
+                                                                        </a>
+                                                                        <a style="color: #212529 !important"
+                                                                           href="{{route('article',$blog->id ?? '')}}">
+                                                                            <div class="article_content">
+                                                                                <h4 class="font-size-18"
+                                                                                    style="margin-bottom: 20px;">
+                                                                                    {{$blog->title ?? ''}}
+                                                                                </h4>
+                                                                                <p class="font-size-12">
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
-                                                                </a>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    @endforeach
+                                                    
+                                                @endif
+                                            @endforeach
+                                        
                                             <div class="row">
+
                                                 <div class="col-lg-12">
                                                     <div class="affordable_consumption_list">
-                                                        @if( count($product_category->product) > 1)
-                                                        <div class="affordable_consumption_box box_shahdow">
-                                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
-                                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="238px" height="120px">
-                                                            </a>
-                                                            <div class="content_div">
-                                                                <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product_category->product['1']->brandprofile->id ?? '')}}">
-                                                                <span class="category font-size-12 font-weight-400"> {{$product_category->product['1']->brandprofile->brand_name ?? ''}} </span>
+                                                        @foreach($product_categories->take(3)  as $product)
+                                                            <div
+                                                                class="affordable_consumption_box box_shahdow">
+                                                                <a class="font-size-14 font-weight-700"
+                                                                   href="{{route('product',$product->id ?? '')}}">
+                                                                    <img
+                                                                        src="{{asset('product/'.$product->image ?? '')}}"
+                                                                        width="238px"
+                                                                        height="100%">
                                                                 </a>
-                                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}" style="color: #212529 !important;">
-                                                                <h4 class="font-size-14 font-weight-700">
-                                                                    {{$product_category->product['1']->name ?? '' }}
-                                                                </h4>
-                                                                <p class="discription font-size-12 font-weight-400">
-                                                                    {!! \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...') !!}
-                                                                </p>
-                                                                </a>
-                                                                <span class="font-size-12 like_span">4 <i
-                                                                        class="fa fa-heart"
-                                                                        aria-hidden="true"></i></span>
-                                                                <div class="rating_price_div">
-                                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}" style="color: #212529 !important">
-                                                                    <p class="font-size-14 font-weight-600">
-                                                                        {{$product_category->product['1']->price ?? ''}} ₪
-                                                                    </p>
+                                                                <div class="content_div">
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                                                <span
+                                                                                    class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
                                                                     </a>
-                                                                    <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                            class="fa fa-star"></i></p>
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="{{route('product',$product->id ?? '')}}"
+                                                                       style="color: #212529 !important;">
+                                                                        <h4 class="font-size-14 font-weight-700">
+                                                                            {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
+                                                                        </h4>
+                                                                        <p class="discription font-size-12 font-weight-400">
+                                                                            {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...')}}
+                                                                        </p>
+                                                                    </a>
+                                                                    <span
+                                                                        class="font-size-12 like_span">4 <i
+                                                                            class="fa fa-heart"
+                                                                            aria-hidden="true"></i></span>
+                                                                    <div class="rating_price_div">
+                                                                        <a class="font-size-14 font-weight-700"
+                                                                           href="{{route('product',$product->id ?? '')}}"
+                                                                           style="color: #212529 !important">
+                                                                           @if($product->price)
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                {{$product->price ?? ''}}
+                                                                                ₪
+                                                                            </p>
+                                                                            @else
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                
+                                                                            </p>
+                                                                            @endif
+                                                                        </a>
+                                                                        <p class="rating_text"
+                                                                           style="visibility: hidden;">
+                                                                            4.8 <i
+                                                                                class="fa fa-star"></i>
+                                                                        </p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        @endif
-                                                        @if( count($product_category->product) > 2)
-                                                        <div class="affordable_consumption_box box_shahdow">
-                                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}">
-                                                                <img src="{{asset('product/'.$product_category->product['2']->image ?? '')}}" width="238px" height="120px">
-                                                            </a>
-                                                            <div class="content_div">
-                                                                <a class="font-size-14 font-weight-700" href="{{route('brand-profile',$product_category->product['2']->brandprofile->id ?? '')}}">
-                                                                <span class="category font-size-12 font-weight-400"> {{$product_category->product['2']->brandprofile->brand_name ?? ''}} </span>
-                                                                </a>
-                                                                <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}" style="color: #212529 !important;">
-                                                                <h4 class="font-size-14 font-weight-700">
-                                                                    {{$product_category->product['2']->name ?? '' }}
-                                                                </h4>
-                                                                <p class="discription font-size-12 font-weight-400">
-                                                                    {!! \Illuminate\Support\Str::limit($product_category->product['2']->description ?? '',60,'...') !!}
-                                                                </p>
-                                                                </a>
-                                                                <span class="font-size-12 like_span">5 <i
-                                                                        class="fa fa-heart"
-                                                                        aria-hidden="true"></i></span>
-                                                                <div class="rating_price_div">
-                                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['2']->id ?? '')}}" style="color: #212529 !important;">
-                                                                    <p class="font-size-14 font-weight-600">
-                                                                        {{$product_category->product['2']->price ?? '' }} ₪
-                                                                    </p>
-                                                                    </a>
-                                                                    <p class="rating_text" style="visibility: hidden;">4.8 <i
-                                                                            class="fa fa-star"></i></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endif
-                                                        <div class="slider_div">
-                                                            <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
-                                                                alt="" class="img-fluid">
-                                                        </div>
-                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                            כתבות ביגוד
-                                                            והנעלה
-                                                            ></a>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+
+
                                     </div>
                                 </div>
-                                
-                        
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endif
                 @if($i == 3 || $i == 4)
                 <div class="col-md-6">
-                    <div class="home_medical_items spacing">
+                    <div class="home_medical_items spacing p-0">
                         <div class="container-fluid">
-                            
-                                    <div class="affordable_consumption">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-lg-12 text-right">
-                                                    <div class="header_cloth">
-                                                        
-                                                        <img src="{{asset('category/'.$product_category->image)}}" width="60px" height="50px">
-                                                        <h3 class="common_title">  {{ $product_category->name}} <img
-                                                                src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
-                                                                class="img-fluid">
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="affordable_consumption_list">
-                                                        @if( count($product_category->product) > 3)
-                                                        <div class="affordable_consumption_box box_shahdow">
-                                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['0']->id ?? '')}}">
-                                                                <img src="{{asset('product/'.$product_category->product['0']->image ?? '')}}" width="131px" height="226px">
-                                                            </a>
-                                                            <div class="content_div">
-                                                                
-                                                                <span class="category font-size-12 font-weight-400"> {{$product_category->product['0']->brandprofile->brand_name ?? ''}} </span>
-                                                                <h4 class="font-size-14 font-weight-700">
-                                                                    {{$product_category->product['0']->name ?? ''}}
-                                                                </h4>
-                                                                <p class="discription font-size-12 font-weight-400">
-                                                                    {!! \Illuminate\Support\Str::limit($product_category->product['0']->description ?? '',60,'...') !!}
-                                                                </p>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                        @endif
-                                                        @if( count($product_category->product) > 1)
-                                                        <div class="affordable_consumption_box box_shahdow">
-                                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product_category->product['1']->id ?? '')}}">
-                                                                <img src="{{asset('product/'.$product_category->product['1']->image ?? '')}}" width="131px" height="137px">
-                                                            </a>
-                                                            <div class="content_div">
-                                                                <span class="category font-size-12 font-weight-400">
-                                                                    {{$product_category->product['1']->brandprofile->brand_name ?? ''}}
-                                                                </span>
-                                                                <h4 class="font-size-14 font-weight-700">
-                                                                    {{$product_category->product['1']->name ?? ''}}
-                                                                </h4>
-                                                                <p class="discription font-size-12 font-weight-400">
-                                                                    {!! \Illuminate\Support\Str::limit($product_category->product['1']->description ?? '',60,'...') !!}
-                                                                </p>
-                                                                <span class="font-size-12 like_span">4
-                                                                    <i class="fa fa-heart"
-                                                                        aria-hidden="true"></i></span>
-                                                                <div class="rating_price_div">
-                                                                    <p class="font-size-14 font-weight-600">
-                                                                        ₪ {{$product_category->product['1']->price ?? ''}}
-                                                                    </p>
-                                                                    <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
-                                                                        4.8
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        @endif
-                                                        @if( count($product_category->product) > 2)
-                                                        <div clas
-                                                        @endif
-                                                        <div class="slider_div">
-                                                            <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
-                                                                alt="" class="img-fluid">
-                                                        </div>
-                                                        <a href="" class="learn_more font-size-12 font-weight-400">לעוד
-                                                            כתבות ביגוד
-                                                            והנעלה
-                                                            ></a>
-                                                    </div>
-                                                </div>
+                            <div class="affordable_consumption">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-right" style="padding-right: 15px; padding-left: 15px;">
+                                            <div class="header_cloth">
+                                                @if(isset($category->image))
+                                                <img src="{{asset('category/'.$category->image ?? '')}}" width="60px" height="100%">
+                                                @endif
+                                                <h3 class="common_title">  {{ $category->name ?? 'Haroon'}}<img
+                                                        src="{{ asset('assets/img/mobile_component/Line.png') }}" alt=""
+                                                        class="img-fluid">
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>
-                            
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="affordable_consumption_list">
+                                                @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
+                                                @if($blog_key == $key)
+                                                    @foreach($article_categories->take(1) as $blog)
+                                                    <div class="affordable_consumption_box box_shahdow">
+                                                        <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
+                                                            <img src="{{asset('blog/'.$blog->image ?? '')}}" style="width:131px;">
+                                                        </a>
+                                                        <div class="content_div">
+                                                            
+                                                            
+                                                            <h4 class="font-size-14 font-weight-700">
+                                                                {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                                            </h4>
+                                                            <p class="discription font-size-12 font-weight-400">
+                                                                {{-- {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!} --}}
+                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
+                                                            </p>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                    @endif
+                                                @endforeach
+                                                {{-- <div class="d-flex flex-row-reverse"> --}}
+                                                @foreach($product_categories->take(2) as $product)
+                                                <div class="affordable_consumption_box box_shahdow">
+                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
+                                                        <img src="{{asset('product/'.$product->image ?? '')}}" class="imgresponsive" alt="" width="131px" height="100%">
+                                                    </a>
+                                                    <div class="content_div">
+                                                        <a target="_blank" class="font-size-14 font-weight-700"
+                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                        <span class="category font-size-12 font-weight-400">
+                                                            {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
+                                                        </span>
+                                                        </a>
+                                                        <h4 class="font-size-14 font-weight-700">
+                                                            {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
+                                                        </h4>
+                                                        {{-- <p class="discription font-size-12 font-weight-400">
+                                                            {{ \Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...') }}
+                                                        </p> --}}
+                                                        {{-- <span class="font-size-12 like_span">4ss
+                                                            <i class="fa fa-heart"
+                                                                aria-hidden="true"></i></span> --}}
+                                                        @php 
+                                                            $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                                            // dd($rating);
+                                                        @endphp 
+                                                        <p class="rating_text" >{{$product->rating ?? 'no rating'}} <i class="fa fa-star" style="color:#F5A41A !important;"></i></p>
+                                                        <div class="rating_price_div">
+                                                            @if($product->price)
+                                                            <p class="font-size-14 font-weight-600">
+                                                                ₪ {{$product->price ?? ''}}
+                                                            </p>
+                                                            @else
+                                                            <p class="font-size-14 font-weight-600">
+                                                            </p>
+                                                            @endif
+                                                            <p class="rating_text" ><i class="fa fa-star"></i>
+                                                                4.8
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                {{-- </div> --}}
+                                                <div class="slider_div">
+                                                    <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
+                                                        alt="" class="img-fluid">
+                                                </div>
+                                                {{-- {{ $category->id , $city_id)}} --}}
+                                                <a href="{{route('category_by_city',['category_id'=>$category->id ?? '','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
+                                                    כתבות {{$category->name}} ></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endif
-                @php $i++; @endphp
+                @php $i++; $a++; @endphp
                 @if($i == 5)
                 @php $i = 1; @endphp
                 @endif
             @endforeach
             </div>
+        @endif
         @endif
         {{-- <div class="gifts_event_div spacing">
             <div class="affordable_consumption">
@@ -810,7 +863,7 @@ Dosize
                     </div>
                     <div class="col-4">
                         <div class="box px-3 d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/img/footer_img.png') }}" class="footer_Img" alt="footer">
+                            <img src="{{asset('assets/img/mobile_component/footer_img.svg') }}" class="footer_Img" alt="footer">
                         </div>
                     </div>
                 </div>
@@ -844,69 +897,9 @@ Dosize
     });
 
     
+    $('.removedDisable').removeClass('swiper-button-disabled');
 
-    $('#sign_up_form').submit(function(e){
-        // e.preventDefault();
-        // $('.main-wrapper').addClass('active');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "{{ route('register') }}",
-        //     data: new FormData(this),
-        //     datatype: "json",
-        //     processData: false,
-        //     contentType: false,
-        //     cache: false,
-        //     success: function (data) {
-        //         console.log("Success");
-        //         $('.close').click();
-        //         window.location.href="/";
-                 
-        //     },
-        //     error: function (data) {
-        //             $('.name_valid').text(data?.responseJSON?.errors?.name);
-        //             $('.email_valid').text(data?.responseJSON?.errors?.email);
-        //             $('.city_valid').text(data?.responseJSON?.errors?.city_id);
-        //             $('.password_valid').text(data?.responseJSON?.errors?.password);
-        //     }
-        // });
-    });
-
-    $('#login_form').submit(function(e){
-        // e.preventDefault();
-        // $('.main-wrapper').addClass('active');
-        // $.ajax({
-        //     type: "POST",
-        //     url: "{{ route('login') }}",
-        //     data: new FormData(this),
-        //     datatype: "json",
-        //     processData: false,
-        //     contentType: false,
-        //     cache: false,
-        //     success: function (data) {
-        //         console.log(data);
-        //         $('.close').click();
-        //         // window.location.href="/dashboard/dashboard";
-                 
-        //     },
-        //     error: function (data) {
-        //         console.log('Error:', data.responseJSON);
-        //         if($('#email').val() == ''){
-        //             $('.email_valid').text(data.responseJSON.errors.email);
-        //         }
-        //         else{
-        //             $('.email_valid').text('');
-        //         }
-        //         if($('#password').val() == ''){
-        //             $('.password_valid').text(data.responseJSON.errors.password);
-        //         }
-        //         else{
-        //             $('.password_valid').text('');
-        //         }
-                
-                
-        //     }
-        // });
-    });
+    
 
     // console.log($('.example'))
     [...document.querySelectorAll('.example')].forEach(elem => {
