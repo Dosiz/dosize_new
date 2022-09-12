@@ -313,7 +313,7 @@ Dosize
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
                             @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null)
-                            @foreach($recomanded_products as $product)
+                            @foreach($brands_recomanded_products as $product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
