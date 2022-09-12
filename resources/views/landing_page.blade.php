@@ -548,7 +548,7 @@ Dosize
                                                 @endforeach
 
                                                 @foreach($product_categories->take(2) as $product)
-                                                <div class="affordable_consumption_box box_shahdow" style="flex-direction: row-reverse;">
+                                                <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                                         <img src="{{asset('product/'.$product->image ?? '')}}" class="imgresponsive" alt="" width="131px" height="100%">
                                                     </a>
