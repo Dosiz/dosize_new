@@ -392,7 +392,7 @@ Dosize
                                                     <span class="read_more">
                                                         {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
                                                         <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
-                                                            כתבות ביגוד והנעלה</a> </span>
+                                                            {{$category->name}} כתבות </a> </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -582,7 +582,7 @@ Dosize
                                                             <p class="font-size-14 font-weight-600">
                                                             </p>
                                                             @endif
-                                                            <p class="rating_text" style="visibility: hidden;"><i class="fa fa-star"></i>
+                                                            <p class="rating_text" ><i class="fa fa-star"></i>
                                                                 4.8
                                                             </p>
                                                         </div>
@@ -596,9 +596,7 @@ Dosize
                                                 </div>
                                                 {{-- {{ $category->id , $city_id)}} --}}
                                                 <a href="{{route('category_by_city',['category_id'=>$category->id ?? '','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
-                                                    כתבות ביגוד
-                                                    והנעלה
-                                                    ></a>
+                                                    כתבות {{$category->name}} ></a>
                                             </div>
                                         </div>
                                     </div>
