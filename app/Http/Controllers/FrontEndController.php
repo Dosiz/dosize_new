@@ -441,7 +441,7 @@ class FrontEndController extends Controller
         {
             $cities = City::get();
             $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
-            $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->get();
+            $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->orderBy('id','DESC')->get();
             $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->first();
             $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->skip(1)->first();
             $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->skip(2)->first();
