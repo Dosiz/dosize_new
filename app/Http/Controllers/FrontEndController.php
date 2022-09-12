@@ -84,7 +84,8 @@ class FrontEndController extends Controller
         ->get();
         $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) use ($city_id){
             $q->where('city_id',$city_id);
-        })->orderBy('id' , 'DESC')
+        })
+        ->orderBy('id' , 'DESC')
         ->get();
 
         $blogs = DB::table('blogs_has_cities')
