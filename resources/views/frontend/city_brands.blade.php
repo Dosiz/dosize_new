@@ -160,7 +160,7 @@ Brand List
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
                                         <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
-                                        <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
+                                        <button type="submit" class="btn signForClub d-xl-block">הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                         </button>
                                         </form>
