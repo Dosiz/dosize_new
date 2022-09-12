@@ -442,9 +442,9 @@ class FrontEndController extends Controller
             $cities = City::get();
             $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
             $brand_products = Product::with('product_comment')->where('brand_profile_id',$brand_id)->get();
-            $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->first();
-            $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(1)->first();
-            $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->skip(2)->first();
+            $blog_1 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->first();
+            $blog_2 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->skip(1)->first();
+            $blog_3 = Blog::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id' , 'DESC')->skip(2)->first();
             $categories = Category::get();
             $brand_timming = BrandTimming::where('brand_profile_id',$brand_profile->id)->first();
             // dd($brand_profile->brandaddresses);
@@ -964,7 +964,7 @@ class FrontEndController extends Controller
     public function brand_products($brand_profile_id)
     {
         $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
-        $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->get();
+        $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id','DESC')->get();
 
         return view('frontend.b_products',compact('brand_profile','products'));
     }
