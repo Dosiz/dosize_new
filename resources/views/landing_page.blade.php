@@ -547,7 +547,7 @@ Dosize
                                                     @endif
                                                 @endforeach
 
-                                                @foreach($product_categories->take(2)->latest() as $product)
+                                                @foreach($product_categories->take(2)->orderBy('id', 'DESC') $product)
                                                 <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
                                                         <img src="{{asset('product/'.$product->image ?? '')}}" class="imgresponsive" alt="" width="131px" height="100%">
