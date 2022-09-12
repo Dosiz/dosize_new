@@ -298,7 +298,7 @@ Dosize
                 </div>
             </div>
             @endif
-            @if(count($brands_recomanded_products) > 0)
+            @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null) 
             <div class="deals deal_two">
                 <div class="container-fluid">
                     <div class="row">
@@ -312,9 +312,8 @@ Dosize
                 <div class="slider_div border-bottom pb-4">
                     <div class="multiple_deals swiper">
                         <div class="swiper-wrapper">
-                            @if(count($brands_recomanded_products) > 0)
-                            @foreach($brands_recomanded_products as $recomanded_products)
-                            @foreach($recomanded_products->recommended_product as $product)
+                            @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null)
+                            @foreach($recomanded_products as $product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
@@ -340,7 +339,6 @@ Dosize
                                     </a>
                                 </div>
                             </div>
-                            @endforeach
                             @endforeach
                             @endif
                         </div>
