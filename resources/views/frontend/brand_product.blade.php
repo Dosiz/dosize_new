@@ -209,20 +209,22 @@
                         @if(count($recomanded_products)>0)
                         @foreach($recomanded_products as $recomanded_product)
                         <div class="deals_box box_shahdow swiper-slide">
-                            <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recomanded_product->recomended_product->id ?? '')}}">
-                                <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}"  alt="" class="img-fluid"style="width:100%;">
+                            <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recommended_product->recommended_product->id ?? '')}}">
+                                <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
                             </a>
                             <div class="content_div">
-                                <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
-                                <span class="deal_category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}} </span>
+                                <a href="https://{{$recommended_product->recommended_product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                <span class="deal_category font-size-12 font-weight-400">
+                                    {{\Illuminate\Support\Str::limit($recommended_product->recommended_product->brandprofile->brand_name?? '',15)}}    
+                                </span></span>
                                 </a>
-                                <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recomanded_product->recomended_product->id ?? '')}}" style="color: #212529 !important">
-                                    <h4 class="font-size-12 font-weight-700">
-                                        {{$recomanded_product->recomended_product->name}}
-                                    </h4>
-                                    <p class="discription font-size-10 font-weight-400">
-                                        {!! substr($recomanded_product->recomended_product->description, 0,  30) ?? '' !!}
-                                    </p>
+                                <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recommended_product->recommended_product->id ?? '')}}" style="color:#212529 !important;>
+                                <h4 class="title font-size-14 font-weight-700">{{$recommended_product->recommended_product->name}}</h4></h4>
+                                <div class="rating_price_div">
+                                    <p class="font-size-14 font-weight-600">{{$recommended_product->recommended_product->price}} ₪ <span
+                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                    {{-- <p class="rating_text">4.8 <i class="fa fa-star"></i></p> --}}
+                                </div>
                                 </a>
                             </div>
                         </div>
