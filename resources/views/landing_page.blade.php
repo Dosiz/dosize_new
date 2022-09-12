@@ -546,7 +546,7 @@ Dosize
                                                     @endforeach
                                                     @endif
                                                 @endforeach
-
+                                                <div class="d-flex flex-row-reverse">
                                                 @foreach($product_categories->take(2) as $product)
                                                 <div class="affordable_consumption_box box_shahdow">
                                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
@@ -589,6 +589,7 @@ Dosize
                                                     </div>
                                                 </div>
                                                 @endforeach
+                                                </div>
                                                 <div class="slider_div">
                                                     <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
                                                         alt="" class="img-fluid">
