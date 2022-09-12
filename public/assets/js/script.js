@@ -86,10 +86,7 @@ const deal = new Swiper('.multiple_deals', {
     // slidesPerView: "auto",
     loop: true,
     clickable: true,
-    mousewheel: true,
-    preventClicks: true,
-    allowTouchMove: true,
-    preventClicksPropagation: true,
+    
     
     breakpoints: {
       // when window width is >= 320px
