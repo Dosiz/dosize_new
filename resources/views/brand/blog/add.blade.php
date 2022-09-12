@@ -119,7 +119,7 @@ Add Blog
 													<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
 														@if(count($brand_cities) > 0)
 														@foreach($brand_cities as $city)
-															<option value="{{$city->city_id}}" >{{$city->city->name}}</option>
+															<option value="{{$city->city_id}}" >{{$city->city->short_name}}</option>
 														@endforeach
 														@endif
 													</select>
