@@ -195,7 +195,7 @@ class FrontEndController extends Controller
         $recomanded_blogs = RecomendedBlog::with('recomended_blog')->where([['blog_id',$blog_id],['type','blog']])->get();
         $recommended_products = RecomendedBlog::with('recommended_product')->where([['blog_id',$blog_id],['type','product']])->get();
 
-        // dd($recomanded_blogs);
+        dd($recomanded_blogs);
         $cities = City::get();
         $blog_likes =Like::where('blog_id',$blog_id)->where('name','Article')->get();
         $blog_bookmarks =Bookmark::where('blog_id',$blog_id)->where('name','Article')->get();
