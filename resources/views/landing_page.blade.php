@@ -562,9 +562,9 @@ Dosize
                                                         <h4 class="font-size-14 font-weight-700">
                                                             {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
                                                         </h4>
-                                                        <p class="discription font-size-12 font-weight-400">
+                                                        {{-- <p class="discription font-size-12 font-weight-400">
                                                             {{ \Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...') }}
-                                                        </p>
+                                                        </p> --}}
                                                         {{-- <span class="font-size-12 like_span">4ss
                                                             <i class="fa fa-heart"
                                                                 aria-hidden="true"></i></span> --}}
