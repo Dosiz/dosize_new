@@ -82,10 +82,19 @@ class FrontEndController extends Controller
         ->select('brand_messages.*','brand_profiles.brand_image')
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
-        $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) use ($city_id){
-            $q->where('city_id',$city_id);
-        })
-        ->orderBy('id' , 'DESC')
+        // $brands_recomanded_products = BrandProfile::with('recommended_product.product_comment','product_city')->whereHas('product_city', function ($q) use ($city_id){
+        //     $q->where('city_id',$city_id);
+        // })
+        // ->get();
+
+        $brands_recomanded_products = DB::table('products_has_cities')
+        ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
+        // ->Join('product_comments', 'product_comments.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name')
+        ->where('products.discount_price' , null)
+        ->where('products_has_cities.city_id',$city_id)
+        ->orderBy('id', 'DESC')
         ->get();
 
         $blogs = DB::table('blogs_has_cities')
