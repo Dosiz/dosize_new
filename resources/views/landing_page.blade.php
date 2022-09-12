@@ -334,7 +334,11 @@ Dosize
                                         @else
                                         <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 ₪</span></p>
                                         @endif
-                                        <p class="rating_text">{{$product->product_comment->avg('rating') ?? 'no rating'}} <i class="fa fa-star"></i></p>
+                                        @php 
+                                            $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
+                                            // dd($rating);
+                                        @endphp 
+                                        <p class="rating_text">{{$rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>
                                 </div>
