@@ -221,8 +221,8 @@
                                 <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recomanded_product->recomended_product->id ?? '')}}" style="color:#212529 !important;>
                                 <h4 class="title font-size-14 font-weight-700">{{$recomanded_product->recomended_product->name}}</h4></h4>
                                 <div class="rating_price_div">
-                                    <p class="font-size-14 font-weight-600">{{$recomanded_product->recomended_product->price}} ₪ <span
-                                            class="font-size-12 font-weight-400">80 ₪</span></p>
+                                    <p class="font-size-14 font-weight-600">{{$recomanded_product->recomended_product->price}} ₪ @if($recomanded_product->recomended_product->discount_price != null)<span
+                                            class="font-size-12 font-weight-400">{{$recomanded_product->recomended_product->discount_price}} ₪</span>@endif</p>
                                     {{-- <p class="rating_text">4.8 <i class="fa fa-star"></i></p> --}}
                                 </div>
                                 </a>
