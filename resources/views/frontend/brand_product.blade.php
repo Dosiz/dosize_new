@@ -213,11 +213,11 @@
                                 <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
                             </a>
                             <div class="content_div">
-                                <a href="https://{{$recomanded_product->recomended_product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                {{-- <a href="https://{{$recomanded_product->recomended_product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
                                 <span class="deal_category font-size-12 font-weight-400">
                                     {{\Illuminate\Support\Str::limit($recomanded_product->recomended_product->brandprofile->brand_name?? '',15)}}    
                                 </span></span>
-                                </a>
+                                </a> --}}
                                 <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recomanded_product->recomended_product->id ?? '')}}" style="color:#212529 !important;>
                                 <h4 class="title font-size-14 font-weight-700">{{$recomanded_product->recomended_product->name}}</h4></h4>
                                 <div class="rating_price_div">
