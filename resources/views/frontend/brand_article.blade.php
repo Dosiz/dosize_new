@@ -188,26 +188,28 @@
                             @foreach($recommended_products as $recommended_product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recommended_product->recommended_product->id ?? '')}}">
-                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
+                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
                                 </a>
-
                                 <div class="content_div">
-                                    <a href="{{route('brand_product',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
-                                        <h4 class="title font-size-14 font-weight-700">
-                                            {{$recommended_product->recommended_product->name}}
-                                        </h4>
-                                        <div class="rating_price_div">
-                                            {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
-
-                                            <p class="font-size-14 font-weight-300">{!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!}</p>
-                                        </div>
-                                    </a>
+                                    <span class="deal_category font-size-12 font-weight-400">נעלי העיר</span>
+                                    <h4 class="title font-size-14 font-weight-700">סט חולצות ילדים</h4>
+                                    <div class="rating_price_div">
+                                        <p class="font-size-14 font-weight-600">50 ₪ <span
+                                                class="font-size-12 font-weight-400">80 ₪</span></p>
+                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
+                                    </div>
                                 </div>
                             </div>
                             @endforeach
                             @endif
                         </div>
-                        <div class="swiper-pagination"></div>
+                        {{-- <div class="swiper-pagination"></div> --}}
+                        <div class="swiper-button-next btn-swiper">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-prev btn-swiper">
+                            <i class="fa fa-caret-left" aria-hidden="true"></i>
+                        </div>
                     </div>
                 </div>
             </div>
