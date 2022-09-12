@@ -62,6 +62,7 @@ class FrontEndController extends Controller
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id',$city_id)
         ->orderBy('id', 'DESC')
+        ->where('products.status',1)
         ->get();
         //  dd($products);
         // $discount_products = Product::with('brandprofile')->where('city_id', '5')->where('discount_price', '!=' , 'null')->get();
@@ -95,6 +96,7 @@ class FrontEndController extends Controller
         ->where('products.discount_price' , null)
         ->where('products_has_cities.city_id',$city_id)
         ->orderBy('id', 'DESC')
+        ->where('products.status',1)
         ->get();
 
         $blogs = DB::table('blogs_has_cities')
