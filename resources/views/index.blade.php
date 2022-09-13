@@ -951,7 +951,7 @@
                                     <span class="text-danger password_valid"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="font-size-16" style="cursor: pointer;"> הרשמה </button>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;"> התחבר‎‎ </button>
                             @if (Route::has('password.request'))
                                 <div class="text-center forgotpass">
                                     <a class="btn btn-link" target="_blank" href="{{ route('password.request') }}">
@@ -1036,7 +1036,7 @@
                                 <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                     המערכת...</label>
                             </div>
-                            <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;">התחבר‎</button>
                             <div class="sign_up_with">
                                 <h6 class="text-center">או הרשם עם</h6>
                                 <div class="signup_btn">

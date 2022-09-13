@@ -165,7 +165,7 @@
                                     <span class="text-danger password_valid"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="font-size-16" style="cursor: pointer;"> הרשמה </button>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;"> התחבר‎ </button>
                             <div class="sign_up_with">
                                 <h6 class="text-center">התחברו עם </h6>
                                 <div class="signup_btn">

@@ -3,8 +3,8 @@
         <img src="{{asset('assets/img/mobile_component/dektopLogo.svg') }}" alt="" class="img-fluid">
         <div class="auth_button">
             @if(! isset(Auth::user()->name))
-            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
-            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
+            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">התחברות</a>
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a> 
             @else
                 @if(Auth::user()->hasRole('User'))
                     <p> ברוך הבא {{Auth::user()->name }} </p>
@@ -17,17 +17,17 @@
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="{{url('/')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
+                    <a href="{{url('/')}}">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 @if(! isset(Auth::user()->name))
                     <li>
-                        <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt=""
+                        <a href="" data-toggle="modal" data-target="#enrollmentModal2">הארנק‎ <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt=""
                                 class="img-fluid"></a>
                     </li>
                 @else
                     <li>
-                        <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt=""
+                        <a href="{{route('user.wallet')}}">הארנק‎ <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt=""
                                 class="img-fluid"></a>
                     </li>
                 @endif
@@ -37,18 +37,18 @@
                 @endphp
                 @if(isset($check_user))
                     <li>
-                        <a href="{{route('user-order')}}"> הזמנות <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt=""
+                        <a href="{{route('user-order')}}"> המתנות שלי‎ <img src="{{asset('assets/img/mobile_component/gift-box.png') }}" alt=""
                                 class="img-fluid"></a>
                     </li>
                 @endif
 
                 <li>
-                    <a href="{{route('city-brands')}}">הודעות <img src="{{asset('assets/img/mobile_component/consumption.svg') }}" alt=""
+                    <a href="{{route('city-brands')}}">מועדוני צרכנות‎‎ <img src="{{asset('assets/img/mobile_component/consumption.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 <!-- Need to add all archived categoies heref for the city -->
                 <li>
-                    <a href="{{route('archive_cat')}}">התראות <img src="{{asset('assets/img/mobile_component/shopping_icon.svg') }}" alt=""
+                    <a href="{{route('archive_cat')}}">קטגוריות‎ <img src="{{asset('assets/img/mobile_component/shopping_icon.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>
             </ul>
@@ -60,7 +60,7 @@
                     <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
                             class="img-fluid"></a>
                     @else
-                    <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
+                    <a href="">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
                         class="img-fluid"></a>
                     @endif
                 </li>
@@ -75,14 +75,14 @@
                 </li>
                 <li>
                     @guest
-                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">המתנות שלי‎ <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
                             class="img-fluid"></a>
                     @else
                     @if(Auth::user()->hasRole('User'))
-                        <a href="{{route('user-message','id='.Auth::user()->id)}}">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
+                        <a href="{{route('user-message','id='.Auth::user()->id)}}">צ'אט ועידכונים‎ <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
                         class="img-fluid"></a>
                     @elseif(Auth::user()->hasRole('Brand'))
-                        <a href="{{url('brand/messages')}}">הודעות <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
+                        <a href="{{url('brand/messages')}}">צ'אט ועידכונים‎ <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt=""
                         class="img-fluid"></a>
                     @endif
                     @endguest
