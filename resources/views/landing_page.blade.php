@@ -428,7 +428,8 @@ Dosize
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @elseif($article_categories['1'])
+                                                            @endif
+                                                            @if($article_categories['1'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
@@ -446,7 +447,8 @@ Dosize
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @elseif($article_categories['2'])
+                                                            @endif
+                                                            @if($article_categories['2'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
@@ -464,7 +466,8 @@ Dosize
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @elseif($article_categories['2'])
+                                                            @endif
+                                                            @if($article_categories['2'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
