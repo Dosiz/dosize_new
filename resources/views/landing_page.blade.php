@@ -433,7 +433,7 @@ Dosize
                                                             <div class="col-lg-6">
                                                                 <div class="article_list">
                                                                     <ul>
-                                                                        @if($article_categories['1'])
+                                                                        @if(isset($article_categories['1']))
                                                                         <li class="text-right">
                                                                             <a href="">
                                                                                 <h4 class="font-size-14">
@@ -445,7 +445,7 @@ Dosize
                                                                             </a>
                                                                         </li>
                                                                         @endif
-                                                                        @if($article_categories['2'])
+                                                                        @if(isset($article_categories['2']))
                                                                         <li class="text-right">
                                                                             <a href="">
                                                                                 <h4 class="font-size-14">
