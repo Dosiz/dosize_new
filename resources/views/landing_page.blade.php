@@ -319,9 +319,9 @@ Dosize
                                     <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
                                 </a>
                                 <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="https://{{$recomanded_products->short_name ?? ''}}.arikliger.com/brand">
+                                    <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
                                     <span class="deal_category font-size-12 font-weight-400"> 
-                                        {{\Illuminate\Support\Str::limit($recomanded_products->brand_name ?? '',15)}}
+                                        {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
                                     </span>
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
