@@ -15,8 +15,8 @@ Dosize
         <div class="main_wallet_div d-lg-none">
             <img src="{{asset('assets/img/mobile_component/wallet_main.svg') }}" alt="" class="img-fluid">
             <h3>הארנק שלי</h3>
-            <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
-                בלה בלה...</p>
+            <p class="font-size-14">על כל פעילות באתר שמצוינת כאן, תזכו 'במטבעות דוסיז' הניתנות למימוש במגוון הצעות מהעסקים שאתם אוהבים, צאו לדרך!‎
+</p>
         </div>
         <div class="d-lg-flex flex-row-reverse">
             <div class="col-lg-3">
@@ -24,8 +24,7 @@ Dosize
                 <div class="main_wallet_div d-none d-lg-block bg-white py-3 mb-0 mt-4 rounded">
                     <img src="{{asset('assets/img/mobile_component/wallet_main.svg') }}" alt="" class="img-fluid">
                     <h3>הארנק שלי</h3>
-                    <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
-                        בלה בלה...</p>
+                    <p class="font-size-14">על כל פעילות באתר שמצוינת כאן, תזכו 'במטבעות דוסיז' הניתנות למימוש במגוון הצעות מהעסקים שאתם אוהבים, צאו לדרך!‎</p>
                 </div>
                     <div class="points_div mt-lg-0">
                         <div class="ro">

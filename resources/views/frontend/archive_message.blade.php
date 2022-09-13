@@ -12,7 +12,7 @@ Archive - Message
         <div class="main_wallet_div announcment_updates">
             <img src="{{asset('assets/img/mobile_component/wallet_main.png') }}" alt="" class="img-fluid">
             <h3>הודעות ועידכונים</h3>
-            <p class="font-size-14">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית לורם שבצק גק ליץ, ושבעגט ליבם סולגק.</p>
+            <p class="font-size-14">תקשורת זה מפתח להצלחה, מוזמנים ליצור קשר עם העסקים האהובים עליכם, לשאול ולהתייעץ על כל נושא!‎</p>
         </div>
         <div class="announcement_list">
             <div class="container-fluid">
