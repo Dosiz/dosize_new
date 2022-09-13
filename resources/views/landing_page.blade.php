@@ -403,7 +403,7 @@ Dosize
                                                 @if($blog_key == $key)
                                                     {{-- @foreach($article_categories->take(1) as $blog) --}}
                                                         <div class="row" style="flex-direction: row-reverse;">
-                                                            {{-- @if($blog['0']) --}}
+                                                            @if($article_categories['0'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box" style="margin-bottom: 8px">
@@ -428,21 +428,61 @@ Dosize
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @elseif($article_categories['1'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
-                                                                        
-                                                                        <div class="article_content">
-                                                                            <h4 class="font-size-18" style="margin-bottom: 20px;">
-                                                                                {{$article_categories['1']->title ?? ''}}
-                                                                            </h4>
-                                                                            <p class="font-size-12">
-                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',60,'...') }}
-                                                                            </p>
-                                                                        </div>
+                                                                        <a style="color: #212529 !important"
+                                                                           href="{{route('article',$article_categories['1']->id ?? '')}}">
+                                                                            <div class="article_content">
+                                                                                <h4 class="font-size-15" style="margin-bottom: 20px;">
+                                                                                    {{$article_categories['1']->title ?? ''}}
+                                                                                </h4>
+                                                                                <p class="font-size-10">
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',30,'...') }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            @elseif($article_categories['2'])
+                                                            <div class="col-lg-6">
+                                                                <div class="main_article">
+                                                                    <div class="article_box">
+                                                                        <a style="color: #212529 !important"
+                                                                           href="{{route('article',$article_categories['2']->id ?? '')}}">
+                                                                            <div class="article_content">
+                                                                                <h4 class="font-size-15" style="margin-bottom: 20px;">
+                                                                                    {{$article_categories['2']->title ?? ''}}
+                                                                                </h4>
+                                                                                <p class="font-size-10">
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',30,'...') }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @elseif($article_categories['2'])
+                                                            <div class="col-lg-6">
+                                                                <div class="main_article">
+                                                                    <div class="article_box">
+                                                                        <a style="color: #212529 !important"
+                                                                           href="{{route('article',$article_categories['3']->id ?? '')}}">
+                                                                            <div class="article_content">
+                                                                                <h4 class="font-size-15" style="margin-bottom: 20px;">
+                                                                                    {{$article_categories['3']->title ?? ''}}
+                                                                                </h4>
+                                                                                <p class="font-size-10">
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['3']->sub_title) ?? '',30,'...') }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endif
                                                         </div>
                                                     {{-- @endforeach --}}
                                                     
