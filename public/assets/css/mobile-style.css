@@ -29,6 +29,11 @@
     cursor: pointer !important;
 }
 
+.recommended_product
+{
+    cursor: pointer !important;
+}
+
 p,
 h1,
 h2,

@@ -314,22 +314,22 @@ Dosize
                         <div class="swiper-wrapper">
                             @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null)
                             @foreach($brands_recomanded_products as $product)
-                            <div class="deals_box box_shahdow swiper-slide">
+                            <div class="deals_box box_shahdow swiper-slide recommended_product">
                                 {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}"> --}}
                                     <img onclick="recommended_product('{{route('product',$product->id)}}')" src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
                                 {{-- </a> --}}
                                 <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
-                                    <span class="deal_category font-size-12 font-weight-400"> 
+                                    {{-- <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand"> --}}
+                                    <span onclick="recommended_product('https://{{$product->short_name ?? ''}}.arikliger.com/brand')" class="deal_category font-size-12 font-weight-400"> 
                                         {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
                                     </span>
                                     </a>
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
-                                    <h4 class="title font-size-14 font-weight-700">
+                                    {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;"> --}}
+                                    <h4 onclick="recommended_product('{{route('product',$product->id)}}')" class="title font-size-14 font-weight-700">
                                         {{-- {{$product->name}} --}}
                                         {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                     </h4>
-                                    <div class="rating_price_div">
+                                    <div class="rating_price_div" onclick="recommended_product('{{route('product',$product->id)}}')">
                                         @if($product->price)
                                         <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
                                         @else
@@ -341,7 +341,7 @@ Dosize
                                         @endphp 
                                         <p class="rating_text">{{$rating ?? 'no rating'}} <i class="fa fa-star"></i></p>
                                     </div>
-                                    </a>
+                                    {{-- </a> --}}
                                 </div>
                             </div>
                             @endforeach
