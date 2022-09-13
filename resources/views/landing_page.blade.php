@@ -478,7 +478,6 @@ Dosize
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                            @endif
                                                             
                                                     {{-- @endforeach --}}
                                                     
