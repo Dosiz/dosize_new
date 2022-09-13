@@ -398,11 +398,12 @@ Dosize
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="article_div">
+                                        <div class="article_div" style="display: block !important;">
                                             @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                 @php
                                                     // $article_categories = $article_categories->reverse();
+                                                    // dd($article_categories);
                                                 @endphp
                                                 {{-- @dd($article_categories) --}}
                                                     {{-- @foreach($article_categories->take(1) as $blog) --}}
@@ -435,7 +436,7 @@ Dosize
                                                             </div>
                                                             @endif
                                                             @if($article_categories['1'] || $article_categories['2'])
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 col-sm-12">
                                                                 <div class="article_list">
                                                                     <ul>
                                                                         @if(isset($article_categories['1']))
@@ -581,83 +582,159 @@ Dosize
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="affordable_consumption_list">
-                                                @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
-                                                @if($blog_key == $key)
-                                                    @foreach($article_categories->take(1) as $blog)
-                                                    <div class="affordable_consumption_box box_shahdow">
-                                                        <a class="font-size-14 font-weight-700" href="{{route('article',$blog->id ?? '')}}">
-                                                            <img src="{{asset('blog/'.$blog->image ?? '')}}" style="width:131px;">
-                                                        </a>
-                                                        <div class="content_div">
-                                                            
-                                                            
-                                                            <h4 class="font-size-14 font-weight-700">
-                                                                {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
-                                                            </h4>
-                                                            <p class="discription font-size-12 font-weight-400">
-                                                                {{-- {!! json_decode(\Illuminate\Support\Str::limit($blog->description ?? '',60,'...')) !!} --}}
-                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
-                                                            </p>
-                                                            
+                                    <div class="article_div" style="display: block !important;">
+                                        @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
+                                            @if($blog_key == $key)
+                                            @php
+                                                // $article_categories = $article_categories->reverse();
+                                                // dd($article_categories);
+                                            @endphp
+                                            {{-- @dd($article_categories) --}}
+                                                {{-- @foreach($article_categories->take(1) as $blog) --}}
+                                                    @if($article_categories['0'])
+                                                    <div class="row" style="flex-direction: row-reverse;">
+                                                        @if($article_categories['0'])
+                                                        <div class="col-lg-6">
+                                                            <div class="main_article">
+                                                                <div class="article_box" style="margin-bottom: 8px">
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="{{route('article',$article_categories['0']->id ?? '')}}">
+                                                                        <img
+                                                                            src="{{asset('blog/'.$article_categories['0']->image ?? '' )}}"
+                                                                            width="120px" height="100%">
+                                                                    </a>
+                                                                    <a style="color: #212529 !important"
+                                                                       href="{{route('article',$article_categories['0']->id ?? '')}}">
+                                                                        <div class="article_content">
+                                                                            <h4 class="font-size-18"
+                                                                                style="margin-bottom: 20px;">
+                                                                                {{$article_categories['0']->title ?? ''}}
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['0']->sub_title) ?? '',60,'...') }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                        @endif
+                                                        @if($article_categories['1'] || $article_categories['2'])
+                                                        <div class="col-lg-6 col-sm-12">
+                                                            <div class="article_list">
+                                                                <ul>
+                                                                    @if(isset($article_categories['1']))
+                                                                    <li class="text-right">
+                                                                        <a href="{{route('article',$article_categories['1']->id ?? '')}}">
+                                                                            <h4 class="font-size-14">
+                                                                                {{ $article_categories['1']->title ?? '' }}
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',40,'...') }}
+                                                                            </p>
+                                                                        </a>
+                                                                    </li>
+                                                                    @endif
+                                                                    @if(isset($article_categories['2']))
+                                                                    <li class="text-right">
+                                                                        <a href="{{route('article',$article_categories['2']->id ?? '')}}">
+                                                                            <h4 class="font-size-14">
+                                                                                {{ $article_categories['2']->title ?? '' }}
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',40,'...') }}
+                                                                            </p>
+                                                                        </a>
+                                                                    </li>
+                                                                    @endif
+                                                                    {{-- @if($article_categories['3'])
+                                                                    <li class="text-right">
+                                                                        <a href="">
+                                                                            <h4 class="font-size-14">
+                                                                                קולקציית קיץ
+                                                                                הושקה בלידר
+                                                                                אתמול אחרי
+                                                                                הצהריים
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                צפו בגלריית
+                                                                                התמונות של
+                                                                                הקולקצייה
+                                                                                המדהימה הזאת כאן
+                                                                            </p>
+                                                                        </a>
+                                                                    </li>
+                                                                    @endif --}}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        @endif
                                                     </div>
-                                                    @endforeach
                                                     @endif
-                                                @endforeach
-                                                {{-- <div class="d-flex flex-row-reverse"> --}}
-                                                @foreach($product_categories->take(2) as $product)
-                                                <div class="affordable_consumption_box box_shahdow">
-                                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                                        <img src="{{asset('product/'.$product->image ?? '')}}" class="imgresponsive" alt="" width="131px" height="100%">
-                                                    </a>
-                                                    <div class="content_div">
-                                                        <a target="_blank" class="font-size-14 font-weight-700"
-                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
-                                                        <span class="category font-size-12 font-weight-400">
-                                                            {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
-                                                        </span>
-                                                        </a>
-                                                        <h4 class="font-size-14 font-weight-700">
-                                                            {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
-                                                        </h4>
-                                                        {{-- <p class="discription font-size-12 font-weight-400">
-                                                            {{ \Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...') }}
-                                                        </p> --}}
-                                                        {{-- <span class="font-size-12 like_span">4ss
-                                                            <i class="fa fa-heart"
-                                                                aria-hidden="true"></i></span> --}}
-                                                        @php 
-                                                            $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
-                                                            // dd($rating);
-                                                        @endphp 
-                                                        <p class="rating_text" >{{$product->rating ?? 'no rating'}} <i class="fa fa-star" style="color:#F5A41A !important;"></i></p>
-                                                        <div class="rating_price_div">
-                                                            @if($product->price)
-                                                            <p class="font-size-14 font-weight-600">
-                                                                ₪ {{$product->price ?? ''}}
-                                                            </p>
-                                                            @else
-                                                            <p class="font-size-14 font-weight-600">
-                                                            </p>
-                                                            @endif
-                                                            <p class="rating_text" ><i class="fa fa-star"></i>
-                                                                4.8
-                                                            </p>
+                                                {{-- @endforeach --}}
+                                                
+                                            @endif
+                                        @endforeach
+                                    
+                                        <div class="row">
+
+                                            <div class="col-lg-12">
+                                                <div class="affordable_consumption_list">
+                                                    @foreach($product_categories->take(3)  as $product)
+                                                        <div
+                                                            class="affordable_consumption_box box_shahdow">
+                                                            <a class="font-size-14 font-weight-700"
+                                                               href="{{route('product',$product->id ?? '')}}">
+                                                                <img
+                                                                    src="{{asset('product/'.$product->image ?? '')}}"
+                                                                    width="238px"
+                                                                    height="100%">
+                                                            </a>
+                                                            <div class="content_div">
+                                                                <a class="font-size-14 font-weight-700"
+                                                                   href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                                            <span
+                                                                                class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
+                                                                </a>
+                                                                <a class="font-size-14 font-weight-700"
+                                                                   href="{{route('product',$product->id ?? '')}}"
+                                                                   style="color: #212529 !important;">
+                                                                    <h4 class="font-size-14 font-weight-700">
+                                                                        {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
+                                                                    </h4>
+                                                                    <p class="discription font-size-12 font-weight-400">
+                                                                        {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...')}}
+                                                                    </p>
+                                                                </a>
+                                                                {{-- <span
+                                                                    class="font-size-12 like_span">4 <i
+                                                                        class="fa fa-heart"
+                                                                        aria-hidden="true"></i></span> --}}
+                                                                <div class="rating_price_div">
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="{{route('product',$product->id ?? '')}}"
+                                                                       style="color: #212529 !important">
+                                                                       @if($product->price)
+                                                                        <p class="font-size-14 font-weight-600">
+                                                                            {{$product->price ?? ''}}
+                                                                            ₪
+                                                                        </p>
+                                                                        @else
+                                                                        <p class="font-size-14 font-weight-600">
+                                                                            
+                                                                        </p>
+                                                                        @endif
+                                                                    </a>
+                                                                    <p class="rating_text"
+                                                                       style="visibility: hidden;">
+                                                                        4.8 <i
+                                                                            class="fa fa-star"></i>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
-                                                @endforeach
-                                                {{-- </div> --}}
-                                                <div class="slider_div">
-                                                    <img src="{{ asset('assets/img/mobile_component/slider_img.png') }}"
-                                                        alt="" class="img-fluid">
-                                                </div>
-                                                {{-- {{ $category->id , $city_id)}} --}}
-                                                <a href="{{route('category_by_city',['category_id'=>$category->id ?? '','city_id'=>$city_id])}}" class="learn_more font-size-12 font-weight-400">לעוד
-                                                    כתבות {{$category->name}} ></a>
                                             </div>
                                         </div>
                                     </div>
