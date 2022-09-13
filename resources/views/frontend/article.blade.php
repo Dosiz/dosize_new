@@ -190,7 +190,7 @@
                             @if(count($recommended_products) > 0)
                             @foreach($recommended_products as $recommended_product)
                             <div class="deals_box box_shahdow swiper-slide">
-                                <a class="font-size-14 font-weight-700" href="{{route('article',$recommended_product->recommended_product->id ?? '')}}">
+                                <a class="font-size-14 font-weight-700" href="{{route('product',$recommended_product->recommended_product->id ?? '')}}">
                                     <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                 </a>
 
