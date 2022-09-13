@@ -111,7 +111,7 @@ class FrontEndController extends Controller
         )
         ->where('blogs_has_cities.city_id',$city_id)
         ->where('blogs.status',1)
-        ->take(3)
+        ->take(4)
         ->orderBy('id', 'DESC')
         // ->where('categories.id',$category_id)
         ->get();
