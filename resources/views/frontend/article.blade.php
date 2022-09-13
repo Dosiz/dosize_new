@@ -55,7 +55,7 @@
 
                                 @foreach($categories as $key=>$category)
 
-                                <div onclick="open_category('{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}')" class="category_box swiper-slide">
+                                <div onclick="open_category('{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$blog->cities['0']->id])}}')" class="category_box swiper-slide">
                                     {{-- <a href="{{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}}" style="color:#212529"> --}}
                                         <div class="img_box box_shahdow">
                                             <img src="{{asset('category/'.$category->image)}}" alt="" class="img-fluid" style="width:28px;">

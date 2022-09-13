@@ -150,7 +150,7 @@ Brand List
                                     <h3>{{$city_brand->brand_name}}</h3>
                                     </a>
                                     @guest
-                                    <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                    <a href="" class="btn signForClub d-none d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                         <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
                                     @else
                                         @if($chk_subscriber == null)
@@ -168,6 +168,11 @@ Brand List
                                         @php
                                             $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$city_brand->id)->first();
                                         @endphp
+                                        @guest
+                                        <button class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                        </button>
+                                        @endguest
                                         @if($chk_sub)
                                         <button class="btn signForClub"> הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/verfied.png') }}" alt="star">
@@ -299,8 +304,7 @@ Brand List
 
                                 </p>
                                 <div class="btns d-flex mt-4">
-                                     <a href="https://dosiz.co.il/landing-page/"  class="btn btn_grey_out">הצטרפות לעסקים</a>
-									<!-- data-toggle="modal" data-target="#enrollmentModal" -->
+                                    <a href="" data-toggle="modal" data-target="#enrollmentModal" class="btn btn_grey_out">הצטרפות לעסקים</a>
                                     <a  data-toggle="modal" data-target="#enrollmentModal2" href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                                 </div>
                             </div>
