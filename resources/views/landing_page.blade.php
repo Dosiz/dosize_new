@@ -326,7 +326,8 @@ Dosize
                                     </a>
                                     <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
                                     <h4 class="title font-size-14 font-weight-700">
-                                        {{$product->name}}
+                                        {{-- {{$product->name}} --}}
+                                        {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                     </h4>
                                     <div class="rating_price_div">
                                         @if($product->price)
