@@ -315,9 +315,9 @@ Dosize
                             @if(count($brands_recomanded_products) > 0 && $brands_recomanded_products[0]->id != null)
                             @foreach($brands_recomanded_products as $product)
                             <div class="deals_box box_shahdow swiper-slide">
-                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
-                                </a>
+                                {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}"> --}}
+                                    <img onclick="recommended_product('{{route('product',$product->id)}}')" src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
+                                {{-- </a> --}}
                                 <div class="content_div">
                                     <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand">
                                     <span class="deal_category font-size-12 font-weight-400"> 

@@ -40,6 +40,13 @@ const swiper = new Swiper('.swiper', {
   function open_category(hrefAttr)
   {
       window.location.href = hrefAttr;
+      // document.getElementById("demo").style.cursor = "pointer";
+  } 
+
+  function recommended_product(hrefAttr)
+  {
+      window.location.href = hrefAttr;
+      // document.getElementById("demo").style.cursor = "pointer";
   } 
 
 // multiple deals

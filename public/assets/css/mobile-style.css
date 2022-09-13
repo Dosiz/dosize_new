@@ -24,6 +24,11 @@
     src: url("../fonts/Ploni-Bold.otf");
 }
 
+.category_box
+{
+    cursor: pointer !important;
+}
+
 p,
 h1,
 h2,
