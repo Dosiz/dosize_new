@@ -437,10 +437,10 @@ Dosize
                                                                         <li class="text-right">
                                                                             <a href="">
                                                                                 <h4 class="font-size-14">
-                                                                                    {{ \Illuminate\Support\Str::limit($article_categories['1']->title ?? '', 30,'...') }}
+                                                                                    {{ $article_categories['1']->title ?? '' }}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',30,'...') }}
+                                                                                    {{ $article_categories['1']->sub_title ?? '' }}
                                                                                 </p>
                                                                             </a>
                                                                         </li>
@@ -449,10 +449,10 @@ Dosize
                                                                         <li class="text-right">
                                                                             <a href="">
                                                                                 <h4 class="font-size-14">
-                                                                                    {{ \Illuminate\Support\Str::limit($article_categories['2']->title ?? '', 30,'...') }}
+                                                                                    {{ $article_categories['2']->title ?? '' }}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',30,'...') }}
+                                                                                    {{ $article_categories['2']->sub_title ?? '' }}
                                                                                 </p>
                                                                             </a>
                                                                         </li>
