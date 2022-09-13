@@ -467,7 +467,7 @@ Dosize
                                                                 </div>
                                                             </div>
                                                             @endif
-                                                            @if($article_categories['3'] != null && $article_categories['3'])
+                                                            {{-- @if($article_categories['3'])
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
@@ -485,7 +485,7 @@ Dosize
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @endif
+                                                            @endif --}}
                                                         </div>
                                                     {{-- @endforeach --}}
                                                     
