@@ -796,7 +796,7 @@ header .article_header .heart_tag_message_list ul li span {
 
 .promotion .multiple_promotion,
 .deals .multiple_deals {
-    display: inline-block;
+    display: flex;
     overflow: hidden;
     direction: rtl;
     z-index: 0;
@@ -1403,7 +1403,7 @@ header .article_header .heart_tag_message_list ul li span {
 }
 
 .deals .multiple_deals .deals_box .content_div .rating_price_div {
-    display: inline-block;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
