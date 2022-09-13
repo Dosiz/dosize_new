@@ -59,7 +59,7 @@ Brand List
             </div>
         </div>
         <!--  -->
-        @if(count($brand_messages) > 0)
+        {{-- @if(count($brand_messages) > 0)
         <div class="noteBox d-xl-flex position-relative d-none">
             @if($brand_messages)
             @foreach($brand_messages as $brand_message)
@@ -78,7 +78,7 @@ Brand List
             @endif
             <a href="#" class="btn hotFlashes">מבזקים חמים <img src="{{asset('assets/img/bell_right.png') }}" alt="bell" class="ml-1"></a>
         </div>
-        @endif
+        @endif --}}
         <!--  -->
         <div class="search_clothFoot d-none d-xl-flex justify-content-xl-between justify-content-end">
             <div class="d-none d-xl-block">
