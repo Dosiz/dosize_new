@@ -168,6 +168,11 @@ Brand List
                                         @php
                                             $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$city_brand->id)->first();
                                         @endphp
+                                        @guest
+                                        <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                        </a>
+                                        @endguest
                                         @if($chk_sub)
                                         <button class="btn signForClub"> הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/verfied.png') }}" alt="star">
