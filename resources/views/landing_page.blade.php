@@ -440,7 +440,7 @@ Dosize
                                                                     <ul>
                                                                         @if(isset($article_categories['1']))
                                                                         <li class="text-right">
-                                                                            <a href="">
+                                                                            <a href="{{route('article',$article_categories['1']->id ?? '')}}">
                                                                                 <h4 class="font-size-14">
                                                                                     {{ $article_categories['1']->title ?? '' }}
                                                                                 </h4>
@@ -452,7 +452,7 @@ Dosize
                                                                         @endif
                                                                         @if(isset($article_categories['2']))
                                                                         <li class="text-right">
-                                                                            <a href="">
+                                                                            <a href="{{route('article',$article_categories['2']->id ?? '')}}">
                                                                                 <h4 class="font-size-14">
                                                                                     {{ $article_categories['2']->title ?? '' }}
                                                                                 </h4>
