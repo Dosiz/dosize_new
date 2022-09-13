@@ -1232,7 +1232,7 @@ header .article_header .heart_tag_message_list ul li span {
     margin: 40px 0px 0px;
 }
 
-.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
+/* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
     width: 45%;
     display: flex;
     padding: 0px;
@@ -1245,7 +1245,7 @@ header .article_header .heart_tag_message_list ul li span {
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) img {
     border-radius: 0px 12px 12px 0px;
 
-}
+} */
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
     width: 25%;
@@ -1278,9 +1278,9 @@ header .article_header .heart_tag_message_list ul li span {
     display: none;
 }
 
-.home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) .content_div p {
+/* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) .content_div p {
     display: block;
-}
+} */
 
 /************** Gift - Event - CSS ****************/
 .gifts_event_div {
@@ -2386,9 +2386,9 @@ footer .inbox_footer .message_form .input_div_button button,
         max-width: 48%;
     }
 
-    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
+    /* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
         width: 60%;
-    }
+    } */
 
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
         width: 36%;
@@ -2453,9 +2453,9 @@ footer .inbox_footer .message_form .input_div_button button,
         width: 55%;
     }
 
-    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
+    /* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
         width: 100%;
-    }
+    } */
 
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
         display: none;
@@ -2581,9 +2581,9 @@ footer .inbox_footer .message_form .input_div_button button,
         max-width: 32%;
     }
 
-    .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
+    /* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box:nth-child(1) {
         width: 60%;
-    }
+    } */
 
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
         display: block;
