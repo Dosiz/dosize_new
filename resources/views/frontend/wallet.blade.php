@@ -12,8 +12,8 @@ Message
         <div class="main_wallet_div">
             <img src="{{asset('assets/img/mobile_component/wallet_main.png') }}" alt="" class="img-fluid">
             <h3>הארנק שלי</h3>
-            <p class="font-size-14">דוסיז צרכנות מעניקה עבור כל פעילות במערכת נקודות, הנקודות ניתנות למימוש בלה
-                בלה בלה...</p>
+            <p class="font-size-14">על כל פעילות באתר שמצוינת כאן, תזכו 'במטבעות דוסיז' הניתנות למימוש במגוון הצעות מהעסקים שאתם אוהבים, צאו לדרך!‎
+</p>
         </div>
         <div class="container-fluid">
             <div class="points_div">
