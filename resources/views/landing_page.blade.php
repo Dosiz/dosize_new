@@ -399,10 +399,10 @@ Dosize
                                             </div>
                                         </div>
                                         <div class="article_div">
-                                            @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
+                                            @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
                                                 @php
-                                                    $article_categories = $article_categories->reverse();
+                                                    // $article_categories = $article_categories->reverse();
                                                 @endphp
                                                 {{-- @dd($article_categories) --}}
                                                     {{-- @foreach($article_categories->take(1) as $blog) --}}
