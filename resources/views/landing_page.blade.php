@@ -236,6 +236,7 @@ Dosize
                                             <h4 onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="title font-size-14 font-weight-700">  
                                                 {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
                                             </h4>
+                                            
                                             <div onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="rating_price_div">
                                                 @if($product->price)
                                                 <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">80 ₪</span></p>
