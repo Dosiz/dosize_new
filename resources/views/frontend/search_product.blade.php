@@ -194,7 +194,8 @@ Search Product
                             <div class="box px-3 border_Side">
                                 <div class="statments_links d-flex flex-column align-items-end">
                                     <p class="txt">
-                                        דוסיז משפט הנעה על דוסיז >>
+                                       הצטרפו למהפיכת הצרכנות המקומית של דוסיז צרכנות >>‎
+
                                     </p>
                                     <div class="btns d-flex mt-4">
                                         <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>

@@ -370,7 +370,8 @@ Dosize
                         <div class="box px-3 border_Side">
                             <div class="statments_links d-flex flex-column">
                                 <p class="txt text-right">
-                                    דוסיז משפט הנעה על דוסיז >>
+                                    הצטרפו למהפיכת הצרכנות המקומית של דוסיז צרכנות >>‎
+
                                 </p>
                                 <div class="btns d-flex mt-4 flex-row-reverse">
                                     <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>

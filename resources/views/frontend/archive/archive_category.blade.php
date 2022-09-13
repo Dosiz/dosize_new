@@ -59,8 +59,8 @@ Archive - Catagorey
                 </div>
             </div>
             <div class="cloth_footwear d-flex align-items-center">
-                <p class="mr-2 font-bold"><b>ביגוד והנעלה</b></p>
-                <img src="{{ asset('assets/img/clothFoot.png') }}" alt="clothFootWear">
+                <p class="mr-2 font-bold"><b>כל הקטגוריות‎</b></p>
+              {{--   <img src="{{ asset('assets/img/clothFoot.png') }}" alt="clothFootWear"> --}}
             </div>
         </div>
         <!--  -->
@@ -112,7 +112,8 @@ Archive - Catagorey
                         <div class="box px-3 border_Side">
                             <div class="statments_links d-flex flex-column align-items-end">
                                 <p class="txt">
-                                    דוסיז משפט הנעה על דוסיז >>
+                                    הצטרפו למהפיכת הצרכנות המקומית של דוסיז צרכנות >>‎
+
                                 </p>
                                 <div class="btns d-flex mt-4">
                                     <a href="" data-toggle="modal" data-target="#enrollmentModal" class="btn btn_grey_out">הצטרפות לעסקים</a>

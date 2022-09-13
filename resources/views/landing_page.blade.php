@@ -393,8 +393,8 @@ Dosize
                                                     </h3>
                                                     <span class="read_more">
                                                         {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
-                                                        <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
-                                                            {{$category->name}} כתבות </a> </span>
+                                                        <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400" style="direction:rtl;">
+                                                            {{$category->name}} לקטגורית  </a> </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -987,7 +987,7 @@ Dosize
                         <div class="box px-3 border_Side">
                             <div class="statments_links d-flex flex-column align-items-end">
                                 <p class="txt">
-                                    דוסיז משפט הנעה על דוסיז >>
+                                    הצטרפו למהפיכת הצרכנות המקומית של דוסיז צרכנות >>‎
                                 </p>
                                 <div class="btns d-flex mt-4">
                                     <a href="" data-toggle="modal" data-target="#enrollmentModal" class="btn btn_grey_out">הצטרפות לעסקים</a>

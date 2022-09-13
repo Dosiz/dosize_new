@@ -394,7 +394,7 @@ Dosize
                                                     <span class="read_more">
                                                         {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
                                                         <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400">
-                                                            {{$category->name}} כתבות </a> </span>
+                                                            {{$category->name}} לקטגורית  </a> </span>
                                                 </div>
                                             </div>
                                         </div>
