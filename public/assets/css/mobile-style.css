@@ -1020,7 +1020,7 @@ header .article_header .heart_tag_message_list ul li span {
 
 .products_div .affordable_consumption .affordable_consumption_list {
     display: flex;
-    justify-content: space-between;
+    justify-content:end;
 }
 
 .products_div .affordable_consumption .affordable_consumption_list .learn_more {
