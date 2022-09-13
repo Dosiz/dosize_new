@@ -194,7 +194,8 @@ Message
                                     דוסיז משפט הנעה על דוסיז >>
                                 </p>
                                 <div class="btns d-flex mt-4">
-                                    <a href="#" class="btn btn_grey_out">הצטרפות לעסקים</a>
+                                     <a href="https://dosiz.co.il/landing-page/"  class="btn btn_grey_out">הצטרפות לעסקים</a>
+									<!-- data-toggle="modal" data-target="#enrollmentModal" -->
                                     <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                                 </div>
                             </div>
