@@ -457,7 +457,7 @@ Dosize
                                                                             </a>
                                                                         </li>
                                                                         @endif
-                                                                        @if($article_categories['3'])
+                                                                        {{-- @if($article_categories['3'])
                                                                         <li class="text-right">
                                                                             <a href="">
                                                                                 <h4 class="font-size-14">
@@ -474,7 +474,7 @@ Dosize
                                                                                 </p>
                                                                             </a>
                                                                         </li>
-                                                                        @endif
+                                                                        @endif --}}
                                                                     </ul>
                                                                 </div>
                                                             </div>
