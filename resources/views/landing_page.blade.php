@@ -401,52 +401,50 @@ Dosize
                                         <div class="article_div">
                                             @foreach ($p_city->blogs->groupBy('category_id') as $blog_key=>$article_categories)
                                                 @if($blog_key == $key)
-                                                    @foreach($article_categories->take(1) as $blog)
+                                                    {{-- @foreach($article_categories->take(1) as $blog) --}}
                                                         <div class="row" style="flex-direction: row-reverse;">
                                                             {{-- @if($blog['0']) --}}
                                                             <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box" style="margin-bottom: 8px">
                                                                         <a class="font-size-14 font-weight-700"
-                                                                           href="{{route('article',$blog->id ?? '')}}">
+                                                                           href="{{route('article',$article_categories['0']->id ?? '')}}">
                                                                             <img
-                                                                                src="{{asset('blog/'.$blog->image ?? '' )}}"
+                                                                                src="{{asset('blog/'.$article_categories['0']->image ?? '' )}}"
                                                                                 width="120px" height="100%">
                                                                         </a>
                                                                         <a style="color: #212529 !important"
-                                                                           href="{{route('article',$blog->id ?? '')}}">
+                                                                           href="{{route('article',$article_categories['0']->id ?? '')}}">
                                                                             <div class="article_content">
                                                                                 <h4 class="font-size-18"
                                                                                     style="margin-bottom: 20px;">
-                                                                                    {{$blog->title ?? ''}}
+                                                                                    {{$article_categories['0']->title ?? ''}}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($blog->description) ?? '',60,'...') }}
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['0']->sub_title) ?? '',60,'...') }}
                                                                                 </p>
                                                                             </div>
                                                                         </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            {{-- <div class="col-lg-6">
+                                                            <div class="col-lg-6">
                                                                 <div class="main_article">
                                                                     <div class="article_box">
                                                                         
                                                                         <div class="article_content">
                                                                             <h4 class="font-size-18" style="margin-bottom: 20px;">
-                                                                                קולקציית קיץ הושקה בלידר
-                                                                                אתמול אחרי הצהריים
+                                                                                {{$article_categories['1']->title ?? ''}}
                                                                             </h4>
-                                                                            <p class="font-size-12">צפו
-                                                                                בגלריית התמונות של הקולקצייה
-                                                                                המדהימה הזאת כאן בכתבה
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',60,'...') }}
                                                                             </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> --}}
+                                                            </div>
                                                         </div>
-                                                    @endforeach
+                                                    {{-- @endforeach --}}
                                                     
                                                 @endif
                                             @endforeach
