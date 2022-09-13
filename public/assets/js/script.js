@@ -37,16 +37,14 @@ const swiper = new Swiper('.swiper', {
     
   });
 
+  function open_category(hrefAttr)
+  {
+      window.location.href = hrefAttr;
+  } 
+
 // multiple deals
 const deal = new Swiper('.multiple_deals', {
   direction: 'horizontal',
-  spaceBetween: 20,
-  updateOnWindowResize: true,
-  loop: true,
-  grabCursor: true,
-  centeredSlides: true,
-  centeredSlidesBounds: true,
-  initialSlide: 0,
   // slidesPerView: "auto",
   breakpoints: {
     // when window width is >= 320px
