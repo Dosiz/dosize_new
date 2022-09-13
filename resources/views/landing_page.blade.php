@@ -403,6 +403,7 @@ Dosize
                                                 {{-- @if($blog_key == $key) --}}
                                                 {{-- @dd($article_categories) --}}
                                                     {{-- @foreach($article_categories->take(1) as $blog) --}}
+                                                        @if($article_categories['0'])
                                                         <div class="row" style="flex-direction: row-reverse;">
                                                             @if($article_categories['0'])
                                                             <div class="col-lg-6">
@@ -430,7 +431,7 @@ Dosize
                                                                 </div>
                                                             </div>
                                                             @endif
-                                                            
+                                                            @if($article_categories['1'] || $article_categories['2'])
                                                             <div class="col-lg-6">
                                                                 <div class="article_list">
                                                                     <ul>
@@ -479,10 +480,12 @@ Dosize
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                            
+                                                            @endif
+                                                        </div>
+                                                        @endif
                                                     {{-- @endforeach --}}
                                                     
-                                                {{-- @endif --}}
+                                                @endif
                                             @endforeach
                                         
                                             <div class="row">
