@@ -442,7 +442,7 @@ Dosize
                                                                                     {{ $article_categories['1']->title ?? '' }}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ $article_categories['1']->sub_title ?? '' }}
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',40,'...') }}
                                                                                 </p>
                                                                             </a>
                                                                         </li>
@@ -454,7 +454,7 @@ Dosize
                                                                                     {{ $article_categories['2']->title ?? '' }}
                                                                                 </h4>
                                                                                 <p class="font-size-12">
-                                                                                    {{ $article_categories['2']->sub_title ?? '' }}
+                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',40,'...') }}
                                                                                 </p>
                                                                             </a>
                                                                         </li>
