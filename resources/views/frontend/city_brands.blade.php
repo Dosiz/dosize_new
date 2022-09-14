@@ -147,7 +147,7 @@ Brand List
                             <div class="title d-flex justify-content-end align-items-center">
                                 <div class="txt">
                                     <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" style="color: #212529 !important">
-                                    <h3>{{ \Illuminate\Support\Str::limit($city_brand->brand_name ,15) }}</h3>
+                                    <h3>{{ \Illuminate\Support\Str::limit($city_brand->brand_name ,13) }}</h3>
                                     </a>
                                     
                                 </div>
