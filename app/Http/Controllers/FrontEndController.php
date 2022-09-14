@@ -706,7 +706,7 @@ class FrontEndController extends Controller
         ->orderBy('id' , 'DESC')
         ->get();
 
-        // dd($products,$category_id,$city_id);
+        dd($products);
         $blogs = DB::table('blogs_has_cities')
         ->LeftJoin('blogs', 'blogs.id', '=', 'blogs_has_cities.blog_id')
         ->LeftJoin('categories', 'categories.id', '=', 'blogs.category_id')
