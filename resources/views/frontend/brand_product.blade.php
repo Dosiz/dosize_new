@@ -171,12 +171,12 @@
                 </div>
                 <div class="product_category_div d-xl-flex justify-content-end">
                     <div class="more_detail_for_purchase">
-                        @guest
+                        {{-- @guest
                         <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="">לפרטים נוספים ולרכישה</a>
-                        @else
+                        @else --}}
                         {{-- <a class="font-size-16" href="{{url('brand/messages?id='.$product->brandprofile->user_id.'')}}">לפרטים נוספים ולרכישה</a> --}}
                         <a class="font-size-16" href="https://api.whatsapp.com/send?phone=+972{{$product->brandprofile->whatsapp_no ?? $product->brandprofile->phone}}&amp;text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%95%D7%91%D7%A8%D7%9B%D7%94%2C%20%D7%90%D7%A0%D7%99%20%D7%A4%D7%95%D7%A0%D7%94%20%D7%90%D7%9C%D7%99%D7%9A%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9A%20%D7%91%D7%93%D7%95%D7%A1%D7%99%D7%96%20%D7%A6%D7%A8%D7%9B%D7%A0%D7%95%D7%AA%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%91%D7%91%D7%A7%D7%A9%D7%94..." target="_blank">לפרטים נוספים ולרכישה</a>
-                        @endguest
+                        {{-- @endguest --}}
                     </div>
                     <div class="choose_size d-none">
                         <a href="" class="font-size-16">בחר מידה ></a>
