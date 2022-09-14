@@ -2995,6 +2995,11 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 500px) {
 
+    .main_page
+    {
+        padding-bottom:50px !important;
+    }
+
     .deal_two .multiple_deals .deals_box,
     .deal_one .multiple_deals .deals_box {
         max-width: 40% !important;
