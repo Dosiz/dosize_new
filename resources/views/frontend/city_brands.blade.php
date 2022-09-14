@@ -149,12 +149,20 @@ Brand List
                                     <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" style="color: #212529 !important">
                                     <h3>{{$city_brand->brand_name}}</h3>
                                     </a>
-                                    @guest
-                                    <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
-                                        <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
+                                    
+                                </div>
+                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:40px; height:40px" alt="flash">
+                                <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
+                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 40px; height: 40px;" alt="flash"
+                                    class="d-none d-xl-block titleImg">
+                                </a>
+                                @guest
+                                        <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                        </a>
                                     @else
                                         @if($chk_subscriber == null)
-                                        
+                                    
                                         <form action="{{ route('store-subscribers') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
@@ -169,9 +177,9 @@ Brand List
                                             $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$city_brand->id)->first();
                                         @endphp
                                         @guest
-                                        <button class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
-                                            <img src="{{asset('assets/img/star_2.png') }}" alt="star">
-                                        </button>
+                                            <button class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                                <img src="{{asset('assets/img/star_2.png') }}" alt="star">
+                                            </button>
                                         @endguest
                                         @if($chk_sub)
                                         <button class="btn signForClub"> הירשמו בקליק למועדון
@@ -190,12 +198,6 @@ Brand List
                                         @endif
                                         @endif
                                     @endguest
-                                </div>
-                                <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:40px; height:40px" alt="flash">
-                                <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
-                                    <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 40px; height: 40px;" alt="flash"
-                                    class="d-none d-xl-block titleImg">
-                                </a>
                             </div>
                             {{-- @guest
                             <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
