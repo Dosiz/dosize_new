@@ -42,25 +42,9 @@ Route::group(["domain" => "arikliger.com"], function() {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'web_static_paage']);
 });
 
-Route::domain('beitar-illit.dosizlocal.com')->group(function () {
-    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-});
-
-Route::domain('elad.dosizlocal.com')->group(function () {
-    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-});
-
-Route::domain('gaza.dosizlocal.com')->group(function () {
-    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-});
-
-Route::domain('jerusalem.dosizlocal.com')->group(function () {
-    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-});
-
 Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
-    Route::get('/city',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+    Route::get('/brand',[App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
 });
 
 Route::get('/article/{blog_id}',[App\Http\Controllers\FrontEndController::class, 'article_detail'])->name('article');
