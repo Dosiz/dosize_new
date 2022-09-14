@@ -156,7 +156,9 @@ Brand List
                                     <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 40px; height: 40px;" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>
-                                @guest
+                                
+                            </div>
+                            @guest
                                         <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                         </a>
@@ -198,7 +200,6 @@ Brand List
                                         @endif
                                         @endif
                                     @endguest
-                            </div>
                             {{-- @guest
                             <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                 <img src="{{asset('assets/img/star_2.png') }}" alt="star"></a>
