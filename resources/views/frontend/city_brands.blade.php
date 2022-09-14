@@ -159,7 +159,7 @@ Brand List
                                 
                             </div>
                             @guest
-                                        <a href="" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                        <a href="" style="text-align: end;" class="btn signForClub d-xl-block enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                         </a>
                                     @else
@@ -170,7 +170,7 @@ Brand List
                                         <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                         <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
                                         <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
-                                        <button type="submit" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
+                                        <button type="submit" style="text-align: end;" class="btn signForClub d-none d-xl-block">הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                         </button>
                                         </form>
@@ -179,12 +179,12 @@ Brand List
                                             $chk_sub = \App\Models\Subscriber::where('brand_profile_id',$city_brand->id)->first();
                                         @endphp
                                         @guest
-                                            <button class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
+                                            <button class="enrollemnt_button" style="text-align: end;" data-toggle="modal" data-target="#enrollmentModal2">הירשמו בקליק למועדון
                                                 <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                             </button>
                                         @endguest
                                         @if($chk_sub)
-                                        <button class="btn signForClub"> הירשמו בקליק למועדון
+                                        <button style="text-align: end;" class="btn signForClub"> הירשמו בקליק למועדון
                                             <img src="{{asset('assets/img/verfied.png') }}" alt="star">
                                         </button>
                                         @else
@@ -193,7 +193,7 @@ Brand List
                                                 <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                                 <input type="hidden" name="brand_page" id="brand_page" value="brand_page" />
                                                 <input type="hidden" name="brand_profile_id" id="brand_profile_id" value="{{$city_brand->id }}" />
-                                                <button type="submit" class="btn signForClub">הירשמו בקליק למועדון
+                                                <button type="submit" style="text-align: end;" class="btn signForClub">הירשמו בקליק למועדון
                                                     <img src="{{asset('assets/img/star_2.png') }}" alt="star">
                                                 </button>
                                             </form>
