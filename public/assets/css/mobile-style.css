@@ -3107,8 +3107,8 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 .btn.signForClub {
-    padding: 6px 10px 6px 10px;
-    font-size: 10px;
+    padding: 6px 0px 6px 10px;
+    font-size: 9px;
     background: rgba(33, 24, 24, 0.08);
     border-radius: 15px;
     color: #353039;
