@@ -234,10 +234,8 @@
                                                 <input type="hidden" value="{{ $receiver }}" wire:model.defer="receiver_id">
                                                 <div class="input_div_button align-items-stretch flex-row-reverse">
                                                     <button>
-                                                        @if(isset($current->brand_image))
-                                            <img src="{{asset('brand_image/'.$current->brand_image ?? '')}}" alt=""
-                                                class="img-fluid" width="70px" height="70px">
-                                            @endif
+                                                        <img src="../../assets/img/mobile_component/left_arrow.png"
+                                                            alt="" class="img-fluid">
                                                     </button>
                                                     <input onfocus="myFunction()" autofocus type="text" wire:model.defer="message" id="type_message"
                                                         placeholder="הקלדת הודעה ..." class="font-size-14">
@@ -268,8 +266,10 @@
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->friend}})">
                                                     <div class="announcement_detail">
-                                                        <img src="../../assets/img/mobile_component/flashes_2.png" alt=""
-                                                            class="img-fluid">
+                                                        @if(isset($current->brand_image))
+                                            <img src="{{asset('brand_image/'.$current->brand_image ?? '')}}" alt=""
+                                                class="img-fluid" width="70px" height="70px">
+                                            @endif
                                                         <div class="annoucment_content">
                                                             <h5 class="font-size-16">{{$item->users->name}}<i
                                                                     class="fa fa-check-circle" aria-hidden="true"></i></h5>
