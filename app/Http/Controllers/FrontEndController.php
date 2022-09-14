@@ -686,6 +686,7 @@ class FrontEndController extends Controller
         ->where('products_has_cities.city_id',$city_id)
         ->where('categories.id',$category_id)
         ->where('products.discount_price','!=', null)
+        ->orderBy('id', 'DESC')
         ->get();
 
         // dd($discount_products);
