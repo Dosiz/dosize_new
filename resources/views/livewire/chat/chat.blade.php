@@ -126,7 +126,7 @@
                                                 <li  wire:click="startChat({{$item->user}})">
                                                     <div class="announcement_detail">
                                                         @if(isset($brand))
-                                                        <img src="{{asset('brand_image/'.$brand->brand_image ?? '../../assets/img/mobile_component/flashes_2.png')}}" alt=""
+                                                        <img src="{{asset('brand_image/'.$brand->brand_image)}}" alt=""
                                                             class="img-flui" style="width: 38px !important; height:38px !important;">
                                                         @endif
                                                         <div class="annoucment_content">
