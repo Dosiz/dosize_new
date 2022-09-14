@@ -125,10 +125,8 @@
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->user}})">
                                                     <div class="announcement_detail">
-                                                        @if(isset($brand))
-                                                        <img src="{{asset('brand_image/'.$brand->brand_image)}}" alt=""
-                                                            class="img-flui" style="width: 38px !important; height:38px !important;">
-                                                        @endif
+                                                        <img src="../../assets/img/mobile_component/flashes_2.png" alt=""
+                                                            class="img-fluid">
                                                         <div class="annoucment_content">
                                                             <h5 class="font-size-16">{{$item->endusers->name}}<i
                                                                     class="fa fa-check-circle" aria-hidden="true"></i></h5>
@@ -236,8 +234,10 @@
                                                 <input type="hidden" value="{{ $receiver }}" wire:model.defer="receiver_id">
                                                 <div class="input_div_button align-items-stretch flex-row-reverse">
                                                     <button>
-                                                        <img src="../../assets/img/mobile_component/left_arrow.png"
-                                                            alt="" class="img-fluid">
+                                                        @if(isset($current->brand_image))
+                                            <img src="{{asset('brand_image/'.$current->brand_image ?? '')}}" alt=""
+                                                class="img-fluid" width="70px" height="70px">
+                                            @endif
                                                     </button>
                                                     <input onfocus="myFunction()" autofocus type="text" wire:model.defer="message" id="type_message"
                                                         placeholder="הקלדת הודעה ..." class="font-size-14">
