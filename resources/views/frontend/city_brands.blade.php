@@ -140,7 +140,7 @@ Brand List
                     @foreach($city_brands as $city_brand)
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
-                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}" class="main_img brand_main_image d-xl-none" style="width: 143px; height: 330px" alt="item">
+                            <img src="{{asset('brand_image/'.$city_brand->brand_image)}}" class="main_img brand_main_image d-xl-none" style="width: 143px; height: 330px; padding-bottom:7px !important;" alt="item">
                             <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important; height: 340px !important" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
                             </a>
