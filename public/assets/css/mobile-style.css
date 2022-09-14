@@ -1025,6 +1025,7 @@ header .article_header .heart_tag_message_list ul li span {
     display: block;
     max-width: 32%;
     padding: 9px;
+    margin-right: 12px;
     position: relative;
 }
 
@@ -1258,7 +1259,7 @@ header .article_header .heart_tag_message_list ul li span {
 } */
 
 .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
-    width: 25%;
+    width: 32%;
     flex-direction: row;
     display: block;
     padding: 9px;

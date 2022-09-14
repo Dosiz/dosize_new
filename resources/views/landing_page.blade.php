@@ -400,99 +400,73 @@ Dosize
                                                 </div>
                                             </div>
                                         </div>
+                                        {{-- @dd($p_city->blogs->groupBy('category_id')->reverse()) --}}
                                         <div class="article_div" style="display: block !important;">
-                                            @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
-                                                @if($blog_key == $key)
-                                                @php
-                                                    // $article_categories = $article_categories->reverse();
-                                                    // dd($article_categories);
-                                                @endphp
-                                                {{-- @dd($article_categories) --}}
-                                                    {{-- @foreach($article_categories->take(1) as $blog) --}}
-                                                        @if($article_categories['0'])
-                                                        <div class="row" style="flex-direction: row-reverse;">
-                                                            @if($article_categories['0'])
-                                                            <div class="col-lg-6">
-                                                                <div class="main_article">
-                                                                    <div class="article_box" style="margin-bottom: 8px">
-                                                                        <a class="font-size-14 font-weight-700"
-                                                                           href="{{route('article',$article_categories['0']->id ?? '')}}">
-                                                                            <img
-                                                                                src="{{asset('blog/'.$article_categories['0']->image ?? '' )}}"
-                                                                                width="120px" height="100%">
-                                                                        </a>
-                                                                        <a style="color: #212529 !important"
-                                                                           href="{{route('article',$article_categories['0']->id ?? '')}}">
-                                                                            <div class="article_content">
-                                                                                <h4 class="font-size-18"
-                                                                                    style="margin-bottom: 20px;">
-                                                                                    {{$article_categories['0']->title ?? ''}}
-                                                                                </h4>
-                                                                                <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['0']->sub_title) ?? '',60,'...') }}
-                                                                                </p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </div>
+                                        @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
+                                        @if($blog_key == $key)
+                                            {{-- $article_categories = $article_categories->reverse();
+                                            dd($article_categories); --}}
+                                            <div class="row" style="flex-direction: row-reverse;">
+
+                                            @php $blog_count = 0 @endphp
+                                            @foreach($article_categories->reverse()->take(3) as $blog)
+                                            @php $blog_count++ @endphp
+                                                @if($blog_count == 1)
+                                                <div class="col-lg-6">
+                                                    <div class="main_article">
+                                                        <div class="article_box" style="margin-bottom: 8px">
+                                                            <a class="font-size-14 font-weight-700"
+                                                                href="{{route('article',$blog->id ?? '')}}">
+                                                                <img
+                                                                    src="{{asset('blog/'.$blog->image ?? '' )}}"
+                                                                    width="120px" height="100%">
+                                                            </a>
+                                                            <a style="color: #212529 !important"
+                                                                href="{{route('article',$blog->id ?? '')}}">
+                                                                <div class="article_content">
+                                                                    <h4 class="font-size-18"
+                                                                        style="margin-bottom: 20px;">
+                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,30,'...')}}
+                                                                    </h4>
+                                                                    <p class="font-size-12">
+                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',50,'...') }}
+                                                                    </p>
                                                                 </div>
-                                                            </div>
-                                                            @endif
-                                                            @if($article_categories['1'] || $article_categories['2'])
-                                                            <div class="col-lg-6 col-sm-12">
-                                                                <div class="article_list">
-                                                                    <ul>
-                                                                        @if(isset($article_categories['1']))
-                                                                        <li class="text-right">
-                                                                            <a href="{{route('article',$article_categories['1']->id ?? '')}}">
-                                                                                <h4 class="font-size-14">
-                                                                                    {{ $article_categories['1']->title ?? '' }}
-                                                                                </h4>
-                                                                                <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',40,'...') }}
-                                                                                </p>
-                                                                            </a>
-                                                                        </li>
-                                                                        @endif
-                                                                        @if(isset($article_categories['2']))
-                                                                        <li class="text-right">
-                                                                            <a href="{{route('article',$article_categories['2']->id ?? '')}}">
-                                                                                <h4 class="font-size-14">
-                                                                                    {{ $article_categories['2']->title ?? '' }}
-                                                                                </h4>
-                                                                                <p class="font-size-12">
-                                                                                    {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',40,'...') }}
-                                                                                </p>
-                                                                            </a>
-                                                                        </li>
-                                                                        @endif
-                                                                        {{-- @if($article_categories['3'])
-                                                                        <li class="text-right">
-                                                                            <a href="">
-                                                                                <h4 class="font-size-14">
-                                                                                    קולקציית קיץ
-                                                                                    הושקה בלידר
-                                                                                    אתמול אחרי
-                                                                                    הצהריים
-                                                                                </h4>
-                                                                                <p class="font-size-12">
-                                                                                    צפו בגלריית
-                                                                                    התמונות של
-                                                                                    הקולקצייה
-                                                                                    המדהימה הזאת כאן
-                                                                                </p>
-                                                                            </a>
-                                                                        </li>
-                                                                        @endif --}}
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            @endif
+                                                            </a>
                                                         </div>
-                                                        @endif
-                                                    {{-- @endforeach --}}
-                                                    
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @if($blog_count == 2)
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <div class="row">
+                                                @endif
+                                                @if($blog_count == 2 || $blog_count == 3)
+                                                        <div class="col-lg-12">
+                                                            <div class="article_list">
+                                                                <ul>
+                                                                    <li class="text-right">
+                                                                        <a href="{{route('article',$blog->id ?? '')}}">
+                                                                            <h4 class="font-size-14">
+                                                                                {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                                                            </h4>
+                                                                            <p class="font-size-12">
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',40,'...') }}
+                                                                            </p>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                @if($loop->last )
+                                                    </div>
+                                                </div>
+                                                @endif
                                                 @endif
                                             @endforeach
+                                            </div>
+                                        @endif
+                                        @endforeach
                                         
                                             <div class="row">
 
@@ -586,96 +560,69 @@ Dosize
                                     </div>
                                     <div class="article_div" style="display: block !important;">
                                         @foreach ($p_city->blogs->groupBy('category_id')->reverse() as $blog_key=>$article_categories)
-                                            @if($blog_key == $key)
-                                            @php
-                                                // $article_categories = $article_categories->reverse();
-                                                // dd($article_categories);
-                                            @endphp
-                                            {{-- @dd($article_categories) --}}
-                                                {{-- @foreach($article_categories->take(1) as $blog) --}}
-                                                    @if($article_categories['0'])
-                                                    <div class="row" style="flex-direction: row-reverse;">
-                                                        @if($article_categories['0'])
-                                                        <div class="col-lg-6">
-                                                            <div class="main_article">
-                                                                <div class="article_box" style="margin-bottom: 8px">
-                                                                    <a class="font-size-14 font-weight-700"
-                                                                       href="{{route('article',$article_categories['0']->id ?? '')}}">
-                                                                        <img
-                                                                            src="{{asset('blog/'.$article_categories['0']->image ?? '' )}}"
-                                                                            width="120px" height="100%">
-                                                                    </a>
-                                                                    <a style="color: #212529 !important"
-                                                                       href="{{route('article',$article_categories['0']->id ?? '')}}">
-                                                                        <div class="article_content">
-                                                                            <h4 class="font-size-18"
-                                                                                style="margin-bottom: 20px;">
-                                                                                {{$article_categories['0']->title ?? ''}}
-                                                                            </h4>
-                                                                            <p class="font-size-12">
-                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['0']->sub_title) ?? '',60,'...') }}
-                                                                            </p>
-                                                                        </div>
-                                                                    </a>
+                                        @if($blog_key == $key)
+                                            {{-- $article_categories = $article_categories->reverse();
+                                            dd($article_categories); --}}
+                                            <div class="row" style="flex-direction: row-reverse;">
+
+                                            @php $blog_count = 0 @endphp
+                                            @foreach($article_categories->reverse()->take(3) as $blog)
+                                            @php $blog_count++ @endphp
+                                                @if($blog_count == 1)
+                                                <div class="col-lg-6">
+                                                    <div class="main_article">
+                                                        <div class="article_box" style="margin-bottom: 8px">
+                                                            <a class="font-size-14 font-weight-700"
+                                                                href="{{route('article',$blog->id ?? '')}}">
+                                                                <img
+                                                                    src="{{asset('blog/'.$blog->image ?? '' )}}"
+                                                                    width="120px" height="100%">
+                                                            </a>
+                                                            <a style="color: #212529 !important"
+                                                                href="{{route('article',$blog->id ?? '')}}">
+                                                                <div class="article_content">
+                                                                    <h4 class="font-size-18"
+                                                                        style="margin-bottom: 20px;">
+                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,30,'...')}}
+                                                                    </h4>
+                                                                    <p class="font-size-12">
+                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',50,'...') }}
+                                                                    </p>
                                                                 </div>
-                                                            </div>
+                                                            </a>
                                                         </div>
-                                                        @endif
-                                                        @if($article_categories['1'] || $article_categories['2'])
-                                                        <div class="col-lg-6 col-sm-12">
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @if($blog_count == 2)
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <div class="row">
+                                                @endif
+                                                @if($blog_count == 2 || $blog_count == 3)
+                                                        <div class="col-lg-12">
                                                             <div class="article_list">
                                                                 <ul>
-                                                                    @if(isset($article_categories['1']))
                                                                     <li class="text-right">
-                                                                        <a href="{{route('article',$article_categories['1']->id ?? '')}}">
+                                                                        <a href="{{route('article',$blog->id ?? '')}}">
                                                                             <h4 class="font-size-14">
-                                                                                {{ $article_categories['1']->title ?? '' }}
+                                                                                {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                                             </h4>
                                                                             <p class="font-size-12">
-                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['1']->sub_title) ?? '',40,'...') }}
+                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',40,'...') }}
                                                                             </p>
                                                                         </a>
                                                                     </li>
-                                                                    @endif
-                                                                    @if(isset($article_categories['2']))
-                                                                    <li class="text-right">
-                                                                        <a href="{{route('article',$article_categories['2']->id ?? '')}}">
-                                                                            <h4 class="font-size-14">
-                                                                                {{ $article_categories['2']->title ?? '' }}
-                                                                            </h4>
-                                                                            <p class="font-size-12">
-                                                                                {{ \Illuminate\Support\Str::limit(strip_tags($article_categories['2']->sub_title) ?? '',40,'...') }}
-                                                                            </p>
-                                                                        </a>
-                                                                    </li>
-                                                                    @endif
-                                                                    {{-- @if($article_categories['3'])
-                                                                    <li class="text-right">
-                                                                        <a href="">
-                                                                            <h4 class="font-size-14">
-                                                                                קולקציית קיץ
-                                                                                הושקה בלידר
-                                                                                אתמול אחרי
-                                                                                הצהריים
-                                                                            </h4>
-                                                                            <p class="font-size-12">
-                                                                                צפו בגלריית
-                                                                                התמונות של
-                                                                                הקולקצייה
-                                                                                המדהימה הזאת כאן
-                                                                            </p>
-                                                                        </a>
-                                                                    </li>
-                                                                    @endif --}}
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        @endif
+                                                @if($loop->last )
                                                     </div>
-                                                    @endif
-                                                {{-- @endforeach --}}
-                                                
-                                            @endif
+                                                </div>
+                                                @endif
+                                                @endif
+                                            @endforeach
+                                            </div>
+                                        @endif
                                         @endforeach
                                     
                                         <div class="row">
