@@ -135,7 +135,7 @@ Edit Product
 										<select name="city_id[]" class="select2-multiple_ form-control" multiple="multiple" id="select2MultipleE">
 											@if(count($brand_cities) > 0)
 											@foreach($brand_cities as $city)
-												<option value="{{$city->city_id}}" @foreach($product_cities as $b_city) {{ $b_city->city_id == $city->city_id ? 'selected' : '' }} @endforeach>{{$city->city->short_name}}</option>
+												<option value="{{$city->city_id}}" @foreach($product_cities as $b_city) {{ $b_city->city_id == $city->city_id ? 'selected' : '' }} @endforeach>{{$city->city->hebrew_name}}</option>
 											@endforeach
 											@endif
 										</select>
