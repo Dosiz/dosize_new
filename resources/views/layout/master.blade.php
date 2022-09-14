@@ -75,7 +75,7 @@
                         <div class="inputDiv">
                             <label for="" class="font-size-16">שם</label>
                             <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            <span class="text-danger name_valid"></span>
+                            <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">עיר</label>
@@ -85,19 +85,19 @@
                                     <option value="{{$city->id}}"> {{$city->hebrew_name}} </option>
                                 @endforeach
                             </select>
-                            <span class="text-danger city_valid"></span>
+                            <span class="text-danger city_valid">{{$errors->first('city_id')}}</span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">דוא”ל</label>
                             <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
-                            <span class="text-danger email_valid"></span>
+                            <span class="text-danger email_valid">{{$errors->first('email')}}</span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">סיסמה</label>
                             <div class="password_div">
                                 <input id="password" type="password" name="password" required autocomplete="new-password">
                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                <span class="text-danger password_valid"></span>
+                                <span class="text-danger password_valid">{{$errors->first('password')}}</span>
                             </div>
                         </div>
                         <div class="checkBox_div">
@@ -135,6 +135,7 @@
     </div>
 </div>
 <!-- 2nd -->
+
 <div class="modal fade enrollmentModel" id="enrollmentModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="top: 0; left: 0;">
         <div class="modal-content" id="login-moda">
@@ -146,22 +147,22 @@
             </div>
             <div class="modal-body">
                 <div class="formDiv">
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('login') }}" id="loginForm" method="POST">
                         @csrf
                         <div class="inputDiv">
                             <label for="" class="font-size-16">דוא”ל</label>
                             <input id="email" type="email" name="email" required value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            <span class="text-danger email_valid"></span>
+                            <span class="text-danger email_valid">{{$errors->first('email')}}</span>
                         </div>
                         <div class="inputDiv">
                             <label for="" class="font-size-16">סיסמה</label>
                             <div class="password_div">
                                 <input id="password" type="password" name="password" required autocomplete="current-password">
                                 <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                <span class="text-danger password_valid"></span>
+                                <span class="text-danger password_valid">{{$errors->first('password')}}</span>
                             </div>
                         </div>
-                        <button type="submit" class="font-size-16" style="cursor: pointer;"> התחבר‎ </button>
+                        <button type="submit" class="font-size-16" id="login_btn_submit" style="cursor: pointer;"> התחבר‎ </button>
                         @if (Route::has('password.request'))
                             <div class="text-center forgotpass">
                                 <a class="btn btn-link" target="_blank" href="{{ route('password.request') }}">
@@ -197,6 +198,17 @@
 <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
+@if (count($errors) > 0)
+    @if($errors->first('email')=='These credentials do not match our records.')
+    <script>
+        $('#enrollmentModal2').modal('show');
+    </script>
+    @else
+    <script>
+        $('#enrollmentModal').modal('show');
+    </script>
+    @endif
+@endif
 </html>
 
 <!-- 

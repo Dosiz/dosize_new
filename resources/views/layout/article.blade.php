@@ -183,4 +183,15 @@
     <script src="https://cdn.enable.co.il/licenses/enable-L12268se734xbazj-0822-30217/init.js"></script>
 </body>
 @include('layout.partials.footer_scripts')
+@if (count($errors) > 0)
+    @if($errors->first('email')=='These credentials do not match our records.')
+    <script>
+        $('#enrollmentModal2').modal('show');
+    </script>
+    @else
+    <script>
+        $('#enrollmentModal').modal('show');
+    </script>
+    @endif
+@endif
 </html>

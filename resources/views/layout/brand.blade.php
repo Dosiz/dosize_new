@@ -15,4 +15,15 @@
     </div>
 </body>
 @include('layout.partials.footer_scripts')
+@if (count($errors) > 0)
+    @if($errors->first('email')=='These credentials do not match our records.')
+    <script>
+        $('#enrollmentModal2').modal('show');
+    </script>
+    @else
+    <script>
+        $('#enrollmentModal').modal('show');
+    </script>
+    @endif
+@endif
 </html>
