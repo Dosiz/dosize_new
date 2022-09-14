@@ -126,7 +126,7 @@ Category By city
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-end">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
-                            <div class="affordable_consumption_box box_shahdow">
+                            <div class="affordable_consumption_box box_shahdow" style="margin-bottom:5px !important; ">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 131px;" class="img-fluid">
                                 </a>
