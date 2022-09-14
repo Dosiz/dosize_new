@@ -651,7 +651,15 @@ class FrontEndController extends Controller
         $id=$_GET['id'] ?? '';
         if(Auth::user()->hasRole('Brand'))
         {
-            return view('brand.message.index',compact('id','cities','categories'));
+            if($id != null)
+            {
+                $brand = BrandProfile::where('id', '=', $id)->first();
+                return view('brand.message.index',compact('id','brand','cities','categories'));
+            }
+            else{
+                $brand = null;
+                return view('brand.message.index',compact('id','brand','cities','categories'));
+            }
         }
         else{
             return view('frontend.messages',compact('id','cities','categories'));

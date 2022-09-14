@@ -125,8 +125,10 @@
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->user}})">
                                                     <div class="announcement_detail">
-                                                        <img src="../../assets/img/mobile_component/flashes_2.png" alt=""
-                                                            class="img-fluid">
+                                                        @if(isset($brand))
+                                                        <img src="{{asset('brand_image/'.$brand->brand_image ?? '../../assets/img/mobile_component/flashes_2.png')}}" alt=""
+                                                            class="img-flui" style="width: 38px !important; height:38px !important;">
+                                                        @endif
                                                         <div class="annoucment_content">
                                                             <h5 class="font-size-16">{{$item->endusers->name}}<i
                                                                     class="fa fa-check-circle" aria-hidden="true"></i></h5>
