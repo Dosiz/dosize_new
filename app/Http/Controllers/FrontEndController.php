@@ -717,8 +717,8 @@ class FrontEndController extends Controller
         )
         ->where('blogs_has_cities.city_id',$city_id)
         ->where('blogs.category_id',$category_id)
+        ->orderBy('id' , 'DESC')
         ->limit(6)
-        ->orderBy('id', ' DESC')
         ->get();
         // dd($blogs);
 
