@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', .arikliger.com),
+    'domain' => env('SESSION_DOMAIN', arikliger.com),
 
     /*
     |--------------------------------------------------------------------------
