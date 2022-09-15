@@ -2290,9 +2290,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1600px) {
 
-    .product_detail{
-        width: 29% !important;
-    }
+    
     .article_main_wrapper,
     .message_main_wrapper {
         width: 86% !important;
@@ -2325,10 +2323,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1440px) {
 
-    .product_detail
-    {
-        width: 29% !important;
-    }
+    
     .messenger_announcment_main .announcment_main {
         padding: 80px 20px;
     }
