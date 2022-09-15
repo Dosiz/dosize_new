@@ -233,7 +233,7 @@
                                     <h4 class="font-size-12 font-weight-700">
                                         {{$recomanded_product->recomended_product->name}}
                                     </h4>
-                                    <p class="discription font-size-10 font-weight-400">
+                                    <p class="discription font-size-10 font-weight-400" style="direction: rtl;">
                                         {{-- {!! substr($recomanded_product->recomended_product->description, 0,  30) ?? '' !!} --}}
                                         {{ \Illuminate\Support\Str::limit(strip_tags($recomanded_product->recomended_product->description) ?? '',20) }}
                                     </p>

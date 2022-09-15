@@ -203,10 +203,10 @@
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
 
-                                            <p class="font-size-14 font-weight-300">
+                                            {{-- <p class="font-size-14 font-weight-300"> --}}
                                                 {{-- {!! substr($recommended_product->recommended_product->description ?? '', 0,  20) !!} --}}
-                                                {{ \Illuminate\Support\Str::limit(strip_tags($recommended_product->recommended_product->description) ?? '',20) }}
-                                            </p>
+                                                {{-- {{ \Illuminate\Support\Str::limit(strip_tags($recommended_product->recommended_product->description) ?? '',20) }} --}}
+                                            {{-- </p> --}}
                                         </div>
                                     </a>
                                 </div>
