@@ -447,6 +447,8 @@ Dosize
                                                                 <ul>
                                                                     <li class="text-right">
                                                                         <a href="{{route('article',$blog->id ?? '')}}">
+                                                                            <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
+
                                                                             <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ $blog->title ?? ''}}
                                                                             </h4>
@@ -604,6 +606,7 @@ Dosize
                                                                 <ul>
                                                                     <li class="text-right">
                                                                         <a href="{{route('article',$blog->id ?? '')}}">
+                                                                            <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
                                                                             <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ $blog->title ?? '' }}
                                                                             </h4>
