@@ -34,7 +34,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::domain('beitar-illit.dosizlocal.com')->group(function () {
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
 
+Route::domain('elad.dosizlocal.com')->group(function () {
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
+
+// Route::domain('Beit-shemesh.dosizlocal.com')->group(function () {
+//     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+// });
+
+Route::domain('jerusalem.dosizlocal.com')->group(function () {
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
     // dd("dsfdf");
     // Route::get('/',[App\Http\Controllers\FrontEndController::class, 'dfg']);
 Route::group(["domain" => "arikliger.com"], function() {
