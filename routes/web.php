@@ -42,11 +42,15 @@ Route::domain('elad.arikliger.com')->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-// Route::domain('Beit-shemesh.arikliger.com')->group(function () {
-//     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
-// });
+Route::domain('Beit-shemesh.arikliger.com')->group(function () {
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
 
 Route::domain('jerusalem.arikliger.com')->group(function () {
+    Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
+});
+
+Route::domain('bnei-brak.arikliger.com')->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
     // dd("dsfdf");
