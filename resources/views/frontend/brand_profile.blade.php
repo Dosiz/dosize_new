@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6 text-left">
                 <div class="brandMainImg">
-                    <img src="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" style="width: 590px; height:561px;" alt="" class="img-fluid"> 
+                    <img src="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" style="width: 100%; height:auto;" alt="" class="img-fluid"> 
                 </div>
             </div>
         </div>
