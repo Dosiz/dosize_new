@@ -587,7 +587,7 @@ Dosize
                                             <div class="row" style="flex-direction: row-reverse;">
 
                                             @php $blog_count = 0 @endphp
-                                            @foreach($article_categories->reverse()->take(3) as $blog)
+                                            @foreach($article_categories->reverse()->take(4) as $blog)
                                             @php $blog_count++ @endphp
                                                 @if($blog_count == 1)
                                                 <div class="col-lg-6">
@@ -636,7 +636,7 @@ Dosize
                                                 <div class="col-lg-6 col-sm-12">
                                                     <div class="row">
                                                 @endif
-                                                @if($blog_count == 2 || $blog_count == 3)
+                                                @if($blog_count == 2 || $blog_count == 3 || $blog_count == 4)
                                                         <div class="col-lg-12">
                                                             <div class="article_list">
                                                                 <ul>
