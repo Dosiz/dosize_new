@@ -2569,9 +2569,9 @@ footer .inbox_footer .message_form .input_div_button button,
         max-width: 75%;
     }
 
-    /* .article_div .col-lg-6:nth-child(1) {
+    .article_div .col-lg-6:nth-child(1) {
         display: none;
-    } */
+    }
 
     .gifts_event_div .column_flex_width_change .article_div .col-lg-6:nth-child(2) {
         max-width: 100%;
