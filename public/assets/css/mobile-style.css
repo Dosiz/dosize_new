@@ -2266,12 +2266,16 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 /************* Media - Query - CSS ***************/
-@media screen and (min-width: 1600px) {
 
+@media screen and (min-width: 1600px) {
     .product_detail
     {
         width: 29% !important;
     }
+}
+@media screen and (min-width: 1600px) {
+
+    
 
     .d-none,
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none,
