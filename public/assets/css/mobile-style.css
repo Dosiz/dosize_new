@@ -2268,6 +2268,11 @@ footer .inbox_footer .message_form .input_div_button button,
 /************* Media - Query - CSS ***************/
 @media screen and (min-width: 1600px) {
 
+    .product_detail
+    {
+        width: 29% !important;
+    }
+
     .d-none,
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none,
     .gifts_event_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none {
@@ -2285,6 +2290,9 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1600px) {
 
+    .product_detail{
+        width: 29% !important;
+    }
     .article_main_wrapper,
     .message_main_wrapper {
         width: 86% !important;
@@ -2316,6 +2324,11 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 @media screen and (max-width: 1440px) {
+
+    .product_detail
+    {
+        width: 29% !important;
+    }
     .messenger_announcment_main .announcment_main {
         padding: 80px 20px;
     }
@@ -2425,6 +2438,10 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 @media screen and (max-width: 1200px) {
+
+    .product_detail{
+        width: 29% !important;
+    }
 
     .messenger_announcment_main .messenger_main .message_list .sending_message,
     .messenger_announcment_main .messenger_main .message_list .reciving_message {

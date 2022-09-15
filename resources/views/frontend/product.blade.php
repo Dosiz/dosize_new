@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="product_detail">
+            <div class="product_detail" >
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-6 col-xl-12 text-left d-xl-none">
