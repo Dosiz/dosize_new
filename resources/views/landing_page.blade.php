@@ -166,7 +166,7 @@ Dosize
                         <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-start" style="direction: rtl">
                             @if(count($blogs) > 0)
                             @foreach($blogs as $blog)
-                            <div class="affordable_consumption_box box_shahdow" style="flex-direction: initial !important;">
+                            <div class="affordable_consumption_box box_shahdow" style="flex-direction: initial !important; margin-left: 10px !important;">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
                                     class="img-fluid" style="width: 131px;height:100%">
@@ -425,11 +425,11 @@ Dosize
                                                                 href="{{route('article',$blog->id ?? '')}}">
                                                                 <div class="article_content">
                                                                     <h4 class="font-size-18"
-                                                                        style="margin-bottom: 20px;">
-                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,30,'...')}}
+                                                                        style="margin-bottom: 20px; direction:rtl !important;">
+                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,25,'...')}}
                                                                     </h4>
                                                                     <p class="font-size-12">
-                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',50,'...') }}
+                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',25,'...') }}
                                                                     </p>
                                                                 </div>
                                                             </a>
@@ -447,7 +447,7 @@ Dosize
                                                                 <ul>
                                                                     <li class="text-right">
                                                                         <a href="{{route('article',$blog->id ?? '')}}">
-                                                                            <h4 class="font-size-14">
+                                                                            <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                                             </h4>
                                                                             <p class="font-size-12">
@@ -582,11 +582,11 @@ Dosize
                                                                 href="{{route('article',$blog->id ?? '')}}">
                                                                 <div class="article_content">
                                                                     <h4 class="font-size-18"
-                                                                        style="margin-bottom: 20px;">
-                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,30,'...')}}
+                                                                        style="margin-bottom: 20px; direction:rtl !important;">
+                                                                        {{ \Illuminate\Support\Str::limit($blog->title ?? '' ,25,'...')}}
                                                                     </h4>
                                                                     <p class="font-size-12">
-                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',50,'...') }}
+                                                                        {{ \Illuminate\Support\Str::limit(strip_tags($blog->sub_title) ?? '',25,'...') }}
                                                                     </p>
                                                                 </div>
                                                             </a>
@@ -604,7 +604,7 @@ Dosize
                                                                 <ul>
                                                                     <li class="text-right">
                                                                         <a href="{{route('article',$blog->id ?? '')}}">
-                                                                            <h4 class="font-size-14">
+                                                                            <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ \Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
                                                                             </h4>
                                                                             <p class="font-size-12">
