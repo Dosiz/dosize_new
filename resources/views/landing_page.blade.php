@@ -436,6 +436,23 @@ Dosize
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-12 d-lg-none">
+                                                    <div class="article_list">
+                                                        <ul>
+                                                            <li class="text-right">
+                                                                <a href="{{route('article',$blog->id ?? '')}}">
+                                                                    <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
+                                                                    <h4 class="font-size-14" style="direction:rtl !important;">
+                                                                        {{ $blog->title ?? '' }}
+                                                                    </h4>
+                                                                    <p class="font-size-12">
+                                                                        {{ $blog->sub_title ?? '' }}
+                                                                    </p>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                                 @endif
                                                 @if($blog_count == 2)
                                                 <div class="col-lg-6 col-sm-12">
