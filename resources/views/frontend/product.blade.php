@@ -162,14 +162,15 @@
                             @endforeach
                             @endif
                         </div>
-                        <div class="col-6 col-xl-12 text-left mb-4">
-                            <div class="product_price d-flex justify-content-end" style="text-align: right">
-                                <p><b>{{$product->name}}</b></p>
-                            </div>
-                        </div>
+                       
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
                                 <p>{{$product->discount_price ?? $product->price}} ₪ <span class=" font-size-14">@if($product->discount_price){{$product->price}} ₪ @endif</span></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-xl-12 text-left mb-4">
+                            <div class="product_price d-flex justify-content-end" style="text-align: right">
+                                <p><b>{{$product->name}}</b></p>
                             </div>
                         </div>
                         {{-- <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
