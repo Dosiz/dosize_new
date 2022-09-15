@@ -126,7 +126,7 @@ Dosize
         </div>
         @else
         <div style="height:472px">
-            <p class="text-center">No Bookmark Yet</p>
+            {{-- <p class="text-center">No Bookmark Yet</p> --}}
         </div>
         @endif
         
