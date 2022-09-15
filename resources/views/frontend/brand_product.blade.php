@@ -458,7 +458,7 @@
                                             </h4>
                                             <p class="discription font-size-10 font-weight-400" style="font-weight: 400px !important;">
                                                 {{-- {!! substr($recomanded_blog->recomended_blog->sub_title, 0,  50) ?? '' !!} --}}
-                                                {{ \Illuminate\Support\Str::limit(strip_tags($recomanded_blog->recomended_blog->sub_title) ?? '',60,'...') }}
+                                                {{ $recomanded_blog->recomended_blog->sub_title ?? '' }}
                                             </p>
                                         </a>
                                         {{-- <span class="font-size-12">4 <i class="fa fa-heart"

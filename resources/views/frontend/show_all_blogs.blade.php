@@ -82,10 +82,10 @@ Category By city
                                     </a>
                                     <a href="{{route('brand_article',$blog->id)}}" style="color: #212529 !important">
                                         <h4 class="font-size-12 font-weight-700">
-                                            {{\Illuminate\Support\Str::limit($blog->title ?? '',30,'...')}}
+                                            {{ $blog->title ?? '' }}
                                         </h4>
                                         <p class="discription font-size-10 font-weight-400">
-                                            {!! \Illuminate\Support\Str::limit($blog->sub_title ?? '',60,'...') !!}
+                                            {{ $blog->sub_title ?? '' }}
                                         </p>
                                     </a>
                                         {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"

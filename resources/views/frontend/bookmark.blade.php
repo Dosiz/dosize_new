@@ -75,7 +75,7 @@ Dosize
                                     {!! \Illuminate\Support\Str::limit($blog->blog->description ?? '',40,'...') !!}
                                     </p> --}}
                                     <p class="discription font-size-10 font-weight-400">
-                                        {!! substr($blog->blog->description ?? '', 0,  20) !!}
+                                        {{ $blog->blog->description ?? '' }}
                                     </p>
                                 </a>
                             </div>
