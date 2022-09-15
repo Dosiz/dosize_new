@@ -71,7 +71,7 @@ class ProductController extends Controller
             $this->validate($request,[ 
                 'image'=>'required', 
                 'images'=>'required', 
-                'name'=>'required|min:3|max:25', 
+                'name'=>'required|min:3|max:180', 
                 'price'=>'required', 
                 'category_id'=>'required', 
                 'description'=>'required', 
@@ -205,7 +205,7 @@ class ProductController extends Controller
         $brand_profile = BrandProfile::where('user_id',$user_id)->first();
         $this->validate($request,[ 
             // 'image'=>'required', 
-            'name'=>'required|min:3|max:25', 
+            'name'=>'required|min:3|max:180', 
             'price'=>'required', 
             'category_id'=>'required', 
             'description'=>'required', 

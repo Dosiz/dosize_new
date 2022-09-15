@@ -73,8 +73,8 @@ class BlogController extends Controller
         $this->validate($request,[ 
             'image'=>'required', 
             'images'=>'required', 
-            'title'=>'required|min:3|max:25', 
-            'sub_title'=>'required|min:3|max:25', 
+            'title'=>'required|min:3|max:180', 
+            'sub_title'=>'required|min:3|max:180', 
             'category_id'=>'required', 
             'description'=>'required', 
             'profile_id'=>'required', 
@@ -186,8 +186,8 @@ class BlogController extends Controller
         $user_id = Auth::id();
         $brand_profile = BrandProfile::where('user_id',$user_id)->first();
         $this->validate($request,[ 
-            'title'=>'required|min:3|max:25', 
-            'sub_title'=>'required|min:3|max:25', 
+            'title'=>'required|min:3|max:180', 
+            'sub_title'=>'required|min:3|max:180', 
             'category_id'=>'required', 
             'description'=>'required', 
             'profile_id'=>'required', 
