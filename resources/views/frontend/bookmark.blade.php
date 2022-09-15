@@ -64,7 +64,7 @@ Dosize
                         @foreach($bookmark_blogs as $blog)
                         <div class="affordable_consumption_box box_shahdow">
                             <a href="{{route('article',$blog->blog->id)}}">
-                                <img src="{{asset('blog/'.$blog->blog->image)}}" alt="" class="img-fluid" style="width: 131px; height:160px;">
+                                <img src="{{asset('blog/'.$blog->blog->image)}}" alt="" class="img-flui" style="width: 131px; height:160px;">
                             </a>
                             <div class="content_div">
                                 <a href="{{route('article',$blog->blog->id)}}" style="color: #000">
