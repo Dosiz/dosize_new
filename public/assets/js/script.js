@@ -54,14 +54,14 @@ const deal = new Swiper('.multiple_deals', {
   direction: 'horizontal',
   // slidesPerView: "auto",
   breakpoints: {
-    // when window width is >= 320px
-    1500: {
-      slidesPerView: 4,
-      spaceBetween: 20
-    },
+    // // when window width is >= 320px
+    // 1500: {
+    //   slidesPerView: 4,
+    //   spaceBetween: 20
+    // },
     // when window width is >= 640px
     1024: {
-      slidesPerView: 4,
+      slidesPerView: 6,
       spaceBetween: 20
     },
     768:{

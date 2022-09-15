@@ -1366,9 +1366,9 @@ header .article_header .heart_tag_message_list ul li span {
     right: 12px;
 }
 
-.deal_two .multiple_deals .deals_box {
+/* .deal_two .multiple_deals .deals_box {
     max-width: 16% !important;
-}
+} */
 
 .deal_one .multiple_deals .deals_box {
     max-width: 100% !important;
