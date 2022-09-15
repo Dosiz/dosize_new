@@ -491,8 +491,8 @@ Dosize
                                                                     <a class="font-size-14 font-weight-700"
                                                                        href="{{route('product',$product->id ?? '')}}"
                                                                        style="color: #212529 !important;">
-                                                                        <h4 class="font-size-14 font-weight-700">
-                                                                            {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
+                                                                        <h4 class="font-size-14 font-weight-700" style="direction: rtl !important;">
+                                                                            {{ $product->name ?? '' }}
                                                                         </h4>
                                                                         <p class="discription font-size-12 font-weight-400">
                                                                             {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...')}}
@@ -649,7 +649,7 @@ Dosize
                                                                    href="{{route('product',$product->id ?? '')}}"
                                                                    style="color: #212529 !important;">
                                                                     <h4 class="font-size-14 font-weight-700">
-                                                                        {{ \Illuminate\Support\Str::limit($product->name ?? '',10,'...') }}
+                                                                        {{ $product->name ?? '' }}
                                                                     </h4>
                                                                     <p class="discription font-size-12 font-weight-400">
                                                                         {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...')}}
