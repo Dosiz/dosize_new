@@ -462,7 +462,7 @@
                                                 {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}
                                             </span>
                                         </a>
-                                        <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_product->recomended_blog->id)}}" style="color: #212529 !important">
+                                        <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id)}}" style="color: #212529 !important">
                                             <h4 class="font-size-12 font-weight-700">
                                                 {{$recomanded_blog->recomended_blog->title}}
                                             </h4>
