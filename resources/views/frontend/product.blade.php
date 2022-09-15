@@ -452,7 +452,7 @@
                                 @if(count($recomanded_blogs) > 0)
                                 @foreach($recomanded_blogs as $recomanded_blog)
                                 <div class="affordable_consumption_box box_shahdow">
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_blog->recomended_blog->id ?? '')}}">
+                                    <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_blog->recomended_blog->id)}}">
                                         <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px;">
                                     </a>
                                     <div class="content_div">
@@ -462,7 +462,7 @@
                                                 {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}
                                             </span>
                                         </a>
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$recomanded_product->recomended_blog->id ?? '')}}" style="color: #212529 !important">
+                                        <a class="font-size-14 font-weight-700" href="{{route('article',$recomanded_product->recomended_blog->id)}}" style="color: #212529 !important">
                                             <h4 class="font-size-12 font-weight-700">
                                                 {{$recomanded_blog->recomended_blog->title}}
                                             </h4>
