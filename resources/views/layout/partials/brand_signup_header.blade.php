@@ -15,7 +15,7 @@
 					
 				</a>
 			@else
-				<a href="{{ url('/')}}" class="logo logo-small">
+				<a href="{{ url('/city')}}" class="logo logo-small">
 					<img src="../assets_admin/img/logo.png" alt="Logo">
 					
 				</a>
@@ -31,7 +31,7 @@
 					</li>
 					@guest
                             <li class="nav-item">
-                                <a href="{{url('/brand')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
+                                <a href="{{url('/city')}}"><img style="height: 30px;" src="https://dosizlocal.com/uploads/city/logo_transparent1.png"></a>
                             </li>
 {{--                             
                         @else

@@ -129,7 +129,7 @@
                         </div>
                         <div class="col-6 col-xl-12 text-right">
                             <div class="product_category">
-                                <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
+                                <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com" >
                                     {{-- @php
                                         $user_name = \App\Models\User::where('id',$product->brandprofile->user_id)->first();
                                     @endphp --}}
@@ -214,7 +214,7 @@
                                 <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
                             </a>
                             <div class="content_div">
-                                {{-- <a href="https://{{$recomanded_product->recomended_product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                {{-- <a href="https://{{$recomanded_product->recomended_product->brandprofile->short_name ?? ''}}.arikliger.com">
                                 <span class="deal_category font-size-12 font-weight-400">
                                     {{\Illuminate\Support\Str::limit($recomanded_product->recomended_product->brandprofile->brand_name?? '',15)}}    
                                 </span></span>
@@ -250,7 +250,7 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="stand_brand_message">
                         <img src="{{asset('brand_image/'.$product->brandprofile->brand_image)}}" alt="" class="img-fluid" style="width:39px ; height: 38px;">
-                        <a class="font-size-16" href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">לעמוד המותג</a>
+                        <a class="font-size-16" href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com">לעמוד המותג</a>
                         @guest
                         <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="">שליחת הודעה</a>
                         @else
@@ -446,7 +446,7 @@
                                         <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px;">
                                     </a>
                                     <div class="content_div">
-                                        <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                        <a href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com">
                                             <span class="category font-size-12 font-weight-400">
                                                 {{-- {{$product->brandprofile->brand_name}} --}}
                                                 {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name?? '',15)}}

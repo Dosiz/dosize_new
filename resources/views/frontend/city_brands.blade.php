@@ -141,18 +141,18 @@ Brand List
                     <div class="col-6 col-xl-4 mb-3">
                         <div class="card">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}" class="main_img brand_main_image d-xl-none" style="width: 143px; height: 330px; padding-bottom:7px !important;" alt="item">
-                            <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand">
+                            <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com">
                             <img src="{{asset('brand_image/'.$city_brand->brand_image)}}"  style="width: 330px !important; height: 340px !important; padding:7px !important;" alt="carbazaar_cards mt-4d" class="d-xl-block d-none">
                             </a>
                             <div class="title d-flex justify-content-end align-items-center">
                                 <div class="txt">
-                                    <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" style="color: #212529 !important">
+                                    <a href="https://{{$city_brand->short_name ?? ''}}.arikliger.com" style="color: #212529 !important">
                                     <h3>{{ \Illuminate\Support\Str::limit($city_brand->brand_name ,13) }}</h3>
                                     </a>
                                     
                                 </div>
                                 <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" class="d-xl-none" style="width:40px; height:40px" alt="flash">
-                                <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com/brand" >
+                                <a class="font-size-14 font-weight-700" href="https://{{$city_brand->short_name ?? ''}}.arikliger.com" >
                                     <img src="{{asset('brand_logo/'.$city_brand->brand_logo)}}" style="width: 40px; height: 40px;" alt="flash"
                                     class="d-none d-xl-block titleImg">
                                 </a>

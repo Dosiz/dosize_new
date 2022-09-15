@@ -119,7 +119,7 @@ Dosize
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand" >
+                                            <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com" >
                                                 <p class="promotion_category font-size-12 font-weight-400"> 
                                                     {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
                                                 </p>
@@ -172,7 +172,7 @@ Dosize
                                     class="img-fluid" style="width: 131px;height:100%">
                                 </a>
                                 <div class="content_div">
-                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
+                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com">
                                         <span class="category font-size-12 font-weight-400">
                                             {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}
                                         </span>
@@ -227,8 +227,8 @@ Dosize
                                             <img onclick="recommended_product('{{route('product',$product->id ?? '')}}')"  src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style=" height:163px">
                                         {{-- </a> --}}
                                         <div class="content_div">
-                                            {{-- <a href="https://{{$product->short_name ?? ''}}.arikliger.com/brand"> --}}
-                                            <span onclick="https://{{$product->short_name ?? ''}}.arikliger.com/brand" class="deal_category font-size-12 font-weight-400">
+                                            {{-- <a href="https://{{$product->short_name ?? ''}}.arikliger.com"> --}}
+                                            <span onclick="https://{{$product->short_name ?? ''}}.arikliger.com" class="deal_category font-size-12 font-weight-400">
                                                 {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
                                             </span>
                                             {{-- </a> --}}
@@ -320,8 +320,8 @@ Dosize
                                     <img onclick="recommended_product('{{route('product',$product->id)}}')" src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="max-height: 160px">
                                 {{-- </a> --}}
                                 <div class="content_div">
-                                    {{-- <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com/brand"> --}}
-                                    <span onclick="recommended_product('https://{{$product->short_name ?? ''}}.arikliger.com/brand')" class="deal_category font-size-12 font-weight-400"> 
+                                    {{-- <a class="font-size-14 font-weight-700" href="https://{{$product->short_name ?? ''}}.arikliger.com"> --}}
+                                    <span onclick="recommended_product('https://{{$product->short_name ?? ''}}.arikliger.com')" class="deal_category font-size-12 font-weight-400"> 
                                         {{\Illuminate\Support\Str::limit($product->brand_name ?? '',15)}}
                                     </span>
                                     </a>
@@ -484,7 +484,7 @@ Dosize
                                                                 </a>
                                                                 <div class="content_div">
                                                                     <a class="font-size-14 font-weight-700"
-                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com">
                                                                                 <span
                                                                                     class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
                                                                     </a>
@@ -641,7 +641,7 @@ Dosize
                                                             </a>
                                                             <div class="content_div">
                                                                 <a class="font-size-14 font-weight-700"
-                                                                   href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                                                   href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com">
                                                                             <span
                                                                                 class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
                                                                 </a>

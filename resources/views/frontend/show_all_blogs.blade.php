@@ -74,7 +74,7 @@ Category By city
                                     <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 131px;" class="img-fluid">
                                 </a>
                                 <div class="content_div">
-                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com/brand">
+                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com">
                                         <span class="category font-size-12 font-weight-400"> 
                                             {{-- {{$blog->brand_name}}  --}}
                                             {{\Illuminate\Support\Str::limit($blog->brand_name ?? '',15)}}

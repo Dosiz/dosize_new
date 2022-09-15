@@ -140,7 +140,7 @@ Search Product
                                         class="img-fluid" style="width: 131px; height: 160px">
                                     </a>
                                     <div class="content_div">
-                                        <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand">
+                                        <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com">
                                         <span class="category font-size-12 font-weight-400"> {{$blog->brandprofile->brand_name}} </span>
                                         </a>
                                         <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">

@@ -35,7 +35,7 @@
                 @endif
             </li>
             <li class="active" style="margin:0px 31px 0px 0px !important;">
-                <a href="{{url('/')}}">
+                <a href="{{url('/city')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt="" class="img-fluid">
                         <p class="font-size-12 font-weight-400">איזור אישי </p>

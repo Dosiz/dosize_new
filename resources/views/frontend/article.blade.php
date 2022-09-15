@@ -122,7 +122,7 @@
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" style="width: 39px;" alt=""
                                     class="img-fluid">
                                 <p class="font-size-18">
-                                    <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand" >
+                                    <a href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com" >
                                         {{-- @php
                                             $user_name = \App\Models\User::where('id',$blog->brandprofile->user_id)->first();
                                             // dd($user_name,$blog->brandprofile->user_id ,$blog->brandprofile->id )
@@ -226,7 +226,7 @@
                                 <img src="{{asset('brand_image/'.$blog->brandprofile->brand_image)}}" alt=""
                                     class="img-fluid" style="width:39px ; height: 38px;">
 
-                                <a class="font-size-16" href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com/brand">לעמוד המותג</a>
+                                <a class="font-size-16" href="https://{{$blog->brandprofile->short_name ?? ''}}.arikliger.com">לעמוד המותג</a>
                                 @guest
                                 <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" href="" >שליחת הודעה</a>
                                 @else
