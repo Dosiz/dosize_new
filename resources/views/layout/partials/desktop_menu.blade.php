@@ -17,7 +17,7 @@
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="{{url('/')}}">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
+                    <a href="https://beitar-illit.arikliger.com">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 @if(! isset(Auth::user()->name))

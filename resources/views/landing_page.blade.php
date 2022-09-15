@@ -127,7 +127,8 @@ Dosize
                                         </div>
                                         <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
                                             <p class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
-                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
+                                                {{-- {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}} --}}
+                                                {{ $product->name ?? '' }}
                                             </p>
                                         </a>
                                         <div class="price_learn_more">
@@ -234,7 +235,8 @@ Dosize
                                             {{-- </a> --}}
                                             {{-- <a href="{{route('product',$product->id ?? '')}}" style="color:#212529 !important;"> --}}
                                             <h4 onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="title font-size-14 font-weight-700">  
-                                                {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
+                                                {{-- {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}} --}}
+                                                {{ $product->name ?? '' }}
                                             </h4>
                                             
                                             <div onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="rating_price_div">
@@ -328,7 +330,7 @@ Dosize
                                     {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;"> --}}
                                     <h4 onclick="recommended_product('{{route('product',$product->id)}}')" class="title font-size-14 font-weight-700">
                                         {{-- {{$product->name}} --}}
-                                        {{ \Illuminate\Support\Str::limit($product->name ?? '',30,'...')}}
+                                        {{ $product->name ?? '' }}
                                     </h4>
                                     <div class="rating_price_div" onclick="recommended_product('{{route('product',$product->id)}}')">
                                         @if($product->price)

@@ -197,7 +197,8 @@
                                 <div class="content_div">
                                     <a href="{{route('product',$recommended_product->recommended_product->id ?? '')}}" style="color: #212529 !important">
                                         <h4 class="title font-size-14 font-weight-700">
-                                            {{ \Illuminate\Support\Str::limit($recommended_product->recommended_product->name ?? '',10) }}
+                                            {{-- {{ \Illuminate\Support\Str::limit($recommended_product->recommended_product->name ?? '',10) }} --}}
+                                            {{ $recommended_product->recommended_product->name ?? '' }}
                                         </h4>
                                         <div class="rating_price_div">
                                             {{-- <p class="font-size-14 font-weight-300">{!! \Illuminate\Support\Str::limit($recomanded_blog->recomended_blog->description ?? '',40,'...') !!}</p> --}}
