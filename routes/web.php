@@ -34,19 +34,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::domain('beitar-illit.dosizlocal.com')->group(function () {
+Route::domain('beitar-illit.arikliger.com')->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-Route::domain('elad.dosizlocal.com')->group(function () {
+Route::domain('elad.arikliger.com')->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-// Route::domain('Beit-shemesh.dosizlocal.com')->group(function () {
+// Route::domain('Beit-shemesh.arikliger.com')->group(function () {
 //     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 // });
 
-Route::domain('jerusalem.dosizlocal.com')->group(function () {
+Route::domain('jerusalem.arikliger.com')->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
     // dd("dsfdf");
