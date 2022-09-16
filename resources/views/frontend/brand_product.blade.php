@@ -124,7 +124,8 @@
                     <div class="row">
                         <div class="col-6 col-xl-12 text-left d-xl-none">
                             <div class="product_price">
-                                <p>50 ₪ <span class="font-size-14">80 ₪</span></p>
+                                <!-- <p>50 ₪ <span class="font-size-14">80 ₪</span></p> -->
+                                <p>{{$product->discount_price ?? $product->price}} ₪ <span class=" font-size-14">@if($product->discount_price){{$product->price}} ₪ @endif</span></p>
                             </div>
                         </div>
                         <div class="col-6 col-xl-12 text-right">
