@@ -10,6 +10,77 @@ Dosize
 <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/desktop-css.css') }}">
 <link rel="stylesheet" href="{{asset('assets/css/swiper.css') }}">
+<style>
+   .affordable_consumption_box > a{
+	display: flex;
+    align-items: center;
+    background: #dfdada;
+}
+.affordable_consumption_box > a > img{ 
+   width: 150px;
+}
+@media (min-width: 1050px) and (max-width: 1250px){
+    .affordable_consumption_box{
+        min-width: 350px;
+    }
+}
+@media ( min-width: 800px ){
+.article_content > p{ height: 50px; overflow: hidden; }
+}
+@media (max-width: 990px){
+    .affordable_consumption_box:nth-child(3),
+     .affordable_consumption_box:nth-child(4){
+
+        display: none !important;
+    }
+    .article_list {
+            background: #fff;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 9px;
+    }
+
+    .mobileFlex{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items:center;
+    }
+
+    .mobileFlex > img{
+        border-radius: 5px;
+        margin-left: 8px;
+    }
+
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
+    border-radius: 5px !important;
+}
+
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{ display: block !important; } 
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img { max-width: 100% !important;
+    min-width: 100%;
+    margin: 0; }
+
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div {
+    padding: 10px 16px;
+}
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+    max-height: 120px;
+    min-height: 120px;
+}
+    /* .article_list h4{
+        margin
+    } */
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div h4 {
+    height: 32px;
+}
+
+
+
+.article_div .article_list ul li{
+margin-bottom: 0px;}
+}
+</style>
 @endpush
 @section('content')
 
@@ -170,7 +241,7 @@ Dosize
                             <div class="affordable_consumption_box box_shahdow" style="flex-direction: initial !important; margin-left: 10px !important;">
                                 <a href="{{route('article',$blog->id)}}">
                                     <img src="{{asset('blog/'.$blog->image)}}" alt=""
-                                    class="img-fluid" style="width: 131px;height:auto">
+                                    class="img-flui">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com">
@@ -442,14 +513,16 @@ Dosize
                                                     <div class="article_list">
                                                         <ul>
                                                             <li class="text-right">
-                                                                <a href="{{route('article',$blog->id ?? '')}}">
+                                                                <a href="{{route('article',$blog->id ?? '')}}" class="mobileFlex">
                                                                     <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
-                                                                    <h4 class="font-size-14" style="direction:rtl !important;">
+                                                                   <div>
+                                                                   <h4 class="font-size-14" style="direction:rtl !important;">
                                                                         {{ $blog->title ?? '' }}
                                                                     </h4>
                                                                     <p class="font-size-12">
                                                                         {{ $blog->sub_title ?? '' }}
                                                                     </p>
+                                                                   </div>
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -465,15 +538,17 @@ Dosize
                                                             <div class="article_list">
                                                                 <ul>
                                                                     <li class="text-right">
-                                                                        <a href="{{route('article',$blog->id ?? '')}}">
+                                                                        <a href="{{route('article',$blog->id ?? '')}}" class="mobileFlex">
                                                                             <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
-
+                                                                            <div>
                                                                             <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ $blog->title ?? ''}}
                                                                             </h4>
                                                                             <p class="font-size-12">
                                                                                 {{ $blog->sub_title ?? '' }}
                                                                             </p>
+                                                                            </div>
+                                                                           
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -491,7 +566,7 @@ Dosize
                                         
                                             <div class="row">
 
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-12 d-none d-lg-block">
                                                     <div class="affordable_consumption_list">
                                                         @foreach($product_categories->take(3)  as $product)
                                                             <div
@@ -547,6 +622,74 @@ Dosize
                                                                 </div>
                                                             </div>
                                                         @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 d-lg-none">
+                                                    <div class="affordable_consumption_list">
+                                                    <div class="swiper product1 mySwiper">
+      <div class="swiper-wrapper">
+                                                        @foreach($product_categories->take(3)  as $product)
+                                         
+        <div class="swiper-slide">
+        <div
+                                                                class="affordable_consumption_box box_shahdow">
+                                                                <a class="font-size-14 font-weight-700"
+                                                                   href="{{route('product',$product->id ?? '')}}">
+                                                                    <img
+                                                                        src="{{asset('product/'.$product->image ?? '')}}"
+                                                                        width="238px"
+                                                                        height="100%">
+                                                                </a>
+                                                                <div class="content_div">
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="https://{{$product->brandprofile->short_name ?? ''}}.arikliger.com">
+                                                                                <span
+                                                                                    class="category font-size-12 font-weight-400"> {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}} </span>
+                                                                    </a>
+                                                                    <a class="font-size-14 font-weight-700"
+                                                                       href="{{route('product',$product->id ?? '')}}"
+                                                                       style="color: #212529 !important;">
+                                                                        <h4 class="font-size-14 font-weight-700" style="direction: rtl !important;">
+                                                                            {{ $product->name ?? '' }} 
+                                                                        </h4>
+                                                                        <p class="discription font-size-12 font-weight-400">
+                                                                            {{\Illuminate\Support\Str::limit(strip_tags($product->description) ?? '',30,'...')}}
+                                                                        </p>
+                                                                    </a>
+                                                                    <span
+                                                                        class="font-size-12 like_span">4 <i
+                                                                            class="fa fa-heart"
+                                                                            aria-hidden="true"></i></span>
+                                                                    <div class="rating_price_div">
+                                                                        <a class="font-size-14 font-weight-700"
+                                                                           href="{{route('product',$product->id ?? '')}}"
+                                                                           style="color: #212529 !important">
+                                                                           @if($product->price)
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                {{$product->price ?? ''}}
+                                                                                ₪
+                                                                            </p>
+                                                                            @else
+                                                                            <p class="font-size-14 font-weight-600">
+                                                                                
+                                                                            </p>
+                                                                            @endif
+                                                                        </a>
+                                                                        <p class="rating_text"
+                                                                           style="visibility: hidden;">
+                                                                            4.8 <i
+                                                                                class="fa fa-star"></i>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+        </div>
+      
+                                                          
+                                                        @endforeach
+                                                        </div>
+    </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -618,14 +761,16 @@ Dosize
                                                     <div class="article_list">
                                                         <ul>
                                                             <li class="text-right">
-                                                                <a href="{{route('article',$blog->id ?? '')}}">
+                                                                <a href="{{route('article',$blog->id ?? '')}}" class="mobileFlex">
                                                                     <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
+                                                                    <div>
                                                                     <h4 class="font-size-14" style="direction:rtl !important;">
                                                                         {{ $blog->title ?? '' }}
                                                                     </h4>
                                                                     <p class="font-size-12">
                                                                         {{ $blog->sub_title ?? '' }}
                                                                     </p>
+                                                                    </div>
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -641,14 +786,16 @@ Dosize
                                                             <div class="article_list">
                                                                 <ul>
                                                                     <li class="text-right">
-                                                                        <a href="{{route('article',$blog->id ?? '')}}">
+                                                                        <a href="{{route('article',$blog->id ?? '')}}" class="mobileFlex">
                                                                             <img class="d-lg-none" src="{{asset('blog/'.$blog->image ?? '' )}}" width="120px" height="100%">
+                                                                            <div>
                                                                             <h4 class="font-size-14" style="direction:rtl !important;">
                                                                                 {{ $blog->title ?? '' }}
                                                                             </h4>
                                                                             <p class="font-size-12">
                                                                                 {{ $blog->sub_title ?? '' }}
                                                                             </p>
+                                                                            </div>
                                                                         </a>
                                                                     </li>
                                                                 </ul>
@@ -1006,6 +1153,39 @@ Dosize
 <script src="{{ asset('assets/js/script.js') }}"></script>
 <script src="{{ asset('assets/js/Minimal-jQuery-Countdown/jquery.countdown.min.js') }}"></script>
 <script>
+
+      var swiper1 = new Swiper(".product1", {
+        slidesPerView: 2,
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      
+      var swiper2 = new Swiper(".product2", {
+        slidesPerView: 2,
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      
+      var swiper3 = new Swiper(".product3", {
+        slidesPerView: 2,
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
     $(document).ready(function() {
         $('#login-modal').fadeOut()
         $("#signup_btn").click(function(e) {
