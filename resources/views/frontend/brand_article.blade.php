@@ -188,7 +188,7 @@
                             @foreach($recommended_products as $recommended_product)
                             <div class="deals_box box_shahdow swiper-slide">
                                 <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recommended_product->recommended_product->id ?? '')}}">
-                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
+                                    <img src="{{asset('product/'.$recommended_product->recommended_product->image)}}" alt="" class="img-fluid"style="width:135px; height:107px;">
                                 </a>
                                 <div class="content_div">
                                     <a href="https://{{$recommended_product->recommended_product->brandprofile->short_name ?? ''}}.arikliger.com">
@@ -418,7 +418,7 @@
                             @foreach($recomanded_blogs as $recomanded_blog)
                             <div class="affordable_consumption_box box_shahdow">
                                 <a class="font-size-14 font-weight-700" href="{{route('brand_article',$recomanded_blog->recomended_blog->id ?? '')}}">
-                                    <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-flui" style="width:131px; height:181px;">
+                                    <img src="{{asset('blog/'.$recomanded_blog->recomended_blog->image)}}" alt="" class="img-fluid" style="width:131px; height:181px;">
                                 </a>
                                 <div class="content_div">
                                     <span class="category font-size-12 font-weight-400">{{\Illuminate\Support\Str::limit($blog->brandprofile->brand_name?? '',15)}} </span>

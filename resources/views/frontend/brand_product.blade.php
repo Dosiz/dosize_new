@@ -211,7 +211,7 @@
                         @foreach($recomanded_products as $recomanded_product)
                         <div class="deals_box box_shahdow swiper-slide">
                             <a class="font-size-14 font-weight-700" href="{{route('brand_product',$recomanded_product->recomended_product->id ?? '')}}">
-                                <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-flui"style="width:135px; height:107px;">
+                                <img src="{{asset('product/'.$recomanded_product->recomended_product->image)}}" alt="" class="img-fluid" style="">
                             </a>
                             <div class="content_div">
                                 {{-- <a href="https://{{$recomanded_product->recomended_product->brandprofile->short_name ?? ''}}.arikliger.com">
