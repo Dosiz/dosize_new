@@ -3211,3 +3211,11 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 
 /* css for branc page start end here */
+
+@media (min-width: 1024px){
+    .content_div .font-size-10 {
+        font-size: 14px;
+        height: 59px !important;
+        overflow: hidden !important;
+    }
+    }
