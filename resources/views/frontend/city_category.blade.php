@@ -13,6 +13,72 @@ Category By city
 @endpush
 @section('content')
 
+<style>
+    @media (min-width: 1200px){
+.multiple_afforable_consumption .affordable_consumption_box {
+    width: 31% !important;
+}
+    }
+
+    .affordable_consumption_box > a{
+	display: flex;
+    align-items: center;
+    background: #dfdada;
+}
+.affordable_consumption_box > a > img{ 
+   width: 150px;
+}
+@media (min-width: 1050px) and (max-width: 1250px){
+    .affordable_consumption_box{
+        min-width: 350px;
+    }
+}
+@media ( min-width: 800px ){
+.article_content > p{ height: 50px; overflow: hidden; }
+}
+@media (max-width: 990px){
+    .affordable_consumption_box:nth-child(3),
+     .affordable_consumption_box:nth-child(4){
+
+        display: none !important;
+    }
+    .article_list {
+            background: #fff;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 9px;
+    }
+
+    .mobileFlex{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items:center;
+    }
+
+    .mobileFlex > img{
+        border-radius: 5px;
+        margin-left: 8px;
+    }
+
+    .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
+    border-radius: 5px !important;
+}
+
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box{ display: block !important; } 
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img { max-width: 100% !important;
+    min-width: 100%;
+    margin: 0; }
+
+.products_div .affordable_consumption .affordable_consumption_list .affordable_consumption_box img{
+    max-height: 120px;
+    min-height: 120px;
+}
+}
+
+
+</style>
+
 <main>
     <div class="main-wrapper">
         <div class="categories spacing">
@@ -128,7 +194,7 @@ Category By city
                             @foreach($blogs as $blog)
                             <div class="affordable_consumption_box box_shahdow" style="margin-right:5px !important; flex-direction:inherit !important;">
                                 <a href="{{route('article',$blog->id)}}">
-                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" style="width: 131px;" class="img-fluid">
+                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-flui">
                                 </a>
                                 <div class="content_div">
                                     <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com">
