@@ -5,17 +5,17 @@
 		<div class="header">
 
 
-		<nav class="navbar navbar-expand-lg navbar-light" style="direction: ltr !important;">
+		<nav class="navbar navbar-expand-lg navbar-light" style="direction: rtl !important;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
 			</button>
 			@if(isset($brand_profile))
-				<a href="{{ url('brand-profile/'.$brand_profile->id ?? '')}}" class="logo logo-small">
+				<a href="{{ url('/')}}" class="logo logo-small">
 					<img src="{{asset('brand_logo/'.$brand_profile->brand_logo) ?? '../assets_admin/img/logo.png'}} " style="height:50px;" alt="Logo">
 					
 				</a>
 			@else
-				<a href="{{ url('/city')}}" class="logo logo-small">
+				<a href="https://beitar-illit.arikliger.com" class="logo logo-small">
 					<img src="../assets_admin/img/logo.png" alt="Logo">
 					
 				</a>
