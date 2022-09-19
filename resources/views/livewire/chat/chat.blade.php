@@ -264,12 +264,12 @@
                                                  $chatunread=\App\Models\Message::where(['sender_id'=>$item->friend,'is_read'=> '0'])->count();
 
                                                  $brand_image=\App\Models\BrandProfile::where('user_id',$item->friend)->first();
-                                                dd($brand_image);
+                                                // dd($brand_image);
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->friend}})">
                                                     <div class="announcement_detail">
-                                                        @if(isset($current->brand_image))
-                                            <img src="{{asset('brand_image/'.$current->brand_image ?? '')}}" alt=""
+                                                        @if(isset($brand_image->brand_image))
+                                            <img src="{{asset('brand_image/'.$brand_image->brand_image ?? '')}}" alt=""
                                                 class="img-fluid" width="70px" height="70px">
                                             @endif
                                                         <div class="annoucment_content">
