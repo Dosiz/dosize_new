@@ -74,10 +74,10 @@ Category By city
                             
                                 <div class="promotion_box box_shahdow swiper-slide">
                                     <div class="promotion_img_box">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                        <img src="{{asset('product/'.$product->image)}}" alt=""
+                                        {{-- <a class="font-size-14 font-weight-700" onclick="recommended_product('{{route('product',$product->id ?? '')}}')"> --}}
+                                        <img onclick="recommended_product('{{route('product',$product->id ?? '')}}')" src="{{asset('product/'.$product->image)}}" alt=""
                                             class="img-fluid" style="width: 209px; height:105px;">
-                                        </a>
+                                        {{-- </a> --}}
                                         <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
                                     </div>
                                     <div class="promotion_content">
@@ -88,19 +88,19 @@ Category By city
                                                     <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
                                                 </p>
                                             </div>
-                                            <a class="font-size-14 font-weight-700" href="" >
-                                                <p class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
-                                            </a>
+                                            {{-- <a class="font-size-14 font-weight-700"  href="" > --}}
+                                                <p onclick="https://{{$product->short_name ?? ''}}.arikliger.com" class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
+                                            {{-- </a> --}}
                                         </div>
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                            <p class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
+                                        {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}"> --}}
+                                            <p onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
                                                 {{$product->name}}
                                             </p>
-                                        </a>
+                                        {{-- </a> --}}
                                         <div class="price_learn_more">
-                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">למידע נוסף ></a>
+                                            <a class="font-size-14 font-weight-700" onclick="recommended_product('{{route('product',$product->id ?? '')}}')" href="#">למידע נוסף ></a>
                                             
-                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
+                                            <p  onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
                                                     class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
                                     </div>
@@ -195,23 +195,23 @@ Category By city
                             @if(count($products) > 0 && $products['0']->id != null)
                                 @foreach($products as $product)
                                     <div class="deals_box box_shahdow swiper-slide">
-                                        <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}">
-                                            <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
-                                        </a>
-                                        <div class="content_div">
-                                            <a href="">
-                                            <span class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
-                                            </a>
-                                            <a href="{{route('product',$product->id)}}" style="color:#212529 !important;">
-                                            <h4 class="title font-size-14 font-weight-700">  
+                                        {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id ?? '')}}"> --}}
+                                            <img onclick="recommended_product('{{route('product',$product->id ?? '')}}')" src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height:163px">
+                                        {{-- </a> --}}
+                                        <div  class="content_div">
+                                            {{-- <a href=""> --}}
+                                            <span onclick="https://{{$product->short_name ?? ''}}.arikliger.com" class="deal_category font-size-12 font-weight-400"> {{$product->brand_name}}</span>
+                                            {{-- </a> --}}
+                                            {{-- <a href="{{route('product',$product->id)}}" style="color:#212529 !important;"> --}}
+                                            <h4 onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="title font-size-14 font-weight-700">  
                                                 {{$product->name}}
                                             </h4>
-                                            <div class="rating_price_div">
+                                            <div onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="rating_price_div">
                                                 <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
                                                         class="font-size-12 font-weight-400">80 ₪</span></p>
                                                 {{-- <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p> --}}
                                             </div>
-                                            </a>
+                                            {{-- </a> --}}
                                         </div>
                                     </div>
                                 @endforeach
