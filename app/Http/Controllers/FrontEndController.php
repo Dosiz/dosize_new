@@ -1017,7 +1017,10 @@ class FrontEndController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        if($request->password)
+        {
+            $user->password = $request->password;
+        }
         $user->city_id = $request->city_id;
        
         $user->save();
