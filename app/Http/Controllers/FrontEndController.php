@@ -986,7 +986,7 @@ class FrontEndController extends Controller
 
     public function personal_area()
     {
-        $user = BrandProfile::where('id',Auth::id())->first();
+        $user = User::where('id',Auth::id())->first();
         $categories = Category::get();
         $cities = City::get();
         return view('frontend.personal_area',compact('user' , 'cities','categories'));
