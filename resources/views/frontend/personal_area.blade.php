@@ -124,7 +124,7 @@ Dosize
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
                                         <label for="" class="font-size-16">סיסמה</label>
-                                        <input id="password"  class="form-control text-right"  type="password" name="password" value="{{ $user->password }}"  autocomplete="password">
+                                        <input id="password"  class="form-control text-right"  type="password" name="password" value=""  autocomplete="password">
                                         <span class="text-danger name_valid">{{$errors->first('password')}}</span>
                                     </div>
                                 </div>
