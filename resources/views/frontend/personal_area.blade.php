@@ -47,11 +47,12 @@ Dosize
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form action="" method="POST">
+                        <form action="{{ route('store__user_register') }}" method="POST">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">שם</label>
-                                <input id="name" type="text" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
                                 <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                             </div>
                             <div class="inputDiv">
@@ -66,13 +67,13 @@ Dosize
                             </div>
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">דוא”ל</label>
-                                <input id="email" type="email" name="email" value="{{ $user->email }}" required autocomplete="email">
+                                <input id="email" type="email" name="email" value="{{ $user->email }}" autocomplete="email">
                                 <span class="text-danger email_valid">{{$errors->first('email')}}</span>
                             </div>
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">סיסמה</label>
                                 <div class="password_div">
-                                    <input id="password" type="password" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password" name="password" autocomplete="new-password">
                                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                     <span class="text-danger password_valid">{{$errors->first('password')}}</span>
                                 </div>

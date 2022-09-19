@@ -992,6 +992,38 @@ class FrontEndController extends Controller
         return view('frontend.personal_area',compact('user' , 'cities','categories'));
     }
 
+    public function store_user(Request $request)
+    {
+        if($request->password)
+        {
+            $this->validate($request,[ 
+                'name'=>'required', 
+                'email'=>'required', 
+                'city_id' => 'required',
+                'password' => 'required|min:7|max:18',
+            ]);
+        }
+        else{
+            $this->validate($request,[ 
+                'name'=>'required', 
+                'email'=>'required', 
+                'city_id' => 'required',
+            ]);
+        }
+
+        $user = User::find($request->id);
+
+        
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->city_id = $request->city_id;
+       
+        $user->save();
+        
+    }
+
     public function static_login(Request $request)
     {
         try {

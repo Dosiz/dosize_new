@@ -102,6 +102,7 @@ Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::
 
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks');
 Route::get('/user/personal_area',[App\Http\Controllers\FrontEndController::class, 'personal_area'])->name('user.personal_area');
+Route::post('/user/store_user',[App\Http\Controllers\FrontEndController::class, 'store_user'])->name('store__user_register');
 
 Route::get('/brands',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
 Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');
