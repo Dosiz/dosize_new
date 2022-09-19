@@ -144,7 +144,10 @@ Dosize
                                 <a href="#" class="btn btn_grey_out me-2">הצטרפות לעסקים</a> 
                                 <button type="submit" class="btn btn_orange ml-2">הרשמה לדוסיז</button>
                             </div>
-                            <a href="#" class="link">מחיקת משתמש</a>
+                            <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link">מחיקת משתמש</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             <!-- <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button> -->
                             <!-- <div class="d-flex justify-content-center mt-4">
                                 <a href="" id="signup_btn" class="text-dark">
