@@ -129,7 +129,7 @@ margin-bottom: 0px;}
                             @endphp
                             
                             <li class="active">
-                                <a class="font-size-12" href="">×ž×‘×–×§×™× ×—×ž×™× <img
+                                <a class="font-size-12" href="">מבזקים חמים <img
                                         src="{{asset('assets/img/mobile_component/anaoucment.png') }}"
                                         class="img-fluid"></a>
                             </li>
@@ -153,7 +153,7 @@ margin-bottom: 0px;}
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        <h3 class="common_title">×”×ž×‘×¦×¢×™× ×©×œ× ×ª×¨×¦×• ×œ×¤×¡×¤×¡ <img
+                        <h3 class="common_title">המבצעים שלא תרצו לפספס  <img
                                 src="{{ asset('assets/img/mobile_component/percentage_icon.svg') }}" alt=""
                                 class="img-fluid">
                         </h3>
@@ -203,10 +203,10 @@ margin-bottom: 0px;}
                                             </p>
                                         </a>
                                         <div class="price_learn_more">
-                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">×œ×ž×™×“×¢ × ×•×¡×£ ></a>
+                                            <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">למידע נוסף ></a>
                                             
-                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} â‚ª <span
-                                                    class="font-size-12 font-weight-400">{{$product->price ?? '00'}} â‚ª</span></p>
+                                            <p class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
+                                                    class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +229,7 @@ margin-bottom: 0px;}
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-right">
-                        <h3 class="common_title">×¦×¨×›× ×•×ª ×ž×©×ª×œ×ž×ª <img
+                        <h3 class="common_title">צרכנות משתלמת  <img
                                 src="{{ asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
                     </div>
                 </div>
@@ -267,8 +267,8 @@ margin-bottom: 0px;}
                             </div>
                             @endforeach
                             @endif
-                            <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">×œ×›×œ
-                                ×”×›×ª×‘×•×ª ></a>
+                            <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
+                                הכתבות ></a>
                         </div>
                     </div>
                 </div>
@@ -283,7 +283,7 @@ margin-bottom: 0px;}
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <h3 class="common_title">×“×™×œ×™× ×—×ž×™× ×ž×”×ª× ×•×¨ <img
+                            <h3 class="common_title">דילים חמים מהתנור  <img
                                     src="{{ asset('assets/img/mobile_component/deals.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
@@ -312,9 +312,9 @@ margin-bottom: 0px;}
                                             
                                             <div onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="rating_price_div">
                                                 @if($product->price)
-                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} â‚ª <span class="font-size-12 font-weight-400">{{$product->discount_price ?? ''}} â‚ª</span></p>
+                                                <p class="font-size-14 font-weight-600">{{$product->price ?? ''}} ₪ <span class="font-size-12 font-weight-400">{{$product->discount_price ?? ''}} ₪</span></p>
                                                 @else
-                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">{{$product->discount_price ?? ''}} â‚ª</span></p>
+                                                <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">{{$product->discount_price ?? ''}} ₪</span></p>
                                                 @endif
                                                 @php 
                                                     $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
@@ -342,7 +342,7 @@ margin-bottom: 0px;}
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <span class="annoucment_text font-size-16 font-weight-600">×ž×‘×–×§×™× ×—×ž×™× <img
+                            <span class="annoucment_text font-size-16 font-weight-600">מבזקים חמים  <img
                                     src="{{ asset('assets/img/mobile_component/anaoucment.png') }}" alt=""
                                     class="img-fluid"></span>
                             <div class="hot_flashes_list">
@@ -365,7 +365,7 @@ margin-bottom: 0px;}
                                     @endif
                                     @endforeach
                                 </ul>
-                                <p class="more_flashes text-center font-size-12">×¢×•×“ ×ž×‘×–×§×™×...</p>
+                                <p class="more_flashes text-center font-size-12">עוד מבזקים...</p>
                             </div>
                         </div>
                     </div>
@@ -377,7 +377,7 @@ margin-bottom: 0px;}
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 text-right">
-                            <h3 class="common_title">×”×›×™ ×ž×•×ž×œ×¦×™× <img
+                            <h3 class="common_title">הכי מומלצים  <img
                                     src="{{ asset('assets/img/mobile_component/star.svg') }}" alt="" class="img-fluid">
                             </h3>
                         </div>
@@ -405,9 +405,9 @@ margin-bottom: 0px;}
                                     </h4>
                                     <div class="rating_price_div" onclick="recommended_product('{{route('product',$product->id)}}')">
                                         @if($product->price)
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} â‚ª <span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} â‚ª</span></p>
+                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} ₪</span></p>
                                         @else
-                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} â‚ª</span></p>
+                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} ₪</span></p>
                                         @endif
                                         @php 
                                             $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
@@ -469,7 +469,7 @@ margin-bottom: 0px;}
                                                     <span class="read_more">
                                                         {{-- {{route('category_by_city',['category_id'=>$category->id,'city_id'=>$city_id])}} --}}
                                                         <a href="{{route('category_by_city',['category_id'=>$category->id ?? '5','city_id'=>$city_id])}}" class="font-size-12 font-weight-400" style="direction:rtl;">
-                                                            {{$category->name}} ×œ×§×˜×’×•×¨×™×ª  </a> </span>
+                                                            {{$category->name}} לקטגורית  </a> </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -605,7 +605,7 @@ margin-bottom: 0px;}
                                                                            @if($product->price)
                                                                             <p class="font-size-14 font-weight-600">
                                                                                 {{$product->price ?? ''}}
-                                                                                â‚ª
+                                                                                ₪
                                                                             </p>
                                                                             @else
                                                                             <p class="font-size-14 font-weight-600">
@@ -854,7 +854,7 @@ margin-bottom: 0px;}
                                                                        @if($product->price)
                                                                         <p class="font-size-14 font-weight-600">
                                                                             {{$product->price ?? ''}}
-                                                                            â‚ª
+                                                                            ₪
                                                                         </p>
                                                                         @else
                                                                         <p class="font-size-14 font-weight-600">
@@ -1103,7 +1103,7 @@ margin-bottom: 0px;}
                 <div class="row align-items-center">
                     <div class="col-4">
                         <div class="box text-right px-3">
-                            <p class="txt">×‘×•××• ×œ×¢×§×•×‘ ××—×¨× ×• :)</p>
+                            <p class="txt">בואו לעקוב אחרנו :)</p>
                             <div class="socials_icons mt-4">
                                 <a href="#" class="social_link mx-2">
                                     <img src="{{ asset('assets/img/fb.png') }}" alt="fb">
@@ -1124,12 +1124,12 @@ margin-bottom: 0px;}
                         <div class="box px-3 border_Side">
                             <div class="statments_links d-flex flex-column align-items-end">
                                 <p class="txt">
-                                    ×”×¦×˜×¨×¤×• ×œ×ž×”×¤×™×›×ª ×”×¦×¨×›× ×•×ª ×”×ž×§×•×ž×™×ª ×©×œ ×“×•×¡×™×– ×¦×¨×›× ×•×ª >>â€Ž
+                                    הצטרפו למהפיכת הצרכנות המקומית של דוסיז צרכנות >>
                                 </p>
                                 <div class="btns d-flex mt-4">
-                                    <a href="https://dosiz.co.il/landing-page/"  class="btn btn_grey_out">×”×¦×˜×¨×¤×•×ª ×œ×¢×¡×§×™×</a>
+                                    <a href="https://dosiz.co.il/landing-page/"  class="btn btn_grey_out">הצטרפות לעסקים</a>
 									<!-- data-toggle="modal" data-target="#enrollmentModal" -->
-                                    <a  data-toggle="modal" data-target="#enrollmentModal2" href="#" class="btn btn_orange ml-2">×”×¨×©×ž×” ×œ×“×•×¡×™×–</a>
+                                    <a  data-toggle="modal" data-target="#enrollmentModal2" href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                                 </div>
                             </div>
                         </div>
