@@ -913,28 +913,43 @@ class FrontEndController extends Controller
             $query->where('name','Admin');
         }))
         ->first();
-        $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
-        ->groupBy('product_comments.product_id')
-        ->orderBy('avgrate', 'Desc')
-        // ->where('product_comments.parent_id',null)
-        ->where('product_comments.rating','!=',null)
-        ->where('product_comments.user_id', Auth::user()->id)
-        // ->limit(10)
-        ->get();
+        // $product_ratings = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_rating')])
+        // ->groupBy('product_comments.product_id')
+        // ->orderBy('avgrate', 'Desc')
+        // // ->where('product_comments.parent_id',null)
+        // ->where('product_comments.rating','!=',null)
+        // ->where('product_comments.user_id', Auth::user()->id)
+        // // ->limit(10)
+        // ->get();
 
-        $product_comments = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_comment')])
-        ->groupBy('product_comments.product_id')
-        ->orderBy('avgrate', 'Desc')
-        ->where('product_comments.user_id', Auth::user()->id)
-        ->get();
+        // $product_comments = ProductComment::select(['product_comments.*',DB::raw('avg(product_comments.rating) as avgrate'),DB::raw('count(product_comments.id) as count_comment')])
+        // ->groupBy('product_comments.product_id')
+        // ->orderBy('avgrate', 'Desc')
+        // ->where('product_comments.user_id', Auth::user()->id)
+        // ->where('product_comments.status', 1)
+        // ->get();
+
+        // $article_comments = BlogComment::select(['blog_comments.*',DB::raw('avg(blog_comments.rating) as avgrate'),DB::raw('count(blog_comments.id) as count_comment')])
+        // ->groupBy('blog_comments.blog_id')
+        // ->orderBy('avgrate', 'Desc')
+        // ->where('blog_comments.user_id', Auth::user()->id)
+        // ->where('blog_comments.status', 1)
+        // ->get();
         $likes = Like::where('user_id',Auth::user()->id)->get();
+        $article_comments = BlogComment::where('user_id',Auth::user()->id)->where('status' , 1)->count();
+        $product_comments = ProductComment::where('user_id',Auth::user()->id)->where('status' , 1)->count();
+        $product_ratings = ProductComment::where('user_id',Auth::user()->id)->where('rating' , '!=' , null)->where('status' , 1)->count();
+        $subscribers = Subscriber::where('email',Auth::user()->email)->count();
+        $share = DB::table('short_urls')
+        ->where('user_id',Auth::user()->id)
+        ->count();
 
         $coins = Point::where('user_id',Auth::user()->id)->sum('points');
         $usedcoins = AdminProductOrder::where('user_id',Auth::user()->id)->sum('coins');
-        // dd($usedcoins,$coins);
-        // dd($coins);
+        // dd($article_comments,$product_comments);
+        // dd($product_ratings);
         $totalcoins = $coins - $usedcoins;
-        return view('frontend.user_wallet',compact('totalcoins','usedcoins','coins','cities','categories','products','admin','product_ratings','product_comments','likes'));
+        return view('frontend.user_wallet',compact('totalcoins','usedcoins','coins','cities','categories','products','admin','product_ratings','product_comments','article_comments','likes','subscribers','share'));
     }
 
     public function store_wallet(Request $request)
