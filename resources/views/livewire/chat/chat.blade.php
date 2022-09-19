@@ -263,7 +263,7 @@
                                                  $chatmessage=\App\Models\Message::where('thread',Auth::user()->id.'-'.$item->fiend)->orWhere('thread',$item->friend.'-'.Auth::user()->id)->latest()->get();
                                                  $chatunread=\App\Models\Message::where(['sender_id'=>$item->friend,'is_read'=> '0'])->count();
 
-                                                 $brand_image=\App\Models\BrandProfile::where('user_id'=>$item->friend)->first();
+                                                 $brand_image=\App\Models\BrandProfile::where('user_id',$item->friend)->first();
                                                 dd($brand_image);
                                                 @endphp
                                                 <li  wire:click="startChat({{$item->friend}})">
