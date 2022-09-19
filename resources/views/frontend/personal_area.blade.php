@@ -94,32 +94,38 @@ Dosize
                             <div class="row justify-content-end">
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
+                                        <label for="" class="font-size-16">שם משתמש</label>
                                         <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
                                         <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
-                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for="" class="font-size-16">אימייל</label>
+                                        <input id="email" class="form-control text-right" type="email" name="email" value="{{ $user->email }}"  autocomplete="email">
+                                        <span class="text-danger name_valid">{{$errors->first('email')}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for=""class="font-size-16">שם</label>
-                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for=""class="font-size-16">בחר את העיר שלך</label>
+                                        
+                                        <select name="city_id" id="city_id" class="form-control text-right">
+                                            <option selected disabled value="">בחר מתוך הרשימה</option>
+                                            @foreach($cities as $city)
+                                                <option value="{{$city->id}}" {{ $user->city_id == $city->id ? 'selected' : '' }}> {{$city->hebrew_name}} </option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger name_valid">{{$errors->first('city_id')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
-                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for="" class="font-size-16">סיסמה</label>
+                                        <input id="password"  class="form-control text-right"  type="password" name="password" value="{{ $user->password }}"  autocomplete="password">
+                                        <span class="text-danger name_valid">{{$errors->first('password')}}</span>
                                     </div>
                                 </div>
                             </div>
