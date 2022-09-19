@@ -682,7 +682,7 @@ class FrontEndController extends Controller
         ->Join('products', 'products.id', '=', 'products_has_cities.product_id')
         ->Join('categories', 'categories.id', '=', 'products.category_id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
-        ->select('products.*','brand_profiles.brand_name')
+        ->select('products.*','brand_profiles.brand_name','brand_profiles.short_name')
         ->where('products_has_cities.city_id',$city_id)
         ->where('categories.id',$category_id)
         ->where('products.discount_price','!=', null)
@@ -697,7 +697,7 @@ class FrontEndController extends Controller
         // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
         ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
         ->select('products.*'
-        ,'brand_profiles.brand_name'
+        ,'brand_profiles.brand_name','brand_profiles.short_name'
         // ,DB::raw('avg(product_comments.rating) as avgrate')
         )
         ->where('products_has_cities.city_id',$city_id)

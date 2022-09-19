@@ -668,7 +668,9 @@ margin-bottom: 0px;}
                                                                            @if($product->price)
                                                                             <p class="font-size-14 font-weight-600">
                                                                                 {{$product->price ?? ''}}
-                                                                                â‚ª
+
+                                                                                ₪
+
                                                                             </p>
                                                                             @else
                                                                             <p class="font-size-14 font-weight-600">

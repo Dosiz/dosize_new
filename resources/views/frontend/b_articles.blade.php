@@ -35,7 +35,7 @@
                             </div> --}}
                             <div class="d-flex" style="height: 100%">
                                 <a href="{{url('brand_article',$article->id)}}"> 
-                                    <img src="{{asset('blog/'.$article->image ?? '')}}" alt="" style="width:131px; height:100%;" class="img-flui">
+                                    <img src="{{asset('blog/'.$article->image ?? '')}}" alt="" style="width:131px; height:100%;" class="img-fluid">
                                 </a>
 
                                 <div class="articleInfo">
