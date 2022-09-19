@@ -1021,6 +1021,10 @@ class FrontEndController extends Controller
         $user->city_id = $request->city_id;
        
         $user->save();
+
+        toastr()->success('עדכן בהצלחה');
+
+        return Redirect::back();
         
     }
 
