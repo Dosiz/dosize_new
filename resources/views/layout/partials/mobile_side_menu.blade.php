@@ -15,7 +15,7 @@
     <div class="mobile_menu_list">
         <ul>
             <li>
-                <a href="">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.png') }}" alt=""
+                <a href="{{route('user.personal_area')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.png') }}" alt=""
                         class="img-fluid"></a>
             </li>
             <li>

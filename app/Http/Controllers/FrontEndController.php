@@ -984,6 +984,14 @@ class FrontEndController extends Controller
         return view('frontend.b_products',compact('brand_profile','products'));
     }
 
+    public function personal_area($brand_profile_id)
+    {
+        $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
+        $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id','DESC')->get();
+
+        return view('frontend.personal_area',compact('brand_profile','products'));
+    }
+
     public function static_login(Request $request)
     {
         try {

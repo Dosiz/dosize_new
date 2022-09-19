@@ -101,6 +101,7 @@ Route::post('/store_product_comment_like',[App\Http\Controllers\FrontEndControll
 Route::post('/store_product_bookmark',[App\Http\Controllers\FrontEndController::class, 'store_product_bookmark'])->name('store-product-bookmark');
 
 Route::get('/brand/bookmarks',[App\Http\Controllers\FrontEndController::class, 'bookmarks'])->name('bookmarks');
+Route::get('/user/personal_area',[App\Http\Controllers\FrontEndController::class, 'personal_area'])->name('user.personal_area');
 
 Route::get('/brands',[App\Http\Controllers\FrontEndController::class, 'city_brands'])->name('city-brands');
 Route::get('/user/messages',[App\Http\Controllers\FrontEndController::class, 'user_messages'])->name('user-message');

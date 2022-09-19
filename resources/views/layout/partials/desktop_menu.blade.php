@@ -57,7 +57,7 @@
                  <!-- Need to add  profile link here -->
                 <li>
                     @guest
-                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
+                    <a href="{{route('user.personal_area')}}" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
                             class="img-fluid"></a>
                     @else
                     <a href="">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt=""
