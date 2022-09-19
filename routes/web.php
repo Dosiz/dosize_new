@@ -27,7 +27,7 @@ Route::post('getShortUrl',function (Request $request){
 });
 
 Route::post('/user_login', [App\Http\Controllers\FrontEndController::class, 'static_login']);
-Route::get('/delete_user', [App\Http\Controllers\FrontEndController::class, 'delete_user']);
+// Route::get('/delete_user', [App\Http\Controllers\FrontEndController::class, 'delete_user']);
 Route::post('/register_user', [App\Http\Controllers\FrontEndController::class, 'registerUser']);
 
 

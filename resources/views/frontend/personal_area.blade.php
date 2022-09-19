@@ -50,9 +50,6 @@ Dosize
 
         color: #4F4C52;
     }
-    .hot_flashes_div{
-        display: block !important;
-    }
 </style>
 
 <main>
@@ -150,7 +147,7 @@ Dosize
                                 </form>
                                 <button type="submit" class="btn btn_orange ml-2">הרשמה לדוסיז</button>
                             </div>
-                            <a href="{{route('delete_user')}}" class="link">מחיקת משתמש</a>
+                            {{-- <a href="{{route('delete_user')}}" class="link">מחיקת משתמש</a> --}}
                             <!-- <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button> -->
                             <!-- <div class="d-flex justify-content-center mt-4">
                                 <a href="" id="signup_btn" class="text-dark">
