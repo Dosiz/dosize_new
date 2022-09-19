@@ -51,7 +51,7 @@ Dosize
                             @csrf
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">שם</label>
-                                <input id="name" type="text" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
                                 <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                             </div>
                             <div class="inputDiv">
@@ -59,14 +59,14 @@ Dosize
                                 <select name="city_id" id="city_id">
                                     <option selected disabled value="">בחר מתוך הרשימה</option>
                                     @foreach($cities as $city)
-                                        <option value="{{$city->id}}"> {{$city->hebrew_name}} </option>
+                                        <option value="{{$city->id}}" {{ $user->city_id == $city->id ? 'selected' : '' }}> {{$city->hebrew_name}} </option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger city_valid">{{$errors->first('city_id')}}</span>
                             </div>
                             <div class="inputDiv">
                                 <label for="" class="font-size-16">דוא”ל</label>
-                                <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" name="email" value="{{ $user->email }}" required autocomplete="email">
                                 <span class="text-danger email_valid">{{$errors->first('email')}}</span>
                             </div>
                             <div class="inputDiv">
