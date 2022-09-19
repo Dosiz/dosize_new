@@ -13,6 +13,45 @@ Dosize
 @endpush
 @section('content')
 
+<style>
+    input.form-control{
+        background-color: #F6F6F6 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+    .main-wrapper{
+        background-color: #fff;
+    }
+    .checkBox_div{
+        display: flex;
+    justify-content: end;
+    flex-direction: row-reverse;
+    align-items: center;
+    }
+    .btn_orange {
+        background: #DB1580;
+        color: #fff;
+        border-radius: 10px;
+    }
+    .btn_grey_out{
+        border: 1px solid #353039;
+        color: #000;
+        border-radius: 10px;
+    }
+    .link{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 14px;
+        /* identical to box height, or 88% */
+
+        text-align: center;
+        text-decoration-line: underline;
+
+        color: #4F4C52;
+    }
+</style>
+
 <main>
     <div class="main-wrapper">
         <div class="categories spacing">
@@ -47,15 +86,45 @@ Dosize
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12" style="display: flex; justify-content:end;">
+                    <div class="text-right w-100">
+                        <h1 class="mb-4">איזור אישי</h1>
                         <form action="{{ route('store__user_register') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $user->id }}">
-                            <div class="inputDiv">
-                                <label for="" class="font-size-16">שם</label>
-                                <input id="name" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                            <div class="row justify-content-end">
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for="" class="font-size-16">שם</label>
+                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
+                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for="" class="font-size-16">שם</label>
+                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
+                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="inputDiv">
+                            <div class="row justify-content-end">
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for=""class="font-size-16">שם</label>
+                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
+                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for="" class="font-size-16">שם</label>
+                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
+                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <!-- <div class="inputDiv">
                                 <label for="" class="font-size-16">עיר</label>
                                 <select name="city_id" id="city_id">
                                     <option selected disabled value="">בחר מתוך הרשימה</option>
@@ -77,7 +146,7 @@ Dosize
                                     <i class="fa fa-eye-slash" aria-hidden="true"></i>
                                     <span class="text-danger password_valid">{{$errors->first('password')}}</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="checkBox_div">
                                 <input type="checkbox" name="" id="approve" checked>
                                 <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
@@ -87,26 +156,19 @@ Dosize
                                 <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                     המערכת...</label>
                             </div>
-                            <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button>
-                            <div class="sign_up_with">
-                                <h6 class="text-center">או הרשם עם</h6>
-                                <div class="signup_btn">
-                                    <a href="{{route('auth.facebook')}}">
-                                        <img src="{{ asset('assets/img/mobile_component/facebookIcon.png') }}" alt=""
-                                            class="img-fluid">
-                                    </a>
-                                    <a href="{{route('auth.google')}}">
-                                        <img src="{{ asset('assets/img/mobile_component/googleIcon.png') }}" alt=""
-                                            class="img-fluid">
-                                    </a>
-                                </div>
+                            <div class="btns my-3">
+                                <a href="#" class="btn btn_grey_out me-2">הצטרפות לעסקים</a> 
+                                <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
                             </div>
+                            <a href="#" class="link">מחיקת משתמש</a>
+                            <!-- <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button> -->
                             <!-- <div class="d-flex justify-content-center mt-4">
                                 <a href="" id="signup_btn" class="text-dark">
                                     <b>אין לכם חשבון? לחצו כאן להרשמה > </b>
                                 </a>
                             </div> -->
                         </form>
+                    </div>
                     </div>
                 </div>
             </div>
