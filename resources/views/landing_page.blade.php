@@ -658,10 +658,10 @@ margin-bottom: 0px;}
                                                                         </p>
                                                                     </a>
                                                                     <span
-                                                                        class="font-size-12 like_span">4 <i
+                                                                        class="font-size-12 like_span d-none">4 <i
                                                                             class="fa fa-heart"
                                                                             aria-hidden="true"></i></span>
-                                                                    <div class="rating_price_div">
+                                                                    <div class="rating_price_div" style="display: flex !important;">
                                                                         <a class="font-size-14 font-weight-700"
                                                                            href="{{route('product',$product->id ?? '')}}"
                                                                            style="color: #212529 !important">
