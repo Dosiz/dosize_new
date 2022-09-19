@@ -260,6 +260,7 @@
                                         <ul>
                                              @foreach($friend as $item)
                                                 @php
+                                                dd($item);
                                                  $chatmessage=\App\Models\Message::where('thread',Auth::user()->id.'-'.$item->fiend)->orWhere('thread',$item->friend.'-'.Auth::user()->id)->latest()->get();
                                                  $chatunread=\App\Models\Message::where(['sender_id'=>$item->friend,'is_read'=> '0'])->count();
                                                 
