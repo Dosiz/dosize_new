@@ -50,6 +50,9 @@ Dosize
 
         color: #4F4C52;
     }
+    .hot_flashes_div{
+        display: block !important;
+    }
 </style>
 
 <main>
