@@ -595,7 +595,7 @@ margin-bottom: 0px;}
                                                                         </p>
                                                                     </a>
                                                                     <span
-                                                                        class="font-size-12 like_span d-none">4 <i
+                                                                        class="font-size-12 like_span" style="display: none !important;">4 <i
                                                                             class="fa fa-heart"
                                                                             aria-hidden="true"></i></span>
                                                                     <div class="rating_price_div" style="display: flex !important;">
@@ -658,7 +658,7 @@ margin-bottom: 0px;}
                                                                         </p>
                                                                     </a>
                                                                     <span
-                                                                        class="font-size-12 like_span d-none">4 <i
+                                                                        class="font-size-12 like_span " style="display: none !important;">4 <i
                                                                             class="fa fa-heart"
                                                                             aria-hidden="true"></i></span>
                                                                     <div class="rating_price_div" style="display: flex !important;">
