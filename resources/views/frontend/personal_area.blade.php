@@ -141,8 +141,8 @@ Dosize
                                     המערכת...</label>
                             </div>
                             <div class="btns my-3">
-                                <button type="submit" class="btn btn_grey_out me-2">הצטרפות לעסקים</button> 
-                                <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
+                                <a href="#" class="btn btn_grey_out me-2">הצטרפות לעסקים</a> 
+                                <button type="submit" class="btn btn_orange ml-2">הרשמה לדוסיז</button>
                             </div>
                             <a href="#" class="link">מחיקת משתמש</a>
                             <!-- <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button> -->
