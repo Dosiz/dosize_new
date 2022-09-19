@@ -405,9 +405,9 @@ margin-bottom: 0px;}
                                     </h4>
                                     <div class="rating_price_div" onclick="recommended_product('{{route('product',$product->id)}}')">
                                         @if($product->price)
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} â‚ª <span class="font-size-12 font-weight-400">80 â‚ª</span></p>
+                                        <p class="font-size-14 font-weight-600">{{$product->price}} â‚ª <span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} â‚ª</span></p>
                                         @else
-                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400">80 â‚ª</span></p>
+                                        <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} â‚ª</span></p>
                                         @endif
                                         @php 
                                             $rating =  \App\Models\ProductComment::where('product_id',$product->id)->avg('rating');
