@@ -274,7 +274,7 @@ Category By city
                                             </h4>
                                             <div onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="rating_price_div">
                                                 <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                        class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                        class="font-size-12 font-weight-400">@if($product->discount_price != null) {{$product->price}} ₪ @endif</span></p>
                                                 {{-- <p class="rating_text">{{$product->avgrate ?? 'no rating'}} <i class="fa fa-star"></i></p> --}}
                                             </div>
                                             {{-- </a> --}}
@@ -352,7 +352,7 @@ Category By city
                                     </h4>
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                class="font-size-12 font-weight-400">@if($product->discount_price != null) {{$product->discount_price}} ₪ @endif</span></p>
                                         <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
                                     </div>
                                     </a>

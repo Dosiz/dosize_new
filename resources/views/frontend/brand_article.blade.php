@@ -200,7 +200,7 @@
                                     <h4 class="title font-size-14 font-weight-700">{{$recommended_product->recommended_product->name}}</h4></h4>
                                     <div class="rating_price_div">
                                         <p class="font-size-14 font-weight-600">{{$recommended_product->recommended_product->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">80 ₪</span></p>
+                                                class="font-size-12 font-weight-400">@if($recommended_product->recommended_product->discount_price != null) {{$recommended_product->recommended_product->discount_price}} ₪ @endif</span></p>
                                         {{-- <p class="rating_text">4.8 <i class="fa fa-star"></i></p> --}}
                                     </div>
                                     </a>

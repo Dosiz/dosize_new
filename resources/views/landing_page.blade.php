@@ -405,7 +405,7 @@ margin-bottom: 0px;}
                                     </h4>
                                     <div class="rating_price_div" onclick="recommended_product('{{route('product',$product->id)}}')">
                                         @if($product->price)
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} ₪</span></p>
+                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">@if($product->discount_price != null){{$product->discount_price ?? ''}} ₪ @endif</span></p>
                                         @else
                                         <p class="font-size-14 font-weight-600"><span class="font-size-12 font-weight-400" style="text-decoration: line-through !important;">{{$product->discount_price ?? ''}} ₪</span></p>
                                         @endif
