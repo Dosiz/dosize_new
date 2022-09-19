@@ -46,7 +46,7 @@ Dosize
         <div class="hot_flashes_div spacing">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="display: flex; justify-content:end;">
                         <form action="{{ route('store__user_register') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $user->id }}">
