@@ -35,11 +35,11 @@ Dosize
                             <div class="col-lg_7">
                                 <ul>
                                     <li class="font-size-12 mb-lg-3">לייק @if(count($likes) > 0)({{count($likes)}})@endif <i class="fa fa-heart-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">תגובות @if(count($product_comments) > 0)@foreach($product_comments as $product_comment)({{$product_comment->count_comment}})@endforeach @endif <i class="fa fa-comment-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">שיתופים (35) <i class="fa fa-share-square-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">דירוגים @if(count($product_ratings) > 0)@foreach($product_ratings as $rating)({{$rating->count_rating}})@endforeach @endif<i class="fa fa-star-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">קבלות (2) <i class="fa fa-file-text-o"></i></li>
-                                    <li class="font-size-12 mb-lg-3">הרשמות למועדונים <i class="fa fa-file-text-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">תגובות ({{ $product_comments + $article_comments }}) <i class="fa fa-comment-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">שיתופים ({{$share}}) <i class="fa fa-share-square-o"></i></li>
+                                    <li class="font-size-12 mb-lg-3">דירוגים ({{ $product_ratings }})<i class="fa fa-star-o"></i></li>
+                                    {{-- <li class="font-size-12 mb-lg-3">קבלות (2) <i class="fa fa-file-text-o"></i></li> --}}
+                                    <li class="font-size-12 mb-lg-3">הרשמות למועדונים ({{ $subscribers }}) <i class="fa fa-file-text-o"></i></li>
                                 </ul>
                             </div>
                             <div class="col-lg_5 d-none d-lg-block mt-3 text-center">

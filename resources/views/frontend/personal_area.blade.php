@@ -97,59 +97,43 @@ Dosize
                             <div class="row justify-content-end">
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
+                                        <label for="" class="font-size-16">שם משתמש</label>
                                         <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
                                         <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
-                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for="" class="font-size-16">אימייל</label>
+                                        <input id="email" class="form-control text-right" type="email" name="email" value="{{ $user->email }}"  autocomplete="email">
+                                        <span class="text-danger name_valid">{{$errors->first('email')}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for=""class="font-size-16">שם</label>
-                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for=""class="font-size-16">בחר את העיר שלך</label>
+                                        
+                                        <select name="city_id" id="city_id" class="form-control text-right">
+                                            <option selected disabled value="">בחר מתוך הרשימה</option>
+                                            @foreach($cities as $city)
+                                                <option value="{{$city->id}}" {{ $user->city_id == $city->id ? 'selected' : '' }}> {{$city->hebrew_name}} </option>
+                                            @endforeach
+                                        </select>
+                                        <span class="text-danger name_valid">{{$errors->first('city_id')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">שם</label>
-                                        <input id="name"  class="form-control text-right"  type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
-                                        <span class="text-danger name_valid">{{$errors->first('name')}}</span>
+                                        <label for="" class="font-size-16">סיסמה</label>
+                                        <input id="password"  class="form-control text-right"  type="password" name="password" value=""  autocomplete="password">
+                                        <span class="text-danger name_valid">{{$errors->first('password')}}</span>
                                     </div>
                                 </div>
                             </div>
                            
-                            <!-- <div class="inputDiv">
-                                <label for="" class="font-size-16">עיר</label>
-                                <select name="city_id" id="city_id">
-                                    <option selected disabled value="">בחר מתוך הרשימה</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}" {{ $user->city_id == $city->id ? 'selected' : '' }}> {{$city->hebrew_name}} </option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger city_valid">{{$errors->first('city_id')}}</span>
-                            </div>
-                            <div class="inputDiv">
-                                <label for="" class="font-size-16">דוא”ל</label>
-                                <input id="email" type="email" name="email" value="{{ $user->email }}" autocomplete="email">
-                                <span class="text-danger email_valid">{{$errors->first('email')}}</span>
-                            </div>
-                            <div class="inputDiv">
-                                <label for="" class="font-size-16">סיסמה</label>
-                                <div class="password_div">
-                                    <input id="password" type="password" name="password" autocomplete="new-password">
-                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                                    <span class="text-danger password_valid">{{$errors->first('password')}}</span>
-                                </div>
-                            </div> -->
+                            
                             <div class="checkBox_div">
                                 <input type="checkbox" name="" id="approve" checked>
                                 <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
@@ -160,8 +144,11 @@ Dosize
                                     המערכת...</label>
                             </div>
                             <div class="btns my-3">
-                                <a href="#" class="btn btn_grey_out me-2">הצטרפות לעסקים</a> 
-                                <a href="#" class="btn btn_orange ml-2">הרשמה לדוסיז</a>
+                                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn_grey_out me-2">הצטרפות לעסקים</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <button type="submit" class="btn btn_orange ml-2">הרשמה לדוסיז</button>
                             </div>
                             <a href="#" class="link">מחיקת משתמש</a>
                             <!-- <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button> -->
