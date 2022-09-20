@@ -30,7 +30,7 @@
                     <select class="form-control" name="sub_category" id="sub_category">
                         <option value="">Select Sub Category</option>
                         @foreach($sub_categories as $sub_category)
-                        <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
+                        <option value="{{$sub_category->id}}" @if(isset($sub_category_id)){{ $sub_category_id ?? '' == $sub_category->id ? 'selected' : '' }} @endif>{{$sub_category->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <div class="d-lg-flex" >
                     <div class="inputDiv d-flex flex-column mb-4">
-                        <input type="number" class="form-control" placeholder="Price" name="price" id="price" >
+                        <input type="number" class="form-control" placeholder="Price" value="{{$price ?? ''}}" name="price" id="price" >
                     </div>
                     <div class="inputDiv d-flex flex-column mb-4 mr-2">
                         <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>

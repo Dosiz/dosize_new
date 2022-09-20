@@ -1066,6 +1066,8 @@ class FrontEndController extends Controller
 
     public function brand_products_filter(Request $request)
     {
+        $price = $request->price;
+        $sub_category_id = $request->sub_category;
         $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
         
         if($request->price != null)
@@ -1082,7 +1084,7 @@ class FrontEndController extends Controller
 
         // dd($product_results);
 
-        return view('frontend.b_products_filter',compact('brand_profile','products','sub_categories'));
+        return view('frontend.b_products_filter',compact('brand_profile','products','sub_categories','price','sub_category_id'));
     }
 
     public function personal_area()
