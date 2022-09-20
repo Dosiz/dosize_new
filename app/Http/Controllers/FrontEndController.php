@@ -992,6 +992,9 @@ class FrontEndController extends Controller
 
         $category_id = $request->category_id;
         $city_id = $request->city_id;
+        $price = $request->price;
+        $sub_category_id = $request->sub_category;
+        // dd($sub_category);
 
         if($request->price == null)
         {
@@ -1040,7 +1043,7 @@ class FrontEndController extends Controller
         
 
         // dd($results);
-        return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id'));
+        return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id','price','sub_category_id'));
     }
 
     public function brand_articles($brand_profile_id)
