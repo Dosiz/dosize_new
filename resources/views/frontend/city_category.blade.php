@@ -182,6 +182,22 @@ Category By city
         <div class="affordable_consumption spacing">
             <div class="container-fluid">
                 <div class="row">
+                        <strong>Filter By :</strong>
+                        <div class="col-lg-3">
+                            <div class="inputDiv d-flex flex-column mb-4">
+                                <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 ">
+                            <div class="inputDiv d-flex flex-column mb-4">
+                                <input type="text" class="form-control" placeholder="Price" name="price" id="price" >
+                            </div>
+                        </div>
+                        <div class="col-lg-2 ">
+                            <div class="inputDiv d-flex flex-column mb-4">
+                                <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                            </div>
+                        </div>
                     <div class="col-lg-12 text-right">
                         <h3 class="common_title">צרכנות משתלמת <img
                                 src="{{asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>

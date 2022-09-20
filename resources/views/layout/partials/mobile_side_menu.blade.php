@@ -15,8 +15,13 @@
     <div class="mobile_menu_list">
         <ul>
             <li>
-                <a href="{{route('user.personal_area')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.png') }}" alt=""
-                        class="img-fluid"></a>
+                @guest
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt="" class="img-fluid">
+                    </a>
+                @else
+                    <a href="{{route('user.personal_area')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.png') }}" alt="" class="img-fluid"></a>
+                @endguest
+
             </li>
             <li>
                 @guest
