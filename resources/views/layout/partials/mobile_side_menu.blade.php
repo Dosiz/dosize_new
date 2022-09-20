@@ -16,7 +16,7 @@
         <ul>
             <li>
                 @guest
-                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/user_icon.svg') }}" alt="" class="img-fluid">
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.svg') }}" alt="" class="img-fluid">
                     </a>
                 @else
                     <a href="{{route('user.personal_area')}}">איזור אישי <img src="{{asset('assets/img/mobile_component/userIcon.png') }}" alt="" class="img-fluid"></a>
