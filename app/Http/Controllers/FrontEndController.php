@@ -20,6 +20,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use DB;
+use Carbon\Carbon;
 use App\Models\BrandMessage;
 use App\Models\BlogComment;
 use App\Models\ProductComment;
@@ -1035,6 +1036,15 @@ class FrontEndController extends Controller
         if($request->password)
         {
             $user->password = $request->password;
+        }
+        if($request->phone)
+        {
+            $user->phone = $request->phone;
+        }
+        if($request->birth_date)
+        {
+            $birthday = Carbon::parse($request->birth_date)->format('Y-m-d');
+            $user->birth_date = $birthday;
         }
         $user->city_id = $request->city_id;
        

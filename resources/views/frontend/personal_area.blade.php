@@ -24,9 +24,13 @@ Dosize
     }
     .checkBox_div{
         display: flex;
-    justify-content: end;
-    flex-direction: row-reverse;
+    justify-content: start;
+    /* flex-direction: row-reverse; */
     align-items: center;
+    
+    }
+    .checkbox{
+        margin: 0px 0px 0px 6px !important;
     }
     .btn_orange {
         background: #DB1580;
@@ -82,32 +86,46 @@ Dosize
             </div>
         </div>
         <div class="line spacing"></div>
-        <div class="hot_flashes_div spacing">
+        <div class="hot_flashes_div spacing" style="display: block !important;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12" style="display: flex; justify-content:end;">
+                    <div class="col-lg-12" style="display: flex; justify-content:end; direction:rtl;">
                     <div class="text-right w-100">
                         <h1 class="mb-4">איזור אישי</h1>
                         <form action="{{ route('store__user_register') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $user->id }}">
-                            <div class="row justify-content-end">
+                            <div class="row justify-content-start">
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
                                         <label for="" class="font-size-16">שם משתמש</label>
-                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}"  autocomplete="name">
+                                        <input id="name" class="form-control text-right" type="text" name="name" value="{{ $user->name }}">
                                         <span class="text-danger name_valid">{{$errors->first('name')}}</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
                                         <label for="" class="font-size-16">אימייל</label>
-                                        <input id="email" class="form-control text-right" type="email" name="email" value="{{ $user->email }}"  autocomplete="email">
+                                        <input id="email" class="form-control text-right" type="email" name="email" value="{{ $user->email }}" >
                                         <span class="text-danger name_valid">{{$errors->first('email')}}</span>
                                     </div>
                                 </div>
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for="" class="font-size-16">מספר טלפון</label></label>
+                                        <input id="phone" class="form-control text-right" placeholder="הכנס מספר טלפון" type="number" name="phone" value="{{ $user->phone ?? '' }}" >
+                                        <span class="text-danger name_valid">{{$errors->first('phone')}}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="row justify-content-end">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-3">
+                                    <div class="inputDiv d-flex flex-column mb-4">
+                                        <label for="" class="font-size-16">סיסמה</label>
+                                        <input id="password"  class="form-control text-right"  type="password" name="password" value="" >
+                                        <span class="text-danger name_valid">{{$errors->first('password')}}</span>
+                                    </div>
+                                </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
                                         <label for=""class="font-size-16">בחר את העיר שלך</label>
@@ -123,20 +141,21 @@ Dosize
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="inputDiv d-flex flex-column mb-4">
-                                        <label for="" class="font-size-16">סיסמה</label>
-                                        <input id="password"  class="form-control text-right"  type="password" name="password" value=""  autocomplete="password">
-                                        <span class="text-danger name_valid">{{$errors->first('password')}}</span>
+                                        <label for="" class="font-size-16">תאריך לידה</label></label></label>
+                                        <input id="birth_date" class="form-control text-right" placeholder="הכנס תאריך לידה" type="date" name="birth_date" value="{{ $user->birth_date ?? '' }}" >
+                                        <span class="text-danger name_valid">{{$errors->first('birth_date')}}</span>
                                     </div>
                                 </div>
+                                
                             </div>
                            
                             
                             <div class="checkBox_div">
-                                <input type="checkbox" name="" id="approve" checked>
+                                <input type="checkbox" class="checkbox" name="" id="approve" checked>
                                 <label for="approve" class="font-size-16">אני מאשר קבלת תכנים מדוסיז צרכנות.</label>
                             </div>
                             <div class="checkBox_div">
-                                <input type="checkbox" name="" id="policy" checked>
+                                <input type="checkbox" class="checkbox" name="" id="policy" checked>
                                 <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                     המערכת...</label>
                             </div>
