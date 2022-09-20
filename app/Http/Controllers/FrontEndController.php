@@ -984,6 +984,65 @@ class FrontEndController extends Controller
         return view('frontend.search_product',compact('cities','categories','article_results','product_results'));
     }
 
+    public function search_product_blog(Request $request)
+    {
+        //  dd($request->all());
+        $categories = Category::get();
+        $cities = City::get();
+
+        $category_id = $request->category_id;
+        $city_id = $request->city_id;
+
+        if($request->price == null)
+        {
+            $products = DB::table('products_has_cities')
+            ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+            ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+            // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+            ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+            ->select('products.*'
+            ,'brand_profiles.brand_name','brand_profiles.short_name'
+            // ,DB::raw('avg(product_comments.rating) as avgrate')
+            )
+            ->where('products_has_cities.city_id',$request->city_id)
+            ->where('products.category_id',$request->category_id)
+            ->where('products.discount_price','=', null)
+            ->get();
+        }
+        else
+        {
+            $products = DB::table('products_has_cities')
+        ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+        ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+        // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+        ->select('products.*'
+        ,'brand_profiles.brand_name','brand_profiles.short_name'
+        // ,DB::raw('avg(product_comments.rating) as avgrate')
+        )
+        ->where('products_has_cities.city_id',$request->city_id)
+        ->where("products.price","$request->price")
+        ->where('products.category_id',$request->category_id)
+        ->where('products.discount_price','=', null)
+        ->get();
+        }
+        
+
+        // dd($products,$request->price,$request->city_id,$request->category_id);
+
+        $brand_messages = DB::table('brands_message_has_cities')
+        ->Join('brand_messages', 'brand_messages.id', '=', 'brands_message_has_cities.brand_message_id')
+        ->Join('brand_profiles', 'brand_profiles.id', '=', 'brand_messages.brand_profile_id')
+        ->select('brand_messages.*','brand_profiles.brand_image')
+        ->where('brands_message_has_cities.city_id',$request->city_id)
+        ->get();
+
+        
+
+        // dd($results);
+        return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id'));
+    }
+
     public function brand_articles($brand_profile_id)
     {
         $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();

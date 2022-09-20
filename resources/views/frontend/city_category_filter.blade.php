@@ -111,79 +111,13 @@ Category By city
                 </div>
             </div>
         </div>
-        @if(count($discount_products) > 0)
+       
         <div class="line spacing"></div>
-        <div class="promotion spacing">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 text-right">
-                        <h3 class="common_title">המבצעים שלא תרצו לפספס <img
-                                src="{{ asset('assets/img/mobile_component/percentage_icon.png') }}" alt=""
-                                class="img-fluid">
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="slider_div">
-                <div class="multiple_promotion swiper">
-                    <div class="swiper-wrapper">    
-                        @if(count($discount_products) > 0)
-                            @foreach($discount_products as $product)
-                            {{-- @php  
-                                $current_date = \Carbon\Carbon::now();
-                                echo $current_date;echo"<br>";
-                                $sale_time = \Carbon\Carbon::parse($product->sale_time);
-                                echo $sale_time;echo"<br>";
-                                $diff_in_days = $current_date->diffInDays( $sale_time,false) + 0;
-                                echo $diff_in_days;
-                            @endphp --}}
-                            
-                                <div class="promotion_box box_shahdow swiper-slide">
-                                    <div class="promotion_img_box">
-                                        {{-- <a class="font-size-14 font-weight-700" onclick="recommended_product('{{route('product',$product->id ?? '')}}')"> --}}
-                                        <img onclick="recommended_product('{{route('product',$product->id ?? '')}}')" src="{{asset('product/'.$product->image)}}" alt=""
-                                            class="img-fluid" style="width: 209px; height:105px;">
-                                        {{-- </a> --}}
-                                        <span class="font-size-14 font-weight-700">{{ number_format((( $product->discount_price / $product->price ) * 100),1) }} %</span>
-                                    </div>
-                                    <div class="promotion_content">
-                                        <div class="time_category_text">
-                                            <div class="time_div">
-                                                
-                                                <p class="example" discount-time="{{ \Carbon\Carbon::parse($product->sale_time)->format('m/d/Y H:i:s')}}">
-                                                    <span class="font-size-12 font-weight-600 days" style="font-size:12px;" title="Days">00</span> : <span class="font-size-12 font-weight-600 hours" style="font-size:12px;" title="Hours">00</span> : <span class="font-size-12 font-weight-600 minutes" style="font-size:12px;" title="Minutes">00</span> : <span class="font-size-12 font-weight-600 seconds" style="font-size:12px;" title="Seconds">00</span>
-                                                </p>
-                                            </div>
-                                            {{-- <a class="font-size-14 font-weight-700"  href="" > --}}
-                                                <p onclick="https://{{$product->short_name ?? ''}}.arikliger.com" class="promotion_category font-size-12 font-weight-400"> {{$product->brand_name}} </p>
-                                            {{-- </a> --}}
-                                        </div>
-                                        {{-- <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}"> --}}
-                                            <p onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="promotion_title font-size-14 font-weight-700 text-right"  style="color: #212529 !important;">
-                                                {{$product->name}}
-                                            </p>
-                                        {{-- </a> --}}
-                                        <div class="price_learn_more">
-                                            <a class="font-size-14 font-weight-700" onclick="recommended_product('{{route('product',$product->id ?? '')}}')" href="#">למידע נוסף ></a>
-                                            
-                                            <p  onclick="recommended_product('{{route('product',$product->id ?? '')}}')" class="font-size-14 font-weight-600">{{$product->discount_price}} ₪ <span
-                                                    class="font-size-12 font-weight-400">{{$product->price ?? '00'}} ₪</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif
-        @if(count($blogs) > 0 && $blogs['0']->id != null)
-        <div class="affordable_consumption spacing">
-        <form action="{{ route('filter-city-category') }}" method="post">
-            @csrf
-            <input type="hidden" name="category_id" value="{{$category_id}}" />
-            <input type="hidden" name="city_id" value="{{$city_id}}" />
+        <div class="order_div spacing" style="margin-top: 20px">
+            <form action="{{ route('filter-city-category') }}" method="post">
+                @csrf
+                <input type="hidden" name="category_id" value="{{$category_id}}" />
+                <input type="hidden" name="city_id" value="{{$city_id}}" />
                 <div class="container-fluid">
                     <div class="row" style="direction: rtl !important">
                         <strong>Filter By :</strong>
@@ -214,70 +148,8 @@ Category By city
                     </div>
                 </div>
             </form>
-            <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col-lg-12 text-right">
-                        <h3 class="common_title">צרכנות משתלמת <img
-                                src="{{asset('assets/img/mobile_component/beg.png') }}" alt="" class="img-fluid"></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-start" style="direction: rtl; ">
-                            @if(count($blogs) > 0)
-                            @foreach($blogs as $blog)
-                            <div class="affordable_consumption_box box_shahdow" style="margin-right:5px !important; flex-direction:inherit !important;">
-                                <a href="{{route('article',$blog->id)}}">
-                                    <img src="{{asset('blog/'.$blog->image)}}" alt="" class="img-flui">
-                                </a>
-                                <div class="content_div">
-                                    <a href=" https://{{$blog->short_name ?? ''}}.arikliger.com">
-                                        <span class="category font-size-12 font-weight-400"> {{$blog->brand_name}} </span>
-                                    </a>
-                                    <a href="{{route('article',$blog->id)}}" style="color: #212529 !important">
-                                        <h4 class="font-size-12 font-weight-700">
-                                            {{ $blog->title ?? '' }}
-                                        </h4>
-                                        <p class="discription font-size-10 font-weight-400">
-                                            {{ $blog->sub_title ?? '' }}
-                                        </p>
-                                    </a>
-                                        {{-- <span class="font-size-12">{{$blog->totallikes}} <i class="fa fa-heart"
-                                                aria-hidden="true"></i></span> --}}
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-                            <!-- <a href="" class="desktop_hide d-none learn_more font-size-12 font-weight-400">לכל
-                                הכתבות ></a> -->
-                        </div>
-                        <div class="more_btn mt-4 d-flex justify-content-center">
-                            <a href="{{route('all-blogs',['category_id'=>$category_id ?? '5','city_id'=>$city_id]) }}" class="btn btn_outline_grey">עוד כתבות</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-        @else
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        @endif
 
-
-        <div class="line spacing"></div>
         <div class="order_div spacing">
             @if(count($products) > 0 && $products['0']->id != null)
             <div class="deals deal_one">
@@ -356,51 +228,7 @@ Category By city
                 </div>
             </div>
             @endif
-            @if(count($brands_recomanded_products) > 0) 
-            <div class="deals deal_two">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 text-right">
-                            <h3 class="common_title">הכי מומלצים <img
-                                    src="{{ asset('assets/img/mobile_component/star.png') }}" alt="" class="img-fluid">
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider_div">
-                    <div class="multiple_deals swiper">
-                        <div class="swiper-wrapper">
-                            @if(count($brands_recomanded_products) > 0)
-                            @foreach($brands_recomanded_products as $recomanded_products)
-                            @foreach($recomanded_products->recommended_product as $product)
-                            <div class="deals_box box_shahdow swiper-slide">
-                                <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}">
-                                    <img src="{{asset('product/'.$product->image)}}" alt="" class="img-fluid" style="width: 208px; height: 165px;">
-                                </a>
-                                <div class="content_div">
-                                    <a class="font-size-14 font-weight-700" href="">
-                                    <span class="deal_category font-size-12 font-weight-400"> {{$recomanded_products->brand_name}} </span>
-                                    </a>
-                                    <a class="font-size-14 font-weight-700" href="{{route('product',$product->id)}}" style="color: #212529 !important;">
-                                    <h4 class="title font-size-14 font-weight-700">
-                                        {{$product->name}}
-                                    </h4>
-                                    <div class="rating_price_div">
-                                        <p class="font-size-14 font-weight-600">{{$product->price}} ₪ <span
-                                                class="font-size-12 font-weight-400">@if($product->discount_price != null) {{$product->discount_price}} ₪ @endif</span></p>
-                                        <p class="rating_text">4.8 <i class="fa fa-star"></i></p>
-                                    </div>
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endforeach
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
+            
         </div>
 
         <!-- main footer start from here -->
