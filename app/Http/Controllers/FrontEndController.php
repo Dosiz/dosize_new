@@ -741,7 +741,7 @@ class FrontEndController extends Controller
         ->where('brands_message_has_cities.city_id',$city_id)
         ->get();
 
-        // dd($brand_messages,$city_id);
+        // dd($category_id,$city_id);
         return view('frontend.city_category',compact('cities','brand_messages','categories','discount_products','products','brands_recomanded_products','blogs','category_id','city_id'));
     }
 

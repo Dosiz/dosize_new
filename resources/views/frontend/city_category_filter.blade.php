@@ -114,18 +114,18 @@ Category By city
        
         <div class="line spacing"></div>
         <div class="order_div spacing" style="margin-top: 20px">
-            <form action="{{ route('filter-city-category') }}" method="post">
-                @csrf
-                <input type="hidden" name="category_id" value="{{$category_id}}" />
-                <input type="hidden" name="city_id" value="{{$city_id}}" />
-                <div class="container-fluid">
-                    <div class="row" style="direction: rtl !important">
-                        <strong>Filter By :</strong>
-                        <div class="col-lg-3">
-                            <div class="inputDiv d-flex flex-column mb-4">
+            <div class="d-lg-flex justify-content-start" style="direction: rtl !important">
+                <form action="{{ route('filter-city-category') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="category_id" value="{{$category_id}}" />
+                    <input type="hidden" name="city_id" value="{{$city_id}}" />
+                    <div class="container-fluid">
+                        <div class="d-lg-flex" >
+                            <strong>Filter By :</strong>
+                            <div class="inputDiv d-flex flex-column mb-4 mr-2">
                                 {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                                 @php
-                                $sub_categories = \App\Models\SubCategory::where('category_id', $category->id)->get();
+                                $sub_categories = \App\Models\SubCategory::where('category_id', $category_id)->get();
                                 @endphp
                                 <select class="form-control" name="sub_category" id="sub_category">
                                     <option value="">Select Sub Category</option>
@@ -134,20 +134,32 @@ Category By city
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-lg-3 ">
-                            <div class="inputDiv d-flex flex-column mb-4">
-                                <input type="number" class="form-control" placeholder="Price" name="price" id="price" >
-                            </div>
-                        </div>
-                        <div class="col-lg-2 ">
-                            <div class="inputDiv d-flex flex-column mb-4">
+                            <div class="inputDiv d-flex flex-column mb-4 mr-2">
                                 <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
                             </div>
                         </div>
                     </div>
+                </form>
+                <form action="{{ route('filter-city-category') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="category_id" value="{{$category_id}}" />
+                    <input type="hidden" name="city_id" value="{{$city_id}}" />
+                    <div class="container-fluid">
+                        <div class="d-lg-flex">
+                            <div class=" ">
+                                <div class="inputDiv d-flex flex-column mb-4">
+                                    <input type="number" class="form-control" placeholder="Price" name="price" id="price" >
+                                </div>
+                            </div>
+                            <div class=" ">
+                                <div class="inputDiv d-flex flex-column mb-4 mr-2">
+                                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 </div>
-            </form>
         </div>
 
         <div class="order_div spacing">
