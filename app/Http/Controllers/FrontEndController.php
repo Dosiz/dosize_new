@@ -996,7 +996,59 @@ class FrontEndController extends Controller
         $sub_category_id = $request->sub_category;
         // dd($sub_category);
 
-        if($request->price == null)
+        if($request->price != null && $request->sub_category != null)
+        {
+            $products = DB::table('products_has_cities')
+            ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+            ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+            // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+            ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+            ->select('products.*'
+            ,'brand_profiles.brand_name','brand_profiles.short_name'
+            // ,DB::raw('avg(product_comments.rating) as avgrate')
+            )
+            ->where('products_has_cities.city_id',$request->city_id)
+            ->where('products.category_id',$request->category_id)
+            ->where("products.price","$request->price")
+            ->where('products.sub_category_id',$request->sub_category)
+            ->where('products.discount_price','=', null)
+            ->get();
+        }
+        elseif($request->price != null && $request->sub_category == null)
+        {
+            $products = DB::table('products_has_cities')
+            ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+            ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+            // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+            ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+            ->select('products.*'
+            ,'brand_profiles.brand_name','brand_profiles.short_name'
+            // ,DB::raw('avg(product_comments.rating) as avgrate')
+            )
+            ->where('products_has_cities.city_id',$request->city_id)
+            ->where('products.category_id',$request->category_id)
+            ->where("products.price","$request->price")
+            ->where('products.discount_price','=', null)
+            ->get();
+        }
+        elseif($request->price == null && $request->sub_category != null)
+        {
+            $products = DB::table('products_has_cities')
+            ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
+            ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
+            // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
+            ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
+            ->select('products.*'
+            ,'brand_profiles.brand_name','brand_profiles.short_name'
+            // ,DB::raw('avg(product_comments.rating) as avgrate')
+            )
+            ->where('products_has_cities.city_id',$request->city_id)
+            ->where('products.category_id',$request->category_id)
+            ->where('products.sub_category_id',$request->sub_category)
+            ->where('products.discount_price','=', null)
+            ->get();
+        }
+        else
         {
             $products = DB::table('products_has_cities')
             ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
@@ -1011,24 +1063,9 @@ class FrontEndController extends Controller
             ->where('products.category_id',$request->category_id)
             ->where('products.discount_price','=', null)
             ->get();
+
         }
-        else
-        {
-            $products = DB::table('products_has_cities')
-        ->LeftJoin('products', 'products.id', '=', 'products_has_cities.product_id')
-        ->LeftJoin('categories', 'categories.id', '=', 'products.category_id')
-        // ->leftJoin('product_comments', 'product_comments.product_id', '=', 'products.id')
-        ->Join('brand_profiles', 'brand_profiles.id', '=', 'products.brand_profile_id')
-        ->select('products.*'
-        ,'brand_profiles.brand_name','brand_profiles.short_name'
-        // ,DB::raw('avg(product_comments.rating) as avgrate')
-        )
-        ->where('products_has_cities.city_id',$request->city_id)
-        ->where("products.price","$request->price")
-        ->where('products.category_id',$request->category_id)
-        ->where('products.discount_price','=', null)
-        ->get();
-        }
+            
         
 
         // dd($products,$request->price,$request->city_id,$request->category_id);
@@ -1069,11 +1106,20 @@ class FrontEndController extends Controller
         $price = $request->price;
         $sub_category_id = $request->sub_category;
         $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
-        
-        if($request->price != null)
+        if($request->price != null && $request->sub_category != null)
+        {
+            $products = Product::where('brand_profile_id',$request->brand_profile_id)->where('status',1)->select('*')->where("sub_category_id","LIKE","%{$request->sub_category}%")
+            ->where('price','<=',$request->price)->get();
+        }
+        elseif($request->price != null && $request->sub_category == null)
         {
             $products = Product::where('brand_profile_id',$request->brand_profile_id)->where('status',1)->select('*')->where("price","LIKE","%{$request->price}%")
-            ->orderBy('id','DESC')->get();
+            ->get();
+        }
+        elseif($request->price == null && $request->sub_category != null)
+        {
+            $products = Product::where('brand_profile_id',$request->brand_profile_id)->where('status',1)->select('*')->where("sub_category_id","LIKE","%{$request->sub_category}%")
+            ->get();
         }
         else
         {
