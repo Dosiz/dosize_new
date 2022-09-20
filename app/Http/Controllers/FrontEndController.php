@@ -1056,7 +1056,30 @@ class FrontEndController extends Controller
         $brand_profile = BrandProfile::where('id',$brand_profile_id)->first();
         $products = Product::where('brand_profile_id',$brand_profile->id)->where('status',1)->orderBy('id','DESC')->get();
 
-        return view('frontend.b_products',compact('brand_profile','products'));
+        $sub_categories = SubCategory::where('category_id',$brand_profile->category_id)->get();
+
+        return view('frontend.b_products',compact('brand_profile','products','sub_categories'));
+    }
+
+    public function brand_products_filter(Request $request)
+    {
+        $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
+        
+        if($request->price != null)
+        {
+            $products = Product::where('brand_profile_id',$request->brand_profile_id)->where('status',1)->select('*')->where("price","LIKE","%{$request->price}%")
+            ->orderBy('id','DESC')->get();
+        }
+        else
+        {
+            $products = Product::where('brand_profile_id',$request->brand_profile_id)->where('status',1)->orderBy('id','DESC')->get();
+        }
+
+        $sub_categories = SubCategory::where('category_id',$brand_profile->category_id)->get();
+
+        // dd($product_results);
+
+        return view('frontend.b_products_filter',compact('brand_profile','products','sub_categories'));
     }
 
     public function personal_area()

@@ -78,6 +78,7 @@ Route::post('/contact_us', [App\Http\Controllers\FrontEndController::class,'stor
 Route::get('/articles/{id}', [App\Http\Controllers\FrontEndController::class,'articles'])->name('articles');
 Route::get('/brand/articles/{id}', [App\Http\Controllers\FrontEndController::class,'brand_articles'])->name('brand-articles');
 Route::get('/brand/products/{id}', [App\Http\Controllers\FrontEndController::class,'brand_products'])->name('brand-product');
+Route::post('/brand/products_filter', [App\Http\Controllers\FrontEndController::class,'brand_products_filter'])->name('filter-brand-product');
 Route::get('/brand-products/{id}', [App\Http\Controllers\FrontEndController::class,'products'])->name('brand-products');
 // blog comment
 Route::post('/store_blog_comment',[App\Http\Controllers\FrontEndController::class, 'store_blog_comment'])->name('store-blog-comment');
