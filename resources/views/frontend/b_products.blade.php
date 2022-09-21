@@ -22,8 +22,8 @@
         <form action="{{ route('filter-brand-product') }}" method="post">
             <input type="hidden" name="brand_profile_id" value="{{$brand_profile->id}}" />
             @csrf
-            <div class="d-lg-flex" >
-                <strong style="margin-top: 10px;">Filter By :</strong>
+            <div class="d-lg-flex" style="text-align:right;">
+                <strong style="margin-top: 10px;">סנן לפי קטגוריה:</strong>
                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
                     {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                     

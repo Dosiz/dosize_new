@@ -120,8 +120,8 @@ Category By city
                     <input type="hidden" name="category_id" value="{{$category_id}}" />
                     <input type="hidden" name="city_id" value="{{$city_id}}" />
                     <div class="container-fluid">
-                        <div class="d-lg-flex" >
-                            <strong>Filter By :</strong>
+                        <div class="d-lg-flex" style="text-align:right;">
+                            <strong>סנן לפי קטגוריה:</strong>
                             <div class="inputDiv d-flex flex-column mb-4 mr-2">
                                 {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                                 @php
