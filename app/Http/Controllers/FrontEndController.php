@@ -992,8 +992,8 @@ class FrontEndController extends Controller
 
         $category_id = $request->category_id;
         $city_id = $request->city_id;
-        $price = $request->price;
-        $sub_category_id = $request->sub_category;
+        $price = Session::set('price', $request->price);
+        $sub_category_id = Session::set('price', $request->sub_category);
         // dd($sub_category);
 
         if($request->price != null && $request->sub_category != null)
@@ -1103,8 +1103,8 @@ class FrontEndController extends Controller
 
     public function brand_products_filter(Request $request)
     {
-        $price = $request->price;
-        $sub_category_id = $request->sub_category;
+        $price = Session::set('price', $request->price);
+        $sub_category_id = Session::set('price', $request->sub_category);
         $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
         if($request->price != null && $request->sub_category != null)
         {
