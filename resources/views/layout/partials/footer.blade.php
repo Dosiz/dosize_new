@@ -2,7 +2,7 @@
     <div class="footer_list box_shahdow">
         <ul>
             <li>
-                <a class="open_mobile_menu">
+                <a href="{{route('user-message')}}" class="open_mobile_menu">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt="" class="img-fluid">
                         <p class="font-size-12 font-weight-400">הודעות</p>
