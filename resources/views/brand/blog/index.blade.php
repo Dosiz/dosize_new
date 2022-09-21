@@ -1,0 +1,117 @@
+@extends('layout.admin')
+@section('title')
+Blogs
+@endsection
+@push('styles')
+
+@endpush
+@section('content')		
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+	
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 class="page-title">Blogs</h3>
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index">Dashboard</a></li>
+						<li class="breadcrumb-item active">Blogs</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body">
+						<a href="{{route('blog.create')}}" class="btn btn-primary">Add New <i class="fa fa-plus"></i></a><br><br>
+						<div class="table-responsive">
+							<table class="datatable table table-hover table-center mb-0">
+								<thead>
+									<tr>
+										<th>Title</th>
+										<th>Sub Title</th>
+										<th>Image</th>
+										<th>Category</th>
+										<th>Sub-Category</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									@if(count($blogs) > 0)
+									<tr>
+										@foreach($blogs as $blog)
+										<td>
+											{{ $blog->title}}
+										</td>
+										<td>
+											{{ $blog->sub_title}}
+										</td>
+										<td>
+											<img src="{{asset('blog/'.$blog->image)}}" width="100px" height="100px">
+										</td>
+										<td>
+											{{ $blog->category->name}}
+										</td>
+										<td>
+											{{ $blog->subcategory->name}}
+										</td>
+										<td>
+											
+											@if($blog->status == 1) 
+											<form action="{{ route('update-brand-blog', $blog->id) }}" method="POST">
+												@csrf()                         
+												<button type="submit" class="btn btn-success" name="status" value="0">Active</button>
+											</form>                    
+											@else
+												<form action="{{ route('update-brand-blog', $blog->id) }}" method="POST">
+													@csrf()                             
+													<button type="submit" class="btn btn-danger" name="status" value="1">Inactive</button>
+												</form>
+											@endif
+										</td>
+										
+										<td class="d-flex">  
+											<a href="{{route('blog.show',$blog->id)}}" target="_blank" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-primary-light edit-blog"><i class="fe fe-eye"></i> צפייה בפרטי המוצר </a>
+											<a href="{{route('blog.edit',$blog->id)}}" style="height: 33px; margin-left: 10px" class="btn btn-sm bg-success-light edit-sub-category"><i class="fe fe-pencil"></i> Edit</a>
+											<form method="POST" action="{{ route('blog.destroy', $blog->id) }}"  id="form_{{$blog->id}}" >
+												@method('Delete')
+												@csrf()
+
+												<button type="submit" id="{{$blog->id}}" class="confirm btn btn-sm bg-danger-light btn-active-color-primary btn-sm">
+													<!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+												 <i class="fe fe-trash"></i> Delete
+													<!--end::Svg Icon-->
+												</button>
+											</form>
+										</td>
+									</tr>
+									 @endforeach
+									@else
+									<tr>
+									<td colspan="3" style="text-align: center;"><strong> No Blog Added Yet </strong></td>
+								  </tr>
+								  @endif
+								<tbody>
+								  
+								 
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+		
+	</div>			
+</div>
+<!-- /Page Wrapper -->
+		
+@endsection
+
+@section('js')
+@endsection
