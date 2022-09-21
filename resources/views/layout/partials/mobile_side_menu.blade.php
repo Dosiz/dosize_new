@@ -25,9 +25,9 @@
             </li>
             <li>
                 @guest
-                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">הארנק <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
                 @else
-                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
+                    <a href="{{route('user.wallet')}}">הארנק <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
                 @endguest
             </li>
             <li>
