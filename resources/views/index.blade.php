@@ -990,7 +990,7 @@
         <div class="modal-dialog">
             <div class="modal-content" id="login-moda">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">הַרשָׁמָה</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">הרשמה</h5>
                     <button type="button" class="close"  data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -1036,7 +1036,7 @@
                                 <label for="policy" class="font-size-16">אני מסכים <a href="">למדיניות</a>
                                     המערכת...</label>
                             </div>
-                            <button type="submit" class="font-size-16" style="cursor: pointer;">התחבר‎</button>
+                            <button type="submit" class="font-size-16" style="cursor: pointer;">הרשמה</button>
                             <div class="sign_up_with">
                                 <h6 class="text-center">או הרשם עם</h6>
                                 <div class="signup_btn">
