@@ -1,9 +1,9 @@
 <div class="mobile_side_menu">
     <h4>צהריים טובים!</h4>
     <div class="auth_button">
-        @if(! isset(Auth::user()->name))
-            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">הרשמה</a>
-            <a href="" data-toggle="modal" data-target="#enrollmentModal">התחברות</a>
+        @if(! isset(Auth::user()->name)) 
+            <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">התחברות</a>
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
         @else
             @if(Auth::user()->hasRole('User'))
                 <p style="color:aliceblue"> ברוך הבא {{Auth::user()->name }} </p>
@@ -25,9 +25,9 @@
             </li>
             <li>
                 @guest
-                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
+                    <a href="" data-toggle="modal" data-target="#enrollmentModal2">הארנק <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
                 @else
-                    <a href="{{route('user.wallet')}}">כתבות צרכנות <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
+                    <a href="{{route('user.wallet')}}">הארנק <img src="{{asset('assets/img/mobile_component/wallet_mobile.png') }}" alt="" class="img-fluid"></a>
                 @endguest
             </li>
             <li>
