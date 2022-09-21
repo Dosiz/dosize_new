@@ -38,7 +38,7 @@
                 <a href="https://beitar-illit.arikliger.com">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt="" class="img-fluid">
-                        <p class="font-size-12 font-weight-400">איזור אישי </p>
+                        <p class="font-size-12 font-weight-400">דף הבית</p>
                     </div>
                 </a>
             </li>
