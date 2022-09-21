@@ -148,7 +148,7 @@ Category By city
                         <div class="d-lg-flex">
                             <div class=" ">
                                 <div class="inputDiv d-flex flex-column mb-4">
-                                    <input type="number" class="form-control" placeholder="Price" value="{{$price ?? ''}}" name="price" id="price" >
+                                    <input type="number" class="form-control" placeholder="סנן לפי מחיר" value="{{$price ?? ''}}" name="price" id="price" >
                                 </div>
                             </div>
                             <div class=" ">

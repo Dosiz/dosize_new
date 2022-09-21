@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <div class="d-lg-flex" >
                     <div class="inputDiv d-flex flex-column mb-4">
-                        <input type="number" class="form-control" placeholder="Price" value="{{$price ?? ''}}" name="price" id="price" >
+                        <input type="number" class="form-control" placeholder="סנן לפי מחיר" value="{{$price ?? ''}}" name="price" id="price" >
                     </div>
                     <div class="inputDiv d-flex flex-column mb-4 mr-2">
                         <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
