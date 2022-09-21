@@ -994,11 +994,11 @@ class FrontEndController extends Controller
         $city_id = $request->city_id;
         if($request->price)
         {
-            $price = Session::set('price', $request->price);
+            $price = Session()->put('price', $request->price);
         }
         if($request->sub_category)
         {
-            $sub_category_id = Session::set('sub_category_id', $request->sub_category);
+            $sub_category_id = Session()->put('sub_category_id', $request->sub_category);
         }
         // dd($sub_category);
 
@@ -1111,11 +1111,11 @@ class FrontEndController extends Controller
     {
         if($request->price)
         {
-            $price = Session::set('price', $request->price);
+            $price = Session()->put('price', $request->price);
         }
         if($request->sub_category)
         {
-            $sub_category_id = Session::set('sub_category_id', $request->sub_category);
+            $sub_category_id = Session()->put('sub_category_id', $request->sub_category);
         }
         $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
         if($request->price != null && $request->sub_category != null)
