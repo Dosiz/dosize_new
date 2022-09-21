@@ -207,13 +207,13 @@
         <a href="#" class="logo">
             <img src="{{asset('static/img/logo.png') }}" alt="logo">
         </a>
-        <div class="btns">
+        <div class="btns"> 
             @if(! isset(Auth::user()->name))
             <a href="#" class="btn btn_outline me-2" data-bs-toggle="modal" data-bs-target="#model1">
-                הרשמה
+            התחברות
             </a>
             <a href="#" class="btn btn_orange me-2"  data-bs-toggle="modal" data-bs-target="#modal2">
-                התחברות
+            הרשמה
             </a>
             @else
                 @if(Auth::user()->hasRole('User'))
