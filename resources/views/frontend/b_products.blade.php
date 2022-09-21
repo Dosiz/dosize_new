@@ -23,12 +23,12 @@
             <input type="hidden" name="brand_profile_id" value="{{$brand_profile->id}}" />
             @csrf
             <div class="d-lg-flex" style="text-align:right;">
-                <strong style="margin-top: 10px;">סנן לפי קטגוריה:</strong>
+                <!-- <strong style="margin-top: 10px;">סנן לפי קטגוריה:</strong> -->
                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
                     {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                     
                     <select class="form-control" name="sub_category" id="sub_category">
-                        <option value="">Select Sub Category</option>
+                        <option value="">סנן לפי קטגוריה</option>
                         @foreach($sub_categories as $sub_category)
                         <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
                         @endforeach
