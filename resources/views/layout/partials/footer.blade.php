@@ -29,7 +29,7 @@
                 <a href="{{route('user.wallet')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt="" class="img-fluid">
-                        <p class="font-size-12 font-weight-400">כתבות צרכנות </p>
+                        <p class="font-size-12 font-weight-400">הארנק</p>
                     </div>
                 </a>
                 @endif
