@@ -992,14 +992,8 @@ class FrontEndController extends Controller
 
         $category_id = $request->category_id;
         $city_id = $request->city_id;
-        if($request->price)
-        {
-            $price = Session()->put('price', $request->price);
-        }
-        if($request->sub_category)
-        {
-            $sub_category_id = Session()->put('sub_category_id', $request->sub_category);
-        }
+        $price = $request->price;
+        $sub_category_id = $request->sub_category;
         // dd($sub_category);
 
         if($request->price != null && $request->sub_category != null)
@@ -1086,7 +1080,7 @@ class FrontEndController extends Controller
         
 
         // dd($results);
-        return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id'));
+        return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id','price','sub_category_id'));
     }
 
     public function brand_articles($brand_profile_id)
@@ -1109,14 +1103,8 @@ class FrontEndController extends Controller
 
     public function brand_products_filter(Request $request)
     {
-        if($request->price)
-        {
-            $price = Session()->put('price', $request->price);
-        }
-        if($request->sub_category)
-        {
-            $sub_category_id = Session()->put('sub_category_id', $request->sub_category);
-        }
+        $price = $request->price;
+        $sub_category_id = $request->sub_category;
         $brand_profile = BrandProfile::where('id',$request->brand_profile_id)->first();
         if($request->price != null && $request->sub_category != null)
         {
@@ -1142,7 +1130,7 @@ class FrontEndController extends Controller
 
         // dd($product_results);
 
-        return view('frontend.b_products_filter',compact('brand_profile','products','sub_categories'));
+        return view('frontend.b_products_filter',compact('brand_profile','products','sub_categories','price','sub_category_id'));
     }
 
     public function personal_area()
