@@ -93,9 +93,9 @@ Brand List
             </div>
         </div>
         <!--  -->
-        <div class="consumption_block d-xl-none py-5 text-center">
+        <div class="consumption_block d-xl-none py-5 text-center" >
             <img src="{{asset('assets/img/home_icon.png') }}" class="mb-2" alt="consumption">
-            <p><b>מוזמנים להירשם למועדוני הצרכנות<br>
+            <p style="direction:rtl;"><b>מוזמנים להירשם למועדוני הצרכנות<br>
                     ולא לפספס שום הטבה! </b></p>
         </div>
         <!--  -->
