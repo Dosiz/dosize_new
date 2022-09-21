@@ -35,7 +35,7 @@
                     </select>
                 </div>
                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                 </div>
             </div>
         </form>
@@ -48,7 +48,7 @@
                         <input type="number" class="form-control" placeholder="Price" name="price" id="price" >
                     </div>
                     <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                        <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                        <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                     </div>
                 </div>
             </div>

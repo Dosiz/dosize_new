@@ -135,7 +135,7 @@ Category By city
                                 </select>
                             </div>
                             <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                                <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                                <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@ Category By city
                             </div>
                             <div class=" ">
                                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                                 </div>
                             </div>
                         </div>
