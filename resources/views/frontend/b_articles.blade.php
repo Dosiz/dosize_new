@@ -35,7 +35,7 @@
                             </div> --}}
                             <div class="d-flex" style="height: 100%">
                                 <a href="{{url('brand_article',$article->id)}}" class="d-flex align-items-center"> 
-                                    <img src="{{asset('blog/'.$article->image ?? '')}}" alt="">
+                                    <img src="{{asset('blog/'.$article->image ?? '')}}" style="width: 140px" alt="">
                                 </a>
 
                                 <div class="articleInfo">
