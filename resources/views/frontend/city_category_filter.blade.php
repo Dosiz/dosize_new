@@ -120,22 +120,22 @@ Category By city
                     <input type="hidden" name="category_id" value="{{$category_id}}" />
                     <input type="hidden" name="city_id" value="{{$city_id}}" />
                     <div class="container-fluid">
-                        <div class="d-lg-flex" >
-                            <strong>Filter By :</strong>
+                        <div class="d-lg-flex" style="text-align:right;">
+                            <!-- <strong>סנן לפי קטגוריה:</strong> -->
                             <div class="inputDiv d-flex flex-column mb-4 mr-2">
                                 {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                                 @php
                                 $sub_categories = \App\Models\SubCategory::where('category_id', $category_id)->get();
                                 @endphp
                                 <select class="form-control" name="sub_category" id="sub_category">
-                                    <option value="">Select Sub Category</option>
+                                    <option value="">סנן לפי קטגוריה</option>
                                     @foreach($sub_categories as $sub_category)
                                     <option value="{{$sub_category->id}}" @if(isset($sub_category_id)){{ $sub_category_id ?? '' == $sub_category->id ? 'selected' : '' }} @endif>{{$sub_category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                                <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                                <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                             </div>
                         </div>
                     </div>
@@ -148,12 +148,12 @@ Category By city
                         <div class="d-lg-flex">
                             <div class=" ">
                                 <div class="inputDiv d-flex flex-column mb-4">
-                                    <input type="number" class="form-control" placeholder="Price" value="{{$price ?? ''}}" name="price" id="price" >
+                                    <input type="number" class="form-control" placeholder="סנן לפי מחיר" value="{{$price ?? ''}}" name="price" id="price" >
                                 </div>
                             </div>
                             <div class=" ">
                                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                                 </div>
                             </div>
                         </div>

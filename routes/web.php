@@ -225,7 +225,6 @@ Route::get('products', function () {
     return view('frontend.product');
 });
 
-
 Route::get('inbox-message', function () {
     return view('frontend.inbox_message');
 });
