@@ -100,14 +100,14 @@ Profile Designing
                                                             <select class="select select2-hidden-accessible form-control" tabindex="-1" aria-hidden="true" name="{{$item->font_key}}" id="{{$item->font_key}}">
                                                                 <option selected disabled>Select Font Family</option>
                                                                 @foreach ($availFonts as $font)
-                                                                    <option value="{{$font}}" {{ json_decode($brand_profile->font)->{$item->font_key} == $font ? 'selected' : '' }}>{{$font}}</option>
+                                                                    <option value="{{$font}}" {{ ($brand_profile->font != null && json_decode($brand_profile->font)->{$item->font_key} == $font) ? 'selected' : '' }}>{{$font}}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div style="color:red;">{{$errors->first($item -> font_key)}}</div> <br>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>צבע {{$item -> label}}</label>
-                                                            <input class="form-control" type="color" name="{{ $item->color_key }}" value="{{ json_decode($brand_profile->color)->{$item->color_key} }}" id="{{$item->color_key}}">
+                                                            <input class="form-control" type="color" name="{{ $item->color_key }}" value="{{ $brand_profile->color != null ? json_decode($brand_profile->color)->{$item->color_key} : old($item->color_key) }}" id="{{$item->color_key}}">
                                                             <div style="color:red;">{{$errors->first($item->color_key)}}</div> <br>
                                                         </div>
                                                     </div>
