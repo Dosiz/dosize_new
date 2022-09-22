@@ -9,14 +9,14 @@
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		
+
 		<!-- Favicons -->
 		<link type="image/x-icon" href="{{asset('assets_admin/img/favicon.png')}}" rel="icon">
-		
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{asset('assets_admin/css/bootstrap.min.css')}}">
-		
-		<!-- Fontawesome CSS --> 
+
+		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="{{asset('assets_admin/css/font-awesome.min.css')}}">
 		<link rel="stylesheet" href="{{asset('assets_admin/plugins/fontawesome/css/fontawesome.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets_admin/plugins/fontawesome/css/all.min.css')}}">
@@ -75,7 +75,7 @@
         text-align: center;
     }
         	@if(isset($brand_profile))
-        	
+
         	.header {
         		background:{{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}  ;
         	}
@@ -87,26 +87,23 @@
         	{
         		background: {{json_decode($brand_profile->color)->button_color ?? 'linear-gradient(292deg, #EE7047 0%, #F40990 100%)'}}  ;
         	}
-        	body {
+        	body, body p, body span, body input, body textarea {
         		color: {{json_decode($brand_profile->color)->text_color ?? '#26292c'}}  ;
+        		font-family: {{json_decode($brand_profile->font)->text_font ?? 'PloniMedium'}} !important ;
         	}
-        	 h1, h2, h3, h4, h5, h6 , a{
+        	 h1, h2, h3, h4, h5, h6 {
         	 	color: {{json_decode($brand_profile->color)->title_color ?? '#26292c'}}  ;
+                font-family: {{json_decode($brand_profile->font)->title_font ?? 'PloniDBold'}} !important ;
         	}
         	.header .navbar-nav>li a {
-        		font-family: {{json_decode($brand_profile->color)->header_font ?? 'PloniMedium'}}  ;
+        		font-family: {{json_decode($brand_profile->font)->header_font ?? 'PloniMedium'}}  ;
         	}
 
-        	.footer-title , .footer .footer-widget p , .inputDiv label , .copyright-text .mb-0 {
-        		font-family: {{json_decode($brand_profile->color)->footer_font ?? 'PloniMedium'}}  ;
+        	.footer, .footer-title , .footer .footer-widget p , .inputDiv label , .copyright-text .mb-0 {
+        		font-family: {{json_decode($brand_profile->font)->footer_font ?? 'PloniMedium'}}  ;
         	}
-
-        	h1, h2, h3, h4, h5, h6 , a{
-        		font-family: {{json_decode($brand_profile->color)->title_font ?? 'PloniDBold'}}  ;
-        	}
-
         	button {
-        		font-family: {{json_decode($brand_profile->color)->button_font ?? 'PloniDBold'}}  ;
+        		font-family: {{json_decode($brand_profile->font)->button_font ?? 'PloniDBold'}} !important ;
         	}
         	#contactSection .commonContactDiv .infoDiv .infoDetail {
         		border: 1px solid {{json_decode($brand_profile->color)->header_color ?? '#2B004F'}}
@@ -125,5 +122,5 @@
         	.error{
 	        	color:red;
 	    	}
-        	
+
         </style>

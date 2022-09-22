@@ -3,12 +3,38 @@
 {{$brand_profile->brand_name ?? '' }}
 @endsection
 @push('styles')
-<style>
-    
+    @php
+        $availGoogleFonts = [
+            'Heebo',
+            'Open Sans',
+            'Rubik',
+            'Assistant',
+            'Varela Round',
+            'Noto Rashi Hebrew',
+        ];
+        function getGooglefontUrl($fontFamily) {
+            return 'https://fonts.googleapis.com/css2?family=' . str_replace(' ', '+', $fontFamily) . ':wght@100;300;500;700&display=swap';
+        }
+        $brandFonts = $brand_profile->font != null ? json_decode($brand_profile->font) : [];
 
-</style>
+        $brandGoogleFonts = [];
+        foreach( $availGoogleFonts as $googleFont ) {
+            $isUsed = false;
+            foreach( $brandFonts as $key => $value ) {
+                if($googleFont === $value) {
+                    $isUsed = true;
+                }
+            }
+            if($isUsed) array_push($brandGoogleFonts, $googleFont);
+        }
+    @endphp
+    @foreach ($brandGoogleFonts as $googleFont)
+        <style>
+        @import url({{getGooglefontUrl($googleFont)}});
+        </style>
+    @endforeach
 @endpush
-@section('content') 
+@section('content')
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0VQ8NJD2C"></script>
 <script>
@@ -18,10 +44,11 @@
 
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
+{{json_encode($brand_profile->font != null ? json_encode($brand_profile->font) : [])}}
 <section id="brandBanner">
     <div class="container-fluid">
         <div class="row">
-            
+
             <div class="col-md-6">
                 <div class="brandMainIntro">
                     {{-- <h4 class="commonTitleText">{{$brand_profile->category->name ?? 'יתיללכ הריקס  '}} </h4> --}}
@@ -32,7 +59,7 @@
             </div>
             <div class="col-md-6 text-left">
                 <div class="brandMainImg">
-                    <img src="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" style="width: 100%; height:auto;" alt="" class="img-fluid"> 
+                    <img src="{{asset('brand_image/'.$brand_profile->brand_image ?? '')}}" style="width: 100%; height:auto;" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -48,7 +75,7 @@
                     @if($brand_products)
                         @foreach($brand_products as $product)
                         <div class="sliderCommonDiv" style="">
-                            <a href="{{url('brand_product/' .$product->id)}}" > 
+                            <a href="{{url('brand_product/' .$product->id)}}" >
                                 <img src="{{asset('product/' .$product->image ?? '')}}" alt="" style="width:188.27px; height:205.69px;">
                             </a>
                             {{-- <div class="ratingDiv">
@@ -70,7 +97,7 @@
                                             <a href="{{url('brand_product/' .$product->id)}}" >
                                                 ₪ {{$product->discount_price}}
                                             </a>
-                                        </p>        
+                                        </p>
                                     </div>
                                     @else
                                     <br>
@@ -111,7 +138,7 @@
                                 <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
                                 @php $likes = App\Models\Like::where('blog_id', $blog_1->id)->get(); @endphp
                                 <span>{{count($likes ?? '0')}}</span>
-                                
+
                             </p></a>
                             {{-- <div class="readMore">
                                 <p>
@@ -145,7 +172,7 @@
                                         <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
                                         @php $likes = App\Models\Like::where('blog_id', $blog_2->id)->get(); @endphp
                                         <span>{{count($likes ?? '0')}}</span>
-                                        
+
                                     </p></a>
                                 </div>
                             </div>
@@ -174,7 +201,7 @@
                                         <i class="fa fa-heart" aria-hidden="true" style="color: #db1580 !important;"></i>
                                         @php $likes = App\Models\Like::where('blog_id', $blog_3->id)->get(); @endphp
                                         <span>{{count($likes ?? '0')}}</span>
-                                        
+
                                     </p></a>
                                 </div>
                             </div>
@@ -327,7 +354,7 @@
                                 <p style="font-size:15px;">שעת פתיחה: {{ date("g:i a", strtotime($brand_timming->friday_open)) }}
                                  שעת סגירה: {{ date("g:i a", strtotime($brand_timming->friday_close)) }}</p>
                              </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -377,13 +404,13 @@
             </div>
         </div>
     </div>
-    
+
 </section>
 
 
 @endsection
 <!-- The Modal -->
-  
+
 @section('js')
 <script>
     $('.brandSlider').slick({

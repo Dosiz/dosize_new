@@ -45,24 +45,17 @@ Profile Designing
 
                                                 @php
                                                     $availFonts = [
-                                                        "Calibri Light (Headings)",
-                                                        "Calibri (Body)",
-                                                        "Algerian",
+                                                        // google fonts
+                                                        'Heebo',
+                                                        'Open Sans',
+                                                        'Rubik',
+                                                        'Assistant',
+                                                        'Varela Round',
+                                                        'Noto Rashi Hebrew',
+
                                                         "Gill Sans Ultra Bold",
                                                         "Times New Roman",
-                                                        "Gill Sans MT Condensed",
                                                         "Arial",
-                                                        "Bahnschrift",
-                                                        "Blackadder ITC",
-                                                        "Bernard MT Condensed",
-                                                        "Castellar",
-                                                        "Bradley Hand ITC",
-                                                        "Curlz MT",
-                                                        "Forte",
-                                                        "Bradley Hand ITC",
-                                                        "Bahnschrift SemiLight Condensed",
-                                                        "Bodoni MT Black",
-                                                        "Copperplate Gothic Light",
                                                     ];
                                                     $items = [
                                                         (object) [
@@ -92,7 +85,7 @@ Profile Designing
                                                         ],
                                                     ];
                                                 @endphp
-                                                {{ json_encode($brand_profile->font)}}
+
                                                 @foreach ($items as $item)
                                                     <div class="row">
                                                         <div class="col-md-6">
