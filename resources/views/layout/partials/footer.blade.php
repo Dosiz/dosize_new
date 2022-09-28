@@ -2,10 +2,10 @@
     <div class="footer_list box_shahdow">
         <ul>
             <li>
-                <a class="open_mobile_menu">
+                <a href="{{route('user-message')}}" class="open_mobile_menu">
                     <div class="footer_item">
-                        <img src="{{asset('assets/img/mobile_component/menu.svg') }}" alt="" class="img-fluid">
-                        <p class="font-size-12 font-weight-400">תפריט</p>
+                        <img src="{{asset('assets/img/mobile_component/message_icon.svg') }}" alt="" class="img-fluid">
+                        <p class="font-size-12 font-weight-400">הודעות</p>
                     </div>
                 </a>
             </li>
@@ -13,7 +13,7 @@
                 <a href="{{route('city-brands')}}">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/consumption.svg') }}" alt="" class="img-fluid">
-                        <p class="font-size-12 font-weight-400">הודעות </p>
+                        <p class="font-size-12 font-weight-400">מועדוני צרכנות</p>
                     </div>
                 </a>
             </li>
@@ -22,7 +22,7 @@
                 <a href="" data-toggle="modal" data-target="#enrollmentModal2">
                     <div class="footer_item">
                         <img src="{{asset('assets/img/mobile_component/wallet.svg') }}" alt="" class="img-fluid">
-                        <p class="font-size-12 font-weight-400">תפריט</p>
+                        <p class="font-size-12 font-weight-400">הארנק</p>
                     </div>
                 </a>
                 @else

@@ -22,20 +22,20 @@
         <form action="{{ route('filter-brand-product') }}" method="post">
             <input type="hidden" name="brand_profile_id" value="{{$brand_profile->id}}" />
             @csrf
-            <div class="d-lg-flex" >
-                <strong style="margin-top: 10px;">Filter By :</strong>
+            <div class="d-lg-flex" style="text-align:right;">
+                <!-- <strong style="margin-top: 10px;">סנן לפי קטגוריה:</strong> -->
                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
                     {{-- <input type="text" class="form-control" placeholder="Sub Category" name="sub_category" id="sub_category" > --}}
                     
                     <select class="form-control" name="sub_category" id="sub_category">
-                        <option value="">Select Sub Category</option>
+                        <option value="">סנן לפי קטגוריה</option>
                         @foreach($sub_categories as $sub_category)
                         <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                    <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                 </div>
             </div>
         </form>
@@ -45,10 +45,10 @@
             <div class="container-fluid">
                 <div class="d-lg-flex" >
                     <div class="inputDiv d-flex flex-column mb-4">
-                        <input type="number" class="form-control" placeholder="Price" name="price" id="price" >
+                        <input type="number" class="form-control" placeholder="סנן לפי מחיר" name="price" id="price" >
                     </div>
                     <div class="inputDiv d-flex flex-column mb-4 mr-2">
-                        <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">Filter</button>
+                        <button type="submit" class="btn" style="background-color: #db1580 !important; color:#fff !important;">סנן</button>
                     </div>
                 </div>
             </div>
