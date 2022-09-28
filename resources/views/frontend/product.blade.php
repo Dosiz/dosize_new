@@ -208,23 +208,26 @@
                         </div>
                     </div>
                     <div class="product_category_div d-xl-flex justify-content-end">
-                        <div class="more_detail_for_purchase">
-                            @guest
-                                <a class="font-size-16 enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2"
-                                    href="">לפרטים נוספים ולרכישה</a>
-                            @else
-                                <a class="font-size-16"
-                                    href="{{ url('brand/messages?id=' . $product->brandprofile->user_id . '') }}">לפרטים
-                                    נוספים
-                                    ולרכישה</a>
-                            @endguest
-                        </div>
+                        @if (false)
+                            <div class="more_detail_for_purchase">
+                                @guest
+                                    <a class="font-size-16 enrollemnt_button" data-toggle="modal"
+                                        data-target="#enrollmentModal2" href="">לפרטים נוספים ולרכישה</a>
+                                @else
+                                    <a class="font-size-16"
+                                        href="{{ url('brand/messages?id=' . $product->brandprofile->user_id . '') }}">לפרטים
+                                        נוספים
+                                        ולרכישה</a>
+                                @endguest
+                            </div>
+                        @endif
                         <div class="choose_size d-none">
                             <a href="" class="font-size-16">בחר מידה ></a>
                         </div>
                     </div>
-                    <div class="tw-flex tw-justify-center tw-mt-4">
-                        <div class="tw-gap-1 tw-flex tw-items-center rtl tw-bg-pink tw-text-white tw-py-1 tw-px-6 tw-rounded-full"
+                    <h6 class="tw-text-center">צור קשר</h6>
+                    <div class="tw-flex tw-justify-center tw-mt-1">
+                        <div class="tw-gap-3 tw-flex tw-items-center rtl tw-bg-pink tw-text-white tw-py-1 tw-px-6 tw-rounded-full"
                             style="font-size: 1.25rem">
                             @if ($product->brandprofile->whatsapp_no)
                                 <a href="https://wa.me/972{{ $product->brandprofile->whatsapp_no }}" target="_blank"
@@ -246,7 +249,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </a>
                             @endif
-                            <a href="tel:{{ $product->brandprofile->phone ?? $user->phone ?? $product->brandprofile->whatsapp_no }}"
+                            <a href="tel:{{ $product->brandprofile->phone ?? ($user->phone ?? $product->brandprofile->whatsapp_no) }}"
                                 target="_blank" rel="noopener noreferrer"
                                 class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
                                 <i class="fa fa-phone"></i>
@@ -401,12 +404,12 @@
                         <div class="post_comment">
                             <div class="total_comment">
                                 <!-- <p>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </p> -->
+                                                                                    <i class="fa fa-star"></i>
+                                                                                    <i class="fa fa-star"></i>
+                                                                                    <i class="fa fa-star"></i>
+                                                                                    <i class="fa fa-star"></i>
+                                                                                    <i class="fa fa-star"></i>
+                                                                                </p> -->
                                 @guest
                                     <ul style="visibility: hidden">
                                     </ul>
