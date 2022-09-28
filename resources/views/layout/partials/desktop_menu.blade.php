@@ -4,7 +4,7 @@
         <div class="auth_button">
             @if(! isset(Auth::user()->name))
             <a class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2">התחברות</a>
-            <a href="" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a> 
+            <a href="" data-toggle="modal" data-target="#enrollmentModal">הרשמה</a>
             @else
                 @if(Auth::user()->hasRole('User'))
                     <p> ברוך הבא {{Auth::user()->name }} </p>
@@ -12,12 +12,12 @@
                 <a class="enrollemnt_button" href="{{route('dashboard')}}"> לוּחַ מַחווָנִים </a>
                 @endif
             @endif
-            
+
         </div>
         <div class="desktop_menu_list">
             <ul>
                 <li>
-                    <a href="https://beitar-illit.arikliger.com">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
+                    <a href="/">אזור אישי‎‎ <img src="{{asset('assets/img/mobile_component/home.svg') }}" alt=""
                             class="img-fluid"></a>
                 </li>
                 @if(! isset(Auth::user()->name))
@@ -31,7 +31,7 @@
                                 class="img-fluid"></a>
                     </li>
                 @endif
-                @php 
+                @php
                     $check_user = \App\Models\User::where('id',Auth::id())->whereHas('roles', function($q){ $q->where('name', 'User'); })->first();
                     // dd($check_user);
                 @endphp
