@@ -226,22 +226,38 @@
                     <div class="tw-flex tw-justify-center tw-mt-4">
                         <div class="tw-gap-1 tw-flex tw-items-center rtl tw-bg-pink tw-text-white tw-py-1 tw-px-6 tw-rounded-full"
                             style="font-size: 1.25rem">
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
-                                <img src="{{ asset('assets/img/whatsapp.png') }}" alt="whatsapp"
-                                    class="tw-w-5 tw-h-5" />
-                            </a>
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
+                            @if ($product->brandprofile->whatsapp_no)
+                                <a href="https://wa.me/972{{ $product->brandprofile->whatsapp_no }}" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
+                                    <img src="{{ asset('assets/img/whatsapp.png') }}" alt="whatsapp"
+                                        class="tw-w-5 tw-h-5" />
+                                </a>
+                            @endif
+                            <a href="http://{{ $product->brandprofile->short_name . '.' . config('app.short_url') }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
                                 <i class="fa fa-external-link"></i>
                             </a>
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
-                                <i class="fa fa-envelope"></i>
-                            </a>
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
+                            @if ($product->brandprofile->business_email ?? $user->email)
+                                <a href="mailto:{{ $product->brandprofile->business_email ?? $user->email }}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            @endif
+                            <a href="tel:{{ $product->brandprofile->phone ?? $user->phone ?? $product->brandprofile->whatsapp_no }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
                                 <i class="fa fa-phone"></i>
                             </a>
-                            <a href="http://" target="_blank" rel="noopener noreferrer" class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
-                                <i class="fa fa-map-marker"></i>
-                            </a>
+                            @if ($brand_has_address->address)
+                                <a href="https://maps.google.com/?q={{ urlencode($brand_has_address->address) }}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="tw-text-white tw-flex tw-w-8 tw-h-8 tw-rounded-full tw-items-center tw-justify-center hover:tw-text-white hover:tw-bg-white/30">
+                                    <i class="fa fa-map-marker"></i>
+                                </a>
+                            @endif
                         </div>
                     </div>
                     <div class="container-fluid">
@@ -385,12 +401,12 @@
                         <div class="post_comment">
                             <div class="total_comment">
                                 <!-- <p>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </p> -->
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </p> -->
                                 @guest
                                     <ul style="visibility: hidden">
                                     </ul>

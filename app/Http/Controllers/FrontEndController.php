@@ -30,15 +30,15 @@ use App\Models\RecomendedBlog;
 use App\Models\Like;
 use App\Models\Bookmark;
 use App\Models\Message;
-use App\Models\Friend;       
-use App\Models\ContactUs;     
-use App\Models\Subscriber;   
-use App\Models\AdminProduct;  
-use App\Models\AdminProductOrder;   
-use App\Models\BrandTimming;  
+use App\Models\Friend;
+use App\Models\ContactUs;
+use App\Models\Subscriber;
+use App\Models\AdminProduct;
+use App\Models\AdminProductOrder;
+use App\Models\BrandTimming;
 use Session;
 use Illuminate\Support\Facades\Route;
-use App\Helpers\Helpers; 
+use App\Helpers\Helpers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,7 +46,7 @@ class FrontEndController extends Controller
 {
     public function web_static_paage()
     {
-        $cities = City::get(); 
+        $cities = City::get();
         return view('index',compact('cities'));
     }
     public function landing_page()
@@ -124,7 +124,7 @@ class FrontEndController extends Controller
         // dd($products_by_categories);
 
         $p_city = City::with('products','blogs')->find($city_id);
-        
+
         // dd($p_city->blogs->groupBy('category_id'),$p_city->products->groupBy('category_id'));
         // foreach ($p_city->products->groupBy('category_id') as $key=>$product_categories){
         //     echo $product_categories;
@@ -187,7 +187,7 @@ class FrontEndController extends Controller
         $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
         }
         else{
-            $brand_profile = null; 
+            $brand_profile = null;
         }
         $blog = Blog::with('brandprofile','category','cities')->where('id',$blog_id)->first();
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$blog->sub_category_id)->get();
@@ -225,6 +225,8 @@ class FrontEndController extends Controller
     public function product_detail($product_id)
     {
         $product = Product::with('brandprofile','category','cities')->where('id',$product_id)->first();
+        $brand_has_address = BrandsHasAddress::where('brand_profile_id',$product_id)->first();
+        $user = User::where('id', $product->user_id)->first();
         // dd($product);
         $products = Product::with('brandprofile','product_comment')->where('sub_category_id',$product->sub_category_id)->get();
         $categories = Category::get();
@@ -254,13 +256,13 @@ class FrontEndController extends Controller
             $product_like =Like::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             $product_bookmark =Bookmark::where('product_id',$product_id)->where('user_id',$user->id)->where('name','Product')->first();
             // dd($product_like);
-            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark','brand_has_address', 'user'));
         }
         else{
             $product_like = null;
             $product_bookmark = null;
             $chk_subscriber = null;
-            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark'));
+            return view('frontend.product',compact('product_ratings','chk_subscriber','cities','product','products','recomanded_products','recomanded_blogs','categories','product_comments','product_likes','product_like','product_bookmarks','product_bookmark','brand_has_address'));
         }
         // dd($recomanded_products);
 
@@ -275,7 +277,7 @@ class FrontEndController extends Controller
         $brand_profile = BrandProfile::with('brandaddresses','category','user')->where('id',$brand_id)->first();
         }
         else{
-            $brand_profile = null; 
+            $brand_profile = null;
         }
         $product = Product::with('brandprofile','category','cities')->where('id',$product_id)->first();
         // dd($product);
@@ -746,7 +748,7 @@ class FrontEndController extends Controller
     }
 
     public function show_all_blogs($category_id,$city_id)
-    {       
+    {
         // dd($city_id);
         $categories = Category::get();
         $cities = City::get();
@@ -902,7 +904,7 @@ class FrontEndController extends Controller
             $subscriber->brand_profile_id = $request->brand_profile_id;
             $subscriber->save();
             return Redirect::back();
-            
+
     }
 
     public function wallet()
@@ -1065,8 +1067,8 @@ class FrontEndController extends Controller
             ->get();
 
         }
-            
-        
+
+
 
         // dd($products,$request->price,$request->city_id,$request->category_id);
 
@@ -1077,7 +1079,7 @@ class FrontEndController extends Controller
         ->where('brands_message_has_cities.city_id',$request->city_id)
         ->get();
 
-        
+
 
         // dd($results);
         return view('frontend.city_category_filter',compact('brand_messages','cities','categories','products','category_id','city_id','price','sub_category_id'));
@@ -1145,24 +1147,24 @@ class FrontEndController extends Controller
     {
         if($request->password)
         {
-            $this->validate($request,[ 
-                'name'=>'required', 
-                'email'=>'required', 
+            $this->validate($request,[
+                'name'=>'required',
+                'email'=>'required',
                 'city_id' => 'required',
                 'password' => 'required|min:7|max:18',
             ]);
         }
         else{
-            $this->validate($request,[ 
-                'name'=>'required', 
-                'email'=>'required', 
+            $this->validate($request,[
+                'name'=>'required',
+                'email'=>'required',
                 'city_id' => 'required',
             ]);
         }
 
         $user = User::find($request->id);
 
-        
+
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -1180,19 +1182,19 @@ class FrontEndController extends Controller
             $user->birth_date = $birthday;
         }
         $user->city_id = $request->city_id;
-       
+
         $user->save();
 
         toastr()->success('עדכן בהצלחה');
 
         return Redirect::back();
-        
+
     }
 
     public function static_login(Request $request)
     {
         try {
-            $validateUser = Validator::make($request->all(), 
+            $validateUser = Validator::make($request->all(),
             [
                 'email' => 'required|email',
                 'password' => 'required'
@@ -1224,7 +1226,7 @@ class FrontEndController extends Controller
     {
         try {
             //Validated
-            $validateUser = Validator::make($request->all(), 
+            $validateUser = Validator::make($request->all(),
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
@@ -1243,7 +1245,7 @@ class FrontEndController extends Controller
                 'city_id' => $request->city_id,
             ]);
 
-            $user->assignRole('User'); 
+            $user->assignRole('User');
             $user_id = User::with('city')->where('id', $user->id)->first();
             return redirect()->away('https://'.$user_id->city->short_name.'.arikliger.com');
 
