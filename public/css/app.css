@@ -1,0 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+.rtl {
+  direction: rtl;
+}
+.tw-flex {
+    display: flex
+}
+.tw-items-center {
+    align-items: center
+}
+

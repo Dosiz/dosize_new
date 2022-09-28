@@ -150,7 +150,7 @@
                                     {{-- @php
                                         $user_name = \App\Models\User::where('id',$product->brandprofile->user_id)->first();
                                     @endphp --}}
-                                    <span> 
+                                    <span>
                                         {{\Illuminate\Support\Str::limit($product->brandprofile->brand_name ?? '',15)}}
                                     </span>
                                 </a>
@@ -167,7 +167,7 @@
                             @endforeach
                             @endif
                         </div>
-                       
+
                         <div class="col-6 col-xl-12 text-left d-xl-block d-none mb-4">
                             <div class="product_price d-flex justify-content-end">
                                 @if($product->discount_price)
@@ -202,6 +202,13 @@
                     <div class="choose_size d-none">
                         <a href="" class="font-size-16">בחר מידה ></a>
                     </div>
+                </div>
+                <div class="mt-4 tw-flex tw-items-center rtl bg-blue-300">
+                    <img src="{{ asset('assets/img/whatsapp.png') }}" alt="whatsapp" />
+                    <i class="fa fa-external-link"></i>
+                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-phone"></i>
+                    <i class="fa fa-map-marker"></i>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
@@ -280,7 +287,7 @@
                 </div>
                 <div class="col-lg-12 col-xl-6">
                     <div class="sign_up_div">
-                        
+
                         @guest
                                     <a href="" id="class="enrollemnt_button" data-toggle="modal" data-target="#enrollmentModal2" style="color: #212529 !important; display:flex; flex-direction:row-reverse;align-items:center">
                                     @if($chk_subscriber == null)
@@ -302,7 +309,7 @@
                                     <img src="{{asset('assets/img/verfied.png') }}" alt="" class="img-fluid">
                                     @endif
                                     <p class="font-size-16">הירשמו בקליק למועדון הצרכנות של <br>
-                                
+
                                     <input type="hidden" name="token" id="token" value="{{csrf_token() }}"/>
                                     <input type="hidden" name="email" id="email" value="{{Auth::user()->email }}" />
                                     <input type="hidden" id="brand_profile_id" value="{{$product->brand_profile_id }}" />
@@ -673,7 +680,7 @@ function copyToClipboard() {
         }, 5000);
 
     }
-    
+
 </script>
 <script type="text/javascript">
 
