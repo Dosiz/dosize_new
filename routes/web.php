@@ -142,8 +142,9 @@ Route::prefix('user')->middleware('can:user')->group(function(){
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
-    //admin_blog
-    Route::resource('admin_blog', App\Http\Controllers\admin\ProductController::class);
+    //blogs
+    Route::resource('blogs', App\Http\Controllers\admin\BlogController::class);
+    Route::post('blogs/select-primary/{id}', [App\Http\Controllers\admin\BlogController::class, 'select_primary'])->name('select-primary-blog');
     //admin_product
     Route::resource('admin_product', App\Http\Controllers\admin\ProductController::class);
     //admin product order

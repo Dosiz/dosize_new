@@ -10,13 +10,13 @@
   gtag('config', 'G-Q0VQ8NJD2C');
 </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        
+
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets_admin/img/favicon.png')}}">
-		
+
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{asset('assets_admin/css/bootstrap.min.css')}}">
-		
+
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{asset('assets_admin/css/font-awesome.min.css')}}">
         @if(Route::is(['add-blog','blog-details','blog','edit-blog']))
@@ -25,11 +25,11 @@
         @endif
 		<!-- Feathericon CSS -->
         <link rel="stylesheet" href="{{asset('assets_admin/css/feathericon.min.css')}}">
-        <link rel="stylesheet" href="{{asset('assets_admin/plugins/morris/morris.css')}}">	
+        <link rel="stylesheet" href="{{asset('assets_admin/plugins/morris/morris.css')}}">
          <!-- Select2 CSS -->
-         <link rel="stylesheet" href="{{asset('assets_admin/plugins/select2/css/select2.min.css')}}">	
+         <link rel="stylesheet" href="{{asset('assets_admin/plugins/select2/css/select2.min.css')}}">
         <!-- Datatables CSS -->
-        <link rel="stylesheet" href="{{asset('assets_admin/plugins/datatables/datatables.min.css')}}">	
+        <link rel="stylesheet" href="{{asset('assets_admin/plugins/datatables/datatables.min.css')}}">
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('assets_admin/css/style.css')}}">
         <!-- multiple image css -->
@@ -44,13 +44,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('assets/css/mobile-style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/swiper.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <style>
             .article_main_wrapper, .message_main_wrapper {
                 width: 100% !important;
             }
         </style>
-           
 
-        
+
+
         @stack('styles')
         @toastr_css
