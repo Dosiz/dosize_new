@@ -936,10 +936,6 @@ header .article_header .heart_tag_message_list ul li span {
     margin: 10px 0px;
 }
 
-.affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
-    border-radius: 0px 12px 12px 0px;
-}
-
 .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div {
     text-align: right;
     padding: 11px 15px;
@@ -2275,7 +2271,7 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 @media screen and (min-width: 1600px) {
 
-    
+
 
     .d-none,
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none,
@@ -2294,7 +2290,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1600px) {
 
-    
+
     .article_main_wrapper,
     .message_main_wrapper {
         width: 86% !important;
@@ -2327,7 +2323,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1440px) {
 
-    
+
     .messenger_announcment_main .announcment_main {
         padding: 80px 20px;
     }

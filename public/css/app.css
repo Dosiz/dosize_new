@@ -2,11 +2,54 @@
 .rtl {
   direction: rtl;
 }
+
+body {
+  text-align: right;
+}
+.tw-absolute {
+    position: absolute
+}
+.tw-relative {
+    position: relative
+}
+.tw-top-0 {
+    top: 0px
+}
+.tw-right-0 {
+    right: 0px
+}
+.tw-mx-3\.5 {
+    margin-left: 0.875rem;
+    margin-right: 0.875rem
+}
+.tw-mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem
+}
+.tw-mx-5 {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem
+}
+.tw-mt-16 {
+    margin-top: 4rem
+}
+.tw-mb-5 {
+    margin-bottom: 1.25rem
+}
 .tw-mt-1 {
     margin-top: 0.25rem
 }
+.tw-ml-5 {
+    margin-left: 1.25rem
+}
+.tw-mr-1 {
+    margin-right: 0.25rem
+}
 .tw-flex {
     display: flex
+}
+.tw-h-12 {
+    height: 3rem
 }
 .tw-h-8 {
     height: 2rem
@@ -14,11 +57,20 @@
 .tw-h-5 {
     height: 1.25rem
 }
+.tw-h-full {
+    height: 100%
+}
+.tw-w-12 {
+    width: 3rem
+}
 .tw-w-8 {
     width: 2rem
 }
 .tw-w-5 {
     width: 1.25rem
+}
+.tw-flex-col {
+    flex-direction: column
 }
 .tw-items-center {
     align-items: center
@@ -26,15 +78,75 @@
 .tw-justify-center {
     justify-content: center
 }
+.tw-gap-2 {
+    gap: 0.5rem
+}
 .tw-gap-3 {
     gap: 0.75rem
+}
+.tw-overflow-hidden {
+    overflow: hidden
+}
+.tw-rounded {
+    border-radius: 0.25rem
 }
 .tw-rounded-full {
     border-radius: 9999px
 }
+.tw-rounded-lg {
+    border-radius: 0.5rem
+}
+.tw-rounded-xl {
+    border-radius: 0.75rem
+}
+.tw-rounded-l-2xl {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem
+}
+.tw-rounded-tr-none {
+    border-top-right-radius: 0px
+}
+.tw-bg-\[\#dfdada\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(223 218 218 / var(--tw-bg-opacity))
+}
+.tw-bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
 .tw-bg-pink {
     --tw-bg-opacity: 1;
     background-color: rgb(219 21 128 / var(--tw-bg-opacity))
+}
+.tw-bg-gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops))
+}
+.tw-from-orange-400 {
+    --tw-gradient-from: #fb923c;
+    --tw-gradient-to: rgb(251 146 60 / 0);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+}
+.tw-to-pink {
+    --tw-gradient-to: #DB1580
+}
+.tw-object-cover {
+    -o-object-fit: cover;
+       object-fit: cover
+}
+.tw-p-3 {
+    padding: 0.75rem
+}
+.tw-py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem
+}
+.tw-px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+.tw-py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem
 }
 .tw-py-1 {
     padding-top: 0.25rem;
@@ -44,12 +156,33 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem
 }
+.tw-px-0 {
+    padding-left: 0px;
+    padding-right: 0px
+}
+.tw-pb-5 {
+    padding-bottom: 1.25rem
+}
+.tw-pr-5 {
+    padding-right: 1.25rem
+}
+.tw-pl-12 {
+    padding-left: 3rem
+}
 .tw-text-center {
     text-align: center
+}
+.tw-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem
 }
 .tw-text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+.tw-text-black {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity))
 }
 .hover\:tw-bg-white\/30:hover {
     background-color: rgb(255 255 255 / 0.3)

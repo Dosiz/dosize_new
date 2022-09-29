@@ -124,10 +124,9 @@ Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::clas
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-//brand-profile
-Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
-Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
-
+    //brand-profile
+    Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
+    Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
 });
 
 
@@ -143,6 +142,8 @@ Route::prefix('user')->middleware('can:user')->group(function(){
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
+    //admin_blog
+    Route::resource('admin_blog', App\Http\Controllers\admin\ProductController::class);
     //admin_product
     Route::resource('admin_product', App\Http\Controllers\admin\ProductController::class);
     //admin product order
@@ -151,7 +152,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 
     //cateogry
     Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
-    //city
+    //sub-category
     Route::resource('sub-category', App\Http\Controllers\admin\SubCategoryController::class);
 
     //brands
