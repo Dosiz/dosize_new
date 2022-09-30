@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-    Profile Designing
+    עיצוב האתר שלך
 @endsection
 @push('styles')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Profile Designing</h3>
+                        <h3 class="page-title">עיצוב האתר שלך</h3>
                         {{-- <ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
 									<li class="breadcrumb-item active">Add City</li>
@@ -43,10 +43,8 @@
                                         id="main-form">
                                         @csrf
 
-
-
                                         <div class="uploadDiv">
-                                            <label>גלריית תמונות למוצר</label>
+                                            <label>תמונות ראשיות</label>
                                             <div class="input-images"></div>
                                             <div style="color:red;">{{ $errors->first('images') }}</div> <br>
                                         </div>
