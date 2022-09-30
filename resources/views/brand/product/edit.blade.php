@@ -11,11 +11,11 @@ Edit Product
 	}
 </style>
 @endpush
-@section('content')			
+@section('content')
 <!-- Page Wrapper -->
 <div class="page-wrapper">
     <div class="content container-fluid">
-	
+
 		<!-- Page Header -->
 		<div class="page-header">
 			<div class="row">
@@ -29,7 +29,7 @@ Edit Product
 			</div>
 		</div>
 		<!-- /Page Header -->
-		
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card">
@@ -49,17 +49,17 @@ Edit Product
 		                                <div style="color:red;">{{$errors->first('name')}}</div> <br>
 		                            </div>
 		                            <div class="form-group">
-		                                <label>גלריית תמונות המוצר</label>
+		                                <label>תמונה</label>
 		                                <div>
 		                                    <input class="form-control" type="file" name="image" id="image" value="{{ $product->image }}"> <br>
 											<img src="{{asset('product/'.$product->image)}}" width="100px" height="100px">
 		                                    <div style="color:red;">{{$errors->first('image')}}</div> <br>
-		                                    
+
 		                                </div>
 		                            </div>
 
 									<div class="uploadDiv" style="padding-left: 10px;">
-										<label class="active">Blog Images</label>
+										<label class="active">גלריה</label>
 										<div class="input-images-2"></div>
 										<div style="color:red;">{{$errors->first('images')}}</div> <br>
 									</div>
@@ -69,10 +69,10 @@ Edit Product
 		                                <div>
 		                                    <input class="form-control" type="number" name="price" value="{{$product->price}}" id="price" placeholder="Enter Orignal Price">
 		                                    <div style="color:red;">{{$errors->first('price')}}</div> <br>
-		                                    
+
 		                                </div>
 			                        </div>
-			                        
+
 			                        <div class="form-group">
 		                                <label>הכנס מחיר מבצע (אופציונלי)</label>
 		                                <div>
@@ -86,7 +86,7 @@ Edit Product
 										<label> הזן זמן מכירה (אופציונלי) </label>
 										<div>
 											<input class="form-control" type="datetime-local" name="sale_time" id="sale_time" value="{{$product->sale_time ?? ''}}" placeholder="הכנס מחיר מבצע">
-											<div style="color:red;">{{$errors->first('sale_time')}}</div> 
+											<div style="color:red;">{{$errors->first('sale_time')}}</div>
 											<span class="text-danger sale_time_valid"></span><br>
 										</div>
 									</div>
@@ -142,7 +142,7 @@ Edit Product
 										<input type="checkbox" class="multi_city_checkbox"> Select All
 										<div style="color:red;">{{$errors->first('city_id')}}</div> <br>
 									</div>
-                                    
+
 		                            <div class="form-group">
 		                                <label>תיאור המוצר</label>
 		                                <textarea cols="30" rows="6" class="form-control summernote" name="description"  value="" id="description" >{{ $product->description }}</textarea>
@@ -172,10 +172,10 @@ Edit Product
 
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-		
-	</div>			
+
+	</div>
 </div>
 <!-- /Page Wrapper -->
 @endsection
@@ -239,20 +239,19 @@ $(document).ready(function() {
         allowClear: true
     });
 	let data=<?php echo ($product->images);?>;
-    console.log(data.length);
+    console.log(data);
     var nietos = [];
     var obj = {};
     for(var i=0;i<data.length;i++){
     	  nietos.push({
 	        id: data[i],
-	        src: 'https://phplaravel-505339-2789556.cloudwaysapps.com/product/'+data[i]+'',
+	        src: '/product/' + data[i],
 	    });
-    	 
+
     }
-	// console.log(nietos);
+
 	$('.input-images-2').imageUploader({
-	    preloaded:nietos,
-	    
+	    preloaded: nietos,
 	});
 
   });

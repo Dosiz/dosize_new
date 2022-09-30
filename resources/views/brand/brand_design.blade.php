@@ -41,11 +41,24 @@
                                 <div class="col-12 blog-details">
                                     <form action="{{ route('store-design') }}" enctype="multipart/form-data" method="post"
                                         id="main-form">
+                                        {{-- <script>
+                                            const onSubmit = (ev) => {
+                                                ev.preventDefault();
+                                                // const formData = new FormData(ev.target);
+                                                // console.log(formData.entries());
+                                                // console.log(formData.getAll('images'));
+                                                // setTimeout(()=>ev.target.submit(),400);
+                                                console.log(document.querySelector('#deleted-images-input').value);
+                                            }
+                                            document.querySelector('#main-form').onsubmit = onSubmit;
+                                        </script> --}}
+                                        <input type="hidden" name="deleted_images" id="deleted-images-input"
+                                            value="[]">
                                         @csrf
 
                                         <div class="uploadDiv">
                                             <label>תמונות ראשיות</label>
-                                            <div class="input-images"></div>
+                                            <div class="input-images-2"></div>
                                             <div style="color:red;">{{ $errors->first('images') }}</div> <br>
                                         </div>
 
@@ -141,5 +154,21 @@
 @endsection
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script></script>
+    <script>
+        let data = {{ Illuminate\Support\Js::from($brand_profile->website_primary_images) }} || [];
+        var preloaded = [];
+        var obj = {};
+        for (var i = 0; i < data.length; i++) {
+            preloaded.push({
+                id: i,
+                src: '/brand_image/' + data[i],
+                imageName: data[i]
+            });
+        }
+        console.log(data);
+
+        $('.input-images-2').imageUploader({
+            preloaded
+        });
+    </script>
 @endsection
