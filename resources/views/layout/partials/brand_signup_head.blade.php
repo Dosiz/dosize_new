@@ -33,6 +33,7 @@
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{asset('assets_admin/css/styles.css')}}">
 		<link rel="stylesheet" href="{{asset('assets_admin/css/slick.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
         <link rel="stylesheet" href="{{asset('assets_admin/css/slick-theme.css')}}">
 		@stack('styles')

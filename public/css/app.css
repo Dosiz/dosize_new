@@ -25,6 +25,14 @@ body {
     margin-left: 1rem;
     margin-right: 1rem
 }
+.tw-my-24 {
+    margin-top: 6rem;
+    margin-bottom: 6rem
+}
+.tw-my-28 {
+    margin-top: 7rem;
+    margin-bottom: 7rem
+}
 .tw-ml-5 {
     margin-left: 1.25rem
 }
@@ -55,6 +63,36 @@ body {
 .tw-mt-1 {
     margin-top: 0.25rem
 }
+.tw-mt-96 {
+    margin-top: 24rem
+}
+.tw-mb-64 {
+    margin-bottom: 16rem
+}
+.tw-mt-64 {
+    margin-top: 16rem
+}
+.tw-mt-56 {
+    margin-top: 14rem
+}
+.tw-mb-36 {
+    margin-bottom: 9rem
+}
+.tw-mt-48 {
+    margin-top: 12rem
+}
+.tw-mb-32 {
+    margin-bottom: 8rem
+}
+.tw-mb-24 {
+    margin-bottom: 6rem
+}
+.tw-mt-44 {
+    margin-top: 11rem
+}
+.tw-mt-72 {
+    margin-top: 18rem
+}
 .tw-block {
     display: block
 }
@@ -79,11 +117,20 @@ body {
 .tw-h-12 {
     height: 3rem
 }
+.tw-h-96 {
+    height: 24rem
+}
 .tw-h-8 {
     height: 2rem
 }
 .tw-h-5 {
     height: 1.25rem
+}
+.tw-h-\[40vh\] {
+    height: 40vh
+}
+.tw-h-\[50vh\] {
+    height: 50vh
 }
 .tw-w-full {
     width: 100%
@@ -93,6 +140,9 @@ body {
 }
 .tw-w-40 {
     width: 10rem
+}
+.tw-w-10 {
+    width: 2.5rem
 }
 .tw-w-8 {
     width: 2rem
