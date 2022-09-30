@@ -17,16 +17,6 @@ $city_id = Helpers::city_id();
             background: #dfdada;
         }
 
-        .affordable_consumption_box>a>img {
-            width: 150px;
-        }
-
-        @media (min-width: 1050px) and (max-width: 1250px) {
-            .affordable_consumption_box {
-                min-width: 350px;
-            }
-        }
-
         @media (min-width: 800px) {
             .article_content>p {
                 height: 50px;
@@ -34,13 +24,11 @@ $city_id = Helpers::city_id();
             }
         }
 
+        @media (max-width: 1400px) {
+
+        }
+
         @media (max-width: 990px) {
-
-            .affordable_consumption_box:nth-child(3),
-            .affordable_consumption_box:nth-child(4) {
-
-                display: none !important;
-            }
 
             .article_list {
                 background: #fff;
@@ -81,8 +69,8 @@ $city_id = Helpers::city_id();
             }
 
             /* .article_list h4{
-                                                    margin
-                                                } */
+                                                                margin
+                                                            } */
             .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div h4 {
                 height: 32px;
             }
@@ -222,11 +210,11 @@ $city_id = Helpers::city_id();
                 </div>
             @endif
 
-            <div class="row rtl tw-ml-5 tw-mr-1">
+            <div class="row rtl tw-ml-5 tw-mr-1 tw-mb-12">
                 @if (count($blogs) > 0 && $blogs['0']->id != null)
-                    <div class="affordable_consumption spacing col-7 tw-px-0">
+                    <div class="affordable_consumption col-lg-7 col-12 tw-px-0 lg:tw-order-none tw-order-2">
                         <div class="container-fluid">
-                            <div class="row">
+                            <div class="row tw-mt-10 sm:tw-mt-0">
                                 <div class="col-lg-12 text-right">
                                     <h3 class="common_title">צרכנות משתלמת <img
                                             src="{{ asset('assets/img/mobile_component/beg.png') }}" alt=""
@@ -234,41 +222,87 @@ $city_id = Helpers::city_id();
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="affordable_consumption_list d-flex multiple_afforable_consumption justify-content-start"
-                                        style="direction: rtl">
+                                <div class="col-lg-12 pl-lg-5 pl-0">
+                                    <div class="affordable_consumption_list d-flex !tw-flex-wrap multiple_afforable_consumption justify-content-start rtl">
                                         @if (count($blogs) > 0)
-                                            @foreach ($blogs as $blog)
-                                                <div class="affordable_consumption_box box_shahdow tw-rounded-xl tw-overflow-hidden"
-                                                    style="flex-direction: initial !important; margin-left: 10px !important;">
-                                                    <a href="{{ route('article', $blog->id) }}">
-                                                        <img src="{{ asset('blog/' . $blog->image) }}" alt=""
-                                                            class="img-flui tw-object-cover tw-h-full">
+                                            @php
+                                                $primary_blog = $blogs[0];
+                                            @endphp
+                                            {{-- PRIMARY BLOG --}}
+                                            <div
+                                                class="tw-w-full tw-flex tw-flex-col sm:tw-flex-row tw-shadow tw-rounded-xl tw-overflow-hidden tw-bg-white tw-mb-3">
+                                                <a href="{{ route('article', $primary_blog->id) }}"
+                                                    class="tw-block tw-w-full sm:tw-w-1/2 tw-h-52 sm:tw-h-72">
+                                                    <img src="{{ asset('blog/' . $primary_blog->image) }}" alt=""
+                                                        class="tw-object-cover tw-h-full tw-w-full">
+                                                </a>
+                                                <div
+                                                    class="tw-flex tw-flex-col tw-items-start tw-font-ploniR tw-py-2 tw-px-2.5">
+                                                    <a href=" https://{{ $primary_blog->short_name ?? '' }}.{{ config('app.short_url') }}"
+                                                        class="tw-bg-lightPink tw-py-0.5 tw-px-2.5 tw-inline-block tw-rounded-full">
+                                                        <span
+                                                            class="category font-size-12 font-weight-400 tw-text-pink hover:tw-text-pink">
+                                                            {{ \Illuminate\Support\Str::limit($primary_blog->brand_name ?? '', 15) }}
+                                                        </span>
                                                     </a>
-                                                    <div class="content_div">
-                                                        <a href=" https://{{ $blog->short_name ?? '' }}.arikliger.com">
-                                                            <span class="category font-size-12 font-weight-400">
-                                                                {{ \Illuminate\Support\Str::limit($blog->brand_name ?? '', 15) }}
-                                                            </span>
-                                                        </a>
-                                                        <a href="{{ route('article', $blog->id) }}"
-                                                            style="color: #212529 !important">
-                                                            <h4 class="font-size-12 font-weight-700">
-                                                                {{ $blog->title ?? '' }}
-                                                            </h4>
-                                                            <p class="discription font-size-10 font-weight-400">
-                                                                {{ $blog->sub_title ?? '' }}
-                                                            </p>
-                                                        </a>
-                                                        @php
-                                                            $like = \App\Models\Like::where('blog_id', $blog->id)->count();
-                                                            // dd($like);
-                                                        @endphp
-                                                        <span class="font-size-12">{{ $like }}<i
-                                                                class="fa fa-heart" aria-hidden="true"></i></span>
+                                                    <a href="{{ route('article', $primary_blog->id) }}"
+                                                        style="color: #212529 !important">
+                                                        <h4 class="tw-mt-3 tw-text-3xl tw-font-ploniB">
+                                                            {{ $primary_blog->title ?? '' }}
+                                                        </h4>
+                                                        <p class="tw-text-lg">
+                                                            {{ $primary_blog->sub_title ?? '' }}
+                                                        </p>
+                                                    </a>
+                                                    @php
+                                                        $like = \App\Models\Like::where('blog_id', $primary_blog->id)->count();
+                                                        // dd($like);
+                                                    @endphp
+                                                    <div class="tw-grow tw-flex tw-items-end">
+                                                        <span class="font-size-12 tw-flex tw-items-center tw-gap-1.5"><i
+                                                                class="fa fa-heart tw-text-pink" aria-hidden="true"></i>
+                                                            {{ $like }}</span>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
+                                            {{-- SECONDARY BLOGS --}}
+                                            <div class="tw-flex tw-gap-3 tw-w-full">
+                                                @foreach (array_slice($blogs, 1, 2) as $blog)
+                                                    <div
+                                                        class="affordable_consumption_box box_shahdow tw-w-full tw-rounded-xl tw-overflow-hidden tw-flex-col">
+                                                        <a href="{{ route('article', $blog->id) }}"
+                                                            class="tw-block tw-h-44 tw-w-full">
+                                                            <img src="{{ asset('blog/' . $blog->image) }}" alt=""
+                                                                class="tw-object-cover tw-h-full tw-w-full">
+                                                        </a>
+                                                        <div class="content_div">
+                                                            <a
+                                                                href=" http://{{ $blog->short_name ?? '' }}.{{ config('app.short_url') }}">
+                                                                <span class="category font-size-12 font-weight-400">
+                                                                    {{ \Illuminate\Support\Str::limit($blog->brand_name ?? '', 15) }}
+                                                                </span>
+                                                            </a>
+                                                            <a href="{{ route('article', $blog->id) }}"
+                                                                style="color: #212529 !important">
+                                                                <h4 class="font-size-12 font-weight-700">
+                                                                    {{ $blog->title ?? '' }}
+                                                                </h4>
+                                                                <p class="discription font-size-10 font-weight-400">
+                                                                    {{ $blog->sub_title ?? '' }}
+                                                                </p>
+                                                            </a>
+                                                            @php
+                                                                $like = \App\Models\Like::where('blog_id', $blog->id)->count();
+                                                                // dd($like);
+                                                            @endphp
+                                                            <span
+                                                                class="font-size-12 tw-flex tw-items-center tw-gap-1.5"><i
+                                                                    class="fa fa-heart tw-text-pink"
+                                                                    aria-hidden="true"></i> {{ $like }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         @endif
                                         <a href="" class="desktop_hide learn_more font-size-12 font-weight-400">לכל
                                             הכתבות ></a>
@@ -280,7 +314,7 @@ $city_id = Helpers::city_id();
                 @endif
 
                 @if (count($brand_messages) > 0)
-                    <div class="col-5 tw-bg-[#dfdada] tw-py-12 tw-pb-5 tw-mt-16 tw-rounded tw-relative rtl">
+                    <div class="col-lg-5 col-12 tw-bg-[#dfdada] tw-py-12 tw-pb-5 tw-mt-24 tw-rounded tw-relative rtl">
 
                         <a class="tw-flex tw-items-center tw-gap-2 tw-absolute tw-top-0 tw-right-0 tw-bg-gradient-to-r tw-from-orange-400 tw-to-pink tw-py-3 tw-pr-5 tw-pl-12 tw-rounded-l-2xl"
                             style="transform: translateY(-50%)" href=""><img
@@ -310,6 +344,48 @@ $city_id = Helpers::city_id();
                     </div>
                 @endif
             </div>
+            @if (count($blogs) > 0 && $blogs['0']->id != null)
+                <div class="tw-grid xl:tw-grid-cols-4 lg:tw-grid-cols-3 sm:tw-grid-cols-2 tw-grid-cols-1 tw-grid-flow-row tw-gap-3 tw-mx-4 rtl">
+
+                    {{-- OTHER BLOGS --}}
+                    @foreach (array_slice($blogs, 3, 4) as $blog)
+                        <div
+                            class="other_blogs affordable_consumption_box box_shahdow tw-rounded-xl tw-overflow-hidden tw-flex-row tw-flex tw-w-full rtl tw-bg-white">
+                            <a href="{{ route('article', $blog->id) }}" class="tw-block tw-w-40">
+                                <img src="{{ asset('blog/' . $blog->image) }}" alt=""
+                                    class="tw-object-cover tw-h-full tw-w-full">
+                            </a>
+                            <div class="tw-flex tw-flex-col tw-items-start tw-font-ploniR tw-py-2 tw-px-2.5">
+
+                                <a href=" http://{{ $blog->short_name ?? '' }}.{{ config('app.short_url') }}"
+                                    class="tw-bg-lightPink tw-py-0.5 tw-px-2.5 tw-inline-block tw-rounded-full">
+
+                                    <span class="category font-size-12 font-weight-400 tw-text-pink hover:tw-text-pink">
+                                        {{ \Illuminate\Support\Str::limit($blog->brand_name ?? '', 15) }}
+                                    </span>
+                                </a>
+                                <a href="{{ route('article', $blog->id) }}" style="color: #212529 !important">
+                                    <h4 class="tw-mt-1.5 tw-text-lg tw-font-ploniB">
+                                        {{ $blog->title ?? '' }}
+                                    </h4>
+                                    <p class="tw-text-sm">
+                                        {{ $blog->sub_title ?? '' }}
+                                    </p>
+                                </a>
+                                @php
+                                    $like = \App\Models\Like::where('blog_id', $blog->id)->count();
+                                    // dd($like);
+                                @endphp
+                                <div class="tw-grow tw-flex tw-items-end">
+                                    <span class="tw-flex tw-items-center tw-gap-1.5 tw-text-sm"><i
+                                            class="fa fa-heart tw-text-pink" aria-hidden="true"></i>
+                                        {{ $like }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
 
             @if (count($products) > 0 && $products[0]->id != null)
                 <div class="line spacing"></div>

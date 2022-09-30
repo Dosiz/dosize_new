@@ -5,6 +5,12 @@ module.exports = {
         extend: {
             colors: {
                 pink: "#DB1580",
+                lightPink: "#F9E7F1",
+            },
+            fontFamily: {
+                ploniR: ["PloniRegular"],
+                ploniM: ["PloniMedium"],
+                ploniB: ["PloniBold"],
             },
         },
     },

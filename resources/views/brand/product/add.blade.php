@@ -11,11 +11,11 @@ Add Product
 	}
 </style>
 @endpush
-@section('content')		
+@section('content')
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<div class="content container-fluid">
-	
+
 		<!-- Page Header -->
 		<div class="page-header">
 			<div class="row">
@@ -29,7 +29,7 @@ Add Product
 			</div>
 		</div>
 		<!-- /Page Header -->
-		
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card">
@@ -52,12 +52,12 @@ Add Product
 										<div>
 											<input class="form-control" type="file" name="image" id="image">
 											<div style="color:red;">{{$errors->first('image')}}</div> <br>
-											
+
 										</div>
 									</div>
 
-									<div class="uploadDiv" style="padding-left: 10px;">
-										<label>גלריית תמונות לכתבה</label>
+									<div class="uploadDiv">
+										<label>גלריית תמונות למוצר</label>
 										<div class="input-images"></div>
 										<div style="color:red;">{{$errors->first('images')}}</div> <br>
 									</div>
@@ -67,15 +67,15 @@ Add Product
 										<div>
 											<input class="form-control" type="number" name="price" id="price" value="{{old('price')}}" placeholder="הכנס מחיר רגיל">
 											<div style="color:red;">{{$errors->first('price')}}</div> <br>
-											
+
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label>(אופציונלי) מחיר מבצע</label>
 										<div>
 											<input class="form-control" type="number" name="discount_price" id="discount_price" value="{{old('discount_price')}}" placeholder="הכנס מחיר מבצע">
-											<div style="color:red;">{{$errors->first('discount_price')}}</div> 
+											<div style="color:red;">{{$errors->first('discount_price')}}</div>
 											<span class="text-danger discount_price_valid"></span><br>
 										</div>
 									</div>
@@ -84,7 +84,7 @@ Add Product
 										<label> הזן זמן מכירה (אופציונלי) </label>
 										<div>
 											<input class="form-control" type="datetime-local" name="sale_time" id="sale_time" value="{{old('sale_time')}}" placeholder="הכנס מחיר מבצע">
-											<div style="color:red;">{{$errors->first('sale_time')}}</div> 
+											<div style="color:red;">{{$errors->first('sale_time')}}</div>
 											<span class="text-danger sale_time_valid"></span><br>
 										</div>
 									</div>
@@ -151,10 +151,10 @@ Add Product
 
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-		
-	</div>			
+
+	</div>
 </div>
 <!-- /Page Wrapper -->
 @endsection
@@ -197,13 +197,13 @@ $(document).ready(function() {
 			$(this).parent().find('option').prop("selected","selected");
 			$(this).parent().find('option').trigger("change");
 			$(this).parent().find('option').click();
-			
+
 		}else{
 		$(this).parent().find('option').removeAttr("selected","selected");
 		$(this).parent().find('option').trigger("change");
 		}
-		
-	}); 
+
+	});
 
 
 	$('#select2MultipleE').select2({

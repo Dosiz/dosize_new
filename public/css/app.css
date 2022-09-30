@@ -18,26 +18,12 @@ body {
 .tw-right-0 {
     right: 0px
 }
-.tw-mx-3\.5 {
-    margin-left: 0.875rem;
-    margin-right: 0.875rem
+.tw-order-2 {
+    order: 2
 }
-.tw-mx-3 {
-    margin-left: 0.75rem;
-    margin-right: 0.75rem
-}
-.tw-mx-5 {
-    margin-left: 1.25rem;
-    margin-right: 1.25rem
-}
-.tw-mt-16 {
-    margin-top: 4rem
-}
-.tw-mb-5 {
-    margin-bottom: 1.25rem
-}
-.tw-mt-1 {
-    margin-top: 0.25rem
+.tw-mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem
 }
 .tw-ml-5 {
     margin-left: 1.25rem
@@ -45,8 +31,50 @@ body {
 .tw-mr-1 {
     margin-right: 0.25rem
 }
+.tw-mb-12 {
+    margin-bottom: 3rem
+}
+.tw-mt-10 {
+    margin-top: 2.5rem
+}
+.tw-mb-3 {
+    margin-bottom: 0.75rem
+}
+.tw-mt-3 {
+    margin-top: 0.75rem
+}
+.tw-mt-24 {
+    margin-top: 6rem
+}
+.tw-mb-5 {
+    margin-bottom: 1.25rem
+}
+.tw-mt-1\.5 {
+    margin-top: 0.375rem
+}
+.tw-mt-1 {
+    margin-top: 0.25rem
+}
+.tw-block {
+    display: block
+}
+.tw-inline-block {
+    display: inline-block
+}
 .tw-flex {
     display: flex
+}
+.tw-grid {
+    display: grid
+}
+.tw-h-52 {
+    height: 13rem
+}
+.tw-h-full {
+    height: 100%
+}
+.tw-h-44 {
+    height: 11rem
 }
 .tw-h-12 {
     height: 3rem
@@ -57,11 +85,14 @@ body {
 .tw-h-5 {
     height: 1.25rem
 }
-.tw-h-full {
-    height: 100%
+.tw-w-full {
+    width: 100%
 }
 .tw-w-12 {
     width: 3rem
+}
+.tw-w-40 {
+    width: 10rem
 }
 .tw-w-8 {
     width: 2rem
@@ -69,8 +100,29 @@ body {
 .tw-w-5 {
     width: 1.25rem
 }
+.tw-grow {
+    flex-grow: 1
+}
+.tw-grid-flow-row {
+    grid-auto-flow: row
+}
+.tw-grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+.tw-flex-row {
+    flex-direction: row
+}
 .tw-flex-col {
     flex-direction: column
+}
+.\!tw-flex-wrap {
+    flex-wrap: wrap !important
+}
+.tw-items-start {
+    align-items: flex-start
+}
+.tw-items-end {
+    align-items: flex-end
 }
 .tw-items-center {
     align-items: center
@@ -78,26 +130,32 @@ body {
 .tw-justify-center {
     justify-content: center
 }
-.tw-gap-2 {
-    gap: 0.5rem
+.tw-gap-1\.5 {
+    gap: 0.375rem
+}
+.tw-gap-1 {
+    gap: 0.25rem
 }
 .tw-gap-3 {
     gap: 0.75rem
 }
+.tw-gap-2 {
+    gap: 0.5rem
+}
 .tw-overflow-hidden {
     overflow: hidden
 }
-.tw-rounded {
-    border-radius: 0.25rem
+.tw-rounded-xl {
+    border-radius: 0.75rem
 }
 .tw-rounded-full {
     border-radius: 9999px
 }
+.tw-rounded {
+    border-radius: 0.25rem
+}
 .tw-rounded-lg {
     border-radius: 0.5rem
-}
-.tw-rounded-xl {
-    border-radius: 0.75rem
 }
 .tw-rounded-l-2xl {
     border-top-left-radius: 1rem;
@@ -106,13 +164,17 @@ body {
 .tw-rounded-tr-none {
     border-top-right-radius: 0px
 }
-.tw-bg-\[\#dfdada\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(223 218 218 / var(--tw-bg-opacity))
-}
 .tw-bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+.tw-bg-lightPink {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 231 241 / var(--tw-bg-opacity))
+}
+.tw-bg-\[\#dfdada\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(223 218 218 / var(--tw-bg-opacity))
 }
 .tw-bg-pink {
     --tw-bg-opacity: 1;
@@ -136,13 +198,33 @@ body {
 .tw-p-3 {
     padding: 0.75rem
 }
+.tw-px-0 {
+    padding-left: 0px;
+    padding-right: 0px
+}
+.tw-py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem
+}
+.tw-px-2\.5 {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem
+}
+.tw-px-2 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem
+}
+.tw-py-0\.5 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem
+}
+.tw-py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px
+}
 .tw-py-12 {
     padding-top: 3rem;
     padding-bottom: 3rem
-}
-.tw-px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem
 }
 .tw-py-3 {
     padding-top: 0.75rem;
@@ -156,10 +238,6 @@ body {
     padding-left: 1.5rem;
     padding-right: 1.5rem
 }
-.tw-px-0 {
-    padding-left: 0px;
-    padding-right: 0px
-}
 .tw-pb-5 {
     padding-bottom: 1.25rem
 }
@@ -172,21 +250,31 @@ body {
 .tw-text-center {
     text-align: center
 }
+.tw-font-ploniR {
+    font-family: PloniRegular
+}
+.tw-font-ploniB {
+    font-family: PloniBold
+}
+.tw-text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+}
 .tw-text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem
 }
-.tw-text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem
-}
-.\!tw-text-xl {
-    font-size: 1.25rem !important;
-    line-height: 1.75rem !important
+.tw-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem
 }
 .\!tw-text-2xl {
     font-size: 1.5rem !important;
     line-height: 2rem !important
+}
+.tw-text-pink {
+    --tw-text-opacity: 1;
+    color: rgb(219 21 128 / var(--tw-text-opacity))
 }
 .tw-text-white {
     --tw-text-opacity: 1;
@@ -200,23 +288,54 @@ body {
     --tw-text-opacity: 1;
     color: rgb(22 163 74 / var(--tw-text-opacity))
 }
-.tw-text-green-400 {
-    --tw-text-opacity: 1;
-    color: rgb(74 222 128 / var(--tw-text-opacity))
-}
-.tw-text-gray-600 {
-    --tw-text-opacity: 1;
-    color: rgb(75 85 99 / var(--tw-text-opacity))
-}
 .tw-text-gray-400 {
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity))
 }
+.tw-shadow {
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
 .hover\:tw-bg-white\/30:hover {
     background-color: rgb(255 255 255 / 0.3)
+}
+.hover\:tw-text-pink:hover {
+    --tw-text-opacity: 1;
+    color: rgb(219 21 128 / var(--tw-text-opacity))
 }
 .hover\:tw-text-white:hover {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+@media (min-width: 640px) {
+    .sm\:tw-mt-0 {
+        margin-top: 0px
+    }
+    .sm\:tw-h-72 {
+        height: 18rem
+    }
+    .sm\:tw-w-1\/2 {
+        width: 50%
+    }
+    .sm\:tw-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+    .sm\:tw-flex-row {
+        flex-direction: row
+    }
+}
+@media (min-width: 1024px) {
+    .lg\:tw-order-none {
+        order: 0
+    }
+    .lg\:tw-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+    }
+}
+@media (min-width: 1280px) {
+    .xl\:tw-grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
 }
 
