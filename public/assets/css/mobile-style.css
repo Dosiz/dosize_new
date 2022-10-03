@@ -924,20 +924,10 @@ header .article_header .heart_tag_message_list ul li span {
     justify-content: space-between;
 }
 
-.multiple_afforable_consumption .affordable_consumption_box {
-    width: 23%;
-}
-
 .affordable_consumption .affordable_consumption_list .affordable_consumption_box {
     display: flex;
-    flex-direction: row-reverse;
     border-radius: 12px;
     background-color: var(--whiteColor);
-    margin: 10px 0px;
-}
-
-.affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
-    border-radius: 0px 12px 12px 0px;
 }
 
 .affordable_consumption .affordable_consumption_list .affordable_consumption_box .content_div {
@@ -2275,7 +2265,7 @@ footer .inbox_footer .message_form .input_div_button button,
 }
 @media screen and (min-width: 1600px) {
 
-    
+
 
     .d-none,
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box.d-none,
@@ -2294,7 +2284,7 @@ footer .inbox_footer .message_form .input_div_button button,
 
 @media screen and (max-width: 1600px) {
 
-    
+
     .article_main_wrapper,
     .message_main_wrapper {
         width: 86% !important;
@@ -2319,15 +2309,11 @@ footer .inbox_footer .message_form .input_div_button button,
     .article_banner .city_shoe p {
         font-size: 14px;
     }
-
-    .multiple_afforable_consumption .affordable_consumption_box {
-        width: 32%;
-    }
 }
 
 @media screen and (max-width: 1440px) {
 
-    
+
     .messenger_announcment_main .announcment_main {
         padding: 80px 20px;
     }
@@ -2366,10 +2352,6 @@ footer .inbox_footer .message_form .input_div_button button,
 
     .promotion .multiple_promotion .promotion_box {
         max-width: 20%;
-    }
-
-    .multiple_afforable_consumption .affordable_consumption_box {
-        width: 32%;
     }
 
     .deal_two .multiple_deals .deals_box,
@@ -2979,18 +2961,6 @@ footer .inbox_footer .message_form .input_div_button button,
 
     .affordable_consumption_list .affordable_consumption_box {
         padding: 0px !important;
-    }
-
-    /* .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box img { */
-        /* width: auto !important; */
-        /* height: auto !important; */
-    /* } */
-
-    .affordable_consumption .affordable_consumption_list .affordable_consumption_box img {
-        width: 100px !important;
-        height: 100%;
-        border-radius: 0px 12px 12px 0px !important;
-        margin-left: 15px;
     }
 
     .home_medical_items .affordable_consumption .affordable_consumption_list .affordable_consumption_box {

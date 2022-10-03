@@ -14,7 +14,7 @@
             extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
             mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
             maxSize: undefined,
-            maxFiles: undefined,
+            maxFiles: 10,
         };
 
         // Get instance
@@ -177,11 +177,18 @@
 
                 // If is not a preloaded image
                 if ($container.data('preloaded') === true) {
+                    const imageName = plugin.settings.preloaded.find((p) =>
+                        p.id === id
+                    ).imageName;
 
                     // Remove from preloaded array
                     plugin.settings.preloaded = plugin.settings.preloaded.filter(function (p) {
                         return p.id !== id;
                     });
+
+                    // set delete images input value
+                    const newVal = JSON.parse($('#deleted-images-input').val()).concat(imageName)
+                    $('#deleted-images-input').val(JSON.stringify(newVal))
 
                 } else {
 

@@ -35,33 +35,33 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::domain('beitar-illit.arikliger.com')->group(function () {
+Route::domain('beitar-illit.'.config('app.short_url'))->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-Route::domain('elad.arikliger.com')->group(function () {
+Route::domain('elad.'.config('app.short_url'))->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-Route::domain('Beit-shemesh.arikliger.com')->group(function () {
+Route::domain('Beit-shemesh.'.config('app.short_url'))->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-Route::domain('jerusalem.arikliger.com')->group(function () {
+Route::domain('jerusalem.'.config('app.short_url'))->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
 
-Route::domain('bnei-brak.arikliger.com')->group(function () {
+Route::domain('bnei-brak.'.config('app.short_url'))->group(function () {
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 });
     // dd("dsfdf");
     // Route::get('/',[App\Http\Controllers\FrontEndController::class, 'dfg']);
-Route::group(["domain" => "arikliger.com"], function() {
+Route::group(["domain" => env('APP_URL', 'http://localhost')], function() {
     // -- website.com
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'web_static_paage']);
 });
 
-Route::domain('{subdomain}.'.config('app.short_url'))->group(function () { 
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {
     Route::get('/city',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
     Route::get('/',[App\Http\Controllers\FrontEndController::class, 'profile'])->name('profile');
 });
@@ -91,7 +91,7 @@ Route::post('/store_subscriber',[App\Http\Controllers\FrontEndController::class,
 //without ajax
 Route::post('/store_subscribers',[App\Http\Controllers\FrontEndController::class, 'store_subscribers'])->name('store-subscribers');
 
-//all articles 
+//all articles
 Route::get('/brand/article/{category_id}/{city_id}',[App\Http\Controllers\FrontEndController::class, 'show_all_blogs'])->name('all-blogs');
 
 
@@ -124,10 +124,9 @@ Route::post('/fetch-subcategory',[App\Http\Controllers\DashboardController::clas
 Route::prefix('dashboard')->middleware(['auth','dashboard'])->group(function(){
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-//brand-profile
-Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
-Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
-
+    //brand-profile
+    Route::get('/profile',[App\Http\Controllers\DashboardController::class, 'brand_profile'])->name('profile');
+    Route::post('/profile-store',[App\Http\Controllers\DashboardController::class, 'profile_store'])->name('profile.store');
 });
 
 
@@ -143,6 +142,9 @@ Route::prefix('user')->middleware('can:user')->group(function(){
 Route::prefix('admin')->middleware('can:admin')->group(function(){
     //city
     Route::resource('city', App\Http\Controllers\admin\CityController::class);
+    //blogs
+    Route::resource('blogs', App\Http\Controllers\admin\BlogController::class);
+    Route::post('blogs/select-primary/{id}', [App\Http\Controllers\admin\BlogController::class, 'select_primary'])->name('select-primary-blog');
     //admin_product
     Route::resource('admin_product', App\Http\Controllers\admin\ProductController::class);
     //admin product order
@@ -151,7 +153,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function(){
 
     //cateogry
     Route::resource('category', App\Http\Controllers\admin\CategoryController::class);
-    //city
+    //sub-category
     Route::resource('sub-category', App\Http\Controllers\admin\SubCategoryController::class);
 
     //brands
@@ -242,9 +244,9 @@ Route::get('archive_category', function () {
 
 
 
-Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {  
+Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {
     // $route = Route::getCurrentRoute();
-    // $subdomain = $route->getParameter('subdomain'); 
+    // $subdomain = $route->getParameter('subdomain');
     // dd($subdomain);
     Route::get('/brand/wallet', function () {
         // dd(session());
@@ -264,9 +266,9 @@ Route::get('auth/google/callback', [App\Http\Controllers\Auth\SocialController::
 Route::get('auth/facebook', [App\Http\Controllers\Auth\SocialController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [App\Http\Controllers\Auth\SocialController::class, 'handleFacebookCallback'])->name('auth.facebook_callback');
 
-// Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {    
+// Route::domain('{subdomain}.'.config('app.short_url'))->group(function () {
 //     // Route::get('/brand', 'BrandProfileController@brand_profile')->name('brand');
-//     // Route::get('/city', 'BrandProfileController@city_search')->name('city'); 
+//     // Route::get('/city', 'BrandProfileController@city_search')->name('city');
 //     Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 //     // Route::get('/{city_id}',[App\Http\Controllers\FrontEndController::class, 'landing_page'])->name('landing-page');
 

@@ -116,10 +116,6 @@
         background-color: transparent;
     }
 
-    .multiple_afforable_consumption .affordable_consumption_box {
-        width: 24%;
-    }
-
     .affordable_consumption .affordable_consumption_list.d-flex {
         flex-wrap: wrap;
         justify-content: end;
@@ -275,10 +271,6 @@
 
     .noteBox p {
         font-size: 11px;
-    }
-
-    .multiple_afforable_consumption .affordable_consumption_box {
-        width: 24%;
     }
 
     .slider_div {

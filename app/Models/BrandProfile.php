@@ -10,7 +10,11 @@ class BrandProfile extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
+
+    protected $casts = [
+        'website_primary_images' => 'array',
+    ];
+
     public function brandaddresses()
     {
         return $this->hasMany(BrandsHasAddress::class);
@@ -55,5 +59,5 @@ class BrandProfile extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
-    
+
 }
